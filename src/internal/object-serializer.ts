@@ -154,6 +154,12 @@ export class ObjectSerializer {
                 return expectedType; // w/e we don't know the type
             }
 
+            //Check derived type
+            var subTypeName = data["type"];
+            if (subTypeName !== undefined && typeMap[subTypeName] !== undefined) {
+                return subTypeName;
+            }
+
             // Check the discriminator
             const discriminatorProperty = typeMap[expectedType].discriminator;
             if (discriminatorProperty == null) {
