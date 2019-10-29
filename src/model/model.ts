@@ -30,17 +30,17 @@ export class AccountBaseRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "firstAccount",
-            baseName: "FirstAccount",
+            baseName: "firstAccount",
             type: "string",
         },        
         {
             name: "secondAccount",
-            baseName: "SecondAccount",
+            baseName: "secondAccount",
             type: "string",
         },        
         {
             name: "storageFolder",
-            baseName: "StorageFolder",
+            baseName: "storageFolder",
             type: "StorageFolderLocation",
         }    ];
 
@@ -70,12 +70,12 @@ export class AddAttachmentRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "documentFolder",
-            baseName: "DocumentFolder",
+            baseName: "documentFolder",
             type: "StorageFolderLocation",
         },        
         {
             name: "attachmentFolder",
-            baseName: "AttachmentFolder",
+            baseName: "attachmentFolder",
             type: "StorageFolderLocation",
         }    ];
 
@@ -106,12 +106,12 @@ export class AsposeResponse {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "code",
-            baseName: "Code",
+            baseName: "code",
             type: "AsposeResponse.CodeEnum",
         },        
         {
             name: "status",
-            baseName: "Status",
+            baseName: "status",
             type: "string",
         }    ];
 
@@ -212,12 +212,12 @@ export class BaseObject {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "name",
-            baseName: "Name",
+            baseName: "name",
             type: "string",
         },        
         {
             name: "type",
-            baseName: "Type",
+            baseName: "type",
             type: "string",
         }    ];
 
@@ -243,23 +243,11 @@ export class BaseObject {
 /**
  * 
  */
-export class ContactFormat {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return ContactFormat.attributeTypeMap;
-    }
-
+export enum ContactFormat {
+    VCard = 'VCard' as any,
+    WebDav = 'WebDav' as any,
+    Msg = 'Msg' as any,
 }
-
 /**
  * Create email document request
  */
@@ -271,12 +259,12 @@ export class CreateEmailRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "emailDocument",
-            baseName: "EmailDocument",
+            baseName: "emailDocument",
             type: "EmailDocument",
         },        
         {
             name: "storageFolder",
-            baseName: "StorageFolder",
+            baseName: "storageFolder",
             type: "StorageFolderLocation",
         }    ];
 
@@ -310,12 +298,12 @@ export class DiscUsage {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "usedSize",
-            baseName: "UsedSize",
+            baseName: "usedSize",
             type: "number",
         },        
         {
             name: "totalSize",
-            baseName: "TotalSize",
+            baseName: "totalSize",
             type: "number",
         }    ];
 
@@ -349,37 +337,37 @@ export class EmailAccountRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "host",
-            baseName: "Host",
+            baseName: "host",
             type: "string",
         },        
         {
             name: "port",
-            baseName: "Port",
+            baseName: "port",
             type: "number",
         },        
         {
             name: "login",
-            baseName: "Login",
+            baseName: "login",
             type: "string",
         },        
         {
             name: "securityOptions",
-            baseName: "SecurityOptions",
+            baseName: "securityOptions",
             type: "any",
         },        
         {
             name: "protocolType",
-            baseName: "ProtocolType",
+            baseName: "protocolType",
             type: "any",
         },        
         {
             name: "description",
-            baseName: "Description",
+            baseName: "description",
             type: "string",
         },        
         {
             name: "storageFile",
-            baseName: "StorageFile",
+            baseName: "storageFile",
             type: "StorageFileLocation",
         }    ];
 
@@ -438,12 +426,12 @@ export class EmailDocument {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "links",
-            baseName: "Links",
+            baseName: "links",
             type: "Array<Link>",
         },        
         {
             name: "documentProperties",
-            baseName: "DocumentProperties",
+            baseName: "documentProperties",
             type: "EmailProperties",
         }    ];
 
@@ -477,12 +465,12 @@ export class EmailProperties {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "link",
-            baseName: "Link",
+            baseName: "link",
             type: "Link",
         },        
         {
             name: "list",
-            baseName: "List",
+            baseName: "list",
             type: "Array<EmailProperty>",
         }    ];
 
@@ -513,17 +501,17 @@ export class EmailProperty {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "link",
-            baseName: "Link",
+            baseName: "link",
             type: "Link",
         },        
         {
             name: "name",
-            baseName: "Name",
+            baseName: "name",
             type: "string",
         },        
         {
             name: "value",
-            baseName: "Value",
+            baseName: "value",
             type: "any",
         }    ];
 
@@ -553,12 +541,12 @@ export class ErrorDetails {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "requestId",
-            baseName: "RequestId",
+            baseName: "requestId",
             type: "string",
         },        
         {
             name: "date",
-            baseName: "Date",
+            baseName: "date",
             type: "Date",
         }    ];
 
@@ -592,7 +580,7 @@ export class FileVersions {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "value",
-            baseName: "Value",
+            baseName: "value",
             type: "Array<FileVersion>",
         }    ];
 
@@ -621,7 +609,7 @@ export class FilesList {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "value",
-            baseName: "Value",
+            baseName: "value",
             type: "Array<StorageFile>",
         }    ];
 
@@ -650,12 +638,12 @@ export class FilesUploadResult {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "uploaded",
-            baseName: "Uploaded",
+            baseName: "uploaded",
             type: "Array<string>",
         },        
         {
             name: "errors",
-            baseName: "Errors",
+            baseName: "errors",
             type: "Array<Error>",
         }    ];
 
@@ -689,12 +677,12 @@ export class HierarchicalObjectRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "hierarchicalObject",
-            baseName: "HierarchicalObject",
+            baseName: "hierarchicalObject",
             type: "HierarchicalObject",
         },        
         {
             name: "storageFolder",
-            baseName: "StorageFolder",
+            baseName: "storageFolder",
             type: "StorageFolderLocation",
         }    ];
 
@@ -728,12 +716,12 @@ export class HierarchicalObjectResponse {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "hierarchicalObject",
-            baseName: "HierarchicalObject",
+            baseName: "hierarchicalObject",
             type: "HierarchicalObject",
         },        
         {
             name: "storageFile",
-            baseName: "StorageFile",
+            baseName: "storageFile",
             type: "StorageFileLocation",
         }    ];
 
@@ -767,22 +755,22 @@ export class Link {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "href",
-            baseName: "Href",
+            baseName: "href",
             type: "string",
         },        
         {
             name: "rel",
-            baseName: "Rel",
+            baseName: "rel",
             type: "string",
         },        
         {
             name: "type",
-            baseName: "Type",
+            baseName: "type",
             type: "string",
         },        
         {
             name: "title",
-            baseName: "Title",
+            baseName: "title",
             type: "string",
         }    ];
 
@@ -823,7 +811,7 @@ export class ListResponseOfHierarchicalObjectResponse {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "value",
-            baseName: "Value",
+            baseName: "value",
             type: "Array<HierarchicalObjectResponse>",
         }    ];
 
@@ -846,7 +834,7 @@ export class ListResponseOfString {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "value",
-            baseName: "Value",
+            baseName: "value",
             type: "Array<string>",
         }    ];
 
@@ -872,12 +860,12 @@ export class MailServerFolder {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "name",
-            baseName: "Name",
+            baseName: "name",
             type: "string",
         },        
         {
             name: "id",
-            baseName: "Id",
+            baseName: "id",
             type: "string",
         }    ];
 
@@ -911,22 +899,22 @@ export class ModelError {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "code",
-            baseName: "Code",
+            baseName: "code",
             type: "string",
         },        
         {
             name: "message",
-            baseName: "Message",
+            baseName: "message",
             type: "string",
         },        
         {
             name: "description",
-            baseName: "Description",
+            baseName: "description",
             type: "string",
         },        
         {
             name: "innerError",
-            baseName: "InnerError",
+            baseName: "innerError",
             type: "ErrorDetails",
         }    ];
 
@@ -970,12 +958,12 @@ export class ObjectExist {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "exists",
-            baseName: "Exists",
+            baseName: "exists",
             type: "boolean",
         },        
         {
             name: "isFolder",
-            baseName: "IsFolder",
+            baseName: "isFolder",
             type: "boolean",
         }    ];
 
@@ -1009,12 +997,12 @@ export class SetEmailPropertyRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "emailProperty",
-            baseName: "EmailProperty",
+            baseName: "emailProperty",
             type: "EmailProperty",
         },        
         {
             name: "storageFolder",
-            baseName: "StorageFolder",
+            baseName: "storageFolder",
             type: "StorageFolderLocation",
         }    ];
 
@@ -1048,7 +1036,7 @@ export class StorageExist {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "exists",
-            baseName: "Exists",
+            baseName: "exists",
             type: "boolean",
         }    ];
 
@@ -1077,27 +1065,27 @@ export class StorageFile {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "name",
-            baseName: "Name",
+            baseName: "name",
             type: "string",
         },        
         {
             name: "isFolder",
-            baseName: "IsFolder",
+            baseName: "isFolder",
             type: "boolean",
         },        
         {
             name: "modifiedDate",
-            baseName: "ModifiedDate",
+            baseName: "modifiedDate",
             type: "Date",
         },        
         {
             name: "size",
-            baseName: "Size",
+            baseName: "size",
             type: "number",
         },        
         {
             name: "path",
-            baseName: "Path",
+            baseName: "path",
             type: "string",
         }    ];
 
@@ -1146,12 +1134,12 @@ export class StorageFolderLocation {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "storage",
-            baseName: "Storage",
+            baseName: "storage",
             type: "string",
         },        
         {
             name: "folderPath",
-            baseName: "FolderPath",
+            baseName: "folderPath",
             type: "string",
         }    ];
 
@@ -1185,12 +1173,12 @@ export class AppendEmailAccountBaseRequest extends AccountBaseRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "folder",
-            baseName: "Folder",
+            baseName: "folder",
             type: "string",
         },        
         {
             name: "markAsSent",
-            baseName: "MarkAsSent",
+            baseName: "markAsSent",
             type: "boolean",
         }    ];
 
@@ -1218,12 +1206,12 @@ export class CreateFolderBaseRequest extends AccountBaseRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "folder",
-            baseName: "Folder",
+            baseName: "folder",
             type: "string",
         },        
         {
             name: "parentFolder",
-            baseName: "ParentFolder",
+            baseName: "parentFolder",
             type: "string",
         }    ];
 
@@ -1257,12 +1245,12 @@ export class DeleteFolderBaseRequest extends AccountBaseRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "folder",
-            baseName: "Folder",
+            baseName: "folder",
             type: "string",
         },        
         {
             name: "deletePermanently",
-            baseName: "DeletePermanently",
+            baseName: "deletePermanently",
             type: "boolean",
         }    ];
 
@@ -1296,12 +1284,12 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "messageId",
-            baseName: "MessageId",
+            baseName: "messageId",
             type: "string",
         },        
         {
             name: "deletePermanently",
-            baseName: "DeletePermanently",
+            baseName: "deletePermanently",
             type: "boolean",
         }    ];
 
@@ -1335,7 +1323,7 @@ export class EmailDocumentResponse extends AsposeResponse {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "document",
-            baseName: "Document",
+            baseName: "document",
             type: "EmailDocument",
         }    ];
 
@@ -1369,7 +1357,7 @@ export class EmailPropertyResponse extends AsposeResponse {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "emailProperty",
-            baseName: "EmailProperty",
+            baseName: "emailProperty",
             type: "EmailProperty",
         }    ];
 
@@ -1400,7 +1388,7 @@ export class FaultResponse extends AsposeResponse {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "message",
-            baseName: "Message",
+            baseName: "message",
             type: "string",
         }    ];
 
@@ -1431,12 +1419,12 @@ export class FileVersion extends StorageFile {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "versionId",
-            baseName: "VersionId",
+            baseName: "versionId",
             type: "string",
         },        
         {
             name: "isLatest",
-            baseName: "IsLatest",
+            baseName: "isLatest",
             type: "boolean",
         }    ];
 
@@ -1470,7 +1458,7 @@ export class HierarchicalObject extends BaseObject {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "internalProperties",
-            baseName: "InternalProperties",
+            baseName: "internalProperties",
             type: "Array<BaseObject>",
         }    ];
 
@@ -1499,12 +1487,12 @@ export class IndexedHierarchicalObject extends BaseObject {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "index",
-            baseName: "Index",
+            baseName: "index",
             type: "number",
         },        
         {
             name: "internalProperties",
-            baseName: "InternalProperties",
+            baseName: "internalProperties",
             type: "Array<BaseObject>",
         }    ];
 
@@ -1538,12 +1526,12 @@ export class IndexedPrimitiveObject extends BaseObject {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "index",
-            baseName: "Index",
+            baseName: "index",
             type: "number",
         },        
         {
             name: "value",
-            baseName: "Value",
+            baseName: "value",
             type: "string",
         }    ];
 
@@ -1577,7 +1565,7 @@ export class ListFoldersResponse extends AsposeResponse {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "value",
-            baseName: "Value",
+            baseName: "value",
             type: "Array<MailServerFolder>",
         }    ];
 
@@ -1608,7 +1596,7 @@ export class ListMessagesResponse extends AsposeResponse {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "value",
-            baseName: "Value",
+            baseName: "value",
             type: "Array<string>",
         }    ];
 
@@ -1642,7 +1630,7 @@ export class MimeResponse extends AsposeResponse {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "mime",
-            baseName: "Mime",
+            baseName: "mime",
             type: "string",
         }    ];
 
@@ -1676,7 +1664,7 @@ export class PrimitiveObject extends BaseObject {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "value",
-            baseName: "Value",
+            baseName: "value",
             type: "string",
         }    ];
 
@@ -1705,7 +1693,7 @@ export class SaveEmailAccountRequest extends EmailAccountRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "password",
-            baseName: "Password",
+            baseName: "password",
             type: "string",
         }    ];
 
@@ -1734,17 +1722,17 @@ export class SaveOAuthEmailAccountRequest extends EmailAccountRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "clientId",
-            baseName: "ClientId",
+            baseName: "clientId",
             type: "string",
         },        
         {
             name: "clientSecret",
-            baseName: "ClientSecret",
+            baseName: "clientSecret",
             type: "string",
         },        
         {
             name: "refreshToken",
-            baseName: "RefreshToken",
+            baseName: "refreshToken",
             type: "string",
         }    ];
 
@@ -1783,7 +1771,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "emailFile",
-            baseName: "EmailFile",
+            baseName: "emailFile",
             type: "StorageFileLocation",
         }    ];
 
@@ -1812,7 +1800,7 @@ export class SendEmailMimeBaseRequest extends AccountBaseRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "base64MimeMessage",
-            baseName: "Base64MimeMessage",
+            baseName: "base64MimeMessage",
             type: "string",
         }    ];
 
@@ -1841,12 +1829,12 @@ export class SetMessageReadFlagAccountBaseRequest extends AccountBaseRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "messageId",
-            baseName: "MessageId",
+            baseName: "messageId",
             type: "string",
         },        
         {
             name: "isRead",
-            baseName: "IsRead",
+            baseName: "isRead",
             type: "boolean",
         }    ];
 
@@ -1880,7 +1868,7 @@ export class StorageFileLocation extends StorageFolderLocation {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "fileName",
-            baseName: "FileName",
+            baseName: "fileName",
             type: "string",
         }    ];
 
@@ -1909,7 +1897,7 @@ export class ValueResponse extends AsposeResponse {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "value",
-            baseName: "Value",
+            baseName: "value",
             type: "string",
         }    ];
 
@@ -1943,7 +1931,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "emailFile",
-            baseName: "EmailFile",
+            baseName: "emailFile",
             type: "StorageFileLocation",
         }    ];
 
@@ -1972,7 +1960,7 @@ export class AppendEmailMimeBaseRequest extends AppendEmailAccountBaseRequest {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "base64MimeMessage",
-            baseName: "Base64MimeMessage",
+            baseName: "base64MimeMessage",
             type: "string",
         }    ];
 
@@ -1992,6 +1980,7 @@ export class AppendEmailMimeBaseRequest extends AppendEmailAccountBaseRequest {
 
 const enumsMap = {
     "AsposeResponse.CodeEnum": AsposeResponse.CodeEnum,
+    "ContactFormat": ContactFormat,
 };
 
 const typeMap = {
@@ -1999,7 +1988,6 @@ const typeMap = {
             AddAttachmentRequest,
             AsposeResponse,
             BaseObject,
-            ContactFormat,
             CreateEmailRequest,
             DiscUsage,
             EmailAccountRequest,

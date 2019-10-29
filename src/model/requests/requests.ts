@@ -28,7 +28,7 @@ export class AddContactAttachmentRequest {
     /**
      * Contact document format
      */
-    public format: number;
+    public format: 'VCard' | 'WebDav' | 'Msg';
 
     /**
      * Contact document file name
@@ -183,7 +183,7 @@ export class CreateContactRequest {
     /**
      * Contact document format
      */
-    public format: number;
+    public format: 'VCard' | 'WebDav' | 'Msg';
 
     /**
      * Contact document file name
@@ -283,7 +283,7 @@ export class DeleteContactPropertyRequest {
     /**
      * Contact document format
      */
-    public format: number;
+    public format: 'VCard' | 'WebDav' | 'Msg';
 
     /**
      * Contact document file name
@@ -528,7 +528,7 @@ export class GetContactAttachmentRequest {
     /**
      * Contact document format
      */
-    public format: number;
+    public format: 'VCard' | 'WebDav' | 'Msg';
 
     /**
      * Contact document file name
@@ -558,7 +558,7 @@ export class GetContactListRequest {
     /**
      * Contact document format
      */
-    public format: number;
+    public format: 'VCard' | 'WebDav' | 'Msg';
 
     /**
      * Path to folder in storage
@@ -588,7 +588,7 @@ export class GetContactPropertiesRequest {
     /**
      * Contact document format
      */
-    public format: number;
+    public format: 'VCard' | 'WebDav' | 'Msg';
 
     /**
      * Contact document file name
@@ -1053,7 +1053,7 @@ export class UpdateContactPropertiesRequest {
     /**
      * Contact document format
      */
-    public format: number;
+    public format: 'VCard' | 'WebDav' | 'Msg';
 
     /**
      * Contact document file name
