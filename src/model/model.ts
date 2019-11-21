@@ -117,44 +117,6 @@ export class AddAttachmentRequest {
     }
 }
 
-export class AsposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "code",
-            baseName: "code",
-            type: "AsposeResponse.CodeEnum",
-        },
-        {
-            name: "status",
-            baseName: "status",
-            type: "string",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return AsposeResponse.attributeTypeMap;
-    }
-
-    public code: string;
-    
-    public status: string;
-    
-
-    public constructor(
-        code?: string,
-        status?: string) {
-        
-        this.code = code;
-        this.status = status;
-    }
-}
-
 /**
  * Base property object
  */
@@ -466,6 +428,41 @@ export class EmailDocument {
 }
 
 /**
+ * An email document response
+ */
+export class EmailDocumentResponse {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "document",
+            baseName: "document",
+            type: "EmailDocument",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailDocumentResponse.attributeTypeMap;
+    }
+
+    /**
+     * An email document requested
+     */
+    public document: EmailDocument;
+    
+
+    public constructor(
+        document?: EmailDocument) {
+        
+        this.document = document;
+    }
+}
+
+/**
  * Email list properties.
  */
 export class EmailProperties {
@@ -556,6 +553,41 @@ export class EmailProperty {
         this.link = link;
         this.name = name;
         this.value = value;
+    }
+}
+
+/**
+ * Email property response.
+ */
+export class EmailPropertyResponse {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "emailProperty",
+            baseName: "emailProperty",
+            type: "EmailProperty",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailPropertyResponse.attributeTypeMap;
+    }
+
+    /**
+     * Gets or sets email property.
+     */
+    public emailProperty: EmailProperty;
+    
+
+    public constructor(
+        emailProperty?: EmailProperty) {
+        
+        this.emailProperty = emailProperty;
     }
 }
 
@@ -917,6 +949,35 @@ export class ListResponseOfHierarchicalObjectResponse {
     }
 }
 
+export class ListResponseOfMailServerFolder {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<MailServerFolder>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfMailServerFolder.attributeTypeMap;
+    }
+
+    public value: Array<MailServerFolder>;
+    
+
+    public constructor(
+        value?: Array<MailServerFolder>) {
+        
+        this.value = value;
+    }
+}
+
 export class ListResponseOfString {
 
     /**
@@ -990,6 +1051,41 @@ export class MailServerFolder {
         
         this.name = name;
         this.id = id;
+    }
+}
+
+/**
+ * Email document property DTO.
+ */
+export class MimeResponse {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "mime",
+            baseName: "mime",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MimeResponse.attributeTypeMap;
+    }
+
+    /**
+     * Gets or sets base64 encoded mime content.
+     */
+    public mime: string;
+    
+
+    public constructor(
+        mime?: string) {
+        
+        this.mime = mime;
     }
 }
 
@@ -1324,6 +1420,41 @@ export class StorageFolderLocation {
 }
 
 /**
+ * Email document property DTO.
+ */
+export class ValueResponse {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ValueResponse.attributeTypeMap;
+    }
+
+    /**
+     * Gets or sets string content.
+     */
+    public value: string;
+    
+
+    public constructor(
+        value?: string) {
+        
+        this.value = value;
+    }
+}
+
+/**
  * Append email to account request
  */
 export class AppendEmailAccountBaseRequest extends AccountBaseRequest {
@@ -1530,117 +1661,6 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
 }
 
 /**
- * An email document response
- */
-export class EmailDocumentResponse extends AsposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "document",
-            baseName: "document",
-            type: "EmailDocument",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(EmailDocumentResponse.attributeTypeMap);
-    }
-
-    /**
-     * An email document requested
-     */
-    public document: EmailDocument;
-    
-
-    public constructor(
-        code?: string,
-        status?: string,
-        document?: EmailDocument) {
-        super();
-        this.code = code;
-        this.status = status;
-        this.document = document;
-    }
-}
-
-/**
- * Email property response.
- */
-export class EmailPropertyResponse extends AsposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "emailProperty",
-            baseName: "emailProperty",
-            type: "EmailProperty",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(EmailPropertyResponse.attributeTypeMap);
-    }
-
-    /**
-     * Gets or sets email property.
-     */
-    public emailProperty: EmailProperty;
-    
-
-    public constructor(
-        code?: string,
-        status?: string,
-        emailProperty?: EmailProperty) {
-        super();
-        this.code = code;
-        this.status = status;
-        this.emailProperty = emailProperty;
-    }
-}
-
-export class FaultResponse extends AsposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "message",
-            baseName: "message",
-            type: "string",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(FaultResponse.attributeTypeMap);
-    }
-
-    public message: string;
-    
-
-    public constructor(
-        code?: string,
-        status?: string,
-        message?: string) {
-        super();
-        this.code = code;
-        this.status = status;
-        this.message = message;
-    }
-}
-
-/**
  * File Version
  */
 export class FileVersion extends StorageFile {
@@ -1835,120 +1855,6 @@ export class IndexedPrimitiveObject extends BaseObject {
         this.type = type;
         this.index = index;
         this.value = value;
-    }
-}
-
-/**
- * Email account folders list
- */
-export class ListFoldersResponse extends AsposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "value",
-            baseName: "value",
-            type: "Array<MailServerFolder>",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(ListFoldersResponse.attributeTypeMap);
-    }
-
-    public value: Array<MailServerFolder>;
-    
-
-    public constructor(
-        code?: string,
-        status?: string,
-        value?: Array<MailServerFolder>) {
-        super();
-        this.code = code;
-        this.status = status;
-        this.value = value;
-    }
-}
-
-/**
- * Email messages list
- */
-export class ListMessagesResponse extends AsposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "value",
-            baseName: "value",
-            type: "Array<string>",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(ListMessagesResponse.attributeTypeMap);
-    }
-
-    /**
-     * Email messages serialized as MIME strings
-     */
-    public value: Array<string>;
-    
-
-    public constructor(
-        code?: string,
-        status?: string,
-        value?: Array<string>) {
-        super();
-        this.code = code;
-        this.status = status;
-        this.value = value;
-    }
-}
-
-/**
- * Email document property DTO.
- */
-export class MimeResponse extends AsposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "mime",
-            baseName: "mime",
-            type: "string",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(MimeResponse.attributeTypeMap);
-    }
-
-    /**
-     * Gets or sets base64 encoded mime content.
-     */
-    public mime: string;
-    
-
-    public constructor(
-        code?: string,
-        status?: string,
-        mime?: string) {
-        super();
-        this.code = code;
-        this.status = status;
-        this.mime = mime;
     }
 }
 
@@ -2288,45 +2194,6 @@ export class StorageFileLocation extends StorageFolderLocation {
 }
 
 /**
- * Email document property DTO.
- */
-export class ValueResponse extends AsposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "value",
-            baseName: "value",
-            type: "string",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(ValueResponse.attributeTypeMap);
-    }
-
-    /**
-     * Gets or sets string content.
-     */
-    public value: string;
-    
-
-    public constructor(
-        code?: string,
-        status?: string,
-        value?: string) {
-        super();
-        this.code = code;
-        this.status = status;
-        this.value = value;
-    }
-}
-
-/**
  * Append email from storage file to account request
  */
 export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
@@ -2423,14 +2290,15 @@ const enumsMap = {
 const typeMap = {
             AccountBaseRequest,
             AddAttachmentRequest,
-            AsposeResponse,
             BaseObject,
             CreateEmailRequest,
             DiscUsage,
             EmailAccountRequest,
             EmailDocument,
+            EmailDocumentResponse,
             EmailProperties,
             EmailProperty,
+            EmailPropertyResponse,
             ErrorDetails,
             FileVersions,
             FilesList,
@@ -2439,28 +2307,25 @@ const typeMap = {
             HierarchicalObjectResponse,
             Link,
             ListResponseOfHierarchicalObjectResponse,
+            ListResponseOfMailServerFolder,
             ListResponseOfString,
             MailServerFolder,
+            MimeResponse,
             ModelError,
             ObjectExist,
             SetEmailPropertyRequest,
             StorageExist,
             StorageFile,
             StorageFolderLocation,
+            ValueResponse,
             AppendEmailAccountBaseRequest,
             CreateFolderBaseRequest,
             DeleteFolderBaseRequest,
             DeleteMessageBaseRequest,
-            EmailDocumentResponse,
-            EmailPropertyResponse,
-            FaultResponse,
             FileVersion,
             HierarchicalObject,
             IndexedHierarchicalObject,
             IndexedPrimitiveObject,
-            ListFoldersResponse,
-            ListMessagesResponse,
-            MimeResponse,
             PrimitiveObject,
             SaveEmailAccountRequest,
             SaveOAuthEmailAccountRequest,
@@ -2468,7 +2333,6 @@ const typeMap = {
             SendEmailMimeBaseRequest,
             SetMessageReadFlagAccountBaseRequest,
             StorageFileLocation,
-            ValueResponse,
             AppendEmailBaseRequest,
             AppendEmailMimeBaseRequest,
 };
