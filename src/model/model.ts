@@ -33,12 +33,12 @@ export class AccountBaseRequest {
             name: "firstAccount",
             baseName: "firstAccount",
             type: "string",
-        },        
+        },
         {
             name: "secondAccount",
             baseName: "secondAccount",
             type: "string",
-        },        
+        },
         {
             name: "storageFolder",
             baseName: "storageFolder",
@@ -58,6 +58,16 @@ export class AccountBaseRequest {
     
     public storageFolder: StorageFolderLocation;
     
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+    }
 }
 
 /**
@@ -73,7 +83,7 @@ export class AddAttachmentRequest {
             name: "documentFolder",
             baseName: "documentFolder",
             type: "StorageFolderLocation",
-        },        
+        },
         {
             name: "attachmentFolder",
             baseName: "attachmentFolder",
@@ -97,6 +107,14 @@ export class AddAttachmentRequest {
      */
     public attachmentFolder: StorageFolderLocation;
     
+
+    public constructor(
+        documentFolder?: StorageFolderLocation,
+        attachmentFolder?: StorageFolderLocation) {
+        
+        this.documentFolder = documentFolder;
+        this.attachmentFolder = attachmentFolder;
+    }
 }
 
 export class AsposeResponse {
@@ -109,7 +127,7 @@ export class AsposeResponse {
             name: "code",
             baseName: "code",
             type: "AsposeResponse.CodeEnum",
-        },        
+        },
         {
             name: "status",
             baseName: "status",
@@ -123,85 +141,20 @@ export class AsposeResponse {
         return AsposeResponse.attributeTypeMap;
     }
 
-    public code: AsposeResponse.CodeEnum;
+    public code: string;
     
     public status: string;
     
-}
 
-// tslint:disable:quotemark
-// tslint:disable-next-line:no-namespace
-export namespace AsposeResponse {
-    export enum CodeEnum {
-        Continue = 'Continue' as any,
-        SwitchingProtocols = 'SwitchingProtocols' as any,
-        Processing = 'Processing' as any,
-        EarlyHints = 'EarlyHints' as any,
-        OK = 'OK' as any,
-        Created = 'Created' as any,
-        Accepted = 'Accepted' as any,
-        NonAuthoritativeInformation = 'NonAuthoritativeInformation' as any,
-        NoContent = 'NoContent' as any,
-        ResetContent = 'ResetContent' as any,
-        PartialContent = 'PartialContent' as any,
-        MultiStatus = 'MultiStatus' as any,
-        AlreadyReported = 'AlreadyReported' as any,
-        IMUsed = 'IMUsed' as any,
-        MultipleChoices = 'MultipleChoices' as any,
-        Ambiguous = 'Ambiguous' as any,
-        MovedPermanently = 'MovedPermanently' as any,
-        Moved = 'Moved' as any,
-        Found = 'Found' as any,
-        Redirect = 'Redirect' as any,
-        SeeOther = 'SeeOther' as any,
-        RedirectMethod = 'RedirectMethod' as any,
-        NotModified = 'NotModified' as any,
-        UseProxy = 'UseProxy' as any,
-        Unused = 'Unused' as any,
-        TemporaryRedirect = 'TemporaryRedirect' as any,
-        RedirectKeepVerb = 'RedirectKeepVerb' as any,
-        PermanentRedirect = 'PermanentRedirect' as any,
-        BadRequest = 'BadRequest' as any,
-        Unauthorized = 'Unauthorized' as any,
-        PaymentRequired = 'PaymentRequired' as any,
-        Forbidden = 'Forbidden' as any,
-        NotFound = 'NotFound' as any,
-        MethodNotAllowed = 'MethodNotAllowed' as any,
-        NotAcceptable = 'NotAcceptable' as any,
-        ProxyAuthenticationRequired = 'ProxyAuthenticationRequired' as any,
-        RequestTimeout = 'RequestTimeout' as any,
-        Conflict = 'Conflict' as any,
-        Gone = 'Gone' as any,
-        LengthRequired = 'LengthRequired' as any,
-        PreconditionFailed = 'PreconditionFailed' as any,
-        RequestEntityTooLarge = 'RequestEntityTooLarge' as any,
-        RequestUriTooLong = 'RequestUriTooLong' as any,
-        UnsupportedMediaType = 'UnsupportedMediaType' as any,
-        RequestedRangeNotSatisfiable = 'RequestedRangeNotSatisfiable' as any,
-        ExpectationFailed = 'ExpectationFailed' as any,
-        MisdirectedRequest = 'MisdirectedRequest' as any,
-        UnprocessableEntity = 'UnprocessableEntity' as any,
-        Locked = 'Locked' as any,
-        FailedDependency = 'FailedDependency' as any,
-        UpgradeRequired = 'UpgradeRequired' as any,
-        PreconditionRequired = 'PreconditionRequired' as any,
-        TooManyRequests = 'TooManyRequests' as any,
-        RequestHeaderFieldsTooLarge = 'RequestHeaderFieldsTooLarge' as any,
-        UnavailableForLegalReasons = 'UnavailableForLegalReasons' as any,
-        InternalServerError = 'InternalServerError' as any,
-        NotImplemented = 'NotImplemented' as any,
-        BadGateway = 'BadGateway' as any,
-        ServiceUnavailable = 'ServiceUnavailable' as any,
-        GatewayTimeout = 'GatewayTimeout' as any,
-        HttpVersionNotSupported = 'HttpVersionNotSupported' as any,
-        VariantAlsoNegotiates = 'VariantAlsoNegotiates' as any,
-        InsufficientStorage = 'InsufficientStorage' as any,
-        LoopDetected = 'LoopDetected' as any,
-        NotExtended = 'NotExtended' as any,
-        NetworkAuthenticationRequired = 'NetworkAuthenticationRequired' as any,
+    public constructor(
+        code?: string,
+        status?: string) {
+        
+        this.code = code;
+        this.status = status;
     }
 }
-// tslint:enable:quotemark
+
 /**
  * Base property object
  */
@@ -215,7 +168,7 @@ export class BaseObject {
             name: "name",
             baseName: "name",
             type: "string",
-        },        
+        },
         {
             name: "type",
             baseName: "type",
@@ -237,8 +190,23 @@ export class BaseObject {
     /**
      * Property type. Used for deserialization purposes
      */
-    public type: string;
+
+    get type(): string {
+        return this.constructor.name;
+    }
+
+    set type(_newType: string) {
+        /* do nothing */
+    }
     
+
+    public constructor(
+        name?: string,
+        type?: string) {
+        
+        this.name = name;
+        this.type = type;
+    }
 }
 
 /**
@@ -262,7 +230,7 @@ export class CreateEmailRequest {
             name: "emailDocument",
             baseName: "emailDocument",
             type: "EmailDocument",
-        },        
+        },
         {
             name: "storageFolder",
             baseName: "storageFolder",
@@ -286,6 +254,14 @@ export class CreateEmailRequest {
      */
     public storageFolder: StorageFolderLocation;
     
+
+    public constructor(
+        emailDocument?: EmailDocument,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.emailDocument = emailDocument;
+        this.storageFolder = storageFolder;
+    }
 }
 
 /**
@@ -301,7 +277,7 @@ export class DiscUsage {
             name: "usedSize",
             baseName: "usedSize",
             type: "number",
-        },        
+        },
         {
             name: "totalSize",
             baseName: "totalSize",
@@ -325,6 +301,14 @@ export class DiscUsage {
      */
     public totalSize: number;
     
+
+    public constructor(
+        usedSize?: number,
+        totalSize?: number) {
+        
+        this.usedSize = usedSize;
+        this.totalSize = totalSize;
+    }
 }
 
 /**
@@ -340,32 +324,32 @@ export class EmailAccountRequest {
             name: "host",
             baseName: "host",
             type: "string",
-        },        
+        },
         {
             name: "port",
             baseName: "port",
             type: "number",
-        },        
+        },
         {
             name: "login",
             baseName: "login",
             type: "string",
-        },        
+        },
         {
             name: "securityOptions",
             baseName: "securityOptions",
             type: "any",
-        },        
+        },
         {
             name: "protocolType",
             baseName: "protocolType",
             type: "any",
-        },        
+        },
         {
             name: "description",
             baseName: "description",
             type: "string",
-        },        
+        },
         {
             name: "storageFile",
             baseName: "storageFile",
@@ -414,6 +398,24 @@ export class EmailAccountRequest {
      */
     public storageFile: StorageFileLocation;
     
+
+    public constructor(
+        host?: string,
+        port?: number,
+        login?: string,
+        securityOptions?: any,
+        protocolType?: any,
+        description?: string,
+        storageFile?: StorageFileLocation) {
+        
+        this.host = host;
+        this.port = port;
+        this.login = login;
+        this.securityOptions = securityOptions;
+        this.protocolType = protocolType;
+        this.description = description;
+        this.storageFile = storageFile;
+    }
 }
 
 /**
@@ -429,7 +431,7 @@ export class EmailDocument {
             name: "links",
             baseName: "links",
             type: "Array<Link>",
-        },        
+        },
         {
             name: "documentProperties",
             baseName: "documentProperties",
@@ -453,6 +455,14 @@ export class EmailDocument {
      */
     public documentProperties: EmailProperties;
     
+
+    public constructor(
+        links?: Array<Link>,
+        documentProperties?: EmailProperties) {
+        
+        this.links = links;
+        this.documentProperties = documentProperties;
+    }
 }
 
 /**
@@ -468,7 +478,7 @@ export class EmailProperties {
             name: "link",
             baseName: "link",
             type: "Link",
-        },        
+        },
         {
             name: "list",
             baseName: "list",
@@ -489,6 +499,14 @@ export class EmailProperties {
     
     public list: Array<EmailProperty>;
     
+
+    public constructor(
+        link?: Link,
+        list?: Array<EmailProperty>) {
+        
+        this.link = link;
+        this.list = list;
+    }
 }
 
 /**
@@ -504,12 +522,12 @@ export class EmailProperty {
             name: "link",
             baseName: "link",
             type: "Link",
-        },        
+        },
         {
             name: "name",
             baseName: "name",
             type: "string",
-        },        
+        },
         {
             name: "value",
             baseName: "value",
@@ -529,6 +547,16 @@ export class EmailProperty {
     
     public value: any;
     
+
+    public constructor(
+        link?: Link,
+        name?: string,
+        value?: any) {
+        
+        this.link = link;
+        this.name = name;
+        this.value = value;
+    }
 }
 
 /**
@@ -544,7 +572,7 @@ export class ErrorDetails {
             name: "requestId",
             baseName: "requestId",
             type: "string",
-        },        
+        },
         {
             name: "date",
             baseName: "date",
@@ -568,6 +596,14 @@ export class ErrorDetails {
      */
     public date: Date;
     
+
+    public constructor(
+        requestId?: string,
+        date?: Date) {
+        
+        this.requestId = requestId;
+        this.date = date;
+    }
 }
 
 /**
@@ -597,6 +633,12 @@ export class FileVersions {
      */
     public value: Array<FileVersion>;
     
+
+    public constructor(
+        value?: Array<FileVersion>) {
+        
+        this.value = value;
+    }
 }
 
 /**
@@ -626,6 +668,12 @@ export class FilesList {
      */
     public value: Array<StorageFile>;
     
+
+    public constructor(
+        value?: Array<StorageFile>) {
+        
+        this.value = value;
+    }
 }
 
 /**
@@ -641,7 +689,7 @@ export class FilesUploadResult {
             name: "uploaded",
             baseName: "uploaded",
             type: "Array<string>",
-        },        
+        },
         {
             name: "errors",
             baseName: "errors",
@@ -665,6 +713,14 @@ export class FilesUploadResult {
      */
     public errors: Array<Error>;
     
+
+    public constructor(
+        uploaded?: Array<string>,
+        errors?: Array<Error>) {
+        
+        this.uploaded = uploaded;
+        this.errors = errors;
+    }
 }
 
 /**
@@ -680,7 +736,7 @@ export class HierarchicalObjectRequest {
             name: "hierarchicalObject",
             baseName: "hierarchicalObject",
             type: "HierarchicalObject",
-        },        
+        },
         {
             name: "storageFolder",
             baseName: "storageFolder",
@@ -704,6 +760,14 @@ export class HierarchicalObjectRequest {
      */
     public storageFolder: StorageFolderLocation;
     
+
+    public constructor(
+        hierarchicalObject?: HierarchicalObject,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.hierarchicalObject = hierarchicalObject;
+        this.storageFolder = storageFolder;
+    }
 }
 
 /**
@@ -719,7 +783,7 @@ export class HierarchicalObjectResponse {
             name: "hierarchicalObject",
             baseName: "hierarchicalObject",
             type: "HierarchicalObject",
-        },        
+        },
         {
             name: "storageFile",
             baseName: "storageFile",
@@ -743,6 +807,14 @@ export class HierarchicalObjectResponse {
      */
     public storageFile: StorageFileLocation;
     
+
+    public constructor(
+        hierarchicalObject?: HierarchicalObject,
+        storageFile?: StorageFileLocation) {
+        
+        this.hierarchicalObject = hierarchicalObject;
+        this.storageFile = storageFile;
+    }
 }
 
 /**
@@ -758,17 +830,17 @@ export class Link {
             name: "href",
             baseName: "href",
             type: "string",
-        },        
+        },
         {
             name: "rel",
             baseName: "rel",
             type: "string",
-        },        
+        },
         {
             name: "type",
             baseName: "type",
             type: "string",
-        },        
+        },
         {
             name: "title",
             baseName: "title",
@@ -802,6 +874,18 @@ export class Link {
      */
     public title: string;
     
+
+    public constructor(
+        href?: string,
+        rel?: string,
+        type?: string,
+        title?: string) {
+        
+        this.href = href;
+        this.rel = rel;
+        this.type = type;
+        this.title = title;
+    }
 }
 
 export class ListResponseOfHierarchicalObjectResponse {
@@ -825,6 +909,12 @@ export class ListResponseOfHierarchicalObjectResponse {
 
     public value: Array<HierarchicalObjectResponse>;
     
+
+    public constructor(
+        value?: Array<HierarchicalObjectResponse>) {
+        
+        this.value = value;
+    }
 }
 
 export class ListResponseOfString {
@@ -848,6 +938,12 @@ export class ListResponseOfString {
 
     public value: Array<string>;
     
+
+    public constructor(
+        value?: Array<string>) {
+        
+        this.value = value;
+    }
 }
 
 /**
@@ -863,7 +959,7 @@ export class MailServerFolder {
             name: "name",
             baseName: "name",
             type: "string",
-        },        
+        },
         {
             name: "id",
             baseName: "id",
@@ -887,6 +983,14 @@ export class MailServerFolder {
      */
     public id: string;
     
+
+    public constructor(
+        name?: string,
+        id?: string) {
+        
+        this.name = name;
+        this.id = id;
+    }
 }
 
 /**
@@ -902,17 +1006,17 @@ export class ModelError {
             name: "code",
             baseName: "code",
             type: "string",
-        },        
+        },
         {
             name: "message",
             baseName: "message",
             type: "string",
-        },        
+        },
         {
             name: "description",
             baseName: "description",
             type: "string",
-        },        
+        },
         {
             name: "innerError",
             baseName: "innerError",
@@ -946,6 +1050,18 @@ export class ModelError {
      */
     public innerError: ErrorDetails;
     
+
+    public constructor(
+        code?: string,
+        message?: string,
+        description?: string,
+        innerError?: ErrorDetails) {
+        
+        this.code = code;
+        this.message = message;
+        this.description = description;
+        this.innerError = innerError;
+    }
 }
 
 /**
@@ -961,7 +1077,7 @@ export class ObjectExist {
             name: "exists",
             baseName: "exists",
             type: "boolean",
-        },        
+        },
         {
             name: "isFolder",
             baseName: "isFolder",
@@ -985,6 +1101,14 @@ export class ObjectExist {
      */
     public isFolder: boolean;
     
+
+    public constructor(
+        exists?: boolean,
+        isFolder?: boolean) {
+        
+        this.exists = exists;
+        this.isFolder = isFolder;
+    }
 }
 
 /**
@@ -1000,7 +1124,7 @@ export class SetEmailPropertyRequest {
             name: "emailProperty",
             baseName: "emailProperty",
             type: "EmailProperty",
-        },        
+        },
         {
             name: "storageFolder",
             baseName: "storageFolder",
@@ -1024,6 +1148,14 @@ export class SetEmailPropertyRequest {
      */
     public storageFolder: StorageFolderLocation;
     
+
+    public constructor(
+        emailProperty?: EmailProperty,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.emailProperty = emailProperty;
+        this.storageFolder = storageFolder;
+    }
 }
 
 /**
@@ -1053,6 +1185,12 @@ export class StorageExist {
      */
     public exists: boolean;
     
+
+    public constructor(
+        exists?: boolean) {
+        
+        this.exists = exists;
+    }
 }
 
 /**
@@ -1068,22 +1206,22 @@ export class StorageFile {
             name: "name",
             baseName: "name",
             type: "string",
-        },        
+        },
         {
             name: "isFolder",
             baseName: "isFolder",
             type: "boolean",
-        },        
+        },
         {
             name: "modifiedDate",
             baseName: "modifiedDate",
             type: "Date",
-        },        
+        },
         {
             name: "size",
             baseName: "size",
             type: "number",
-        },        
+        },
         {
             name: "path",
             baseName: "path",
@@ -1122,6 +1260,20 @@ export class StorageFile {
      */
     public path: string;
     
+
+    public constructor(
+        name?: string,
+        isFolder?: boolean,
+        modifiedDate?: Date,
+        size?: number,
+        path?: string) {
+        
+        this.name = name;
+        this.isFolder = isFolder;
+        this.modifiedDate = modifiedDate;
+        this.size = size;
+        this.path = path;
+    }
 }
 
 /**
@@ -1137,7 +1289,7 @@ export class StorageFolderLocation {
             name: "storage",
             baseName: "storage",
             type: "string",
-        },        
+        },
         {
             name: "folderPath",
             baseName: "folderPath",
@@ -1161,6 +1313,14 @@ export class StorageFolderLocation {
      */
     public folderPath: string;
     
+
+    public constructor(
+        storage?: string,
+        folderPath?: string) {
+        
+        this.storage = storage;
+        this.folderPath = folderPath;
+    }
 }
 
 /**
@@ -1176,7 +1336,7 @@ export class AppendEmailAccountBaseRequest extends AccountBaseRequest {
             name: "folder",
             baseName: "folder",
             type: "string",
-        },        
+        },
         {
             name: "markAsSent",
             baseName: "markAsSent",
@@ -1194,6 +1354,20 @@ export class AppendEmailAccountBaseRequest extends AccountBaseRequest {
     
     public markAsSent: boolean;
     
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        folder?: string,
+        markAsSent?: boolean) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.folder = folder;
+        this.markAsSent = markAsSent;
+    }
 }
 
 /**
@@ -1209,7 +1383,7 @@ export class CreateFolderBaseRequest extends AccountBaseRequest {
             name: "folder",
             baseName: "folder",
             type: "string",
-        },        
+        },
         {
             name: "parentFolder",
             baseName: "parentFolder",
@@ -1233,6 +1407,20 @@ export class CreateFolderBaseRequest extends AccountBaseRequest {
      */
     public parentFolder: string;
     
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        folder?: string,
+        parentFolder?: string) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.folder = folder;
+        this.parentFolder = parentFolder;
+    }
 }
 
 /**
@@ -1248,7 +1436,7 @@ export class DeleteFolderBaseRequest extends AccountBaseRequest {
             name: "folder",
             baseName: "folder",
             type: "string",
-        },        
+        },
         {
             name: "deletePermanently",
             baseName: "deletePermanently",
@@ -1272,6 +1460,20 @@ export class DeleteFolderBaseRequest extends AccountBaseRequest {
      */
     public deletePermanently: boolean;
     
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        folder?: string,
+        deletePermanently?: boolean) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.folder = folder;
+        this.deletePermanently = deletePermanently;
+    }
 }
 
 /**
@@ -1287,7 +1489,7 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
             name: "messageId",
             baseName: "messageId",
             type: "string",
-        },        
+        },
         {
             name: "deletePermanently",
             baseName: "deletePermanently",
@@ -1311,6 +1513,20 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
      */
     public deletePermanently: boolean;
     
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        messageId?: string,
+        deletePermanently?: boolean) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.messageId = messageId;
+        this.deletePermanently = deletePermanently;
+    }
 }
 
 /**
@@ -1340,13 +1556,18 @@ export class EmailDocumentResponse extends AsposeResponse {
      */
     public document: EmailDocument;
     
+
+    public constructor(
+        code?: string,
+        status?: string,
+        document?: EmailDocument) {
+        super();
+        this.code = code;
+        this.status = status;
+        this.document = document;
+    }
 }
 
-// tslint:disable:quotemark
-// tslint:disable-next-line:no-namespace
-export namespace EmailDocumentResponse {
-}
-// tslint:enable:quotemark
 /**
  * Email property response.
  */
@@ -1374,13 +1595,18 @@ export class EmailPropertyResponse extends AsposeResponse {
      */
     public emailProperty: EmailProperty;
     
+
+    public constructor(
+        code?: string,
+        status?: string,
+        emailProperty?: EmailProperty) {
+        super();
+        this.code = code;
+        this.status = status;
+        this.emailProperty = emailProperty;
+    }
 }
 
-// tslint:disable:quotemark
-// tslint:disable-next-line:no-namespace
-export namespace EmailPropertyResponse {
-}
-// tslint:enable:quotemark
 export class FaultResponse extends AsposeResponse {
 
     /**
@@ -1402,13 +1628,18 @@ export class FaultResponse extends AsposeResponse {
 
     public message: string;
     
+
+    public constructor(
+        code?: string,
+        status?: string,
+        message?: string) {
+        super();
+        this.code = code;
+        this.status = status;
+        this.message = message;
+    }
 }
 
-// tslint:disable:quotemark
-// tslint:disable-next-line:no-namespace
-export namespace FaultResponse {
-}
-// tslint:enable:quotemark
 /**
  * File Version
  */
@@ -1422,7 +1653,7 @@ export class FileVersion extends StorageFile {
             name: "versionId",
             baseName: "versionId",
             type: "string",
-        },        
+        },
         {
             name: "isLatest",
             baseName: "isLatest",
@@ -1446,6 +1677,24 @@ export class FileVersion extends StorageFile {
      */
     public isLatest: boolean;
     
+
+    public constructor(
+        name?: string,
+        isFolder?: boolean,
+        modifiedDate?: Date,
+        size?: number,
+        path?: string,
+        versionId?: string,
+        isLatest?: boolean) {
+        super();
+        this.name = name;
+        this.isFolder = isFolder;
+        this.modifiedDate = modifiedDate;
+        this.size = size;
+        this.path = path;
+        this.versionId = versionId;
+        this.isLatest = isLatest;
+    }
 }
 
 /**
@@ -1475,6 +1724,16 @@ export class HierarchicalObject extends BaseObject {
      */
     public internalProperties: Array<BaseObject>;
     
+
+    public constructor(
+        name?: string,
+        type?: string,
+        internalProperties?: Array<BaseObject>) {
+        super();
+        this.name = name;
+        this.type = type;
+        this.internalProperties = internalProperties;
+    }
 }
 
 /**
@@ -1490,7 +1749,7 @@ export class IndexedHierarchicalObject extends BaseObject {
             name: "index",
             baseName: "index",
             type: "number",
-        },        
+        },
         {
             name: "internalProperties",
             baseName: "internalProperties",
@@ -1514,6 +1773,18 @@ export class IndexedHierarchicalObject extends BaseObject {
      */
     public internalProperties: Array<BaseObject>;
     
+
+    public constructor(
+        name?: string,
+        type?: string,
+        index?: number,
+        internalProperties?: Array<BaseObject>) {
+        super();
+        this.name = name;
+        this.type = type;
+        this.index = index;
+        this.internalProperties = internalProperties;
+    }
 }
 
 /**
@@ -1529,7 +1800,7 @@ export class IndexedPrimitiveObject extends BaseObject {
             name: "index",
             baseName: "index",
             type: "number",
-        },        
+        },
         {
             name: "value",
             baseName: "value",
@@ -1553,6 +1824,18 @@ export class IndexedPrimitiveObject extends BaseObject {
      */
     public value: string;
     
+
+    public constructor(
+        name?: string,
+        type?: string,
+        index?: number,
+        value?: string) {
+        super();
+        this.name = name;
+        this.type = type;
+        this.index = index;
+        this.value = value;
+    }
 }
 
 /**
@@ -1579,13 +1862,18 @@ export class ListFoldersResponse extends AsposeResponse {
 
     public value: Array<MailServerFolder>;
     
+
+    public constructor(
+        code?: string,
+        status?: string,
+        value?: Array<MailServerFolder>) {
+        super();
+        this.code = code;
+        this.status = status;
+        this.value = value;
+    }
 }
 
-// tslint:disable:quotemark
-// tslint:disable-next-line:no-namespace
-export namespace ListFoldersResponse {
-}
-// tslint:enable:quotemark
 /**
  * Email messages list
  */
@@ -1613,13 +1901,18 @@ export class ListMessagesResponse extends AsposeResponse {
      */
     public value: Array<string>;
     
+
+    public constructor(
+        code?: string,
+        status?: string,
+        value?: Array<string>) {
+        super();
+        this.code = code;
+        this.status = status;
+        this.value = value;
+    }
 }
 
-// tslint:disable:quotemark
-// tslint:disable-next-line:no-namespace
-export namespace ListMessagesResponse {
-}
-// tslint:enable:quotemark
 /**
  * Email document property DTO.
  */
@@ -1647,13 +1940,18 @@ export class MimeResponse extends AsposeResponse {
      */
     public mime: string;
     
+
+    public constructor(
+        code?: string,
+        status?: string,
+        mime?: string) {
+        super();
+        this.code = code;
+        this.status = status;
+        this.mime = mime;
+    }
 }
 
-// tslint:disable:quotemark
-// tslint:disable-next-line:no-namespace
-export namespace MimeResponse {
-}
-// tslint:enable:quotemark
 /**
  * Simple property object
  */
@@ -1681,6 +1979,16 @@ export class PrimitiveObject extends BaseObject {
      */
     public value: string;
     
+
+    public constructor(
+        name?: string,
+        type?: string,
+        value?: string) {
+        super();
+        this.name = name;
+        this.type = type;
+        this.value = value;
+    }
 }
 
 /**
@@ -1710,6 +2018,26 @@ export class SaveEmailAccountRequest extends EmailAccountRequest {
      */
     public password: string;
     
+
+    public constructor(
+        host?: string,
+        port?: number,
+        login?: string,
+        securityOptions?: any,
+        protocolType?: any,
+        description?: string,
+        storageFile?: StorageFileLocation,
+        password?: string) {
+        super();
+        this.host = host;
+        this.port = port;
+        this.login = login;
+        this.securityOptions = securityOptions;
+        this.protocolType = protocolType;
+        this.description = description;
+        this.storageFile = storageFile;
+        this.password = password;
+    }
 }
 
 /**
@@ -1725,12 +2053,12 @@ export class SaveOAuthEmailAccountRequest extends EmailAccountRequest {
             name: "clientId",
             baseName: "clientId",
             type: "string",
-        },        
+        },
         {
             name: "clientSecret",
             baseName: "clientSecret",
             type: "string",
-        },        
+        },
         {
             name: "refreshToken",
             baseName: "refreshToken",
@@ -1759,6 +2087,30 @@ export class SaveOAuthEmailAccountRequest extends EmailAccountRequest {
      */
     public refreshToken: string;
     
+
+    public constructor(
+        host?: string,
+        port?: number,
+        login?: string,
+        securityOptions?: any,
+        protocolType?: any,
+        description?: string,
+        storageFile?: StorageFileLocation,
+        clientId?: string,
+        clientSecret?: string,
+        refreshToken?: string) {
+        super();
+        this.host = host;
+        this.port = port;
+        this.login = login;
+        this.securityOptions = securityOptions;
+        this.protocolType = protocolType;
+        this.description = description;
+        this.storageFile = storageFile;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.refreshToken = refreshToken;
+    }
 }
 
 /**
@@ -1788,6 +2140,18 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
      */
     public emailFile: StorageFileLocation;
     
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        emailFile?: StorageFileLocation) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.emailFile = emailFile;
+    }
 }
 
 /**
@@ -1817,6 +2181,18 @@ export class SendEmailMimeBaseRequest extends AccountBaseRequest {
      */
     public base64MimeMessage: string;
     
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        base64MimeMessage?: string) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.base64MimeMessage = base64MimeMessage;
+    }
 }
 
 /**
@@ -1832,7 +2208,7 @@ export class SetMessageReadFlagAccountBaseRequest extends AccountBaseRequest {
             name: "messageId",
             baseName: "messageId",
             type: "string",
-        },        
+        },
         {
             name: "isRead",
             baseName: "isRead",
@@ -1856,6 +2232,20 @@ export class SetMessageReadFlagAccountBaseRequest extends AccountBaseRequest {
      */
     public isRead: boolean;
     
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        messageId?: string,
+        isRead?: boolean) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.messageId = messageId;
+        this.isRead = isRead;
+    }
 }
 
 /**
@@ -1885,6 +2275,16 @@ export class StorageFileLocation extends StorageFolderLocation {
      */
     public fileName: string;
     
+
+    public constructor(
+        storage?: string,
+        folderPath?: string,
+        fileName?: string) {
+        super();
+        this.storage = storage;
+        this.folderPath = folderPath;
+        this.fileName = fileName;
+    }
 }
 
 /**
@@ -1914,13 +2314,18 @@ export class ValueResponse extends AsposeResponse {
      */
     public value: string;
     
+
+    public constructor(
+        code?: string,
+        status?: string,
+        value?: string) {
+        super();
+        this.code = code;
+        this.status = status;
+        this.value = value;
+    }
 }
 
-// tslint:disable:quotemark
-// tslint:disable-next-line:no-namespace
-export namespace ValueResponse {
-}
-// tslint:enable:quotemark
 /**
  * Append email from storage file to account request
  */
@@ -1948,6 +2353,22 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
      */
     public emailFile: StorageFileLocation;
     
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        folder?: string,
+        markAsSent?: boolean,
+        emailFile?: StorageFileLocation) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.folder = folder;
+        this.markAsSent = markAsSent;
+        this.emailFile = emailFile;
+    }
 }
 
 /**
@@ -1977,10 +2398,25 @@ export class AppendEmailMimeBaseRequest extends AppendEmailAccountBaseRequest {
      */
     public base64MimeMessage: string;
     
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        folder?: string,
+        markAsSent?: boolean,
+        base64MimeMessage?: string) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.folder = folder;
+        this.markAsSent = markAsSent;
+        this.base64MimeMessage = base64MimeMessage;
+    }
 }
 
 const enumsMap = {
-    "AsposeResponse.CodeEnum": AsposeResponse.CodeEnum,
     "ContactFormat": ContactFormat,
 };
 

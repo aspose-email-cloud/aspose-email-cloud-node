@@ -69,6 +69,13 @@ export class ObjectSerializer {
                 return data;
             }
 
+            //derived
+            var subTypeName = data.type;
+            if (subTypeName !== undefined && typeMap[subTypeName] !== undefined)
+            {
+                type = subTypeName;
+            }
+
             // get the map for the correct type.
             const attributeTypes = typeMap[type].getAttributeTypeMap();
             const instance = {};

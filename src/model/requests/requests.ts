@@ -20,6 +20,16 @@ export class AddCalendarAttachmentRequest {
      * Storage name and folder path for calendar and attachment files
      */
     public request: model.AddAttachmentRequest;
+
+    public constructor(
+        name?: string, 
+        attachment?: string, 
+        request?: model.AddAttachmentRequest) {
+        
+        this.name = name;
+        this.attachment = attachment;
+        this.request = request;
+    }
 }
 
 /**
@@ -45,6 +55,18 @@ export class AddContactAttachmentRequest {
      * Add attachment request
      */
     public request: model.AddAttachmentRequest;
+
+    public constructor(
+        format?: 'VCard' | 'WebDav' | 'Msg', 
+        name?: string, 
+        attachment?: string, 
+        request?: model.AddAttachmentRequest) {
+        
+        this.format = format;
+        this.name = name;
+        this.attachment = attachment;
+        this.request = request;
+    }
 }
 
 /**
@@ -65,6 +87,16 @@ export class AddEmailAttachmentRequest {
      * Storage info to specify location of email document and attachment files
      */
     public request: model.AddAttachmentRequest;
+
+    public constructor(
+        attachmentName?: string, 
+        fileName?: string, 
+        request?: model.AddAttachmentRequest) {
+        
+        this.attachmentName = attachmentName;
+        this.fileName = fileName;
+        this.request = request;
+    }
 }
 
 /**
@@ -85,6 +117,16 @@ export class AddMapiAttachmentRequest {
      * Add attachment request
      */
     public request: model.AddAttachmentRequest;
+
+    public constructor(
+        name?: string, 
+        attachment?: string, 
+        request?: model.AddAttachmentRequest) {
+        
+        this.name = name;
+        this.attachment = attachment;
+        this.request = request;
+    }
 }
 
 /**
@@ -95,6 +137,12 @@ export class AppendEmailMessageRequest {
      * Append email request
      */
     public request: model.AppendEmailBaseRequest;
+
+    public constructor(
+        request?: model.AppendEmailBaseRequest) {
+        
+        this.request = request;
+    }
 }
 
 /**
@@ -105,6 +153,12 @@ export class AppendMimeMessageRequest {
      * Append email request
      */
     public request: model.AppendEmailMimeBaseRequest;
+
+    public constructor(
+        request?: model.AppendEmailMimeBaseRequest) {
+        
+        this.request = request;
+    }
 }
 
 /**
@@ -135,6 +189,20 @@ export class CopyFileRequest {
      * File version ID to copy
      */
     public versionId: string;
+
+    public constructor(
+        srcPath?: string, 
+        destPath?: string, 
+        srcStorageName?: string, 
+        destStorageName?: string, 
+        versionId?: string) {
+        
+        this.srcPath = srcPath;
+        this.destPath = destPath;
+        this.srcStorageName = srcStorageName;
+        this.destStorageName = destStorageName;
+        this.versionId = versionId;
+    }
 }
 
 /**
@@ -160,6 +228,18 @@ export class CopyFolderRequest {
      * Destination storage name
      */
     public destStorageName: string;
+
+    public constructor(
+        srcPath?: string, 
+        destPath?: string, 
+        srcStorageName?: string, 
+        destStorageName?: string) {
+        
+        this.srcPath = srcPath;
+        this.destPath = destPath;
+        this.srcStorageName = srcStorageName;
+        this.destStorageName = destStorageName;
+    }
 }
 
 /**
@@ -175,6 +255,14 @@ export class CreateCalendarRequest {
      * Gets or sets request
      */
     public request: model.HierarchicalObjectRequest;
+
+    public constructor(
+        name?: string, 
+        request?: model.HierarchicalObjectRequest) {
+        
+        this.name = name;
+        this.request = request;
+    }
 }
 
 /**
@@ -195,6 +283,16 @@ export class CreateContactRequest {
      * Create contact request
      */
     public request: model.HierarchicalObjectRequest;
+
+    public constructor(
+        format?: 'VCard' | 'WebDav' | 'Msg', 
+        name?: string, 
+        request?: model.HierarchicalObjectRequest) {
+        
+        this.format = format;
+        this.name = name;
+        this.request = request;
+    }
 }
 
 /**
@@ -210,6 +308,14 @@ export class CreateEmailRequest {
      * An email document and optional Storage info to specify where the file should be located
      */
     public request: model.CreateEmailRequest;
+
+    public constructor(
+        fileName?: string, 
+        request?: model.CreateEmailRequest) {
+        
+        this.fileName = fileName;
+        this.request = request;
+    }
 }
 
 /**
@@ -220,6 +326,12 @@ export class CreateEmailFolderRequest {
      * Create folder request
      */
     public request: model.CreateFolderBaseRequest;
+
+    public constructor(
+        request?: model.CreateFolderBaseRequest) {
+        
+        this.request = request;
+    }
 }
 
 /**
@@ -235,6 +347,14 @@ export class CreateFolderRequest {
      * Storage name
      */
     public storageName: string;
+
+    public constructor(
+        path?: string, 
+        storageName?: string) {
+        
+        this.path = path;
+        this.storageName = storageName;
+    }
 }
 
 /**
@@ -250,6 +370,14 @@ export class CreateMapiRequest {
      * Create document request
      */
     public request: model.HierarchicalObjectRequest;
+
+    public constructor(
+        name?: string, 
+        request?: model.HierarchicalObjectRequest) {
+        
+        this.name = name;
+        this.request = request;
+    }
 }
 
 /**
@@ -275,6 +403,18 @@ export class DeleteCalendarPropertyRequest {
      * Storage detail to specify iCalendar file location
      */
     public request: model.StorageFolderLocation;
+
+    public constructor(
+        name?: string, 
+        memberName?: string, 
+        index?: string, 
+        request?: model.StorageFolderLocation) {
+        
+        this.name = name;
+        this.memberName = memberName;
+        this.index = index;
+        this.request = request;
+    }
 }
 
 /**
@@ -305,6 +445,20 @@ export class DeleteContactPropertyRequest {
      * Calendar document location in storage information
      */
     public folder: model.StorageFolderLocation;
+
+    public constructor(
+        format?: 'VCard' | 'WebDav' | 'Msg', 
+        name?: string, 
+        memberName?: string, 
+        index?: number, 
+        folder?: model.StorageFolderLocation) {
+        
+        this.format = format;
+        this.name = name;
+        this.memberName = memberName;
+        this.index = index;
+        this.folder = folder;
+    }
 }
 
 /**
@@ -315,6 +469,12 @@ export class DeleteEmailFolderRequest {
      * Delete folder request
      */
     public request: model.DeleteFolderBaseRequest;
+
+    public constructor(
+        request?: model.DeleteFolderBaseRequest) {
+        
+        this.request = request;
+    }
 }
 
 /**
@@ -325,6 +485,12 @@ export class DeleteEmailMessageRequest {
      * Delete message request
      */
     public request: model.DeleteMessageBaseRequest;
+
+    public constructor(
+        request?: model.DeleteMessageBaseRequest) {
+        
+        this.request = request;
+    }
 }
 
 /**
@@ -345,6 +511,16 @@ export class DeleteFileRequest {
      * File version ID to delete
      */
     public versionId: string;
+
+    public constructor(
+        path?: string, 
+        storageName?: string, 
+        versionId?: string) {
+        
+        this.path = path;
+        this.storageName = storageName;
+        this.versionId = versionId;
+    }
 }
 
 /**
@@ -365,6 +541,16 @@ export class DeleteFolderRequest {
      * Enable to delete folders, subfolders and files
      */
     public recursive: boolean;
+
+    public constructor(
+        path?: string, 
+        storageName?: string, 
+        recursive?: boolean) {
+        
+        this.path = path;
+        this.storageName = storageName;
+        this.recursive = recursive;
+    }
 }
 
 /**
@@ -385,6 +571,16 @@ export class DeleteMapiAttachmentRequest {
      * Document file storage location info
      */
     public storage: model.StorageFolderLocation;
+
+    public constructor(
+        name?: string, 
+        attachment?: string, 
+        storage?: model.StorageFolderLocation) {
+        
+        this.name = name;
+        this.attachment = attachment;
+        this.storage = storage;
+    }
 }
 
 /**
@@ -400,6 +596,14 @@ export class DeleteMapiPropertiesRequest {
      * Properties that should be deleted
      */
     public request: model.HierarchicalObjectRequest;
+
+    public constructor(
+        name?: string, 
+        request?: model.HierarchicalObjectRequest) {
+        
+        this.name = name;
+        this.request = request;
+    }
 }
 
 /**
@@ -420,6 +624,16 @@ export class DownloadFileRequest {
      * File version ID to download
      */
     public versionId: string;
+
+    public constructor(
+        path?: string, 
+        storageName?: string, 
+        versionId?: string) {
+        
+        this.path = path;
+        this.storageName = storageName;
+        this.versionId = versionId;
+    }
 }
 
 /**
@@ -450,6 +664,20 @@ export class FetchEmailMessageRequest {
      * Folder in storage where account file(s) located
      */
     public storageFolder: string;
+
+    public constructor(
+        messageId?: string, 
+        firstAccount?: string, 
+        secondAccount?: string, 
+        storage?: string, 
+        storageFolder?: string) {
+        
+        this.messageId = messageId;
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storage = storage;
+        this.storageFolder = storageFolder;
+    }
 }
 
 /**
@@ -470,6 +698,16 @@ export class GetCalendarRequest {
      * Storage name
      */
     public storage: string;
+
+    public constructor(
+        name?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.name = name;
+        this.folder = folder;
+        this.storage = storage;
+    }
 }
 
 /**
@@ -495,6 +733,18 @@ export class GetCalendarAttachmentRequest {
      * Storage name
      */
     public storage: string;
+
+    public constructor(
+        name?: string, 
+        attachment?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.name = name;
+        this.attachment = attachment;
+        this.folder = folder;
+        this.storage = storage;
+    }
 }
 
 /**
@@ -520,6 +770,18 @@ export class GetCalendarListRequest {
      * Storage name
      */
     public storage: string;
+
+    public constructor(
+        folder?: string, 
+        itemsPerPage?: number, 
+        pageNumber?: number, 
+        storage?: string) {
+        
+        this.folder = folder;
+        this.itemsPerPage = itemsPerPage;
+        this.pageNumber = pageNumber;
+        this.storage = storage;
+    }
 }
 
 /**
@@ -550,6 +812,20 @@ export class GetContactAttachmentRequest {
      * Storage name
      */
     public storage: string;
+
+    public constructor(
+        format?: 'VCard' | 'WebDav' | 'Msg', 
+        name?: string, 
+        attachment?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.format = format;
+        this.name = name;
+        this.attachment = attachment;
+        this.folder = folder;
+        this.storage = storage;
+    }
 }
 
 /**
@@ -580,6 +856,20 @@ export class GetContactListRequest {
      * Page number
      */
     public pageNumber: number;
+
+    public constructor(
+        format?: 'VCard' | 'WebDav' | 'Msg', 
+        folder?: string, 
+        storage?: string, 
+        itemsPerPage?: number, 
+        pageNumber?: number) {
+        
+        this.format = format;
+        this.folder = folder;
+        this.storage = storage;
+        this.itemsPerPage = itemsPerPage;
+        this.pageNumber = pageNumber;
+    }
 }
 
 /**
@@ -605,6 +895,18 @@ export class GetContactPropertiesRequest {
      * Storage name
      */
     public storage: string;
+
+    public constructor(
+        format?: 'VCard' | 'WebDav' | 'Msg', 
+        name?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.format = format;
+        this.name = name;
+        this.folder = folder;
+        this.storage = storage;
+    }
 }
 
 /**
@@ -615,6 +917,12 @@ export class GetDiscUsageRequest {
      * Storage name
      */
     public storageName: string;
+
+    public constructor(
+        storageName?: string) {
+        
+        this.storageName = storageName;
+    }
 }
 
 /**
@@ -635,6 +943,16 @@ export class GetEmailRequest {
      * Path to folder in storage
      */
     public folder: string;
+
+    public constructor(
+        fileName?: string, 
+        storage?: string, 
+        folder?: string) {
+        
+        this.fileName = fileName;
+        this.storage = storage;
+        this.folder = folder;
+    }
 }
 
 /**
@@ -660,6 +978,18 @@ export class GetEmailAttachmentRequest {
      * Path to folder in storage
      */
     public folder: string;
+
+    public constructor(
+        attachment?: string, 
+        fileName?: string, 
+        storage?: string, 
+        folder?: string) {
+        
+        this.attachment = attachment;
+        this.fileName = fileName;
+        this.storage = storage;
+        this.folder = folder;
+    }
 }
 
 /**
@@ -685,6 +1015,18 @@ export class GetEmailPropertyRequest {
      * Path to folder in storage
      */
     public folder: string;
+
+    public constructor(
+        propertyName?: string, 
+        fileName?: string, 
+        storage?: string, 
+        folder?: string) {
+        
+        this.propertyName = propertyName;
+        this.fileName = fileName;
+        this.storage = storage;
+        this.folder = folder;
+    }
 }
 
 /**
@@ -700,6 +1042,14 @@ export class GetFileVersionsRequest {
      * Storage name
      */
     public storageName: string;
+
+    public constructor(
+        path?: string, 
+        storageName?: string) {
+        
+        this.path = path;
+        this.storageName = storageName;
+    }
 }
 
 /**
@@ -715,6 +1065,14 @@ export class GetFilesListRequest {
      * Storage name
      */
     public storageName: string;
+
+    public constructor(
+        path?: string, 
+        storageName?: string) {
+        
+        this.path = path;
+        this.storageName = storageName;
+    }
 }
 
 /**
@@ -740,6 +1098,18 @@ export class GetMapiAttachmentRequest {
      * Storage name
      */
     public storage: string;
+
+    public constructor(
+        name?: string, 
+        attachment?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.name = name;
+        this.attachment = attachment;
+        this.folder = folder;
+        this.storage = storage;
+    }
 }
 
 /**
@@ -760,6 +1130,16 @@ export class GetMapiAttachmentsRequest {
      * Storage name
      */
     public storage: string;
+
+    public constructor(
+        name?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.name = name;
+        this.folder = folder;
+        this.storage = storage;
+    }
 }
 
 /**
@@ -785,6 +1165,18 @@ export class GetMapiListRequest {
      * Page number
      */
     public pageNumber: number;
+
+    public constructor(
+        folder?: string, 
+        storage?: string, 
+        itemsPerPage?: number, 
+        pageNumber?: number) {
+        
+        this.folder = folder;
+        this.storage = storage;
+        this.itemsPerPage = itemsPerPage;
+        this.pageNumber = pageNumber;
+    }
 }
 
 /**
@@ -805,6 +1197,16 @@ export class GetMapiPropertiesRequest {
      * Storage name
      */
     public storage: string;
+
+    public constructor(
+        name?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.name = name;
+        this.folder = folder;
+        this.storage = storage;
+    }
 }
 
 /**
@@ -835,6 +1237,20 @@ export class ListEmailFoldersRequest {
      * Folder in which subfolders should be listed
      */
     public parentFolder: string;
+
+    public constructor(
+        firstAccount?: string, 
+        secondAccount?: string, 
+        storage?: string, 
+        storageFolder?: string, 
+        parentFolder?: string) {
+        
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storage = storage;
+        this.storageFolder = storageFolder;
+        this.parentFolder = parentFolder;
+    }
 }
 
 /**
@@ -875,6 +1291,24 @@ export class ListEmailMessagesRequest {
      * Specifies that should message be searched in subfolders recursively
      */
     public recursive: boolean;
+
+    public constructor(
+        folder?: string, 
+        queryString?: string, 
+        firstAccount?: string, 
+        secondAccount?: string, 
+        storage?: string, 
+        storageFolder?: string, 
+        recursive?: boolean) {
+        
+        this.folder = folder;
+        this.queryString = queryString;
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storage = storage;
+        this.storageFolder = storageFolder;
+        this.recursive = recursive;
+    }
 }
 
 /**
@@ -905,6 +1339,20 @@ export class MoveFileRequest {
      * File version ID to move
      */
     public versionId: string;
+
+    public constructor(
+        srcPath?: string, 
+        destPath?: string, 
+        srcStorageName?: string, 
+        destStorageName?: string, 
+        versionId?: string) {
+        
+        this.srcPath = srcPath;
+        this.destPath = destPath;
+        this.srcStorageName = srcStorageName;
+        this.destStorageName = destStorageName;
+        this.versionId = versionId;
+    }
 }
 
 /**
@@ -930,6 +1378,18 @@ export class MoveFolderRequest {
      * Destination storage name
      */
     public destStorageName: string;
+
+    public constructor(
+        srcPath?: string, 
+        destPath?: string, 
+        srcStorageName?: string, 
+        destStorageName?: string) {
+        
+        this.srcPath = srcPath;
+        this.destPath = destPath;
+        this.srcStorageName = srcStorageName;
+        this.destStorageName = destStorageName;
+    }
 }
 
 /**
@@ -950,6 +1410,16 @@ export class ObjectExistsRequest {
      * File version ID
      */
     public versionId: string;
+
+    public constructor(
+        path?: string, 
+        storageName?: string, 
+        versionId?: string) {
+        
+        this.path = path;
+        this.storageName = storageName;
+        this.versionId = versionId;
+    }
 }
 
 /**
@@ -960,6 +1430,12 @@ export class SaveMailAccountRequest {
      * Email account information
      */
     public request: model.SaveEmailAccountRequest;
+
+    public constructor(
+        request?: model.SaveEmailAccountRequest) {
+        
+        this.request = request;
+    }
 }
 
 /**
@@ -970,6 +1446,12 @@ export class SaveMailOAuthAccountRequest {
      * Email account information
      */
     public request: model.SaveOAuthEmailAccountRequest;
+
+    public constructor(
+        request?: model.SaveOAuthEmailAccountRequest) {
+        
+        this.request = request;
+    }
 }
 
 /**
@@ -980,6 +1462,12 @@ export class SendEmailRequest {
      * Send email request
      */
     public request: model.SendEmailBaseRequest;
+
+    public constructor(
+        request?: model.SendEmailBaseRequest) {
+        
+        this.request = request;
+    }
 }
 
 /**
@@ -990,6 +1478,12 @@ export class SendEmailMimeRequest {
      * Send email request
      */
     public request: model.SendEmailMimeBaseRequest;
+
+    public constructor(
+        request?: model.SendEmailMimeBaseRequest) {
+        
+        this.request = request;
+    }
 }
 
 /**
@@ -1010,6 +1504,16 @@ export class SetEmailPropertyRequest {
      * A property that should be changed and optional Storage info to specify             where the file located
      */
     public request: model.SetEmailPropertyRequest;
+
+    public constructor(
+        propertyName?: string, 
+        fileName?: string, 
+        request?: model.SetEmailPropertyRequest) {
+        
+        this.propertyName = propertyName;
+        this.fileName = fileName;
+        this.request = request;
+    }
 }
 
 /**
@@ -1020,6 +1524,12 @@ export class SetEmailReadFlagRequest {
      * Message is read request
      */
     public request: model.SetMessageReadFlagAccountBaseRequest;
+
+    public constructor(
+        request?: model.SetMessageReadFlagAccountBaseRequest) {
+        
+        this.request = request;
+    }
 }
 
 /**
@@ -1030,6 +1540,12 @@ export class StorageExistsRequest {
      * Storage name
      */
     public storageName: string;
+
+    public constructor(
+        storageName?: string) {
+        
+        this.storageName = storageName;
+    }
 }
 
 /**
@@ -1045,6 +1561,14 @@ export class UpdateCalendarPropertiesRequest {
      * Calendar properties update request
      */
     public request: model.HierarchicalObjectRequest;
+
+    public constructor(
+        name?: string, 
+        request?: model.HierarchicalObjectRequest) {
+        
+        this.name = name;
+        this.request = request;
+    }
 }
 
 /**
@@ -1065,6 +1589,16 @@ export class UpdateContactPropertiesRequest {
      * Properties that should be updated/added
      */
     public request: model.HierarchicalObjectRequest;
+
+    public constructor(
+        format?: 'VCard' | 'WebDav' | 'Msg', 
+        name?: string, 
+        request?: model.HierarchicalObjectRequest) {
+        
+        this.format = format;
+        this.name = name;
+        this.request = request;
+    }
 }
 
 /**
@@ -1080,6 +1614,14 @@ export class UpdateMapiPropertiesRequest {
      * Properties that should be updated/added
      */
     public request: model.HierarchicalObjectRequest;
+
+    public constructor(
+        name?: string, 
+        request?: model.HierarchicalObjectRequest) {
+        
+        this.name = name;
+        this.request = request;
+    }
 }
 
 /**
@@ -1100,4 +1642,14 @@ export class UploadFileRequest {
      * Storage name
      */
     public storageName: string;
+
+    public constructor(
+        path?: string, 
+        file?: Buffer, 
+        storageName?: string) {
+        
+        this.path = path;
+        this.file = file;
+        this.storageName = storageName;
+    }
 }
