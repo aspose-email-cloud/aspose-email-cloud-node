@@ -1,0 +1,57 @@
+{
+  "name": "@asposecloud/asposeemailcloud",
+  "version": "19.11.0",
+  "description": "Aspose.Email Cloud Node.js SDK",
+  "homepage": "https://products.aspose.cloud/email",
+  "author": {
+    "name": "Aspose Pty Ltd",
+    "url": "https://github.com/aspose-email-cloud"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aspose-email-cloud/aspose-email-cloud-node.git"
+  },
+  "keywords": [
+    "Aspose",
+    "Email",
+    "Cloud",
+    "REST",
+    "API",
+    "SDK",
+    "Outlook",
+    "MSG",
+    "EML",
+    "MHT"
+  ],
+  "readmeFilename": "README.md",
+  "main": "dist/lib/api.js",
+  "types": "dist/lib/api.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "compile": "tsc --build tsconfig.json"
+  },
+  "dependencies": {
+    "@types/request": "^2.47.0",
+    "request": "^2.87.0",
+    "request-debug": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.10",
+    "@types/jest": "^23.3.9",
+    "@types/jest-each": "^0.3.2",
+    "jest": "^23.6.0",
+    "jest-each": "^23.6.0",
+    "jest-junit": "^5.2.0",
+    "ts-jest": "^23.10.4",
+    "ts-node": "^4.0.2",
+    "tslint": "^5.8.0",
+    "typescript": "^3.1.1",
+    "cross-var": "^1.1.0"
+  }
+}

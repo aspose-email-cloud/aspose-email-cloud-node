@@ -1,3 +1,4 @@
+
 /*
 * MIT License
 
@@ -22,6 +23,363 @@
 * SOFTWARE.
 */
 
+export class AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "firstAccount",
+            baseName: "firstAccount",
+            type: "string",
+        },
+        {
+            name: "secondAccount",
+            baseName: "secondAccount",
+            type: "string",
+        },
+        {
+            name: "storageFolder",
+            baseName: "storageFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AccountBaseRequest.attributeTypeMap;
+    }
+
+    public firstAccount: string;
+    
+    public secondAccount: string;
+    
+    public storageFolder: StorageFolderLocation;
+    
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+    }
+}
+
+/**
+ * Add attachment request
+ */
+export class AddAttachmentRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "documentFolder",
+            baseName: "documentFolder",
+            type: "StorageFolderLocation",
+        },
+        {
+            name: "attachmentFolder",
+            baseName: "attachmentFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AddAttachmentRequest.attributeTypeMap;
+    }
+
+    /**
+     * Storage folder location of document
+     */
+    public documentFolder: StorageFolderLocation;
+    
+    /**
+     * Storage folder location of an attachment
+     */
+    public attachmentFolder: StorageFolderLocation;
+    
+
+    public constructor(
+        documentFolder?: StorageFolderLocation,
+        attachmentFolder?: StorageFolderLocation) {
+        
+        this.documentFolder = documentFolder;
+        this.attachmentFolder = attachmentFolder;
+    }
+}
+
+/**
+ * Base property object
+ */
+export class BaseObject {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "name",
+            baseName: "name",
+            type: "string",
+        },
+        {
+            name: "type",
+            baseName: "type",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return BaseObject.attributeTypeMap;
+    }
+
+    /**
+     * Gets or sets the name of an object.
+     */
+    public name: string;
+    
+    /**
+     * Property type. Used for deserialization purposes
+     */
+
+    get type(): string {
+        return this.constructor.name;
+    }
+
+    set type(_newType: string) {
+        /* do nothing */
+    }
+    
+
+    public constructor(
+        name?: string,
+        type?: string) {
+        
+        this.name = name;
+        this.type = type;
+    }
+}
+
+/**
+ * 
+ */
+export enum ContactFormat {
+    VCard = 'VCard' as any,
+    WebDav = 'WebDav' as any,
+    Msg = 'Msg' as any,
+}
+/**
+ * Create email document request
+ */
+export class CreateEmailRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "emailDocument",
+            baseName: "emailDocument",
+            type: "EmailDocument",
+        },
+        {
+            name: "storageFolder",
+            baseName: "storageFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return CreateEmailRequest.attributeTypeMap;
+    }
+
+    /**
+     * An email document that should be created
+     */
+    public emailDocument: EmailDocument;
+    
+    /**
+     * Email document location in storage
+     */
+    public storageFolder: StorageFolderLocation;
+    
+
+    public constructor(
+        emailDocument?: EmailDocument,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.emailDocument = emailDocument;
+        this.storageFolder = storageFolder;
+    }
+}
+
+/**
+ * Class for disc space information.
+ */
+export class DiscUsage {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "usedSize",
+            baseName: "usedSize",
+            type: "number",
+        },
+        {
+            name: "totalSize",
+            baseName: "totalSize",
+            type: "number",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return DiscUsage.attributeTypeMap;
+    }
+
+    /**
+     * Application used disc space.
+     */
+    public usedSize: number;
+    
+    /**
+     * Total disc space.
+     */
+    public totalSize: number;
+    
+
+    public constructor(
+        usedSize?: number,
+        totalSize?: number) {
+        
+        this.usedSize = usedSize;
+        this.totalSize = totalSize;
+    }
+}
+
+/**
+ * Email account settings request
+ */
+export class EmailAccountRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "host",
+            baseName: "host",
+            type: "string",
+        },
+        {
+            name: "port",
+            baseName: "port",
+            type: "number",
+        },
+        {
+            name: "login",
+            baseName: "login",
+            type: "string",
+        },
+        {
+            name: "securityOptions",
+            baseName: "securityOptions",
+            type: "any",
+        },
+        {
+            name: "protocolType",
+            baseName: "protocolType",
+            type: "any",
+        },
+        {
+            name: "description",
+            baseName: "description",
+            type: "string",
+        },
+        {
+            name: "storageFile",
+            baseName: "storageFile",
+            type: "StorageFileLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailAccountRequest.attributeTypeMap;
+    }
+
+    /**
+     * Email account host
+     */
+    public host: string;
+    
+    /**
+     * Email account port
+     */
+    public port: number;
+    
+    /**
+     * Email account login
+     */
+    public login: string;
+    
+    /**
+     * Email account security options
+     */
+    public securityOptions: any;
+    
+    /**
+     * Email account protocol type
+     */
+    public protocolType: any;
+    
+    /**
+     * Email account description
+     */
+    public description: string;
+    
+    /**
+     * A storage file location info to store email account
+     */
+    public storageFile: StorageFileLocation;
+    
+
+    public constructor(
+        host?: string,
+        port?: number,
+        login?: string,
+        securityOptions?: any,
+        protocolType?: any,
+        description?: string,
+        storageFile?: StorageFileLocation) {
+        
+        this.host = host;
+        this.port = port;
+        this.login = login;
+        this.securityOptions = securityOptions;
+        this.protocolType = protocolType;
+        this.description = description;
+        this.storageFile = storageFile;
+    }
+}
+
 /**
  * Represents Email document DTO.
  */
@@ -33,12 +391,12 @@ export class EmailDocument {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "links",
-            baseName: "Links",
+            baseName: "links",
             type: "Array<Link>",
-        },        
+        },
         {
             name: "documentProperties",
-            baseName: "DocumentProperties",
+            baseName: "documentProperties",
             type: "EmailProperties",
         }    ];
 
@@ -50,15 +408,58 @@ export class EmailDocument {
     }
 
     /**
-     * Gets or sets links that originate from this document.
+     * Links that originate from this document.
      */
     public links: Array<Link>;
     
     /**
-     * Gets or sets list of document property.
+     * List of document properties.
      */
     public documentProperties: EmailProperties;
     
+
+    public constructor(
+        links?: Array<Link>,
+        documentProperties?: EmailProperties) {
+        
+        this.links = links;
+        this.documentProperties = documentProperties;
+    }
+}
+
+/**
+ * An email document response
+ */
+export class EmailDocumentResponse {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "document",
+            baseName: "document",
+            type: "EmailDocument",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailDocumentResponse.attributeTypeMap;
+    }
+
+    /**
+     * An email document requested
+     */
+    public document: EmailDocument;
+    
+
+    public constructor(
+        document?: EmailDocument) {
+        
+        this.document = document;
+    }
 }
 
 /**
@@ -72,12 +473,12 @@ export class EmailProperties {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "link",
-            baseName: "Link",
+            baseName: "link",
             type: "Link",
-        },        
+        },
         {
             name: "list",
-            baseName: "List",
+            baseName: "list",
             type: "Array<EmailProperty>",
         }    ];
 
@@ -95,6 +496,14 @@ export class EmailProperties {
     
     public list: Array<EmailProperty>;
     
+
+    public constructor(
+        link?: Link,
+        list?: Array<EmailProperty>) {
+        
+        this.link = link;
+        this.list = list;
+    }
 }
 
 /**
@@ -108,13 +517,18 @@ export class EmailProperty {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "link",
-            baseName: "Link",
+            baseName: "link",
             type: "Link",
-        },        
+        },
         {
             name: "name",
-            baseName: "Name",
+            baseName: "name",
             type: "string",
+        },
+        {
+            name: "value",
+            baseName: "value",
+            type: "any",
         }    ];
 
     /**
@@ -124,36 +538,315 @@ export class EmailProperty {
         return EmailProperty.attributeTypeMap;
     }
 
-    /**
-     * Gets or sets link that originate from this document.
-     */
     public link: Link;
     
-    /**
-     * Gets or sets name of email property.
-     */
     public name: string;
     
+    public value: any;
+    
+
+    public constructor(
+        link?: Link,
+        name?: string,
+        value?: any) {
+        
+        this.link = link;
+        this.name = name;
+        this.value = value;
+    }
 }
 
 /**
- * 
+ * Email property response.
  */
-export class HttpStatusCode {
+export class EmailPropertyResponse {
 
     /**
      * Attribute type map
      */
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-    ];
+        {
+            name: "emailProperty",
+            baseName: "emailProperty",
+            type: "EmailProperty",
+        }    ];
 
     /**
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return HttpStatusCode.attributeTypeMap;
+        return EmailPropertyResponse.attributeTypeMap;
     }
 
+    /**
+     * Gets or sets email property.
+     */
+    public emailProperty: EmailProperty;
+    
+
+    public constructor(
+        emailProperty?: EmailProperty) {
+        
+        this.emailProperty = emailProperty;
+    }
+}
+
+/**
+ * The error details
+ */
+export class ErrorDetails {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "requestId",
+            baseName: "requestId",
+            type: "string",
+        },
+        {
+            name: "date",
+            baseName: "date",
+            type: "Date",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ErrorDetails.attributeTypeMap;
+    }
+
+    /**
+     * The request id
+     */
+    public requestId: string;
+    
+    /**
+     * Date
+     */
+    public date: Date;
+    
+
+    public constructor(
+        requestId?: string,
+        date?: Date) {
+        
+        this.requestId = requestId;
+        this.date = date;
+    }
+}
+
+/**
+ * File versions FileVersion.
+ */
+export class FileVersions {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<FileVersion>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return FileVersions.attributeTypeMap;
+    }
+
+    /**
+     * File versions FileVersion.
+     */
+    public value: Array<FileVersion>;
+    
+
+    public constructor(
+        value?: Array<FileVersion>) {
+        
+        this.value = value;
+    }
+}
+
+/**
+ * Files list
+ */
+export class FilesList {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<StorageFile>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return FilesList.attributeTypeMap;
+    }
+
+    /**
+     * Files and folders contained by folder StorageFile.
+     */
+    public value: Array<StorageFile>;
+    
+
+    public constructor(
+        value?: Array<StorageFile>) {
+        
+        this.value = value;
+    }
+}
+
+/**
+ * File upload result
+ */
+export class FilesUploadResult {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "uploaded",
+            baseName: "uploaded",
+            type: "Array<string>",
+        },
+        {
+            name: "errors",
+            baseName: "errors",
+            type: "Array<Error>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return FilesUploadResult.attributeTypeMap;
+    }
+
+    /**
+     * List of uploaded file names
+     */
+    public uploaded: Array<string>;
+    
+    /**
+     * List of errors.
+     */
+    public errors: Array<Error>;
+    
+
+    public constructor(
+        uploaded?: Array<string>,
+        errors?: Array<Error>) {
+        
+        this.uploaded = uploaded;
+        this.errors = errors;
+    }
+}
+
+/**
+ * Object represented as hierarchical properties request 
+ */
+export class HierarchicalObjectRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "hierarchicalObject",
+            baseName: "hierarchicalObject",
+            type: "HierarchicalObject",
+        },
+        {
+            name: "storageFolder",
+            baseName: "storageFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return HierarchicalObjectRequest.attributeTypeMap;
+    }
+
+    /**
+     * Hierarchical properties of document
+     */
+    public hierarchicalObject: HierarchicalObject;
+    
+    /**
+     * Document location in storage
+     */
+    public storageFolder: StorageFolderLocation;
+    
+
+    public constructor(
+        hierarchicalObject?: HierarchicalObject,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.hierarchicalObject = hierarchicalObject;
+        this.storageFolder = storageFolder;
+    }
+}
+
+/**
+ * Document represented as hierarchical set of properties response
+ */
+export class HierarchicalObjectResponse {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "hierarchicalObject",
+            baseName: "hierarchicalObject",
+            type: "HierarchicalObject",
+        },
+        {
+            name: "storageFile",
+            baseName: "storageFile",
+            type: "StorageFileLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return HierarchicalObjectResponse.attributeTypeMap;
+    }
+
+    /**
+     * Document properties
+     */
+    public hierarchicalObject: HierarchicalObject;
+    
+    /**
+     * Document location in storage
+     */
+    public storageFile: StorageFileLocation;
+    
+
+    public constructor(
+        hierarchicalObject?: HierarchicalObject,
+        storageFile?: StorageFileLocation) {
+        
+        this.hierarchicalObject = hierarchicalObject;
+        this.storageFile = storageFile;
+    }
 }
 
 /**
@@ -167,22 +860,22 @@ export class Link {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "href",
-            baseName: "Href",
+            baseName: "href",
             type: "string",
-        },        
+        },
         {
             name: "rel",
-            baseName: "Rel",
+            baseName: "rel",
             type: "string",
-        },        
+        },
         {
             name: "type",
-            baseName: "Type",
+            baseName: "type",
             type: "string",
-        },        
+        },
         {
             name: "title",
-            baseName: "Title",
+            baseName: "title",
             type: "string",
         }    ];
 
@@ -213,8 +906,110 @@ export class Link {
      */
     public title: string;
     
+
+    public constructor(
+        href?: string,
+        rel?: string,
+        type?: string,
+        title?: string) {
+        
+        this.href = href;
+        this.rel = rel;
+        this.type = type;
+        this.title = title;
+    }
 }
 
+export class ListResponseOfHierarchicalObjectResponse {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<HierarchicalObjectResponse>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfHierarchicalObjectResponse.attributeTypeMap;
+    }
+
+    public value: Array<HierarchicalObjectResponse>;
+    
+
+    public constructor(
+        value?: Array<HierarchicalObjectResponse>) {
+        
+        this.value = value;
+    }
+}
+
+export class ListResponseOfMailServerFolder {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<MailServerFolder>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfMailServerFolder.attributeTypeMap;
+    }
+
+    public value: Array<MailServerFolder>;
+    
+
+    public constructor(
+        value?: Array<MailServerFolder>) {
+        
+        this.value = value;
+    }
+}
+
+export class ListResponseOfString {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<string>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfString.attributeTypeMap;
+    }
+
+    public value: Array<string>;
+    
+
+    public constructor(
+        value?: Array<string>) {
+        
+        this.value = value;
+    }
+}
+
+/**
+ * Email account folder
+ */
 export class MailServerFolder {
 
     /**
@@ -223,12 +1018,12 @@ export class MailServerFolder {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "name",
-            baseName: "Name",
+            baseName: "name",
             type: "string",
-        },        
+        },
         {
             name: "id",
-            baseName: "Id",
+            baseName: "id",
             type: "string",
         }    ];
 
@@ -249,201 +1044,20 @@ export class MailServerFolder {
      */
     public id: string;
     
-}
 
-/**
- * Type of connection protocol.
- */
-export class ProtocolType {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return ProtocolType.attributeTypeMap;
+    public constructor(
+        name?: string,
+        id?: string) {
+        
+        this.name = name;
+        this.id = id;
     }
-
-}
-
-/**
- * The basic SaaSposeResponse response class kept from the old Aspose for Cloud Platform. We keep this base class and use it because most probably users are already using it to get API responses. The plan in future is to get rid of this name, but who knows when ?!
- */
-export class SaaSposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "code",
-            baseName: "Code",
-            type: "HttpStatusCode",
-        },        
-        {
-            name: "status",
-            baseName: "Status",
-            type: "string",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return SaaSposeResponse.attributeTypeMap;
-    }
-
-    public code: HttpStatusCode;
-    
-    public status: string;
-    
-}
-
-/**
- * 
- */
-export class SecurityOptions {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return SecurityOptions.attributeTypeMap;
-    }
-
 }
 
 /**
  * Email document property DTO.
  */
-export class EmailDocumentResponse extends SaaSposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "document",
-            baseName: "Document",
-            type: "EmailDocument",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(EmailDocumentResponse.attributeTypeMap);
-    }
-
-    /**
-     * Gets or sets email document.
-     */
-    public document: EmailDocument;
-    
-}
-
-/**
- * Email property response.
- */
-export class EmailPropertyResponse extends SaaSposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "emailProperty",
-            baseName: "EmailProperty",
-            type: "EmailProperty",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(EmailPropertyResponse.attributeTypeMap);
-    }
-
-    /**
-     * Gets or sets email property.
-     */
-    public emailProperty: EmailProperty;
-    
-}
-
-/**
- * Response object with array of mailbox folders.
- */
-export class ListFoldersResponse extends SaaSposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "folders",
-            baseName: "Folders",
-            type: "Array<MailServerFolder>",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(ListFoldersResponse.attributeTypeMap);
-    }
-
-    /**
-     * Gets or sets array of mailbox folders.
-     */
-    public folders: Array<MailServerFolder>;
-    
-}
-
-/**
- * Email document property DTO.
- */
-export class ListResponse extends SaaSposeResponse {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "list",
-            baseName: "List",
-            type: "Array<string>",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(ListResponse.attributeTypeMap);
-    }
-
-    /**
-     * Gets or sets array of strings.
-     */
-    public list: Array<string>;
-    
-}
-
-/**
- * Email document property DTO.
- */
-export class MimeResponse extends SaaSposeResponse {
+export class MimeResponse {
 
     /**
      * Attribute type map
@@ -451,7 +1065,7 @@ export class MimeResponse extends SaaSposeResponse {
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             name: "mime",
-            baseName: "Mime",
+            baseName: "mime",
             type: "string",
         }    ];
 
@@ -459,7 +1073,7 @@ export class MimeResponse extends SaaSposeResponse {
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(MimeResponse.attributeTypeMap);
+        return MimeResponse.attributeTypeMap;
     }
 
     /**
@@ -467,611 +1081,1260 @@ export class MimeResponse extends SaaSposeResponse {
      */
     public mime: string;
     
+
+    public constructor(
+        mime?: string) {
+        
+        this.mime = mime;
+    }
+}
+
+/**
+ * Error
+ */
+export class ModelError {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "code",
+            baseName: "code",
+            type: "string",
+        },
+        {
+            name: "message",
+            baseName: "message",
+            type: "string",
+        },
+        {
+            name: "description",
+            baseName: "description",
+            type: "string",
+        },
+        {
+            name: "innerError",
+            baseName: "innerError",
+            type: "ErrorDetails",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ModelError.attributeTypeMap;
+    }
+
+    /**
+     * Code             
+     */
+    public code: string;
+    
+    /**
+     * Message             
+     */
+    public message: string;
+    
+    /**
+     * Description             
+     */
+    public description: string;
+    
+    /**
+     * Inner Error             
+     */
+    public innerError: ErrorDetails;
+    
+
+    public constructor(
+        code?: string,
+        message?: string,
+        description?: string,
+        innerError?: ErrorDetails) {
+        
+        this.code = code;
+        this.message = message;
+        this.description = description;
+        this.innerError = innerError;
+    }
+}
+
+/**
+ * Object exists
+ */
+export class ObjectExist {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "exists",
+            baseName: "exists",
+            type: "boolean",
+        },
+        {
+            name: "isFolder",
+            baseName: "isFolder",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ObjectExist.attributeTypeMap;
+    }
+
+    /**
+     * Indicates that the file or folder exists.
+     */
+    public exists: boolean;
+    
+    /**
+     * True if it is a folder, false if it is a file.
+     */
+    public isFolder: boolean;
+    
+
+    public constructor(
+        exists?: boolean,
+        isFolder?: boolean) {
+        
+        this.exists = exists;
+        this.isFolder = isFolder;
+    }
+}
+
+/**
+ * Update email document property request
+ */
+export class SetEmailPropertyRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "emailProperty",
+            baseName: "emailProperty",
+            type: "EmailProperty",
+        },
+        {
+            name: "storageFolder",
+            baseName: "storageFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return SetEmailPropertyRequest.attributeTypeMap;
+    }
+
+    /**
+     * An email property that should be updated
+     */
+    public emailProperty: EmailProperty;
+    
+    /**
+     * An email document location in storage
+     */
+    public storageFolder: StorageFolderLocation;
+    
+
+    public constructor(
+        emailProperty?: EmailProperty,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.emailProperty = emailProperty;
+        this.storageFolder = storageFolder;
+    }
+}
+
+/**
+ * Storage exists
+ */
+export class StorageExist {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "exists",
+            baseName: "exists",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageExist.attributeTypeMap;
+    }
+
+    /**
+     * Shows that the storage exists.             
+     */
+    public exists: boolean;
+    
+
+    public constructor(
+        exists?: boolean) {
+        
+        this.exists = exists;
+    }
+}
+
+/**
+ * File or folder information
+ */
+export class StorageFile {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "name",
+            baseName: "name",
+            type: "string",
+        },
+        {
+            name: "isFolder",
+            baseName: "isFolder",
+            type: "boolean",
+        },
+        {
+            name: "modifiedDate",
+            baseName: "modifiedDate",
+            type: "Date",
+        },
+        {
+            name: "size",
+            baseName: "size",
+            type: "number",
+        },
+        {
+            name: "path",
+            baseName: "path",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageFile.attributeTypeMap;
+    }
+
+    /**
+     * File or folder name.
+     */
+    public name: string;
+    
+    /**
+     * True if it is a folder.
+     */
+    public isFolder: boolean;
+    
+    /**
+     * File or folder last modified DateTime.
+     */
+    public modifiedDate: Date;
+    
+    /**
+     * File or folder size.
+     */
+    public size: number;
+    
+    /**
+     * File or folder path.
+     */
+    public path: string;
+    
+
+    public constructor(
+        name?: string,
+        isFolder?: boolean,
+        modifiedDate?: Date,
+        size?: number,
+        path?: string) {
+        
+        this.name = name;
+        this.isFolder = isFolder;
+        this.modifiedDate = modifiedDate;
+        this.size = size;
+        this.path = path;
+    }
+}
+
+/**
+ * A storage folder location information
+ */
+export class StorageFolderLocation {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "storage",
+            baseName: "storage",
+            type: "string",
+        },
+        {
+            name: "folderPath",
+            baseName: "folderPath",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageFolderLocation.attributeTypeMap;
+    }
+
+    /**
+     * A storage name
+     */
+    public storage: string;
+    
+    /**
+     * A path to a folder in specified storage
+     */
+    public folderPath: string;
+    
+
+    public constructor(
+        storage?: string,
+        folderPath?: string) {
+        
+        this.storage = storage;
+        this.folderPath = folderPath;
+    }
+}
+
+/**
+ * Email document property DTO.
+ */
+export class ValueResponse {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ValueResponse.attributeTypeMap;
+    }
+
+    /**
+     * Gets or sets string content.
+     */
+    public value: string;
+    
+
+    public constructor(
+        value?: string) {
+        
+        this.value = value;
+    }
+}
+
+/**
+ * Append email to account request
+ */
+export class AppendEmailAccountBaseRequest extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "folder",
+            baseName: "folder",
+            type: "string",
+        },
+        {
+            name: "markAsSent",
+            baseName: "markAsSent",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AppendEmailAccountBaseRequest.attributeTypeMap);
+    }
+
+    public folder: string;
+    
+    public markAsSent: boolean;
+    
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        folder?: string,
+        markAsSent?: boolean) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.folder = folder;
+        this.markAsSent = markAsSent;
+    }
+}
+
+/**
+ * Create folder request
+ */
+export class CreateFolderBaseRequest extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "folder",
+            baseName: "folder",
+            type: "string",
+        },
+        {
+            name: "parentFolder",
+            baseName: "parentFolder",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(CreateFolderBaseRequest.attributeTypeMap);
+    }
+
+    /**
+     * Folder name
+     */
+    public folder: string;
+    
+    /**
+     * Parent folder path
+     */
+    public parentFolder: string;
+    
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        folder?: string,
+        parentFolder?: string) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.folder = folder;
+        this.parentFolder = parentFolder;
+    }
+}
+
+/**
+ * Delete folder request
+ */
+export class DeleteFolderBaseRequest extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "folder",
+            baseName: "folder",
+            type: "string",
+        },
+        {
+            name: "deletePermanently",
+            baseName: "deletePermanently",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(DeleteFolderBaseRequest.attributeTypeMap);
+    }
+
+    /**
+     * Folder name
+     */
+    public folder: string;
+    
+    /**
+     * Specifies that folder should be deleted permanently
+     */
+    public deletePermanently: boolean;
+    
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        folder?: string,
+        deletePermanently?: boolean) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.folder = folder;
+        this.deletePermanently = deletePermanently;
+    }
+}
+
+/**
+ * Delete message request
+ */
+export class DeleteMessageBaseRequest extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "messageId",
+            baseName: "messageId",
+            type: "string",
+        },
+        {
+            name: "deletePermanently",
+            baseName: "deletePermanently",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(DeleteMessageBaseRequest.attributeTypeMap);
+    }
+
+    /**
+     * Message identifier
+     */
+    public messageId: string;
+    
+    /**
+     * Specifies that message should be deleted permanently
+     */
+    public deletePermanently: boolean;
+    
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        messageId?: string,
+        deletePermanently?: boolean) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.messageId = messageId;
+        this.deletePermanently = deletePermanently;
+    }
+}
+
+/**
+ * File Version
+ */
+export class FileVersion extends StorageFile {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "versionId",
+            baseName: "versionId",
+            type: "string",
+        },
+        {
+            name: "isLatest",
+            baseName: "isLatest",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(FileVersion.attributeTypeMap);
+    }
+
+    /**
+     * File Version ID.
+     */
+    public versionId: string;
+    
+    /**
+     * Specifies whether the file is (true) or is not (false) the latest version of an file.
+     */
+    public isLatest: boolean;
+    
+
+    public constructor(
+        name?: string,
+        isFolder?: boolean,
+        modifiedDate?: Date,
+        size?: number,
+        path?: string,
+        versionId?: string,
+        isLatest?: boolean) {
+        super();
+        this.name = name;
+        this.isFolder = isFolder;
+        this.modifiedDate = modifiedDate;
+        this.size = size;
+        this.path = path;
+        this.versionId = versionId;
+        this.isLatest = isLatest;
+    }
+}
+
+/**
+ * Objects' properties hierarchical representation
+ */
+export class HierarchicalObject extends BaseObject {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "internalProperties",
+            baseName: "internalProperties",
+            type: "Array<BaseObject>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(HierarchicalObject.attributeTypeMap);
+    }
+
+    /**
+     * List of internal properties
+     */
+    public internalProperties: Array<BaseObject>;
+    
+
+    public constructor(
+        name?: string,
+        type?: string,
+        internalProperties?: Array<BaseObject>) {
+        super();
+        this.name = name;
+        this.type = type;
+        this.internalProperties = internalProperties;
+    }
+}
+
+/**
+ * Indexed hierarchical property
+ */
+export class IndexedHierarchicalObject extends BaseObject {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "index",
+            baseName: "index",
+            type: "number",
+        },
+        {
+            name: "internalProperties",
+            baseName: "internalProperties",
+            type: "Array<BaseObject>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(IndexedHierarchicalObject.attributeTypeMap);
+    }
+
+    /**
+     * Index of property in list
+     */
+    public index: number;
+    
+    /**
+     * List of internal properties
+     */
+    public internalProperties: Array<BaseObject>;
+    
+
+    public constructor(
+        name?: string,
+        type?: string,
+        index?: number,
+        internalProperties?: Array<BaseObject>) {
+        super();
+        this.name = name;
+        this.type = type;
+        this.index = index;
+        this.internalProperties = internalProperties;
+    }
+}
+
+/**
+ * Simple indexed property
+ */
+export class IndexedPrimitiveObject extends BaseObject {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "index",
+            baseName: "index",
+            type: "number",
+        },
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(IndexedPrimitiveObject.attributeTypeMap);
+    }
+
+    /**
+     * Index of property in list
+     */
+    public index: number;
+    
+    /**
+     * Gets or sets the name of a property.
+     */
+    public value: string;
+    
+
+    public constructor(
+        name?: string,
+        type?: string,
+        index?: number,
+        value?: string) {
+        super();
+        this.name = name;
+        this.type = type;
+        this.index = index;
+        this.value = value;
+    }
+}
+
+/**
+ * Simple property object
+ */
+export class PrimitiveObject extends BaseObject {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(PrimitiveObject.attributeTypeMap);
+    }
+
+    /**
+     * Property value
+     */
+    public value: string;
+    
+
+    public constructor(
+        name?: string,
+        type?: string,
+        value?: string) {
+        super();
+        this.name = name;
+        this.type = type;
+        this.value = value;
+    }
+}
+
+/**
+ * Save email account settings with login/password authentication request
+ */
+export class SaveEmailAccountRequest extends EmailAccountRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "password",
+            baseName: "password",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(SaveEmailAccountRequest.attributeTypeMap);
+    }
+
+    /**
+     * Email account password
+     */
+    public password: string;
+    
+
+    public constructor(
+        host?: string,
+        port?: number,
+        login?: string,
+        securityOptions?: any,
+        protocolType?: any,
+        description?: string,
+        storageFile?: StorageFileLocation,
+        password?: string) {
+        super();
+        this.host = host;
+        this.port = port;
+        this.login = login;
+        this.securityOptions = securityOptions;
+        this.protocolType = protocolType;
+        this.description = description;
+        this.storageFile = storageFile;
+        this.password = password;
+    }
+}
+
+/**
+ * Save email account settings with OAuth request
+ */
+export class SaveOAuthEmailAccountRequest extends EmailAccountRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "clientId",
+            baseName: "clientId",
+            type: "string",
+        },
+        {
+            name: "clientSecret",
+            baseName: "clientSecret",
+            type: "string",
+        },
+        {
+            name: "refreshToken",
+            baseName: "refreshToken",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(SaveOAuthEmailAccountRequest.attributeTypeMap);
+    }
+
+    /**
+     * OAuth client identifier
+     */
+    public clientId: string;
+    
+    /**
+     * OAuth client secret
+     */
+    public clientSecret: string;
+    
+    /**
+     * OAuth refresh token
+     */
+    public refreshToken: string;
+    
+
+    public constructor(
+        host?: string,
+        port?: number,
+        login?: string,
+        securityOptions?: any,
+        protocolType?: any,
+        description?: string,
+        storageFile?: StorageFileLocation,
+        clientId?: string,
+        clientSecret?: string,
+        refreshToken?: string) {
+        super();
+        this.host = host;
+        this.port = port;
+        this.login = login;
+        this.securityOptions = securityOptions;
+        this.protocolType = protocolType;
+        this.description = description;
+        this.storageFile = storageFile;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.refreshToken = refreshToken;
+    }
+}
+
+/**
+ * Send email file request
+ */
+export class SendEmailBaseRequest extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "emailFile",
+            baseName: "emailFile",
+            type: "StorageFileLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(SendEmailBaseRequest.attributeTypeMap);
+    }
+
+    /**
+     * Email document (*.eml) file location in storage
+     */
+    public emailFile: StorageFileLocation;
+    
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        emailFile?: StorageFileLocation) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.emailFile = emailFile;
+    }
+}
+
+/**
+ * Send email MIME request
+ */
+export class SendEmailMimeBaseRequest extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "base64MimeMessage",
+            baseName: "base64MimeMessage",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(SendEmailMimeBaseRequest.attributeTypeMap);
+    }
+
+    /**
+     * Email document serialized as MIME
+     */
+    public base64MimeMessage: string;
+    
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        base64MimeMessage?: string) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.base64MimeMessage = base64MimeMessage;
+    }
+}
+
+/**
+ * Set message is read request
+ */
+export class SetMessageReadFlagAccountBaseRequest extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "messageId",
+            baseName: "messageId",
+            type: "string",
+        },
+        {
+            name: "isRead",
+            baseName: "isRead",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(SetMessageReadFlagAccountBaseRequest.attributeTypeMap);
+    }
+
+    /**
+     * Message identifier
+     */
+    public messageId: string;
+    
+    /**
+     * Specifies that message should be marked read or unread
+     */
+    public isRead: boolean;
+    
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        messageId?: string,
+        isRead?: boolean) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.messageId = messageId;
+        this.isRead = isRead;
+    }
+}
+
+/**
+ * A storage file location information
+ */
+export class StorageFileLocation extends StorageFolderLocation {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "fileName",
+            baseName: "fileName",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(StorageFileLocation.attributeTypeMap);
+    }
+
+    /**
+     * A file name in storage
+     */
+    public fileName: string;
+    
+
+    public constructor(
+        storage?: string,
+        folderPath?: string,
+        fileName?: string) {
+        super();
+        this.storage = storage;
+        this.folderPath = folderPath;
+        this.fileName = fileName;
+    }
+}
+
+/**
+ * Append email from storage file to account request
+ */
+export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "emailFile",
+            baseName: "emailFile",
+            type: "StorageFileLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AppendEmailBaseRequest.attributeTypeMap);
+    }
+
+    /**
+     * Email document file location in storage
+     */
+    public emailFile: StorageFileLocation;
+    
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        folder?: string,
+        markAsSent?: boolean,
+        emailFile?: StorageFileLocation) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.folder = folder;
+        this.markAsSent = markAsSent;
+        this.emailFile = emailFile;
+    }
+}
+
+/**
+ * Append email from MIME string to account request
+ */
+export class AppendEmailMimeBaseRequest extends AppendEmailAccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "base64MimeMessage",
+            baseName: "base64MimeMessage",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AppendEmailMimeBaseRequest.attributeTypeMap);
+    }
+
+    /**
+     * Email document serialized as MIME string
+     */
+    public base64MimeMessage: string;
+    
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        folder?: string,
+        markAsSent?: boolean,
+        base64MimeMessage?: string) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.folder = folder;
+        this.markAsSent = markAsSent;
+        this.base64MimeMessage = base64MimeMessage;
+    }
 }
 
 const enumsMap = {
+    "ContactFormat": ContactFormat,
 };
 
 const typeMap = {
+            AccountBaseRequest,
+            AddAttachmentRequest,
+            BaseObject,
+            CreateEmailRequest,
+            DiscUsage,
+            EmailAccountRequest,
             EmailDocument,
+            EmailDocumentResponse,
             EmailProperties,
             EmailProperty,
-            HttpStatusCode,
-            Link,
-            MailServerFolder,
-            ProtocolType,
-            SaaSposeResponse,
-            SecurityOptions,
-            EmailDocumentResponse,
             EmailPropertyResponse,
-            ListFoldersResponse,
-            ListResponse,
+            ErrorDetails,
+            FileVersions,
+            FilesList,
+            FilesUploadResult,
+            HierarchicalObjectRequest,
+            HierarchicalObjectResponse,
+            Link,
+            ListResponseOfHierarchicalObjectResponse,
+            ListResponseOfMailServerFolder,
+            ListResponseOfString,
+            MailServerFolder,
             MimeResponse,
+            ModelError,
+            ObjectExist,
+            SetEmailPropertyRequest,
+            StorageExist,
+            StorageFile,
+            StorageFolderLocation,
+            ValueResponse,
+            AppendEmailAccountBaseRequest,
+            CreateFolderBaseRequest,
+            DeleteFolderBaseRequest,
+            DeleteMessageBaseRequest,
+            FileVersion,
+            HierarchicalObject,
+            IndexedHierarchicalObject,
+            IndexedPrimitiveObject,
+            PrimitiveObject,
+            SaveEmailAccountRequest,
+            SaveOAuthEmailAccountRequest,
+            SendEmailBaseRequest,
+            SendEmailMimeBaseRequest,
+            SetMessageReadFlagAccountBaseRequest,
+            StorageFileLocation,
+            AppendEmailBaseRequest,
+            AppendEmailMimeBaseRequest,
 };
 
 export {enumsMap, typeMap};
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets name
-     */
-    public name: string;
-
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets folder
-     */
-    public folder: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets name
-     */
-    public name: string;
-
-    /**
-     * Gets or sets attachName
-     */
-    public attachName: string;
-
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets folder
-     */
-    public folder: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets propertyName
-     */
-    public propertyName: string;
-
-    /**
-     * Gets or sets name
-     */
-    public name: string;
-
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets folder
-     */
-    public folder: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets name
-     */
-    public name: string;
-
-    /**
-     * Gets or sets attachName
-     */
-    public attachName: string;
-
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets folder
-     */
-    public folder: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets name
-     */
-    public name: string;
-
-    /**
-     * Gets or sets email
-     */
-    public email: EmailDocument;
-
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets folder
-     */
-    public folder: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets name
-     */
-    public name: string;
-
-    /**
-     * Gets or sets propertyName
-     */
-    public propertyName: string;
-
-    /**
-     * Gets or sets property
-     */
-    public property: EmailProperty;
-
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets folder
-     */
-    public folder: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName1
-     */
-    public accountName1: string;
-
-    /**
-     * Gets or sets accountName2
-     */
-    public accountName2: string;
-
-    /**
-     * Gets or sets folder
-     */
-    public folder: string;
-
-    /**
-     * Gets or sets mailPath
-     */
-    public mailPath: string;
-
-    /**
-     * Gets or sets markAsSent
-     */
-    public markAsSent: boolean;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName1
-     */
-    public accountName1: string;
-
-    /**
-     * Gets or sets accountName2
-     */
-    public accountName2: string;
-
-    /**
-     * Gets or sets folder
-     */
-    public folder: string;
-
-    /**
-     * Gets or sets base64MimeMessage
-     */
-    public base64MimeMessage: string;
-
-    /**
-     * Gets or sets markAsSent
-     */
-    public markAsSent: boolean;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName1
-     */
-    public accountName1: string;
-
-    /**
-     * Gets or sets accountName2
-     */
-    public accountName2: string;
-
-    /**
-     * Gets or sets parentFolder
-     */
-    public parentFolder: string;
-
-    /**
-     * Gets or sets name
-     */
-    public name: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName1
-     */
-    public accountName1: string;
-
-    /**
-     * Gets or sets accountName2
-     */
-    public accountName2: string;
-
-    /**
-     * Gets or sets folder
-     */
-    public folder: string;
-
-    /**
-     * Gets or sets deletePermanently
-     */
-    public deletePermanently: boolean;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName1
-     */
-    public accountName1: string;
-
-    /**
-     * Gets or sets accountName2
-     */
-    public accountName2: string;
-
-    /**
-     * Gets or sets messageId
-     */
-    public messageId: string;
-
-    /**
-     * Gets or sets deletePermanently
-     */
-    public deletePermanently: boolean;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName1
-     */
-    public accountName1: string;
-
-    /**
-     * Gets or sets accountName2
-     */
-    public accountName2: string;
-
-    /**
-     * Gets or sets messageId
-     */
-    public messageId: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName1
-     */
-    public accountName1: string;
-
-    /**
-     * Gets or sets accountName2
-     */
-    public accountName2: string;
-
-    /**
-     * Gets or sets parentFolder
-     */
-    public parentFolder: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName1
-     */
-    public accountName1: string;
-
-    /**
-     * Gets or sets accountName2
-     */
-    public accountName2: string;
-
-    /**
-     * Gets or sets folder
-     */
-    public folder: string;
-
-    /**
-     * Gets or sets recursive
-     */
-    public recursive: boolean;
-
-    /**
-     * Gets or sets queryString
-     */
-    public queryString: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName
-     */
-    public accountName: string;
-
-    /**
-     * Gets or sets host
-     */
-    public host: string;
-
-    /**
-     * Gets or sets port
-     */
-    public port: number;
-
-    /**
-     * Gets or sets login
-     */
-    public login: string;
-
-    /**
-     * Gets or sets password
-     */
-    public password: string;
-
-    /**
-     * Gets or sets securityOptions
-     */
-    public securityOptions: number;
-
-    /**
-     * Gets or sets protocolType
-     */
-    public protocolType: number;
-
-    /**
-     * Gets or sets description
-     */
-    public description: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName
-     */
-    public accountName: string;
-
-    /**
-     * Gets or sets host
-     */
-    public host: string;
-
-    /**
-     * Gets or sets port
-     */
-    public port: number;
-
-    /**
-     * Gets or sets login
-     */
-    public login: string;
-
-    /**
-     * Gets or sets clientId
-     */
-    public clientId: string;
-
-    /**
-     * Gets or sets clientSecret
-     */
-    public clientSecret: string;
-
-    /**
-     * Gets or sets refreshToken
-     */
-    public refreshToken: string;
-
-    /**
-     * Gets or sets securityOptions
-     */
-    public securityOptions: number;
-
-    /**
-     * Gets or sets protocolType
-     */
-    public protocolType: number;
-
-    /**
-     * Gets or sets description
-     */
-    public description: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName1
-     */
-    public accountName1: string;
-
-    /**
-     * Gets or sets accountName2
-     */
-    public accountName2: string;
-
-    /**
-     * Gets or sets mailPath
-     */
-    public mailPath: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName1
-     */
-    public accountName1: string;
-
-    /**
-     * Gets or sets accountName2
-     */
-    public accountName2: string;
-
-    /**
-     * Gets or sets base64MimeMessage
-     */
-    public base64MimeMessage: string;
-}
-
-/**
- * Request model for  operation.
- */
-export class Request {
-    /**
-     * Gets or sets storage
-     */
-    public storage: string;
-
-    /**
-     * Gets or sets accountName1
-     */
-    public accountName1: string;
-
-    /**
-     * Gets or sets accountName2
-     */
-    public accountName2: string;
-
-    /**
-     * Gets or sets messageId
-     */
-    public messageId: string;
-
-    /**
-     * Gets or sets isRead
-     */
-    public isRead: boolean;
-}
