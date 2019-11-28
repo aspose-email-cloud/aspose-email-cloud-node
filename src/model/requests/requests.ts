@@ -130,6 +130,530 @@ export class AddMapiAttachmentRequest {
 }
 
 /**
+ * Request model for aiBcrOcr operation.
+ */
+export class AiBcrOcrRequest {
+    /**
+     * Request with base64 images data
+     */
+    public request: model.AiBcrBase64Request;
+
+    public constructor(
+        request?: model.AiBcrBase64Request) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for aiBcrOcrStorage operation.
+ */
+export class AiBcrOcrStorageRequest {
+    /**
+     * Request with images located on storage
+     */
+    public request: model.AiBcrStorageImageRequest;
+
+    public constructor(
+        request?: model.AiBcrStorageImageRequest) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for aiBcrParse operation.
+ */
+export class AiBcrParseRequest {
+    /**
+     * Request with base64 images data
+     */
+    public request: model.AiBcrBase64Request;
+
+    public constructor(
+        request?: model.AiBcrBase64Request) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for aiBcrParseOcrData operation.
+ */
+export class AiBcrParseOcrDataRequest {
+    /**
+     * Gets or sets request
+     */
+    public request: model.AiBcrParseOcrDataRequest;
+
+    public constructor(
+        request?: model.AiBcrParseOcrDataRequest) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for aiBcrParseOcrDataStorage operation.
+ */
+export class AiBcrParseOcrDataStorageRequest {
+    /**
+     * Gets or sets request
+     */
+    public request: model.AiBcrParseOcrDataStorageRequest;
+
+    public constructor(
+        request?: model.AiBcrParseOcrDataStorageRequest) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for aiBcrParseStorage operation.
+ */
+export class AiBcrParseStorageRequest {
+    /**
+     * Request with images located on storage
+     */
+    public request: model.AiBcrParseStorageRequest;
+
+    public constructor(
+        request?: model.AiBcrParseStorageRequest) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for aiNameComplete operation.
+ */
+export class AiNameCompleteRequest {
+    /**
+     * A name to complete (required)
+     */
+    public name: string;
+
+    /**
+     * An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     */
+    public language: string;
+
+    /**
+     * A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     */
+    public location: string;
+
+    /**
+     * A character encoding name
+     */
+    public encoding: string;
+
+    /**
+     * A writing system code; starts with the ISO-15924 script name
+     */
+    public script: string;
+
+    /**
+     * Name writing style
+     */
+    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+
+    public constructor(
+        name?: string, 
+        language?: string, 
+        location?: string, 
+        encoding?: string, 
+        script?: string, 
+        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        
+        this.name = name;
+        this.language = language;
+        this.location = location;
+        this.encoding = encoding;
+        this.script = script;
+        this.style = style;
+    }
+}
+
+/**
+ * Request model for aiNameExpand operation.
+ */
+export class AiNameExpandRequest {
+    /**
+     * A name to format (required)
+     */
+    public name: string;
+
+    /**
+     * An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     */
+    public language: string;
+
+    /**
+     * A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     */
+    public location: string;
+
+    /**
+     * A character encoding name
+     */
+    public encoding: string;
+
+    /**
+     * A writing system code; starts with the ISO-15924 script name
+     */
+    public script: string;
+
+    /**
+     * Name writing style
+     */
+    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+
+    public constructor(
+        name?: string, 
+        language?: string, 
+        location?: string, 
+        encoding?: string, 
+        script?: string, 
+        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        
+        this.name = name;
+        this.language = language;
+        this.location = location;
+        this.encoding = encoding;
+        this.script = script;
+        this.style = style;
+    }
+}
+
+/**
+ * Request model for aiNameExpandParsed operation.
+ */
+export class AiNameExpandParsedRequest {
+    /**
+     * Parsed name with options
+     */
+    public request: model.AiNameParsedRequest;
+
+    public constructor(
+        request?: model.AiNameParsedRequest) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for aiNameFormat operation.
+ */
+export class AiNameFormatRequest {
+    /**
+     * A name to format (required)
+     */
+    public name: string;
+
+    /**
+     * An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     */
+    public language: string;
+
+    /**
+     * A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     */
+    public location: string;
+
+    /**
+     * A character encoding name
+     */
+    public encoding: string;
+
+    /**
+     * A writing system code; starts with the ISO-15924 script name
+     */
+    public script: string;
+
+    /**
+     * Name writing style
+     */
+    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+
+    public constructor(
+        name?: string, 
+        language?: string, 
+        location?: string, 
+        encoding?: string, 
+        script?: string, 
+        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        
+        this.name = name;
+        this.language = language;
+        this.location = location;
+        this.encoding = encoding;
+        this.script = script;
+        this.style = style;
+    }
+}
+
+/**
+ * Request model for aiNameFormatParsed operation.
+ */
+export class AiNameFormatParsedRequest {
+    /**
+     * Parsed name with options
+     */
+    public request: model.AiNameParsedRequest;
+
+    public constructor(
+        request?: model.AiNameParsedRequest) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for aiNameGenderize operation.
+ */
+export class AiNameGenderizeRequest {
+    /**
+     * A name to parse (required)
+     */
+    public name: string;
+
+    /**
+     * An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     */
+    public language: string;
+
+    /**
+     * A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     */
+    public location: string;
+
+    /**
+     * A character encoding name
+     */
+    public encoding: string;
+
+    /**
+     * A writing system code; starts with the ISO-15924 script name
+     */
+    public script: string;
+
+    /**
+     * Name writing style
+     */
+    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+
+    public constructor(
+        name?: string, 
+        language?: string, 
+        location?: string, 
+        encoding?: string, 
+        script?: string, 
+        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        
+        this.name = name;
+        this.language = language;
+        this.location = location;
+        this.encoding = encoding;
+        this.script = script;
+        this.style = style;
+    }
+}
+
+/**
+ * Request model for aiNameGenderizeParsed operation.
+ */
+export class AiNameGenderizeParsedRequest {
+    /**
+     * Gender detection request data
+     */
+    public request: model.AiNameParsedRequest;
+
+    public constructor(
+        request?: model.AiNameParsedRequest) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for aiNameMatch operation.
+ */
+export class AiNameMatchRequest {
+    /**
+     * A name to match (required)
+     */
+    public name: string;
+
+    /**
+     * Another name to match (required)
+     */
+    public otherName: string;
+
+    /**
+     * An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     */
+    public language: string;
+
+    /**
+     * A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     */
+    public location: string;
+
+    /**
+     * A character encoding name
+     */
+    public encoding: string;
+
+    /**
+     * A writing system code; starts with the ISO-15924 script name
+     */
+    public script: string;
+
+    /**
+     * Name writing style
+     */
+    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+
+    public constructor(
+        name?: string, 
+        otherName?: string, 
+        language?: string, 
+        location?: string, 
+        encoding?: string, 
+        script?: string, 
+        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        
+        this.name = name;
+        this.otherName = otherName;
+        this.language = language;
+        this.location = location;
+        this.encoding = encoding;
+        this.script = script;
+        this.style = style;
+    }
+}
+
+/**
+ * Request model for aiNameMatchParsed operation.
+ */
+export class AiNameMatchParsedRequest {
+    /**
+     * Parsed names to match
+     */
+    public request: model.AiNameParsedMatchRequest;
+
+    public constructor(
+        request?: model.AiNameParsedMatchRequest) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for aiNameParse operation.
+ */
+export class AiNameParseRequest {
+    /**
+     * A name to parse (required)
+     */
+    public name: string;
+
+    /**
+     * An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     */
+    public language: string;
+
+    /**
+     * A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     */
+    public location: string;
+
+    /**
+     * A character encoding name
+     */
+    public encoding: string;
+
+    /**
+     * A writing system code; starts with the ISO-15924 script name
+     */
+    public script: string;
+
+    /**
+     * Name writing style
+     */
+    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+
+    public constructor(
+        name?: string, 
+        language?: string, 
+        location?: string, 
+        encoding?: string, 
+        script?: string, 
+        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        
+        this.name = name;
+        this.language = language;
+        this.location = location;
+        this.encoding = encoding;
+        this.script = script;
+        this.style = style;
+    }
+}
+
+/**
+ * Request model for aiNameParseEmailAddress operation.
+ */
+export class AiNameParseEmailAddressRequest {
+    /**
+     * Email address to parse (required)
+     */
+    public emailAddress: string;
+
+    /**
+     * An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     */
+    public language: string;
+
+    /**
+     * A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     */
+    public location: string;
+
+    /**
+     * A character encoding name
+     */
+    public encoding: string;
+
+    /**
+     * A writing system code; starts with the ISO-15924 script name
+     */
+    public script: string;
+
+    /**
+     * Name writing style
+     */
+    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+
+    public constructor(
+        emailAddress?: string, 
+        language?: string, 
+        location?: string, 
+        encoding?: string, 
+        script?: string, 
+        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        
+        this.emailAddress = emailAddress;
+        this.language = language;
+        this.location = location;
+        this.encoding = encoding;
+        this.script = script;
+        this.style = style;
+    }
+}
+
+/**
  * Request model for appendEmailMessage operation.
  */
 export class AppendEmailMessageRequest {
@@ -651,7 +1175,7 @@ export class FetchEmailMessageRequest {
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)
+     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
      */
     public secondAccount: string;
 
@@ -1219,7 +1743,7 @@ export class ListEmailFoldersRequest {
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)
+     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
      */
     public secondAccount: string;
 
@@ -1273,7 +1797,7 @@ export class ListEmailMessagesRequest {
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)
+     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
      */
     public secondAccount: string;
 
@@ -1501,7 +2025,7 @@ export class SetEmailPropertyRequest {
     public fileName: string;
 
     /**
-     * A property that should be changed and optional Storage info to specify             where the file located
+     * A property that should be changed and optional Storage info to specify where the file located             
      */
     public request: model.SetEmailPropertyRequest;
 

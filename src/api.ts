@@ -51,7 +51,7 @@ export class EmailApi {
     }
 
     /**
-     * Adds an attachment to iCalendar file
+     * Adds an attachment to iCalendar file             
      * @param requestObj contains request parameters
      */
     public async addCalendarAttachment(requestObj: requestModels.AddCalendarAttachmentRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -102,7 +102,7 @@ export class EmailApi {
     }
 
     /**
-     * Add attachment to contact document
+     * Add attachment to contact document             
      * @param requestObj contains request parameters
      */
     public async addContactAttachment(requestObj: requestModels.AddContactAttachmentRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -159,7 +159,7 @@ export class EmailApi {
     }
 
     /**
-     * Adds an attachment to Email document
+     * Adds an attachment to Email document             
      * @param requestObj contains request parameters
      */
     public async addEmailAttachment(requestObj: requestModels.AddEmailAttachmentRequest): Promise<{response: request.RequestResponse, body: model.EmailDocumentResponse}> {
@@ -211,7 +211,7 @@ export class EmailApi {
     }
 
     /**
-     * Add attachment to document
+     * Add attachment to document             
      * @param requestObj contains request parameters
      */
     public async addMapiAttachment(requestObj: requestModels.AddMapiAttachmentRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -262,7 +262,857 @@ export class EmailApi {
     }
 
     /**
-     * Adds an email from *.eml file to specified folder in email account
+     * Ocr images             
+     * @param requestObj contains request parameters
+     */
+    public async aiBcrOcr(requestObj: requestModels.AiBcrOcrRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfAiBcrOcrData}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiBcr/ocr";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiBcrOcr.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "AiBcrBase64Request"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfAiBcrOcrData");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Ocr images from storage             
+     * @param requestObj contains request parameters
+     */
+    public async aiBcrOcrStorage(requestObj: requestModels.AiBcrOcrStorageRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfAiBcrOcrData}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiBcr/ocr-storage";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiBcrOcrStorage.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "AiBcrStorageImageRequest"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfAiBcrOcrData");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Parse images to vCard properties             
+     * @param requestObj contains request parameters
+     */
+    public async aiBcrParse(requestObj: requestModels.AiBcrParseRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfHierarchicalObject}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiBcr/parse";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiBcrParse.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "AiBcrBase64Request"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfHierarchicalObject");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Parse OCR data to vCard properties             
+     * @param requestObj contains request parameters
+     */
+    public async aiBcrParseOcrData(requestObj: requestModels.AiBcrParseOcrDataRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfHierarchicalObject}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiBcr/parse-ocr-data";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiBcrParseOcrData.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "AiBcrParseOcrDataRequest"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfHierarchicalObject");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Parse vCards from OCR data and save them to Storage             
+     * @param requestObj contains request parameters
+     */
+    public async aiBcrParseOcrDataStorage(requestObj: requestModels.AiBcrParseOcrDataStorageRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfStorageFileLocation}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiBcr/parse-ocr-data-storage";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiBcrParseOcrDataStorage.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "AiBcrParseOcrDataStorageRequest"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfStorageFileLocation");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Parse images from storage to vCard files             
+     * @param requestObj contains request parameters
+     */
+    public async aiBcrParseStorage(requestObj: requestModels.AiBcrParseStorageRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfStorageFileLocation}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiBcr/parse-storage";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiBcrParseStorage.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "AiBcrParseStorageRequest"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfStorageFileLocation");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * The call proposes k most probable names for given starting characters             
+     * @param requestObj contains request parameters
+     */
+    public async aiNameComplete(requestObj: requestModels.AiNameCompleteRequest): Promise<{response: request.RequestResponse, body: model.AiNameWeightedVariants}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/complete";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling aiNameComplete.');
+        }
+
+        if (requestObj.name !== undefined) {
+            queryParameters.name = ObjectSerializer.serialize(requestObj.name, "string");
+        }
+
+        if (requestObj.language !== undefined) {
+            queryParameters.language = ObjectSerializer.serialize(requestObj.language, "string");
+        }
+
+        if (requestObj.location !== undefined) {
+            queryParameters.location = ObjectSerializer.serialize(requestObj.location, "string");
+        }
+
+        if (requestObj.encoding !== undefined) {
+            queryParameters.encoding = ObjectSerializer.serialize(requestObj.encoding, "string");
+        }
+
+        if (requestObj.script !== undefined) {
+            queryParameters.script = ObjectSerializer.serialize(requestObj.script, "string");
+        }
+
+        if (requestObj.style !== undefined) {
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "AiNameWeightedVariants");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Expands a person's name into a list of possible alternatives using options for expanding instructions             
+     * @param requestObj contains request parameters
+     */
+    public async aiNameExpand(requestObj: requestModels.AiNameExpandRequest): Promise<{response: request.RequestResponse, body: model.AiNameWeightedVariants}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/expand";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling aiNameExpand.');
+        }
+
+        if (requestObj.name !== undefined) {
+            queryParameters.name = ObjectSerializer.serialize(requestObj.name, "string");
+        }
+
+        if (requestObj.language !== undefined) {
+            queryParameters.language = ObjectSerializer.serialize(requestObj.language, "string");
+        }
+
+        if (requestObj.location !== undefined) {
+            queryParameters.location = ObjectSerializer.serialize(requestObj.location, "string");
+        }
+
+        if (requestObj.encoding !== undefined) {
+            queryParameters.encoding = ObjectSerializer.serialize(requestObj.encoding, "string");
+        }
+
+        if (requestObj.script !== undefined) {
+            queryParameters.script = ObjectSerializer.serialize(requestObj.script, "string");
+        }
+
+        if (requestObj.style !== undefined) {
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "AiNameWeightedVariants");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Expands a person's parsed name into a list of possible alternatives using options for expanding instructions             
+     * @param requestObj contains request parameters
+     */
+    public async aiNameExpandParsed(requestObj: requestModels.AiNameExpandParsedRequest): Promise<{response: request.RequestResponse, body: model.AiNameWeightedVariants}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/expand-parsed";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiNameExpandParsed.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "AiNameParsedRequest"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "AiNameWeightedVariants");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Formats a person's name in correct case and name order using options for formatting instructions             
+     * @param requestObj contains request parameters
+     */
+    public async aiNameFormat(requestObj: requestModels.AiNameFormatRequest): Promise<{response: request.RequestResponse, body: model.AiNameFormatted}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/format";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling aiNameFormat.');
+        }
+
+        if (requestObj.name !== undefined) {
+            queryParameters.name = ObjectSerializer.serialize(requestObj.name, "string");
+        }
+
+        if (requestObj.language !== undefined) {
+            queryParameters.language = ObjectSerializer.serialize(requestObj.language, "string");
+        }
+
+        if (requestObj.location !== undefined) {
+            queryParameters.location = ObjectSerializer.serialize(requestObj.location, "string");
+        }
+
+        if (requestObj.encoding !== undefined) {
+            queryParameters.encoding = ObjectSerializer.serialize(requestObj.encoding, "string");
+        }
+
+        if (requestObj.script !== undefined) {
+            queryParameters.script = ObjectSerializer.serialize(requestObj.script, "string");
+        }
+
+        if (requestObj.style !== undefined) {
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "AiNameFormatted");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Formats a person's parsed name in correct case and name order using options for formatting instructions             
+     * @param requestObj contains request parameters
+     */
+    public async aiNameFormatParsed(requestObj: requestModels.AiNameFormatParsedRequest): Promise<{response: request.RequestResponse, body: model.AiNameFormatted}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/format-parsed";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiNameFormatParsed.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "AiNameParsedRequest"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "AiNameFormatted");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Detect person's gender from name string             
+     * @param requestObj contains request parameters
+     */
+    public async aiNameGenderize(requestObj: requestModels.AiNameGenderizeRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfAiNameGenderHypothesis}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/genderize";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling aiNameGenderize.');
+        }
+
+        if (requestObj.name !== undefined) {
+            queryParameters.name = ObjectSerializer.serialize(requestObj.name, "string");
+        }
+
+        if (requestObj.language !== undefined) {
+            queryParameters.language = ObjectSerializer.serialize(requestObj.language, "string");
+        }
+
+        if (requestObj.location !== undefined) {
+            queryParameters.location = ObjectSerializer.serialize(requestObj.location, "string");
+        }
+
+        if (requestObj.encoding !== undefined) {
+            queryParameters.encoding = ObjectSerializer.serialize(requestObj.encoding, "string");
+        }
+
+        if (requestObj.script !== undefined) {
+            queryParameters.script = ObjectSerializer.serialize(requestObj.script, "string");
+        }
+
+        if (requestObj.style !== undefined) {
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfAiNameGenderHypothesis");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Detect person's gender from parsed name             
+     * @param requestObj contains request parameters
+     */
+    public async aiNameGenderizeParsed(requestObj: requestModels.AiNameGenderizeParsedRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfAiNameGenderHypothesis}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/genderize-parsed";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiNameGenderizeParsed.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "AiNameParsedRequest"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfAiNameGenderHypothesis");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Compare people's names. Uses options for comparing instructions             
+     * @param requestObj contains request parameters
+     */
+    public async aiNameMatch(requestObj: requestModels.AiNameMatchRequest): Promise<{response: request.RequestResponse, body: model.AiNameMatchResult}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/match";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling aiNameMatch.');
+        }
+
+        // verify required parameter 'requestObj.otherName' is not null or undefined
+        if (requestObj.otherName === null || requestObj.otherName === undefined) {
+            throw new Error('Required parameter "requestObj.otherName" was null or undefined when calling aiNameMatch.');
+        }
+
+        if (requestObj.name !== undefined) {
+            queryParameters.name = ObjectSerializer.serialize(requestObj.name, "string");
+        }
+
+        if (requestObj.otherName !== undefined) {
+            queryParameters.otherName = ObjectSerializer.serialize(requestObj.otherName, "string");
+        }
+
+        if (requestObj.language !== undefined) {
+            queryParameters.language = ObjectSerializer.serialize(requestObj.language, "string");
+        }
+
+        if (requestObj.location !== undefined) {
+            queryParameters.location = ObjectSerializer.serialize(requestObj.location, "string");
+        }
+
+        if (requestObj.encoding !== undefined) {
+            queryParameters.encoding = ObjectSerializer.serialize(requestObj.encoding, "string");
+        }
+
+        if (requestObj.script !== undefined) {
+            queryParameters.script = ObjectSerializer.serialize(requestObj.script, "string");
+        }
+
+        if (requestObj.style !== undefined) {
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "AiNameMatchResult");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Compare people's parsed names and attributes. Uses options for comparing instructions             
+     * @param requestObj contains request parameters
+     */
+    public async aiNameMatchParsed(requestObj: requestModels.AiNameMatchParsedRequest): Promise<{response: request.RequestResponse, body: model.AiNameMatchResult}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/match-parsed";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiNameMatchParsed.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "AiNameParsedMatchRequest"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "AiNameMatchResult");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Parse name to components             
+     * @param requestObj contains request parameters
+     */
+    public async aiNameParse(requestObj: requestModels.AiNameParseRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfAiNameComponent}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/parse";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling aiNameParse.');
+        }
+
+        if (requestObj.name !== undefined) {
+            queryParameters.name = ObjectSerializer.serialize(requestObj.name, "string");
+        }
+
+        if (requestObj.language !== undefined) {
+            queryParameters.language = ObjectSerializer.serialize(requestObj.language, "string");
+        }
+
+        if (requestObj.location !== undefined) {
+            queryParameters.location = ObjectSerializer.serialize(requestObj.location, "string");
+        }
+
+        if (requestObj.encoding !== undefined) {
+            queryParameters.encoding = ObjectSerializer.serialize(requestObj.encoding, "string");
+        }
+
+        if (requestObj.script !== undefined) {
+            queryParameters.script = ObjectSerializer.serialize(requestObj.script, "string");
+        }
+
+        if (requestObj.style !== undefined) {
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfAiNameComponent");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Parse person's name out of an email address             
+     * @param requestObj contains request parameters
+     */
+    public async aiNameParseEmailAddress(requestObj: requestModels.AiNameParseEmailAddressRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfAiNameExtracted}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/parse-email-address";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.emailAddress' is not null or undefined
+        if (requestObj.emailAddress === null || requestObj.emailAddress === undefined) {
+            throw new Error('Required parameter "requestObj.emailAddress" was null or undefined when calling aiNameParseEmailAddress.');
+        }
+
+        if (requestObj.emailAddress !== undefined) {
+            queryParameters.emailAddress = ObjectSerializer.serialize(requestObj.emailAddress, "string");
+        }
+
+        if (requestObj.language !== undefined) {
+            queryParameters.language = ObjectSerializer.serialize(requestObj.language, "string");
+        }
+
+        if (requestObj.location !== undefined) {
+            queryParameters.location = ObjectSerializer.serialize(requestObj.location, "string");
+        }
+
+        if (requestObj.encoding !== undefined) {
+            queryParameters.encoding = ObjectSerializer.serialize(requestObj.encoding, "string");
+        }
+
+        if (requestObj.script !== undefined) {
+            queryParameters.script = ObjectSerializer.serialize(requestObj.script, "string");
+        }
+
+        if (requestObj.style !== undefined) {
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfAiNameExtracted");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Adds an email from *.eml file to specified folder in email account             
      * @param requestObj contains request parameters
      */
     public async appendEmailMessage(requestObj: requestModels.AppendEmailMessageRequest): Promise<{response: request.RequestResponse, body: model.EmailPropertyResponse}> {
@@ -302,7 +1152,7 @@ export class EmailApi {
     }
 
     /**
-     * Adds an email from MIME to specified folder in email account
+     * Adds an email from MIME to specified folder in email account             
      * @param requestObj contains request parameters
      */
     public async appendMimeMessage(requestObj: requestModels.AppendMimeMessageRequest): Promise<{response: request.RequestResponse, body: model.ValueResponse}> {
@@ -458,7 +1308,7 @@ export class EmailApi {
     }
 
     /**
-     * Create calendar file
+     * Create calendar file             
      * @param requestObj contains request parameters
      */
     public async createCalendar(requestObj: requestModels.CreateCalendarRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -503,7 +1353,7 @@ export class EmailApi {
     }
 
     /**
-     * Create contact document
+     * Create contact document             
      * @param requestObj contains request parameters
      */
     public async createContact(requestObj: requestModels.CreateContactRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -554,7 +1404,7 @@ export class EmailApi {
     }
 
     /**
-     * Create an email document
+     * Create an email document             
      * @param requestObj contains request parameters
      */
     public async createEmail(requestObj: requestModels.CreateEmailRequest): Promise<{response: request.RequestResponse, body: model.EmailDocumentResponse}> {
@@ -600,7 +1450,7 @@ export class EmailApi {
     }
 
     /**
-     * Create new folder in email account
+     * Create new folder in email account             
      * @param requestObj contains request parameters
      */
     public async createEmailFolder(requestObj: requestModels.CreateEmailFolderRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -682,7 +1532,7 @@ export class EmailApi {
     }
 
     /**
-     * Create new document
+     * Create new document             
      * @param requestObj contains request parameters
      */
     public async createMapi(requestObj: requestModels.CreateMapiRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -727,7 +1577,7 @@ export class EmailApi {
     }
 
     /**
-     * Deletes indexed property by index and name. To delete Reminder attachment, use path ReminderAttachment/{ReminderIndex}/{AttachmentIndex}
+     * Deletes indexed property by index and name. To delete Reminder attachment, use path ReminderAttachment/{ReminderIndex}/{AttachmentIndex}             
      * @param requestObj contains request parameters
      */
     public async deleteCalendarProperty(requestObj: requestModels.DeleteCalendarPropertyRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -784,7 +1634,7 @@ export class EmailApi {
     }
 
     /**
-     * Delete property from indexed property list
+     * Delete property from indexed property list             
      * @param requestObj contains request parameters
      */
     public async deleteContactProperty(requestObj: requestModels.DeleteContactPropertyRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -847,7 +1697,7 @@ export class EmailApi {
     }
 
     /**
-     * Delete a folder in email account
+     * Delete a folder in email account             
      * @param requestObj contains request parameters
      */
     public async deleteEmailFolder(requestObj: requestModels.DeleteEmailFolderRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -886,7 +1736,7 @@ export class EmailApi {
     }
 
     /**
-     * Delete message from email account by id
+     * Delete message from email account by id             
      * @param requestObj contains request parameters
      */
     public async deleteEmailMessage(requestObj: requestModels.DeleteEmailMessageRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -1019,7 +1869,7 @@ export class EmailApi {
     }
 
     /**
-     * Remove attachment from document
+     * Remove attachment from document             
      * @param requestObj contains request parameters
      */
     public async deleteMapiAttachment(requestObj: requestModels.DeleteMapiAttachmentRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -1070,7 +1920,7 @@ export class EmailApi {
     }
 
     /**
-     * Delete document properties
+     * Delete document properties             
      * @param requestObj contains request parameters
      */
     public async deleteMapiProperties(requestObj: requestModels.DeleteMapiPropertiesRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -1163,7 +2013,7 @@ export class EmailApi {
     }
 
     /**
-     * Fetch message mime from email account
+     * Fetch message mime from email account             
      * @param requestObj contains request parameters
      */
     public async fetchEmailMessage(requestObj: requestModels.FetchEmailMessageRequest): Promise<{response: request.RequestResponse, body: model.MimeResponse}> {
@@ -1227,7 +2077,7 @@ export class EmailApi {
     }
 
     /**
-     * Get calendar file properties
+     * Get calendar file properties             
      * @param requestObj contains request parameters
      */
     public async getCalendar(requestObj: requestModels.GetCalendarRequest): Promise<{response: request.RequestResponse, body: model.HierarchicalObject}> {
@@ -1275,7 +2125,7 @@ export class EmailApi {
     }
 
     /**
-     * Get iCalendar document attachment by name
+     * Get iCalendar document attachment by name             
      * @param requestObj contains request parameters
      */
     public async getCalendarAttachment(requestObj: requestModels.GetCalendarAttachmentRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
@@ -1329,7 +2179,7 @@ export class EmailApi {
     }
 
     /**
-     * Get iCalendar files list in folder on storage
+     * Get iCalendar files list in folder on storage             
      * @param requestObj contains request parameters
      */
     public async getCalendarList(requestObj: requestModels.GetCalendarListRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfHierarchicalObjectResponse}> {
@@ -1394,7 +2244,7 @@ export class EmailApi {
     }
 
     /**
-     * Get attachment file by name
+     * Get attachment file by name             
      * @param requestObj contains request parameters
      */
     public async getContactAttachment(requestObj: requestModels.GetContactAttachmentRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
@@ -1454,7 +2304,7 @@ export class EmailApi {
     }
 
     /**
-     * Get contact list from storage folder
+     * Get contact list from storage folder             
      * @param requestObj contains request parameters
      */
     public async getContactList(requestObj: requestModels.GetContactListRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfHierarchicalObjectResponse}> {
@@ -1510,7 +2360,7 @@ export class EmailApi {
     }
 
     /**
-     * Get contact document properties
+     * Get contact document properties             
      * @param requestObj contains request parameters
      */
     public async getContactProperties(requestObj: requestModels.GetContactPropertiesRequest): Promise<{response: request.RequestResponse, body: model.HierarchicalObject}> {
@@ -1602,7 +2452,7 @@ export class EmailApi {
     }
 
     /**
-     * Get email document
+     * Get email document             
      * @param requestObj contains request parameters
      */
     public async getEmail(requestObj: requestModels.GetEmailRequest): Promise<{response: request.RequestResponse, body: model.EmailDocument}> {
@@ -1650,7 +2500,7 @@ export class EmailApi {
     }
 
     /**
-     * Get email attachment by name
+     * Get email attachment by name             
      * @param requestObj contains request parameters
      */
     public async getEmailAttachment(requestObj: requestModels.GetEmailAttachmentRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
@@ -1704,7 +2554,7 @@ export class EmailApi {
     }
 
     /**
-     * Get an email document property by its name
+     * Get an email document property by its name             
      * @param requestObj contains request parameters
      */
     public async getEmailProperty(requestObj: requestModels.GetEmailPropertyRequest): Promise<{response: request.RequestResponse, body: model.EmailPropertyResponse}> {
@@ -1846,7 +2696,7 @@ export class EmailApi {
     }
 
     /**
-     * Get document attachment as file stream
+     * Get document attachment as file stream             
      * @param requestObj contains request parameters
      */
     public async getMapiAttachment(requestObj: requestModels.GetMapiAttachmentRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
@@ -1900,7 +2750,7 @@ export class EmailApi {
     }
 
     /**
-     * Get document attachment list
+     * Get document attachment list             
      * @param requestObj contains request parameters
      */
     public async getMapiAttachments(requestObj: requestModels.GetMapiAttachmentsRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfString}> {
@@ -1948,7 +2798,7 @@ export class EmailApi {
     }
 
     /**
-     * Get document list from storage folder
+     * Get document list from storage folder             
      * @param requestObj contains request parameters
      */
     public async getMapiList(requestObj: requestModels.GetMapiListRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfHierarchicalObjectResponse}> {
@@ -1998,7 +2848,7 @@ export class EmailApi {
     }
 
     /**
-     * Get document properties
+     * Get document properties             
      * @param requestObj contains request parameters
      */
     public async getMapiProperties(requestObj: requestModels.GetMapiPropertiesRequest): Promise<{response: request.RequestResponse, body: model.HierarchicalObjectResponse}> {
@@ -2046,7 +2896,7 @@ export class EmailApi {
     }
 
     /**
-     * Get folders list in email account
+     * Get folders list in email account             
      * @param requestObj contains request parameters
      */
     public async listEmailFolders(requestObj: requestModels.ListEmailFoldersRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfMailServerFolder}> {
@@ -2105,7 +2955,7 @@ export class EmailApi {
     }
 
     /**
-     * Get messages from folder, filtered by query The query string should have the following view.  The example of a simple expression:   '<Field name>' <Comparison operator> '<Field value>',  where &lt;Field Name&gt; - the name of a message field through which filtering is made, &lt;Comparison operator&gt; - comparison operators, as their name implies, allow to compare message field and specified value, &lt;Field value&gt; - value to be compared with a message field.  The number of simple expressions can make a compound one, ex.: (<Simple expression 1> & <Simple expression 2>) | <Simple expression 3>,  where \"&amp;\" - logical-AND operator, \"|\" - logical-OR operator  At present the following values are allowed as a field name (<Field name>):  \"To\" - represents a TO field of message, \"Text\" - represents string in the header or body of the message, \"Bcc\" - represents a BCC field of message, \"Body\" - represents a string in the body of message, \"Cc\" - represents a CC field of message, \"From\" - represents a From field of message, \"Subject\" - represents a string in the subject of message, \"InternalDate\" - represents an internal date of message, \"SentDate\" - represents a sent date of message  Additionally, the following field names are allowed for IMAP-protocol:  \"Answered\" - represents an /Answered flag of message \"Seen\" - represents a /Seen flag of message \"Flagged\" - represents a /Flagged flag of message \"Draft\" - represents a /Draft flag of message \"Deleted\" - represents a Deleted/ flag of message \"Recent\" - represents a Deleted/ flag of message \"MessageSize\" - represents a size (in bytes) of message  Additionally, the following field names are allowed for Exchange:  \"IsRead\" - Indicates whether the message has been read \"HasAttachment\" - Indicates whether or not the message has attachments \"IsSubmitted\" - Indicates whether the message has been submitted to the Outbox \"ContentClass\" - represents a content class of item  Additionally, the following field names are allowed for pst/ost files:  \"MessageClass\" - Represents a message class \"ContainerClass\" - Represents a folder container class \"Importance\" - Represents a message importance \"MessageSize\" - represents a size (in bytes) of message \"FolderName\" - represents a folder name \"ContentsCount\" - represents a total number of items in the folder \"UnreadContentsCount\" - represents the number of unread items in the folder. \"Subfolders\" - Indicates whether or not the folder has subfolders \"Read\" - the message is marked as having been read \"HasAttachment\" - the message has at least one attachment \"Unsent\" - the message is still being composed \"Unmodified\" - the message has not been modified since it was first saved (if unsent) or it was delivered (if sent) \"FromMe\" - the user receiving the message was also the user who sent the message \"Resend\" - the message includes a request for a resend operation with a non-delivery report \"NotifyRead\" - the user who sent the message has requested notification when a recipient first reads it \"NotifyUnread\" - the user who sent the message has requested notification when a recipient deletes it before reading or the Message object expires \"EverRead\" - the message has been read at least once  The field value (<Field value>) can take the following values: For text fields - any string, For date type fields - the string of \"d-MMM-yyy\" format, ex. \"10-Feb-2009\", For flags (fields of boolean type) - either \"True\", or \"False\"
+     * Get messages from folder, filtered by query              The query string should have the following view.      The example of a simple expression:       '<Field name>' <Comparison operator> '<Field value>',  where &lt;Field Name&gt; - the name of a message field through which filtering is made, &lt;Comparison operator&gt; - comparison operators, as their name implies, allow to compare message field and specified value, &lt;Field value&gt; - value to be compared with a message field.      The number of simple expressions can make a compound one, ex.:     (<Simple expression 1> & <Simple expression 2>) | <Simple expression 3>,  where \"&amp;\" - logical-AND operator, \"|\" - logical-OR operator      At present the following values are allowed as a field name (<Field name>):  \"To\" - represents a TO field of message, \"Text\" - represents string in the header or body of the message, \"Bcc\" - represents a BCC field of message, \"Body\" - represents a string in the body of message, \"Cc\" - represents a CC field of message, \"From\" - represents a From field of message, \"Subject\" - represents a string in the subject of message, \"InternalDate\" - represents an internal date of message, \"SentDate\" - represents a sent date of message      Additionally, the following field names are allowed for IMAP-protocol:  \"Answered\" - represents an /Answered flag of message \"Seen\" - represents a /Seen flag of message \"Flagged\" - represents a /Flagged flag of message \"Draft\" - represents a /Draft flag of message \"Deleted\" - represents a Deleted/ flag of message \"Recent\" - represents a Deleted/ flag of message \"MessageSize\" - represents a size (in bytes) of message      Additionally, the following field names are allowed for Exchange:  \"IsRead\" - Indicates whether the message has been read \"HasAttachment\" - Indicates whether or not the message has attachments \"IsSubmitted\" - Indicates whether the message has been submitted to the Outbox \"ContentClass\" - represents a content class of item      Additionally, the following field names are allowed for pst/ost files:  \"MessageClass\" - Represents a message class \"ContainerClass\" - Represents a folder container class \"Importance\" - Represents a message importance \"MessageSize\" - represents a size (in bytes) of message \"FolderName\" - represents a folder name \"ContentsCount\" - represents a total number of items in the folder \"UnreadContentsCount\" - represents the number of unread items in the folder. \"Subfolders\" - Indicates whether or not the folder has subfolders \"Read\" - the message is marked as having been read \"HasAttachment\" - the message has at least one attachment \"Unsent\" - the message is still being composed \"Unmodified\" - the message has not been modified since it was first saved (if unsent) or it was delivered (if sent) \"FromMe\" - the user receiving the message was also the user who sent the message \"Resend\" - the message includes a request for a resend operation with a non-delivery report \"NotifyRead\" - the user who sent the message has requested notification when a recipient first reads it \"NotifyUnread\" - the user who sent the message has requested notification when a recipient deletes it before reading or the Message object expires \"EverRead\" - the message has been read at least once      The field value (<Field value>) can take the following values:     For text fields - any string,     For date type fields - the string of \"d-MMM-yyy\" format, ex. \"10-Feb-2009\",     For flags (fields of boolean type) - either \"True\", or \"False\"              
      * @param requestObj contains request parameters
      */
     public async listEmailMessages(requestObj: requestModels.ListEmailMessagesRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfString}> {
@@ -2346,7 +3196,7 @@ export class EmailApi {
     }
 
     /**
-     * Create email account file (*.account) with login/password authentication
+     * Create email account file (*.account) with login/password authentication             
      * @param requestObj contains request parameters
      */
     public async saveMailAccount(requestObj: requestModels.SaveMailAccountRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -2385,7 +3235,7 @@ export class EmailApi {
     }
 
     /**
-     * Create email account file (*.account) with OAuth
+     * Create email account file (*.account) with OAuth             
      * @param requestObj contains request parameters
      */
     public async saveMailOAuthAccount(requestObj: requestModels.SaveMailOAuthAccountRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -2424,7 +3274,7 @@ export class EmailApi {
     }
 
     /**
-     * Send an email from *.eml file located on storage
+     * Send an email from *.eml file located on storage             
      * @param requestObj contains request parameters
      */
     public async sendEmail(requestObj: requestModels.SendEmailRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -2463,7 +3313,7 @@ export class EmailApi {
     }
 
     /**
-     * Send an email specified by MIME in request
+     * Send an email specified by MIME in request             
      * @param requestObj contains request parameters
      */
     public async sendEmailMime(requestObj: requestModels.SendEmailMimeRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -2502,7 +3352,7 @@ export class EmailApi {
     }
 
     /**
-     * Set email document property value
+     * Set email document property value             
      * @param requestObj contains request parameters
      */
     public async setEmailProperty(requestObj: requestModels.SetEmailPropertyRequest): Promise<{response: request.RequestResponse, body: model.EmailPropertyResponse}> {
@@ -2554,7 +3404,7 @@ export class EmailApi {
     }
 
     /**
-     * Sets \"Message is read\" flag
+     * Sets \"Message is read\" flag             
      * @param requestObj contains request parameters
      */
     public async setEmailReadFlag(requestObj: requestModels.SetEmailReadFlagRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -2633,7 +3483,7 @@ export class EmailApi {
     }
 
     /**
-     * Update calendar file properties
+     * Update calendar file properties             
      * @param requestObj contains request parameters
      */
     public async updateCalendarProperties(requestObj: requestModels.UpdateCalendarPropertiesRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -2678,7 +3528,7 @@ export class EmailApi {
     }
 
     /**
-     * Update contact document properties
+     * Update contact document properties             
      * @param requestObj contains request parameters
      */
     public async updateContactProperties(requestObj: requestModels.UpdateContactPropertiesRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -2729,7 +3579,7 @@ export class EmailApi {
     }
 
     /**
-     * Update document properties
+     * Update document properties             
      * @param requestObj contains request parameters
      */
     public async updateMapiProperties(requestObj: requestModels.UpdateMapiPropertiesRequest): Promise<{response: request.RequestResponse, body?: any; }> {

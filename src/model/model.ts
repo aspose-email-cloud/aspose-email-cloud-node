@@ -71,7 +71,7 @@ export class AccountBaseRequest {
 }
 
 /**
- * Add attachment request
+ * Add attachment request             
  */
 export class AddAttachmentRequest {
 
@@ -98,12 +98,12 @@ export class AddAttachmentRequest {
     }
 
     /**
-     * Storage folder location of document
+     * Storage folder location of document             
      */
     public documentFolder: StorageFolderLocation;
     
     /**
-     * Storage folder location of an attachment
+     * Storage folder location of an attachment             
      */
     public attachmentFolder: StorageFolderLocation;
     
@@ -118,7 +118,888 @@ export class AddAttachmentRequest {
 }
 
 /**
- * Base property object
+ * Image for recognition             
+ */
+export class AiBcrImage {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "isSingle",
+            baseName: "isSingle",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiBcrImage.attributeTypeMap;
+    }
+
+    /**
+     * Determines that image contains single VCard or more             
+     */
+    public isSingle: boolean;
+    
+
+    public constructor(
+        isSingle?: boolean) {
+        
+        this.isSingle = isSingle;
+    }
+}
+
+/**
+ * Image OCR results             
+ */
+export class AiBcrOcrData {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "id",
+            baseName: "id",
+            type: "string",
+        },
+        {
+            name: "image",
+            baseName: "image",
+            type: "string",
+        },
+        {
+            name: "details",
+            baseName: "details",
+            type: "{ [key: string]: string; }",
+        },
+        {
+            name: "data",
+            baseName: "data",
+            type: "Array<AiBcrOcrDataPart>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiBcrOcrData.attributeTypeMap;
+    }
+
+    /**
+     * Image identifier             
+     */
+    public id: string;
+    
+    /**
+     * Image with possible pre-processing in Base64             
+     */
+    public image: string;
+    
+    /**
+     * Additional details from OCR engine             
+     */
+    public details: { [key: string]: string; };
+    
+    /**
+     * OCR results             
+     */
+    public data: Array<AiBcrOcrDataPart>;
+    
+
+    public constructor(
+        id?: string,
+        image?: string,
+        details?: { [key: string]: string; },
+        data?: Array<AiBcrOcrDataPart>) {
+        
+        this.id = id;
+        this.image = image;
+        this.details = details;
+        this.data = data;
+    }
+}
+
+/**
+ * Recognized text block             
+ */
+export class AiBcrOcrDataPart {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "x",
+            baseName: "x",
+            type: "number",
+        },
+        {
+            name: "y",
+            baseName: "y",
+            type: "number",
+        },
+        {
+            name: "width",
+            baseName: "width",
+            type: "number",
+        },
+        {
+            name: "height",
+            baseName: "height",
+            type: "number",
+        },
+        {
+            name: "text",
+            baseName: "text",
+            type: "string",
+        },
+        {
+            name: "details",
+            baseName: "details",
+            type: "{ [key: string]: string; }",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiBcrOcrDataPart.attributeTypeMap;
+    }
+
+    /**
+     * X position of text block             
+     */
+    public x: number;
+    
+    /**
+     * Y position of text block             
+     */
+    public y: number;
+    
+    /**
+     * Width of text block             
+     */
+    public width: number;
+    
+    /**
+     * Height of text block             
+     */
+    public height: number;
+    
+    /**
+     * Recognized text             
+     */
+    public text: string;
+    
+    /**
+     * Additional recognition result details             
+     */
+    public details: { [key: string]: string; };
+    
+
+    public constructor(
+        x?: number,
+        y?: number,
+        width?: number,
+        height?: number,
+        text?: string,
+        details?: { [key: string]: string; }) {
+        
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.text = text;
+        this.details = details;
+    }
+}
+
+/**
+ * Recognition options             
+ */
+export class AiBcrOptions {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "languages",
+            baseName: "languages",
+            type: "string",
+        },
+        {
+            name: "countries",
+            baseName: "countries",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiBcrOptions.attributeTypeMap;
+    }
+
+    /**
+     * Comma-separated ISO-639 codes of languages (either 639-1 or 639-3; i.e. \"it\" or \"ita\" for Italian); it's \"\" by default             
+     */
+    public languages: string;
+    
+    /**
+     * Comma-separated codes of countries             
+     */
+    public countries: string;
+    
+
+    public constructor(
+        languages?: string,
+        countries?: string) {
+        
+        this.languages = languages;
+        this.countries = countries;
+    }
+}
+
+/**
+ * Business card recognition request             
+ */
+export class AiBcrRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "options",
+            baseName: "options",
+            type: "AiBcrOptions",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiBcrRequest.attributeTypeMap;
+    }
+
+    /**
+     * Recognition options             
+     */
+    public options: AiBcrOptions;
+    
+
+    public constructor(
+        options?: AiBcrOptions) {
+        
+        this.options = options;
+    }
+}
+
+/**
+ * Parsed name component             
+ */
+export class AiNameComponent {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        },
+        {
+            name: "category",
+            baseName: "category",
+            type: "any",
+        },
+        {
+            name: "score",
+            baseName: "score",
+            type: "number",
+        },
+        {
+            name: "position",
+            baseName: "position",
+            type: "number",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiNameComponent.attributeTypeMap;
+    }
+
+    /**
+     * Component value             
+     */
+    public value: string;
+    
+    /**
+     * Component category             
+     */
+    public category: any;
+    
+    /**
+     * Score from 0.0 to 1.0             
+     */
+    public score: number;
+    
+    /**
+     * Component position from 0             
+     */
+    public position: number;
+    
+
+    public constructor(
+        value?: string,
+        category?: any,
+        score?: number,
+        position?: number) {
+        
+        this.value = value;
+        this.category = category;
+        this.score = score;
+        this.position = position;
+    }
+}
+
+/**
+ * Extracted name             
+ */
+export class AiNameExtracted {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "name",
+            baseName: "name",
+            type: "Array<AiNameExtractedComponent>",
+        },
+        {
+            name: "score",
+            baseName: "score",
+            type: "number",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiNameExtracted.attributeTypeMap;
+    }
+
+    /**
+     * Extracted name components             
+     */
+    public name: Array<AiNameExtractedComponent>;
+    
+    /**
+     * Extracted name score             
+     */
+    public score: number;
+    
+
+    public constructor(
+        name?: Array<AiNameExtractedComponent>,
+        score?: number) {
+        
+        this.name = name;
+        this.score = score;
+    }
+}
+
+/**
+ * Extracted name component             
+ */
+export class AiNameExtractedComponent {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "category",
+            baseName: "category",
+            type: "any",
+        },
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiNameExtractedComponent.attributeTypeMap;
+    }
+
+    /**
+     * Component category             
+     */
+    public category: any;
+    
+    /**
+     * Extracted value             
+     */
+    public value: string;
+    
+
+    public constructor(
+        category?: any,
+        value?: string) {
+        
+        this.category = category;
+        this.value = value;
+    }
+}
+
+/**
+ * Formatted name             
+ */
+export class AiNameFormatted {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "name",
+            baseName: "name",
+            type: "string",
+        },
+        {
+            name: "comments",
+            baseName: "comments",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiNameFormatted.attributeTypeMap;
+    }
+
+    /**
+     * Formatted name value             
+     */
+    public name: string;
+    
+    /**
+     * Usually empty; can contain extra message describing some issue occurred during the formatting             
+     */
+    public comments: string;
+    
+
+    public constructor(
+        name?: string,
+        comments?: string) {
+        
+        this.name = name;
+        this.comments = comments;
+    }
+}
+
+/**
+ * Name gender hypothesis             
+ */
+export class AiNameGenderHypothesis {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "gender",
+            baseName: "gender",
+            type: "any",
+        },
+        {
+            name: "score",
+            baseName: "score",
+            type: "number",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiNameGenderHypothesis.attributeTypeMap;
+    }
+
+    /**
+     * Name's possible gender             
+     */
+    public gender: any;
+    
+    /**
+     * Hypothesis score             
+     */
+    public score: number;
+    
+
+    public constructor(
+        gender?: any,
+        score?: number) {
+        
+        this.gender = gender;
+        this.score = score;
+    }
+}
+
+/**
+ * Two names match result             
+ */
+export class AiNameMatchResult {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "similarity",
+            baseName: "similarity",
+            type: "number",
+        },
+        {
+            name: "mismatches",
+            baseName: "mismatches",
+            type: "Array<AiNameMismatch>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiNameMatchResult.attributeTypeMap;
+    }
+
+    /**
+     * Similarity score             
+     */
+    public similarity: number;
+    
+    /**
+     * Detailed description of mismatches             
+     */
+    public mismatches: Array<AiNameMismatch>;
+    
+
+    public constructor(
+        similarity?: number,
+        mismatches?: Array<AiNameMismatch>) {
+        
+        this.similarity = similarity;
+        this.mismatches = mismatches;
+    }
+}
+
+/**
+ * Names mismatch detailed description             
+ */
+export class AiNameMismatch {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "category",
+            baseName: "category",
+            type: "any",
+        },
+        {
+            name: "similarity",
+            baseName: "similarity",
+            type: "number",
+        },
+        {
+            name: "explanation",
+            baseName: "explanation",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiNameMismatch.attributeTypeMap;
+    }
+
+    /**
+     * Mismatch type             
+     */
+    public category: any;
+    
+    /**
+     * Similarity score             
+     */
+    public similarity: number;
+    
+    /**
+     * Explanation or mismatch subtype             
+     */
+    public explanation: string;
+    
+
+    public constructor(
+        category?: any,
+        similarity?: number,
+        explanation?: string) {
+        
+        this.category = category;
+        this.similarity = similarity;
+        this.explanation = explanation;
+    }
+}
+
+/**
+ * AiName parser options             
+ */
+export class AiNameOptions {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "language",
+            baseName: "language",
+            type: "string",
+        },
+        {
+            name: "location",
+            baseName: "location",
+            type: "string",
+        },
+        {
+            name: "script",
+            baseName: "script",
+            type: "string",
+        },
+        {
+            name: "encoding",
+            baseName: "encoding",
+            type: "string",
+        },
+        {
+            name: "style",
+            baseName: "style",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiNameOptions.attributeTypeMap;
+    }
+
+    /**
+     * An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)             
+     */
+    public language: string;
+    
+    /**
+     * A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France             
+     */
+    public location: string;
+    
+    /**
+     * A writing system code; starts with the ISO-15924 script name             
+     */
+    public script: string;
+    
+    /**
+     * A character encoding name             
+     */
+    public encoding: string;
+    
+    /**
+     * Name writing style. Allowed values are: \"Formal\", \"Informal\", \"Legal\", \"Academic\"             
+     */
+    public style: string;
+    
+
+    public constructor(
+        language?: string,
+        location?: string,
+        script?: string,
+        encoding?: string,
+        style?: string) {
+        
+        this.language = language;
+        this.location = location;
+        this.script = script;
+        this.encoding = encoding;
+        this.style = style;
+    }
+}
+
+/**
+ * Parsed name request model             
+ */
+export class AiNameParsedRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "options",
+            baseName: "options",
+            type: "AiNameOptions",
+        },
+        {
+            name: "parsedName",
+            baseName: "parsedName",
+            type: "Array<AiNameComponent>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiNameParsedRequest.attributeTypeMap;
+    }
+
+    /**
+     * AiName parser options             
+     */
+    public options: AiNameOptions;
+    
+    /**
+     * Parsed name             
+     */
+    public parsedName: Array<AiNameComponent>;
+    
+
+    public constructor(
+        options?: AiNameOptions,
+        parsedName?: Array<AiNameComponent>) {
+        
+        this.options = options;
+        this.parsedName = parsedName;
+    }
+}
+
+/**
+ * Name with score             
+ */
+export class AiNameWeighted {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "name",
+            baseName: "name",
+            type: "string",
+        },
+        {
+            name: "score",
+            baseName: "score",
+            type: "number",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiNameWeighted.attributeTypeMap;
+    }
+
+    /**
+     * Name             
+     */
+    public name: string;
+    
+    /**
+     * Score of name             
+     */
+    public score: number;
+    
+
+    public constructor(
+        name?: string,
+        score?: number) {
+        
+        this.name = name;
+        this.score = score;
+    }
+}
+
+/**
+ * Name variants             
+ */
+export class AiNameWeightedVariants {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "names",
+            baseName: "names",
+            type: "Array<AiNameWeighted>",
+        },
+        {
+            name: "comments",
+            baseName: "comments",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiNameWeightedVariants.attributeTypeMap;
+    }
+
+    /**
+     * List of name variations             
+     */
+    public names: Array<AiNameWeighted>;
+    
+    /**
+     * Usually empty; can contain extra message describing some issue occurred during processing             
+     */
+    public comments: string;
+    
+
+    public constructor(
+        names?: Array<AiNameWeighted>,
+        comments?: string) {
+        
+        this.names = names;
+        this.comments = comments;
+    }
+}
+
+/**
+ * Name writing style             
+ */
+export enum AiNameWritingStyle {
+    Formal = 'Formal' as any,
+    Informal = 'Informal' as any,
+    Legal = 'Legal' as any,
+    Academic = 'Academic' as any,
+}
+/**
+ * Base property object             
  */
 export class BaseObject {
 
@@ -145,12 +1026,12 @@ export class BaseObject {
     }
 
     /**
-     * Gets or sets the name of an object.
+     * Gets or sets the name of an object.             
      */
     public name: string;
     
     /**
-     * Property type. Used for deserialization purposes
+     * Property type. Used for deserialization purposes             
      */
 
     get type(): string {
@@ -180,7 +1061,7 @@ export enum ContactFormat {
     Msg = 'Msg' as any,
 }
 /**
- * Create email document request
+ * Create email document request             
  */
 export class CreateEmailRequest {
 
@@ -207,12 +1088,12 @@ export class CreateEmailRequest {
     }
 
     /**
-     * An email document that should be created
+     * An email document that should be created             
      */
     public emailDocument: EmailDocument;
     
     /**
-     * Email document location in storage
+     * Email document location in storage             
      */
     public storageFolder: StorageFolderLocation;
     
@@ -274,7 +1155,7 @@ export class DiscUsage {
 }
 
 /**
- * Email account settings request
+ * Email account settings request             
  */
 export class EmailAccountRequest {
 
@@ -326,37 +1207,37 @@ export class EmailAccountRequest {
     }
 
     /**
-     * Email account host
+     * Email account host             
      */
     public host: string;
     
     /**
-     * Email account port
+     * Email account port             
      */
     public port: number;
     
     /**
-     * Email account login
+     * Email account login             
      */
     public login: string;
     
     /**
-     * Email account security options
+     * Email account security options             
      */
     public securityOptions: any;
     
     /**
-     * Email account protocol type
+     * Email account protocol type             
      */
     public protocolType: any;
     
     /**
-     * Email account description
+     * Email account description             
      */
     public description: string;
     
     /**
-     * A storage file location info to store email account
+     * A storage file location info to store email account             
      */
     public storageFile: StorageFileLocation;
     
@@ -381,7 +1262,7 @@ export class EmailAccountRequest {
 }
 
 /**
- * Represents Email document DTO.
+ * Represents Email document DTO.             
  */
 export class EmailDocument {
 
@@ -408,12 +1289,12 @@ export class EmailDocument {
     }
 
     /**
-     * Links that originate from this document.
+     * Links that originate from this document.             
      */
     public links: Array<Link>;
     
     /**
-     * List of document properties.
+     * List of document properties.             
      */
     public documentProperties: EmailProperties;
     
@@ -428,7 +1309,7 @@ export class EmailDocument {
 }
 
 /**
- * An email document response
+ * An email document response             
  */
 export class EmailDocumentResponse {
 
@@ -450,7 +1331,7 @@ export class EmailDocumentResponse {
     }
 
     /**
-     * An email document requested
+     * An email document requested             
      */
     public document: EmailDocument;
     
@@ -463,7 +1344,7 @@ export class EmailDocumentResponse {
 }
 
 /**
- * Email list properties.
+ * Email list properties.             
  */
 export class EmailProperties {
 
@@ -490,7 +1371,7 @@ export class EmailProperties {
     }
 
     /**
-     * Gets or sets link that originate from this document.
+     * Gets or sets link that originate from this document.             
      */
     public link: Link;
     
@@ -507,7 +1388,7 @@ export class EmailProperties {
 }
 
 /**
- * Email property.
+ * Email property.             
  */
 export class EmailProperty {
 
@@ -557,7 +1438,7 @@ export class EmailProperty {
 }
 
 /**
- * Email property response.
+ * Email property response.             
  */
 export class EmailPropertyResponse {
 
@@ -579,7 +1460,7 @@ export class EmailPropertyResponse {
     }
 
     /**
-     * Gets or sets email property.
+     * Gets or sets email property.             
      */
     public emailProperty: EmailProperty;
     
@@ -756,7 +1637,7 @@ export class FilesUploadResult {
 }
 
 /**
- * Object represented as hierarchical properties request 
+ * Object represented as hierarchical properties request             
  */
 export class HierarchicalObjectRequest {
 
@@ -783,12 +1664,12 @@ export class HierarchicalObjectRequest {
     }
 
     /**
-     * Hierarchical properties of document
+     * Hierarchical properties of document             
      */
     public hierarchicalObject: HierarchicalObject;
     
     /**
-     * Document location in storage
+     * Document location in storage             
      */
     public storageFolder: StorageFolderLocation;
     
@@ -803,7 +1684,7 @@ export class HierarchicalObjectRequest {
 }
 
 /**
- * Document represented as hierarchical set of properties response
+ * Document represented as hierarchical set of properties response             
  */
 export class HierarchicalObjectResponse {
 
@@ -830,12 +1711,12 @@ export class HierarchicalObjectResponse {
     }
 
     /**
-     * Document properties
+     * Document properties             
      */
     public hierarchicalObject: HierarchicalObject;
     
     /**
-     * Document location in storage
+     * Document location in storage             
      */
     public storageFile: StorageFileLocation;
     
@@ -850,7 +1731,7 @@ export class HierarchicalObjectResponse {
 }
 
 /**
- * Provides information for the object link. This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7
+ * Provides information for the object link. This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7             
  */
 export class Link {
 
@@ -887,22 +1768,22 @@ export class Link {
     }
 
     /**
-     * The \"href\" attribute contains the link's IRI. atom:link elements MUST have an href attribute, whose value MUST be a IRI reference
+     * The \"href\" attribute contains the link's IRI. atom:link elements MUST have an href attribute, whose value MUST be a IRI reference             
      */
     public href: string;
     
     /**
-     * atom:link elements MAY have a \"rel\" attribute that indicates the link relation type.  If the \"rel\" attribute is not present, the link element MUST be interpreted as if the link relation type is \"alternate\".
+     * atom:link elements MAY have a \"rel\" attribute that indicates the link relation type.  If the \"rel\" attribute is not present, the link element MUST be interpreted as if the link relation type is \"alternate\".             
      */
     public rel: string;
     
     /**
-     * On the link element, the \"type\" attribute's value is an advisory media type: it is a hint about the type of the representation that is expected to be returned when the value of the href attribute is dereferenced.  Note that the type attribute does not override the actual media type returned with the representation.
+     * On the link element, the \"type\" attribute's value is an advisory media type: it is a hint about the type of the representation that is expected to be returned when the value of the href attribute is dereferenced.  Note that the type attribute does not override the actual media type returned with the representation.             
      */
     public type: string;
     
     /**
-     * The \"title\" attribute conveys human-readable information about the link.  The content of the \"title\" attribute is Language-Sensitive.
+     * The \"title\" attribute conveys human-readable information about the link.  The content of the \"title\" attribute is Language-Sensitive.             
      */
     public title: string;
     
@@ -917,6 +1798,151 @@ export class Link {
         this.rel = rel;
         this.type = type;
         this.title = title;
+    }
+}
+
+export class ListResponseOfAiBcrOcrData {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<AiBcrOcrData>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfAiBcrOcrData.attributeTypeMap;
+    }
+
+    public value: Array<AiBcrOcrData>;
+    
+
+    public constructor(
+        value?: Array<AiBcrOcrData>) {
+        
+        this.value = value;
+    }
+}
+
+export class ListResponseOfAiNameComponent {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<AiNameComponent>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfAiNameComponent.attributeTypeMap;
+    }
+
+    public value: Array<AiNameComponent>;
+    
+
+    public constructor(
+        value?: Array<AiNameComponent>) {
+        
+        this.value = value;
+    }
+}
+
+export class ListResponseOfAiNameExtracted {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<AiNameExtracted>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfAiNameExtracted.attributeTypeMap;
+    }
+
+    public value: Array<AiNameExtracted>;
+    
+
+    public constructor(
+        value?: Array<AiNameExtracted>) {
+        
+        this.value = value;
+    }
+}
+
+export class ListResponseOfAiNameGenderHypothesis {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<AiNameGenderHypothesis>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfAiNameGenderHypothesis.attributeTypeMap;
+    }
+
+    public value: Array<AiNameGenderHypothesis>;
+    
+
+    public constructor(
+        value?: Array<AiNameGenderHypothesis>) {
+        
+        this.value = value;
+    }
+}
+
+export class ListResponseOfHierarchicalObject {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<HierarchicalObject>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfHierarchicalObject.attributeTypeMap;
+    }
+
+    public value: Array<HierarchicalObject>;
+    
+
+    public constructor(
+        value?: Array<HierarchicalObject>) {
+        
+        this.value = value;
     }
 }
 
@@ -978,6 +2004,35 @@ export class ListResponseOfMailServerFolder {
     }
 }
 
+export class ListResponseOfStorageFileLocation {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<StorageFileLocation>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfStorageFileLocation.attributeTypeMap;
+    }
+
+    public value: Array<StorageFileLocation>;
+    
+
+    public constructor(
+        value?: Array<StorageFileLocation>) {
+        
+        this.value = value;
+    }
+}
+
 export class ListResponseOfString {
 
     /**
@@ -1008,7 +2063,7 @@ export class ListResponseOfString {
 }
 
 /**
- * Email account folder
+ * Email account folder             
  */
 export class MailServerFolder {
 
@@ -1035,12 +2090,12 @@ export class MailServerFolder {
     }
 
     /**
-     * Gets or sets mail folder name
+     * Gets or sets mail folder name             
      */
     public name: string;
     
     /**
-     * Gets or sets mail folder id
+     * Gets or sets mail folder id             
      */
     public id: string;
     
@@ -1055,7 +2110,7 @@ export class MailServerFolder {
 }
 
 /**
- * Email document property DTO.
+ * Email document property DTO.             
  */
 export class MimeResponse {
 
@@ -1077,7 +2132,7 @@ export class MimeResponse {
     }
 
     /**
-     * Gets or sets base64 encoded mime content.
+     * Gets or sets base64 encoded mime content.             
      */
     public mime: string;
     
@@ -1208,7 +2263,7 @@ export class ObjectExist {
 }
 
 /**
- * Update email document property request
+ * Update email document property request             
  */
 export class SetEmailPropertyRequest {
 
@@ -1235,12 +2290,12 @@ export class SetEmailPropertyRequest {
     }
 
     /**
-     * An email property that should be updated
+     * An email property that should be updated             
      */
     public emailProperty: EmailProperty;
     
     /**
-     * An email document location in storage
+     * An email document location in storage             
      */
     public storageFolder: StorageFolderLocation;
     
@@ -1373,7 +2428,7 @@ export class StorageFile {
 }
 
 /**
- * A storage folder location information
+ * A storage folder location information             
  */
 export class StorageFolderLocation {
 
@@ -1400,12 +2455,12 @@ export class StorageFolderLocation {
     }
 
     /**
-     * A storage name
+     * A storage name             
      */
     public storage: string;
     
     /**
-     * A path to a folder in specified storage
+     * A path to a folder in specified storage             
      */
     public folderPath: string;
     
@@ -1420,7 +2475,7 @@ export class StorageFolderLocation {
 }
 
 /**
- * Email document property DTO.
+ * Email document property DTO.             
  */
 export class ValueResponse {
 
@@ -1442,7 +2497,7 @@ export class ValueResponse {
     }
 
     /**
-     * Gets or sets string content.
+     * Gets or sets string content.             
      */
     public value: string;
     
@@ -1455,7 +2510,231 @@ export class ValueResponse {
 }
 
 /**
- * Append email to account request
+ * Image to recognize             
+ */
+export class AiBcrBase64Image extends AiBcrImage {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "base64Data",
+            baseName: "base64Data",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AiBcrBase64Image.attributeTypeMap);
+    }
+
+    /**
+     * Image data in base64             
+     */
+    public base64Data: string;
+    
+
+    public constructor(
+        isSingle?: boolean,
+        base64Data?: string) {
+        super();
+        this.isSingle = isSingle;
+        this.base64Data = base64Data;
+    }
+}
+
+/**
+ * Parse business card image request             
+ */
+export class AiBcrBase64Request extends AiBcrRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "images",
+            baseName: "images",
+            type: "Array<AiBcrBase64Image>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AiBcrBase64Request.attributeTypeMap);
+    }
+
+    /**
+     * Images to recognize             
+     */
+    public images: Array<AiBcrBase64Image>;
+    
+
+    public constructor(
+        options?: AiBcrOptions,
+        images?: Array<AiBcrBase64Image>) {
+        super();
+        this.options = options;
+        this.images = images;
+    }
+}
+
+/**
+ * Image from storage for recognition             
+ */
+export class AiBcrImageStorageFile extends AiBcrImage {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "file",
+            baseName: "file",
+            type: "StorageFileLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AiBcrImageStorageFile.attributeTypeMap);
+    }
+
+    /**
+     * Image location             
+     */
+    public file: StorageFileLocation;
+    
+
+    public constructor(
+        isSingle?: boolean,
+        file?: StorageFileLocation) {
+        super();
+        this.isSingle = isSingle;
+        this.file = file;
+    }
+}
+
+/**
+ * Parse ocr data request             
+ */
+export class AiBcrParseOcrDataRequest extends AiBcrRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "data",
+            baseName: "data",
+            type: "Array<AiBcrOcrData>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AiBcrParseOcrDataRequest.attributeTypeMap);
+    }
+
+    /**
+     * OCR data             
+     */
+    public data: Array<AiBcrOcrData>;
+    
+
+    public constructor(
+        options?: AiBcrOptions,
+        data?: Array<AiBcrOcrData>) {
+        super();
+        this.options = options;
+        this.data = data;
+    }
+}
+
+/**
+ * Business card images from storage for recognition             
+ */
+export class AiBcrStorageImageRequest extends AiBcrRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "images",
+            baseName: "images",
+            type: "Array<AiBcrImageStorageFile>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AiBcrStorageImageRequest.attributeTypeMap);
+    }
+
+    /**
+     * List of images with business cards             
+     */
+    public images: Array<AiBcrImageStorageFile>;
+    
+
+    public constructor(
+        options?: AiBcrOptions,
+        images?: Array<AiBcrImageStorageFile>) {
+        super();
+        this.options = options;
+        this.images = images;
+    }
+}
+
+/**
+ * Two parsed names to match request             
+ */
+export class AiNameParsedMatchRequest extends AiNameParsedRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "otherParsedName",
+            baseName: "otherParsedName",
+            type: "Array<AiNameComponent>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AiNameParsedMatchRequest.attributeTypeMap);
+    }
+
+    /**
+     * Other parsed name to match             
+     */
+    public otherParsedName: Array<AiNameComponent>;
+    
+
+    public constructor(
+        options?: AiNameOptions,
+        parsedName?: Array<AiNameComponent>,
+        otherParsedName?: Array<AiNameComponent>) {
+        super();
+        this.options = options;
+        this.parsedName = parsedName;
+        this.otherParsedName = otherParsedName;
+    }
+}
+
+/**
+ * Append email to account request             
  */
 export class AppendEmailAccountBaseRequest extends AccountBaseRequest {
 
@@ -1502,7 +2781,7 @@ export class AppendEmailAccountBaseRequest extends AccountBaseRequest {
 }
 
 /**
- * Create folder request
+ * Create folder request             
  */
 export class CreateFolderBaseRequest extends AccountBaseRequest {
 
@@ -1529,12 +2808,12 @@ export class CreateFolderBaseRequest extends AccountBaseRequest {
     }
 
     /**
-     * Folder name
+     * Folder name             
      */
     public folder: string;
     
     /**
-     * Parent folder path
+     * Parent folder path             
      */
     public parentFolder: string;
     
@@ -1555,7 +2834,7 @@ export class CreateFolderBaseRequest extends AccountBaseRequest {
 }
 
 /**
- * Delete folder request
+ * Delete folder request             
  */
 export class DeleteFolderBaseRequest extends AccountBaseRequest {
 
@@ -1582,12 +2861,12 @@ export class DeleteFolderBaseRequest extends AccountBaseRequest {
     }
 
     /**
-     * Folder name
+     * Folder name             
      */
     public folder: string;
     
     /**
-     * Specifies that folder should be deleted permanently
+     * Specifies that folder should be deleted permanently             
      */
     public deletePermanently: boolean;
     
@@ -1608,7 +2887,7 @@ export class DeleteFolderBaseRequest extends AccountBaseRequest {
 }
 
 /**
- * Delete message request
+ * Delete message request             
  */
 export class DeleteMessageBaseRequest extends AccountBaseRequest {
 
@@ -1635,12 +2914,12 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
     }
 
     /**
-     * Message identifier
+     * Message identifier             
      */
     public messageId: string;
     
     /**
-     * Specifies that message should be deleted permanently
+     * Specifies that message should be deleted permanently             
      */
     public deletePermanently: boolean;
     
@@ -1718,7 +2997,7 @@ export class FileVersion extends StorageFile {
 }
 
 /**
- * Objects' properties hierarchical representation
+ * Objects' properties hierarchical representation             
  */
 export class HierarchicalObject extends BaseObject {
 
@@ -1740,7 +3019,7 @@ export class HierarchicalObject extends BaseObject {
     }
 
     /**
-     * List of internal properties
+     * List of internal properties             
      */
     public internalProperties: Array<BaseObject>;
     
@@ -1757,7 +3036,7 @@ export class HierarchicalObject extends BaseObject {
 }
 
 /**
- * Indexed hierarchical property
+ * Indexed hierarchical property             
  */
 export class IndexedHierarchicalObject extends BaseObject {
 
@@ -1784,12 +3063,12 @@ export class IndexedHierarchicalObject extends BaseObject {
     }
 
     /**
-     * Index of property in list
+     * Index of property in list             
      */
     public index: number;
     
     /**
-     * List of internal properties
+     * List of internal properties             
      */
     public internalProperties: Array<BaseObject>;
     
@@ -1808,7 +3087,7 @@ export class IndexedHierarchicalObject extends BaseObject {
 }
 
 /**
- * Simple indexed property
+ * Simple indexed property             
  */
 export class IndexedPrimitiveObject extends BaseObject {
 
@@ -1835,12 +3114,12 @@ export class IndexedPrimitiveObject extends BaseObject {
     }
 
     /**
-     * Index of property in list
+     * Index of property in list             
      */
     public index: number;
     
     /**
-     * Gets or sets the name of a property.
+     * Gets or sets the name of a property.             
      */
     public value: string;
     
@@ -1859,7 +3138,7 @@ export class IndexedPrimitiveObject extends BaseObject {
 }
 
 /**
- * Simple property object
+ * Simple property object             
  */
 export class PrimitiveObject extends BaseObject {
 
@@ -1881,7 +3160,7 @@ export class PrimitiveObject extends BaseObject {
     }
 
     /**
-     * Property value
+     * Property value             
      */
     public value: string;
     
@@ -1898,7 +3177,7 @@ export class PrimitiveObject extends BaseObject {
 }
 
 /**
- * Save email account settings with login/password authentication request
+ * Save email account settings with login/password authentication request             
  */
 export class SaveEmailAccountRequest extends EmailAccountRequest {
 
@@ -1920,7 +3199,7 @@ export class SaveEmailAccountRequest extends EmailAccountRequest {
     }
 
     /**
-     * Email account password
+     * Email account password             
      */
     public password: string;
     
@@ -1947,7 +3226,7 @@ export class SaveEmailAccountRequest extends EmailAccountRequest {
 }
 
 /**
- * Save email account settings with OAuth request
+ * Save email account settings with OAuth request             
  */
 export class SaveOAuthEmailAccountRequest extends EmailAccountRequest {
 
@@ -1979,17 +3258,17 @@ export class SaveOAuthEmailAccountRequest extends EmailAccountRequest {
     }
 
     /**
-     * OAuth client identifier
+     * OAuth client identifier             
      */
     public clientId: string;
     
     /**
-     * OAuth client secret
+     * OAuth client secret             
      */
     public clientSecret: string;
     
     /**
-     * OAuth refresh token
+     * OAuth refresh token             
      */
     public refreshToken: string;
     
@@ -2020,7 +3299,7 @@ export class SaveOAuthEmailAccountRequest extends EmailAccountRequest {
 }
 
 /**
- * Send email file request
+ * Send email file request             
  */
 export class SendEmailBaseRequest extends AccountBaseRequest {
 
@@ -2042,7 +3321,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
     }
 
     /**
-     * Email document (*.eml) file location in storage
+     * Email document (*.eml) file location in storage             
      */
     public emailFile: StorageFileLocation;
     
@@ -2061,7 +3340,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
 }
 
 /**
- * Send email MIME request
+ * Send email MIME request             
  */
 export class SendEmailMimeBaseRequest extends AccountBaseRequest {
 
@@ -2083,7 +3362,7 @@ export class SendEmailMimeBaseRequest extends AccountBaseRequest {
     }
 
     /**
-     * Email document serialized as MIME
+     * Email document serialized as MIME             
      */
     public base64MimeMessage: string;
     
@@ -2102,7 +3381,7 @@ export class SendEmailMimeBaseRequest extends AccountBaseRequest {
 }
 
 /**
- * Set message is read request
+ * Set message is read request             
  */
 export class SetMessageReadFlagAccountBaseRequest extends AccountBaseRequest {
 
@@ -2129,12 +3408,12 @@ export class SetMessageReadFlagAccountBaseRequest extends AccountBaseRequest {
     }
 
     /**
-     * Message identifier
+     * Message identifier             
      */
     public messageId: string;
     
     /**
-     * Specifies that message should be marked read or unread
+     * Specifies that message should be marked read or unread             
      */
     public isRead: boolean;
     
@@ -2155,7 +3434,7 @@ export class SetMessageReadFlagAccountBaseRequest extends AccountBaseRequest {
 }
 
 /**
- * A storage file location information
+ * A storage file location information             
  */
 export class StorageFileLocation extends StorageFolderLocation {
 
@@ -2177,7 +3456,7 @@ export class StorageFileLocation extends StorageFolderLocation {
     }
 
     /**
-     * A file name in storage
+     * A file name in storage             
      */
     public fileName: string;
     
@@ -2194,7 +3473,85 @@ export class StorageFileLocation extends StorageFolderLocation {
 }
 
 /**
- * Append email from storage file to account request
+ * Parse ocr data request with storage output location             
+ */
+export class AiBcrParseOcrDataStorageRequest extends AiBcrParseOcrDataRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "outFolder",
+            baseName: "outFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AiBcrParseOcrDataStorageRequest.attributeTypeMap);
+    }
+
+    /**
+     * Output folder location on storage             
+     */
+    public outFolder: StorageFolderLocation;
+    
+
+    public constructor(
+        options?: AiBcrOptions,
+        data?: Array<AiBcrOcrData>,
+        outFolder?: StorageFolderLocation) {
+        super();
+        this.options = options;
+        this.data = data;
+        this.outFolder = outFolder;
+    }
+}
+
+/**
+ * Parse business card images from Storage request             
+ */
+export class AiBcrParseStorageRequest extends AiBcrStorageImageRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "outFolder",
+            baseName: "outFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AiBcrParseStorageRequest.attributeTypeMap);
+    }
+
+    /**
+     * Parse output folder location on storage             
+     */
+    public outFolder: StorageFolderLocation;
+    
+
+    public constructor(
+        options?: AiBcrOptions,
+        images?: Array<AiBcrImageStorageFile>,
+        outFolder?: StorageFolderLocation) {
+        super();
+        this.options = options;
+        this.images = images;
+        this.outFolder = outFolder;
+    }
+}
+
+/**
+ * Append email from storage file to account request             
  */
 export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
 
@@ -2216,7 +3573,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
     }
 
     /**
-     * Email document file location in storage
+     * Email document file location in storage             
      */
     public emailFile: StorageFileLocation;
     
@@ -2239,7 +3596,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
 }
 
 /**
- * Append email from MIME string to account request
+ * Append email from MIME string to account request             
  */
 export class AppendEmailMimeBaseRequest extends AppendEmailAccountBaseRequest {
 
@@ -2261,7 +3618,7 @@ export class AppendEmailMimeBaseRequest extends AppendEmailAccountBaseRequest {
     }
 
     /**
-     * Email document serialized as MIME string
+     * Email document serialized as MIME string             
      */
     public base64MimeMessage: string;
     
@@ -2284,12 +3641,29 @@ export class AppendEmailMimeBaseRequest extends AppendEmailAccountBaseRequest {
 }
 
 const enumsMap = {
+    "AiNameWritingStyle": AiNameWritingStyle,
     "ContactFormat": ContactFormat,
 };
 
 const typeMap = {
             AccountBaseRequest,
             AddAttachmentRequest,
+            AiBcrImage,
+            AiBcrOcrData,
+            AiBcrOcrDataPart,
+            AiBcrOptions,
+            AiBcrRequest,
+            AiNameComponent,
+            AiNameExtracted,
+            AiNameExtractedComponent,
+            AiNameFormatted,
+            AiNameGenderHypothesis,
+            AiNameMatchResult,
+            AiNameMismatch,
+            AiNameOptions,
+            AiNameParsedRequest,
+            AiNameWeighted,
+            AiNameWeightedVariants,
             BaseObject,
             CreateEmailRequest,
             DiscUsage,
@@ -2306,8 +3680,14 @@ const typeMap = {
             HierarchicalObjectRequest,
             HierarchicalObjectResponse,
             Link,
+            ListResponseOfAiBcrOcrData,
+            ListResponseOfAiNameComponent,
+            ListResponseOfAiNameExtracted,
+            ListResponseOfAiNameGenderHypothesis,
+            ListResponseOfHierarchicalObject,
             ListResponseOfHierarchicalObjectResponse,
             ListResponseOfMailServerFolder,
+            ListResponseOfStorageFileLocation,
             ListResponseOfString,
             MailServerFolder,
             MimeResponse,
@@ -2318,6 +3698,12 @@ const typeMap = {
             StorageFile,
             StorageFolderLocation,
             ValueResponse,
+            AiBcrBase64Image,
+            AiBcrBase64Request,
+            AiBcrImageStorageFile,
+            AiBcrParseOcrDataRequest,
+            AiBcrStorageImageRequest,
+            AiNameParsedMatchRequest,
             AppendEmailAccountBaseRequest,
             CreateFolderBaseRequest,
             DeleteFolderBaseRequest,
@@ -2333,6 +3719,8 @@ const typeMap = {
             SendEmailMimeBaseRequest,
             SetMessageReadFlagAccountBaseRequest,
             StorageFileLocation,
+            AiBcrParseOcrDataStorageRequest,
+            AiBcrParseStorageRequest,
             AppendEmailBaseRequest,
             AppendEmailMimeBaseRequest,
 };
