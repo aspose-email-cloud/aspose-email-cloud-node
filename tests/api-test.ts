@@ -24,6 +24,47 @@ describe('EmailApi', function() {
         expect(primitive.value).toBeDefined();
     });
 
+    it('FileTest', async function() {
+        var calendarFile = await createCalendar();
+        var path = folder + '/' + calendarFile;
+        var downloaded = await api.downloadFile(new requests.DownloadFileRequest(path, storage));
+        var calendarRaw = downloaded.body.toString()
+        expect(calendarRaw).toContain('Organizer')
+        await api.uploadFile(new requests.UploadFileRequest(path, downloaded.body, storage));
+        var exist = await api.objectExists(new requests.ObjectExistsRequest(path, storage));
+        expect(exist.body.exists).toBeTrue();
+        var calendar = await api.getCalendar(new requests.GetCalendarRequest(calendarFile, folder, storage));
+        var location = calendar.body.internalProperties
+            .find(item => item.type == 'PrimitiveObject' && item.name == 'LOCATION') as models.PrimitiveObject;
+        expect(location.value).toEqual('location');
+    });
+
+    it('Contact format', async function() {
+        for(var format of ['VCard', 'Msg']) {
+            var extension = (format == 'Msg') ? '.msg' : '.vcf';
+            var fileName = uuidv4() + extension;
+            await api.createContact(new requests.CreateContactRequest(
+                format as 'VCard' | 'Msg',
+                fileName,
+                new models.HierarchicalObjectRequest(
+                    new models.HierarchicalObject('CONTACT', undefined, []),
+                    new models.StorageFolderLocation(storage, folder)
+                )));
+            var exists = await api.objectExists(new requests.ObjectExistsRequest(folder + '/' + fileName, storage));
+            expect(exists.body.exists).toBeTrue();
+        }
+    });
+
+    it('Date and time', async function() {
+        var startDate = getDate(undefined, 24);
+        startDate.setMilliseconds(0);
+        var calendarFile = await createCalendar(startDate);
+        var calendar = await api.getCalendar(new requests.GetCalendarRequest(calendarFile, folder, storage));
+        var startDateProperty = calendar.body.internalProperties.find(item => item.name == 'STARTDATE') as models.PrimitiveObject;
+        var factStartDate = new Date(startDateProperty.value);
+        expect(factStartDate).toEqual(startDate);
+    });
+
     async function createCalendar(startDate? : Date) :Promise<string> {
         var fileName = uuidv4() + '.ics';
         startDate = (startDate == null) ? getDate(undefined, 1) : startDate;
