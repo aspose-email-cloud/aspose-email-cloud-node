@@ -8,12 +8,22 @@ describe('EmailApi', function() {
     var folder :string;
     var storage = 'First Storage';
 
-    beforeAll(function() {
+    beforeAll(async function() {
         api = new EmailApi(process.env.appSid, process.env.appKey, process.env.apiBaseUrl);
         folder = uuidv4();
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
+        await api.createFolder(new requests.CreateFolderRequest(folder, storage));
     })
 
+    afterAll(async function() {
+        await api.deleteFolder(new requests.DeleteFolderRequest(folder, storage, true));
+    })
+
+    /*
+     * HierarchicalObject serialization and deserialization test.
+     * This test checks that BaseObject.Type field filled automatically by SDK
+     * and properly used in serialization and deserialization
+     */
     it('HierarchicalObject', async function() {
         var calendarFile = await createCalendar();
         var calendar = await api.getCalendar(new requests.GetCalendarRequest(calendarFile, folder, storage));
@@ -24,6 +34,9 @@ describe('EmailApi', function() {
         expect(primitive.value).toBeDefined();
     });
 
+    /**
+     * Buffer support test
+     */
     it('FileTest', async function() {
         var calendarFile = await createCalendar();
         var path = folder + '/' + calendarFile;
@@ -39,6 +52,10 @@ describe('EmailApi', function() {
         expect(location.value).toEqual('location');
     });
 
+    /**
+     * Contact format specified as Enum, but SDK represents it as an advanced type of string constants a string.
+     * Test checks that value parsing works properly
+     */
     it('Contact format', async function() {
         for(var format of ['VCard', 'Msg']) {
             var extension = (format == 'Msg') ? '.msg' : '.vcf';
@@ -55,7 +72,12 @@ describe('EmailApi', function() {
         }
     });
 
-    it('Date and time', async function() {
+    /**
+     * Test Date serialization and deserialization.
+     * Checks that SDK and Backend do not change Date during processing.
+     * In most cases developer should carefully serialize and deserialize Date
+     */
+    it('Date', async function() {
         var startDate = getDate(undefined, 24);
         startDate.setMilliseconds(0);
         var calendarFile = await createCalendar(startDate);
