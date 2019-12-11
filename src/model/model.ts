@@ -23,6 +23,9 @@
 * SOFTWARE.
 */
 
+/**
+ * EmailClient accounts request             
+ */
 export class AccountBaseRequest {
 
     /**
@@ -52,10 +55,19 @@ export class AccountBaseRequest {
         return AccountBaseRequest.attributeTypeMap;
     }
 
+    /**
+     * First account storage file name for receiving emails (or universal one)             
+     */
     public firstAccount: string;
     
+    /**
+     * Second account storage file name for sending emails (ignored if first is universal)             
+     */
     public secondAccount: string;
     
+    /**
+     * Storage folder location of account files             
+     */
     public storageFolder: StorageFolderLocation;
     
 
@@ -368,7 +380,7 @@ export class AiBcrOptions {
 /**
  * Business card recognition request             
  */
-export class AiBcrRequest {
+export class AiBcrRq {
 
     /**
      * Attribute type map
@@ -384,7 +396,7 @@ export class AiBcrRequest {
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return AiBcrRequest.attributeTypeMap;
+        return AiBcrRq.attributeTypeMap;
     }
 
     /**
@@ -417,7 +429,7 @@ export class AiNameComponent {
         {
             name: "category",
             baseName: "category",
-            type: "any",
+            type: "string",
         },
         {
             name: "score",
@@ -443,9 +455,9 @@ export class AiNameComponent {
     public value: string;
     
     /**
-     * Component category             
+     * Name component category. Enum, available values: Unknown, Mononym, Score, Format, FirstInitial, FirstName, MiddleInitial, MiddleName, MiddleNickname, MiddleSobriquet, MiddleMaidenName, MiddlePatronym, MiddleMatronym, LastInitial, LastName, LastNobiliaryParticle, LastNominalConjunction, LastPaternalSurname, LastMaternalSurname, PrefixTitle, PostfixGenerationalTitle, PostfixPostnominalLetters, ArabicIsm, ArabicKunya, ArabicNasab, ArabicSlaqab, ArabicNisbah
      */
-    public category: any;
+    public category: string;
     
     /**
      * Score from 0.0 to 1.0             
@@ -460,7 +472,7 @@ export class AiNameComponent {
 
     public constructor(
         value?: string,
-        category?: any,
+        category?: string,
         score?: number,
         position?: number) {
         
@@ -468,6 +480,89 @@ export class AiNameComponent {
         this.category = category;
         this.score = score;
         this.position = position;
+    }
+}
+
+/**
+ * AiName cultural context             
+ */
+export class AiNameCulturalContext {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "language",
+            baseName: "language",
+            type: "string",
+        },
+        {
+            name: "location",
+            baseName: "location",
+            type: "string",
+        },
+        {
+            name: "script",
+            baseName: "script",
+            type: "string",
+        },
+        {
+            name: "encoding",
+            baseName: "encoding",
+            type: "string",
+        },
+        {
+            name: "style",
+            baseName: "style",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AiNameCulturalContext.attributeTypeMap;
+    }
+
+    /**
+     * An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)             
+     */
+    public language: string;
+    
+    /**
+     * A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France             
+     */
+    public location: string;
+    
+    /**
+     * A writing system code; starts with the ISO-15924 script name             
+     */
+    public script: string;
+    
+    /**
+     * A character encoding name             
+     */
+    public encoding: string;
+    
+    /**
+     * Name writing style. Enum, available values: Formal, Informal, Legal, Academic
+     */
+    public style: string;
+    
+
+    public constructor(
+        language?: string,
+        location?: string,
+        script?: string,
+        encoding?: string,
+        style?: string) {
+        
+        this.language = language;
+        this.location = location;
+        this.script = script;
+        this.encoding = encoding;
+        this.style = style;
     }
 }
 
@@ -530,7 +625,7 @@ export class AiNameExtractedComponent {
         {
             name: "category",
             baseName: "category",
-            type: "any",
+            type: "string",
         },
         {
             name: "value",
@@ -546,9 +641,9 @@ export class AiNameExtractedComponent {
     }
 
     /**
-     * Component category             
+     * Extracted from email address name component category. Enum, available values: Unknown, GivenName, Surname, SomeName, NoName, Initial
      */
-    public category: any;
+    public category: string;
     
     /**
      * Extracted value             
@@ -557,7 +652,7 @@ export class AiNameExtractedComponent {
     
 
     public constructor(
-        category?: any,
+        category?: string,
         value?: string) {
         
         this.category = category;
@@ -624,7 +719,7 @@ export class AiNameGenderHypothesis {
         {
             name: "gender",
             baseName: "gender",
-            type: "any",
+            type: "string",
         },
         {
             name: "score",
@@ -640,9 +735,9 @@ export class AiNameGenderHypothesis {
     }
 
     /**
-     * Name's possible gender             
+     * Recognized name gender. Enum, available values: Male, Female, Unknown
      */
-    public gender: any;
+    public gender: string;
     
     /**
      * Hypothesis score             
@@ -651,7 +746,7 @@ export class AiNameGenderHypothesis {
     
 
     public constructor(
-        gender?: any,
+        gender?: string,
         score?: number) {
         
         this.gender = gender;
@@ -718,7 +813,7 @@ export class AiNameMismatch {
         {
             name: "category",
             baseName: "category",
-            type: "any",
+            type: "string",
         },
         {
             name: "similarity",
@@ -739,9 +834,9 @@ export class AiNameMismatch {
     }
 
     /**
-     * Mismatch type             
+     * Mismatch type. Enum, available values: Unknown, FirstName, MiddleName, MiddleLastName, MiddleNickname, Gender, Context
      */
-    public category: any;
+    public category: string;
     
     /**
      * Similarity score             
@@ -755,7 +850,7 @@ export class AiNameMismatch {
     
 
     public constructor(
-        category?: any,
+        category?: string,
         similarity?: number,
         explanation?: string) {
         
@@ -766,101 +861,23 @@ export class AiNameMismatch {
 }
 
 /**
- * AiName parser options             
- */
-export class AiNameOptions {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "language",
-            baseName: "language",
-            type: "string",
-        },
-        {
-            name: "location",
-            baseName: "location",
-            type: "string",
-        },
-        {
-            name: "script",
-            baseName: "script",
-            type: "string",
-        },
-        {
-            name: "encoding",
-            baseName: "encoding",
-            type: "string",
-        },
-        {
-            name: "style",
-            baseName: "style",
-            type: "string",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return AiNameOptions.attributeTypeMap;
-    }
-
-    /**
-     * An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)             
-     */
-    public language: string;
-    
-    /**
-     * A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France             
-     */
-    public location: string;
-    
-    /**
-     * A writing system code; starts with the ISO-15924 script name             
-     */
-    public script: string;
-    
-    /**
-     * A character encoding name             
-     */
-    public encoding: string;
-    
-    /**
-     * Name writing style. Allowed values are: \"Formal\", \"Informal\", \"Legal\", \"Academic\"             
-     */
-    public style: string;
-    
-
-    public constructor(
-        language?: string,
-        location?: string,
-        script?: string,
-        encoding?: string,
-        style?: string) {
-        
-        this.language = language;
-        this.location = location;
-        this.script = script;
-        this.encoding = encoding;
-        this.style = style;
-    }
-}
-
-/**
  * Parsed name request model             
  */
-export class AiNameParsedRequest {
+export class AiNameParsedRq {
 
     /**
      * Attribute type map
      */
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: "options",
-            baseName: "options",
-            type: "AiNameOptions",
+            name: "culturalContext",
+            baseName: "culturalContext",
+            type: "AiNameCulturalContext",
+        },
+        {
+            name: "format",
+            baseName: "format",
+            type: "string",
         },
         {
             name: "parsedName",
@@ -872,13 +889,18 @@ export class AiNameParsedRequest {
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return AiNameParsedRequest.attributeTypeMap;
+        return AiNameParsedRq.attributeTypeMap;
     }
 
     /**
-     * AiName parser options             
+     * AiName parser cultural context             
      */
-    public options: AiNameOptions;
+    public culturalContext: AiNameCulturalContext;
+    
+    /**
+     * Format of the name. Predefined format can be used by ID, or custom format can be specified. Predefined formats:      /format/default/ (= '%t%F%m%N%L%p')     /format/FN+LN/ (= '%F%L')     /format/title+FN+LN/ (= '%t%F%L')     /format/FN+MN+LN/ (= '%F%M%N%L')     /format/title+FN+MN+LN/ (= '%t%F%M%N%L')     /format/FN+MI+LN/ (= '%F%m%N%L')     /format/title+FN+MI+LN/ (= '%t%F%m%N%L')     /format/LN/ (= '%L')     /format/title+LN/ (= '%t%L')     /format/LN+FN+MN/ (= '%L,%F%M%N')     /format/LN+title+FN+MN/ (= '%L,%t%F%M%N')     /format/LN+FN+MI/ (= '%L,%F%m%N')     /format/LN+title+FN+MI/ (= '%L,%t%F%m%N')  Custom format string - custom combination of characters and the next term placeholders:      '%t' - Title (prefix)     '%F' - First name     '%f' - First initial     '%M' - Middle name(s)     '%m' - Middle initial(s)     '%N' - Nickname     '%L' - Last name     '%l' - Last initial     '%p' - Postfix  If no value for format option was provided, its default value is '%t%F%m%N%L%p'             
+     */
+    public format: string;
     
     /**
      * Parsed name             
@@ -887,10 +909,12 @@ export class AiNameParsedRequest {
     
 
     public constructor(
-        options?: AiNameOptions,
+        culturalContext?: AiNameCulturalContext,
+        format?: string,
         parsedName?: Array<AiNameComponent>) {
         
-        this.options = options;
+        this.culturalContext = culturalContext;
+        this.format = format;
         this.parsedName = parsedName;
     }
 }
@@ -990,15 +1014,6 @@ export class AiNameWeightedVariants {
 }
 
 /**
- * Name writing style             
- */
-export enum AiNameWritingStyle {
-    Formal = 'Formal' as any,
-    Informal = 'Informal' as any,
-    Legal = 'Legal' as any,
-    Academic = 'Academic' as any,
-}
-/**
  * Base property object             
  */
 export class BaseObject {
@@ -1052,14 +1067,6 @@ export class BaseObject {
     }
 }
 
-/**
- * 
- */
-export enum ContactFormat {
-    VCard = 'VCard' as any,
-    WebDav = 'WebDav' as any,
-    Msg = 'Msg' as any,
-}
 /**
  * Create email document request             
  */
@@ -1181,12 +1188,12 @@ export class EmailAccountRequest {
         {
             name: "securityOptions",
             baseName: "securityOptions",
-            type: "any",
+            type: "string",
         },
         {
             name: "protocolType",
             baseName: "protocolType",
-            type: "any",
+            type: "string",
         },
         {
             name: "description",
@@ -1222,14 +1229,14 @@ export class EmailAccountRequest {
     public login: string;
     
     /**
-     * Email account security options             
+     * Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      */
-    public securityOptions: any;
+    public securityOptions: string;
     
     /**
-     * Email account protocol type             
+     * Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
      */
-    public protocolType: any;
+    public protocolType: string;
     
     /**
      * Email account description             
@@ -1246,8 +1253,8 @@ export class EmailAccountRequest {
         host?: string,
         port?: number,
         login?: string,
-        securityOptions?: any,
-        protocolType?: any,
+        securityOptions?: string,
+        protocolType?: string,
         description?: string,
         storageFile?: StorageFileLocation) {
         
@@ -1375,6 +1382,9 @@ export class EmailProperties {
      */
     public link: Link;
     
+    /**
+     * List of properties             
+     */
     public list: Array<EmailProperty>;
     
 
@@ -1419,10 +1429,19 @@ export class EmailProperty {
         return EmailProperty.attributeTypeMap;
     }
 
+    /**
+     * Link to property             
+     */
     public link: Link;
     
+    /**
+     * Property name             
+     */
     public name: string;
     
+    /**
+     * Property value             
+     */
     public value: any;
     
 
@@ -2549,7 +2568,7 @@ export class AiBcrBase64Image extends AiBcrImage {
 /**
  * Parse business card image request             
  */
-export class AiBcrBase64Request extends AiBcrRequest {
+export class AiBcrBase64Rq extends AiBcrRq {
 
     /**
      * Attribute type map
@@ -2565,7 +2584,7 @@ export class AiBcrBase64Request extends AiBcrRequest {
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(AiBcrBase64Request.attributeTypeMap);
+        return super.getAttributeTypeMap().concat(AiBcrBase64Rq.attributeTypeMap);
     }
 
     /**
@@ -2623,7 +2642,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
 /**
  * Parse ocr data request             
  */
-export class AiBcrParseOcrDataRequest extends AiBcrRequest {
+export class AiBcrParseOcrDataRq extends AiBcrRq {
 
     /**
      * Attribute type map
@@ -2639,7 +2658,7 @@ export class AiBcrParseOcrDataRequest extends AiBcrRequest {
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(AiBcrParseOcrDataRequest.attributeTypeMap);
+        return super.getAttributeTypeMap().concat(AiBcrParseOcrDataRq.attributeTypeMap);
     }
 
     /**
@@ -2660,7 +2679,7 @@ export class AiBcrParseOcrDataRequest extends AiBcrRequest {
 /**
  * Business card images from storage for recognition             
  */
-export class AiBcrStorageImageRequest extends AiBcrRequest {
+export class AiBcrStorageImageRq extends AiBcrRq {
 
     /**
      * Attribute type map
@@ -2676,7 +2695,7 @@ export class AiBcrStorageImageRequest extends AiBcrRequest {
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(AiBcrStorageImageRequest.attributeTypeMap);
+        return super.getAttributeTypeMap().concat(AiBcrStorageImageRq.attributeTypeMap);
     }
 
     /**
@@ -2697,7 +2716,7 @@ export class AiBcrStorageImageRequest extends AiBcrRequest {
 /**
  * Two parsed names to match request             
  */
-export class AiNameParsedMatchRequest extends AiNameParsedRequest {
+export class AiNameParsedMatchRq extends AiNameParsedRq {
 
     /**
      * Attribute type map
@@ -2713,7 +2732,7 @@ export class AiNameParsedMatchRequest extends AiNameParsedRequest {
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(AiNameParsedMatchRequest.attributeTypeMap);
+        return super.getAttributeTypeMap().concat(AiNameParsedMatchRq.attributeTypeMap);
     }
 
     /**
@@ -2723,11 +2742,13 @@ export class AiNameParsedMatchRequest extends AiNameParsedRequest {
     
 
     public constructor(
-        options?: AiNameOptions,
+        culturalContext?: AiNameCulturalContext,
+        format?: string,
         parsedName?: Array<AiNameComponent>,
         otherParsedName?: Array<AiNameComponent>) {
         super();
-        this.options = options;
+        this.culturalContext = culturalContext;
+        this.format = format;
         this.parsedName = parsedName;
         this.otherParsedName = otherParsedName;
     }
@@ -2760,8 +2781,14 @@ export class AppendEmailAccountBaseRequest extends AccountBaseRequest {
         return super.getAttributeTypeMap().concat(AppendEmailAccountBaseRequest.attributeTypeMap);
     }
 
+    /**
+     * Email account folder to store a message             
+     */
     public folder: string;
     
+    /**
+     * Mark message as sent             
+     */
     public markAsSent: boolean;
     
 
@@ -3208,8 +3235,8 @@ export class SaveEmailAccountRequest extends EmailAccountRequest {
         host?: string,
         port?: number,
         login?: string,
-        securityOptions?: any,
-        protocolType?: any,
+        securityOptions?: string,
+        protocolType?: string,
         description?: string,
         storageFile?: StorageFileLocation,
         password?: string) {
@@ -3277,8 +3304,8 @@ export class SaveOAuthEmailAccountRequest extends EmailAccountRequest {
         host?: string,
         port?: number,
         login?: string,
-        securityOptions?: any,
-        protocolType?: any,
+        securityOptions?: string,
+        protocolType?: string,
         description?: string,
         storageFile?: StorageFileLocation,
         clientId?: string,
@@ -3475,7 +3502,7 @@ export class StorageFileLocation extends StorageFolderLocation {
 /**
  * Parse ocr data request with storage output location             
  */
-export class AiBcrParseOcrDataStorageRequest extends AiBcrParseOcrDataRequest {
+export class AiBcrParseOcrDataStorageRq extends AiBcrParseOcrDataRq {
 
     /**
      * Attribute type map
@@ -3491,7 +3518,7 @@ export class AiBcrParseOcrDataStorageRequest extends AiBcrParseOcrDataRequest {
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(AiBcrParseOcrDataStorageRequest.attributeTypeMap);
+        return super.getAttributeTypeMap().concat(AiBcrParseOcrDataStorageRq.attributeTypeMap);
     }
 
     /**
@@ -3514,7 +3541,7 @@ export class AiBcrParseOcrDataStorageRequest extends AiBcrParseOcrDataRequest {
 /**
  * Parse business card images from Storage request             
  */
-export class AiBcrParseStorageRequest extends AiBcrStorageImageRequest {
+export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
 
     /**
      * Attribute type map
@@ -3530,7 +3557,7 @@ export class AiBcrParseStorageRequest extends AiBcrStorageImageRequest {
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(AiBcrParseStorageRequest.attributeTypeMap);
+        return super.getAttributeTypeMap().concat(AiBcrParseStorageRq.attributeTypeMap);
     }
 
     /**
@@ -3641,8 +3668,6 @@ export class AppendEmailMimeBaseRequest extends AppendEmailAccountBaseRequest {
 }
 
 const enumsMap = {
-    "AiNameWritingStyle": AiNameWritingStyle,
-    "ContactFormat": ContactFormat,
 };
 
 const typeMap = {
@@ -3652,16 +3677,16 @@ const typeMap = {
             AiBcrOcrData,
             AiBcrOcrDataPart,
             AiBcrOptions,
-            AiBcrRequest,
+            AiBcrRq,
             AiNameComponent,
+            AiNameCulturalContext,
             AiNameExtracted,
             AiNameExtractedComponent,
             AiNameFormatted,
             AiNameGenderHypothesis,
             AiNameMatchResult,
             AiNameMismatch,
-            AiNameOptions,
-            AiNameParsedRequest,
+            AiNameParsedRq,
             AiNameWeighted,
             AiNameWeightedVariants,
             BaseObject,
@@ -3699,11 +3724,11 @@ const typeMap = {
             StorageFolderLocation,
             ValueResponse,
             AiBcrBase64Image,
-            AiBcrBase64Request,
+            AiBcrBase64Rq,
             AiBcrImageStorageFile,
-            AiBcrParseOcrDataRequest,
-            AiBcrStorageImageRequest,
-            AiNameParsedMatchRequest,
+            AiBcrParseOcrDataRq,
+            AiBcrStorageImageRq,
+            AiNameParsedMatchRq,
             AppendEmailAccountBaseRequest,
             CreateFolderBaseRequest,
             DeleteFolderBaseRequest,
@@ -3719,8 +3744,8 @@ const typeMap = {
             SendEmailMimeBaseRequest,
             SetMessageReadFlagAccountBaseRequest,
             StorageFileLocation,
-            AiBcrParseOcrDataStorageRequest,
-            AiBcrParseStorageRequest,
+            AiBcrParseOcrDataStorageRq,
+            AiBcrParseStorageRq,
             AppendEmailBaseRequest,
             AppendEmailMimeBaseRequest,
 };

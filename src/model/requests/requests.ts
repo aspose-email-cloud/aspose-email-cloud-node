@@ -37,9 +37,9 @@ export class AddCalendarAttachmentRequest {
  */
 export class AddContactAttachmentRequest {
     /**
-     * Contact document format
+     * Contact document format Enum, available values: VCard, WebDav, Msg
      */
-    public format: 'VCard' | 'WebDav' | 'Msg';
+    public format: string;
 
     /**
      * Contact document file name
@@ -57,7 +57,7 @@ export class AddContactAttachmentRequest {
     public request: model.AddAttachmentRequest;
 
     public constructor(
-        format?: 'VCard' | 'WebDav' | 'Msg', 
+        format?: string, 
         name?: string, 
         attachment?: string, 
         request?: model.AddAttachmentRequest) {
@@ -136,12 +136,12 @@ export class AiBcrOcrRequest {
     /**
      * Request with base64 images data
      */
-    public request: model.AiBcrBase64Request;
+    public rq: model.AiBcrBase64Rq;
 
     public constructor(
-        request?: model.AiBcrBase64Request) {
+        rq?: model.AiBcrBase64Rq) {
         
-        this.request = request;
+        this.rq = rq;
     }
 }
 
@@ -152,12 +152,12 @@ export class AiBcrOcrStorageRequest {
     /**
      * Request with images located on storage
      */
-    public request: model.AiBcrStorageImageRequest;
+    public rq: model.AiBcrStorageImageRq;
 
     public constructor(
-        request?: model.AiBcrStorageImageRequest) {
+        rq?: model.AiBcrStorageImageRq) {
         
-        this.request = request;
+        this.rq = rq;
     }
 }
 
@@ -168,12 +168,12 @@ export class AiBcrParseRequest {
     /**
      * Request with base64 images data
      */
-    public request: model.AiBcrBase64Request;
+    public rq: model.AiBcrBase64Rq;
 
     public constructor(
-        request?: model.AiBcrBase64Request) {
+        rq?: model.AiBcrBase64Rq) {
         
-        this.request = request;
+        this.rq = rq;
     }
 }
 
@@ -182,14 +182,14 @@ export class AiBcrParseRequest {
  */
 export class AiBcrParseOcrDataRequest {
     /**
-     * Gets or sets request
+     * Gets or sets rq
      */
-    public request: model.AiBcrParseOcrDataRequest;
+    public rq: model.AiBcrParseOcrDataRq;
 
     public constructor(
-        request?: model.AiBcrParseOcrDataRequest) {
+        rq?: model.AiBcrParseOcrDataRq) {
         
-        this.request = request;
+        this.rq = rq;
     }
 }
 
@@ -198,14 +198,14 @@ export class AiBcrParseOcrDataRequest {
  */
 export class AiBcrParseOcrDataStorageRequest {
     /**
-     * Gets or sets request
+     * Gets or sets rq
      */
-    public request: model.AiBcrParseOcrDataStorageRequest;
+    public rq: model.AiBcrParseOcrDataStorageRq;
 
     public constructor(
-        request?: model.AiBcrParseOcrDataStorageRequest) {
+        rq?: model.AiBcrParseOcrDataStorageRq) {
         
-        this.request = request;
+        this.rq = rq;
     }
 }
 
@@ -216,12 +216,12 @@ export class AiBcrParseStorageRequest {
     /**
      * Request with images located on storage
      */
-    public request: model.AiBcrParseStorageRequest;
+    public rq: model.AiBcrParseStorageRq;
 
     public constructor(
-        request?: model.AiBcrParseStorageRequest) {
+        rq?: model.AiBcrParseStorageRq) {
         
-        this.request = request;
+        this.rq = rq;
     }
 }
 
@@ -255,9 +255,9 @@ export class AiNameCompleteRequest {
     public script: string;
 
     /**
-     * Name writing style
+     * Name writing style. Enum, available values: Formal, Informal, Legal, Academic
      */
-    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+    public style: string;
 
     public constructor(
         name?: string, 
@@ -265,7 +265,7 @@ export class AiNameCompleteRequest {
         location?: string, 
         encoding?: string, 
         script?: string, 
-        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        style?: string) {
         
         this.name = name;
         this.language = language;
@@ -306,9 +306,9 @@ export class AiNameExpandRequest {
     public script: string;
 
     /**
-     * Name writing style
+     * Name writing style. Enum, available values: Formal, Informal, Legal, Academic
      */
-    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+    public style: string;
 
     public constructor(
         name?: string, 
@@ -316,7 +316,7 @@ export class AiNameExpandRequest {
         location?: string, 
         encoding?: string, 
         script?: string, 
-        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        style?: string) {
         
         this.name = name;
         this.language = language;
@@ -334,12 +334,12 @@ export class AiNameExpandParsedRequest {
     /**
      * Parsed name with options
      */
-    public request: model.AiNameParsedRequest;
+    public rq: model.AiNameParsedRq;
 
     public constructor(
-        request?: model.AiNameParsedRequest) {
+        rq?: model.AiNameParsedRq) {
         
-        this.request = request;
+        this.rq = rq;
     }
 }
 
@@ -373,9 +373,14 @@ export class AiNameFormatRequest {
     public script: string;
 
     /**
-     * Name writing style
+     * Format of the name. Predefined format can be used by ID, or custom format can be specified. Predefined formats:      /format/default/ (= '%t%F%m%N%L%p')     /format/FN+LN/ (= '%F%L')     /format/title+FN+LN/ (= '%t%F%L')     /format/FN+MN+LN/ (= '%F%M%N%L')     /format/title+FN+MN+LN/ (= '%t%F%M%N%L')     /format/FN+MI+LN/ (= '%F%m%N%L')     /format/title+FN+MI+LN/ (= '%t%F%m%N%L')     /format/LN/ (= '%L')     /format/title+LN/ (= '%t%L')     /format/LN+FN+MN/ (= '%L,%F%M%N')     /format/LN+title+FN+MN/ (= '%L,%t%F%M%N')     /format/LN+FN+MI/ (= '%L,%F%m%N')     /format/LN+title+FN+MI/ (= '%L,%t%F%m%N')  Custom format string - custom combination of characters and the next term placeholders:      '%t' - Title (prefix)     '%F' - First name     '%f' - First initial     '%M' - Middle name(s)     '%m' - Middle initial(s)     '%N' - Nickname     '%L' - Last name     '%l' - Last initial     '%p' - Postfix  If no value for format option was provided, its default value is '%t%F%m%N%L%p'             
      */
-    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+    public format: string;
+
+    /**
+     * Name writing style. Enum, available values: Formal, Informal, Legal, Academic
+     */
+    public style: string;
 
     public constructor(
         name?: string, 
@@ -383,13 +388,15 @@ export class AiNameFormatRequest {
         location?: string, 
         encoding?: string, 
         script?: string, 
-        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        format?: string, 
+        style?: string) {
         
         this.name = name;
         this.language = language;
         this.location = location;
         this.encoding = encoding;
         this.script = script;
+        this.format = format;
         this.style = style;
     }
 }
@@ -401,12 +408,12 @@ export class AiNameFormatParsedRequest {
     /**
      * Parsed name with options
      */
-    public request: model.AiNameParsedRequest;
+    public rq: model.AiNameParsedRq;
 
     public constructor(
-        request?: model.AiNameParsedRequest) {
+        rq?: model.AiNameParsedRq) {
         
-        this.request = request;
+        this.rq = rq;
     }
 }
 
@@ -440,9 +447,9 @@ export class AiNameGenderizeRequest {
     public script: string;
 
     /**
-     * Name writing style
+     * Name writing style. Enum, available values: Formal, Informal, Legal, Academic
      */
-    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+    public style: string;
 
     public constructor(
         name?: string, 
@@ -450,7 +457,7 @@ export class AiNameGenderizeRequest {
         location?: string, 
         encoding?: string, 
         script?: string, 
-        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        style?: string) {
         
         this.name = name;
         this.language = language;
@@ -468,12 +475,12 @@ export class AiNameGenderizeParsedRequest {
     /**
      * Gender detection request data
      */
-    public request: model.AiNameParsedRequest;
+    public rq: model.AiNameParsedRq;
 
     public constructor(
-        request?: model.AiNameParsedRequest) {
+        rq?: model.AiNameParsedRq) {
         
-        this.request = request;
+        this.rq = rq;
     }
 }
 
@@ -512,9 +519,9 @@ export class AiNameMatchRequest {
     public script: string;
 
     /**
-     * Name writing style
+     * Name writing style. Enum, available values: Formal, Informal, Legal, Academic
      */
-    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+    public style: string;
 
     public constructor(
         name?: string, 
@@ -523,7 +530,7 @@ export class AiNameMatchRequest {
         location?: string, 
         encoding?: string, 
         script?: string, 
-        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        style?: string) {
         
         this.name = name;
         this.otherName = otherName;
@@ -542,12 +549,12 @@ export class AiNameMatchParsedRequest {
     /**
      * Parsed names to match
      */
-    public request: model.AiNameParsedMatchRequest;
+    public rq: model.AiNameParsedMatchRq;
 
     public constructor(
-        request?: model.AiNameParsedMatchRequest) {
+        rq?: model.AiNameParsedMatchRq) {
         
-        this.request = request;
+        this.rq = rq;
     }
 }
 
@@ -581,9 +588,9 @@ export class AiNameParseRequest {
     public script: string;
 
     /**
-     * Name writing style
+     * Name writing style Enum, available values: Formal, Informal, Legal, Academic
      */
-    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+    public style: string;
 
     public constructor(
         name?: string, 
@@ -591,7 +598,7 @@ export class AiNameParseRequest {
         location?: string, 
         encoding?: string, 
         script?: string, 
-        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        style?: string) {
         
         this.name = name;
         this.language = language;
@@ -632,9 +639,9 @@ export class AiNameParseEmailAddressRequest {
     public script: string;
 
     /**
-     * Name writing style
+     * Name writing style. Enum, available values: Formal, Informal, Legal, Academic
      */
-    public style: 'Formal' | 'Informal' | 'Legal' | 'Academic';
+    public style: string;
 
     public constructor(
         emailAddress?: string, 
@@ -642,7 +649,7 @@ export class AiNameParseEmailAddressRequest {
         location?: string, 
         encoding?: string, 
         script?: string, 
-        style?: 'Formal' | 'Informal' | 'Legal' | 'Academic') {
+        style?: string) {
         
         this.emailAddress = emailAddress;
         this.language = language;
@@ -794,9 +801,9 @@ export class CreateCalendarRequest {
  */
 export class CreateContactRequest {
     /**
-     * Contact document format
+     * Contact document format Enum, available values: VCard, WebDav, Msg
      */
-    public format: 'VCard' | 'WebDav' | 'Msg';
+    public format: string;
 
     /**
      * Contact document file name
@@ -809,7 +816,7 @@ export class CreateContactRequest {
     public request: model.HierarchicalObjectRequest;
 
     public constructor(
-        format?: 'VCard' | 'WebDav' | 'Msg', 
+        format?: string, 
         name?: string, 
         request?: model.HierarchicalObjectRequest) {
         
@@ -946,9 +953,9 @@ export class DeleteCalendarPropertyRequest {
  */
 export class DeleteContactPropertyRequest {
     /**
-     * Contact document format
+     * Contact document format Enum, available values: VCard, WebDav, Msg
      */
-    public format: 'VCard' | 'WebDav' | 'Msg';
+    public format: string;
 
     /**
      * Contact document file name
@@ -971,7 +978,7 @@ export class DeleteContactPropertyRequest {
     public folder: model.StorageFolderLocation;
 
     public constructor(
-        format?: 'VCard' | 'WebDav' | 'Msg', 
+        format?: string, 
         name?: string, 
         memberName?: string, 
         index?: number, 
@@ -1313,9 +1320,9 @@ export class GetCalendarListRequest {
  */
 export class GetContactAttachmentRequest {
     /**
-     * Contact document format
+     * Contact document format. Enum, available values: VCard, WebDav, Msg
      */
-    public format: 'VCard' | 'WebDav' | 'Msg';
+    public format: string;
 
     /**
      * Contact document file name
@@ -1338,7 +1345,7 @@ export class GetContactAttachmentRequest {
     public storage: string;
 
     public constructor(
-        format?: 'VCard' | 'WebDav' | 'Msg', 
+        format?: string, 
         name?: string, 
         attachment?: string, 
         folder?: string, 
@@ -1357,9 +1364,9 @@ export class GetContactAttachmentRequest {
  */
 export class GetContactListRequest {
     /**
-     * Contact document format
+     * Contact document format. Enum, available values: VCard, WebDav, Msg
      */
-    public format: 'VCard' | 'WebDav' | 'Msg';
+    public format: string;
 
     /**
      * Path to folder in storage
@@ -1382,7 +1389,7 @@ export class GetContactListRequest {
     public pageNumber: number;
 
     public constructor(
-        format?: 'VCard' | 'WebDav' | 'Msg', 
+        format?: string, 
         folder?: string, 
         storage?: string, 
         itemsPerPage?: number, 
@@ -1401,9 +1408,9 @@ export class GetContactListRequest {
  */
 export class GetContactPropertiesRequest {
     /**
-     * Contact document format
+     * Contact document format. Enum, available values: VCard, WebDav, Msg
      */
-    public format: 'VCard' | 'WebDav' | 'Msg';
+    public format: string;
 
     /**
      * Contact document file name
@@ -1421,7 +1428,7 @@ export class GetContactPropertiesRequest {
     public storage: string;
 
     public constructor(
-        format?: 'VCard' | 'WebDav' | 'Msg', 
+        format?: string, 
         name?: string, 
         folder?: string, 
         storage?: string) {
@@ -2100,9 +2107,9 @@ export class UpdateCalendarPropertiesRequest {
  */
 export class UpdateContactPropertiesRequest {
     /**
-     * Contact document format
+     * Contact document format Enum, available values: VCard, WebDav, Msg
      */
-    public format: 'VCard' | 'WebDav' | 'Msg';
+    public format: string;
 
     /**
      * Contact document file name
@@ -2115,7 +2122,7 @@ export class UpdateContactPropertiesRequest {
     public request: model.HierarchicalObjectRequest;
 
     public constructor(
-        format?: 'VCard' | 'WebDav' | 'Msg', 
+        format?: string, 
         name?: string, 
         request?: model.HierarchicalObjectRequest) {
         

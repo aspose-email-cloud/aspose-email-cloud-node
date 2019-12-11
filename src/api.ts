@@ -271,9 +271,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.request' is not null or undefined
-        if (requestObj.request === null || requestObj.request === undefined) {
-            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiBcrOcr.');
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling aiBcrOcr.');
         }
 
         // tslint:disable-next-line:prefer-const
@@ -285,7 +285,7 @@ export class EmailApi {
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            body: ObjectSerializer.serialize(requestObj.request, "AiBcrBase64Request"),
+            body: ObjectSerializer.serialize(requestObj.rq, "AiBcrBase64Rq"),
         };
 
         if (Object.keys(formParams).length) {
@@ -311,9 +311,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.request' is not null or undefined
-        if (requestObj.request === null || requestObj.request === undefined) {
-            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiBcrOcrStorage.');
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling aiBcrOcrStorage.');
         }
 
         // tslint:disable-next-line:prefer-const
@@ -325,7 +325,7 @@ export class EmailApi {
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            body: ObjectSerializer.serialize(requestObj.request, "AiBcrStorageImageRequest"),
+            body: ObjectSerializer.serialize(requestObj.rq, "AiBcrStorageImageRq"),
         };
 
         if (Object.keys(formParams).length) {
@@ -351,9 +351,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.request' is not null or undefined
-        if (requestObj.request === null || requestObj.request === undefined) {
-            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiBcrParse.');
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling aiBcrParse.');
         }
 
         // tslint:disable-next-line:prefer-const
@@ -365,7 +365,7 @@ export class EmailApi {
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            body: ObjectSerializer.serialize(requestObj.request, "AiBcrBase64Request"),
+            body: ObjectSerializer.serialize(requestObj.rq, "AiBcrBase64Rq"),
         };
 
         if (Object.keys(formParams).length) {
@@ -391,9 +391,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.request' is not null or undefined
-        if (requestObj.request === null || requestObj.request === undefined) {
-            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiBcrParseOcrData.');
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling aiBcrParseOcrData.');
         }
 
         // tslint:disable-next-line:prefer-const
@@ -405,7 +405,7 @@ export class EmailApi {
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            body: ObjectSerializer.serialize(requestObj.request, "AiBcrParseOcrDataRequest"),
+            body: ObjectSerializer.serialize(requestObj.rq, "AiBcrParseOcrDataRq"),
         };
 
         if (Object.keys(formParams).length) {
@@ -431,9 +431,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.request' is not null or undefined
-        if (requestObj.request === null || requestObj.request === undefined) {
-            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiBcrParseOcrDataStorage.');
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling aiBcrParseOcrDataStorage.');
         }
 
         // tslint:disable-next-line:prefer-const
@@ -445,7 +445,7 @@ export class EmailApi {
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            body: ObjectSerializer.serialize(requestObj.request, "AiBcrParseOcrDataStorageRequest"),
+            body: ObjectSerializer.serialize(requestObj.rq, "AiBcrParseOcrDataStorageRq"),
         };
 
         if (Object.keys(formParams).length) {
@@ -471,9 +471,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.request' is not null or undefined
-        if (requestObj.request === null || requestObj.request === undefined) {
-            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiBcrParseStorage.');
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling aiBcrParseStorage.');
         }
 
         // tslint:disable-next-line:prefer-const
@@ -485,7 +485,7 @@ export class EmailApi {
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            body: ObjectSerializer.serialize(requestObj.request, "AiBcrParseStorageRequest"),
+            body: ObjectSerializer.serialize(requestObj.rq, "AiBcrParseStorageRq"),
         };
 
         if (Object.keys(formParams).length) {
@@ -537,7 +537,7 @@ export class EmailApi {
         }
 
         if (requestObj.style !== undefined) {
-            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "string");
         }
 
         // tslint:disable-next-line:prefer-const
@@ -600,7 +600,7 @@ export class EmailApi {
         }
 
         if (requestObj.style !== undefined) {
-            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "string");
         }
 
         // tslint:disable-next-line:prefer-const
@@ -637,9 +637,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.request' is not null or undefined
-        if (requestObj.request === null || requestObj.request === undefined) {
-            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiNameExpandParsed.');
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling aiNameExpandParsed.');
         }
 
         // tslint:disable-next-line:prefer-const
@@ -651,7 +651,7 @@ export class EmailApi {
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            body: ObjectSerializer.serialize(requestObj.request, "AiNameParsedRequest"),
+            body: ObjectSerializer.serialize(requestObj.rq, "AiNameParsedRq"),
         };
 
         if (Object.keys(formParams).length) {
@@ -702,8 +702,12 @@ export class EmailApi {
             queryParameters.script = ObjectSerializer.serialize(requestObj.script, "string");
         }
 
+        if (requestObj.format !== undefined) {
+            queryParameters.format = ObjectSerializer.serialize(requestObj.format, "string");
+        }
+
         if (requestObj.style !== undefined) {
-            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "string");
         }
 
         // tslint:disable-next-line:prefer-const
@@ -740,9 +744,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.request' is not null or undefined
-        if (requestObj.request === null || requestObj.request === undefined) {
-            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiNameFormatParsed.');
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling aiNameFormatParsed.');
         }
 
         // tslint:disable-next-line:prefer-const
@@ -754,7 +758,7 @@ export class EmailApi {
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            body: ObjectSerializer.serialize(requestObj.request, "AiNameParsedRequest"),
+            body: ObjectSerializer.serialize(requestObj.rq, "AiNameParsedRq"),
         };
 
         if (Object.keys(formParams).length) {
@@ -806,7 +810,7 @@ export class EmailApi {
         }
 
         if (requestObj.style !== undefined) {
-            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "string");
         }
 
         // tslint:disable-next-line:prefer-const
@@ -843,9 +847,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.request' is not null or undefined
-        if (requestObj.request === null || requestObj.request === undefined) {
-            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiNameGenderizeParsed.');
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling aiNameGenderizeParsed.');
         }
 
         // tslint:disable-next-line:prefer-const
@@ -857,7 +861,7 @@ export class EmailApi {
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            body: ObjectSerializer.serialize(requestObj.request, "AiNameParsedRequest"),
+            body: ObjectSerializer.serialize(requestObj.rq, "AiNameParsedRq"),
         };
 
         if (Object.keys(formParams).length) {
@@ -918,7 +922,7 @@ export class EmailApi {
         }
 
         if (requestObj.style !== undefined) {
-            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "string");
         }
 
         // tslint:disable-next-line:prefer-const
@@ -955,9 +959,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.request' is not null or undefined
-        if (requestObj.request === null || requestObj.request === undefined) {
-            throw new Error('Required parameter "requestObj.request" was null or undefined when calling aiNameMatchParsed.');
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling aiNameMatchParsed.');
         }
 
         // tslint:disable-next-line:prefer-const
@@ -969,7 +973,7 @@ export class EmailApi {
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            body: ObjectSerializer.serialize(requestObj.request, "AiNameParsedMatchRequest"),
+            body: ObjectSerializer.serialize(requestObj.rq, "AiNameParsedMatchRq"),
         };
 
         if (Object.keys(formParams).length) {
@@ -1021,7 +1025,7 @@ export class EmailApi {
         }
 
         if (requestObj.style !== undefined) {
-            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "string");
         }
 
         // tslint:disable-next-line:prefer-const
@@ -1084,7 +1088,7 @@ export class EmailApi {
         }
 
         if (requestObj.style !== undefined) {
-            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "'Formal' | 'Informal' | 'Legal' | 'Academic'");
+            queryParameters.style = ObjectSerializer.serialize(requestObj.style, "string");
         }
 
         // tslint:disable-next-line:prefer-const
