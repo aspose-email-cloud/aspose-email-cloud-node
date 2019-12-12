@@ -60,6 +60,11 @@ export class Configuration {
     public apiVersion: string = "v3.0";
 
     /**
+     * Should not be used
+     */
+    public authUrl: string;
+
+    /**
      * If you use custom on-premise server with metered license.
      * This way, you only need to specify the API base URL.
      */
@@ -79,6 +84,7 @@ export class Configuration {
 
             this.baseUrl = baseUrl;
         }
+        this.authUrl = this.baseUrl;
 
         this.appSID = appSID;
         this.appKey = appKey;
