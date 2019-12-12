@@ -10,6 +10,8 @@ describe('EmailApi', function() {
 
     beforeAll(async function() {
         api = new EmailApi(process.env.appSid, process.env.appKey, process.env.apiBaseUrl);
+        var authUrl = process.env.authUrl;
+        if (authUrl != null) api.configuration.authUrl = authUrl;
         folder = uuidv4();
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
         await api.createFolder(new requests.CreateFolderRequest(folder, storage));
@@ -24,7 +26,7 @@ describe('EmailApi', function() {
      * This test checks that BaseObject.Type field filled automatically by SDK
      * and properly used in serialization and deserialization
      */
-    it('HierarchicalObject', async function() {
+    it('HierarchicalObject #pipeline', async function() {
         var calendarFile = await createCalendar();
         var calendar = await api.getCalendar(new requests.GetCalendarRequest(calendarFile, folder, storage));
         expect(calendar.body.name).toBe('CALENDAR');
@@ -37,7 +39,7 @@ describe('EmailApi', function() {
     /**
      * Buffer support test
      */
-    it('FileTest', async function() {
+    it('FileTest #pipeline', async function() {
         var calendarFile = await createCalendar();
         var path = folder + '/' + calendarFile;
         var downloaded = await api.downloadFile(new requests.DownloadFileRequest(path, storage));
@@ -56,7 +58,7 @@ describe('EmailApi', function() {
      * Contact format specified as Enum, but SDK represents it as an advanced type of string constants a string.
      * Test checks that value parsing works properly
      */
-    it('Contact format', async function() {
+    it('Contact format #pipeline', async function() {
         for(var format of ['VCard', 'Msg']) {
             var extension = (format == 'Msg') ? '.msg' : '.vcf';
             var fileName = uuidv4() + extension;
@@ -77,7 +79,7 @@ describe('EmailApi', function() {
      * Checks that SDK and Backend do not change Date during processing.
      * In most cases developer should carefully serialize and deserialize Date
      */
-    it('Date', async function() {
+    it('Date #pipeline', async function() {
         var startDate = getDate(undefined, 24);
         startDate.setMilliseconds(0);
         var calendarFile = await createCalendar(startDate);
