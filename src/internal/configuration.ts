@@ -109,4 +109,12 @@ export class Configuration {
     public getApiBaseUrl(): string {
         return this.baseUrl + this.apiVersion;
     }
+
+    public getAuthUrl(): string {
+        if (!this.authUrl.endsWith("/")) {
+            return this.authUrl  + "/";
+        } else {
+            return this.authUrl;
+        }
+    }
 }

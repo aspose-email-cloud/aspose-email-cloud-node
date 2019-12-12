@@ -3,6 +3,8 @@ import * as requests from '../src/model/requests/requests';
 import uuidv4 from 'uuid/v4';
 import * as models from '../src/model/model';
 
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+
 describe('EmailApi', function() {
     var api :EmailApi;
     var folder :string;
@@ -13,7 +15,6 @@ describe('EmailApi', function() {
         var authUrl = process.env.authUrl;
         if (authUrl != null) api.configuration.authUrl = authUrl;
         folder = uuidv4();
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
         await api.createFolder(new requests.CreateFolderRequest(folder, storage));
     })
 
