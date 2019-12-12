@@ -35,7 +35,7 @@
   ],
   "scripts": {
     "compile": "tsc --build tsconfig.json",
-    "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json"
+    "test-pipeline": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json --filter=#pipeline"
   },
   "dependencies": {
     "@types/request": "^2.47.0",
