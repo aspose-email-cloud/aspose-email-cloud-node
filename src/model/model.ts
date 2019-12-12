@@ -1229,7 +1229,7 @@ export class EmailAccountRequest {
     public login: string;
     
     /**
-     * Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * Security mode for a mail client Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      */
     public securityOptions: string;
     

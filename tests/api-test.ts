@@ -2,6 +2,7 @@ import { EmailApi } from '../src/api'
 import * as requests from '../src/model/requests/requests';
 import uuidv4 from 'uuid/v4';
 import * as models from '../src/model/model';
+import fs from 'fs';
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
@@ -46,6 +47,8 @@ describe('EmailApi', function() {
         var downloaded = await api.downloadFile(new requests.DownloadFileRequest(path, storage));
         var calendarRaw = downloaded.body.toString()
         expect(calendarRaw).toContain('Organizer')
+        calendarFile = uuidv4() + '.ics'
+        path = folder + '/' + calendarFile;
         await api.uploadFile(new requests.UploadFileRequest(path, downloaded.body, storage));
         var exist = await api.objectExists(new requests.ObjectExistsRequest(path, storage));
         expect(exist.body.exists).toBeTrue();
@@ -88,6 +91,36 @@ describe('EmailApi', function() {
         var startDateProperty = calendar.body.internalProperties.find(item => item.name == 'STARTDATE') as models.PrimitiveObject;
         var factStartDate = new Date(startDateProperty.value);
         expect(factStartDate).toEqual(startDate);
+    });
+
+    it('Parse business card images to VCard contact files #wip', async function() {
+        var imageData = fs.readFileSync('tests/data/test_single_0001.png');
+        var storageFileName = uuidv4() + '.png';
+        // 1) Upload business card image to storage
+        await api.uploadFile(new requests.UploadFileRequest(folder + '/' + storageFileName, imageData, storage));
+        var outFolder = uuidv4();
+        var outFolderPath = folder + '/' + outFolder;
+        await api.createFolder(new requests.CreateFolderRequest(outFolderPath, storage));
+        // 2) Call business card recognition action
+        var result = await api.aiBcrParseStorage(
+            new requests.AiBcrParseStorageRequest(new models.AiBcrParseStorageRq(
+                null,
+                [new models.AiBcrImageStorageFile(
+                    true,
+                    new models.StorageFileLocation(storage, folder, storageFileName))],
+                new models.StorageFolderLocation(storage, outFolder))));
+        //Check that only one file produced
+        expect(result.body.value.length).toBe(1);
+        // 3) Get file name from recognition result
+        var contactFile = result.body.value[0];
+        // 4) Download VCard file, produced by recognition method, check it contains text "Thomas"
+        var contactBinary = await api.downloadFile(new requests.DownloadFileRequest(
+            contactFile.folderPath + '/' + contactFile.fileName, storage));
+        expect(contactBinary.body.toString()).toContain('Thomas');
+        // 5) Get VCard object properties list, check that there are 3 properties or more
+        var contactProperties = await api.getContactProperties(new requests.GetContactPropertiesRequest(
+            'vcard', contactFile.fileName, contactFile.folderPath, contactFile.storage));
+        expect(contactProperties.body.internalProperties.length).toBeGreaterThanOrEqual(3);
     });
 
     async function createCalendar(startDate? : Date) :Promise<string> {

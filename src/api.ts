@@ -3656,7 +3656,12 @@ export class EmailApi {
         let useFormData = false;
 
         if (requestObj.file !== undefined) {
-            formParams.File = requestObj.file;
+            formParams.File = {
+                value: requestObj.file,
+                options: {
+                    filename: 'File'
+                }
+            };
         }
         useFormData = true;
 
