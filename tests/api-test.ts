@@ -160,7 +160,7 @@ describe('EmailApi', function() {
                 [new models.AiBcrImageStorageFile(
                     true,
                     new models.StorageFileLocation(storage, folder, storageFileName))],
-                new models.StorageFolderLocation(storage, outFolder))));
+                new models.StorageFolderLocation(storage, outFolderPath))));
         //Check that only one file produced
         expect(result.body.value.length).toBe(1);
         // 3) Get file name from recognition result
