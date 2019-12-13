@@ -156,7 +156,7 @@ console.log(surname.value); // 'Cane'
 ```
 </details>
 
-### Install Aspose.Email for Cloud via NPM
+### Install Aspose.Email Cloud via NPM
 You can use it directly in your project via the source code or get a [npm package](https://www.npmjs.com/package/@asposecloud/aspose-email-cloud)
 From the command line:
 
