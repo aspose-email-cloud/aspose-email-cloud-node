@@ -15,6 +15,7 @@ Aspose.Email Cloud is a REST API for creating email applications that work with 
 
 ## How to use the SDK?
 The complete source code is available in the GIT repository.
+Use reference documentation, available [here](doc/README.md).
 
 ### Prerequisites
 To use this SDK, you need an App SID and an App Key; they can be looked up at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) (it requires free registration in Aspose Cloud for this).
@@ -175,6 +176,7 @@ console.log(surname.value); // 'Cane'
 All Aspose.Email Cloud SDKs, helper scripts and templates are licensed under [MIT License](LICENSE).
 
 # Resources
++ [**SDK reference documentation**](doc/README.md)
 + [**Website**](https://www.aspose.cloud)
 + [**Product Home**](https://products.aspose.cloud/Email/cloud)
 + [**Documentation**](https://docs.aspose.cloud/display/Emailcloud/Home)
