@@ -2184,3 +2184,4 @@ export class UploadFileRequest {
         this.storageName = storageName;
     }
 }
+
