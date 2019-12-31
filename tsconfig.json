@@ -13,10 +13,12 @@
         "declaration": true,
         "lib": ["es6", "scripthost", "es2017"],
         "outDir": "dist",
-        "rootDir": "./"
+        "rootDir": "./",
+        "esModuleInterop": true
     },
     "include": [
-        "src"
+        "src",
+        "tests"
     ],
     "exclude": [
         "node_modules",

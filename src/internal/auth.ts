@@ -77,7 +77,7 @@ export class JwtAuth implements IAuthentication {
 
         const requestOptions: request.Options = {
             method: "POST",
-            uri: configuration.baseUrl + "connect/token",
+            uri: configuration.getAuthUrl() + "connect/token",
             body: postData,
             headers: { 
                 "Content-Type": "application/x-www-form-urlencoded",

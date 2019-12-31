@@ -44,8 +44,8 @@ export class ObjectSerializer {
      * Serilize object to json string.
      */
     public static serialize(data: any, type: string) {
-        if (data === undefined) {
-            return data;
+        if (data == null) {
+            return undefined;
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
             return data;
         } else if (type.lastIndexOf("Array<", 0) === 0) { // string.startsWith pre es6
