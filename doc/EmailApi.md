@@ -194,56 +194,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-<a name="aibcrparseocrdata"></a>
-# **aiBcrParseOcrData**
-
-```typescript
-public async aiBcrParseOcrData(requestObj: AiBcrParseOcrDataRequest) : Promise<{response: RequestResponse, body: ListResponseOfHierarchicalObject; }>
-```
-
-Parse OCR data to vCard properties             
-
-### Return type
-
-`Promise<{response: RequestResponse, body: ListResponseOfHierarchicalObject; }>`
-
-### Request Parameters
-```typescript
-new AiBcrParseOcrDataRequest(
-    rq)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **rq** | [**AiBcrParseOcrDataRq**](AiBcrParseOcrDataRq.md)|  | 
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-<a name="aibcrparseocrdatastorage"></a>
-# **aiBcrParseOcrDataStorage**
-
-```typescript
-public async aiBcrParseOcrDataStorage(requestObj: AiBcrParseOcrDataStorageRequest) : Promise<{response: RequestResponse, body: ListResponseOfStorageFileLocation; }>
-```
-
-Parse vCards from OCR data and save them to Storage             
-
-### Return type
-
-`Promise<{response: RequestResponse, body: ListResponseOfStorageFileLocation; }>`
-
-### Request Parameters
-```typescript
-new AiBcrParseOcrDataStorageRequest(
-    rq)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **rq** | [**AiBcrParseOcrDataStorageRq**](AiBcrParseOcrDataStorageRq.md)|  | 
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 <a name="aibcrparsestorage"></a>
 # **aiBcrParseStorage**
 

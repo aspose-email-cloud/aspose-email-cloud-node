@@ -178,38 +178,6 @@ export class AiBcrParseRequest {
 }
 
 /**
- * Request model for aiBcrParseOcrData operation.
- */
-export class AiBcrParseOcrDataRequest {
-    /**
-     * Gets or sets rq
-     */
-    public rq: model.AiBcrParseOcrDataRq;
-
-    public constructor(
-        rq?: model.AiBcrParseOcrDataRq) {
-        
-        this.rq = rq;
-    }
-}
-
-/**
- * Request model for aiBcrParseOcrDataStorage operation.
- */
-export class AiBcrParseOcrDataStorageRequest {
-    /**
-     * Gets or sets rq
-     */
-    public rq: model.AiBcrParseOcrDataStorageRq;
-
-    public constructor(
-        rq?: model.AiBcrParseOcrDataStorageRq) {
-        
-        this.rq = rq;
-    }
-}
-
-/**
  * Request model for aiBcrParseStorage operation.
  */
 export class AiBcrParseStorageRequest {

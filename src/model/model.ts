@@ -152,7 +152,7 @@ export class AiBcrImage {
     }
 
     /**
-     * Determines that image contains single VCard or more             
+     * Determines that image contains single VCard or more. Ignored in current version. Multiple cards on image support will be added soon             
      */
     public isSingle: boolean;
     
@@ -1229,7 +1229,7 @@ export class EmailAccountRequest {
     public login: string;
     
     /**
-     * Security mode for a mail client Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      */
     public securityOptions: string;
     
@@ -2640,43 +2640,6 @@ export class AiBcrImageStorageFile extends AiBcrImage {
 }
 
 /**
- * Parse ocr data request             
- */
-export class AiBcrParseOcrDataRq extends AiBcrRq {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "data",
-            baseName: "data",
-            type: "Array<AiBcrOcrData>",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(AiBcrParseOcrDataRq.attributeTypeMap);
-    }
-
-    /**
-     * OCR data             
-     */
-    public data: Array<AiBcrOcrData>;
-    
-
-    public constructor(
-        options?: AiBcrOptions,
-        data?: Array<AiBcrOcrData>) {
-        super();
-        this.options = options;
-        this.data = data;
-    }
-}
-
-/**
  * Business card images from storage for recognition             
  */
 export class AiBcrStorageImageRq extends AiBcrRq {
@@ -3500,45 +3463,6 @@ export class StorageFileLocation extends StorageFolderLocation {
 }
 
 /**
- * Parse ocr data request with storage output location             
- */
-export class AiBcrParseOcrDataStorageRq extends AiBcrParseOcrDataRq {
-
-    /**
-     * Attribute type map
-     */
-    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            name: "outFolder",
-            baseName: "outFolder",
-            type: "StorageFolderLocation",
-        }    ];
-
-    /**
-     * Returns attribute type map
-     */
-    public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(AiBcrParseOcrDataStorageRq.attributeTypeMap);
-    }
-
-    /**
-     * Output folder location on storage             
-     */
-    public outFolder: StorageFolderLocation;
-    
-
-    public constructor(
-        options?: AiBcrOptions,
-        data?: Array<AiBcrOcrData>,
-        outFolder?: StorageFolderLocation) {
-        super();
-        this.options = options;
-        this.data = data;
-        this.outFolder = outFolder;
-    }
-}
-
-/**
  * Parse business card images from Storage request             
  */
 export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
@@ -3726,7 +3650,6 @@ const typeMap = {
             AiBcrBase64Image,
             AiBcrBase64Rq,
             AiBcrImageStorageFile,
-            AiBcrParseOcrDataRq,
             AiBcrStorageImageRq,
             AiNameParsedMatchRq,
             AppendEmailAccountBaseRequest,
@@ -3744,7 +3667,6 @@ const typeMap = {
             SendEmailMimeBaseRequest,
             SetMessageReadFlagAccountBaseRequest,
             StorageFileLocation,
-            AiBcrParseOcrDataStorageRq,
             AiBcrParseStorageRq,
             AppendEmailBaseRequest,
             AppendEmailMimeBaseRequest,
