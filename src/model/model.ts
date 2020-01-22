@@ -1198,7 +1198,7 @@ export class BaseObject {
 }
 
 /**
- * iCalendar document representation             
+ * iCalendar document representation.             
  */
 export class CalendarDto {
 
@@ -1320,42 +1320,42 @@ export class CalendarDto {
     }
 
     /**
-     * Document attachments
+     * Document attachments.
      */
     public attachments: Array<Attachment>;
     
     /**
-     * Event attendees
+     * Event attendees.
      */
     public attendees: Array<MailAddress>;
     
     /**
-     * Description
+     * Description.
      */
     public description: string;
     
     /**
-     * End date
+     * End date.
      */
     public endDate: Date;
     
     /**
-     * End time zone
+     * End time zone.
      */
     public endTimeZone: string;
     
     /**
-     * Appointment flags
+     * Appointment flags. Items: Enumerates iCalendar flags. Enum, available values: None, AllDayEvent
      */
     public flags: Array<string>;
     
     /**
-     * Indicates if description is in HTML format
+     * Indicates if description is in HTML format.
      */
     public isDescriptionHtml: boolean;
     
     /**
-     * Location
+     * Location.
      */
     public location: string;
     
@@ -1375,12 +1375,12 @@ export class CalendarDto {
     public microsoftIntendedStatus: string;
     
     /**
-     * Optional attendees             
+     * Optional attendees.             
      */
     public optionalAttendees: Array<MailAddress>;
     
     /**
-     * Event organizer             
+     * Event organizer.             
      */
     public organizer: MailAddress;
     
@@ -1390,7 +1390,7 @@ export class CalendarDto {
     public recurrenceString: string;
     
     /**
-     * Reminders
+     * Reminders.
      */
     public reminders: Array<CalendarReminder>;
     
@@ -1400,12 +1400,12 @@ export class CalendarDto {
     public sequenceId: string;
     
     /**
-     * Start date
+     * Start date.
      */
     public startDate: Date;
     
     /**
-     * Start time zone
+     * Start time zone.
      */
     public startTimeZone: string;
     
@@ -1415,7 +1415,7 @@ export class CalendarDto {
     public status: string;
     
     /**
-     * Summary
+     * Summary.
      */
     public summary: string;
     
@@ -2913,7 +2913,7 @@ export class EmailDto {
     public date: Date;
     
     /**
-     * Delivery notifications.             
+     * Delivery notifications. Items: Email delivery notification options. Enum, available values: Delay, Never, None, OnFailure, OnSuccess
      */
     public deliveryNotificationOptions: Array<string>;
     
@@ -6574,7 +6574,7 @@ export class SendEmailMimeBaseRequest extends AccountBaseRequest {
 /**
  * Send email model request             
  */
-export class SendEmailModelRequest extends AccountBaseRequest {
+export class SendEmailModelRq extends AccountBaseRequest {
 
     /**
      * Attribute type map
@@ -6590,7 +6590,7 @@ export class SendEmailModelRequest extends AccountBaseRequest {
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(SendEmailModelRequest.attributeTypeMap);
+        return super.getAttributeTypeMap().concat(SendEmailModelRq.attributeTypeMap);
     }
 
     /**
@@ -6836,7 +6836,7 @@ export class AppendEmailMimeBaseRequest extends AppendEmailAccountBaseRequest {
 /**
  * Append email request             
  */
-export class AppendEmailModelRequest extends AppendEmailAccountBaseRequest {
+export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
 
     /**
      * Attribute type map
@@ -6852,7 +6852,7 @@ export class AppendEmailModelRequest extends AppendEmailAccountBaseRequest {
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(AppendEmailModelRequest.attributeTypeMap);
+        return super.getAttributeTypeMap().concat(AppendEmailModelRq.attributeTypeMap);
     }
 
     /**
@@ -6996,13 +6996,13 @@ const typeMap = {
             SaveOAuthEmailAccountRequest,
             SendEmailBaseRequest,
             SendEmailMimeBaseRequest,
-            SendEmailModelRequest,
+            SendEmailModelRq,
             SetMessageReadFlagAccountBaseRequest,
             StorageFileLocation,
             AiBcrParseStorageRq,
             AppendEmailBaseRequest,
             AppendEmailMimeBaseRequest,
-            AppendEmailModelRequest,
+            AppendEmailModelRq,
 };
 
 export {enumsMap, typeMap};

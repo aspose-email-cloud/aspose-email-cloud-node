@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **bodyType** | **string** | The content type of message body. Enum, available values: PlainText, Html, Rtf | [default to undefined]
 **cc** | [**Array&lt;MailAddress&gt;**](MailAddress.md) | CC recipients.              | [optional] [default to undefined]
 **date** | **Date** | Message date.              | [default to undefined]
-**deliveryNotificationOptions** | **Array&lt;string&gt;** | Delivery notifications.              | [optional] [default to undefined]
+**deliveryNotificationOptions** | **Array&lt;string&gt;** | Delivery notifications. Items: Email delivery notification options. Enum, available values: Delay, Never, None, OnFailure, OnSuccess | [optional] [default to undefined]
 **from** | [**MailAddress**](MailAddress.md) | From address.              | [optional] [default to undefined]
 **headers** | **{ [key: string]: string; }** | Document headers.              | [optional] [default to undefined]
 **htmlBody** | **string** | HTML body.              | [optional] [default to undefined]

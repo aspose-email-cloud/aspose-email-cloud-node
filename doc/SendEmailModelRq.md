@@ -1,11 +1,11 @@
 
-# AppendEmailModelRequest
+# SendEmailModelRq
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | [**EmailDto**](EmailDto.md) | Email document              | [default to undefined]
+**message** | [**EmailDto**](EmailDto.md) | Message to send              | [optional] [default to undefined]
 
- Parent class: [AppendEmailAccountBaseRequest](AppendEmailAccountBaseRequest.md)
+ Parent class: [AccountBaseRequest](AccountBaseRequest.md)
 
 [[Back to Model list]](README.md#documentation-for-models) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to README]](README.md)

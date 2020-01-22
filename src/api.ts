@@ -1165,9 +1165,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.request' is not null or undefined
-        if (requestObj.request === null || requestObj.request === undefined) {
-            throw new Error('Required parameter "requestObj.request" was null or undefined when calling appendEmailModelMessage.');
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling appendEmailModelMessage.');
         }
 
         // tslint:disable-next-line:prefer-const
@@ -1179,7 +1179,7 @@ export class EmailApi {
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            body: ObjectSerializer.serialize(requestObj.request, "AppendEmailModelRequest"),
+            body: ObjectSerializer.serialize(requestObj.rq, "AppendEmailModelRq"),
         };
 
         if (Object.keys(formParams).length) {
@@ -4223,9 +4223,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.request' is not null or undefined
-        if (requestObj.request === null || requestObj.request === undefined) {
-            throw new Error('Required parameter "requestObj.request" was null or undefined when calling sendEmailModel.');
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling sendEmailModel.');
         }
 
         // tslint:disable-next-line:prefer-const
@@ -4237,7 +4237,7 @@ export class EmailApi {
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            body: ObjectSerializer.serialize(requestObj.request, "SendEmailModelRequest"),
+            body: ObjectSerializer.serialize(requestObj.rq, "SendEmailModelRq"),
         };
 
         if (Object.keys(formParams).length) {

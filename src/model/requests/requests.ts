@@ -683,12 +683,12 @@ export class AppendEmailModelMessageRequest {
     /**
      * Append email request
      */
-    public request: model.AppendEmailModelRequest;
+    public rq: model.AppendEmailModelRq;
 
     public constructor(
-        request?: model.AppendEmailModelRequest) {
+        rq?: model.AppendEmailModelRq) {
         
-        this.request = request;
+        this.rq = rq;
     }
 }
 
@@ -2574,12 +2574,12 @@ export class SendEmailModelRequest {
     /**
      * Send email request
      */
-    public request: model.SendEmailModelRequest;
+    public rq: model.SendEmailModelRq;
 
     public constructor(
-        request?: model.SendEmailModelRequest) {
+        rq?: model.SendEmailModelRq) {
         
-        this.request = request;
+        this.rq = rq;
     }
 }
 
