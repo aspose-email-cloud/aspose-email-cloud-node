@@ -1014,6 +1014,136 @@ export class AiNameWeightedVariants {
 }
 
 /**
+ * Describes associated person.             
+ */
+export class AssociatedPerson {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "name",
+            baseName: "name",
+            type: "string",
+        },
+        {
+            name: "category",
+            baseName: "category",
+            type: "EnumWithCustomOfAssociatedPersonCategory",
+        },
+        {
+            name: "preferred",
+            baseName: "preferred",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AssociatedPerson.attributeTypeMap;
+    }
+
+    /**
+     * Associated person's name.             
+     */
+    public name: string;
+    
+    /**
+     * Associated person's category.             
+     */
+    public category: EnumWithCustomOfAssociatedPersonCategory;
+    
+    /**
+     * Defines whether associated person is preferred.             
+     */
+    public preferred: boolean;
+    
+
+    public constructor(
+        name?: string,
+        category?: EnumWithCustomOfAssociatedPersonCategory,
+        preferred?: boolean) {
+        
+        this.name = name;
+        this.category = category;
+        this.preferred = preferred;
+    }
+}
+
+/**
+ * AttachmentBase class             
+ */
+export class AttachmentBase {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "base64Data",
+            baseName: "base64Data",
+            type: "string",
+        },
+        {
+            name: "contentId",
+            baseName: "contentId",
+            type: "string",
+        },
+        {
+            name: "contentType",
+            baseName: "contentType",
+            type: "ContentType",
+        },
+        {
+            name: "headers",
+            baseName: "headers",
+            type: "{ [key: string]: string; }",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return AttachmentBase.attributeTypeMap;
+    }
+
+    /**
+     * Attachment file content as Base64 string.             
+     */
+    public base64Data: string;
+    
+    /**
+     * Attachment content id             
+     */
+    public contentId: string;
+    
+    /**
+     * Content type             
+     */
+    public contentType: ContentType;
+    
+    /**
+     * Attachment headers.             
+     */
+    public headers: { [key: string]: string; };
+    
+
+    public constructor(
+        base64Data?: string,
+        contentId?: string,
+        contentType?: ContentType,
+        headers?: { [key: string]: string; }) {
+        
+        this.base64Data = base64Data;
+        this.contentId = contentId;
+        this.contentType = contentType;
+        this.headers = headers;
+    }
+}
+
+/**
  * Base property object             
  */
 export class BaseObject {
@@ -1068,6 +1198,1091 @@ export class BaseObject {
 }
 
 /**
+ * iCalendar document representation             
+ */
+export class CalendarDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "attachments",
+            baseName: "attachments",
+            type: "Array<Attachment>",
+        },
+        {
+            name: "attendees",
+            baseName: "attendees",
+            type: "Array<MailAddress>",
+        },
+        {
+            name: "description",
+            baseName: "description",
+            type: "string",
+        },
+        {
+            name: "endDate",
+            baseName: "endDate",
+            type: "Date",
+        },
+        {
+            name: "endTimeZone",
+            baseName: "endTimeZone",
+            type: "string",
+        },
+        {
+            name: "flags",
+            baseName: "flags",
+            type: "Array<string>",
+        },
+        {
+            name: "isDescriptionHtml",
+            baseName: "isDescriptionHtml",
+            type: "boolean",
+        },
+        {
+            name: "location",
+            baseName: "location",
+            type: "string",
+        },
+        {
+            name: "method",
+            baseName: "method",
+            type: "string",
+        },
+        {
+            name: "microsoftBusyStatus",
+            baseName: "microsoftBusyStatus",
+            type: "string",
+        },
+        {
+            name: "microsoftIntendedStatus",
+            baseName: "microsoftIntendedStatus",
+            type: "string",
+        },
+        {
+            name: "optionalAttendees",
+            baseName: "optionalAttendees",
+            type: "Array<MailAddress>",
+        },
+        {
+            name: "organizer",
+            baseName: "organizer",
+            type: "MailAddress",
+        },
+        {
+            name: "recurrenceString",
+            baseName: "recurrenceString",
+            type: "string",
+        },
+        {
+            name: "reminders",
+            baseName: "reminders",
+            type: "Array<CalendarReminder>",
+        },
+        {
+            name: "sequenceId",
+            baseName: "sequenceId",
+            type: "string",
+        },
+        {
+            name: "startDate",
+            baseName: "startDate",
+            type: "Date",
+        },
+        {
+            name: "startTimeZone",
+            baseName: "startTimeZone",
+            type: "string",
+        },
+        {
+            name: "status",
+            baseName: "status",
+            type: "string",
+        },
+        {
+            name: "summary",
+            baseName: "summary",
+            type: "string",
+        },
+        {
+            name: "transparency",
+            baseName: "transparency",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return CalendarDto.attributeTypeMap;
+    }
+
+    /**
+     * Document attachments
+     */
+    public attachments: Array<Attachment>;
+    
+    /**
+     * Event attendees
+     */
+    public attendees: Array<MailAddress>;
+    
+    /**
+     * Description
+     */
+    public description: string;
+    
+    /**
+     * End date
+     */
+    public endDate: Date;
+    
+    /**
+     * End time zone
+     */
+    public endTimeZone: string;
+    
+    /**
+     * Appointment flags
+     */
+    public flags: Array<string>;
+    
+    /**
+     * Indicates if description is in HTML format
+     */
+    public isDescriptionHtml: boolean;
+    
+    /**
+     * Location
+     */
+    public location: string;
+    
+    /**
+     * Defines the iCalendar object method type associated with the calendar document. Enum, available values: None, Publish, Request, Reply, Add, Cancel, Refresh, Counter, DeclineCounter
+     */
+    public method: string;
+    
+    /**
+     * Specifies the BUSY status. Enum, available values: NotDefined, Free, Tentative, Busy, Oof
+     */
+    public microsoftBusyStatus: string;
+    
+    /**
+     * Specifies the INTENDED status. Enum, available values: NotDefined, Free, Tentative, Busy, Oof
+     */
+    public microsoftIntendedStatus: string;
+    
+    /**
+     * Optional attendees             
+     */
+    public optionalAttendees: Array<MailAddress>;
+    
+    /**
+     * Event organizer             
+     */
+    public organizer: MailAddress;
+    
+    /**
+     * String representation of recurrence pattern (See iCalendar RFC, \"Recurrence rule\" section). For example:               For daily recurrence:         \"FREQ=DAILY;COUNT=10;WKST=MO\"                   For monthly recurrence:         \"BYSETPOS=1;BYDAY=MO,TU,WE,TH,FR;FREQ=MONTHLY;INTERVAL=10;WKST=MO\"                   For yearly recurrence:         \"BYMONTHDAY=30;BYMONTH=1;FREQ=YEARLY;WKST=MO\"                   
+     */
+    public recurrenceString: string;
+    
+    /**
+     * Reminders
+     */
+    public reminders: Array<CalendarReminder>;
+    
+    /**
+     * The sequence id. Read only.
+     */
+    public sequenceId: string;
+    
+    /**
+     * Start date
+     */
+    public startDate: Date;
+    
+    /**
+     * Start time zone
+     */
+    public startTimeZone: string;
+    
+    /**
+     * Defines the overall status or confirmation for the calendar document. Enum, available values: NotDefined, Cancelled, Tentative, Confirmed
+     */
+    public status: string;
+    
+    /**
+     * Summary
+     */
+    public summary: string;
+    
+    /**
+     * Specifies whether or not this appointment is intended to be visible in availability searches. Enum, available values: NotDefined, Transparent, Opaque
+     */
+    public transparency: string;
+    
+
+    public constructor(
+        attachments?: Array<Attachment>,
+        attendees?: Array<MailAddress>,
+        description?: string,
+        endDate?: Date,
+        endTimeZone?: string,
+        flags?: Array<string>,
+        isDescriptionHtml?: boolean,
+        location?: string,
+        method?: string,
+        microsoftBusyStatus?: string,
+        microsoftIntendedStatus?: string,
+        optionalAttendees?: Array<MailAddress>,
+        organizer?: MailAddress,
+        recurrenceString?: string,
+        reminders?: Array<CalendarReminder>,
+        sequenceId?: string,
+        startDate?: Date,
+        startTimeZone?: string,
+        status?: string,
+        summary?: string,
+        transparency?: string) {
+        
+        this.attachments = attachments;
+        this.attendees = attendees;
+        this.description = description;
+        this.endDate = endDate;
+        this.endTimeZone = endTimeZone;
+        this.flags = flags;
+        this.isDescriptionHtml = isDescriptionHtml;
+        this.location = location;
+        this.method = method;
+        this.microsoftBusyStatus = microsoftBusyStatus;
+        this.microsoftIntendedStatus = microsoftIntendedStatus;
+        this.optionalAttendees = optionalAttendees;
+        this.organizer = organizer;
+        this.recurrenceString = recurrenceString;
+        this.reminders = reminders;
+        this.sequenceId = sequenceId;
+        this.startDate = startDate;
+        this.startTimeZone = startTimeZone;
+        this.status = status;
+        this.summary = summary;
+        this.transparency = transparency;
+    }
+}
+
+/**
+ * iCalendar document as AlternateView request             
+ */
+export class CalendarDtoAlternateRq {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "CalendarDto",
+        },
+        {
+            name: "action",
+            baseName: "action",
+            type: "string",
+        },
+        {
+            name: "sequenceId",
+            baseName: "sequenceId",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return CalendarDtoAlternateRq.attributeTypeMap;
+    }
+
+    /**
+     * iCalendar document model             
+     */
+    public value: CalendarDto;
+    
+    /**
+     * iCalendar actions. Enum, available values: Create, Update, Cancel
+     */
+    public action: string;
+    
+    /**
+     * iCalendar sequence id             
+     */
+    public sequenceId: string;
+    
+
+    public constructor(
+        value?: CalendarDto,
+        action?: string,
+        sequenceId?: string) {
+        
+        this.value = value;
+        this.action = action;
+        this.sequenceId = sequenceId;
+    }
+}
+
+/**
+ * Provides a grouping of component properties that define an alarm.             
+ */
+export class CalendarReminder {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "action",
+            baseName: "action",
+            type: "string",
+        },
+        {
+            name: "attachments",
+            baseName: "attachments",
+            type: "Array<string>",
+        },
+        {
+            name: "attendees",
+            baseName: "attendees",
+            type: "Array<ReminderAttendee>",
+        },
+        {
+            name: "description",
+            baseName: "description",
+            type: "string",
+        },
+        {
+            name: "duration",
+            baseName: "duration",
+            type: "number",
+        },
+        {
+            name: "repeat",
+            baseName: "repeat",
+            type: "number",
+        },
+        {
+            name: "summary",
+            baseName: "summary",
+            type: "string",
+        },
+        {
+            name: "trigger",
+            baseName: "trigger",
+            type: "ReminderTrigger",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return CalendarReminder.attributeTypeMap;
+    }
+
+    /**
+     * Defines the action to be invoked when an alarm is triggered. Enum, available values: Audio, Display, Email, Procedure, None
+     */
+    public action: string;
+    
+    /**
+     * Collection of Reminder Attachments. Could be an absolute URI or Base64 string representation of attachment content             
+     */
+    public attachments: Array<string>;
+    
+    /**
+     * Contains collection of ReminderAttendee objects.             
+     */
+    public attendees: Array<ReminderAttendee>;
+    
+    /**
+     * Provides a more complete description of the alarm.
+     */
+    public description: string;
+    
+    /**
+     * Specifies the delay period in ticks, after which the alarm will repeat.             
+     */
+    public duration: number;
+    
+    /**
+     * Defines the number of time the alarm should be repeated, after the initial trigger.             
+     */
+    public repeat: number;
+    
+    /**
+     * Defines a short summary or subject for the alarm.
+     */
+    public summary: string;
+    
+    /**
+     * Specifies when an alarm will trigger.
+     */
+    public trigger: ReminderTrigger;
+    
+
+    public constructor(
+        action?: string,
+        attachments?: Array<string>,
+        attendees?: Array<ReminderAttendee>,
+        description?: string,
+        duration?: number,
+        repeat?: number,
+        summary?: string,
+        trigger?: ReminderTrigger) {
+        
+        this.action = action;
+        this.attachments = attachments;
+        this.attendees = attendees;
+        this.description = description;
+        this.duration = duration;
+        this.repeat = repeat;
+        this.summary = summary;
+        this.trigger = trigger;
+    }
+}
+
+/**
+ * VCard document representation.             
+ */
+export class ContactDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "associatedPersons",
+            baseName: "associatedPersons",
+            type: "Array<AssociatedPerson>",
+        },
+        {
+            name: "attachments",
+            baseName: "attachments",
+            type: "Array<Attachment>",
+        },
+        {
+            name: "companyName",
+            baseName: "companyName",
+            type: "string",
+        },
+        {
+            name: "computerNetworkName",
+            baseName: "computerNetworkName",
+            type: "string",
+        },
+        {
+            name: "customerId",
+            baseName: "customerId",
+            type: "string",
+        },
+        {
+            name: "departmentName",
+            baseName: "departmentName",
+            type: "string",
+        },
+        {
+            name: "displayName",
+            baseName: "displayName",
+            type: "string",
+        },
+        {
+            name: "emailAddresses",
+            baseName: "emailAddresses",
+            type: "Array<EmailAddress>",
+        },
+        {
+            name: "events",
+            baseName: "events",
+            type: "Array<CustomerEvent>",
+        },
+        {
+            name: "fileAs",
+            baseName: "fileAs",
+            type: "string",
+        },
+        {
+            name: "fileAsMapping",
+            baseName: "fileAsMapping",
+            type: "string",
+        },
+        {
+            name: "freeBusyLocation",
+            baseName: "freeBusyLocation",
+            type: "string",
+        },
+        {
+            name: "gender",
+            baseName: "gender",
+            type: "string",
+        },
+        {
+            name: "givenName",
+            baseName: "givenName",
+            type: "string",
+        },
+        {
+            name: "governmentIdNumber",
+            baseName: "governmentIdNumber",
+            type: "string",
+        },
+        {
+            name: "hobbies",
+            baseName: "hobbies",
+            type: "string",
+        },
+        {
+            name: "initials",
+            baseName: "initials",
+            type: "string",
+        },
+        {
+            name: "instantMessengers",
+            baseName: "instantMessengers",
+            type: "Array<InstantMessengerAddress>",
+        },
+        {
+            name: "jobTitle",
+            baseName: "jobTitle",
+            type: "string",
+        },
+        {
+            name: "language",
+            baseName: "language",
+            type: "string",
+        },
+        {
+            name: "location",
+            baseName: "location",
+            type: "string",
+        },
+        {
+            name: "middleName",
+            baseName: "middleName",
+            type: "string",
+        },
+        {
+            name: "nickname",
+            baseName: "nickname",
+            type: "string",
+        },
+        {
+            name: "notes",
+            baseName: "notes",
+            type: "string",
+        },
+        {
+            name: "notesFormat",
+            baseName: "notesFormat",
+            type: "string",
+        },
+        {
+            name: "officeLocation",
+            baseName: "officeLocation",
+            type: "string",
+        },
+        {
+            name: "organizationalIdNumber",
+            baseName: "organizationalIdNumber",
+            type: "string",
+        },
+        {
+            name: "phoneNumbers",
+            baseName: "phoneNumbers",
+            type: "Array<PhoneNumber>",
+        },
+        {
+            name: "photo",
+            baseName: "photo",
+            type: "ContactPhoto",
+        },
+        {
+            name: "physicalAddresses",
+            baseName: "physicalAddresses",
+            type: "Array<PostalAddress>",
+        },
+        {
+            name: "preferredTextEncoding",
+            baseName: "preferredTextEncoding",
+            type: "string",
+        },
+        {
+            name: "prefix",
+            baseName: "prefix",
+            type: "string",
+        },
+        {
+            name: "profession",
+            baseName: "profession",
+            type: "string",
+        },
+        {
+            name: "suffix",
+            baseName: "suffix",
+            type: "string",
+        },
+        {
+            name: "surname",
+            baseName: "surname",
+            type: "string",
+        },
+        {
+            name: "urls",
+            baseName: "urls",
+            type: "Array<Url>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ContactDto.attributeTypeMap;
+    }
+
+    /**
+     * Associated persons.             
+     */
+    public associatedPersons: Array<AssociatedPerson>;
+    
+    /**
+     * Document attachments.             
+     */
+    public attachments: Array<Attachment>;
+    
+    /**
+     * Company name.             
+     */
+    public companyName: string;
+    
+    /**
+     * Computer network.             
+     */
+    public computerNetworkName: string;
+    
+    /**
+     * Customer id.             
+     */
+    public customerId: string;
+    
+    /**
+     * Department name.             
+     */
+    public departmentName: string;
+    
+    /**
+     * Display name.             
+     */
+    public displayName: string;
+    
+    /**
+     * Person's email addresses.             
+     */
+    public emailAddresses: Array<EmailAddress>;
+    
+    /**
+     * Person's events.             
+     */
+    public events: Array<CustomerEvent>;
+    
+    /**
+     * A name used for sorting.             
+     */
+    public fileAs: string;
+    
+    /**
+     * Specifies how to generate and recompute the value of the dispidFileAs property when other contact name properties change. Coincides MS-OXPROPS revision 16.2 from 7/31/2014. Enum, available values: Empty, DisplayName, FirstName, LastName, Organization, LastFirstMiddle, OrgLastFirstMiddle, LastFirstMiddleOrg, LastFirstMiddle2, LastFirstMiddle3, OrgLastFirstMiddle2, OrgLastFirstMiddle3, LastFirstMiddleOrg2, LastFirstMiddleOrg3, LastFirstMiddleGen, FirstMiddleLastGen, LastFirstMiddleGen2, BestMatch, AccordingToLocale, None
+     */
+    public fileAsMapping: string;
+    
+    /**
+     * URL path from which a client can retrieve free/busy information for the contact as an iCal file.             
+     */
+    public freeBusyLocation: string;
+    
+    /**
+     * Enum defines gender of a person. Enum, available values: Unspecified, Female, Male
+     */
+    public gender: string;
+    
+    /**
+     * Person's given name.             
+     */
+    public givenName: string;
+    
+    /**
+     * Government id number.             
+     */
+    public governmentIdNumber: string;
+    
+    /**
+     * Person's hobbies.             
+     */
+    public hobbies: string;
+    
+    /**
+     * Person's initials.             
+     */
+    public initials: string;
+    
+    /**
+     * Person's instant messenger addresses.             
+     */
+    public instantMessengers: Array<InstantMessengerAddress>;
+    
+    /**
+     * Person's job title.             
+     */
+    public jobTitle: string;
+    
+    /**
+     * Language.             
+     */
+    public language: string;
+    
+    /**
+     * Person's location.             
+     */
+    public location: string;
+    
+    /**
+     * Person's middle name.             
+     */
+    public middleName: string;
+    
+    /**
+     * Person's nickname.             
+     */
+    public nickname: string;
+    
+    /**
+     * Notes.             
+     */
+    public notes: string;
+    
+    /**
+     * Defines format of a text. Enum, available values: Text, Html
+     */
+    public notesFormat: string;
+    
+    /**
+     * Office location.             
+     */
+    public officeLocation: string;
+    
+    /**
+     * Contains an identifier for the mail user used within the mail user's organization.             
+     */
+    public organizationalIdNumber: string;
+    
+    /**
+     * Person's phone numbers.             
+     */
+    public phoneNumbers: Array<PhoneNumber>;
+    
+    /**
+     * Person's photo.             
+     */
+    public photo: ContactPhoto;
+    
+    /**
+     * Person's physical addresses.             
+     */
+    public physicalAddresses: Array<PostalAddress>;
+    
+    /**
+     * Encoding for all text properties.             
+     */
+    public preferredTextEncoding: string;
+    
+    /**
+     * A prefix of a full name such like Mr.(mister), Dr.(doctor) and so on.             
+     */
+    public prefix: string;
+    
+    /**
+     * A job position of a person in a company.             
+     */
+    public profession: string;
+    
+    /**
+     * A suffix of a full name such like Jr.(junior), Sr.(senior) and so on.             
+     */
+    public suffix: string;
+    
+    /**
+     * Person's surname.             
+     */
+    public surname: string;
+    
+    /**
+     * Person's urls.             
+     */
+    public urls: Array<Url>;
+    
+
+    public constructor(
+        associatedPersons?: Array<AssociatedPerson>,
+        attachments?: Array<Attachment>,
+        companyName?: string,
+        computerNetworkName?: string,
+        customerId?: string,
+        departmentName?: string,
+        displayName?: string,
+        emailAddresses?: Array<EmailAddress>,
+        events?: Array<CustomerEvent>,
+        fileAs?: string,
+        fileAsMapping?: string,
+        freeBusyLocation?: string,
+        gender?: string,
+        givenName?: string,
+        governmentIdNumber?: string,
+        hobbies?: string,
+        initials?: string,
+        instantMessengers?: Array<InstantMessengerAddress>,
+        jobTitle?: string,
+        language?: string,
+        location?: string,
+        middleName?: string,
+        nickname?: string,
+        notes?: string,
+        notesFormat?: string,
+        officeLocation?: string,
+        organizationalIdNumber?: string,
+        phoneNumbers?: Array<PhoneNumber>,
+        photo?: ContactPhoto,
+        physicalAddresses?: Array<PostalAddress>,
+        preferredTextEncoding?: string,
+        prefix?: string,
+        profession?: string,
+        suffix?: string,
+        surname?: string,
+        urls?: Array<Url>) {
+        
+        this.associatedPersons = associatedPersons;
+        this.attachments = attachments;
+        this.companyName = companyName;
+        this.computerNetworkName = computerNetworkName;
+        this.customerId = customerId;
+        this.departmentName = departmentName;
+        this.displayName = displayName;
+        this.emailAddresses = emailAddresses;
+        this.events = events;
+        this.fileAs = fileAs;
+        this.fileAsMapping = fileAsMapping;
+        this.freeBusyLocation = freeBusyLocation;
+        this.gender = gender;
+        this.givenName = givenName;
+        this.governmentIdNumber = governmentIdNumber;
+        this.hobbies = hobbies;
+        this.initials = initials;
+        this.instantMessengers = instantMessengers;
+        this.jobTitle = jobTitle;
+        this.language = language;
+        this.location = location;
+        this.middleName = middleName;
+        this.nickname = nickname;
+        this.notes = notes;
+        this.notesFormat = notesFormat;
+        this.officeLocation = officeLocation;
+        this.organizationalIdNumber = organizationalIdNumber;
+        this.phoneNumbers = phoneNumbers;
+        this.photo = photo;
+        this.physicalAddresses = physicalAddresses;
+        this.preferredTextEncoding = preferredTextEncoding;
+        this.prefix = prefix;
+        this.profession = profession;
+        this.suffix = suffix;
+        this.surname = surname;
+        this.urls = urls;
+    }
+}
+
+/**
+ * Person's photo.             
+ */
+export class ContactPhoto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "photoImageFormat",
+            baseName: "photoImageFormat",
+            type: "string",
+        },
+        {
+            name: "base64Data",
+            baseName: "base64Data",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ContactPhoto.attributeTypeMap;
+    }
+
+    /**
+     * MapiContact photo image format. Enum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
+     */
+    public photoImageFormat: string;
+    
+    /**
+     * Photo serialized as base64 string.             
+     */
+    public base64Data: string;
+    
+
+    public constructor(
+        photoImageFormat?: string,
+        base64Data?: string) {
+        
+        this.photoImageFormat = photoImageFormat;
+        this.base64Data = base64Data;
+    }
+}
+
+/**
+ * Represents a Content-Type header.             
+ */
+export class ContentType {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "boundary",
+            baseName: "boundary",
+            type: "string",
+        },
+        {
+            name: "charSet",
+            baseName: "charSet",
+            type: "string",
+        },
+        {
+            name: "mediaType",
+            baseName: "mediaType",
+            type: "string",
+        },
+        {
+            name: "name",
+            baseName: "name",
+            type: "string",
+        },
+        {
+            name: "parameters",
+            baseName: "parameters",
+            type: "Array<ContentTypeParameter>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ContentType.attributeTypeMap;
+    }
+
+    /**
+     * The boundary parameter included in the Content-Type header.             
+     */
+    public boundary: string;
+    
+    /**
+     * CharSet parameter.             
+     */
+    public charSet: string;
+    
+    /**
+     * The internet media type.             
+     */
+    public mediaType: string;
+    
+    /**
+     * Name parameter.             
+     */
+    public name: string;
+    
+    /**
+     * Full list of parameters             
+     */
+    public parameters: Array<ContentTypeParameter>;
+    
+
+    public constructor(
+        boundary?: string,
+        charSet?: string,
+        mediaType?: string,
+        name?: string,
+        parameters?: Array<ContentTypeParameter>) {
+        
+        this.boundary = boundary;
+        this.charSet = charSet;
+        this.mediaType = mediaType;
+        this.name = name;
+        this.parameters = parameters;
+    }
+}
+
+/**
+ * Content-Type header parameter             
+ */
+export class ContentTypeParameter {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "name",
+            baseName: "name",
+            type: "string",
+        },
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ContentTypeParameter.attributeTypeMap;
+    }
+
+    /**
+     * Parameter name             
+     */
+    public name: string;
+    
+    /**
+     * Parameter value             
+     */
+    public value: string;
+    
+
+    public constructor(
+        name?: string,
+        value?: string) {
+        
+        this.name = name;
+        this.value = value;
+    }
+}
+
+/**
  * Create email document request             
  */
 export class CreateEmailRequest {
@@ -1111,6 +2326,53 @@ export class CreateEmailRequest {
         
         this.emailDocument = emailDocument;
         this.storageFolder = storageFolder;
+    }
+}
+
+/**
+ * Event.             
+ */
+export class CustomerEvent {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "category",
+            baseName: "category",
+            type: "EnumWithCustomOfEventCategory",
+        },
+        {
+            name: "date",
+            baseName: "date",
+            type: "Date",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return CustomerEvent.attributeTypeMap;
+    }
+
+    /**
+     * Event category.             
+     */
+    public category: EnumWithCustomOfEventCategory;
+    
+    /**
+     * Event date.             
+     */
+    public date: Date;
+    
+
+    public constructor(
+        category?: EnumWithCustomOfEventCategory,
+        date?: Date) {
+        
+        this.category = category;
+        this.date = date;
     }
 }
 
@@ -1269,6 +2531,89 @@ export class EmailAccountRequest {
 }
 
 /**
+ * Email address.             
+ */
+export class EmailAddress {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "category",
+            baseName: "category",
+            type: "EnumWithCustomOfEmailAddressCategory",
+        },
+        {
+            name: "displayName",
+            baseName: "displayName",
+            type: "string",
+        },
+        {
+            name: "preferred",
+            baseName: "preferred",
+            type: "boolean",
+        },
+        {
+            name: "routingType",
+            baseName: "routingType",
+            type: "string",
+        },
+        {
+            name: "address",
+            baseName: "address",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailAddress.attributeTypeMap;
+    }
+
+    /**
+     * Address category.             
+     */
+    public category: EnumWithCustomOfEmailAddressCategory;
+    
+    /**
+     * Display name.             
+     */
+    public displayName: string;
+    
+    /**
+     * Defines whether email address is preferred.             
+     */
+    public preferred: boolean;
+    
+    /**
+     * A routing type for an email.             
+     */
+    public routingType: string;
+    
+    /**
+     * Email address.             
+     */
+    public address: string;
+    
+
+    public constructor(
+        category?: EnumWithCustomOfEmailAddressCategory,
+        displayName?: string,
+        preferred?: boolean,
+        routingType?: string,
+        address?: string) {
+        
+        this.category = category;
+        this.displayName = displayName;
+        this.preferred = preferred;
+        this.routingType = routingType;
+        this.address = address;
+    }
+}
+
+/**
  * Represents Email document DTO.             
  */
 export class EmailDocument {
@@ -1347,6 +2692,413 @@ export class EmailDocumentResponse {
         document?: EmailDocument) {
         
         this.document = document;
+    }
+}
+
+/**
+ * Email message representation.             
+ */
+export class EmailDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "alternateViews",
+            baseName: "alternateViews",
+            type: "Array<AlternateView>",
+        },
+        {
+            name: "attachments",
+            baseName: "attachments",
+            type: "Array<Attachment>",
+        },
+        {
+            name: "bcc",
+            baseName: "bcc",
+            type: "Array<MailAddress>",
+        },
+        {
+            name: "body",
+            baseName: "body",
+            type: "string",
+        },
+        {
+            name: "bodyEncoding",
+            baseName: "bodyEncoding",
+            type: "string",
+        },
+        {
+            name: "bodyType",
+            baseName: "bodyType",
+            type: "string",
+        },
+        {
+            name: "cc",
+            baseName: "cc",
+            type: "Array<MailAddress>",
+        },
+        {
+            name: "date",
+            baseName: "date",
+            type: "Date",
+        },
+        {
+            name: "deliveryNotificationOptions",
+            baseName: "deliveryNotificationOptions",
+            type: "Array<string>",
+        },
+        {
+            name: "from",
+            baseName: "from",
+            type: "MailAddress",
+        },
+        {
+            name: "headers",
+            baseName: "headers",
+            type: "{ [key: string]: string; }",
+        },
+        {
+            name: "htmlBody",
+            baseName: "htmlBody",
+            type: "string",
+        },
+        {
+            name: "htmlBodyText",
+            baseName: "htmlBodyText",
+            type: "string",
+        },
+        {
+            name: "isBodyHtml",
+            baseName: "isBodyHtml",
+            type: "boolean",
+        },
+        {
+            name: "isDraft",
+            baseName: "isDraft",
+            type: "boolean",
+        },
+        {
+            name: "isEncrypted",
+            baseName: "isEncrypted",
+            type: "boolean",
+        },
+        {
+            name: "isSigned",
+            baseName: "isSigned",
+            type: "boolean",
+        },
+        {
+            name: "linkedResources",
+            baseName: "linkedResources",
+            type: "Array<LinkedResource>",
+        },
+        {
+            name: "messageId",
+            baseName: "messageId",
+            type: "string",
+        },
+        {
+            name: "originalIsTnef",
+            baseName: "originalIsTnef",
+            type: "boolean",
+        },
+        {
+            name: "preferredTextEncoding",
+            baseName: "preferredTextEncoding",
+            type: "string",
+        },
+        {
+            name: "priority",
+            baseName: "priority",
+            type: "string",
+        },
+        {
+            name: "readReceiptTo",
+            baseName: "readReceiptTo",
+            type: "Array<MailAddress>",
+        },
+        {
+            name: "replyToList",
+            baseName: "replyToList",
+            type: "Array<MailAddress>",
+        },
+        {
+            name: "reversePath",
+            baseName: "reversePath",
+            type: "MailAddress",
+        },
+        {
+            name: "sender",
+            baseName: "sender",
+            type: "MailAddress",
+        },
+        {
+            name: "sensitivity",
+            baseName: "sensitivity",
+            type: "string",
+        },
+        {
+            name: "subject",
+            baseName: "subject",
+            type: "string",
+        },
+        {
+            name: "subjectEncoding",
+            baseName: "subjectEncoding",
+            type: "string",
+        },
+        {
+            name: "timeZoneOffset",
+            baseName: "timeZoneOffset",
+            type: "number",
+        },
+        {
+            name: "to",
+            baseName: "to",
+            type: "Array<MailAddress>",
+        },
+        {
+            name: "xMailer",
+            baseName: "xMailer",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailDto.attributeTypeMap;
+    }
+
+    /**
+     * Collection of alternate views of message.             
+     */
+    public alternateViews: Array<AlternateView>;
+    
+    /**
+     * Email message attachments.             
+     */
+    public attachments: Array<Attachment>;
+    
+    /**
+     * BCC recipients.             
+     */
+    public bcc: Array<MailAddress>;
+    
+    /**
+     * Email message body as plain text.             
+     */
+    public body: string;
+    
+    /**
+     * Body encoding.             
+     */
+    public bodyEncoding: string;
+    
+    /**
+     * The content type of message body. Enum, available values: PlainText, Html, Rtf
+     */
+    public bodyType: string;
+    
+    /**
+     * CC recipients.             
+     */
+    public cc: Array<MailAddress>;
+    
+    /**
+     * Message date.             
+     */
+    public date: Date;
+    
+    /**
+     * Delivery notifications.             
+     */
+    public deliveryNotificationOptions: Array<string>;
+    
+    /**
+     * From address.             
+     */
+    public from: MailAddress;
+    
+    /**
+     * Document headers.             
+     */
+    public headers: { [key: string]: string; };
+    
+    /**
+     * HTML body.             
+     */
+    public htmlBody: string;
+    
+    /**
+     * Html body as plain text. Read only.             
+     */
+    public htmlBodyText: string;
+    
+    /**
+     * Indicates whether the message body is in Html.             
+     */
+    public isBodyHtml: boolean;
+    
+    /**
+     * Indicates whether or not a message has been sent.             
+     */
+    public isDraft: boolean;
+    
+    /**
+     * Indicates whether the message is encrypted. Read only.             
+     */
+    public isEncrypted: boolean;
+    
+    /**
+     * Indicates whether the message is signed. Read only.             
+     */
+    public isSigned: boolean;
+    
+    /**
+     * Linked resources of message.             
+     */
+    public linkedResources: Array<LinkedResource>;
+    
+    /**
+     * Message id.             
+     */
+    public messageId: string;
+    
+    /**
+     * Indicates whether original EML message is in TNEF format. Read only.             
+     */
+    public originalIsTnef: boolean;
+    
+    /**
+     * Preferred encoding.             
+     */
+    public preferredTextEncoding: string;
+    
+    /**
+     * Email priority status. Enum, available values: High, Low, Normal
+     */
+    public priority: string;
+    
+    /**
+     * Read receipt addresses.             
+     */
+    public readReceiptTo: Array<MailAddress>;
+    
+    /**
+     * The list of addresses to reply to for the mail message.             
+     */
+    public replyToList: Array<MailAddress>;
+    
+    /**
+     * ReversePath address.             
+     */
+    public reversePath: MailAddress;
+    
+    /**
+     * Sender address.             
+     */
+    public sender: MailAddress;
+    
+    /**
+     * Specifies the sensitivity of a MailMessage. Enum, available values: None, Normal, Personal, Private, CompanyConfidential
+     */
+    public sensitivity: string;
+    
+    /**
+     * Message subject.             
+     */
+    public subject: string;
+    
+    /**
+     * Subject encoding.             
+     */
+    public subjectEncoding: string;
+    
+    /**
+     * Coordinated Universal Time (UTC) offset for the message dates. This property defines the time zone difference, between the local time and UTC represented as count of ticks (10 000 per millisecond).             
+     */
+    public timeZoneOffset: number;
+    
+    /**
+     * The address collection that contains the recipients of message.             
+     */
+    public to: Array<MailAddress>;
+    
+    /**
+     * The X-Mailer the software that created the e-mail message.             
+     */
+    public xMailer: string;
+    
+
+    public constructor(
+        alternateViews?: Array<AlternateView>,
+        attachments?: Array<Attachment>,
+        bcc?: Array<MailAddress>,
+        body?: string,
+        bodyEncoding?: string,
+        bodyType?: string,
+        cc?: Array<MailAddress>,
+        date?: Date,
+        deliveryNotificationOptions?: Array<string>,
+        from?: MailAddress,
+        headers?: { [key: string]: string; },
+        htmlBody?: string,
+        htmlBodyText?: string,
+        isBodyHtml?: boolean,
+        isDraft?: boolean,
+        isEncrypted?: boolean,
+        isSigned?: boolean,
+        linkedResources?: Array<LinkedResource>,
+        messageId?: string,
+        originalIsTnef?: boolean,
+        preferredTextEncoding?: string,
+        priority?: string,
+        readReceiptTo?: Array<MailAddress>,
+        replyToList?: Array<MailAddress>,
+        reversePath?: MailAddress,
+        sender?: MailAddress,
+        sensitivity?: string,
+        subject?: string,
+        subjectEncoding?: string,
+        timeZoneOffset?: number,
+        to?: Array<MailAddress>,
+        xMailer?: string) {
+        
+        this.alternateViews = alternateViews;
+        this.attachments = attachments;
+        this.bcc = bcc;
+        this.body = body;
+        this.bodyEncoding = bodyEncoding;
+        this.bodyType = bodyType;
+        this.cc = cc;
+        this.date = date;
+        this.deliveryNotificationOptions = deliveryNotificationOptions;
+        this.from = from;
+        this.headers = headers;
+        this.htmlBody = htmlBody;
+        this.htmlBodyText = htmlBodyText;
+        this.isBodyHtml = isBodyHtml;
+        this.isDraft = isDraft;
+        this.isEncrypted = isEncrypted;
+        this.isSigned = isSigned;
+        this.linkedResources = linkedResources;
+        this.messageId = messageId;
+        this.originalIsTnef = originalIsTnef;
+        this.preferredTextEncoding = preferredTextEncoding;
+        this.priority = priority;
+        this.readReceiptTo = readReceiptTo;
+        this.replyToList = replyToList;
+        this.reversePath = reversePath;
+        this.sender = sender;
+        this.sensitivity = sensitivity;
+        this.subject = subject;
+        this.subjectEncoding = subjectEncoding;
+        this.timeZoneOffset = timeZoneOffset;
+        this.to = to;
+        this.xMailer = xMailer;
     }
 }
 
@@ -1488,6 +3240,293 @@ export class EmailPropertyResponse {
         emailProperty?: EmailProperty) {
         
         this.emailProperty = emailProperty;
+    }
+}
+
+export class EnumWithCustomOfAssociatedPersonCategory {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        },
+        {
+            name: "description",
+            baseName: "description",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EnumWithCustomOfAssociatedPersonCategory.attributeTypeMap;
+    }
+
+    /**
+     * Associated person's category. Enum, available values: Spouse, Child, Mother, Father, Parent, Brother, Sister, Friend, Relative, Manager, Assistant, ReferredBy, Partner, DomesticPartner, Custom
+     */
+    public value: string;
+    
+    public description: string;
+    
+
+    public constructor(
+        value?: string,
+        description?: string) {
+        
+        this.value = value;
+        this.description = description;
+    }
+}
+
+export class EnumWithCustomOfEmailAddressCategory {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        },
+        {
+            name: "description",
+            baseName: "description",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EnumWithCustomOfEmailAddressCategory.attributeTypeMap;
+    }
+
+    /**
+     * Represents category for an email address. Enum, available values: Home, Work, Custom, Email1, Email2, Email3
+     */
+    public value: string;
+    
+    public description: string;
+    
+
+    public constructor(
+        value?: string,
+        description?: string) {
+        
+        this.value = value;
+        this.description = description;
+    }
+}
+
+export class EnumWithCustomOfEventCategory {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        },
+        {
+            name: "description",
+            baseName: "description",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EnumWithCustomOfEventCategory.attributeTypeMap;
+    }
+
+    /**
+     * Event category. Enum, available values: Custom, Birthday, Anniversary
+     */
+    public value: string;
+    
+    public description: string;
+    
+
+    public constructor(
+        value?: string,
+        description?: string) {
+        
+        this.value = value;
+        this.description = description;
+    }
+}
+
+export class EnumWithCustomOfInstantMessengerCategory {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        },
+        {
+            name: "description",
+            baseName: "description",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EnumWithCustomOfInstantMessengerCategory.attributeTypeMap;
+    }
+
+    /**
+     * Instant messenger address category. Enum, available values: GoogleTalk, Aim, Yahoo, Skype, Qq, Msn, Icq, Jabber, Custom, ImAddress1, ImAddress2, ImAddress3
+     */
+    public value: string;
+    
+    public description: string;
+    
+
+    public constructor(
+        value?: string,
+        description?: string) {
+        
+        this.value = value;
+        this.description = description;
+    }
+}
+
+export class EnumWithCustomOfPhoneNumberCategory {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        },
+        {
+            name: "description",
+            baseName: "description",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EnumWithCustomOfPhoneNumberCategory.attributeTypeMap;
+    }
+
+    /**
+     * Phone number category. Enum, available values: Custom, Home, Work, Office, Mobile, Fax, HomeFax, WorkFax, Pager, Car, Isdn, Telex, Callback, Radio, Company, TtyTdd, Assistant, Primary
+     */
+    public value: string;
+    
+    public description: string;
+    
+
+    public constructor(
+        value?: string,
+        description?: string) {
+        
+        this.value = value;
+        this.description = description;
+    }
+}
+
+export class EnumWithCustomOfPostalAddressCategory {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        },
+        {
+            name: "description",
+            baseName: "description",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EnumWithCustomOfPostalAddressCategory.attributeTypeMap;
+    }
+
+    /**
+     * Address category. Enum, available values: Home, Work, Custom
+     */
+    public value: string;
+    
+    public description: string;
+    
+
+    public constructor(
+        value?: string,
+        description?: string) {
+        
+        this.value = value;
+        this.description = description;
+    }
+}
+
+export class EnumWithCustomOfUrlCategory {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        },
+        {
+            name: "description",
+            baseName: "description",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EnumWithCustomOfUrlCategory.attributeTypeMap;
+    }
+
+    /**
+     * Url category. Enum, available values: Profile, HomePage, Home, Work, Blog, Ftp, Custom
+     */
+    public value: string;
+    
+    public description: string;
+    
+
+    public constructor(
+        value?: string,
+        description?: string) {
+        
+        this.value = value;
+        this.description = description;
     }
 }
 
@@ -1750,6 +3789,65 @@ export class HierarchicalObjectResponse {
 }
 
 /**
+ * Instant messenger address.             
+ */
+export class InstantMessengerAddress {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "category",
+            baseName: "category",
+            type: "EnumWithCustomOfInstantMessengerCategory",
+        },
+        {
+            name: "address",
+            baseName: "address",
+            type: "string",
+        },
+        {
+            name: "preferred",
+            baseName: "preferred",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return InstantMessengerAddress.attributeTypeMap;
+    }
+
+    /**
+     * Address category.             
+     */
+    public category: EnumWithCustomOfInstantMessengerCategory;
+    
+    /**
+     * Address.             
+     */
+    public address: string;
+    
+    /**
+     * Determines whether this address is preferred.             
+     */
+    public preferred: boolean;
+    
+
+    public constructor(
+        category?: EnumWithCustomOfInstantMessengerCategory,
+        address?: string,
+        preferred?: boolean) {
+        
+        this.category = category;
+        this.address = address;
+        this.preferred = preferred;
+    }
+}
+
+/**
  * Provides information for the object link. This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7             
  */
 export class Link {
@@ -1936,6 +4034,64 @@ export class ListResponseOfAiNameGenderHypothesis {
     }
 }
 
+export class ListResponseOfContactDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<ContactDto>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfContactDto.attributeTypeMap;
+    }
+
+    public value: Array<ContactDto>;
+    
+
+    public constructor(
+        value?: Array<ContactDto>) {
+        
+        this.value = value;
+    }
+}
+
+export class ListResponseOfEmailDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<EmailDto>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfEmailDto.attributeTypeMap;
+    }
+
+    public value: Array<EmailDto>;
+    
+
+    public constructor(
+        value?: Array<EmailDto>) {
+        
+        this.value = value;
+    }
+}
+
 export class ListResponseOfHierarchicalObject {
 
     /**
@@ -2052,6 +4208,93 @@ export class ListResponseOfStorageFileLocation {
     }
 }
 
+export class ListResponseOfStorageModelOfCalendarDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<StorageModelOfCalendarDto>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfStorageModelOfCalendarDto.attributeTypeMap;
+    }
+
+    public value: Array<StorageModelOfCalendarDto>;
+    
+
+    public constructor(
+        value?: Array<StorageModelOfCalendarDto>) {
+        
+        this.value = value;
+    }
+}
+
+export class ListResponseOfStorageModelOfContactDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<StorageModelOfContactDto>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfStorageModelOfContactDto.attributeTypeMap;
+    }
+
+    public value: Array<StorageModelOfContactDto>;
+    
+
+    public constructor(
+        value?: Array<StorageModelOfContactDto>) {
+        
+        this.value = value;
+    }
+}
+
+export class ListResponseOfStorageModelOfEmailDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<StorageModelOfEmailDto>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfStorageModelOfEmailDto.attributeTypeMap;
+    }
+
+    public value: Array<StorageModelOfEmailDto>;
+    
+
+    public constructor(
+        value?: Array<StorageModelOfEmailDto>) {
+        
+        this.value = value;
+    }
+}
+
 export class ListResponseOfString {
 
     /**
@@ -2078,6 +4321,65 @@ export class ListResponseOfString {
         value?: Array<string>) {
         
         this.value = value;
+    }
+}
+
+/**
+ * Represents the address of a message.
+ */
+export class MailAddress {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "displayName",
+            baseName: "displayName",
+            type: "string",
+        },
+        {
+            name: "address",
+            baseName: "address",
+            type: "string",
+        },
+        {
+            name: "participationStatus",
+            baseName: "participationStatus",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MailAddress.attributeTypeMap;
+    }
+
+    /**
+     * Display name             
+     */
+    public displayName: string;
+    
+    /**
+     * Address             
+     */
+    public address: string;
+    
+    /**
+     * Identifies the participation status for the calendar user. Enum, available values: NeedsAction, Accepted, Declined, Tentative, Delegated
+     */
+    public participationStatus: string;
+    
+
+    public constructor(
+        displayName?: string,
+        address?: string,
+        participationStatus?: string) {
+        
+        this.displayName = displayName;
+        this.address = address;
+        this.participationStatus = participationStatus;
     }
 }
 
@@ -2278,6 +4580,314 @@ export class ObjectExist {
         
         this.exists = exists;
         this.isFolder = isFolder;
+    }
+}
+
+/**
+ * A phone number.             
+ */
+export class PhoneNumber {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "category",
+            baseName: "category",
+            type: "EnumWithCustomOfPhoneNumberCategory",
+        },
+        {
+            name: "number",
+            baseName: "number",
+            type: "string",
+        },
+        {
+            name: "preferred",
+            baseName: "preferred",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return PhoneNumber.attributeTypeMap;
+    }
+
+    /**
+     * Phone number category.             
+     */
+    public category: EnumWithCustomOfPhoneNumberCategory;
+    
+    /**
+     * Phone number.             
+     */
+    public number: string;
+    
+    /**
+     * Defines whether phone number is preferred.             
+     */
+    public preferred: boolean;
+    
+
+    public constructor(
+        category?: EnumWithCustomOfPhoneNumberCategory,
+        number?: string,
+        preferred?: boolean) {
+        
+        this.category = category;
+        this.number = number;
+        this.preferred = preferred;
+    }
+}
+
+/**
+ * A postal address             
+ */
+export class PostalAddress {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "address",
+            baseName: "address",
+            type: "string",
+        },
+        {
+            name: "category",
+            baseName: "category",
+            type: "EnumWithCustomOfPostalAddressCategory",
+        },
+        {
+            name: "city",
+            baseName: "city",
+            type: "string",
+        },
+        {
+            name: "country",
+            baseName: "country",
+            type: "string",
+        },
+        {
+            name: "countryCode",
+            baseName: "countryCode",
+            type: "string",
+        },
+        {
+            name: "isMailingAddress",
+            baseName: "isMailingAddress",
+            type: "boolean",
+        },
+        {
+            name: "postalCode",
+            baseName: "postalCode",
+            type: "string",
+        },
+        {
+            name: "postOfficeBox",
+            baseName: "postOfficeBox",
+            type: "string",
+        },
+        {
+            name: "preferred",
+            baseName: "preferred",
+            type: "boolean",
+        },
+        {
+            name: "stateOrProvince",
+            baseName: "stateOrProvince",
+            type: "string",
+        },
+        {
+            name: "street",
+            baseName: "street",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return PostalAddress.attributeTypeMap;
+    }
+
+    /**
+     * Address.             
+     */
+    public address: string;
+    
+    /**
+     * Address category.             
+     */
+    public category: EnumWithCustomOfPostalAddressCategory;
+    
+    /**
+     * Address's city.             
+     */
+    public city: string;
+    
+    /**
+     * Address's country.             
+     */
+    public country: string;
+    
+    /**
+     * Country code.             
+     */
+    public countryCode: string;
+    
+    /**
+     * Defines whether address may be used for mailing.             
+     */
+    public isMailingAddress: boolean;
+    
+    /**
+     * Postal code.             
+     */
+    public postalCode: string;
+    
+    /**
+     * Post Office box.             
+     */
+    public postOfficeBox: string;
+    
+    /**
+     * Defines whether postal address is preferred.             
+     */
+    public preferred: boolean;
+    
+    /**
+     * Address's region.             
+     */
+    public stateOrProvince: string;
+    
+    /**
+     * Address's street.             
+     */
+    public street: string;
+    
+
+    public constructor(
+        address?: string,
+        category?: EnumWithCustomOfPostalAddressCategory,
+        city?: string,
+        country?: string,
+        countryCode?: string,
+        isMailingAddress?: boolean,
+        postalCode?: string,
+        postOfficeBox?: string,
+        preferred?: boolean,
+        stateOrProvince?: string,
+        street?: string) {
+        
+        this.address = address;
+        this.category = category;
+        this.city = city;
+        this.country = country;
+        this.countryCode = countryCode;
+        this.isMailingAddress = isMailingAddress;
+        this.postalCode = postalCode;
+        this.postOfficeBox = postOfficeBox;
+        this.preferred = preferred;
+        this.stateOrProvince = stateOrProvince;
+        this.street = street;
+    }
+}
+
+/**
+ * Defines an \"Attendee\" within a alarm.
+ */
+export class ReminderAttendee {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "address",
+            baseName: "address",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ReminderAttendee.attributeTypeMap;
+    }
+
+    /**
+     * Contains the email address.
+     */
+    public address: string;
+    
+
+    public constructor(
+        address?: string) {
+        
+        this.address = address;
+    }
+}
+
+/**
+ * Specifies when an alarm will trigger.
+ */
+export class ReminderTrigger {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "dateTime",
+            baseName: "dateTime",
+            type: "Date",
+        },
+        {
+            name: "duration",
+            baseName: "duration",
+            type: "number",
+        },
+        {
+            name: "related",
+            baseName: "related",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ReminderTrigger.attributeTypeMap;
+    }
+
+    /**
+     * A trigger set to an absolute date/time.
+     */
+    public dateTime: Date;
+    
+    /**
+     * Specifies a relative time in ticks for the trigger of the alarm.             
+     */
+    public duration: number;
+    
+    /**
+     * Specify the relationship of the alarm trigger with respect to the start or end of the event. Enum, available values: Start, End
+     */
+    public related: string;
+    
+
+    public constructor(
+        dateTime?: Date,
+        duration?: number,
+        related?: string) {
+        
+        this.dateTime = dateTime;
+        this.duration = duration;
+        this.related = related;
     }
 }
 
@@ -2493,8 +5103,295 @@ export class StorageFolderLocation {
     }
 }
 
+export class StorageModelOfCalendarDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "storageFile",
+            baseName: "storageFile",
+            type: "StorageFileLocation",
+        },
+        {
+            name: "value",
+            baseName: "value",
+            type: "CalendarDto",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageModelOfCalendarDto.attributeTypeMap;
+    }
+
+    public storageFile: StorageFileLocation;
+    
+    public value: CalendarDto;
+    
+
+    public constructor(
+        storageFile?: StorageFileLocation,
+        value?: CalendarDto) {
+        
+        this.storageFile = storageFile;
+        this.value = value;
+    }
+}
+
+export class StorageModelOfContactDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "storageFile",
+            baseName: "storageFile",
+            type: "StorageFileLocation",
+        },
+        {
+            name: "value",
+            baseName: "value",
+            type: "ContactDto",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageModelOfContactDto.attributeTypeMap;
+    }
+
+    public storageFile: StorageFileLocation;
+    
+    public value: ContactDto;
+    
+
+    public constructor(
+        storageFile?: StorageFileLocation,
+        value?: ContactDto) {
+        
+        this.storageFile = storageFile;
+        this.value = value;
+    }
+}
+
+export class StorageModelOfEmailDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "storageFile",
+            baseName: "storageFile",
+            type: "StorageFileLocation",
+        },
+        {
+            name: "value",
+            baseName: "value",
+            type: "EmailDto",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageModelOfEmailDto.attributeTypeMap;
+    }
+
+    public storageFile: StorageFileLocation;
+    
+    public value: EmailDto;
+    
+
+    public constructor(
+        storageFile?: StorageFileLocation,
+        value?: EmailDto) {
+        
+        this.storageFile = storageFile;
+        this.value = value;
+    }
+}
+
+export class StorageModelRqOfCalendarDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "CalendarDto",
+        },
+        {
+            name: "storageFolder",
+            baseName: "storageFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageModelRqOfCalendarDto.attributeTypeMap;
+    }
+
+    public value: CalendarDto;
+    
+    public storageFolder: StorageFolderLocation;
+    
+
+    public constructor(
+        value?: CalendarDto,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.value = value;
+        this.storageFolder = storageFolder;
+    }
+}
+
+export class StorageModelRqOfContactDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "ContactDto",
+        },
+        {
+            name: "storageFolder",
+            baseName: "storageFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageModelRqOfContactDto.attributeTypeMap;
+    }
+
+    public value: ContactDto;
+    
+    public storageFolder: StorageFolderLocation;
+    
+
+    public constructor(
+        value?: ContactDto,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.value = value;
+        this.storageFolder = storageFolder;
+    }
+}
+
+export class StorageModelRqOfEmailDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "EmailDto",
+        },
+        {
+            name: "storageFolder",
+            baseName: "storageFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageModelRqOfEmailDto.attributeTypeMap;
+    }
+
+    public value: EmailDto;
+    
+    public storageFolder: StorageFolderLocation;
+    
+
+    public constructor(
+        value?: EmailDto,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.value = value;
+        this.storageFolder = storageFolder;
+    }
+}
+
 /**
- * Email document property DTO.             
+ * Url and its category.             
+ */
+export class Url {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "category",
+            baseName: "category",
+            type: "EnumWithCustomOfUrlCategory",
+        },
+        {
+            name: "preferred",
+            baseName: "preferred",
+            type: "boolean",
+        },
+        {
+            name: "href",
+            baseName: "href",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return Url.attributeTypeMap;
+    }
+
+    /**
+     * Url category.             
+     */
+    public category: EnumWithCustomOfUrlCategory;
+    
+    /**
+     * Defines whether url is preferred.             
+     */
+    public preferred: boolean;
+    
+    /**
+     * URL.             
+     */
+    public href: string;
+    
+
+    public constructor(
+        category?: EnumWithCustomOfUrlCategory,
+        preferred?: boolean,
+        href?: string) {
+        
+        this.category = category;
+        this.preferred = preferred;
+        this.href = href;
+    }
+}
+
+/**
+ * String value object             
  */
 export class ValueResponse {
 
@@ -2640,6 +5537,43 @@ export class AiBcrImageStorageFile extends AiBcrImage {
 }
 
 /**
+ * Parse ocr data request             
+ */
+export class AiBcrParseOcrDataRq extends AiBcrRq {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "data",
+            baseName: "data",
+            type: "Array<AiBcrOcrData>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AiBcrParseOcrDataRq.attributeTypeMap);
+    }
+
+    /**
+     * OCR data             
+     */
+    public data: Array<AiBcrOcrData>;
+    
+
+    public constructor(
+        options?: AiBcrOptions,
+        data?: Array<AiBcrOcrData>) {
+        super();
+        this.options = options;
+        this.data = data;
+    }
+}
+
+/**
  * Business card images from storage for recognition             
  */
 export class AiBcrStorageImageRq extends AiBcrRq {
@@ -2718,6 +5652,61 @@ export class AiNameParsedMatchRq extends AiNameParsedRq {
 }
 
 /**
+ * Represents the format to view a message.             
+ */
+export class AlternateView extends AttachmentBase {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "baseUri",
+            baseName: "baseUri",
+            type: "string",
+        },
+        {
+            name: "linkedResources",
+            baseName: "linkedResources",
+            type: "Array<LinkedResource>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AlternateView.attributeTypeMap);
+    }
+
+    /**
+     * Base URI.             
+     */
+    public baseUri: string;
+    
+    /**
+     * Embedded resources referred to by this alternate view.             
+     */
+    public linkedResources: Array<LinkedResource>;
+    
+
+    public constructor(
+        base64Data?: string,
+        contentId?: string,
+        contentType?: ContentType,
+        headers?: { [key: string]: string; },
+        baseUri?: string,
+        linkedResources?: Array<LinkedResource>) {
+        super();
+        this.base64Data = base64Data;
+        this.contentId = contentId;
+        this.contentType = contentType;
+        this.headers = headers;
+        this.baseUri = baseUri;
+        this.linkedResources = linkedResources;
+    }
+}
+
+/**
  * Append email to account request             
  */
 export class AppendEmailAccountBaseRequest extends AccountBaseRequest {
@@ -2767,6 +5756,149 @@ export class AppendEmailAccountBaseRequest extends AccountBaseRequest {
         this.storageFolder = storageFolder;
         this.folder = folder;
         this.markAsSent = markAsSent;
+    }
+}
+
+/**
+ * Document attachment.             
+ */
+export class Attachment extends AttachmentBase {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "contentDisposition",
+            baseName: "contentDisposition",
+            type: "string",
+        },
+        {
+            name: "isEmbeddedMessage",
+            baseName: "isEmbeddedMessage",
+            type: "boolean",
+        },
+        {
+            name: "name",
+            baseName: "name",
+            type: "string",
+        },
+        {
+            name: "nameEncoding",
+            baseName: "nameEncoding",
+            type: "string",
+        },
+        {
+            name: "preferredTextEncoding",
+            baseName: "preferredTextEncoding",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(Attachment.attributeTypeMap);
+    }
+
+    /**
+     * Content-Disposition header. Read only.             
+     */
+    public contentDisposition: string;
+    
+    /**
+     * Determines if attachment is an embedded message. Read only.             
+     */
+    public isEmbeddedMessage: boolean;
+    
+    /**
+     * Attachment name.             
+     */
+    public name: string;
+    
+    /**
+     * Encoding of attachment name.             
+     */
+    public nameEncoding: string;
+    
+    /**
+     * Preferred text encoding.             
+     */
+    public preferredTextEncoding: string;
+    
+
+    public constructor(
+        base64Data?: string,
+        contentId?: string,
+        contentType?: ContentType,
+        headers?: { [key: string]: string; },
+        contentDisposition?: string,
+        isEmbeddedMessage?: boolean,
+        name?: string,
+        nameEncoding?: string,
+        preferredTextEncoding?: string) {
+        super();
+        this.base64Data = base64Data;
+        this.contentId = contentId;
+        this.contentType = contentType;
+        this.headers = headers;
+        this.contentDisposition = contentDisposition;
+        this.isEmbeddedMessage = isEmbeddedMessage;
+        this.name = name;
+        this.nameEncoding = nameEncoding;
+        this.preferredTextEncoding = preferredTextEncoding;
+    }
+}
+
+/**
+ * List of iCalendar documents             
+ */
+export class CalendarDtoList extends ListResponseOfStorageModelOfCalendarDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(CalendarDtoList.attributeTypeMap);
+    }
+
+
+    public constructor(
+        value?: Array<StorageModelOfCalendarDto>) {
+        super();
+        this.value = value;
+    }
+}
+
+/**
+ * List of contact documents             
+ */
+export class ContactDtoList extends ListResponseOfStorageModelOfContactDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(ContactDtoList.attributeTypeMap);
+    }
+
+
+    public constructor(
+        value?: Array<StorageModelOfContactDto>) {
+        super();
+        this.value = value;
     }
 }
 
@@ -2926,6 +6058,32 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
         this.storageFolder = storageFolder;
         this.messageId = messageId;
         this.deletePermanently = deletePermanently;
+    }
+}
+
+/**
+ * List of email documents             
+ */
+export class EmailDtoList extends ListResponseOfStorageModelOfEmailDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(EmailDtoList.attributeTypeMap);
+    }
+
+
+    public constructor(
+        value?: Array<StorageModelOfEmailDto>) {
+        super();
+        this.value = value;
     }
 }
 
@@ -3124,6 +6282,49 @@ export class IndexedPrimitiveObject extends BaseObject {
         this.type = type;
         this.index = index;
         this.value = value;
+    }
+}
+
+/**
+ * Represents an embedded resource in a message.             
+ */
+export class LinkedResource extends AttachmentBase {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "contentLink",
+            baseName: "contentLink",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(LinkedResource.attributeTypeMap);
+    }
+
+    /**
+     * URI that the resource must match.             
+     */
+    public contentLink: string;
+    
+
+    public constructor(
+        base64Data?: string,
+        contentId?: string,
+        contentType?: ContentType,
+        headers?: { [key: string]: string; },
+        contentLink?: string) {
+        super();
+        this.base64Data = base64Data;
+        this.contentId = contentId;
+        this.contentType = contentType;
+        this.headers = headers;
+        this.contentLink = contentLink;
     }
 }
 
@@ -3371,6 +6572,47 @@ export class SendEmailMimeBaseRequest extends AccountBaseRequest {
 }
 
 /**
+ * Send email model request             
+ */
+export class SendEmailModelRequest extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "message",
+            baseName: "message",
+            type: "EmailDto",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(SendEmailModelRequest.attributeTypeMap);
+    }
+
+    /**
+     * Message to send             
+     */
+    public message: EmailDto;
+    
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        message?: EmailDto) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.message = message;
+    }
+}
+
+/**
  * Set message is read request             
  */
 export class SetMessageReadFlagAccountBaseRequest extends AccountBaseRequest {
@@ -3591,6 +6833,51 @@ export class AppendEmailMimeBaseRequest extends AppendEmailAccountBaseRequest {
     }
 }
 
+/**
+ * Append email request             
+ */
+export class AppendEmailModelRequest extends AppendEmailAccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "message",
+            baseName: "message",
+            type: "EmailDto",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(AppendEmailModelRequest.attributeTypeMap);
+    }
+
+    /**
+     * Email document             
+     */
+    public message: EmailDto;
+    
+
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        folder?: string,
+        markAsSent?: boolean,
+        message?: EmailDto) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.folder = folder;
+        this.markAsSent = markAsSent;
+        this.message = message;
+    }
+}
+
 const enumsMap = {
 };
 
@@ -3613,63 +6900,109 @@ const typeMap = {
             AiNameParsedRq,
             AiNameWeighted,
             AiNameWeightedVariants,
+            AssociatedPerson,
+            AttachmentBase,
             BaseObject,
+            CalendarDto,
+            CalendarDtoAlternateRq,
+            CalendarReminder,
+            ContactDto,
+            ContactPhoto,
+            ContentType,
+            ContentTypeParameter,
             CreateEmailRequest,
+            CustomerEvent,
             DiscUsage,
             EmailAccountRequest,
+            EmailAddress,
             EmailDocument,
             EmailDocumentResponse,
+            EmailDto,
             EmailProperties,
             EmailProperty,
             EmailPropertyResponse,
+            EnumWithCustomOfAssociatedPersonCategory,
+            EnumWithCustomOfEmailAddressCategory,
+            EnumWithCustomOfEventCategory,
+            EnumWithCustomOfInstantMessengerCategory,
+            EnumWithCustomOfPhoneNumberCategory,
+            EnumWithCustomOfPostalAddressCategory,
+            EnumWithCustomOfUrlCategory,
             ErrorDetails,
             FileVersions,
             FilesList,
             FilesUploadResult,
             HierarchicalObjectRequest,
             HierarchicalObjectResponse,
+            InstantMessengerAddress,
             Link,
             ListResponseOfAiBcrOcrData,
             ListResponseOfAiNameComponent,
             ListResponseOfAiNameExtracted,
             ListResponseOfAiNameGenderHypothesis,
+            ListResponseOfContactDto,
+            ListResponseOfEmailDto,
             ListResponseOfHierarchicalObject,
             ListResponseOfHierarchicalObjectResponse,
             ListResponseOfMailServerFolder,
             ListResponseOfStorageFileLocation,
+            ListResponseOfStorageModelOfCalendarDto,
+            ListResponseOfStorageModelOfContactDto,
+            ListResponseOfStorageModelOfEmailDto,
             ListResponseOfString,
+            MailAddress,
             MailServerFolder,
             MimeResponse,
             ModelError,
             ObjectExist,
+            PhoneNumber,
+            PostalAddress,
+            ReminderAttendee,
+            ReminderTrigger,
             SetEmailPropertyRequest,
             StorageExist,
             StorageFile,
             StorageFolderLocation,
+            StorageModelOfCalendarDto,
+            StorageModelOfContactDto,
+            StorageModelOfEmailDto,
+            StorageModelRqOfCalendarDto,
+            StorageModelRqOfContactDto,
+            StorageModelRqOfEmailDto,
+            Url,
             ValueResponse,
             AiBcrBase64Image,
             AiBcrBase64Rq,
             AiBcrImageStorageFile,
+            AiBcrParseOcrDataRq,
             AiBcrStorageImageRq,
             AiNameParsedMatchRq,
+            AlternateView,
             AppendEmailAccountBaseRequest,
+            Attachment,
+            CalendarDtoList,
+            ContactDtoList,
             CreateFolderBaseRequest,
             DeleteFolderBaseRequest,
             DeleteMessageBaseRequest,
+            EmailDtoList,
             FileVersion,
             HierarchicalObject,
             IndexedHierarchicalObject,
             IndexedPrimitiveObject,
+            LinkedResource,
             PrimitiveObject,
             SaveEmailAccountRequest,
             SaveOAuthEmailAccountRequest,
             SendEmailBaseRequest,
             SendEmailMimeBaseRequest,
+            SendEmailModelRequest,
             SetMessageReadFlagAccountBaseRequest,
             StorageFileLocation,
             AiBcrParseStorageRq,
             AppendEmailBaseRequest,
             AppendEmailMimeBaseRequest,
+            AppendEmailModelRequest,
 };
 
 export {enumsMap, typeMap};

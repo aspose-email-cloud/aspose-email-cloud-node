@@ -382,6 +382,86 @@ export class EmailApi {
     }
 
     /**
+     * Parse images to vCard document models             
+     * @param requestObj contains request parameters
+     */
+    public async aiBcrParseModel(requestObj: requestModels.AiBcrParseModelRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfContactDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiBcr/parse-model";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling aiBcrParseModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.rq, "AiBcrBase64Rq"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfContactDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Parse OCR data to vCard document models             
+     * @param requestObj contains request parameters
+     */
+    public async aiBcrParseOcrDataModel(requestObj: requestModels.AiBcrParseOcrDataModelRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfContactDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiBcr/parse-ocr-data-model";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling aiBcrParseOcrDataModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.rq, "AiBcrParseOcrDataRq"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfContactDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Parse images from storage to vCard files             
      * @param requestObj contains request parameters
      */
@@ -1076,6 +1156,46 @@ export class EmailApi {
     }
 
     /**
+     * Adds an email from model to specified folder in email account             
+     * @param requestObj contains request parameters
+     */
+    public async appendEmailModelMessage(requestObj: requestModels.AppendEmailModelMessageRequest): Promise<{response: request.RequestResponse, body: model.ValueResponse}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/AppendModel";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling appendEmailModelMessage.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "AppendEmailModelRequest"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ValueResponse");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Adds an email from MIME to specified folder in email account             
      * @param requestObj contains request parameters
      */
@@ -1112,6 +1232,101 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "ValueResponse");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Convert iCalendar to AlternateView             
+     * @param requestObj contains request parameters
+     */
+    public async convertCalendarModelToAlternate(requestObj: requestModels.ConvertCalendarModelToAlternateRequest): Promise<{response: request.RequestResponse, body: model.AlternateView}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/CalendarModel/as-alternate";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling convertCalendarModelToAlternate.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.rq, "CalendarDtoAlternateRq"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "AlternateView");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts email document to specified format and returns as file             
+     * @param requestObj contains request parameters
+     */
+    public async convertEmail(requestObj: requestModels.ConvertEmailRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/convert/{format}"
+            .replace("{" + "format" + "}", String(requestObj.format));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling convertEmail.');
+        }
+
+        // verify required parameter 'requestObj.file' is not null or undefined
+        if (requestObj.file === null || requestObj.file === undefined) {
+            throw new Error('Required parameter "requestObj.file" was null or undefined when calling convertEmail.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        if (requestObj.file !== undefined) {
+            formParams.File = {
+                value: requestObj.file,
+                options: {
+                    filename: 'File'
+                }
+            };
+        }
+        useFormData = true;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            encoding: null,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "Buffer");
         return Promise.resolve({body: result, response});
     }
 
@@ -2001,6 +2216,70 @@ export class EmailApi {
     }
 
     /**
+     * Fetch message model from email account             
+     * @param requestObj contains request parameters
+     */
+    public async fetchEmailModel(requestObj: requestModels.FetchEmailModelRequest): Promise<{response: request.RequestResponse, body: model.EmailDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/FetchModel";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.messageId' is not null or undefined
+        if (requestObj.messageId === null || requestObj.messageId === undefined) {
+            throw new Error('Required parameter "requestObj.messageId" was null or undefined when calling fetchEmailModel.');
+        }
+
+        // verify required parameter 'requestObj.firstAccount' is not null or undefined
+        if (requestObj.firstAccount === null || requestObj.firstAccount === undefined) {
+            throw new Error('Required parameter "requestObj.firstAccount" was null or undefined when calling fetchEmailModel.');
+        }
+
+        if (requestObj.messageId !== undefined) {
+            queryParameters.messageId = ObjectSerializer.serialize(requestObj.messageId, "string");
+        }
+
+        if (requestObj.firstAccount !== undefined) {
+            queryParameters.firstAccount = ObjectSerializer.serialize(requestObj.firstAccount, "string");
+        }
+
+        if (requestObj.secondAccount !== undefined) {
+            queryParameters.secondAccount = ObjectSerializer.serialize(requestObj.secondAccount, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        if (requestObj.storageFolder !== undefined) {
+            queryParameters.storageFolder = ObjectSerializer.serialize(requestObj.storageFolder, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "EmailDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Get calendar file properties             
      * @param requestObj contains request parameters
      */
@@ -2168,6 +2447,167 @@ export class EmailApi {
     }
 
     /**
+     * Get calendar file             
+     * @param requestObj contains request parameters
+     */
+    public async getCalendarModel(requestObj: requestModels.GetCalendarModelRequest): Promise<{response: request.RequestResponse, body: model.CalendarDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/CalendarModel/{name}"
+            .replace("{" + "name" + "}", String(requestObj.name));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling getCalendarModel.');
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "CalendarDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Get iCalendar from storage as AlternateView             
+     * @param requestObj contains request parameters
+     */
+    public async getCalendarModelAsAlternate(requestObj: requestModels.GetCalendarModelAsAlternateRequest): Promise<{response: request.RequestResponse, body: model.AlternateView}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/CalendarModel/{name}/as-alternate/{calendarAction}"
+            .replace("{" + "name" + "}", String(requestObj.name))
+            .replace("{" + "calendarAction" + "}", String(requestObj.calendarAction));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling getCalendarModelAsAlternate.');
+        }
+
+        // verify required parameter 'requestObj.calendarAction' is not null or undefined
+        if (requestObj.calendarAction === null || requestObj.calendarAction === undefined) {
+            throw new Error('Required parameter "requestObj.calendarAction" was null or undefined when calling getCalendarModelAsAlternate.');
+        }
+
+        if (requestObj.sequenceId !== undefined) {
+            queryParameters.sequenceId = ObjectSerializer.serialize(requestObj.sequenceId, "string");
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "AlternateView");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Get iCalendar list from storage folder             
+     * @param requestObj contains request parameters
+     */
+    public async getCalendarModelList(requestObj: requestModels.GetCalendarModelListRequest): Promise<{response: request.RequestResponse, body: model.CalendarDtoList}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/CalendarModel";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.folder' is not null or undefined
+        if (requestObj.folder === null || requestObj.folder === undefined) {
+            throw new Error('Required parameter "requestObj.folder" was null or undefined when calling getCalendarModelList.');
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.itemsPerPage !== undefined) {
+            queryParameters.itemsPerPage = ObjectSerializer.serialize(requestObj.itemsPerPage, "number");
+        }
+
+        if (requestObj.pageNumber !== undefined) {
+            queryParameters.pageNumber = ObjectSerializer.serialize(requestObj.pageNumber, "number");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "CalendarDtoList");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Get attachment file by name             
      * @param requestObj contains request parameters
      */
@@ -2280,6 +2720,116 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfHierarchicalObjectResponse");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Get contact document.             
+     * @param requestObj contains request parameters
+     */
+    public async getContactModel(requestObj: requestModels.GetContactModelRequest): Promise<{response: request.RequestResponse, body: model.ContactDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/ContactModel/{format}/{name}"
+            .replace("{" + "format" + "}", String(requestObj.format))
+            .replace("{" + "name" + "}", String(requestObj.name));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling getContactModel.');
+        }
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling getContactModel.');
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ContactDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Get contact list from storage folder.             
+     * @param requestObj contains request parameters
+     */
+    public async getContactModelList(requestObj: requestModels.GetContactModelListRequest): Promise<{response: request.RequestResponse, body: model.ContactDtoList}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/ContactModel/{format}"
+            .replace("{" + "format" + "}", String(requestObj.format));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling getContactModelList.');
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        if (requestObj.itemsPerPage !== undefined) {
+            queryParameters.itemsPerPage = ObjectSerializer.serialize(requestObj.itemsPerPage, "number");
+        }
+
+        if (requestObj.pageNumber !== undefined) {
+            queryParameters.pageNumber = ObjectSerializer.serialize(requestObj.pageNumber, "number");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ContactDtoList");
         return Promise.resolve({body: result, response});
     }
 
@@ -2424,6 +2974,60 @@ export class EmailApi {
     }
 
     /**
+     * Converts email document from storage to specified format and returns as file             
+     * @param requestObj contains request parameters
+     */
+    public async getEmailAsFile(requestObj: requestModels.GetEmailAsFileRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/{fileName}/as-file/{format}"
+            .replace("{" + "fileName" + "}", String(requestObj.fileName))
+            .replace("{" + "format" + "}", String(requestObj.format));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.fileName' is not null or undefined
+        if (requestObj.fileName === null || requestObj.fileName === undefined) {
+            throw new Error('Required parameter "requestObj.fileName" was null or undefined when calling getEmailAsFile.');
+        }
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling getEmailAsFile.');
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            encoding: null,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Get email attachment by name             
      * @param requestObj contains request parameters
      */
@@ -2474,6 +3078,116 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Get email document.             
+     * @param requestObj contains request parameters
+     */
+    public async getEmailModel(requestObj: requestModels.GetEmailModelRequest): Promise<{response: request.RequestResponse, body: model.EmailDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/model/{format}/{name}"
+            .replace("{" + "format" + "}", String(requestObj.format))
+            .replace("{" + "name" + "}", String(requestObj.name));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling getEmailModel.');
+        }
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling getEmailModel.');
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "EmailDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Get email list from storage folder.             
+     * @param requestObj contains request parameters
+     */
+    public async getEmailModelList(requestObj: requestModels.GetEmailModelListRequest): Promise<{response: request.RequestResponse, body: model.EmailDtoList}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/model/{format}"
+            .replace("{" + "format" + "}", String(requestObj.format));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling getEmailModelList.');
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        if (requestObj.itemsPerPage !== undefined) {
+            queryParameters.itemsPerPage = ObjectSerializer.serialize(requestObj.itemsPerPage, "number");
+        }
+
+        if (requestObj.pageNumber !== undefined) {
+            queryParameters.pageNumber = ObjectSerializer.serialize(requestObj.pageNumber, "number");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "EmailDtoList");
         return Promise.resolve({body: result, response});
     }
 
@@ -2879,7 +3593,7 @@ export class EmailApi {
     }
 
     /**
-     * Get messages from folder, filtered by query              The query string should have the following view.      The example of a simple expression:       '<Field name>' <Comparison operator> '<Field value>',  where &lt;Field Name&gt; - the name of a message field through which filtering is made, &lt;Comparison operator&gt; - comparison operators, as their name implies, allow to compare message field and specified value, &lt;Field value&gt; - value to be compared with a message field.      The number of simple expressions can make a compound one, ex.:     (<Simple expression 1> & <Simple expression 2>) | <Simple expression 3>,  where \"&amp;\" - logical-AND operator, \"|\" - logical-OR operator      At present the following values are allowed as a field name (<Field name>):  \"To\" - represents a TO field of message, \"Text\" - represents string in the header or body of the message, \"Bcc\" - represents a BCC field of message, \"Body\" - represents a string in the body of message, \"Cc\" - represents a CC field of message, \"From\" - represents a From field of message, \"Subject\" - represents a string in the subject of message, \"InternalDate\" - represents an internal date of message, \"SentDate\" - represents a sent date of message      Additionally, the following field names are allowed for IMAP-protocol:  \"Answered\" - represents an /Answered flag of message \"Seen\" - represents a /Seen flag of message \"Flagged\" - represents a /Flagged flag of message \"Draft\" - represents a /Draft flag of message \"Deleted\" - represents a Deleted/ flag of message \"Recent\" - represents a Deleted/ flag of message \"MessageSize\" - represents a size (in bytes) of message      Additionally, the following field names are allowed for Exchange:  \"IsRead\" - Indicates whether the message has been read \"HasAttachment\" - Indicates whether or not the message has attachments \"IsSubmitted\" - Indicates whether the message has been submitted to the Outbox \"ContentClass\" - represents a content class of item      Additionally, the following field names are allowed for pst/ost files:  \"MessageClass\" - Represents a message class \"ContainerClass\" - Represents a folder container class \"Importance\" - Represents a message importance \"MessageSize\" - represents a size (in bytes) of message \"FolderName\" - represents a folder name \"ContentsCount\" - represents a total number of items in the folder \"UnreadContentsCount\" - represents the number of unread items in the folder. \"Subfolders\" - Indicates whether or not the folder has subfolders \"Read\" - the message is marked as having been read \"HasAttachment\" - the message has at least one attachment \"Unsent\" - the message is still being composed \"Unmodified\" - the message has not been modified since it was first saved (if unsent) or it was delivered (if sent) \"FromMe\" - the user receiving the message was also the user who sent the message \"Resend\" - the message includes a request for a resend operation with a non-delivery report \"NotifyRead\" - the user who sent the message has requested notification when a recipient first reads it \"NotifyUnread\" - the user who sent the message has requested notification when a recipient deletes it before reading or the Message object expires \"EverRead\" - the message has been read at least once      The field value (<Field value>) can take the following values:     For text fields - any string,     For date type fields - the string of \"d-MMM-yyy\" format, ex. \"10-Feb-2009\",     For flags (fields of boolean type) - either \"True\", or \"False\"              
+     * Get messages from folder, filtered by query              The query string should have the following view.      The example of a simple expression:       '<Field name>' <Comparison operator> '<Field value>',  where &lt;Field Name&gt; - the name of a message field through which filtering is made, &lt;Comparison operator&gt; - comparison operators, as their name implies, allow to compare message field and specified value, &lt;Field value&gt; - value to be compared with a message field.      The number of simple expressions can make a compound one, ex.:     (<Simple expression 1> & <Simple expression 2>) | <Simple expression 3     >,  where \"&amp;\" - logical-AND operator, \"|\" - logical-OR operator      At present the following values are allowed as a field name (<Field name>):  \"To\" - represents a TO field of message, \"Text\" - represents string in the header or body of the message, \"Bcc\" - represents a BCC field of message, \"Body\" - represents a string in the body of message, \"Cc\" - represents a CC field of message, \"From\" - represents a From field of message, \"Subject\" - represents a string in the subject of message, \"InternalDate\" - represents an internal date of message, \"SentDate\" - represents a sent date of message      Additionally, the following field names are allowed for IMAP-protocol:  \"Answered\" - represents an /Answered flag of message \"Seen\" - represents a /Seen flag of message \"Flagged\" - represents a /Flagged flag of message \"Draft\" - represents a /Draft flag of message \"Deleted\" - represents a Deleted/ flag of message \"Recent\" - represents a Deleted/ flag of message \"MessageSize\" - represents a size (in bytes) of message      Additionally, the following field names are allowed for Exchange:  \"IsRead\" - Indicates whether the message has been read \"HasAttachment\" - Indicates whether or not the message has attachments \"IsSubmitted\" - Indicates whether the message has been submitted to the Outbox \"ContentClass\" - represents a content class of item      Additionally, the following field names are allowed for pst/ost files:  \"MessageClass\" - Represents a message class \"ContainerClass\" - Represents a folder container class \"Importance\" - Represents a message importance \"MessageSize\" - represents a size (in bytes) of message \"FolderName\" - represents a folder name \"ContentsCount\" - represents a total number of items in the folder \"UnreadContentsCount\" - represents the number of unread items in the folder. \"Subfolders\" - Indicates whether or not the folder has subfolders \"Read\" - the message is marked as having been read \"HasAttachment\" - the message has at least one attachment \"Unsent\" - the message is still being composed \"Unmodified\" - the message has not been modified since it was first saved (if unsent) or it was delivered (if sent) \"FromMe\" - the user receiving the message was also the user who sent the message \"Resend\" - the message includes a request for a resend operation with a non-delivery report \"NotifyRead\" - the user who sent the message has requested notification when a recipient first reads it \"NotifyUnread\" - the user who sent the message has requested notification when a recipient deletes it before reading or the Message object expires \"EverRead\" - the message has been read at least once      The field value (<Field value>) can take the following values:     For text fields - any string,     For date type fields - the string of \"d-MMM-yyy\" format, ex. \"10-Feb-2009\",     For flags (fields of boolean type) - either \"True\", or \"False\"              
      * @param requestObj contains request parameters
      */
     public async listEmailMessages(requestObj: requestModels.ListEmailMessagesRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfString}> {
@@ -2952,6 +3666,83 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfString");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Get messages from folder, filtered by query              The query string should have the following view.      The example of a simple expression:       '<Field name>' <Comparison operator> '<Field value>',  where &lt;Field Name&gt; - the name of a message field through which filtering is made, &lt;Comparison operator&gt; - comparison operators, as their name implies, allow to compare message field and specified value, &lt;Field value&gt; - value to be compared with a message field.      The number of simple expressions can make a compound one, ex.:     (<Simple expression 1> & <Simple expression 2>) | <Simple expression 3     >,  where \"&amp;\" - logical-AND operator, \"|\" - logical-OR operator      At present the following values are allowed as a field name (<Field name>):  \"To\" - represents a TO field of message, \"Text\" - represents string in the header or body of the message, \"Bcc\" - represents a BCC field of message, \"Body\" - represents a string in the body of message, \"Cc\" - represents a CC field of message, \"From\" - represents a From field of message, \"Subject\" - represents a string in the subject of message, \"InternalDate\" - represents an internal date of message, \"SentDate\" - represents a sent date of message      Additionally, the following field names are allowed for IMAP-protocol:  \"Answered\" - represents an /Answered flag of message \"Seen\" - represents a /Seen flag of message \"Flagged\" - represents a /Flagged flag of message \"Draft\" - represents a /Draft flag of message \"Deleted\" - represents a Deleted/ flag of message \"Recent\" - represents a Deleted/ flag of message \"MessageSize\" - represents a size (in bytes) of message      Additionally, the following field names are allowed for Exchange:  \"IsRead\" - Indicates whether the message has been read \"HasAttachment\" - Indicates whether or not the message has attachments \"IsSubmitted\" - Indicates whether the message has been submitted to the Outbox \"ContentClass\" - represents a content class of item      Additionally, the following field names are allowed for pst/ost files:  \"MessageClass\" - Represents a message class \"ContainerClass\" - Represents a folder container class \"Importance\" - Represents a message importance \"MessageSize\" - represents a size (in bytes) of message \"FolderName\" - represents a folder name \"ContentsCount\" - represents a total number of items in the folder \"UnreadContentsCount\" - represents the number of unread items in the folder. \"Subfolders\" - Indicates whether or not the folder has subfolders \"Read\" - the message is marked as having been read \"HasAttachment\" - the message has at least one attachment \"Unsent\" - the message is still being composed \"Unmodified\" - the message has not been modified since it was first saved (if unsent) or it was delivered (if sent) \"FromMe\" - the user receiving the message was also the user who sent the message \"Resend\" - the message includes a request for a resend operation with a non-delivery report \"NotifyRead\" - the user who sent the message has requested notification when a recipient first reads it \"NotifyUnread\" - the user who sent the message has requested notification when a recipient deletes it before reading or the Message object expires \"EverRead\" - the message has been read at least once      The field value (<Field value>) can take the following values:     For text fields - any string,     For date type fields - the string of \"d-MMM-yyy\" format, ex. \"10-Feb-2009\",     For flags (fields of boolean type) - either \"True\", or \"False\"              
+     * @param requestObj contains request parameters
+     */
+    public async listEmailModels(requestObj: requestModels.ListEmailModelsRequest): Promise<{response: request.RequestResponse, body: model.ListResponseOfEmailDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/ListMessagesModel";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.folder' is not null or undefined
+        if (requestObj.folder === null || requestObj.folder === undefined) {
+            throw new Error('Required parameter "requestObj.folder" was null or undefined when calling listEmailModels.');
+        }
+
+        // verify required parameter 'requestObj.queryString' is not null or undefined
+        if (requestObj.queryString === null || requestObj.queryString === undefined) {
+            throw new Error('Required parameter "requestObj.queryString" was null or undefined when calling listEmailModels.');
+        }
+
+        // verify required parameter 'requestObj.firstAccount' is not null or undefined
+        if (requestObj.firstAccount === null || requestObj.firstAccount === undefined) {
+            throw new Error('Required parameter "requestObj.firstAccount" was null or undefined when calling listEmailModels.');
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.queryString !== undefined) {
+            queryParameters.queryString = ObjectSerializer.serialize(requestObj.queryString, "string");
+        }
+
+        if (requestObj.firstAccount !== undefined) {
+            queryParameters.firstAccount = ObjectSerializer.serialize(requestObj.firstAccount, "string");
+        }
+
+        if (requestObj.secondAccount !== undefined) {
+            queryParameters.secondAccount = ObjectSerializer.serialize(requestObj.secondAccount, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        if (requestObj.storageFolder !== undefined) {
+            queryParameters.storageFolder = ObjectSerializer.serialize(requestObj.storageFolder, "string");
+        }
+
+        if (requestObj.recursive !== undefined) {
+            queryParameters.recursive = ObjectSerializer.serialize(requestObj.recursive, "boolean");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfEmailDto");
         return Promise.resolve({body: result, response});
     }
 
@@ -3120,6 +3911,153 @@ export class EmailApi {
     }
 
     /**
+     * Save iCalendar             
+     * @param requestObj contains request parameters
+     */
+    public async saveCalendarModel(requestObj: requestModels.SaveCalendarModelRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/CalendarModel/{name}"
+            .replace("{" + "name" + "}", String(requestObj.name));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling saveCalendarModel.');
+        }
+
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling saveCalendarModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.rq, "StorageModelRqOfCalendarDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
+     * Save contact.             
+     * @param requestObj contains request parameters
+     */
+    public async saveContactModel(requestObj: requestModels.SaveContactModelRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/ContactModel/{format}/{name}"
+            .replace("{" + "format" + "}", String(requestObj.format))
+            .replace("{" + "name" + "}", String(requestObj.name));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling saveContactModel.');
+        }
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling saveContactModel.');
+        }
+
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling saveContactModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.rq, "StorageModelRqOfContactDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
+     * Save email document.             
+     * @param requestObj contains request parameters
+     */
+    public async saveEmailModel(requestObj: requestModels.SaveEmailModelRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/model/{format}/{name}"
+            .replace("{" + "format" + "}", String(requestObj.format))
+            .replace("{" + "name" + "}", String(requestObj.name));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling saveEmailModel.');
+        }
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling saveEmailModel.');
+        }
+
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling saveEmailModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.rq, "StorageModelRqOfEmailDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
      * Create email account file (*.account) with login/password authentication             
      * @param requestObj contains request parameters
      */
@@ -3261,6 +4199,45 @@ export class EmailApi {
             uri: localVarPath,
             json: true,
             body: ObjectSerializer.serialize(requestObj.request, "SendEmailMimeBaseRequest"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
+     * Send an email specified by model in request             
+     * @param requestObj contains request parameters
+     */
+    public async sendEmailModel(requestObj: requestModels.SendEmailModelRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/SendModel";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling sendEmailModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "SendEmailModelRequest"),
         };
 
         if (Object.keys(formParams).length) {

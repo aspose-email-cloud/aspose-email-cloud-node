@@ -178,6 +178,38 @@ export class AiBcrParseRequest {
 }
 
 /**
+ * Request model for aiBcrParseModel operation.
+ */
+export class AiBcrParseModelRequest {
+    /**
+     * Request with base64 images data
+     */
+    public rq: model.AiBcrBase64Rq;
+
+    public constructor(
+        rq?: model.AiBcrBase64Rq) {
+        
+        this.rq = rq;
+    }
+}
+
+/**
+ * Request model for aiBcrParseOcrDataModel operation.
+ */
+export class AiBcrParseOcrDataModelRequest {
+    /**
+     * Gets or sets rq
+     */
+    public rq: model.AiBcrParseOcrDataRq;
+
+    public constructor(
+        rq?: model.AiBcrParseOcrDataRq) {
+        
+        this.rq = rq;
+    }
+}
+
+/**
  * Request model for aiBcrParseStorage operation.
  */
 export class AiBcrParseStorageRequest {
@@ -645,6 +677,22 @@ export class AppendEmailMessageRequest {
 }
 
 /**
+ * Request model for appendEmailModelMessage operation.
+ */
+export class AppendEmailModelMessageRequest {
+    /**
+     * Append email request
+     */
+    public request: model.AppendEmailModelRequest;
+
+    public constructor(
+        request?: model.AppendEmailModelRequest) {
+        
+        this.request = request;
+    }
+}
+
+/**
  * Request model for appendMimeMessage operation.
  */
 export class AppendMimeMessageRequest {
@@ -657,6 +705,45 @@ export class AppendMimeMessageRequest {
         request?: model.AppendEmailMimeBaseRequest) {
         
         this.request = request;
+    }
+}
+
+/**
+ * Request model for convertCalendarModelToAlternate operation.
+ */
+export class ConvertCalendarModelToAlternateRequest {
+    /**
+     * iCalendar to AlternateView request
+     */
+    public rq: model.CalendarDtoAlternateRq;
+
+    public constructor(
+        rq?: model.CalendarDtoAlternateRq) {
+        
+        this.rq = rq;
+    }
+}
+
+/**
+ * Request model for convertEmail operation.
+ */
+export class ConvertEmailRequest {
+    /**
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     */
+    public format: string;
+
+    /**
+     * File to upload
+     */
+    public file: Buffer;
+
+    public constructor(
+        format?: string, 
+        file?: Buffer) {
+        
+        this.format = format;
+        this.file = file;
     }
 }
 
@@ -1180,6 +1267,50 @@ export class FetchEmailMessageRequest {
 }
 
 /**
+ * Request model for fetchEmailModel operation.
+ */
+export class FetchEmailModelRequest {
+    /**
+     * Message identifier
+     */
+    public messageId: string;
+
+    /**
+     * Email account
+     */
+    public firstAccount: string;
+
+    /**
+     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     */
+    public secondAccount: string;
+
+    /**
+     * Storage name where account file(s) located
+     */
+    public storage: string;
+
+    /**
+     * Folder in storage where account file(s) located
+     */
+    public storageFolder: string;
+
+    public constructor(
+        messageId?: string, 
+        firstAccount?: string, 
+        secondAccount?: string, 
+        storage?: string, 
+        storageFolder?: string) {
+        
+        this.messageId = messageId;
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storage = storage;
+        this.storageFolder = storageFolder;
+    }
+}
+
+/**
  * Request model for getCalendar operation.
  */
 export class GetCalendarRequest {
@@ -1250,6 +1381,117 @@ export class GetCalendarAttachmentRequest {
  * Request model for getCalendarList operation.
  */
 export class GetCalendarListRequest {
+    /**
+     * Path to folder in storage
+     */
+    public folder: string;
+
+    /**
+     * Count of items on page
+     */
+    public itemsPerPage: number;
+
+    /**
+     * Page number
+     */
+    public pageNumber: number;
+
+    /**
+     * Storage name
+     */
+    public storage: string;
+
+    public constructor(
+        folder?: string, 
+        itemsPerPage?: number, 
+        pageNumber?: number, 
+        storage?: string) {
+        
+        this.folder = folder;
+        this.itemsPerPage = itemsPerPage;
+        this.pageNumber = pageNumber;
+        this.storage = storage;
+    }
+}
+
+/**
+ * Request model for getCalendarModel operation.
+ */
+export class GetCalendarModelRequest {
+    /**
+     * iCalendar file name in storage
+     */
+    public name: string;
+
+    /**
+     * Path to folder in storage
+     */
+    public folder: string;
+
+    /**
+     * Storage name
+     */
+    public storage: string;
+
+    public constructor(
+        name?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.name = name;
+        this.folder = folder;
+        this.storage = storage;
+    }
+}
+
+/**
+ * Request model for getCalendarModelAsAlternate operation.
+ */
+export class GetCalendarModelAsAlternateRequest {
+    /**
+     * iCalendar file name in storage
+     */
+    public name: string;
+
+    /**
+     * iCalendar method type Enum, available values: Create, Update, Cancel
+     */
+    public calendarAction: string;
+
+    /**
+     * The sequence id
+     */
+    public sequenceId: string;
+
+    /**
+     * Path to folder in storage
+     */
+    public folder: string;
+
+    /**
+     * Storage name
+     */
+    public storage: string;
+
+    public constructor(
+        name?: string, 
+        calendarAction?: string, 
+        sequenceId?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.name = name;
+        this.calendarAction = calendarAction;
+        this.sequenceId = sequenceId;
+        this.folder = folder;
+        this.storage = storage;
+    }
+}
+
+/**
+ * Request model for getCalendarModelList operation.
+ */
+export class GetCalendarModelListRequest {
     /**
      * Path to folder in storage
      */
@@ -1372,6 +1614,87 @@ export class GetContactListRequest {
 }
 
 /**
+ * Request model for getContactModel operation.
+ */
+export class GetContactModelRequest {
+    /**
+     * Contact document format. Enum, available values: VCard, WebDav, Msg
+     */
+    public format: string;
+
+    /**
+     * Contact document file name.
+     */
+    public name: string;
+
+    /**
+     * Path to folder in storage.
+     */
+    public folder: string;
+
+    /**
+     * Storage name.
+     */
+    public storage: string;
+
+    public constructor(
+        format?: string, 
+        name?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.format = format;
+        this.name = name;
+        this.folder = folder;
+        this.storage = storage;
+    }
+}
+
+/**
+ * Request model for getContactModelList operation.
+ */
+export class GetContactModelListRequest {
+    /**
+     * Contact document format. Enum, available values: VCard, WebDav, Msg
+     */
+    public format: string;
+
+    /**
+     * Path to folder in storage.
+     */
+    public folder: string;
+
+    /**
+     * Storage name.
+     */
+    public storage: string;
+
+    /**
+     * Count of items on page.
+     */
+    public itemsPerPage: number;
+
+    /**
+     * Page number.
+     */
+    public pageNumber: number;
+
+    public constructor(
+        format?: string, 
+        folder?: string, 
+        storage?: string, 
+        itemsPerPage?: number, 
+        pageNumber?: number) {
+        
+        this.format = format;
+        this.folder = folder;
+        this.storage = storage;
+        this.itemsPerPage = itemsPerPage;
+        this.pageNumber = pageNumber;
+    }
+}
+
+/**
  * Request model for getContactProperties operation.
  */
 export class GetContactPropertiesRequest {
@@ -1455,6 +1778,43 @@ export class GetEmailRequest {
 }
 
 /**
+ * Request model for getEmailAsFile operation.
+ */
+export class GetEmailAsFileRequest {
+    /**
+     * Email document file name
+     */
+    public fileName: string;
+
+    /**
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     */
+    public format: string;
+
+    /**
+     * Storage name
+     */
+    public storage: string;
+
+    /**
+     * Path to folder in storage
+     */
+    public folder: string;
+
+    public constructor(
+        fileName?: string, 
+        format?: string, 
+        storage?: string, 
+        folder?: string) {
+        
+        this.fileName = fileName;
+        this.format = format;
+        this.storage = storage;
+        this.folder = folder;
+    }
+}
+
+/**
  * Request model for getEmailAttachment operation.
  */
 export class GetEmailAttachmentRequest {
@@ -1488,6 +1848,87 @@ export class GetEmailAttachmentRequest {
         this.fileName = fileName;
         this.storage = storage;
         this.folder = folder;
+    }
+}
+
+/**
+ * Request model for getEmailModel operation.
+ */
+export class GetEmailModelRequest {
+    /**
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     */
+    public format: string;
+
+    /**
+     * Email document file name.
+     */
+    public name: string;
+
+    /**
+     * Path to folder in storage.
+     */
+    public folder: string;
+
+    /**
+     * Storage name.
+     */
+    public storage: string;
+
+    public constructor(
+        format?: string, 
+        name?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.format = format;
+        this.name = name;
+        this.folder = folder;
+        this.storage = storage;
+    }
+}
+
+/**
+ * Request model for getEmailModelList operation.
+ */
+export class GetEmailModelListRequest {
+    /**
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     */
+    public format: string;
+
+    /**
+     * Path to folder in storage.
+     */
+    public folder: string;
+
+    /**
+     * Storage name.
+     */
+    public storage: string;
+
+    /**
+     * Count of items on page.
+     */
+    public itemsPerPage: number;
+
+    /**
+     * Page number.
+     */
+    public pageNumber: number;
+
+    public constructor(
+        format?: string, 
+        folder?: string, 
+        storage?: string, 
+        itemsPerPage?: number, 
+        pageNumber?: number) {
+        
+        this.format = format;
+        this.folder = folder;
+        this.storage = storage;
+        this.itemsPerPage = itemsPerPage;
+        this.pageNumber = pageNumber;
     }
 }
 
@@ -1811,6 +2252,64 @@ export class ListEmailMessagesRequest {
 }
 
 /**
+ * Request model for listEmailModels operation.
+ */
+export class ListEmailModelsRequest {
+    /**
+     * A folder in email account
+     */
+    public folder: string;
+
+    /**
+     * A MailQuery search string
+     */
+    public queryString: string;
+
+    /**
+     * Email account
+     */
+    public firstAccount: string;
+
+    /**
+     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     */
+    public secondAccount: string;
+
+    /**
+     * Storage name where account file(s) located
+     */
+    public storage: string;
+
+    /**
+     * Folder in storage where account file(s) located
+     */
+    public storageFolder: string;
+
+    /**
+     * Specifies that should message be searched in subfolders recursively
+     */
+    public recursive: boolean;
+
+    public constructor(
+        folder?: string, 
+        queryString?: string, 
+        firstAccount?: string, 
+        secondAccount?: string, 
+        storage?: string, 
+        storageFolder?: string, 
+        recursive?: boolean) {
+        
+        this.folder = folder;
+        this.queryString = queryString;
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storage = storage;
+        this.storageFolder = storageFolder;
+        this.recursive = recursive;
+    }
+}
+
+/**
  * Request model for moveFile operation.
  */
 export class MoveFileRequest {
@@ -1922,6 +2421,89 @@ export class ObjectExistsRequest {
 }
 
 /**
+ * Request model for saveCalendarModel operation.
+ */
+export class SaveCalendarModelRequest {
+    /**
+     * iCalendar file name in storage
+     */
+    public name: string;
+
+    /**
+     * Calendar properties update request
+     */
+    public rq: model.StorageModelRqOfCalendarDto;
+
+    public constructor(
+        name?: string, 
+        rq?: model.StorageModelRqOfCalendarDto) {
+        
+        this.name = name;
+        this.rq = rq;
+    }
+}
+
+/**
+ * Request model for saveContactModel operation.
+ */
+export class SaveContactModelRequest {
+    /**
+     * Contact document format. Enum, available values: VCard, WebDav, Msg
+     */
+    public format: string;
+
+    /**
+     * Contact document file name.
+     */
+    public name: string;
+
+    /**
+     * Create contact request.
+     */
+    public rq: model.StorageModelRqOfContactDto;
+
+    public constructor(
+        format?: string, 
+        name?: string, 
+        rq?: model.StorageModelRqOfContactDto) {
+        
+        this.format = format;
+        this.name = name;
+        this.rq = rq;
+    }
+}
+
+/**
+ * Request model for saveEmailModel operation.
+ */
+export class SaveEmailModelRequest {
+    /**
+     * File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     */
+    public format: string;
+
+    /**
+     * iCalendar file name in storage.
+     */
+    public name: string;
+
+    /**
+     * Calendar properties update request.
+     */
+    public rq: model.StorageModelRqOfEmailDto;
+
+    public constructor(
+        format?: string, 
+        name?: string, 
+        rq?: model.StorageModelRqOfEmailDto) {
+        
+        this.format = format;
+        this.name = name;
+        this.rq = rq;
+    }
+}
+
+/**
  * Request model for saveMailAccount operation.
  */
 export class SaveMailAccountRequest {
@@ -1980,6 +2562,22 @@ export class SendEmailMimeRequest {
 
     public constructor(
         request?: model.SendEmailMimeBaseRequest) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for sendEmailModel operation.
+ */
+export class SendEmailModelRequest {
+    /**
+     * Send email request
+     */
+    public request: model.SendEmailModelRequest;
+
+    public constructor(
+        request?: model.SendEmailModelRequest) {
         
         this.request = request;
     }
