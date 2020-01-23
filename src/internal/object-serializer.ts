@@ -60,7 +60,7 @@ export class ObjectSerializer {
             }
             return transformedData;
         } else if (type === "Date") {
-            return data.toString();
+            return (data as Date).toISOString();
         } else {
             if (enumsMap[type]) {
                 return data;
@@ -93,10 +93,10 @@ export class ObjectSerializer {
      * Deserialize object from json string
      */
     public static deserialize(data: any, type: string) {
-        // polymorphism may change the actual type.
-        type = ObjectSerializer.findCorrectType(data, type);
         if (data === undefined || data === null) {
             return data;
+        // polymorphism may change the actual type.
+        type = ObjectSerializer.findCorrectType(data, type);
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
             return data;
         } else if (type.lastIndexOf("Array<", 0) === 0) { // string.startsWith pre es6
