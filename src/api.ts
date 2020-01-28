@@ -47,7 +47,7 @@ export class EmailApi {
      * @param debugMode A value indicating whether debug mode. In debug mode all requests and responses are logged to console.
      */
     constructor(appSID: string, appKey: string, baseUrl?: string, debugMode?: boolean) {
-        this.configuration = new Configuration(appSID, appKey, baseUrl, debugMode);
+        this.configuration = new Configuration(appKey, appSID, baseUrl, debugMode);
     }
 
     /**
