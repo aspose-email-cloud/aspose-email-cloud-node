@@ -194,6 +194,56 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="aibcrparsemodel"></a>
+# **aiBcrParseModel**
+
+```typescript
+public async aiBcrParseModel(requestObj: AiBcrParseModelRequest) : Promise<{response: RequestResponse, body: ListResponseOfContactDto; }>
+```
+
+Parse images to vCard document models             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: ListResponseOfContactDto; }>`
+
+### Request Parameters
+```typescript
+new AiBcrParseModelRequest(
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rq** | [**AiBcrBase64Rq**](AiBcrBase64Rq.md)| Request with base64 images data | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="aibcrparseocrdatamodel"></a>
+# **aiBcrParseOcrDataModel**
+
+```typescript
+public async aiBcrParseOcrDataModel(requestObj: AiBcrParseOcrDataModelRequest) : Promise<{response: RequestResponse, body: ListResponseOfContactDto; }>
+```
+
+Parse OCR data to vCard document models             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: ListResponseOfContactDto; }>`
+
+### Request Parameters
+```typescript
+new AiBcrParseOcrDataModelRequest(
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rq** | [**AiBcrParseOcrDataRq**](AiBcrParseOcrDataRq.md)|  | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="aibcrparsestorage"></a>
 # **aiBcrParseStorage**
 
@@ -593,6 +643,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="appendemailmodelmessage"></a>
+# **appendEmailModelMessage**
+
+```typescript
+public async appendEmailModelMessage(requestObj: AppendEmailModelMessageRequest) : Promise<{response: RequestResponse, body: ValueResponse; }>
+```
+
+Adds an email from model to specified folder in email account             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: ValueResponse; }>`
+
+### Request Parameters
+```typescript
+new AppendEmailModelMessageRequest(
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rq** | [**AppendEmailModelRq**](AppendEmailModelRq.md)| Append email request | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="appendmimemessage"></a>
 # **appendMimeMessage**
 
@@ -615,6 +690,58 @@ new AppendMimeMessageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **request** | [**AppendEmailMimeBaseRequest**](AppendEmailMimeBaseRequest.md)| Append email request | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertcalendarmodeltoalternate"></a>
+# **convertCalendarModelToAlternate**
+
+```typescript
+public async convertCalendarModelToAlternate(requestObj: ConvertCalendarModelToAlternateRequest) : Promise<{response: RequestResponse, body: AlternateView; }>
+```
+
+Convert iCalendar to AlternateView             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: AlternateView; }>`
+
+### Request Parameters
+```typescript
+new ConvertCalendarModelToAlternateRequest(
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rq** | [**CalendarDtoAlternateRq**](CalendarDtoAlternateRq.md)| iCalendar to AlternateView request | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertemail"></a>
+# **convertEmail**
+
+```typescript
+public async convertEmail(requestObj: ConvertEmailRequest) : Promise<{response: RequestResponse, body: Buffer; }>
+```
+
+Converts email document to specified format and returns as file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: Buffer; }>`
+
+### Request Parameters
+```typescript
+new ConvertEmailRequest(
+    format,
+    file)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
+ **file** | **Buffer**| File to upload | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1134,6 +1261,39 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="fetchemailmodel"></a>
+# **fetchEmailModel**
+
+```typescript
+public async fetchEmailModel(requestObj: FetchEmailModelRequest) : Promise<{response: RequestResponse, body: EmailDto; }>
+```
+
+Fetch message model from email account             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: EmailDto; }>`
+
+### Request Parameters
+```typescript
+new FetchEmailModelRequest(
+    messageId,
+    firstAccount,
+    secondAccount=secondAccount,
+    storage=storage,
+    storageFolder=storageFolder)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **messageId** | **string**| Message identifier | 
+ **firstAccount** | **string**| Email account | 
+ **secondAccount** | **string**| Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)              | [optional] 
+ **storage** | **string**| Storage name where account file(s) located | [optional] 
+ **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="getcalendar"></a>
 # **getCalendar**
 
@@ -1225,6 +1385,99 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="getcalendarmodel"></a>
+# **getCalendarModel**
+
+```typescript
+public async getCalendarModel(requestObj: GetCalendarModelRequest) : Promise<{response: RequestResponse, body: CalendarDto; }>
+```
+
+Get calendar file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: CalendarDto; }>`
+
+### Request Parameters
+```typescript
+new GetCalendarModelRequest(
+    name,
+    folder=folder,
+    storage=storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| iCalendar file name in storage | 
+ **folder** | **string**| Path to folder in storage | [optional] 
+ **storage** | **string**| Storage name | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="getcalendarmodelasalternate"></a>
+# **getCalendarModelAsAlternate**
+
+```typescript
+public async getCalendarModelAsAlternate(requestObj: GetCalendarModelAsAlternateRequest) : Promise<{response: RequestResponse, body: AlternateView; }>
+```
+
+Get iCalendar from storage as AlternateView             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: AlternateView; }>`
+
+### Request Parameters
+```typescript
+new GetCalendarModelAsAlternateRequest(
+    name,
+    calendarAction,
+    sequenceId=sequenceId,
+    folder=folder,
+    storage=storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| iCalendar file name in storage | 
+ **calendarAction** | **string**| iCalendar method type Enum, available values: Create, Update, Cancel | 
+ **sequenceId** | **string**| The sequence id | [optional] 
+ **folder** | **string**| Path to folder in storage | [optional] 
+ **storage** | **string**| Storage name | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="getcalendarmodellist"></a>
+# **getCalendarModelList**
+
+```typescript
+public async getCalendarModelList(requestObj: GetCalendarModelListRequest) : Promise<{response: RequestResponse, body: CalendarDtoList; }>
+```
+
+Get iCalendar list from storage folder             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: CalendarDtoList; }>`
+
+### Request Parameters
+```typescript
+new GetCalendarModelListRequest(
+    folder,
+    itemsPerPage=itemsPerPage,
+    pageNumber=pageNumber,
+    storage=storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **folder** | **string**| Path to folder in storage | 
+ **itemsPerPage** | **number**| Count of items on page | [optional] [default to 10]
+ **pageNumber** | **number**| Page number | [optional] [default to 0]
+ **storage** | **string**| Storage name | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="getcontactattachment"></a>
 # **getContactAttachment**
 
@@ -1288,6 +1541,70 @@ Name | Type | Description  | Notes
  **storage** | **string**| Storage name | [optional] 
  **itemsPerPage** | **number**| Count of items on page | [optional] [default to 10]
  **pageNumber** | **number**| Page number | [optional] [default to 0]
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="getcontactmodel"></a>
+# **getContactModel**
+
+```typescript
+public async getContactModel(requestObj: GetContactModelRequest) : Promise<{response: RequestResponse, body: ContactDto; }>
+```
+
+Get contact document.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: ContactDto; }>`
+
+### Request Parameters
+```typescript
+new GetContactModelRequest(
+    format,
+    name,
+    folder=folder,
+    storage=storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| Contact document format. Enum, available values: VCard, WebDav, Msg | 
+ **name** | **string**| Contact document file name. | 
+ **folder** | **string**| Path to folder in storage. | [optional] 
+ **storage** | **string**| Storage name. | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="getcontactmodellist"></a>
+# **getContactModelList**
+
+```typescript
+public async getContactModelList(requestObj: GetContactModelListRequest) : Promise<{response: RequestResponse, body: ContactDtoList; }>
+```
+
+Get contact list from storage folder.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: ContactDtoList; }>`
+
+### Request Parameters
+```typescript
+new GetContactModelListRequest(
+    format,
+    folder=folder,
+    storage=storage,
+    itemsPerPage=itemsPerPage,
+    pageNumber=pageNumber)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| Contact document format. Enum, available values: VCard, WebDav, Msg | 
+ **folder** | **string**| Path to folder in storage. | [optional] 
+ **storage** | **string**| Storage name. | [optional] 
+ **itemsPerPage** | **number**| Count of items on page. | [optional] [default to 10]
+ **pageNumber** | **number**| Page number. | [optional] [default to 0]
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1376,6 +1693,37 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="getemailasfile"></a>
+# **getEmailAsFile**
+
+```typescript
+public async getEmailAsFile(requestObj: GetEmailAsFileRequest) : Promise<{response: RequestResponse, body: Buffer; }>
+```
+
+Converts email document from storage to specified format and returns as file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: Buffer; }>`
+
+### Request Parameters
+```typescript
+new GetEmailAsFileRequest(
+    fileName,
+    format,
+    storage=storage,
+    folder=folder)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fileName** | **string**| Email document file name | 
+ **format** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
+ **storage** | **string**| Storage name | [optional] 
+ **folder** | **string**| Path to folder in storage | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="getemailattachment"></a>
 # **getEmailAttachment**
 
@@ -1404,6 +1752,70 @@ Name | Type | Description  | Notes
  **fileName** | **string**| Email document file name | 
  **storage** | **string**| Storage name | [optional] 
  **folder** | **string**| Path to folder in storage | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="getemailmodel"></a>
+# **getEmailModel**
+
+```typescript
+public async getEmailModel(requestObj: GetEmailModelRequest) : Promise<{response: RequestResponse, body: EmailDto; }>
+```
+
+Get email document.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: EmailDto; }>`
+
+### Request Parameters
+```typescript
+new GetEmailModelRequest(
+    format,
+    name,
+    folder=folder,
+    storage=storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
+ **name** | **string**| Email document file name. | 
+ **folder** | **string**| Path to folder in storage. | [optional] 
+ **storage** | **string**| Storage name. | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="getemailmodellist"></a>
+# **getEmailModelList**
+
+```typescript
+public async getEmailModelList(requestObj: GetEmailModelListRequest) : Promise<{response: RequestResponse, body: EmailDtoList; }>
+```
+
+Get email list from storage folder.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: EmailDtoList; }>`
+
+### Request Parameters
+```typescript
+new GetEmailModelListRequest(
+    format,
+    folder=folder,
+    storage=storage,
+    itemsPerPage=itemsPerPage,
+    pageNumber=pageNumber)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
+ **folder** | **string**| Path to folder in storage. | [optional] 
+ **storage** | **string**| Storage name. | [optional] 
+ **itemsPerPage** | **number**| Count of items on page. | [optional] [default to 10]
+ **pageNumber** | **number**| Page number. | [optional] [default to 0]
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1654,7 +2066,7 @@ public async listEmailMessages(requestObj: ListEmailMessagesRequest) : Promise<{
 
 Get messages from folder, filtered by query             
 
-The query string should have the following view.      The example of a simple expression:       '<Field name>' <Comparison operator> '<Field value>',  where &lt;Field Name&gt; - the name of a message field through which filtering is made, &lt;Comparison operator&gt; - comparison operators, as their name implies, allow to compare message field and specified value, &lt;Field value&gt; - value to be compared with a message field.      The number of simple expressions can make a compound one, ex.:     (<Simple expression 1> & <Simple expression 2>) | <Simple expression 3>,  where \"&amp;\" - logical-AND operator, \"|\" - logical-OR operator      At present the following values are allowed as a field name (<Field name>):  \"To\" - represents a TO field of message, \"Text\" - represents string in the header or body of the message, \"Bcc\" - represents a BCC field of message, \"Body\" - represents a string in the body of message, \"Cc\" - represents a CC field of message, \"From\" - represents a From field of message, \"Subject\" - represents a string in the subject of message, \"InternalDate\" - represents an internal date of message, \"SentDate\" - represents a sent date of message      Additionally, the following field names are allowed for IMAP-protocol:  \"Answered\" - represents an /Answered flag of message \"Seen\" - represents a /Seen flag of message \"Flagged\" - represents a /Flagged flag of message \"Draft\" - represents a /Draft flag of message \"Deleted\" - represents a Deleted/ flag of message \"Recent\" - represents a Deleted/ flag of message \"MessageSize\" - represents a size (in bytes) of message      Additionally, the following field names are allowed for Exchange:  \"IsRead\" - Indicates whether the message has been read \"HasAttachment\" - Indicates whether or not the message has attachments \"IsSubmitted\" - Indicates whether the message has been submitted to the Outbox \"ContentClass\" - represents a content class of item      Additionally, the following field names are allowed for pst/ost files:  \"MessageClass\" - Represents a message class \"ContainerClass\" - Represents a folder container class \"Importance\" - Represents a message importance \"MessageSize\" - represents a size (in bytes) of message \"FolderName\" - represents a folder name \"ContentsCount\" - represents a total number of items in the folder \"UnreadContentsCount\" - represents the number of unread items in the folder. \"Subfolders\" - Indicates whether or not the folder has subfolders \"Read\" - the message is marked as having been read \"HasAttachment\" - the message has at least one attachment \"Unsent\" - the message is still being composed \"Unmodified\" - the message has not been modified since it was first saved (if unsent) or it was delivered (if sent) \"FromMe\" - the user receiving the message was also the user who sent the message \"Resend\" - the message includes a request for a resend operation with a non-delivery report \"NotifyRead\" - the user who sent the message has requested notification when a recipient first reads it \"NotifyUnread\" - the user who sent the message has requested notification when a recipient deletes it before reading or the Message object expires \"EverRead\" - the message has been read at least once      The field value (<Field value>) can take the following values:     For text fields - any string,     For date type fields - the string of \"d-MMM-yyy\" format, ex. \"10-Feb-2009\",     For flags (fields of boolean type) - either \"True\", or \"False\"              
+The query string should have the following view.      The example of a simple expression:       '<Field name>' <Comparison operator> '<Field value>',  where &lt;Field Name&gt; - the name of a message field through which filtering is made, &lt;Comparison operator&gt; - comparison operators, as their name implies, allow to compare message field and specified value, &lt;Field value&gt; - value to be compared with a message field.      The number of simple expressions can make a compound one, ex.:     (<Simple expression 1> & <Simple expression 2>) | <Simple expression 3     >,  where \"&amp;\" - logical-AND operator, \"|\" - logical-OR operator      At present the following values are allowed as a field name (<Field name>):  \"To\" - represents a TO field of message, \"Text\" - represents string in the header or body of the message, \"Bcc\" - represents a BCC field of message, \"Body\" - represents a string in the body of message, \"Cc\" - represents a CC field of message, \"From\" - represents a From field of message, \"Subject\" - represents a string in the subject of message, \"InternalDate\" - represents an internal date of message, \"SentDate\" - represents a sent date of message      Additionally, the following field names are allowed for IMAP-protocol:  \"Answered\" - represents an /Answered flag of message \"Seen\" - represents a /Seen flag of message \"Flagged\" - represents a /Flagged flag of message \"Draft\" - represents a /Draft flag of message \"Deleted\" - represents a Deleted/ flag of message \"Recent\" - represents a Deleted/ flag of message \"MessageSize\" - represents a size (in bytes) of message      Additionally, the following field names are allowed for Exchange:  \"IsRead\" - Indicates whether the message has been read \"HasAttachment\" - Indicates whether or not the message has attachments \"IsSubmitted\" - Indicates whether the message has been submitted to the Outbox \"ContentClass\" - represents a content class of item      Additionally, the following field names are allowed for pst/ost files:  \"MessageClass\" - Represents a message class \"ContainerClass\" - Represents a folder container class \"Importance\" - Represents a message importance \"MessageSize\" - represents a size (in bytes) of message \"FolderName\" - represents a folder name \"ContentsCount\" - represents a total number of items in the folder \"UnreadContentsCount\" - represents the number of unread items in the folder. \"Subfolders\" - Indicates whether or not the folder has subfolders \"Read\" - the message is marked as having been read \"HasAttachment\" - the message has at least one attachment \"Unsent\" - the message is still being composed \"Unmodified\" - the message has not been modified since it was first saved (if unsent) or it was delivered (if sent) \"FromMe\" - the user receiving the message was also the user who sent the message \"Resend\" - the message includes a request for a resend operation with a non-delivery report \"NotifyRead\" - the user who sent the message has requested notification when a recipient first reads it \"NotifyUnread\" - the user who sent the message has requested notification when a recipient deletes it before reading or the Message object expires \"EverRead\" - the message has been read at least once      The field value (<Field value>) can take the following values:     For text fields - any string,     For date type fields - the string of \"d-MMM-yyy\" format, ex. \"10-Feb-2009\",     For flags (fields of boolean type) - either \"True\", or \"False\"              
 
 ### Return type
 
@@ -1663,6 +2075,45 @@ The query string should have the following view.      The example of a simple ex
 ### Request Parameters
 ```typescript
 new ListEmailMessagesRequest(
+    folder,
+    queryString,
+    firstAccount,
+    secondAccount=secondAccount,
+    storage=storage,
+    storageFolder=storageFolder,
+    recursive=recursive)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **folder** | **string**| A folder in email account | 
+ **queryString** | **string**| A MailQuery search string | 
+ **firstAccount** | **string**| Email account | 
+ **secondAccount** | **string**| Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)              | [optional] 
+ **storage** | **string**| Storage name where account file(s) located | [optional] 
+ **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
+ **recursive** | **boolean**| Specifies that should message be searched in subfolders recursively | [optional] [default to false]
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="listemailmodels"></a>
+# **listEmailModels**
+
+```typescript
+public async listEmailModels(requestObj: ListEmailModelsRequest) : Promise<{response: RequestResponse, body: ListResponseOfEmailDto; }>
+```
+
+Get messages from folder, filtered by query             
+
+The query string should have the following view.      The example of a simple expression:       '<Field name>' <Comparison operator> '<Field value>',  where &lt;Field Name&gt; - the name of a message field through which filtering is made, &lt;Comparison operator&gt; - comparison operators, as their name implies, allow to compare message field and specified value, &lt;Field value&gt; - value to be compared with a message field.      The number of simple expressions can make a compound one, ex.:     (<Simple expression 1> & <Simple expression 2>) | <Simple expression 3     >,  where \"&amp;\" - logical-AND operator, \"|\" - logical-OR operator      At present the following values are allowed as a field name (<Field name>):  \"To\" - represents a TO field of message, \"Text\" - represents string in the header or body of the message, \"Bcc\" - represents a BCC field of message, \"Body\" - represents a string in the body of message, \"Cc\" - represents a CC field of message, \"From\" - represents a From field of message, \"Subject\" - represents a string in the subject of message, \"InternalDate\" - represents an internal date of message, \"SentDate\" - represents a sent date of message      Additionally, the following field names are allowed for IMAP-protocol:  \"Answered\" - represents an /Answered flag of message \"Seen\" - represents a /Seen flag of message \"Flagged\" - represents a /Flagged flag of message \"Draft\" - represents a /Draft flag of message \"Deleted\" - represents a Deleted/ flag of message \"Recent\" - represents a Deleted/ flag of message \"MessageSize\" - represents a size (in bytes) of message      Additionally, the following field names are allowed for Exchange:  \"IsRead\" - Indicates whether the message has been read \"HasAttachment\" - Indicates whether or not the message has attachments \"IsSubmitted\" - Indicates whether the message has been submitted to the Outbox \"ContentClass\" - represents a content class of item      Additionally, the following field names are allowed for pst/ost files:  \"MessageClass\" - Represents a message class \"ContainerClass\" - Represents a folder container class \"Importance\" - Represents a message importance \"MessageSize\" - represents a size (in bytes) of message \"FolderName\" - represents a folder name \"ContentsCount\" - represents a total number of items in the folder \"UnreadContentsCount\" - represents the number of unread items in the folder. \"Subfolders\" - Indicates whether or not the folder has subfolders \"Read\" - the message is marked as having been read \"HasAttachment\" - the message has at least one attachment \"Unsent\" - the message is still being composed \"Unmodified\" - the message has not been modified since it was first saved (if unsent) or it was delivered (if sent) \"FromMe\" - the user receiving the message was also the user who sent the message \"Resend\" - the message includes a request for a resend operation with a non-delivery report \"NotifyRead\" - the user who sent the message has requested notification when a recipient first reads it \"NotifyUnread\" - the user who sent the message has requested notification when a recipient deletes it before reading or the Message object expires \"EverRead\" - the message has been read at least once      The field value (<Field value>) can take the following values:     For text fields - any string,     For date type fields - the string of \"d-MMM-yyy\" format, ex. \"10-Feb-2009\",     For flags (fields of boolean type) - either \"True\", or \"False\"              
+
+### Return type
+
+`Promise<{response: RequestResponse, body: ListResponseOfEmailDto; }>`
+
+### Request Parameters
+```typescript
+new ListEmailModelsRequest(
     folder,
     queryString,
     firstAccount,
@@ -1777,6 +2228,91 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="savecalendarmodel"></a>
+# **saveCalendarModel**
+
+```typescript
+public async saveCalendarModel(requestObj: SaveCalendarModelRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Save iCalendar             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new SaveCalendarModelRequest(
+    name,
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| iCalendar file name in storage | 
+ **rq** | [**StorageModelRqOfCalendarDto**](StorageModelRqOfCalendarDto.md)| Calendar properties update request | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="savecontactmodel"></a>
+# **saveContactModel**
+
+```typescript
+public async saveContactModel(requestObj: SaveContactModelRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Save contact.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new SaveContactModelRequest(
+    format,
+    name,
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| Contact document format. Enum, available values: VCard, WebDav, Msg | 
+ **name** | **string**| Contact document file name. | 
+ **rq** | [**StorageModelRqOfContactDto**](StorageModelRqOfContactDto.md)| Create contact request. | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="saveemailmodel"></a>
+# **saveEmailModel**
+
+```typescript
+public async saveEmailModel(requestObj: SaveEmailModelRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Save email document.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new SaveEmailModelRequest(
+    format,
+    name,
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
+ **name** | **string**| iCalendar file name in storage. | 
+ **rq** | [**StorageModelRqOfEmailDto**](StorageModelRqOfEmailDto.md)| Calendar properties update request. | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="savemailaccount"></a>
 # **saveMailAccount**
 
@@ -1874,6 +2410,31 @@ new SendEmailMimeRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **request** | [**SendEmailMimeBaseRequest**](SendEmailMimeBaseRequest.md)| Send email request | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="sendemailmodel"></a>
+# **sendEmailModel**
+
+```typescript
+public async sendEmailModel(requestObj: SendEmailModelRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Send an email specified by model in request             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new SendEmailModelRequest(
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rq** | [**SendEmailModelRq**](SendEmailModelRq.md)| Send email request | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

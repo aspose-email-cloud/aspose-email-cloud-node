@@ -185,6 +185,84 @@ describe('EmailApi', function() {
         expect(displayName.value).toContain("Thomas");
     });
 
+    it('Create calendar email #pipeline', async function() {
+        var calendar = new models.CalendarDto();
+        calendar.attendees = [
+            new models.MailAddress('Attendee Name', 'attendee@am.ru', 'Accepted')
+        ];
+        calendar.description = 'Some description';
+        calendar.summary = 'Some summary';
+        calendar.organizer = new models.MailAddress('Organizer Name', 'organizer@am.ru');
+        calendar.startDate = getDate(undefined, 1);
+        calendar.endDate = getDate(calendar.startDate, 1);
+        calendar.location = 'Some location';
+        var folderLocation = new models.StorageFolderLocation(storage, folder);
+        var calendarFile = uuidv4() + '.ics';
+        await api.saveCalendarModel(
+            new requests.SaveCalendarModelRequest(
+                calendarFile,
+                new models.StorageModelRqOfCalendarDto(
+                    calendar,
+                    folderLocation)));
+        var exists = await api.objectExists(
+            new requests.ObjectExistsRequest(folder + '/' + calendarFile, storage));
+        expect(exists.body.exists).toBeTrue();
+
+        var alternate = await api.convertCalendarModelToAlternate(
+            new requests.ConvertCalendarModelToAlternateRequest(
+                new models.CalendarDtoAlternateRq(calendar, 'Create')));
+
+        var email = new models.EmailDto();
+        email.alternateViews = [alternate.body];
+        email.from = new models.MailAddress('From address', 'cloud.em@yandex.ru');
+        email.to = [new models.MailAddress('To address', 'cloud.em@yandex.ru')];
+        email.subject = 'Some subject';
+        email.body = 'Some body';
+
+        var emailFile = uuidv4() + '.eml';
+        await api.saveEmailModel(
+            new requests.SaveEmailModelRequest(
+                'Eml', emailFile, new models.StorageModelRqOfEmailDto(
+                    email, folderLocation)));
+
+        var downloaded = await api.downloadFile(
+            new requests.DownloadFileRequest(
+                folder + '/' + emailFile, storage));
+        var downloadedRaw = downloaded.body.toString();
+        expect(downloadedRaw).toContain('cloud.em@yandex.ru');
+    });
+
+    it('Save contact model #pipeline', async function() {
+        var contact = new models.ContactDto();
+        contact.gender = 'Male';
+        contact.surname = 'Thomas';
+        contact.givenName = 'Alex';
+        contact.emailAddresses = [new models.EmailAddress(
+            new models.EnumWithCustomOfEmailAddressCategory('Work'),
+            'Alex Thomas', true, undefined, 'alex.thomas@work.com')];
+        contact.phoneNumbers = [new models.PhoneNumber(
+            new models.EnumWithCustomOfPhoneNumberCategory('Work'),
+            '+49211424721', true)];
+
+        var contactFile = uuidv4() + '.vcf';
+        await api.saveContactModel(
+            new requests.SaveContactModelRequest(
+                'VCard', contactFile, new models.StorageModelRqOfContactDto(
+                    contact, new models.StorageFolderLocation(storage, folder))));
+        var exists = await api.objectExists(
+            new requests.ObjectExistsRequest(
+                folder + '/' + contactFile, storage));
+        expect(exists.body.exists).toBeTrue();
+    });
+
+    it('Parse contact model from image', async function() {
+        var imageData = fs.readFileSync('tests/data/test_single_0001.png').toString('base64');
+        var result = await api.aiBcrParseModel(new requests.AiBcrParseModelRequest(
+            new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
+        expect(result.body.value.length).toEqual(1);
+        expect(result.body.value[0].displayName).toContain("Thomas");
+    });
+
     async function createCalendar(startDate? : Date) :Promise<string> {
         var fileName = uuidv4() + '.ics';
         startDate = (startDate == null) ? getDate(undefined, 1) : startDate;
