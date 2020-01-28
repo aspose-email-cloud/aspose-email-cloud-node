@@ -93,13 +93,13 @@ export class ObjectSerializer {
      * Deserialize object from json string
      */
     public static deserialize(data: any, type: string) {
-        if (data === undefined || data === null) {
+        if (data === undefined || data === null)
             return data;
-        // polymorphism may change the actual type.
         type = ObjectSerializer.findCorrectType(data, type);
-        } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
+        // polymorphism may change the actual type.
+        if (primitives.indexOf(type.toLowerCase()) !== -1)
             return data;
-        } else if (type.lastIndexOf("Array<", 0) === 0) { // string.startsWith pre es6
+        if (type.lastIndexOf("Array<", 0) === 0) { // string.startsWith pre es6
             let subType: string = type.replace("Array<", ""); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
             const transformedData = [];
