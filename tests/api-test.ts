@@ -93,19 +93,19 @@ describe('EmailApi', function() {
         expect(factStartDate).toEqual(startDate);
     });
 
-    it('Name gender detection', async function() {
+    it('Name gender detection #pipeline', async function() {
         var result = await api.aiNameGenderize(new requests.AiNameGenderizeRequest('John Cane'));
         expect(result.body.value.length).toBeGreaterThanOrEqual(1);
         expect(result.body.value[0].gender).toEqual('Male');
     });
 
-    it('Name formatting', async function() {
+    it('Name formatting #pipeline', async function() {
         var result = await api.aiNameFormat(new requests.AiNameFormatRequest(
             'Mr. John Michael Cane', undefined, undefined, undefined, undefined, '%t%L%f%m'));
         expect(result.body.name).toEqual('Mr. Cane J. M.');
     });
 
-    it('Name match', async function() {
+    it('Name match #pipeline', async function() {
         var first = 'John Michael Cane';
         var second = 'Cane J.';
         var result = await api.aiNameMatch(new requests.AiNameMatchRequest(
@@ -113,7 +113,7 @@ describe('EmailApi', function() {
         expect(result.body.similarity).toBeGreaterThanOrEqual(0.5);
     });
 
-    it('Name expand', async function() {
+    it('Name expand #pipeline', async function() {
         var result = await api.aiNameExpand(new requests.AiNameExpandRequest(
             'Smith Bobby'));
         var names = result.body.names
@@ -122,7 +122,7 @@ describe('EmailApi', function() {
         expect(names).toContain('B. Smith');
     });
 
-    it('Name complete', async function() {
+    it('Name complete #pipeline', async function() {
         var prefix = 'Dav';
         var result = await api.aiNameComplete(new requests.AiNameCompleteRequest(
             prefix));
@@ -133,7 +133,7 @@ describe('EmailApi', function() {
         expect(names).toContain('Dave');
     });
 
-    it('Parse name from email address', async function() {
+    it('Parse name from email address #pipeline', async function() {
         var result = await api.aiNameParseEmailAddress(new requests.AiNameParseEmailAddressRequest(
             'john-cane@gmail.com'));
         var extractedValues = result.body.value
@@ -145,7 +145,7 @@ describe('EmailApi', function() {
         expect(surname.value).toEqual('Cane');
     });
 
-    it('Parse business card images to VCard contact files', async function() {
+    it('Parse business card images to VCard contact files #pipeline', async function() {
         var imageData = fs.readFileSync('tests/data/test_single_0001.png');
         var storageFileName = uuidv4() + '.png';
         // 1) Upload business card image to storage
@@ -175,7 +175,7 @@ describe('EmailApi', function() {
         expect(contactProperties.body.internalProperties.length).toBeGreaterThanOrEqual(3);
     });
 
-    it('Business card recognition without storage', async function() {
+    it('Business card recognition without storage #pipeline', async function() {
         var imageData = fs.readFileSync('tests/data/test_single_0001.png').toString('base64');
         var result = await api.aiBcrParse(new requests.AiBcrParseRequest(
             new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
@@ -255,7 +255,7 @@ describe('EmailApi', function() {
         expect(exists.body.exists).toBeTrue();
     });
 
-    it('Parse contact model from image', async function() {
+    it('Parse contact model from image #pipeline', async function() {
         var imageData = fs.readFileSync('tests/data/test_single_0001.png').toString('base64');
         var result = await api.aiBcrParseModel(new requests.AiBcrParseModelRequest(
             new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
