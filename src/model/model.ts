@@ -2424,6 +2424,184 @@ export class DiscUsage {
 }
 
 /**
+ * Discover email configuration request.             
+ */
+export class DiscoverEmailConfigRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "address",
+            baseName: "address",
+            type: "string",
+        },
+        {
+            name: "fastProcessing",
+            baseName: "fastProcessing",
+            type: "boolean",
+        },
+        {
+            name: "login",
+            baseName: "login",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return DiscoverEmailConfigRequest.attributeTypeMap;
+    }
+
+    /**
+     * Email address to discover.             
+     */
+    public address: string;
+    
+    /**
+     * Turns on fast processing. All discover systems will run in parallel. First discovered result will be returned.             
+     */
+    public fastProcessing: boolean;
+    
+    /**
+     * Email account login. If not specified, address used as a login.             
+     */
+    public login: string;
+    
+
+    public constructor(
+        address?: string,
+        fastProcessing?: boolean,
+        login?: string) {
+        
+        this.address = address;
+        this.fastProcessing = fastProcessing;
+        this.login = login;
+    }
+}
+
+/**
+ * Email account configuration.             
+ */
+export class EmailAccountConfig {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "displayName",
+            baseName: "displayName",
+            type: "string",
+        },
+        {
+            name: "type",
+            baseName: "type",
+            type: "string",
+        },
+        {
+            name: "host",
+            baseName: "host",
+            type: "string",
+        },
+        {
+            name: "port",
+            baseName: "port",
+            type: "number",
+        },
+        {
+            name: "socketType",
+            baseName: "socketType",
+            type: "string",
+        },
+        {
+            name: "authenticationTypes",
+            baseName: "authenticationTypes",
+            type: "Array<string>",
+        },
+        {
+            name: "extraInfo",
+            baseName: "extraInfo",
+            type: "Array<NameValuePair>",
+        },
+        {
+            name: "isValidated",
+            baseName: "isValidated",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailAccountConfig.attributeTypeMap;
+    }
+
+    /**
+     * Email account display name             
+     */
+    public displayName: string;
+    
+    /**
+     * Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
+     */
+    public type: string;
+    
+    /**
+     * Email account host.             
+     */
+    public host: string;
+    
+    /**
+     * Port.             
+     */
+    public port: number;
+    
+    /**
+     * Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     */
+    public socketType: string;
+    
+    /**
+     * Supported authentication types.              Items: Email account authentication types. Enum, available values: NoAuth, OAuth2, PasswordCleartext, PasswordEncrypted, SmtpAfterPop, ClientIpAddress
+     */
+    public authenticationTypes: Array<string>;
+    
+    /**
+     * Extra account information.             
+     */
+    public extraInfo: Array<NameValuePair>;
+    
+    /**
+     * Determines that configuration validated. Set to false if validation skipped.             
+     */
+    public isValidated: boolean;
+    
+
+    public constructor(
+        displayName?: string,
+        type?: string,
+        host?: string,
+        port?: number,
+        socketType?: string,
+        authenticationTypes?: Array<string>,
+        extraInfo?: Array<NameValuePair>,
+        isValidated?: boolean) {
+        
+        this.displayName = displayName;
+        this.type = type;
+        this.host = host;
+        this.port = port;
+        this.socketType = socketType;
+        this.authenticationTypes = authenticationTypes;
+        this.extraInfo = extraInfo;
+        this.isValidated = isValidated;
+    }
+}
+
+/**
  * Email account settings request             
  */
 export class EmailAccountRequest {
@@ -4063,6 +4241,35 @@ export class ListResponseOfContactDto {
     }
 }
 
+export class ListResponseOfEmailAccountConfig {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<EmailAccountConfig>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfEmailAccountConfig.attributeTypeMap;
+    }
+
+    public value: Array<EmailAccountConfig>;
+    
+
+    public constructor(
+        value?: Array<EmailAccountConfig>) {
+        
+        this.value = value;
+    }
+}
+
 export class ListResponseOfEmailDto {
 
     /**
@@ -4533,6 +4740,44 @@ export class ModelError {
         this.message = message;
         this.description = description;
         this.innerError = innerError;
+    }
+}
+
+export class NameValuePair {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        },
+        {
+            name: "name",
+            baseName: "name",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return NameValuePair.attributeTypeMap;
+    }
+
+    public value: string;
+    
+    public name: string;
+    
+
+    public constructor(
+        value?: string,
+        name?: string) {
+        
+        this.value = value;
+        this.name = name;
     }
 }
 
@@ -6061,6 +6306,144 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
     }
 }
 
+export class DiscoverEmailConfigOauth extends DiscoverEmailConfigRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "clientId",
+            baseName: "clientId",
+            type: "string",
+        },
+        {
+            name: "clientSecret",
+            baseName: "clientSecret",
+            type: "string",
+        },
+        {
+            name: "refreshToken",
+            baseName: "refreshToken",
+            type: "string",
+        },
+        {
+            name: "requestUrl",
+            baseName: "requestUrl",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(DiscoverEmailConfigOauth.attributeTypeMap);
+    }
+
+    /**
+     * OAuth client id.             
+     */
+    public clientId: string;
+    
+    /**
+     * OAuth client secret.             
+     */
+    public clientSecret: string;
+    
+    /**
+     * OAuth refresh token.             
+     */
+    public refreshToken: string;
+    
+    /**
+     * The url to obtain access token. If not specified, will be discovered from email configuration.             
+     */
+    public requestUrl: string;
+    
+
+    public constructor(
+        address?: string,
+        fastProcessing?: boolean,
+        login?: string,
+        clientId?: string,
+        clientSecret?: string,
+        refreshToken?: string,
+        requestUrl?: string) {
+        super();
+        this.address = address;
+        this.fastProcessing = fastProcessing;
+        this.login = login;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.refreshToken = refreshToken;
+        this.requestUrl = requestUrl;
+    }
+}
+
+export class DiscoverEmailConfigPassword extends DiscoverEmailConfigRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "password",
+            baseName: "password",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(DiscoverEmailConfigPassword.attributeTypeMap);
+    }
+
+    /**
+     * Email account password.             
+     */
+    public password: string;
+    
+
+    public constructor(
+        address?: string,
+        fastProcessing?: boolean,
+        login?: string,
+        password?: string) {
+        super();
+        this.address = address;
+        this.fastProcessing = fastProcessing;
+        this.login = login;
+        this.password = password;
+    }
+}
+
+/**
+ * List of email accounts             
+ */
+export class EmailAccountConfigList extends ListResponseOfEmailAccountConfig {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(EmailAccountConfigList.attributeTypeMap);
+    }
+
+
+    public constructor(
+        value?: Array<EmailAccountConfig>) {
+        super();
+        this.value = value;
+    }
+}
+
 /**
  * List of email documents             
  */
@@ -6913,6 +7296,8 @@ const typeMap = {
             CreateEmailRequest,
             CustomerEvent,
             DiscUsage,
+            DiscoverEmailConfigRequest,
+            EmailAccountConfig,
             EmailAccountRequest,
             EmailAddress,
             EmailDocument,
@@ -6941,6 +7326,7 @@ const typeMap = {
             ListResponseOfAiNameExtracted,
             ListResponseOfAiNameGenderHypothesis,
             ListResponseOfContactDto,
+            ListResponseOfEmailAccountConfig,
             ListResponseOfEmailDto,
             ListResponseOfHierarchicalObject,
             ListResponseOfHierarchicalObjectResponse,
@@ -6954,6 +7340,7 @@ const typeMap = {
             MailServerFolder,
             MimeResponse,
             ModelError,
+            NameValuePair,
             ObjectExist,
             PhoneNumber,
             PostalAddress,
@@ -6985,6 +7372,9 @@ const typeMap = {
             CreateFolderBaseRequest,
             DeleteFolderBaseRequest,
             DeleteMessageBaseRequest,
+            DiscoverEmailConfigOauth,
+            DiscoverEmailConfigPassword,
+            EmailAccountConfigList,
             EmailDtoList,
             FileVersion,
             HierarchicalObject,

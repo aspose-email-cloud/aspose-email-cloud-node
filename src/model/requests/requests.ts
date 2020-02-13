@@ -1193,6 +1193,61 @@ export class DeleteMapiPropertiesRequest {
 }
 
 /**
+ * Request model for discoverEmailConfig operation.
+ */
+export class DiscoverEmailConfigRequest {
+    /**
+     * Email address
+     */
+    public address: string;
+
+    /**
+     * Turns on fast processing. All discover systems will run in parallel. First discovered result will be returned             
+     */
+    public fastProcessing: boolean;
+
+    public constructor(
+        address?: string, 
+        fastProcessing?: boolean) {
+        
+        this.address = address;
+        this.fastProcessing = fastProcessing;
+    }
+}
+
+/**
+ * Request model for discoverEmailConfigOauth operation.
+ */
+export class DiscoverEmailConfigOauthRequest {
+    /**
+     * Discover email configuration request.
+     */
+    public rq: model.DiscoverEmailConfigOauth;
+
+    public constructor(
+        rq?: model.DiscoverEmailConfigOauth) {
+        
+        this.rq = rq;
+    }
+}
+
+/**
+ * Request model for discoverEmailConfigPassword operation.
+ */
+export class DiscoverEmailConfigPasswordRequest {
+    /**
+     * Discover email configuration request.
+     */
+    public rq: model.DiscoverEmailConfigPassword;
+
+    public constructor(
+        rq?: model.DiscoverEmailConfigPassword) {
+        
+        this.rq = rq;
+    }
+}
+
+/**
  * Request model for downloadFile operation.
  */
 export class DownloadFileRequest {

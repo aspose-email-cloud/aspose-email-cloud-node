@@ -1199,6 +1199,83 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="discoveremailconfig"></a>
+# **discoverEmailConfig**
+
+```typescript
+public async discoverEmailConfig(requestObj: DiscoverEmailConfigRequest) : Promise<{response: RequestResponse, body: EmailAccountConfigList; }>
+```
+
+Discover email accounts by email address. Does not validate discovered accounts.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: EmailAccountConfigList; }>`
+
+### Request Parameters
+```typescript
+new DiscoverEmailConfigRequest(
+    address,
+    fastProcessing=fastProcessing)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **address** | **string**| Email address | 
+ **fastProcessing** | **boolean**| Turns on fast processing. All discover systems will run in parallel. First discovered result will be returned              | [optional] [default to false]
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="discoveremailconfigoauth"></a>
+# **discoverEmailConfigOauth**
+
+```typescript
+public async discoverEmailConfigOauth(requestObj: DiscoverEmailConfigOauthRequest) : Promise<{response: RequestResponse, body: EmailAccountConfigList; }>
+```
+
+Discover email accounts by email address. Validates discovered accounts using OAuth 2.0.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: EmailAccountConfigList; }>`
+
+### Request Parameters
+```typescript
+new DiscoverEmailConfigOauthRequest(
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rq** | [**DiscoverEmailConfigOauth**](DiscoverEmailConfigOauth.md)| Discover email configuration request. | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="discoveremailconfigpassword"></a>
+# **discoverEmailConfigPassword**
+
+```typescript
+public async discoverEmailConfigPassword(requestObj: DiscoverEmailConfigPasswordRequest) : Promise<{response: RequestResponse, body: EmailAccountConfigList; }>
+```
+
+Discover email accounts by email address. Validates discovered accounts using login and password.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: EmailAccountConfigList; }>`
+
+### Request Parameters
+```typescript
+new DiscoverEmailConfigPasswordRequest(
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rq** | [**DiscoverEmailConfigPassword**](DiscoverEmailConfigPassword.md)| Discover email configuration request. | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="downloadfile"></a>
 # **downloadFile**
 

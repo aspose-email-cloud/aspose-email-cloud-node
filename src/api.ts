@@ -2104,6 +2104,133 @@ export class EmailApi {
     }
 
     /**
+     * Discover email accounts by email address. Does not validate discovered accounts.             
+     * @param requestObj contains request parameters
+     */
+    public async discoverEmailConfig(requestObj: requestModels.DiscoverEmailConfigRequest): Promise<{response: request.RequestResponse, body: model.EmailAccountConfigList}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/config/discover";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.address' is not null or undefined
+        if (requestObj.address === null || requestObj.address === undefined) {
+            throw new Error('Required parameter "requestObj.address" was null or undefined when calling discoverEmailConfig.');
+        }
+
+        if (requestObj.address !== undefined) {
+            queryParameters.address = ObjectSerializer.serialize(requestObj.address, "string");
+        }
+
+        if (requestObj.fastProcessing !== undefined) {
+            queryParameters.fastProcessing = ObjectSerializer.serialize(requestObj.fastProcessing, "boolean");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "EmailAccountConfigList");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Discover email accounts by email address. Validates discovered accounts using OAuth 2.0.             
+     * @param requestObj contains request parameters
+     */
+    public async discoverEmailConfigOauth(requestObj: requestModels.DiscoverEmailConfigOauthRequest): Promise<{response: request.RequestResponse, body: model.EmailAccountConfigList}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/config/discover/oauth";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling discoverEmailConfigOauth.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.rq, "DiscoverEmailConfigOauth"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "EmailAccountConfigList");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Discover email accounts by email address. Validates discovered accounts using login and password.             
+     * @param requestObj contains request parameters
+     */
+    public async discoverEmailConfigPassword(requestObj: requestModels.DiscoverEmailConfigPasswordRequest): Promise<{response: request.RequestResponse, body: model.EmailAccountConfigList}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/config/discover/password";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling discoverEmailConfigPassword.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "POST",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.rq, "DiscoverEmailConfigPassword"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "EmailAccountConfigList");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Download file
      * @param requestObj contains request parameters
      */
