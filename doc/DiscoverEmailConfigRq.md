@@ -1,5 +1,5 @@
 
-# DiscoverEmailConfigRequest
+# DiscoverEmailConfigRq
 
 ## Properties
 Name | Type | Description | Notes

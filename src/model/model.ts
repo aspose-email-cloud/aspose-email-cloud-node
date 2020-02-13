@@ -2426,7 +2426,7 @@ export class DiscUsage {
 /**
  * Discover email configuration request.             
  */
-export class DiscoverEmailConfigRequest {
+export class DiscoverEmailConfigRq {
 
     /**
      * Attribute type map
@@ -2452,7 +2452,7 @@ export class DiscoverEmailConfigRequest {
      * Returns attribute type map
      */
     public static getAttributeTypeMap() {
-        return DiscoverEmailConfigRequest.attributeTypeMap;
+        return DiscoverEmailConfigRq.attributeTypeMap;
     }
 
     /**
@@ -6306,7 +6306,7 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
     }
 }
 
-export class DiscoverEmailConfigOauth extends DiscoverEmailConfigRequest {
+export class DiscoverEmailConfigOauth extends DiscoverEmailConfigRq {
 
     /**
      * Attribute type map
@@ -6380,7 +6380,7 @@ export class DiscoverEmailConfigOauth extends DiscoverEmailConfigRequest {
     }
 }
 
-export class DiscoverEmailConfigPassword extends DiscoverEmailConfigRequest {
+export class DiscoverEmailConfigPassword extends DiscoverEmailConfigRq {
 
     /**
      * Attribute type map
@@ -7296,7 +7296,7 @@ const typeMap = {
             CreateEmailRequest,
             CustomerEvent,
             DiscUsage,
-            DiscoverEmailConfigRequest,
+            DiscoverEmailConfigRq,
             EmailAccountConfig,
             EmailAccountRequest,
             EmailAddress,
