@@ -4,7 +4,7 @@ import uuidv4 from 'uuid/v4';
 import * as models from '../src/model/model';
 import fs from 'fs';
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
 
 describe('EmailApi', function() {
     var api :EmailApi;
@@ -261,6 +261,14 @@ describe('EmailApi', function() {
             new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
         expect(result.body.value.length).toEqual(1);
         expect(result.body.value[0].displayName).toContain("Thomas");
+    });
+
+    it('Discover email config #pipeline', async function() {
+        var configs = await api.discoverEmailConfig(new requests.DiscoverEmailConfigRequest(
+            'example@gmail.com', true));
+        expect(configs.body.value.length).toBeGreaterThanOrEqual(2);
+        var smtp = configs.body.value.filter(item => item.protocolType == 'SMTP')[0];
+        expect(smtp.host).toEqual('smtp.gmail.com');
     });
 
     async function createCalendar(startDate? : Date) :Promise<string> {

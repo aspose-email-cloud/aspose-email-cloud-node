@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **string** |  | [optional] [default to undefined]
-**name** | **string** |  | [optional] [default to undefined]
+**value** | **string** | Name of the property  | [optional] [default to undefined]
+**name** | **string** | Value of the property | [optional] [default to undefined]
 
 
 

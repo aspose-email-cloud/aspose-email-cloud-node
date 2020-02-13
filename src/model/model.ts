@@ -2497,8 +2497,8 @@ export class EmailAccountConfig {
             type: "string",
         },
         {
-            name: "type",
-            baseName: "type",
+            name: "protocolType",
+            baseName: "protocolType",
             type: "string",
         },
         {
@@ -2547,7 +2547,7 @@ export class EmailAccountConfig {
     /**
      * Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
      */
-    public type: string;
+    public protocolType: string;
     
     /**
      * Email account host.             
@@ -2560,7 +2560,7 @@ export class EmailAccountConfig {
     public port: number;
     
     /**
-     * Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * Security mode for a mail client Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      */
     public socketType: string;
     
@@ -2582,7 +2582,7 @@ export class EmailAccountConfig {
 
     public constructor(
         displayName?: string,
-        type?: string,
+        protocolType?: string,
         host?: string,
         port?: number,
         socketType?: string,
@@ -2591,7 +2591,7 @@ export class EmailAccountConfig {
         isValidated?: boolean) {
         
         this.displayName = displayName;
-        this.type = type;
+        this.protocolType = protocolType;
         this.host = host;
         this.port = port;
         this.socketType = socketType;
@@ -2669,7 +2669,7 @@ export class EmailAccountRequest {
     public login: string;
     
     /**
-     * Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * Security mode for a mail client Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      */
     public securityOptions: string;
     
@@ -4743,6 +4743,9 @@ export class ModelError {
     }
 }
 
+/**
+ * An extended property.
+ */
 export class NameValuePair {
 
     /**
@@ -4767,8 +4770,14 @@ export class NameValuePair {
         return NameValuePair.attributeTypeMap;
     }
 
+    /**
+     * Name of the property 
+     */
     public value: string;
     
+    /**
+     * Value of the property
+     */
     public name: string;
     
 
