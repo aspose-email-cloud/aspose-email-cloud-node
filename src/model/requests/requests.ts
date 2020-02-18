@@ -21,6 +21,12 @@ export class AddCalendarAttachmentRequest {
      */
     public request: model.AddAttachmentRequest;
 
+    /**
+     * Request model for addCalendarAttachment operation.
+     * @param name Calendar file name in storage
+     * @param attachment Attachment file name in storage
+     * @param request Storage name and folder path for calendar and attachment files
+     */
     public constructor(
         name?: string, 
         attachment?: string, 
@@ -56,6 +62,13 @@ export class AddContactAttachmentRequest {
      */
     public request: model.AddAttachmentRequest;
 
+    /**
+     * Request model for addContactAttachment operation.
+     * @param format Contact document format Enum, available values: VCard, WebDav, Msg
+     * @param name Contact document file name
+     * @param attachment Attachment name
+     * @param request Add attachment request
+     */
     public constructor(
         format?: string, 
         name?: string, 
@@ -88,6 +101,12 @@ export class AddEmailAttachmentRequest {
      */
     public request: model.AddAttachmentRequest;
 
+    /**
+     * Request model for addEmailAttachment operation.
+     * @param attachmentName Attachment file name
+     * @param fileName Email document file name
+     * @param request Storage info to specify location of email document and attachment files
+     */
     public constructor(
         attachmentName?: string, 
         fileName?: string, 
@@ -118,6 +137,12 @@ export class AddMapiAttachmentRequest {
      */
     public request: model.AddAttachmentRequest;
 
+    /**
+     * Request model for addMapiAttachment operation.
+     * @param name Document file name
+     * @param attachment Attachment file name
+     * @param request Add attachment request
+     */
     public constructor(
         name?: string, 
         attachment?: string, 
@@ -138,6 +163,10 @@ export class AiBcrOcrRequest {
      */
     public rq: model.AiBcrBase64Rq;
 
+    /**
+     * Request model for aiBcrOcr operation.
+     * @param rq Request with base64 images data
+     */
     public constructor(
         rq?: model.AiBcrBase64Rq) {
         
@@ -154,6 +183,10 @@ export class AiBcrOcrStorageRequest {
      */
     public rq: model.AiBcrStorageImageRq;
 
+    /**
+     * Request model for aiBcrOcrStorage operation.
+     * @param rq Request with images located on storage
+     */
     public constructor(
         rq?: model.AiBcrStorageImageRq) {
         
@@ -170,6 +203,10 @@ export class AiBcrParseRequest {
      */
     public rq: model.AiBcrBase64Rq;
 
+    /**
+     * Request model for aiBcrParse operation.
+     * @param rq Request with base64 images data
+     */
     public constructor(
         rq?: model.AiBcrBase64Rq) {
         
@@ -186,6 +223,10 @@ export class AiBcrParseModelRequest {
      */
     public rq: model.AiBcrBase64Rq;
 
+    /**
+     * Request model for aiBcrParseModel operation.
+     * @param rq Request with base64 images data
+     */
     public constructor(
         rq?: model.AiBcrBase64Rq) {
         
@@ -202,6 +243,10 @@ export class AiBcrParseOcrDataModelRequest {
      */
     public rq: model.AiBcrParseOcrDataRq;
 
+    /**
+     * Request model for aiBcrParseOcrDataModel operation.
+     * @param rq 
+     */
     public constructor(
         rq?: model.AiBcrParseOcrDataRq) {
         
@@ -218,6 +263,10 @@ export class AiBcrParseStorageRequest {
      */
     public rq: model.AiBcrParseStorageRq;
 
+    /**
+     * Request model for aiBcrParseStorage operation.
+     * @param rq Request with images located on storage
+     */
     public constructor(
         rq?: model.AiBcrParseStorageRq) {
         
@@ -259,6 +308,15 @@ export class AiNameCompleteRequest {
      */
     public style: string;
 
+    /**
+     * Request model for aiNameComplete operation.
+     * @param name A name to complete (required)
+     * @param language An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     * @param location A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     * @param encoding A character encoding name
+     * @param script A writing system code; starts with the ISO-15924 script name
+     * @param style Name writing style. Enum, available values: Formal, Informal, Legal, Academic
+     */
     public constructor(
         name?: string, 
         language?: string, 
@@ -310,6 +368,15 @@ export class AiNameExpandRequest {
      */
     public style: string;
 
+    /**
+     * Request model for aiNameExpand operation.
+     * @param name A name to format (required)
+     * @param language An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     * @param location A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     * @param encoding A character encoding name
+     * @param script A writing system code; starts with the ISO-15924 script name
+     * @param style Name writing style. Enum, available values: Formal, Informal, Legal, Academic
+     */
     public constructor(
         name?: string, 
         language?: string, 
@@ -336,6 +403,10 @@ export class AiNameExpandParsedRequest {
      */
     public rq: model.AiNameParsedRq;
 
+    /**
+     * Request model for aiNameExpandParsed operation.
+     * @param rq Parsed name with options
+     */
     public constructor(
         rq?: model.AiNameParsedRq) {
         
@@ -382,6 +453,16 @@ export class AiNameFormatRequest {
      */
     public style: string;
 
+    /**
+     * Request model for aiNameFormat operation.
+     * @param name A name to format (required)
+     * @param language An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     * @param location A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     * @param encoding A character encoding name
+     * @param script A writing system code; starts with the ISO-15924 script name
+     * @param format Format of the name. Predefined format can be used by ID, or custom format can be specified. Predefined formats:      /format/default/ (= '%t%F%m%N%L%p')     /format/FN+LN/ (= '%F%L')     /format/title+FN+LN/ (= '%t%F%L')     /format/FN+MN+LN/ (= '%F%M%N%L')     /format/title+FN+MN+LN/ (= '%t%F%M%N%L')     /format/FN+MI+LN/ (= '%F%m%N%L')     /format/title+FN+MI+LN/ (= '%t%F%m%N%L')     /format/LN/ (= '%L')     /format/title+LN/ (= '%t%L')     /format/LN+FN+MN/ (= '%L,%F%M%N')     /format/LN+title+FN+MN/ (= '%L,%t%F%M%N')     /format/LN+FN+MI/ (= '%L,%F%m%N')     /format/LN+title+FN+MI/ (= '%L,%t%F%m%N')  Custom format string - custom combination of characters and the next term placeholders:      '%t' - Title (prefix)     '%F' - First name     '%f' - First initial     '%M' - Middle name(s)     '%m' - Middle initial(s)     '%N' - Nickname     '%L' - Last name     '%l' - Last initial     '%p' - Postfix  If no value for format option was provided, its default value is '%t%F%m%N%L%p'             
+     * @param style Name writing style. Enum, available values: Formal, Informal, Legal, Academic
+     */
     public constructor(
         name?: string, 
         language?: string, 
@@ -410,6 +491,10 @@ export class AiNameFormatParsedRequest {
      */
     public rq: model.AiNameParsedRq;
 
+    /**
+     * Request model for aiNameFormatParsed operation.
+     * @param rq Parsed name with options
+     */
     public constructor(
         rq?: model.AiNameParsedRq) {
         
@@ -451,6 +536,15 @@ export class AiNameGenderizeRequest {
      */
     public style: string;
 
+    /**
+     * Request model for aiNameGenderize operation.
+     * @param name A name to parse (required)
+     * @param language An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     * @param location A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     * @param encoding A character encoding name
+     * @param script A writing system code; starts with the ISO-15924 script name
+     * @param style Name writing style. Enum, available values: Formal, Informal, Legal, Academic
+     */
     public constructor(
         name?: string, 
         language?: string, 
@@ -477,6 +571,10 @@ export class AiNameGenderizeParsedRequest {
      */
     public rq: model.AiNameParsedRq;
 
+    /**
+     * Request model for aiNameGenderizeParsed operation.
+     * @param rq Gender detection request data
+     */
     public constructor(
         rq?: model.AiNameParsedRq) {
         
@@ -523,6 +621,16 @@ export class AiNameMatchRequest {
      */
     public style: string;
 
+    /**
+     * Request model for aiNameMatch operation.
+     * @param name A name to match (required)
+     * @param otherName Another name to match (required)
+     * @param language An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     * @param location A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     * @param encoding A character encoding name
+     * @param script A writing system code; starts with the ISO-15924 script name
+     * @param style Name writing style. Enum, available values: Formal, Informal, Legal, Academic
+     */
     public constructor(
         name?: string, 
         otherName?: string, 
@@ -551,6 +659,10 @@ export class AiNameMatchParsedRequest {
      */
     public rq: model.AiNameParsedMatchRq;
 
+    /**
+     * Request model for aiNameMatchParsed operation.
+     * @param rq Parsed names to match
+     */
     public constructor(
         rq?: model.AiNameParsedMatchRq) {
         
@@ -592,6 +704,15 @@ export class AiNameParseRequest {
      */
     public style: string;
 
+    /**
+     * Request model for aiNameParse operation.
+     * @param name A name to parse (required)
+     * @param language An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     * @param location A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     * @param encoding A character encoding name
+     * @param script A writing system code; starts with the ISO-15924 script name
+     * @param style Name writing style Enum, available values: Formal, Informal, Legal, Academic
+     */
     public constructor(
         name?: string, 
         language?: string, 
@@ -643,6 +764,15 @@ export class AiNameParseEmailAddressRequest {
      */
     public style: string;
 
+    /**
+     * Request model for aiNameParseEmailAddress operation.
+     * @param emailAddress Email address to parse (required)
+     * @param language An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)
+     * @param location A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France
+     * @param encoding A character encoding name
+     * @param script A writing system code; starts with the ISO-15924 script name
+     * @param style Name writing style. Enum, available values: Formal, Informal, Legal, Academic
+     */
     public constructor(
         emailAddress?: string, 
         language?: string, 
@@ -669,6 +799,10 @@ export class AppendEmailMessageRequest {
      */
     public request: model.AppendEmailBaseRequest;
 
+    /**
+     * Request model for appendEmailMessage operation.
+     * @param request Append email request
+     */
     public constructor(
         request?: model.AppendEmailBaseRequest) {
         
@@ -685,6 +819,10 @@ export class AppendEmailModelMessageRequest {
      */
     public rq: model.AppendEmailModelRq;
 
+    /**
+     * Request model for appendEmailModelMessage operation.
+     * @param rq Append email request
+     */
     public constructor(
         rq?: model.AppendEmailModelRq) {
         
@@ -701,6 +839,10 @@ export class AppendMimeMessageRequest {
      */
     public request: model.AppendEmailMimeBaseRequest;
 
+    /**
+     * Request model for appendMimeMessage operation.
+     * @param request Append email request
+     */
     public constructor(
         request?: model.AppendEmailMimeBaseRequest) {
         
@@ -717,6 +859,10 @@ export class ConvertCalendarModelToAlternateRequest {
      */
     public rq: model.CalendarDtoAlternateRq;
 
+    /**
+     * Request model for convertCalendarModelToAlternate operation.
+     * @param rq iCalendar to AlternateView request
+     */
     public constructor(
         rq?: model.CalendarDtoAlternateRq) {
         
@@ -738,6 +884,11 @@ export class ConvertEmailRequest {
      */
     public file: Buffer;
 
+    /**
+     * Request model for convertEmail operation.
+     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param file File to upload
+     */
     public constructor(
         format?: string, 
         file?: Buffer) {
@@ -776,6 +927,14 @@ export class CopyFileRequest {
      */
     public versionId: string;
 
+    /**
+     * Request model for copyFile operation.
+     * @param srcPath Source file path e.g. '/folder/file.ext'
+     * @param destPath Destination file path
+     * @param srcStorageName Source storage name
+     * @param destStorageName Destination storage name
+     * @param versionId File version ID to copy
+     */
     public constructor(
         srcPath?: string, 
         destPath?: string, 
@@ -815,6 +974,13 @@ export class CopyFolderRequest {
      */
     public destStorageName: string;
 
+    /**
+     * Request model for copyFolder operation.
+     * @param srcPath Source folder path e.g. '/src'
+     * @param destPath Destination folder path e.g. '/dst'
+     * @param srcStorageName Source storage name
+     * @param destStorageName Destination storage name
+     */
     public constructor(
         srcPath?: string, 
         destPath?: string, 
@@ -842,6 +1008,11 @@ export class CreateCalendarRequest {
      */
     public request: model.HierarchicalObjectRequest;
 
+    /**
+     * Request model for createCalendar operation.
+     * @param name Calendar file name in storage
+     * @param request 
+     */
     public constructor(
         name?: string, 
         request?: model.HierarchicalObjectRequest) {
@@ -870,6 +1041,12 @@ export class CreateContactRequest {
      */
     public request: model.HierarchicalObjectRequest;
 
+    /**
+     * Request model for createContact operation.
+     * @param format Contact document format Enum, available values: VCard, WebDav, Msg
+     * @param name Contact document file name
+     * @param request Create contact request
+     */
     public constructor(
         format?: string, 
         name?: string, 
@@ -895,6 +1072,11 @@ export class CreateEmailRequest {
      */
     public request: model.CreateEmailRequest;
 
+    /**
+     * Request model for createEmail operation.
+     * @param fileName Email document file name in storage
+     * @param request An email document and optional Storage info to specify where the file should be located
+     */
     public constructor(
         fileName?: string, 
         request?: model.CreateEmailRequest) {
@@ -913,6 +1095,10 @@ export class CreateEmailFolderRequest {
      */
     public request: model.CreateFolderBaseRequest;
 
+    /**
+     * Request model for createEmailFolder operation.
+     * @param request Create folder request
+     */
     public constructor(
         request?: model.CreateFolderBaseRequest) {
         
@@ -934,6 +1120,11 @@ export class CreateFolderRequest {
      */
     public storageName: string;
 
+    /**
+     * Request model for createFolder operation.
+     * @param path Folder path to create e.g. 'folder_1/folder_2/'
+     * @param storageName Storage name
+     */
     public constructor(
         path?: string, 
         storageName?: string) {
@@ -957,6 +1148,11 @@ export class CreateMapiRequest {
      */
     public request: model.HierarchicalObjectRequest;
 
+    /**
+     * Request model for createMapi operation.
+     * @param name Document file name
+     * @param request Create document request
+     */
     public constructor(
         name?: string, 
         request?: model.HierarchicalObjectRequest) {
@@ -990,6 +1186,13 @@ export class DeleteCalendarPropertyRequest {
      */
     public request: model.StorageFolderLocation;
 
+    /**
+     * Request model for deleteCalendarProperty operation.
+     * @param name iCalendar file name in storage
+     * @param memberName Indexed property name
+     * @param index Property index path
+     * @param request Storage detail to specify iCalendar file location
+     */
     public constructor(
         name?: string, 
         memberName?: string, 
@@ -1032,6 +1235,14 @@ export class DeleteContactPropertyRequest {
      */
     public folder: model.StorageFolderLocation;
 
+    /**
+     * Request model for deleteContactProperty operation.
+     * @param format Contact document format Enum, available values: VCard, WebDav, Msg
+     * @param name Contact document file name
+     * @param memberName Indexed property name
+     * @param index Property index
+     * @param folder Calendar document location in storage information
+     */
     public constructor(
         format?: string, 
         name?: string, 
@@ -1056,6 +1267,10 @@ export class DeleteEmailFolderRequest {
      */
     public request: model.DeleteFolderBaseRequest;
 
+    /**
+     * Request model for deleteEmailFolder operation.
+     * @param request Delete folder request
+     */
     public constructor(
         request?: model.DeleteFolderBaseRequest) {
         
@@ -1072,6 +1287,10 @@ export class DeleteEmailMessageRequest {
      */
     public request: model.DeleteMessageBaseRequest;
 
+    /**
+     * Request model for deleteEmailMessage operation.
+     * @param request Delete message request
+     */
     public constructor(
         request?: model.DeleteMessageBaseRequest) {
         
@@ -1098,6 +1317,12 @@ export class DeleteFileRequest {
      */
     public versionId: string;
 
+    /**
+     * Request model for deleteFile operation.
+     * @param path File path e.g. '/folder/file.ext'
+     * @param storageName Storage name
+     * @param versionId File version ID to delete
+     */
     public constructor(
         path?: string, 
         storageName?: string, 
@@ -1128,6 +1353,12 @@ export class DeleteFolderRequest {
      */
     public recursive: boolean;
 
+    /**
+     * Request model for deleteFolder operation.
+     * @param path Folder path e.g. '/folder'
+     * @param storageName Storage name
+     * @param recursive Enable to delete folders, subfolders and files
+     */
     public constructor(
         path?: string, 
         storageName?: string, 
@@ -1158,6 +1389,12 @@ export class DeleteMapiAttachmentRequest {
      */
     public storage: model.StorageFolderLocation;
 
+    /**
+     * Request model for deleteMapiAttachment operation.
+     * @param name Document file name
+     * @param attachment Attachment name or index
+     * @param storage Document file storage location info
+     */
     public constructor(
         name?: string, 
         attachment?: string, 
@@ -1183,6 +1420,11 @@ export class DeleteMapiPropertiesRequest {
      */
     public request: model.HierarchicalObjectRequest;
 
+    /**
+     * Request model for deleteMapiProperties operation.
+     * @param name Document file name
+     * @param request Properties that should be deleted
+     */
     public constructor(
         name?: string, 
         request?: model.HierarchicalObjectRequest) {
@@ -1206,6 +1448,11 @@ export class DiscoverEmailConfigRequest {
      */
     public fastProcessing: boolean;
 
+    /**
+     * Request model for discoverEmailConfig operation.
+     * @param address Email address
+     * @param fastProcessing Turns on fast processing. All discover systems will run in parallel. First discovered result will be returned             
+     */
     public constructor(
         address?: string, 
         fastProcessing?: boolean) {
@@ -1224,6 +1471,10 @@ export class DiscoverEmailConfigOauthRequest {
      */
     public rq: model.DiscoverEmailConfigOauth;
 
+    /**
+     * Request model for discoverEmailConfigOauth operation.
+     * @param rq Discover email configuration request.
+     */
     public constructor(
         rq?: model.DiscoverEmailConfigOauth) {
         
@@ -1240,6 +1491,10 @@ export class DiscoverEmailConfigPasswordRequest {
      */
     public rq: model.DiscoverEmailConfigPassword;
 
+    /**
+     * Request model for discoverEmailConfigPassword operation.
+     * @param rq Discover email configuration request.
+     */
     public constructor(
         rq?: model.DiscoverEmailConfigPassword) {
         
@@ -1266,6 +1521,12 @@ export class DownloadFileRequest {
      */
     public versionId: string;
 
+    /**
+     * Request model for downloadFile operation.
+     * @param path File path e.g. '/folder/file.ext'
+     * @param storageName Storage name
+     * @param versionId File version ID to download
+     */
     public constructor(
         path?: string, 
         storageName?: string, 
@@ -1306,6 +1567,14 @@ export class FetchEmailMessageRequest {
      */
     public storageFolder: string;
 
+    /**
+     * Request model for fetchEmailMessage operation.
+     * @param messageId Message identifier
+     * @param firstAccount Email account
+     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param storage Storage name where account file(s) located
+     * @param storageFolder Folder in storage where account file(s) located
+     */
     public constructor(
         messageId?: string, 
         firstAccount?: string, 
@@ -1350,6 +1619,14 @@ export class FetchEmailModelRequest {
      */
     public storageFolder: string;
 
+    /**
+     * Request model for fetchEmailModel operation.
+     * @param messageId Message identifier
+     * @param firstAccount Email account
+     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param storage Storage name where account file(s) located
+     * @param storageFolder Folder in storage where account file(s) located
+     */
     public constructor(
         messageId?: string, 
         firstAccount?: string, 
@@ -1384,6 +1661,12 @@ export class GetCalendarRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getCalendar operation.
+     * @param name iCalendar file name in storage
+     * @param folder Path to folder in storage
+     * @param storage Storage name
+     */
     public constructor(
         name?: string, 
         folder?: string, 
@@ -1419,6 +1702,13 @@ export class GetCalendarAttachmentRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getCalendarAttachment operation.
+     * @param name iCalendar document file name
+     * @param attachment Attachment name or index
+     * @param folder Path to folder in storage
+     * @param storage Storage name
+     */
     public constructor(
         name?: string, 
         attachment?: string, 
@@ -1456,6 +1746,13 @@ export class GetCalendarListRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getCalendarList operation.
+     * @param folder Path to folder in storage
+     * @param itemsPerPage Count of items on page
+     * @param pageNumber Page number
+     * @param storage Storage name
+     */
     public constructor(
         folder?: string, 
         itemsPerPage?: number, 
@@ -1488,6 +1785,12 @@ export class GetCalendarModelRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getCalendarModel operation.
+     * @param name iCalendar file name in storage
+     * @param folder Path to folder in storage
+     * @param storage Storage name
+     */
     public constructor(
         name?: string, 
         folder?: string, 
@@ -1528,6 +1831,14 @@ export class GetCalendarModelAsAlternateRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getCalendarModelAsAlternate operation.
+     * @param name iCalendar file name in storage
+     * @param calendarAction iCalendar method type Enum, available values: Create, Update, Cancel
+     * @param sequenceId The sequence id
+     * @param folder Path to folder in storage
+     * @param storage Storage name
+     */
     public constructor(
         name?: string, 
         calendarAction?: string, 
@@ -1567,6 +1878,13 @@ export class GetCalendarModelListRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getCalendarModelList operation.
+     * @param folder Path to folder in storage
+     * @param itemsPerPage Count of items on page
+     * @param pageNumber Page number
+     * @param storage Storage name
+     */
     public constructor(
         folder?: string, 
         itemsPerPage?: number, 
@@ -1609,6 +1927,14 @@ export class GetContactAttachmentRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getContactAttachment operation.
+     * @param format Contact document format. Enum, available values: VCard, WebDav, Msg
+     * @param name Contact document file name
+     * @param attachment Attachment name or index
+     * @param folder Path to folder in storage
+     * @param storage Storage name
+     */
     public constructor(
         format?: string, 
         name?: string, 
@@ -1653,6 +1979,14 @@ export class GetContactListRequest {
      */
     public pageNumber: number;
 
+    /**
+     * Request model for getContactList operation.
+     * @param format Contact document format. Enum, available values: VCard, WebDav, Msg
+     * @param folder Path to folder in storage
+     * @param storage Storage name
+     * @param itemsPerPage Count of items on page
+     * @param pageNumber Page number
+     */
     public constructor(
         format?: string, 
         folder?: string, 
@@ -1692,6 +2026,13 @@ export class GetContactModelRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getContactModel operation.
+     * @param format Contact document format. Enum, available values: VCard, WebDav, Msg
+     * @param name Contact document file name.
+     * @param folder Path to folder in storage.
+     * @param storage Storage name.
+     */
     public constructor(
         format?: string, 
         name?: string, 
@@ -1734,6 +2075,14 @@ export class GetContactModelListRequest {
      */
     public pageNumber: number;
 
+    /**
+     * Request model for getContactModelList operation.
+     * @param format Contact document format. Enum, available values: VCard, WebDav, Msg
+     * @param folder Path to folder in storage.
+     * @param storage Storage name.
+     * @param itemsPerPage Count of items on page.
+     * @param pageNumber Page number.
+     */
     public constructor(
         format?: string, 
         folder?: string, 
@@ -1773,6 +2122,13 @@ export class GetContactPropertiesRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getContactProperties operation.
+     * @param format Contact document format. Enum, available values: VCard, WebDav, Msg
+     * @param name Contact document file name
+     * @param folder Path to folder in storage
+     * @param storage Storage name
+     */
     public constructor(
         format?: string, 
         name?: string, 
@@ -1795,6 +2151,10 @@ export class GetDiscUsageRequest {
      */
     public storageName: string;
 
+    /**
+     * Request model for getDiscUsage operation.
+     * @param storageName Storage name
+     */
     public constructor(
         storageName?: string) {
         
@@ -1821,6 +2181,12 @@ export class GetEmailRequest {
      */
     public folder: string;
 
+    /**
+     * Request model for getEmail operation.
+     * @param fileName Email document file name in storage
+     * @param storage Storage name
+     * @param folder Path to folder in storage
+     */
     public constructor(
         fileName?: string, 
         storage?: string, 
@@ -1856,6 +2222,13 @@ export class GetEmailAsFileRequest {
      */
     public folder: string;
 
+    /**
+     * Request model for getEmailAsFile operation.
+     * @param fileName Email document file name
+     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param storage Storage name
+     * @param folder Path to folder in storage
+     */
     public constructor(
         fileName?: string, 
         format?: string, 
@@ -1893,6 +2266,13 @@ export class GetEmailAttachmentRequest {
      */
     public folder: string;
 
+    /**
+     * Request model for getEmailAttachment operation.
+     * @param attachment Attachment name
+     * @param fileName Email document file name
+     * @param storage Storage name
+     * @param folder Path to folder in storage
+     */
     public constructor(
         attachment?: string, 
         fileName?: string, 
@@ -1930,6 +2310,13 @@ export class GetEmailModelRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getEmailModel operation.
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param name Email document file name.
+     * @param folder Path to folder in storage.
+     * @param storage Storage name.
+     */
     public constructor(
         format?: string, 
         name?: string, 
@@ -1972,6 +2359,14 @@ export class GetEmailModelListRequest {
      */
     public pageNumber: number;
 
+    /**
+     * Request model for getEmailModelList operation.
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param folder Path to folder in storage.
+     * @param storage Storage name.
+     * @param itemsPerPage Count of items on page.
+     * @param pageNumber Page number.
+     */
     public constructor(
         format?: string, 
         folder?: string, 
@@ -2011,6 +2406,13 @@ export class GetEmailPropertyRequest {
      */
     public folder: string;
 
+    /**
+     * Request model for getEmailProperty operation.
+     * @param propertyName A property name
+     * @param fileName Email document file name
+     * @param storage Storage name
+     * @param folder Path to folder in storage
+     */
     public constructor(
         propertyName?: string, 
         fileName?: string, 
@@ -2038,6 +2440,11 @@ export class GetFileVersionsRequest {
      */
     public storageName: string;
 
+    /**
+     * Request model for getFileVersions operation.
+     * @param path File path e.g. '/file.ext'
+     * @param storageName Storage name
+     */
     public constructor(
         path?: string, 
         storageName?: string) {
@@ -2061,6 +2468,11 @@ export class GetFilesListRequest {
      */
     public storageName: string;
 
+    /**
+     * Request model for getFilesList operation.
+     * @param path Folder path e.g. '/folder'
+     * @param storageName Storage name
+     */
     public constructor(
         path?: string, 
         storageName?: string) {
@@ -2094,6 +2506,13 @@ export class GetMapiAttachmentRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getMapiAttachment operation.
+     * @param name Document file name
+     * @param attachment Attachment name or index
+     * @param folder Path to folder in storage
+     * @param storage Storage name
+     */
     public constructor(
         name?: string, 
         attachment?: string, 
@@ -2126,6 +2545,12 @@ export class GetMapiAttachmentsRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getMapiAttachments operation.
+     * @param name Document file name
+     * @param folder Path to folder in storage
+     * @param storage Storage name
+     */
     public constructor(
         name?: string, 
         folder?: string, 
@@ -2161,6 +2586,13 @@ export class GetMapiListRequest {
      */
     public pageNumber: number;
 
+    /**
+     * Request model for getMapiList operation.
+     * @param folder Path to folder in storage
+     * @param storage Storage name
+     * @param itemsPerPage Count of items on page
+     * @param pageNumber Page number
+     */
     public constructor(
         folder?: string, 
         storage?: string, 
@@ -2193,6 +2625,12 @@ export class GetMapiPropertiesRequest {
      */
     public storage: string;
 
+    /**
+     * Request model for getMapiProperties operation.
+     * @param name Document file name
+     * @param folder Path to folder in storage
+     * @param storage Storage name
+     */
     public constructor(
         name?: string, 
         folder?: string, 
@@ -2233,6 +2671,14 @@ export class ListEmailFoldersRequest {
      */
     public parentFolder: string;
 
+    /**
+     * Request model for listEmailFolders operation.
+     * @param firstAccount Email account
+     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param storage Storage name where account file(s) located
+     * @param storageFolder Folder in storage where account file(s) located
+     * @param parentFolder Folder in which subfolders should be listed
+     */
     public constructor(
         firstAccount?: string, 
         secondAccount?: string, 
@@ -2287,6 +2733,16 @@ export class ListEmailMessagesRequest {
      */
     public recursive: boolean;
 
+    /**
+     * Request model for listEmailMessages operation.
+     * @param folder A folder in email account
+     * @param queryString A MailQuery search string
+     * @param firstAccount Email account
+     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param storage Storage name where account file(s) located
+     * @param storageFolder Folder in storage where account file(s) located
+     * @param recursive Specifies that should message be searched in subfolders recursively
+     */
     public constructor(
         folder?: string, 
         queryString?: string, 
@@ -2345,6 +2801,16 @@ export class ListEmailModelsRequest {
      */
     public recursive: boolean;
 
+    /**
+     * Request model for listEmailModels operation.
+     * @param folder A folder in email account
+     * @param queryString A MailQuery search string
+     * @param firstAccount Email account
+     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param storage Storage name where account file(s) located
+     * @param storageFolder Folder in storage where account file(s) located
+     * @param recursive Specifies that should message be searched in subfolders recursively
+     */
     public constructor(
         folder?: string, 
         queryString?: string, 
@@ -2393,6 +2859,14 @@ export class MoveFileRequest {
      */
     public versionId: string;
 
+    /**
+     * Request model for moveFile operation.
+     * @param srcPath Source file path e.g. '/src.ext'
+     * @param destPath Destination file path e.g. '/dest.ext'
+     * @param srcStorageName Source storage name
+     * @param destStorageName Destination storage name
+     * @param versionId File version ID to move
+     */
     public constructor(
         srcPath?: string, 
         destPath?: string, 
@@ -2432,6 +2906,13 @@ export class MoveFolderRequest {
      */
     public destStorageName: string;
 
+    /**
+     * Request model for moveFolder operation.
+     * @param srcPath Folder path to move e.g. '/folder'
+     * @param destPath Destination folder path to move to e.g '/dst'
+     * @param srcStorageName Source storage name
+     * @param destStorageName Destination storage name
+     */
     public constructor(
         srcPath?: string, 
         destPath?: string, 
@@ -2464,6 +2945,12 @@ export class ObjectExistsRequest {
      */
     public versionId: string;
 
+    /**
+     * Request model for objectExists operation.
+     * @param path File or folder path e.g. '/file.ext' or '/folder'
+     * @param storageName Storage name
+     * @param versionId File version ID
+     */
     public constructor(
         path?: string, 
         storageName?: string, 
@@ -2489,6 +2976,11 @@ export class SaveCalendarModelRequest {
      */
     public rq: model.StorageModelRqOfCalendarDto;
 
+    /**
+     * Request model for saveCalendarModel operation.
+     * @param name iCalendar file name in storage
+     * @param rq Calendar properties update request
+     */
     public constructor(
         name?: string, 
         rq?: model.StorageModelRqOfCalendarDto) {
@@ -2517,6 +3009,12 @@ export class SaveContactModelRequest {
      */
     public rq: model.StorageModelRqOfContactDto;
 
+    /**
+     * Request model for saveContactModel operation.
+     * @param format Contact document format. Enum, available values: VCard, WebDav, Msg
+     * @param name Contact document file name.
+     * @param rq Create contact request.
+     */
     public constructor(
         format?: string, 
         name?: string, 
@@ -2547,6 +3045,12 @@ export class SaveEmailModelRequest {
      */
     public rq: model.StorageModelRqOfEmailDto;
 
+    /**
+     * Request model for saveEmailModel operation.
+     * @param format File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param name iCalendar file name in storage.
+     * @param rq Calendar properties update request.
+     */
     public constructor(
         format?: string, 
         name?: string, 
@@ -2567,6 +3071,10 @@ export class SaveMailAccountRequest {
      */
     public request: model.SaveEmailAccountRequest;
 
+    /**
+     * Request model for saveMailAccount operation.
+     * @param request Email account information
+     */
     public constructor(
         request?: model.SaveEmailAccountRequest) {
         
@@ -2583,6 +3091,10 @@ export class SaveMailOAuthAccountRequest {
      */
     public request: model.SaveOAuthEmailAccountRequest;
 
+    /**
+     * Request model for saveMailOAuthAccount operation.
+     * @param request Email account information
+     */
     public constructor(
         request?: model.SaveOAuthEmailAccountRequest) {
         
@@ -2599,6 +3111,10 @@ export class SendEmailRequest {
      */
     public request: model.SendEmailBaseRequest;
 
+    /**
+     * Request model for sendEmail operation.
+     * @param request Send email request
+     */
     public constructor(
         request?: model.SendEmailBaseRequest) {
         
@@ -2615,6 +3131,10 @@ export class SendEmailMimeRequest {
      */
     public request: model.SendEmailMimeBaseRequest;
 
+    /**
+     * Request model for sendEmailMime operation.
+     * @param request Send email request
+     */
     public constructor(
         request?: model.SendEmailMimeBaseRequest) {
         
@@ -2631,6 +3151,10 @@ export class SendEmailModelRequest {
      */
     public rq: model.SendEmailModelRq;
 
+    /**
+     * Request model for sendEmailModel operation.
+     * @param rq Send email request
+     */
     public constructor(
         rq?: model.SendEmailModelRq) {
         
@@ -2657,6 +3181,12 @@ export class SetEmailPropertyRequest {
      */
     public request: model.SetEmailPropertyRequest;
 
+    /**
+     * Request model for setEmailProperty operation.
+     * @param propertyName A property name that should be changed
+     * @param fileName Email document file name
+     * @param request A property that should be changed and optional Storage info to specify where the file located             
+     */
     public constructor(
         propertyName?: string, 
         fileName?: string, 
@@ -2677,6 +3207,10 @@ export class SetEmailReadFlagRequest {
      */
     public request: model.SetMessageReadFlagAccountBaseRequest;
 
+    /**
+     * Request model for setEmailReadFlag operation.
+     * @param request Message is read request
+     */
     public constructor(
         request?: model.SetMessageReadFlagAccountBaseRequest) {
         
@@ -2693,6 +3227,10 @@ export class StorageExistsRequest {
      */
     public storageName: string;
 
+    /**
+     * Request model for storageExists operation.
+     * @param storageName Storage name
+     */
     public constructor(
         storageName?: string) {
         
@@ -2714,6 +3252,11 @@ export class UpdateCalendarPropertiesRequest {
      */
     public request: model.HierarchicalObjectRequest;
 
+    /**
+     * Request model for updateCalendarProperties operation.
+     * @param name iCalendar file name in storage
+     * @param request Calendar properties update request
+     */
     public constructor(
         name?: string, 
         request?: model.HierarchicalObjectRequest) {
@@ -2742,6 +3285,12 @@ export class UpdateContactPropertiesRequest {
      */
     public request: model.HierarchicalObjectRequest;
 
+    /**
+     * Request model for updateContactProperties operation.
+     * @param format Contact document format Enum, available values: VCard, WebDav, Msg
+     * @param name Contact document file name
+     * @param request Properties that should be updated/added
+     */
     public constructor(
         format?: string, 
         name?: string, 
@@ -2767,6 +3316,11 @@ export class UpdateMapiPropertiesRequest {
      */
     public request: model.HierarchicalObjectRequest;
 
+    /**
+     * Request model for updateMapiProperties operation.
+     * @param name Document file name
+     * @param request Properties that should be updated/added
+     */
     public constructor(
         name?: string, 
         request?: model.HierarchicalObjectRequest) {
@@ -2795,6 +3349,12 @@ export class UploadFileRequest {
      */
     public storageName: string;
 
+    /**
+     * Request model for uploadFile operation.
+     * @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.             
+     * @param file File to upload
+     * @param storageName Storage name
+     */
     public constructor(
         path?: string, 
         file?: Buffer, 
