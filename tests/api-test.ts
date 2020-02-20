@@ -263,6 +263,50 @@ describe('EmailApi', function() {
         expect(result.body.value[0].displayName).toContain("Thomas");
     });
 
+    it('Create MAPI file #pipeline', async function() {
+        var fileName = uuidv4() + '.msg';
+        await api.createMapi(new requests.CreateMapiRequest(
+            fileName, new models.HierarchicalObjectRequest(
+                new models.HierarchicalObject("IPM.Contact", undefined, [
+                    new models.PrimitiveObject("Tag:'PidTagMessageClass':0x1A:String", undefined, "IPM.Contact"),
+                    new models.PrimitiveObject("Tag:'PidTagSubject':0x37:String"),
+                    new models.PrimitiveObject("Tag:'PidTagSubjectPrefix':0x3D:String"),
+                    new models.PrimitiveObject("Tag:'PidTagMessageFlags':0xE07:Integer32", undefined, "8"),
+                    new models.PrimitiveObject("Tag:'PidTagNormalizedSubject':0xE1D:String"),
+                    new models.PrimitiveObject("Tag:'PidTagBody':0x1000:String"),
+                    new models.PrimitiveObject("Tag:'PidTagStoreSupportMask':0x340D:Integer32", undefined, "265849"),
+                    new models.PrimitiveObject("Tag:'PidTagSurname':0x3A11:String", undefined, "Surname"),
+                    new models.PrimitiveObject("Tag:'PidTagOtherTelephoneNumber':0x3A1F:String", undefined, "+79123456789"),
+                    new models.PrimitiveObject("Tag:'':0x6662:Integer32", undefined, "0"),
+                    new models.PrimitiveObject(
+                        "Lid:'PidLidAddressBookProviderArrayType':0x8029:Integer32:00062004-0000-0000-c000-000000000046",
+                        undefined, "1")
+                ]),
+                new models.StorageFolderLocation(storage, folder))));
+        var exist = await api.objectExists(new requests.ObjectExistsRequest(folder + "/" + fileName, storage));
+        expect(exist.body.exists).toBeTrue();
+    });
+
+    it('Add attachment to MAPI #pipeline', async function() {
+        var fileName = await createCalendar();
+        var attachmentName = await createCalendar();
+        await api.addMapiAttachment(new requests.AddMapiAttachmentRequest(
+            fileName, attachmentName, new models.AddAttachmentRequest(
+                new models.StorageFolderLocation(storage, folder),
+                new models.StorageFolderLocation(storage, folder))));
+        var downloaded = await api.getCalendarAttachment(new requests.GetCalendarAttachmentRequest(
+            fileName, attachmentName, folder, storage));
+        var calendarRaw = downloaded.body.toString()
+        expect(calendarRaw).toContain('Aspose Ltd')
+    });
+
+    it('Get MAPI properties #pipeline', async function () {
+        var fileName = await createCalendar();
+        var properties = await api.getMapiProperties(new requests.GetMapiPropertiesRequest(
+            fileName, folder, storage));
+        expect(properties.body.hierarchicalObject.name).toContain("IPM.Schedule");
+    });
+
     it('Discover email config #pipeline', async function() {
         var configs = await api.discoverEmailConfig(new requests.DiscoverEmailConfigRequest(
             'example@gmail.com', true));
