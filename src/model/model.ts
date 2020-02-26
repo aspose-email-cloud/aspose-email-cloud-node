@@ -6257,6 +6257,39 @@ export class ValueResponse {
     }
 }
 
+export class ValueTOfBoolean {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ValueTOfBoolean.attributeTypeMap;
+    }
+
+    public value: boolean;
+    
+
+    /**
+     * 
+     * @param value 
+     */
+    public constructor(
+        value?: boolean) {
+        
+        this.value = value;
+    }
+}
+
 /**
  * Image to recognize             
  */
@@ -8199,6 +8232,7 @@ const typeMap = {
             StorageModelRqOfEmailDto,
             Url,
             ValueResponse,
+            ValueTOfBoolean,
             AiBcrBase64Image,
             AiBcrBase64Rq,
             AiBcrImageStorageFile,

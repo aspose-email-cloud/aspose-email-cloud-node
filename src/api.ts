@@ -3661,6 +3661,46 @@ export class EmailApi {
     }
 
     /**
+     * Check email address is disposable             
+     * @param requestObj contains request parameters
+     */
+    public async isEmailAddressDisposable(requestObj: requestModels.IsEmailAddressDisposableRequest): Promise<{response: request.RequestResponse, body: model.ValueTOfBoolean}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/disposable/isDisposable/{address}"
+            .replace("{" + "address" + "}", String(requestObj.address));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.address' is not null or undefined
+        if (requestObj.address === null || requestObj.address === undefined) {
+            throw new Error('Required parameter "requestObj.address" was null or undefined when calling isEmailAddressDisposable.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ValueTOfBoolean");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Get folders list in email account             
      * @param requestObj contains request parameters
      */

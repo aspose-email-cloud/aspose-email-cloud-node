@@ -1068,14 +1068,14 @@ export class CreateEmailRequest {
     public fileName: string;
 
     /**
-     * An email document and optional Storage info to specify where the file should be located
+     * An email document and optional Storage info to specify where the file should be located             
      */
     public request: model.CreateEmailRequest;
 
     /**
      * Request model for createEmail operation.
      * @param fileName Email document file name in storage
-     * @param request An email document and optional Storage info to specify where the file should be located
+     * @param request An email document and optional Storage info to specify where the file should be located             
      */
     public constructor(
         fileName?: string, 
@@ -2639,6 +2639,26 @@ export class GetMapiPropertiesRequest {
         this.name = name;
         this.folder = folder;
         this.storage = storage;
+    }
+}
+
+/**
+ * Request model for isEmailAddressDisposable operation.
+ */
+export class IsEmailAddressDisposableRequest {
+    /**
+     * An email address to check
+     */
+    public address: string;
+
+    /**
+     * Request model for isEmailAddressDisposable operation.
+     * @param address An email address to check
+     */
+    public constructor(
+        address?: string) {
+        
+        this.address = address;
     }
 }
 

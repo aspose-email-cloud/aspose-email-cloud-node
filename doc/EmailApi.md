@@ -888,7 +888,7 @@ new CreateEmailRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fileName** | **string**| Email document file name in storage | 
- **request** | [**CreateEmailRequest**](CreateEmailRequest.md)| An email document and optional Storage info to specify where the file should be located | 
+ **request** | [**CreateEmailRequest**](CreateEmailRequest.md)| An email document and optional Storage info to specify where the file should be located              | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2098,6 +2098,31 @@ Name | Type | Description  | Notes
  **name** | **string**| Document file name | 
  **folder** | **string**| Path to folder in storage | [optional] 
  **storage** | **string**| Storage name | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="isemailaddressdisposable"></a>
+# **isEmailAddressDisposable**
+
+```typescript
+public async isEmailAddressDisposable(requestObj: IsEmailAddressDisposableRequest) : Promise<{response: RequestResponse, body: ValueTOfBoolean; }>
+```
+
+Check email address is disposable             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: ValueTOfBoolean; }>`
+
+### Request Parameters
+```typescript
+new IsEmailAddressDisposableRequest(
+    address)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **address** | **string**| An email address to check | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
