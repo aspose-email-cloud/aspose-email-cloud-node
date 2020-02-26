@@ -4,7 +4,7 @@ import uuidv4 from 'uuid/v4';
 import * as models from '../src/model/model';
 import fs from 'fs';
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
 
 describe('EmailApi', function() {
     var api :EmailApi;
@@ -93,19 +93,19 @@ describe('EmailApi', function() {
         expect(factStartDate).toEqual(startDate);
     });
 
-    it('Name gender detection', async function() {
+    it('Name gender detection #pipeline', async function() {
         var result = await api.aiNameGenderize(new requests.AiNameGenderizeRequest('John Cane'));
         expect(result.body.value.length).toBeGreaterThanOrEqual(1);
         expect(result.body.value[0].gender).toEqual('Male');
     });
 
-    it('Name formatting', async function() {
+    it('Name formatting #pipeline', async function() {
         var result = await api.aiNameFormat(new requests.AiNameFormatRequest(
             'Mr. John Michael Cane', undefined, undefined, undefined, undefined, '%t%L%f%m'));
         expect(result.body.name).toEqual('Mr. Cane J. M.');
     });
 
-    it('Name match', async function() {
+    it('Name match #pipeline', async function() {
         var first = 'John Michael Cane';
         var second = 'Cane J.';
         var result = await api.aiNameMatch(new requests.AiNameMatchRequest(
@@ -113,7 +113,7 @@ describe('EmailApi', function() {
         expect(result.body.similarity).toBeGreaterThanOrEqual(0.5);
     });
 
-    it('Name expand', async function() {
+    it('Name expand #pipeline', async function() {
         var result = await api.aiNameExpand(new requests.AiNameExpandRequest(
             'Smith Bobby'));
         var names = result.body.names
@@ -122,7 +122,7 @@ describe('EmailApi', function() {
         expect(names).toContain('B. Smith');
     });
 
-    it('Name complete', async function() {
+    it('Name complete #pipeline', async function() {
         var prefix = 'Dav';
         var result = await api.aiNameComplete(new requests.AiNameCompleteRequest(
             prefix));
@@ -133,7 +133,7 @@ describe('EmailApi', function() {
         expect(names).toContain('Dave');
     });
 
-    it('Parse name from email address', async function() {
+    it('Parse name from email address #pipeline', async function() {
         var result = await api.aiNameParseEmailAddress(new requests.AiNameParseEmailAddressRequest(
             'john-cane@gmail.com'));
         var extractedValues = result.body.value
@@ -145,7 +145,7 @@ describe('EmailApi', function() {
         expect(surname.value).toEqual('Cane');
     });
 
-    it('Parse business card images to VCard contact files', async function() {
+    it('Parse business card images to VCard contact files #pipeline', async function() {
         var imageData = fs.readFileSync('tests/data/test_single_0001.png');
         var storageFileName = uuidv4() + '.png';
         // 1) Upload business card image to storage
@@ -175,7 +175,7 @@ describe('EmailApi', function() {
         expect(contactProperties.body.internalProperties.length).toBeGreaterThanOrEqual(3);
     });
 
-    it('Business card recognition without storage', async function() {
+    it('Business card recognition without storage #pipeline', async function() {
         var imageData = fs.readFileSync('tests/data/test_single_0001.png').toString('base64');
         var result = await api.aiBcrParse(new requests.AiBcrParseRequest(
             new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
@@ -255,12 +255,64 @@ describe('EmailApi', function() {
         expect(exists.body.exists).toBeTrue();
     });
 
-    it('Parse contact model from image', async function() {
+    it('Parse contact model from image #pipeline', async function() {
         var imageData = fs.readFileSync('tests/data/test_single_0001.png').toString('base64');
         var result = await api.aiBcrParseModel(new requests.AiBcrParseModelRequest(
             new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
         expect(result.body.value.length).toEqual(1);
         expect(result.body.value[0].displayName).toContain("Thomas");
+    });
+
+    it('Create MAPI file #pipeline', async function() {
+        var fileName = uuidv4() + '.msg';
+        await api.createMapi(new requests.CreateMapiRequest(
+            fileName, new models.HierarchicalObjectRequest(
+                new models.HierarchicalObject("IPM.Contact", undefined, [
+                    new models.PrimitiveObject("Tag:'PidTagMessageClass':0x1A:String", undefined, "IPM.Contact"),
+                    new models.PrimitiveObject("Tag:'PidTagSubject':0x37:String"),
+                    new models.PrimitiveObject("Tag:'PidTagSubjectPrefix':0x3D:String"),
+                    new models.PrimitiveObject("Tag:'PidTagMessageFlags':0xE07:Integer32", undefined, "8"),
+                    new models.PrimitiveObject("Tag:'PidTagNormalizedSubject':0xE1D:String"),
+                    new models.PrimitiveObject("Tag:'PidTagBody':0x1000:String"),
+                    new models.PrimitiveObject("Tag:'PidTagStoreSupportMask':0x340D:Integer32", undefined, "265849"),
+                    new models.PrimitiveObject("Tag:'PidTagSurname':0x3A11:String", undefined, "Surname"),
+                    new models.PrimitiveObject("Tag:'PidTagOtherTelephoneNumber':0x3A1F:String", undefined, "+79123456789"),
+                    new models.PrimitiveObject("Tag:'':0x6662:Integer32", undefined, "0"),
+                    new models.PrimitiveObject(
+                        "Lid:'PidLidAddressBookProviderArrayType':0x8029:Integer32:00062004-0000-0000-c000-000000000046",
+                        undefined, "1")
+                ]),
+                new models.StorageFolderLocation(storage, folder))));
+        var exist = await api.objectExists(new requests.ObjectExistsRequest(folder + "/" + fileName, storage));
+        expect(exist.body.exists).toBeTrue();
+    });
+
+    it('Add attachment to MAPI #pipeline', async function() {
+        var fileName = await createCalendar();
+        var attachmentName = await createCalendar();
+        await api.addMapiAttachment(new requests.AddMapiAttachmentRequest(
+            fileName, attachmentName, new models.AddAttachmentRequest(
+                new models.StorageFolderLocation(storage, folder),
+                new models.StorageFolderLocation(storage, folder))));
+        var downloaded = await api.getCalendarAttachment(new requests.GetCalendarAttachmentRequest(
+            fileName, attachmentName, folder, storage));
+        var calendarRaw = downloaded.body.toString()
+        expect(calendarRaw).toContain('Aspose Ltd')
+    });
+
+    it('Get MAPI properties #pipeline', async function () {
+        var fileName = await createCalendar();
+        var properties = await api.getMapiProperties(new requests.GetMapiPropertiesRequest(
+            fileName, folder, storage));
+        expect(properties.body.hierarchicalObject.name).toContain("IPM.Schedule");
+    });
+
+    it('Discover email config #pipeline', async function() {
+        var configs = await api.discoverEmailConfig(new requests.DiscoverEmailConfigRequest(
+            'example@gmail.com', true));
+        expect(configs.body.value.length).toBeGreaterThanOrEqual(2);
+        var smtp = configs.body.value.filter(item => item.protocolType == 'SMTP')[0];
+        expect(smtp.host).toEqual('smtp.gmail.com');
     });
 
     async function createCalendar(startDate? : Date) :Promise<string> {
