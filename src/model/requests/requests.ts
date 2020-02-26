@@ -1068,14 +1068,14 @@ export class CreateEmailRequest {
     public fileName: string;
 
     /**
-     * An email document and optional Storage info to specify where the file should be located
+     * An email document and optional Storage info to specify where the file should be located             
      */
     public request: model.CreateEmailRequest;
 
     /**
      * Request model for createEmail operation.
      * @param fileName Email document file name in storage
-     * @param request An email document and optional Storage info to specify where the file should be located
+     * @param request An email document and optional Storage info to specify where the file should be located             
      */
     public constructor(
         fileName?: string, 

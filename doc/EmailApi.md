@@ -888,7 +888,7 @@ new CreateEmailRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fileName** | **string**| Email document file name in storage | 
- **request** | [**CreateEmailRequest**](CreateEmailRequest.md)| An email document and optional Storage info to specify where the file should be located | 
+ **request** | [**CreateEmailRequest**](CreateEmailRequest.md)| An email document and optional Storage info to specify where the file should be located              | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
