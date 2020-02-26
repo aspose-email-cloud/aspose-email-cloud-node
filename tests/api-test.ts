@@ -315,6 +315,15 @@ describe('EmailApi', function() {
         expect(smtp.host).toEqual('smtp.gmail.com');
     });
 
+    it('Check disposable email #pipeline', async function() {
+        var disposable = await api.isEmailAddressDisposable(
+            new requests.IsEmailAddressDisposableRequest('example@mailcatch.com'));
+        expect(disposable.body.value).toBeTrue();
+        var regular = await api.isEmailAddressDisposable(
+            new requests.IsEmailAddressDisposableRequest('example@gmail.com'));
+        expect(regular.body.value).toBeFalse();
+    });
+
     async function createCalendar(startDate? : Date) :Promise<string> {
         var fileName = uuidv4() + '.ics';
         startDate = (startDate == null) ? getDate(undefined, 1) : startDate;
