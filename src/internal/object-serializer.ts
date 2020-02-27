@@ -163,6 +163,9 @@ export class ObjectSerializer {
 
             //Check derived type
             var subTypeName = data["type"];
+            if (subTypeName === undefined) {
+                subTypeName = data["derivedType"];
+            }
             if (subTypeName !== undefined && typeMap[subTypeName] !== undefined) {
                 return subTypeName;
             }
