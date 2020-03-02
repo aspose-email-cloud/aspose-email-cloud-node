@@ -14,10 +14,10 @@ jobs:
       - name: Compile
         run: |
           npm cache verify
-          npm compile
+          npm run compile
       - name: Test
         env:
           appSid: ${{secrets.appSid}}
           appKey: ${{secrets.appKey}}
           apiBaseUrl: "https://api-qa.aspose.cloud"
-        run: npm test-pipeline
+        run: npm run test-pipeline
