@@ -1,0 +1,30 @@
+name: Node.js Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Compile
+        run: |
+          npm cache verify
+          npm install
+          npm run compile
+      - name: Test
+        env:
+          appSid: ${{secrets.appSidProd}}
+          appKey: ${{secrets.appKeyProd}}
+          apiBaseUrl: "https://api.aspose.cloud"
+        run: npm run test-pipeline
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
