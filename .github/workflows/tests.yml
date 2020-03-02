@@ -1,0 +1,23 @@
+name: tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Compile
+        run: |
+          npm cache verify
+          npm compile
+      - name: Test
+        env:
+          appSid: ${{secrets.appSid}}
+          appKey: ${{secrets.appKey}}
+          apiBaseUrl: "https://api-qa.aspose.cloud"
+        run: npm test-pipeline
