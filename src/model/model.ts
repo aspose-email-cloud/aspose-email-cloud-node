@@ -3182,7 +3182,14 @@ export class EmailClientAccountCredentials {
      */
     public login: string;
     
-    public discriminator: string;
+
+    get discriminator(): string {
+        return this.constructor.name;
+    }
+
+    set discriminator(_newType: string) {
+        /* do nothing */
+    }
     
 
     /**

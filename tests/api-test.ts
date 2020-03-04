@@ -324,6 +324,28 @@ describe('EmailApi', function() {
         expect(regular.body.value).toBeFalse();
     });
 
+    it('Check EmailClientAccount #pipeline', async function() {
+        var accountCredentials = 
+            new models.EmailClientAccountPasswordCredentials(
+                'login', undefined, 'password');
+        var account = new models.EmailClientAccount(
+            'smtp.gmail.com',
+            551,
+            'SSLAuto',
+            'SMTP',
+            accountCredentials);
+        var fileName = uuidv4() + '.account';
+        await api.saveEmailClientAccount(new requests.SaveEmailClientAccountRequest(
+            new models.StorageFileRqOfEmailClientAccount(
+                account, new models.StorageFileLocation(storage, folder, fileName))));
+        var result = await api.getEmailClientAccount(new requests.GetEmailClientAccountRequest(
+            fileName, folder, storage));
+        expect(result.body.credentials.discriminator).toEqual(account.credentials.discriminator);
+        var resultCredentials = result.body.credentials as models.EmailClientAccountPasswordCredentials;
+        expect(resultCredentials.password).toEqual(accountCredentials.password);
+        expect(result.body.host).toEqual(account.host);
+    });
+
     async function createCalendar(startDate? : Date) :Promise<string> {
         var fileName = uuidv4() + '.ics';
         startDate = (startDate == null) ? getDate(undefined, 1) : startDate;
