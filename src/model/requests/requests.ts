@@ -2323,6 +2323,42 @@ export class GetEmailClientAccountRequest {
 }
 
 /**
+ * Request model for getEmailClientMultiAccount operation.
+ */
+export class GetEmailClientMultiAccountRequest {
+    /**
+     * File name on storage
+     */
+    public name: string;
+
+    /**
+     * Folder on storage
+     */
+    public folder: string;
+
+    /**
+     * Storage name
+     */
+    public storage: string;
+
+    /**
+     * Request model for getEmailClientMultiAccount operation.
+     * @param name File name on storage
+     * @param folder Folder on storage
+     * @param storage Storage name
+     */
+    public constructor(
+        name?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.name = name;
+        this.folder = folder;
+        this.storage = storage;
+    }
+}
+
+/**
  * Request model for getEmailModel operation.
  */
 export class GetEmailModelRequest {
@@ -3097,6 +3133,26 @@ export class SaveEmailClientAccountRequest {
      */
     public constructor(
         request?: model.StorageFileRqOfEmailClientAccount) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for saveEmailClientMultiAccount operation.
+ */
+export class SaveEmailClientMultiAccountRequest {
+    /**
+     * Email accounts information
+     */
+    public request: model.StorageFileRqOfEmailClientMultiAccount;
+
+    /**
+     * Request model for saveEmailClientMultiAccount operation.
+     * @param request Email accounts information
+     */
+    public constructor(
+        request?: model.StorageFileRqOfEmailClientMultiAccount) {
         
         this.request = request;
     }

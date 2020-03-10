@@ -1861,6 +1861,35 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="getemailclientmultiaccount"></a>
+# **getEmailClientMultiAccount**
+
+```typescript
+public async getEmailClientMultiAccount(requestObj: GetEmailClientMultiAccountRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Get email client multi account file (*.multi.account). Will respond error if file extension is not \".multi.account\".             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new GetEmailClientMultiAccountRequest(
+    name,
+    folder,
+    storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| File name on storage | 
+ **folder** | **string**| Folder on storage | 
+ **storage** | **string**| Storage name | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="getemailmodel"></a>
 # **getEmailModel**
 
@@ -2437,6 +2466,31 @@ new SaveEmailClientAccountRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **request** | [**StorageFileRqOfEmailClientAccount**](StorageFileRqOfEmailClientAccount.md)| Email account information | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="saveemailclientmultiaccount"></a>
+# **saveEmailClientMultiAccount**
+
+```typescript
+public async saveEmailClientMultiAccount(requestObj: SaveEmailClientMultiAccountRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Create email client multi account file (*.multi.account). Will respond error if file extension is not \".multi.account\".             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new SaveEmailClientMultiAccountRequest(
+    request)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request** | [**StorageFileRqOfEmailClientMultiAccount**](StorageFileRqOfEmailClientMultiAccount.md)| Email accounts information | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

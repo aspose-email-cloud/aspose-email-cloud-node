@@ -3207,6 +3207,58 @@ export class EmailClientAccountCredentials {
 }
 
 /**
+ * Email client virtual account, which contains several accounts             
+ */
+export class EmailClientMultiAccount {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "receiveAccounts",
+            baseName: "receiveAccounts",
+            type: "Array<EmailClientAccount>",
+        },
+        {
+            name: "sendAccount",
+            baseName: "sendAccount",
+            type: "EmailClientAccount",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailClientMultiAccount.attributeTypeMap;
+    }
+
+    /**
+     * Email client receive accounts             
+     */
+    public receiveAccounts: Array<EmailClientAccount>;
+    
+    /**
+     * Email client send account             
+     */
+    public sendAccount: EmailClientAccount;
+    
+
+    /**
+     * Email client virtual account, which contains several accounts             
+     * @param receiveAccounts Email client receive accounts             
+     * @param sendAccount Email client send account             
+     */
+    public constructor(
+        receiveAccounts?: Array<EmailClientAccount>,
+        sendAccount?: EmailClientAccount) {
+        
+        this.receiveAccounts = receiveAccounts;
+        this.sendAccount = sendAccount;
+    }
+}
+
+/**
  * Represents Email document DTO.             
  */
 export class EmailDocument {
@@ -6042,6 +6094,49 @@ export class StorageFileRqOfEmailClientAccount {
     }
 }
 
+export class StorageFileRqOfEmailClientMultiAccount {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "EmailClientMultiAccount",
+        },
+        {
+            name: "storageFile",
+            baseName: "storageFile",
+            type: "StorageFileLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageFileRqOfEmailClientMultiAccount.attributeTypeMap;
+    }
+
+    public value: EmailClientMultiAccount;
+    
+    public storageFile: StorageFileLocation;
+    
+
+    /**
+     * 
+     * @param value 
+     * @param storageFile 
+     */
+    public constructor(
+        value?: EmailClientMultiAccount,
+        storageFile?: StorageFileLocation) {
+        
+        this.value = value;
+        this.storageFile = storageFile;
+    }
+}
+
 /**
  * A storage folder location information             
  */
@@ -8517,6 +8612,7 @@ const typeMap = {
             EmailAddress,
             EmailClientAccount,
             EmailClientAccountCredentials,
+            EmailClientMultiAccount,
             EmailDocument,
             EmailDocumentResponse,
             EmailDto,
@@ -8567,6 +8663,7 @@ const typeMap = {
             StorageExist,
             StorageFile,
             StorageFileRqOfEmailClientAccount,
+            StorageFileRqOfEmailClientMultiAccount,
             StorageFolderLocation,
             StorageModelOfCalendarDto,
             StorageModelOfContactDto,

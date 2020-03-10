@@ -3270,6 +3270,66 @@ export class EmailApi {
     }
 
     /**
+     * Get email client multi account file (*.multi.account). Will respond error if file extension is not \".multi.account\".             
+     * @param requestObj contains request parameters
+     */
+    public async getEmailClientMultiAccount(requestObj: requestModels.GetEmailClientMultiAccountRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/multi-account";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling getEmailClientMultiAccount.');
+        }
+
+        // verify required parameter 'requestObj.folder' is not null or undefined
+        if (requestObj.folder === null || requestObj.folder === undefined) {
+            throw new Error('Required parameter "requestObj.folder" was null or undefined when calling getEmailClientMultiAccount.');
+        }
+
+        // verify required parameter 'requestObj.storage' is not null or undefined
+        if (requestObj.storage === null || requestObj.storage === undefined) {
+            throw new Error('Required parameter "requestObj.storage" was null or undefined when calling getEmailClientMultiAccount.');
+        }
+
+        if (requestObj.name !== undefined) {
+            queryParameters.name = ObjectSerializer.serialize(requestObj.name, "string");
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
      * Get email document.             
      * @param requestObj contains request parameters
      */
@@ -4259,6 +4319,45 @@ export class EmailApi {
             uri: localVarPath,
             json: true,
             body: ObjectSerializer.serialize(requestObj.request, "StorageFileRqOfEmailClientAccount"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
+     * Create email client multi account file (*.multi.account). Will respond error if file extension is not \".multi.account\".             
+     * @param requestObj contains request parameters
+     */
+    public async saveEmailClientMultiAccount(requestObj: requestModels.SaveEmailClientMultiAccountRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/multi-account";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling saveEmailClientMultiAccount.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "StorageFileRqOfEmailClientMultiAccount"),
         };
 
         if (Object.keys(formParams).length) {
