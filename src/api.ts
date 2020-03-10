@@ -3273,7 +3273,7 @@ export class EmailApi {
      * Get email client multi account file (*.multi.account). Will respond error if file extension is not \".multi.account\".             
      * @param requestObj contains request parameters
      */
-    public async getEmailClientMultiAccount(requestObj: requestModels.GetEmailClientMultiAccountRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+    public async getEmailClientMultiAccount(requestObj: requestModels.GetEmailClientMultiAccountRequest): Promise<{response: request.RequestResponse, body: model.EmailClientMultiAccount}> {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/multi-account";
         const queryParameters: any = {};
         const headerParams: any = {};
@@ -3326,7 +3326,8 @@ export class EmailApi {
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve({body: null, response});
+        const result =  ObjectSerializer.deserialize(response.body, "EmailClientMultiAccount");
+        return Promise.resolve({body: result, response});
     }
 
     /**

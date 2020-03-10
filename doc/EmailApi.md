@@ -1865,14 +1865,14 @@ Name | Type | Description  | Notes
 # **getEmailClientMultiAccount**
 
 ```typescript
-public async getEmailClientMultiAccount(requestObj: GetEmailClientMultiAccountRequest) : Promise<{response: RequestResponse, body?: any; }>
+public async getEmailClientMultiAccount(requestObj: GetEmailClientMultiAccountRequest) : Promise<{response: RequestResponse, body: EmailClientMultiAccount; }>
 ```
 
 Get email client multi account file (*.multi.account). Will respond error if file extension is not \".multi.account\".             
 
 ### Return type
 
-`Promise<{response: RequestResponse, body?: any; }>`
+`Promise<{response: RequestResponse, body: EmailClientMultiAccount; }>`
 
 ### Request Parameters
 ```typescript
