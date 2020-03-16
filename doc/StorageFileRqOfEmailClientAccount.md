@@ -1,11 +1,11 @@
 
-# NameValuePair
+# StorageFileRqOfEmailClientAccount
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | Property name              | [optional] [default to undefined]
-**value** | **string** | Property value              | [optional] [default to undefined]
+**value** | [**EmailClientAccount**](EmailClientAccount.md) |  | [optional] [default to undefined]
+**storageFile** | [**StorageFileLocation**](StorageFileLocation.md) |  | [optional] [default to undefined]
 
 
 

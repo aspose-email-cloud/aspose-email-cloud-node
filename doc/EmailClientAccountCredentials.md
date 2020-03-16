@@ -1,11 +1,11 @@
 
-# NameValuePair
+# EmailClientAccountCredentials
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | Property name              | [optional] [default to undefined]
-**value** | **string** | Property value              | [optional] [default to undefined]
+**login** | **string** | Email client account login              | [default to undefined]
+**discriminator** | **string** |  | [default to undefined]
 
 
 

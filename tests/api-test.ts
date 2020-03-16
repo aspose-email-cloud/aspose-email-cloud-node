@@ -315,6 +315,65 @@ describe('EmailApi', function() {
         expect(smtp.host).toEqual('smtp.gmail.com');
     });
 
+    it('Check disposable email #pipeline', async function() {
+        var disposable = await api.isEmailAddressDisposable(
+            new requests.IsEmailAddressDisposableRequest('example@mailcatch.com'));
+        expect(disposable.body.value).toBeTrue();
+        var regular = await api.isEmailAddressDisposable(
+            new requests.IsEmailAddressDisposableRequest('example@gmail.com'));
+        expect(regular.body.value).toBeFalse();
+    });
+
+    it('Check EmailClientAccount #pipeline', async function() {
+        var accountCredentials = 
+            new models.EmailClientAccountPasswordCredentials(
+                'login', undefined, 'password');
+        var account = new models.EmailClientAccount(
+            'smtp.gmail.com',
+            551,
+            'SSLAuto',
+            'SMTP',
+            accountCredentials);
+        var fileName = uuidv4() + '.account';
+        await api.saveEmailClientAccount(new requests.SaveEmailClientAccountRequest(
+            new models.StorageFileRqOfEmailClientAccount(
+                account, new models.StorageFileLocation(storage, folder, fileName))));
+        var result = await api.getEmailClientAccount(new requests.GetEmailClientAccountRequest(
+            fileName, folder, storage));
+        expect(result.body.credentials.discriminator).toEqual(account.credentials.discriminator);
+        var resultCredentials = result.body.credentials as models.EmailClientAccountPasswordCredentials;
+        expect(resultCredentials.password).toEqual(accountCredentials.password);
+        expect(result.body.host).toEqual(account.host);
+    });
+
+    it('Check EmailClientMultiAccount #pipeline', async function() {
+        // Create multi account object
+        var multiAccount = new models.EmailClientMultiAccount(
+            [new models.EmailClientAccount('imap.gmail.com', 993, 'SSLAuto', 'IMAP',
+                new models.EmailClientAccountPasswordCredentials(
+                    'example@gmail.com', undefined, 'password')),
+            new models.EmailClientAccount('exchange.outlook.com', 443, 'SSLAuto', 'EWS',
+                new models.EmailClientAccountOauthCredentials(
+                    'example@gmail.com', undefined, 'clientId', 'clientSecret', 'refreshToken'))],
+            new models.EmailClientAccount('smtp.gmail.com', 465, 'SSLAuto', 'SMTP',
+                new models.EmailClientAccountPasswordCredentials(
+                    'example@gmail.com', undefined, 'password')));
+        var fileName = uuidv4() + '.multi.account';
+        // Save multi account
+        await api.saveEmailClientMultiAccount(new requests.SaveEmailClientMultiAccountRequest(
+            new models.StorageFileRqOfEmailClientMultiAccount(
+                multiAccount,
+                new models.StorageFileLocation(storage, folder, fileName))));
+        // Get multi account object from storage
+        var multiAccountFromStorage = await api.getEmailClientMultiAccount(
+            new requests.GetEmailClientMultiAccountRequest(
+                fileName, folder, storage));
+
+        expect(multiAccountFromStorage.body.receiveAccounts.length).toEqual(2);
+        expect(multiAccountFromStorage.body.sendAccount.credentials.discriminator)
+            .toEqual(multiAccount.sendAccount.credentials.discriminator);
+    });
+
     async function createCalendar(startDate? : Date) :Promise<string> {
         var fileName = uuidv4() + '.ics';
         startDate = (startDate == null) ? getDate(undefined, 1) : startDate;

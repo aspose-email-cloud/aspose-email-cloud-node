@@ -1,11 +1,10 @@
 
-# NameValuePair
+# ValueTOfBoolean
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | Property name              | [optional] [default to undefined]
-**value** | **string** | Property value              | [optional] [default to undefined]
+**value** | **boolean** |  | [default to undefined]
 
 
 

@@ -71,6 +71,9 @@ export class ObjectSerializer {
 
             //derived
             var subTypeName = data.type;
+            if (subTypeName === undefined) {
+                subTypeName = data.discriminator;
+            }
             if (subTypeName !== undefined && typeMap[subTypeName] !== undefined)
             {
                 type = subTypeName;
@@ -163,6 +166,9 @@ export class ObjectSerializer {
 
             //Check derived type
             var subTypeName = data["type"];
+            if (subTypeName === undefined) {
+                subTypeName = data["discriminator"];
+            }
             if (subTypeName !== undefined && typeMap[subTypeName] !== undefined) {
                 return subTypeName;
             }

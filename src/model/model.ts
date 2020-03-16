@@ -2799,7 +2799,7 @@ export class EmailAccountConfig {
     public port: number;
     
     /**
-     * Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      */
     public socketType: string;
     
@@ -2825,7 +2825,7 @@ export class EmailAccountConfig {
      * @param protocolType Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
      * @param host Email account host.             
      * @param port Port.             
-     * @param socketType Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * @param socketType Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      * @param authenticationTypes Supported authentication types.             
      * @param extraInfo Extra account information.             
      * @param isValidated Determines that configuration validated. Set to false if validation skipped.             
@@ -2919,7 +2919,7 @@ export class EmailAccountRequest {
     public login: string;
     
     /**
-     * Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      */
     public securityOptions: string;
     
@@ -2944,7 +2944,7 @@ export class EmailAccountRequest {
      * @param host Email account host             
      * @param port Email account port             
      * @param login Email account login             
-     * @param securityOptions Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * @param securityOptions Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      * @param protocolType Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
      * @param description Email account description             
      * @param storageFile A storage file location info to store email account             
@@ -3056,6 +3056,205 @@ export class EmailAddress {
         this.preferred = preferred;
         this.routingType = routingType;
         this.address = address;
+    }
+}
+
+/**
+ * A universal email client account             
+ */
+export class EmailClientAccount {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "host",
+            baseName: "host",
+            type: "string",
+        },
+        {
+            name: "port",
+            baseName: "port",
+            type: "number",
+        },
+        {
+            name: "securityOptions",
+            baseName: "securityOptions",
+            type: "string",
+        },
+        {
+            name: "protocolType",
+            baseName: "protocolType",
+            type: "string",
+        },
+        {
+            name: "credentials",
+            baseName: "credentials",
+            type: "EmailClientAccountCredentials",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailClientAccount.attributeTypeMap;
+    }
+
+    /**
+     * Mail server host name or IP address             
+     */
+    public host: string;
+    
+    /**
+     * Mail server port             
+     */
+    public port: number;
+    
+    /**
+     * Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     */
+    public securityOptions: string;
+    
+    /**
+     * Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
+     */
+    public protocolType: string;
+    
+    /**
+     * Email client account credentials             
+     */
+    public credentials: EmailClientAccountCredentials;
+    
+
+    /**
+     * A universal email client account             
+     * @param host Mail server host name or IP address             
+     * @param port Mail server port             
+     * @param securityOptions Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * @param protocolType Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
+     * @param credentials Email client account credentials             
+     */
+    public constructor(
+        host?: string,
+        port?: number,
+        securityOptions?: string,
+        protocolType?: string,
+        credentials?: EmailClientAccountCredentials) {
+        
+        this.host = host;
+        this.port = port;
+        this.securityOptions = securityOptions;
+        this.protocolType = protocolType;
+        this.credentials = credentials;
+    }
+}
+
+/**
+ * Represents email client account credentials             
+ */
+export class EmailClientAccountCredentials {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "login",
+            baseName: "login",
+            type: "string",
+        },
+        {
+            name: "discriminator",
+            baseName: "discriminator",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailClientAccountCredentials.attributeTypeMap;
+    }
+
+    /**
+     * Email client account login             
+     */
+    public login: string;
+    
+
+    get discriminator(): string {
+        return this.constructor.name;
+    }
+
+    set discriminator(_newType: string) {
+        /* do nothing */
+    }
+    
+
+    /**
+     * Represents email client account credentials             
+     * @param login Email client account login             
+     * @param discriminator 
+     */
+    public constructor(
+        login?: string,
+        discriminator?: string) {
+        
+        this.login = login;
+        this.discriminator = discriminator;
+    }
+}
+
+/**
+ * Email client virtual account, which contains several accounts             
+ */
+export class EmailClientMultiAccount {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "receiveAccounts",
+            baseName: "receiveAccounts",
+            type: "Array<EmailClientAccount>",
+        },
+        {
+            name: "sendAccount",
+            baseName: "sendAccount",
+            type: "EmailClientAccount",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailClientMultiAccount.attributeTypeMap;
+    }
+
+    /**
+     * Email client receive accounts             
+     */
+    public receiveAccounts: Array<EmailClientAccount>;
+    
+    /**
+     * Email client send account             
+     */
+    public sendAccount: EmailClientAccount;
+    
+
+    /**
+     * Email client virtual account, which contains several accounts             
+     * @param receiveAccounts Email client receive accounts             
+     * @param sendAccount Email client send account             
+     */
+    public constructor(
+        receiveAccounts?: Array<EmailClientAccount>,
+        sendAccount?: EmailClientAccount) {
+        
+        this.receiveAccounts = receiveAccounts;
+        this.sendAccount = sendAccount;
     }
 }
 
@@ -5228,6 +5427,9 @@ export class ModelError {
     }
 }
 
+/**
+ * Name-Value property             
+ */
 export class NameValuePair {
 
     /**
@@ -5235,13 +5437,13 @@ export class NameValuePair {
      */
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: "value",
-            baseName: "value",
+            name: "name",
+            baseName: "name",
             type: "string",
         },
         {
-            name: "name",
-            baseName: "name",
+            name: "value",
+            baseName: "value",
             type: "string",
         }    ];
 
@@ -5252,22 +5454,28 @@ export class NameValuePair {
         return NameValuePair.attributeTypeMap;
     }
 
-    public value: string;
-    
+    /**
+     * Property name             
+     */
     public name: string;
+    
+    /**
+     * Property value             
+     */
+    public value: string;
     
 
     /**
-     * 
-     * @param value 
-     * @param name 
+     * Name-Value property             
+     * @param name Property name             
+     * @param value Property value             
      */
     public constructor(
-        value?: string,
-        name?: string) {
+        name?: string,
+        value?: string) {
         
-        this.value = value;
         this.name = name;
+        this.value = value;
     }
 }
 
@@ -5843,6 +6051,92 @@ export class StorageFile {
     }
 }
 
+export class StorageFileRqOfEmailClientAccount {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "EmailClientAccount",
+        },
+        {
+            name: "storageFile",
+            baseName: "storageFile",
+            type: "StorageFileLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageFileRqOfEmailClientAccount.attributeTypeMap;
+    }
+
+    public value: EmailClientAccount;
+    
+    public storageFile: StorageFileLocation;
+    
+
+    /**
+     * 
+     * @param value 
+     * @param storageFile 
+     */
+    public constructor(
+        value?: EmailClientAccount,
+        storageFile?: StorageFileLocation) {
+        
+        this.value = value;
+        this.storageFile = storageFile;
+    }
+}
+
+export class StorageFileRqOfEmailClientMultiAccount {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "EmailClientMultiAccount",
+        },
+        {
+            name: "storageFile",
+            baseName: "storageFile",
+            type: "StorageFileLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageFileRqOfEmailClientMultiAccount.attributeTypeMap;
+    }
+
+    public value: EmailClientMultiAccount;
+    
+    public storageFile: StorageFileLocation;
+    
+
+    /**
+     * 
+     * @param value 
+     * @param storageFile 
+     */
+    public constructor(
+        value?: EmailClientMultiAccount,
+        storageFile?: StorageFileLocation) {
+        
+        this.value = value;
+        this.storageFile = storageFile;
+    }
+}
+
 /**
  * A storage folder location information             
  */
@@ -6252,6 +6546,39 @@ export class ValueResponse {
      */
     public constructor(
         value?: string) {
+        
+        this.value = value;
+    }
+}
+
+export class ValueTOfBoolean {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ValueTOfBoolean.attributeTypeMap;
+    }
+
+    public value: boolean;
+    
+
+    /**
+     * 
+     * @param value 
+     */
+    public constructor(
+        value?: boolean) {
         
         this.value = value;
     }
@@ -7146,6 +7473,135 @@ export class EmailAccountConfigList extends ListResponseOfEmailAccountConfig {
 }
 
 /**
+ * Represents email client account OAuth 2.0 credentials             
+ */
+export class EmailClientAccountOauthCredentials extends EmailClientAccountCredentials {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "clientId",
+            baseName: "clientId",
+            type: "string",
+        },
+        {
+            name: "clientSecret",
+            baseName: "clientSecret",
+            type: "string",
+        },
+        {
+            name: "refreshToken",
+            baseName: "refreshToken",
+            type: "string",
+        },
+        {
+            name: "requestUrl",
+            baseName: "requestUrl",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(EmailClientAccountOauthCredentials.attributeTypeMap);
+    }
+
+    /**
+     * The client ID obtained from the Google Cloud Console during application registration.             
+     */
+    public clientId: string;
+    
+    /**
+     * The client secret obtained during application registration.             
+     */
+    public clientSecret: string;
+    
+    /**
+     * OAuth 2.0 refresh token             
+     */
+    public refreshToken: string;
+    
+    /**
+     * The url to obtain access token. If not specified, will try to discover from email client account host.             
+     */
+    public requestUrl: string;
+    
+
+    /**
+     * Represents email client account OAuth 2.0 credentials             
+     * @param login Email client account login             
+     * @param discriminator 
+     * @param clientId The client ID obtained from the Google Cloud Console during application registration.             
+     * @param clientSecret The client secret obtained during application registration.             
+     * @param refreshToken OAuth 2.0 refresh token             
+     * @param requestUrl The url to obtain access token. If not specified, will try to discover from email client account host.             
+     */
+    public constructor(
+        login?: string,
+        discriminator?: string,
+        clientId?: string,
+        clientSecret?: string,
+        refreshToken?: string,
+        requestUrl?: string) {
+        super();
+        this.login = login;
+        this.discriminator = discriminator;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.refreshToken = refreshToken;
+        this.requestUrl = requestUrl;
+    }
+}
+
+/**
+ * Represents email client account password credentials             
+ */
+export class EmailClientAccountPasswordCredentials extends EmailClientAccountCredentials {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "password",
+            baseName: "password",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(EmailClientAccountPasswordCredentials.attributeTypeMap);
+    }
+
+    /**
+     * Email client account password             
+     */
+    public password: string;
+    
+
+    /**
+     * Represents email client account password credentials             
+     * @param login Email client account login             
+     * @param discriminator 
+     * @param password Email client account password             
+     */
+    public constructor(
+        login?: string,
+        discriminator?: string,
+        password?: string) {
+        super();
+        this.login = login;
+        this.discriminator = discriminator;
+        this.password = password;
+    }
+}
+
+/**
  * List of email documents             
  */
 export class EmailDtoList extends ListResponseOfStorageModelOfEmailDto {
@@ -7532,7 +7988,7 @@ export class SaveEmailAccountRequest extends EmailAccountRequest {
      * @param host Email account host             
      * @param port Email account port             
      * @param login Email account login             
-     * @param securityOptions Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * @param securityOptions Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      * @param protocolType Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
      * @param description Email account description             
      * @param storageFile A storage file location info to store email account             
@@ -7582,6 +8038,11 @@ export class SaveOAuthEmailAccountRequest extends EmailAccountRequest {
             name: "refreshToken",
             baseName: "refreshToken",
             type: "string",
+        },
+        {
+            name: "requestUrl",
+            baseName: "requestUrl",
+            type: "string",
         }    ];
 
     /**
@@ -7606,19 +8067,25 @@ export class SaveOAuthEmailAccountRequest extends EmailAccountRequest {
      */
     public refreshToken: string;
     
+    /**
+     * The url to obtain access token. If not specified, will try to discover from email account host.             
+     */
+    public requestUrl: string;
+    
 
     /**
      * Save email account settings with OAuth request             
      * @param host Email account host             
      * @param port Email account port             
      * @param login Email account login             
-     * @param securityOptions Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * @param securityOptions Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      * @param protocolType Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
      * @param description Email account description             
      * @param storageFile A storage file location info to store email account             
      * @param clientId OAuth client identifier             
      * @param clientSecret OAuth client secret             
      * @param refreshToken OAuth refresh token             
+     * @param requestUrl The url to obtain access token. If not specified, will try to discover from email account host.             
      */
     public constructor(
         host?: string,
@@ -7630,7 +8097,8 @@ export class SaveOAuthEmailAccountRequest extends EmailAccountRequest {
         storageFile?: StorageFileLocation,
         clientId?: string,
         clientSecret?: string,
-        refreshToken?: string) {
+        refreshToken?: string,
+        requestUrl?: string) {
         super();
         this.host = host;
         this.port = port;
@@ -7642,6 +8110,7 @@ export class SaveOAuthEmailAccountRequest extends EmailAccountRequest {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.refreshToken = refreshToken;
+        this.requestUrl = requestUrl;
     }
 }
 
@@ -8141,6 +8610,9 @@ const typeMap = {
             EmailAccountConfig,
             EmailAccountRequest,
             EmailAddress,
+            EmailClientAccount,
+            EmailClientAccountCredentials,
+            EmailClientMultiAccount,
             EmailDocument,
             EmailDocumentResponse,
             EmailDto,
@@ -8190,6 +8662,8 @@ const typeMap = {
             SetEmailPropertyRequest,
             StorageExist,
             StorageFile,
+            StorageFileRqOfEmailClientAccount,
+            StorageFileRqOfEmailClientMultiAccount,
             StorageFolderLocation,
             StorageModelOfCalendarDto,
             StorageModelOfContactDto,
@@ -8199,6 +8673,7 @@ const typeMap = {
             StorageModelRqOfEmailDto,
             Url,
             ValueResponse,
+            ValueTOfBoolean,
             AiBcrBase64Image,
             AiBcrBase64Rq,
             AiBcrImageStorageFile,
@@ -8216,6 +8691,8 @@ const typeMap = {
             DiscoverEmailConfigOauth,
             DiscoverEmailConfigPassword,
             EmailAccountConfigList,
+            EmailClientAccountOauthCredentials,
+            EmailClientAccountPasswordCredentials,
             EmailDtoList,
             FileVersion,
             HierarchicalObject,
