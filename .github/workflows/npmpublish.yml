@@ -13,6 +13,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
       - name: Compile
         run: |
           npm cache verify
@@ -26,5 +28,3 @@ jobs:
         run: npm run test-pipeline
       - name: Publish
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
