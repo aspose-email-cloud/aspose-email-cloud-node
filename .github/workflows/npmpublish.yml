@@ -24,4 +24,4 @@ jobs:
         apiBaseUrl: "https://api.aspose.cloud"
     - run: npm publish
       env:
-        NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+        NODE_AUTH_TOKEN: ${{secrets.NODE_TOKEN}}
