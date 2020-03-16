@@ -18,9 +18,10 @@ jobs:
         npm install
         npm run compile
     - run: npm run test-pipeline
-    - run: npm publish
       env:
-        NODE_AUTH_TOKEN: ${{secrets.npm_token}}
         appSid: ${{secrets.appSidProd}}
         appKey: ${{secrets.appKeyProd}}
         apiBaseUrl: "https://api.aspose.cloud"
+    - run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.npm_token}}
