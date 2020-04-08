@@ -1332,7 +1332,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **messageId** | **string**| Message identifier | 
  **firstAccount** | **string**| Email account | 
- **secondAccount** | **string**| Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)              | [optional] 
+ **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
  **storage** | **string**| Storage name where account file(s) located | [optional] 
  **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
 
@@ -1365,7 +1365,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **messageId** | **string**| Message identifier | 
  **firstAccount** | **string**| Email account | 
- **secondAccount** | **string**| Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)              | [optional] 
+ **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
  **storage** | **string**| Storage name where account file(s) located | [optional] 
  **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
 
@@ -1985,6 +1985,39 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="getemailthread"></a>
+# **getEmailThread**
+
+```typescript
+public async getEmailThread(requestObj: GetEmailThreadRequest) : Promise<{response: RequestResponse, body: EmailThread; }>
+```
+
+Get message thread by id. All messages are fully fetched. For accounts with CacheFile only cached messages will be returned.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: EmailThread; }>`
+
+### Request Parameters
+```typescript
+new GetEmailThreadRequest(
+    threadId,
+    firstAccount,
+    secondAccount=secondAccount,
+    storage=storage,
+    storageFolder=storageFolder)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **threadId** | **string**| Thread identifier | 
+ **firstAccount** | **string**| Email account | 
+ **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
+ **storage** | **string**| Storage name where account file(s) located | [optional] 
+ **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="getfileversions"></a>
 # **getFileVersions**
 
@@ -2210,7 +2243,7 @@ new ListEmailFoldersRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **firstAccount** | **string**| Email account | 
- **secondAccount** | **string**| Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)              | [optional] 
+ **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
  **storage** | **string**| Storage name where account file(s) located | [optional] 
  **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
  **parentFolder** | **string**| Folder in which subfolders should be listed | [optional] 
@@ -2249,7 +2282,7 @@ Name | Type | Description  | Notes
  **folder** | **string**| A folder in email account | 
  **queryString** | **string**| A MailQuery search string | 
  **firstAccount** | **string**| Email account | 
- **secondAccount** | **string**| Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)              | [optional] 
+ **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
  **storage** | **string**| Storage name where account file(s) located | [optional] 
  **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
  **recursive** | **boolean**| Specifies that should message be searched in subfolders recursively | [optional] [default to false]
@@ -2288,10 +2321,45 @@ Name | Type | Description  | Notes
  **folder** | **string**| A folder in email account | 
  **queryString** | **string**| A MailQuery search string | 
  **firstAccount** | **string**| Email account | 
- **secondAccount** | **string**| Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)              | [optional] 
+ **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
  **storage** | **string**| Storage name where account file(s) located | [optional] 
  **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
  **recursive** | **boolean**| Specifies that should message be searched in subfolders recursively | [optional] [default to false]
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="listemailthreads"></a>
+# **listEmailThreads**
+
+```typescript
+public async listEmailThreads(requestObj: ListEmailThreadsRequest) : Promise<{response: RequestResponse, body: EmailThreadList; }>
+```
+
+Get message threads from folder. All messages are partly fetched (without email body and other fields)             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: EmailThreadList; }>`
+
+### Request Parameters
+```typescript
+new ListEmailThreadsRequest(
+    folder,
+    firstAccount,
+    secondAccount=secondAccount,
+    storage=storage,
+    storageFolder=storageFolder,
+    updateFolderCache=updateFolderCache)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **folder** | **string**| A folder in email account | 
+ **firstAccount** | **string**| Email account | 
+ **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
+ **storage** | **string**| Storage name where account file(s) located | [optional] 
+ **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
+ **updateFolderCache** | **boolean**| This parameter is only used in accounts with CacheFile. If true - get new messages and update threads cache for given folder. If false, get only threads from cache without any calls to an email account              | [optional] [default to true]
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

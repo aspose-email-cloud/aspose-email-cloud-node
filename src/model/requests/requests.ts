@@ -1553,7 +1553,7 @@ export class FetchEmailMessageRequest {
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      */
     public secondAccount: string;
 
@@ -1571,7 +1571,7 @@ export class FetchEmailMessageRequest {
      * Request model for fetchEmailMessage operation.
      * @param messageId Message identifier
      * @param firstAccount Email account
-     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      */
@@ -1605,7 +1605,7 @@ export class FetchEmailModelRequest {
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      */
     public secondAccount: string;
 
@@ -1623,7 +1623,7 @@ export class FetchEmailModelRequest {
      * Request model for fetchEmailModel operation.
      * @param messageId Message identifier
      * @param firstAccount Email account
-     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      */
@@ -2499,6 +2499,58 @@ export class GetEmailPropertyRequest {
 }
 
 /**
+ * Request model for getEmailThread operation.
+ */
+export class GetEmailThreadRequest {
+    /**
+     * Thread identifier
+     */
+    public threadId: string;
+
+    /**
+     * Email account
+     */
+    public firstAccount: string;
+
+    /**
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     */
+    public secondAccount: string;
+
+    /**
+     * Storage name where account file(s) located
+     */
+    public storage: string;
+
+    /**
+     * Folder in storage where account file(s) located
+     */
+    public storageFolder: string;
+
+    /**
+     * Request model for getEmailThread operation.
+     * @param threadId Thread identifier
+     * @param firstAccount Email account
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     * @param storage Storage name where account file(s) located
+     * @param storageFolder Folder in storage where account file(s) located
+     */
+    public constructor(
+        threadId?: string, 
+        firstAccount?: string, 
+        secondAccount?: string, 
+        storage?: string, 
+        storageFolder?: string) {
+        
+        this.threadId = threadId;
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storage = storage;
+        this.storageFolder = storageFolder;
+    }
+}
+
+/**
  * Request model for getFileVersions operation.
  */
 export class GetFileVersionsRequest {
@@ -2744,7 +2796,7 @@ export class ListEmailFoldersRequest {
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      */
     public secondAccount: string;
 
@@ -2766,7 +2818,7 @@ export class ListEmailFoldersRequest {
     /**
      * Request model for listEmailFolders operation.
      * @param firstAccount Email account
-     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      * @param parentFolder Folder in which subfolders should be listed
@@ -2806,7 +2858,7 @@ export class ListEmailMessagesRequest {
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      */
     public secondAccount: string;
 
@@ -2830,7 +2882,7 @@ export class ListEmailMessagesRequest {
      * @param folder A folder in email account
      * @param queryString A MailQuery search string
      * @param firstAccount Email account
-     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      * @param recursive Specifies that should message be searched in subfolders recursively
@@ -2874,7 +2926,7 @@ export class ListEmailModelsRequest {
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      */
     public secondAccount: string;
 
@@ -2898,7 +2950,7 @@ export class ListEmailModelsRequest {
      * @param folder A folder in email account
      * @param queryString A MailQuery search string
      * @param firstAccount Email account
-     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      * @param recursive Specifies that should message be searched in subfolders recursively
@@ -2919,6 +2971,66 @@ export class ListEmailModelsRequest {
         this.storage = storage;
         this.storageFolder = storageFolder;
         this.recursive = recursive;
+    }
+}
+
+/**
+ * Request model for listEmailThreads operation.
+ */
+export class ListEmailThreadsRequest {
+    /**
+     * A folder in email account
+     */
+    public folder: string;
+
+    /**
+     * Email account
+     */
+    public firstAccount: string;
+
+    /**
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     */
+    public secondAccount: string;
+
+    /**
+     * Storage name where account file(s) located
+     */
+    public storage: string;
+
+    /**
+     * Folder in storage where account file(s) located
+     */
+    public storageFolder: string;
+
+    /**
+     * This parameter is only used in accounts with CacheFile. If true - get new messages and update threads cache for given folder. If false, get only threads from cache without any calls to an email account             
+     */
+    public updateFolderCache: boolean;
+
+    /**
+     * Request model for listEmailThreads operation.
+     * @param folder A folder in email account
+     * @param firstAccount Email account
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     * @param storage Storage name where account file(s) located
+     * @param storageFolder Folder in storage where account file(s) located
+     * @param updateFolderCache This parameter is only used in accounts with CacheFile. If true - get new messages and update threads cache for given folder. If false, get only threads from cache without any calls to an email account             
+     */
+    public constructor(
+        folder?: string, 
+        firstAccount?: string, 
+        secondAccount?: string, 
+        storage?: string, 
+        storageFolder?: string, 
+        updateFolderCache?: boolean) {
+        
+        this.folder = folder;
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storage = storage;
+        this.storageFolder = storageFolder;
+        this.updateFolderCache = updateFolderCache;
     }
 }
 

@@ -3495,6 +3495,67 @@ export class EmailApi {
     }
 
     /**
+     * Get message thread by id. All messages are fully fetched. For accounts with CacheFile only cached messages will be returned.             
+     * @param requestObj contains request parameters
+     */
+    public async getEmailThread(requestObj: requestModels.GetEmailThreadRequest): Promise<{response: request.RequestResponse, body: model.EmailThread}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/threads/{threadId}"
+            .replace("{" + "threadId" + "}", String(requestObj.threadId));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.threadId' is not null or undefined
+        if (requestObj.threadId === null || requestObj.threadId === undefined) {
+            throw new Error('Required parameter "requestObj.threadId" was null or undefined when calling getEmailThread.');
+        }
+
+        // verify required parameter 'requestObj.firstAccount' is not null or undefined
+        if (requestObj.firstAccount === null || requestObj.firstAccount === undefined) {
+            throw new Error('Required parameter "requestObj.firstAccount" was null or undefined when calling getEmailThread.');
+        }
+
+        if (requestObj.firstAccount !== undefined) {
+            queryParameters.firstAccount = ObjectSerializer.serialize(requestObj.firstAccount, "string");
+        }
+
+        if (requestObj.secondAccount !== undefined) {
+            queryParameters.secondAccount = ObjectSerializer.serialize(requestObj.secondAccount, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        if (requestObj.storageFolder !== undefined) {
+            queryParameters.storageFolder = ObjectSerializer.serialize(requestObj.storageFolder, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "EmailThread");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Get file versions
      * @param requestObj contains request parameters
      */
@@ -4032,6 +4093,74 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfEmailDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Get message threads from folder. All messages are partly fetched (without email body and other fields)             
+     * @param requestObj contains request parameters
+     */
+    public async listEmailThreads(requestObj: requestModels.ListEmailThreadsRequest): Promise<{response: request.RequestResponse, body: model.EmailThreadList}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/threads";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.folder' is not null or undefined
+        if (requestObj.folder === null || requestObj.folder === undefined) {
+            throw new Error('Required parameter "requestObj.folder" was null or undefined when calling listEmailThreads.');
+        }
+
+        // verify required parameter 'requestObj.firstAccount' is not null or undefined
+        if (requestObj.firstAccount === null || requestObj.firstAccount === undefined) {
+            throw new Error('Required parameter "requestObj.firstAccount" was null or undefined when calling listEmailThreads.');
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.firstAccount !== undefined) {
+            queryParameters.firstAccount = ObjectSerializer.serialize(requestObj.firstAccount, "string");
+        }
+
+        if (requestObj.secondAccount !== undefined) {
+            queryParameters.secondAccount = ObjectSerializer.serialize(requestObj.secondAccount, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        if (requestObj.storageFolder !== undefined) {
+            queryParameters.storageFolder = ObjectSerializer.serialize(requestObj.storageFolder, "string");
+        }
+
+        if (requestObj.updateFolderCache !== undefined) {
+            queryParameters.updateFolderCache = ObjectSerializer.serialize(requestObj.updateFolderCache, "boolean");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "EmailThreadList");
         return Promise.resolve({body: result, response});
     }
 

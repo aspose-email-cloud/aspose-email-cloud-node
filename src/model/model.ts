@@ -56,12 +56,12 @@ export class AccountBaseRequest {
     }
 
     /**
-     * First account storage file name for receiving emails (or universal one)             
+     * First account storage file name             
      */
     public firstAccount: string;
     
     /**
-     * Second account storage file name for sending emails (ignored if first is universal)             
+     * Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      */
     public secondAccount: string;
     
@@ -73,8 +73,8 @@ export class AccountBaseRequest {
 
     /**
      * EmailClient accounts request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      */
     public constructor(
@@ -3092,6 +3092,11 @@ export class EmailClientAccount {
             name: "credentials",
             baseName: "credentials",
             type: "EmailClientAccountCredentials",
+        },
+        {
+            name: "cacheFile",
+            baseName: "cacheFile",
+            type: "StorageFileLocation",
         }    ];
 
     /**
@@ -3126,6 +3131,11 @@ export class EmailClientAccount {
      */
     public credentials: EmailClientAccountCredentials;
     
+    /**
+     * File with messages cache. Used to provide extra functions, which are not supported by account             
+     */
+    public cacheFile: StorageFileLocation;
+    
 
     /**
      * A universal email client account             
@@ -3134,19 +3144,22 @@ export class EmailClientAccount {
      * @param securityOptions Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      * @param protocolType Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
      * @param credentials Email client account credentials             
+     * @param cacheFile File with messages cache. Used to provide extra functions, which are not supported by account             
      */
     public constructor(
         host?: string,
         port?: number,
         securityOptions?: string,
         protocolType?: string,
-        credentials?: EmailClientAccountCredentials) {
+        credentials?: EmailClientAccountCredentials,
+        cacheFile?: StorageFileLocation) {
         
         this.host = host;
         this.port = port;
         this.securityOptions = securityOptions;
         this.protocolType = protocolType;
         this.credentials = credentials;
+        this.cacheFile = cacheFile;
     }
 }
 
@@ -3944,6 +3957,71 @@ export class EmailPropertyResponse {
         emailProperty?: EmailProperty) {
         
         this.emailProperty = emailProperty;
+    }
+}
+
+/**
+ * Email messages thread             
+ */
+export class EmailThread {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "id",
+            baseName: "id",
+            type: "string",
+        },
+        {
+            name: "subject",
+            baseName: "subject",
+            type: "string",
+        },
+        {
+            name: "messages",
+            baseName: "messages",
+            type: "Array<EmailDto>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailThread.attributeTypeMap;
+    }
+
+    /**
+     * Thread identifier             
+     */
+    public id: string;
+    
+    /**
+     * Thread subject             
+     */
+    public subject: string;
+    
+    /**
+     * List of messages in thread             
+     */
+    public messages: Array<EmailDto>;
+    
+
+    /**
+     * Email messages thread             
+     * @param id Thread identifier             
+     * @param subject Thread subject             
+     * @param messages List of messages in thread             
+     */
+    public constructor(
+        id?: string,
+        subject?: string,
+        messages?: Array<EmailDto>) {
+        
+        this.id = id;
+        this.subject = subject;
+        this.messages = messages;
     }
 }
 
@@ -4924,6 +5002,39 @@ export class ListResponseOfEmailDto {
      */
     public constructor(
         value?: Array<EmailDto>) {
+        
+        this.value = value;
+    }
+}
+
+export class ListResponseOfEmailThread {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<EmailThread>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfEmailThread.attributeTypeMap;
+    }
+
+    public value: Array<EmailThread>;
+    
+
+    /**
+     * 
+     * @param value 
+     */
+    public constructor(
+        value?: Array<EmailThread>) {
         
         this.value = value;
     }
@@ -6946,8 +7057,8 @@ export class AppendEmailAccountBaseRequest extends AccountBaseRequest {
 
     /**
      * Append email to account request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param folder Email account folder to store a message             
      * @param markAsSent Mark message as sent             
@@ -7170,8 +7281,8 @@ export class CreateFolderBaseRequest extends AccountBaseRequest {
 
     /**
      * Create folder request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param folder Folder name             
      * @param parentFolder Parent folder path             
@@ -7231,8 +7342,8 @@ export class DeleteFolderBaseRequest extends AccountBaseRequest {
 
     /**
      * Delete folder request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param folder Folder name             
      * @param deletePermanently Specifies that folder should be deleted permanently             
@@ -7292,8 +7403,8 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
 
     /**
      * Delete message request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param messageId Message identifier             
      * @param deletePermanently Specifies that message should be deleted permanently             
@@ -7602,7 +7713,7 @@ export class EmailClientAccountPasswordCredentials extends EmailClientAccountCre
 }
 
 /**
- * List of email documents             
+ * List of email documents from storage             
  */
 export class EmailDtoList extends ListResponseOfStorageModelOfEmailDto {
 
@@ -7621,11 +7732,41 @@ export class EmailDtoList extends ListResponseOfStorageModelOfEmailDto {
 
 
     /**
-     * List of email documents             
+     * List of email documents from storage             
      * @param value 
      */
     public constructor(
         value?: Array<StorageModelOfEmailDto>) {
+        super();
+        this.value = value;
+    }
+}
+
+/**
+ * List of email threads             
+ */
+export class EmailThreadList extends ListResponseOfEmailThread {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(EmailThreadList.attributeTypeMap);
+    }
+
+
+    /**
+     * List of email threads             
+     * @param value 
+     */
+    public constructor(
+        value?: Array<EmailThread>) {
         super();
         this.value = value;
     }
@@ -8144,8 +8285,8 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
 
     /**
      * Send email file request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param emailFile Email document (*.eml) file location in storage             
      */
@@ -8192,8 +8333,8 @@ export class SendEmailMimeBaseRequest extends AccountBaseRequest {
 
     /**
      * Send email MIME request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param base64MimeMessage Email document serialized as MIME             
      */
@@ -8240,8 +8381,8 @@ export class SendEmailModelRq extends AccountBaseRequest {
 
     /**
      * Send email model request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param message Message to send             
      */
@@ -8298,8 +8439,8 @@ export class SetMessageReadFlagAccountBaseRequest extends AccountBaseRequest {
 
     /**
      * Set message is read request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param messageId Message identifier             
      * @param isRead Specifies that message should be marked read or unread             
@@ -8439,8 +8580,8 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
 
     /**
      * Append email from storage file to account request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param folder Email account folder to store a message             
      * @param markAsSent Mark message as sent             
@@ -8493,8 +8634,8 @@ export class AppendEmailMimeBaseRequest extends AppendEmailAccountBaseRequest {
 
     /**
      * Append email from MIME string to account request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param folder Email account folder to store a message             
      * @param markAsSent Mark message as sent             
@@ -8547,8 +8688,8 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
 
     /**
      * Append email request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param folder Email account folder to store a message             
      * @param markAsSent Mark message as sent             
@@ -8619,6 +8760,7 @@ const typeMap = {
             EmailProperties,
             EmailProperty,
             EmailPropertyResponse,
+            EmailThread,
             EnumWithCustomOfAssociatedPersonCategory,
             EnumWithCustomOfEmailAddressCategory,
             EnumWithCustomOfEventCategory,
@@ -8641,6 +8783,7 @@ const typeMap = {
             ListResponseOfContactDto,
             ListResponseOfEmailAccountConfig,
             ListResponseOfEmailDto,
+            ListResponseOfEmailThread,
             ListResponseOfHierarchicalObject,
             ListResponseOfHierarchicalObjectResponse,
             ListResponseOfMailServerFolder,
@@ -8694,6 +8837,7 @@ const typeMap = {
             EmailClientAccountOauthCredentials,
             EmailClientAccountPasswordCredentials,
             EmailDtoList,
+            EmailThreadList,
             FileVersion,
             HierarchicalObject,
             IndexedHierarchicalObject,
