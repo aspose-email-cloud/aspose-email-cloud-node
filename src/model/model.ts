@@ -7303,6 +7303,42 @@ export class CreateFolderBaseRequest extends AccountBaseRequest {
 }
 
 /**
+ * Delete thread request             
+ */
+export class DeleteEmailThreadAccountRq extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(DeleteEmailThreadAccountRq.attributeTypeMap);
+    }
+
+
+    /**
+     * Delete thread request             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
+     * @param storageFolder Storage folder location of account files             
+     */
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+    }
+}
+
+/**
  * Delete folder request             
  */
 export class DeleteFolderBaseRequest extends AccountBaseRequest {
@@ -7769,6 +7805,54 @@ export class EmailThreadList extends ListResponseOfEmailThread {
         value?: Array<EmailThread>) {
         super();
         this.value = value;
+    }
+}
+
+/**
+ * Request to mark all messages in thread as read or unread             
+ */
+export class EmailThreadReadFlagRq extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "isRead",
+            baseName: "isRead",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(EmailThreadReadFlagRq.attributeTypeMap);
+    }
+
+    /**
+     * Read flag to set. \"true\" by default             
+     */
+    public isRead: boolean;
+    
+
+    /**
+     * Request to mark all messages in thread as read or unread             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
+     * @param storageFolder Storage folder location of account files             
+     * @param isRead Read flag to set. \"true\" by default             
+     */
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        isRead?: boolean) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.isRead = isRead;
     }
 }
 
@@ -8829,6 +8913,7 @@ const typeMap = {
             CalendarDtoList,
             ContactDtoList,
             CreateFolderBaseRequest,
+            DeleteEmailThreadAccountRq,
             DeleteFolderBaseRequest,
             DeleteMessageBaseRequest,
             DiscoverEmailConfigOauth,
@@ -8838,6 +8923,7 @@ const typeMap = {
             EmailClientAccountPasswordCredentials,
             EmailDtoList,
             EmailThreadList,
+            EmailThreadReadFlagRq,
             FileVersion,
             HierarchicalObject,
             IndexedHierarchicalObject,

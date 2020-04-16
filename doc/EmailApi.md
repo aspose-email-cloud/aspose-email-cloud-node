@@ -1085,6 +1085,33 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="deleteemailthread"></a>
+# **deleteEmailThread**
+
+```typescript
+public async deleteEmailThread(requestObj: DeleteEmailThreadRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Delete thread by id. All messages from thread will also be deleted             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new DeleteEmailThreadRequest(
+    threadId,
+    request)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **threadId** | **string**| Thread id | 
+ **request** | [**DeleteEmailThreadAccountRq**](DeleteEmailThreadAccountRq.md)| Email account specifier | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="deletefile"></a>
 # **deleteFile**
 
@@ -2308,8 +2335,8 @@ The query string should have the following view.      The example of a simple ex
 ```typescript
 new ListEmailModelsRequest(
     folder,
-    queryString,
     firstAccount,
+    queryString=queryString,
     secondAccount=secondAccount,
     storage=storage,
     storageFolder=storageFolder,
@@ -2319,8 +2346,8 @@ new ListEmailModelsRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **folder** | **string**| A folder in email account | 
- **queryString** | **string**| A MailQuery search string | 
  **firstAccount** | **string**| Email account | 
+ **queryString** | **string**| A MailQuery search string | [optional] 
  **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
  **storage** | **string**| Storage name where account file(s) located | [optional] 
  **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
@@ -2349,7 +2376,8 @@ new ListEmailThreadsRequest(
     secondAccount=secondAccount,
     storage=storage,
     storageFolder=storageFolder,
-    updateFolderCache=updateFolderCache)
+    updateFolderCache=updateFolderCache,
+    messagesCacheLimit=messagesCacheLimit)
 ```
 
 Name | Type | Description  | Notes
@@ -2360,6 +2388,7 @@ Name | Type | Description  | Notes
  **storage** | **string**| Storage name where account file(s) located | [optional] 
  **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
  **updateFolderCache** | **boolean**| This parameter is only used in accounts with CacheFile. If true - get new messages and update threads cache for given folder. If false, get only threads from cache without any calls to an email account              | [optional] [default to true]
+ **messagesCacheLimit** | **number**| Limit messages cache size if CacheFile is used. Ignored in accounts without limits support              | [optional] [default to 200]
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2767,6 +2796,33 @@ new SetEmailReadFlagRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **request** | [**SetMessageReadFlagAccountBaseRequest**](SetMessageReadFlagAccountBaseRequest.md)| Message is read request | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="setemailthreadreadflag"></a>
+# **setEmailThreadReadFlag**
+
+```typescript
+public async setEmailThreadReadFlag(requestObj: SetEmailThreadReadFlagRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Mar all messages in thread as read or unread             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new SetEmailThreadReadFlagRequest(
+    threadId,
+    request)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **threadId** | **string**| Thread id | 
+ **request** | [**EmailThreadReadFlagRq**](EmailThreadReadFlagRq.md)| Email account specifier and IsRead flag | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

@@ -1914,6 +1914,51 @@ export class EmailApi {
     }
 
     /**
+     * Delete thread by id. All messages from thread will also be deleted             
+     * @param requestObj contains request parameters
+     */
+    public async deleteEmailThread(requestObj: requestModels.DeleteEmailThreadRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/threads/{threadId}"
+            .replace("{" + "threadId" + "}", String(requestObj.threadId));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.threadId' is not null or undefined
+        if (requestObj.threadId === null || requestObj.threadId === undefined) {
+            throw new Error('Required parameter "requestObj.threadId" was null or undefined when calling deleteEmailThread.');
+        }
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling deleteEmailThread.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "DELETE",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "DeleteEmailThreadAccountRq"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
      * Delete file
      * @param requestObj contains request parameters
      */
@@ -4034,11 +4079,6 @@ export class EmailApi {
             throw new Error('Required parameter "requestObj.folder" was null or undefined when calling listEmailModels.');
         }
 
-        // verify required parameter 'requestObj.queryString' is not null or undefined
-        if (requestObj.queryString === null || requestObj.queryString === undefined) {
-            throw new Error('Required parameter "requestObj.queryString" was null or undefined when calling listEmailModels.');
-        }
-
         // verify required parameter 'requestObj.firstAccount' is not null or undefined
         if (requestObj.firstAccount === null || requestObj.firstAccount === undefined) {
             throw new Error('Required parameter "requestObj.firstAccount" was null or undefined when calling listEmailModels.');
@@ -4048,12 +4088,12 @@ export class EmailApi {
             queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
         }
 
-        if (requestObj.queryString !== undefined) {
-            queryParameters.queryString = ObjectSerializer.serialize(requestObj.queryString, "string");
-        }
-
         if (requestObj.firstAccount !== undefined) {
             queryParameters.firstAccount = ObjectSerializer.serialize(requestObj.firstAccount, "string");
+        }
+
+        if (requestObj.queryString !== undefined) {
+            queryParameters.queryString = ObjectSerializer.serialize(requestObj.queryString, "string");
         }
 
         if (requestObj.secondAccount !== undefined) {
@@ -4138,6 +4178,10 @@ export class EmailApi {
 
         if (requestObj.updateFolderCache !== undefined) {
             queryParameters.updateFolderCache = ObjectSerializer.serialize(requestObj.updateFolderCache, "boolean");
+        }
+
+        if (requestObj.messagesCacheLimit !== undefined) {
+            queryParameters.messagesCacheLimit = ObjectSerializer.serialize(requestObj.messagesCacheLimit, "number");
         }
 
         // tslint:disable-next-line:prefer-const
@@ -4825,6 +4869,51 @@ export class EmailApi {
             uri: localVarPath,
             json: true,
             body: ObjectSerializer.serialize(requestObj.request, "SetMessageReadFlagAccountBaseRequest"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
+     * Mar all messages in thread as read or unread             
+     * @param requestObj contains request parameters
+     */
+    public async setEmailThreadReadFlag(requestObj: requestModels.SetEmailThreadReadFlagRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/threads/{threadId}/read-flag"
+            .replace("{" + "threadId" + "}", String(requestObj.threadId));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.threadId' is not null or undefined
+        if (requestObj.threadId === null || requestObj.threadId === undefined) {
+            throw new Error('Required parameter "requestObj.threadId" was null or undefined when calling setEmailThreadReadFlag.');
+        }
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling setEmailThreadReadFlag.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "EmailThreadReadFlagRq"),
         };
 
         if (Object.keys(formParams).length) {

@@ -1299,6 +1299,34 @@ export class DeleteEmailMessageRequest {
 }
 
 /**
+ * Request model for deleteEmailThread operation.
+ */
+export class DeleteEmailThreadRequest {
+    /**
+     * Thread id
+     */
+    public threadId: string;
+
+    /**
+     * Email account specifier
+     */
+    public request: model.DeleteEmailThreadAccountRq;
+
+    /**
+     * Request model for deleteEmailThread operation.
+     * @param threadId Thread id
+     * @param request Email account specifier
+     */
+    public constructor(
+        threadId?: string, 
+        request?: model.DeleteEmailThreadAccountRq) {
+        
+        this.threadId = threadId;
+        this.request = request;
+    }
+}
+
+/**
  * Request model for deleteFile operation.
  */
 export class DeleteFileRequest {
@@ -2916,14 +2944,14 @@ export class ListEmailModelsRequest {
     public folder: string;
 
     /**
-     * A MailQuery search string
-     */
-    public queryString: string;
-
-    /**
      * Email account
      */
     public firstAccount: string;
+
+    /**
+     * A MailQuery search string
+     */
+    public queryString: string;
 
     /**
      * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
@@ -2948,8 +2976,8 @@ export class ListEmailModelsRequest {
     /**
      * Request model for listEmailModels operation.
      * @param folder A folder in email account
-     * @param queryString A MailQuery search string
      * @param firstAccount Email account
+     * @param queryString A MailQuery search string
      * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
@@ -2957,16 +2985,16 @@ export class ListEmailModelsRequest {
      */
     public constructor(
         folder?: string, 
-        queryString?: string, 
         firstAccount?: string, 
+        queryString?: string, 
         secondAccount?: string, 
         storage?: string, 
         storageFolder?: string, 
         recursive?: boolean) {
         
         this.folder = folder;
-        this.queryString = queryString;
         this.firstAccount = firstAccount;
+        this.queryString = queryString;
         this.secondAccount = secondAccount;
         this.storage = storage;
         this.storageFolder = storageFolder;
@@ -3009,6 +3037,11 @@ export class ListEmailThreadsRequest {
     public updateFolderCache: boolean;
 
     /**
+     * Limit messages cache size if CacheFile is used. Ignored in accounts without limits support             
+     */
+    public messagesCacheLimit: number;
+
+    /**
      * Request model for listEmailThreads operation.
      * @param folder A folder in email account
      * @param firstAccount Email account
@@ -3016,6 +3049,7 @@ export class ListEmailThreadsRequest {
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      * @param updateFolderCache This parameter is only used in accounts with CacheFile. If true - get new messages and update threads cache for given folder. If false, get only threads from cache without any calls to an email account             
+     * @param messagesCacheLimit Limit messages cache size if CacheFile is used. Ignored in accounts without limits support             
      */
     public constructor(
         folder?: string, 
@@ -3023,7 +3057,8 @@ export class ListEmailThreadsRequest {
         secondAccount?: string, 
         storage?: string, 
         storageFolder?: string, 
-        updateFolderCache?: boolean) {
+        updateFolderCache?: boolean, 
+        messagesCacheLimit?: number) {
         
         this.folder = folder;
         this.firstAccount = firstAccount;
@@ -3031,6 +3066,7 @@ export class ListEmailThreadsRequest {
         this.storage = storage;
         this.storageFolder = storageFolder;
         this.updateFolderCache = updateFolderCache;
+        this.messagesCacheLimit = messagesCacheLimit;
     }
 }
 
@@ -3458,6 +3494,34 @@ export class SetEmailReadFlagRequest {
     public constructor(
         request?: model.SetMessageReadFlagAccountBaseRequest) {
         
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for setEmailThreadReadFlag operation.
+ */
+export class SetEmailThreadReadFlagRequest {
+    /**
+     * Thread id
+     */
+    public threadId: string;
+
+    /**
+     * Email account specifier and IsRead flag
+     */
+    public request: model.EmailThreadReadFlagRq;
+
+    /**
+     * Request model for setEmailThreadReadFlag operation.
+     * @param threadId Thread id
+     * @param request Email account specifier and IsRead flag
+     */
+    public constructor(
+        threadId?: string, 
+        request?: model.EmailThreadReadFlagRq) {
+        
+        this.threadId = threadId;
         this.request = request;
     }
 }
