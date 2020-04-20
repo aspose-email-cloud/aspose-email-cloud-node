@@ -2,7 +2,7 @@
 /*
 * MIT License
 
-* Copyright (c) 2018 Aspose Pty Ltd
+* Copyright (c) 2018-2020 Aspose Pty Ltd
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -2355,6 +2355,10 @@ export class EmailApi {
             queryParameters.secondAccount = ObjectSerializer.serialize(requestObj.secondAccount, "string");
         }
 
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
         if (requestObj.storage !== undefined) {
             queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
         }
@@ -2417,6 +2421,10 @@ export class EmailApi {
 
         if (requestObj.secondAccount !== undefined) {
             queryParameters.secondAccount = ObjectSerializer.serialize(requestObj.secondAccount, "string");
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
         }
 
         if (requestObj.storage !== undefined) {
@@ -4209,6 +4217,90 @@ export class EmailApi {
     }
 
     /**
+     * Move message to another folder             
+     * @param requestObj contains request parameters
+     */
+    public async moveEmailMessage(requestObj: requestModels.MoveEmailMessageRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/move";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling moveEmailMessage.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "MoveEmailMessageRq"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
+     * Move thread to another folder             
+     * @param requestObj contains request parameters
+     */
+    public async moveEmailThread(requestObj: requestModels.MoveEmailThreadRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/threads/{threadId}/move"
+            .replace("{" + "threadId" + "}", String(requestObj.threadId));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.threadId' is not null or undefined
+        if (requestObj.threadId === null || requestObj.threadId === undefined) {
+            throw new Error('Required parameter "requestObj.threadId" was null or undefined when calling moveEmailThread.');
+        }
+
+        // verify required parameter 'requestObj.request' is not null or undefined
+        if (requestObj.request === null || requestObj.request === undefined) {
+            throw new Error('Required parameter "requestObj.request" was null or undefined when calling moveEmailThread.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.request, "MoveEmailThreadRq"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
      * Move file
      * @param requestObj contains request parameters
      */
@@ -4884,7 +4976,7 @@ export class EmailApi {
     }
 
     /**
-     * Mar all messages in thread as read or unread             
+     * Mark all messages in thread as read or unread             
      * @param requestObj contains request parameters
      */
     public async setEmailThreadReadFlag(requestObj: requestModels.SetEmailThreadReadFlagRequest): Promise<{response: request.RequestResponse, body?: any; }> {

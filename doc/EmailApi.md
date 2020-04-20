@@ -1351,6 +1351,7 @@ new FetchEmailMessageRequest(
     messageId,
     firstAccount,
     secondAccount=secondAccount,
+    folder=folder,
     storage=storage,
     storageFolder=storageFolder)
 ```
@@ -1360,6 +1361,7 @@ Name | Type | Description  | Notes
  **messageId** | **string**| Message identifier | 
  **firstAccount** | **string**| Email account | 
  **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
+ **folder** | **string**| Account folder to fetch from (should be specified for some protocols such as IMAP)              | [optional] 
  **storage** | **string**| Storage name where account file(s) located | [optional] 
  **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
 
@@ -1384,6 +1386,7 @@ new FetchEmailModelRequest(
     messageId,
     firstAccount,
     secondAccount=secondAccount,
+    folder=folder,
     storage=storage,
     storageFolder=storageFolder)
 ```
@@ -1393,6 +1396,7 @@ Name | Type | Description  | Notes
  **messageId** | **string**| Message identifier | 
  **firstAccount** | **string**| Email account | 
  **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
+ **folder** | **string**| Account folder to fetch from (should be specified for some protocols such as IMAP)              | [optional] 
  **storage** | **string**| Storage name where account file(s) located | [optional] 
  **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
 
@@ -2392,6 +2396,58 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="moveemailmessage"></a>
+# **moveEmailMessage**
+
+```typescript
+public async moveEmailMessage(requestObj: MoveEmailMessageRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Move message to another folder             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new MoveEmailMessageRequest(
+    request)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request** | [**MoveEmailMessageRq**](MoveEmailMessageRq.md)| Email account, folder and message specifier | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="moveemailthread"></a>
+# **moveEmailThread**
+
+```typescript
+public async moveEmailThread(requestObj: MoveEmailThreadRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Move thread to another folder             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new MoveEmailThreadRequest(
+    threadId,
+    request)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **threadId** | **string**| Thread identifier | 
+ **request** | [**MoveEmailThreadRq**](MoveEmailThreadRq.md)| Move thread request | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="movefile"></a>
 # **moveFile**
 
@@ -2806,7 +2862,7 @@ Name | Type | Description  | Notes
 public async setEmailThreadReadFlag(requestObj: SetEmailThreadReadFlagRequest) : Promise<{response: RequestResponse, body?: any; }>
 ```
 
-Mar all messages in thread as read or unread             
+Mark all messages in thread as read or unread             
 
 ### Return type
 

@@ -1586,6 +1586,11 @@ export class FetchEmailMessageRequest {
     public secondAccount: string;
 
     /**
+     * Account folder to fetch from (should be specified for some protocols such as IMAP)             
+     */
+    public folder: string;
+
+    /**
      * Storage name where account file(s) located
      */
     public storage: string;
@@ -1600,6 +1605,7 @@ export class FetchEmailMessageRequest {
      * @param messageId Message identifier
      * @param firstAccount Email account
      * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     * @param folder Account folder to fetch from (should be specified for some protocols such as IMAP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      */
@@ -1607,12 +1613,14 @@ export class FetchEmailMessageRequest {
         messageId?: string, 
         firstAccount?: string, 
         secondAccount?: string, 
+        folder?: string, 
         storage?: string, 
         storageFolder?: string) {
         
         this.messageId = messageId;
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
+        this.folder = folder;
         this.storage = storage;
         this.storageFolder = storageFolder;
     }
@@ -1638,6 +1646,11 @@ export class FetchEmailModelRequest {
     public secondAccount: string;
 
     /**
+     * Account folder to fetch from (should be specified for some protocols such as IMAP)             
+     */
+    public folder: string;
+
+    /**
      * Storage name where account file(s) located
      */
     public storage: string;
@@ -1652,6 +1665,7 @@ export class FetchEmailModelRequest {
      * @param messageId Message identifier
      * @param firstAccount Email account
      * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     * @param folder Account folder to fetch from (should be specified for some protocols such as IMAP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      */
@@ -1659,12 +1673,14 @@ export class FetchEmailModelRequest {
         messageId?: string, 
         firstAccount?: string, 
         secondAccount?: string, 
+        folder?: string, 
         storage?: string, 
         storageFolder?: string) {
         
         this.messageId = messageId;
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
+        this.folder = folder;
         this.storage = storage;
         this.storageFolder = storageFolder;
     }
@@ -3067,6 +3083,54 @@ export class ListEmailThreadsRequest {
         this.storageFolder = storageFolder;
         this.updateFolderCache = updateFolderCache;
         this.messagesCacheLimit = messagesCacheLimit;
+    }
+}
+
+/**
+ * Request model for moveEmailMessage operation.
+ */
+export class MoveEmailMessageRequest {
+    /**
+     * Email account, folder and message specifier
+     */
+    public request: model.MoveEmailMessageRq;
+
+    /**
+     * Request model for moveEmailMessage operation.
+     * @param request Email account, folder and message specifier
+     */
+    public constructor(
+        request?: model.MoveEmailMessageRq) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for moveEmailThread operation.
+ */
+export class MoveEmailThreadRequest {
+    /**
+     * Thread identifier
+     */
+    public threadId: string;
+
+    /**
+     * Move thread request
+     */
+    public request: model.MoveEmailThreadRq;
+
+    /**
+     * Request model for moveEmailThread operation.
+     * @param threadId Thread identifier
+     * @param request Move thread request
+     */
+    public constructor(
+        threadId?: string, 
+        request?: model.MoveEmailThreadRq) {
+        
+        this.threadId = threadId;
+        this.request = request;
     }
 }
 

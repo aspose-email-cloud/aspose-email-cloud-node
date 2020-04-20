@@ -2,7 +2,7 @@
 /*
 * MIT License
 
-* Copyright (c) 2018 Aspose Pty Ltd
+* Copyright (c) 2018-2020 Aspose Pty Ltd
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -3983,6 +3983,11 @@ export class EmailThread {
             name: "messages",
             baseName: "messages",
             type: "Array<EmailDto>",
+        },
+        {
+            name: "folder",
+            baseName: "folder",
+            type: "string",
         }    ];
 
     /**
@@ -4007,21 +4012,29 @@ export class EmailThread {
      */
     public messages: Array<EmailDto>;
     
+    /**
+     * Thread folder location             
+     */
+    public folder: string;
+    
 
     /**
      * Email messages thread             
      * @param id Thread identifier             
      * @param subject Thread subject             
      * @param messages List of messages in thread             
+     * @param folder Thread folder location             
      */
     public constructor(
         id?: string,
         subject?: string,
-        messages?: Array<EmailDto>) {
+        messages?: Array<EmailDto>,
+        folder?: string) {
         
         this.id = id;
         this.subject = subject;
         this.messages = messages;
+        this.folder = folder;
     }
 }
 
@@ -7414,6 +7427,11 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
             type: "string",
         },
         {
+            name: "folder",
+            baseName: "folder",
+            type: "string",
+        },
+        {
             name: "deletePermanently",
             baseName: "deletePermanently",
             type: "boolean",
@@ -7432,6 +7450,11 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
     public messageId: string;
     
     /**
+     * Account folder where message located. Should be specified for some accounts             
+     */
+    public folder: string;
+    
+    /**
      * Specifies that message should be deleted permanently             
      */
     public deletePermanently: boolean;
@@ -7443,6 +7466,7 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
      * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param messageId Message identifier             
+     * @param folder Account folder where message located. Should be specified for some accounts             
      * @param deletePermanently Specifies that message should be deleted permanently             
      */
     public constructor(
@@ -7450,12 +7474,14 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
         messageId?: string,
+        folder?: string,
         deletePermanently?: boolean) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
         this.storageFolder = storageFolder;
         this.messageId = messageId;
+        this.folder = folder;
         this.deletePermanently = deletePermanently;
     }
 }
@@ -8132,6 +8158,128 @@ export class LinkedResource extends AttachmentBase {
         this.contentType = contentType;
         this.headers = headers;
         this.contentLink = contentLink;
+    }
+}
+
+/**
+ * Move email message request             
+ */
+export class MoveEmailMessageRq extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "messageId",
+            baseName: "messageId",
+            type: "string",
+        },
+        {
+            name: "sourceFolder",
+            baseName: "sourceFolder",
+            type: "string",
+        },
+        {
+            name: "destinationFolder",
+            baseName: "destinationFolder",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MoveEmailMessageRq.attributeTypeMap);
+    }
+
+    /**
+     * Message identifier             
+     */
+    public messageId: string;
+    
+    /**
+     * Message source folder. Account root folder by default             
+     */
+    public sourceFolder: string;
+    
+    /**
+     * Folder in email account to move message to             
+     */
+    public destinationFolder: string;
+    
+
+    /**
+     * Move email message request             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
+     * @param storageFolder Storage folder location of account files             
+     * @param messageId Message identifier             
+     * @param sourceFolder Message source folder. Account root folder by default             
+     * @param destinationFolder Folder in email account to move message to             
+     */
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        messageId?: string,
+        sourceFolder?: string,
+        destinationFolder?: string) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.messageId = messageId;
+        this.sourceFolder = sourceFolder;
+        this.destinationFolder = destinationFolder;
+    }
+}
+
+/**
+ * Email thread move request             
+ */
+export class MoveEmailThreadRq extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "destinationFolder",
+            baseName: "destinationFolder",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MoveEmailThreadRq.attributeTypeMap);
+    }
+
+    /**
+     * Email account folder to move thread to             
+     */
+    public destinationFolder: string;
+    
+
+    /**
+     * Email thread move request             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
+     * @param storageFolder Storage folder location of account files             
+     * @param destinationFolder Email account folder to move thread to             
+     */
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        destinationFolder?: string) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.destinationFolder = destinationFolder;
     }
 }
 
@@ -8929,6 +9077,8 @@ const typeMap = {
             IndexedHierarchicalObject,
             IndexedPrimitiveObject,
             LinkedResource,
+            MoveEmailMessageRq,
+            MoveEmailThreadRq,
             PrimitiveObject,
             SaveEmailAccountRequest,
             SaveOAuthEmailAccountRequest,
