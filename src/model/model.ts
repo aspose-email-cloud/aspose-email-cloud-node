@@ -7324,7 +7324,11 @@ export class DeleteEmailThreadAccountRq extends AccountBaseRequest {
      * Attribute type map
      */
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-    ];
+        {
+            name: "folder",
+            baseName: "folder",
+            type: "string",
+        }    ];
 
     /**
      * Returns attribute type map
@@ -7333,21 +7337,29 @@ export class DeleteEmailThreadAccountRq extends AccountBaseRequest {
         return super.getAttributeTypeMap().concat(DeleteEmailThreadAccountRq.attributeTypeMap);
     }
 
+    /**
+     * Specifies account folder to get thread from (required for some account types, such as EWS)             
+     */
+    public folder: string;
+    
 
     /**
      * Delete thread request             
      * @param firstAccount First account storage file name             
      * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
+     * @param folder Specifies account folder to get thread from (required for some account types, such as EWS)             
      */
     public constructor(
         firstAccount?: string,
         secondAccount?: string,
-        storageFolder?: StorageFolderLocation) {
+        storageFolder?: StorageFolderLocation,
+        folder?: string) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
         this.storageFolder = storageFolder;
+        this.folder = folder;
     }
 }
 
@@ -7847,6 +7859,11 @@ export class EmailThreadReadFlagRq extends AccountBaseRequest {
             name: "isRead",
             baseName: "isRead",
             type: "boolean",
+        },
+        {
+            name: "folder",
+            baseName: "folder",
+            type: "string",
         }    ];
 
     /**
@@ -7861,6 +7878,11 @@ export class EmailThreadReadFlagRq extends AccountBaseRequest {
      */
     public isRead: boolean;
     
+    /**
+     * Specifies account folder to get thread from (required for some account types, such as EWS)             
+     */
+    public folder: string;
+    
 
     /**
      * Request to mark all messages in thread as read or unread             
@@ -7868,17 +7890,20 @@ export class EmailThreadReadFlagRq extends AccountBaseRequest {
      * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param isRead Read flag to set. \"true\" by default             
+     * @param folder Specifies account folder to get thread from (required for some account types, such as EWS)             
      */
     public constructor(
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        isRead?: boolean) {
+        isRead?: boolean,
+        folder?: string) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
         this.storageFolder = storageFolder;
         this.isRead = isRead;
+        this.folder = folder;
     }
 }
 

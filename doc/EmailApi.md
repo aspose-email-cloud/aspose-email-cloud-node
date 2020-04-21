@@ -2035,6 +2035,7 @@ new GetEmailThreadRequest(
     threadId,
     firstAccount,
     secondAccount=secondAccount,
+    folder=folder,
     storage=storage,
     storageFolder=storageFolder)
 ```
@@ -2044,6 +2045,7 @@ Name | Type | Description  | Notes
  **threadId** | **string**| Thread identifier | 
  **firstAccount** | **string**| Email account | 
  **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
+ **folder** | **string**| Specifies account folder to get thread from (required for some account types, such as EWS)              | [optional] 
  **storage** | **string**| Storage name where account file(s) located | [optional] 
  **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
 

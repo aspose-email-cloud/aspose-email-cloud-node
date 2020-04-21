@@ -2562,6 +2562,11 @@ export class GetEmailThreadRequest {
     public secondAccount: string;
 
     /**
+     * Specifies account folder to get thread from (required for some account types, such as EWS)             
+     */
+    public folder: string;
+
+    /**
      * Storage name where account file(s) located
      */
     public storage: string;
@@ -2576,6 +2581,7 @@ export class GetEmailThreadRequest {
      * @param threadId Thread identifier
      * @param firstAccount Email account
      * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     * @param folder Specifies account folder to get thread from (required for some account types, such as EWS)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      */
@@ -2583,12 +2589,14 @@ export class GetEmailThreadRequest {
         threadId?: string, 
         firstAccount?: string, 
         secondAccount?: string, 
+        folder?: string, 
         storage?: string, 
         storageFolder?: string) {
         
         this.threadId = threadId;
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
+        this.folder = folder;
         this.storage = storage;
         this.storageFolder = storageFolder;
     }

@@ -3576,6 +3576,10 @@ export class EmailApi {
             queryParameters.secondAccount = ObjectSerializer.serialize(requestObj.secondAccount, "string");
         }
 
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
         if (requestObj.storage !== undefined) {
             queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
         }
