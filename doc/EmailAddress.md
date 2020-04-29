@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **preferred** | **boolean** | Defines whether email address is preferred.              | [default to undefined]
 **routingType** | **string** | A routing type for an email.              | [optional] [default to undefined]
 **address** | **string** | Email address.              | [optional] [default to undefined]
+**originalAddressString** | **string** | The original e-mail address string              | [optional] [default to undefined]
 
 
 

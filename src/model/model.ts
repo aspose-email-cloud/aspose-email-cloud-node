@@ -3001,6 +3001,11 @@ export class EmailAddress {
             name: "address",
             baseName: "address",
             type: "string",
+        },
+        {
+            name: "originalAddressString",
+            baseName: "originalAddressString",
+            type: "string",
         }    ];
 
     /**
@@ -3035,6 +3040,11 @@ export class EmailAddress {
      */
     public address: string;
     
+    /**
+     * The original e-mail address string             
+     */
+    public originalAddressString: string;
+    
 
     /**
      * Email address.             
@@ -3043,19 +3053,22 @@ export class EmailAddress {
      * @param preferred Defines whether email address is preferred.             
      * @param routingType A routing type for an email.             
      * @param address Email address.             
+     * @param originalAddressString The original e-mail address string             
      */
     public constructor(
         category?: EnumWithCustomOfEmailAddressCategory,
         displayName?: string,
         preferred?: boolean,
         routingType?: string,
-        address?: string) {
+        address?: string,
+        originalAddressString?: string) {
         
         this.category = category;
         this.displayName = displayName;
         this.preferred = preferred;
         this.routingType = routingType;
         this.address = address;
+        this.originalAddressString = originalAddressString;
     }
 }
 
@@ -5340,6 +5353,11 @@ export class MailAddress {
             name: "participationStatus",
             baseName: "participationStatus",
             type: "string",
+        },
+        {
+            name: "originalAddressString",
+            baseName: "originalAddressString",
+            type: "string",
         }    ];
 
     /**
@@ -5364,21 +5382,29 @@ export class MailAddress {
      */
     public participationStatus: string;
     
+    /**
+     * The original e-mail address string             
+     */
+    public originalAddressString: string;
+    
 
     /**
      * Represents the address of a message.
      * @param displayName Display name             
      * @param address Address             
      * @param participationStatus Identifies the participation status for the calendar user. Enum, available values: NeedsAction, Accepted, Declined, Tentative, Delegated
+     * @param originalAddressString The original e-mail address string             
      */
     public constructor(
         displayName?: string,
         address?: string,
-        participationStatus?: string) {
+        participationStatus?: string,
+        originalAddressString?: string) {
         
         this.displayName = displayName;
         this.address = address;
         this.participationStatus = participationStatus;
+        this.originalAddressString = originalAddressString;
     }
 }
 
@@ -7325,8 +7351,8 @@ export class DeleteEmailThreadAccountRq extends AccountBaseRequest {
      */
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: "folder",
-            baseName: "folder",
+            name: "folderId",
+            baseName: "folderId",
             type: "string",
         }    ];
 
@@ -7338,9 +7364,9 @@ export class DeleteEmailThreadAccountRq extends AccountBaseRequest {
     }
 
     /**
-     * Specifies account folder to get thread from (required for some account types, such as EWS)             
+     * Specifies account folder to get thread from (required for some account types, such as EWS). Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
      */
-    public folder: string;
+    public folderId: string;
     
 
     /**
@@ -7348,18 +7374,18 @@ export class DeleteEmailThreadAccountRq extends AccountBaseRequest {
      * @param firstAccount First account storage file name             
      * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
-     * @param folder Specifies account folder to get thread from (required for some account types, such as EWS)             
+     * @param folderId Specifies account folder to get thread from (required for some account types, such as EWS). Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
      */
     public constructor(
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        folder?: string) {
+        folderId?: string) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
         this.storageFolder = storageFolder;
-        this.folder = folder;
+        this.folderId = folderId;
     }
 }
 
@@ -7861,8 +7887,8 @@ export class EmailThreadReadFlagRq extends AccountBaseRequest {
             type: "boolean",
         },
         {
-            name: "folder",
-            baseName: "folder",
+            name: "folderId",
+            baseName: "folderId",
             type: "string",
         }    ];
 
@@ -7879,9 +7905,9 @@ export class EmailThreadReadFlagRq extends AccountBaseRequest {
     public isRead: boolean;
     
     /**
-     * Specifies account folder to get thread from (required for some account types, such as EWS)             
+     * Specifies account folder to get thread from (required for some account types, such as EWS). Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
      */
-    public folder: string;
+    public folderId: string;
     
 
     /**
@@ -7890,20 +7916,20 @@ export class EmailThreadReadFlagRq extends AccountBaseRequest {
      * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param isRead Read flag to set. \"true\" by default             
-     * @param folder Specifies account folder to get thread from (required for some account types, such as EWS)             
+     * @param folderId Specifies account folder to get thread from (required for some account types, such as EWS). Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
      */
     public constructor(
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
         isRead?: boolean,
-        folder?: string) {
+        folderId?: string) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
         this.storageFolder = storageFolder;
         this.isRead = isRead;
-        this.folder = folder;
+        this.folderId = folderId;
     }
 }
 
@@ -8270,8 +8296,8 @@ export class MoveEmailThreadRq extends AccountBaseRequest {
      */
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: "destinationFolder",
-            baseName: "destinationFolder",
+            name: "destinationFolderId",
+            baseName: "destinationFolderId",
             type: "string",
         }    ];
 
@@ -8283,9 +8309,9 @@ export class MoveEmailThreadRq extends AccountBaseRequest {
     }
 
     /**
-     * Email account folder to move thread to             
+     * Email account folder id to move thread to. Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
      */
-    public destinationFolder: string;
+    public destinationFolderId: string;
     
 
     /**
@@ -8293,18 +8319,18 @@ export class MoveEmailThreadRq extends AccountBaseRequest {
      * @param firstAccount First account storage file name             
      * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
-     * @param destinationFolder Email account folder to move thread to             
+     * @param destinationFolderId Email account folder id to move thread to. Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
      */
     public constructor(
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        destinationFolder?: string) {
+        destinationFolderId?: string) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
         this.storageFolder = storageFolder;
-        this.destinationFolder = destinationFolder;
+        this.destinationFolderId = destinationFolderId;
     }
 }
 

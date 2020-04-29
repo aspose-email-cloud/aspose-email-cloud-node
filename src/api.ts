@@ -3576,8 +3576,8 @@ export class EmailApi {
             queryParameters.secondAccount = ObjectSerializer.serialize(requestObj.secondAccount, "string");
         }
 
-        if (requestObj.folder !== undefined) {
-            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        if (requestObj.folderId !== undefined) {
+            queryParameters.folderId = ObjectSerializer.serialize(requestObj.folderId, "string");
         }
 
         if (requestObj.storage !== undefined) {
@@ -4158,9 +4158,9 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
 
-        // verify required parameter 'requestObj.folder' is not null or undefined
-        if (requestObj.folder === null || requestObj.folder === undefined) {
-            throw new Error('Required parameter "requestObj.folder" was null or undefined when calling listEmailThreads.');
+        // verify required parameter 'requestObj.folderId' is not null or undefined
+        if (requestObj.folderId === null || requestObj.folderId === undefined) {
+            throw new Error('Required parameter "requestObj.folderId" was null or undefined when calling listEmailThreads.');
         }
 
         // verify required parameter 'requestObj.firstAccount' is not null or undefined
@@ -4168,8 +4168,8 @@ export class EmailApi {
             throw new Error('Required parameter "requestObj.firstAccount" was null or undefined when calling listEmailThreads.');
         }
 
-        if (requestObj.folder !== undefined) {
-            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        if (requestObj.folderId !== undefined) {
+            queryParameters.folderId = ObjectSerializer.serialize(requestObj.folderId, "string");
         }
 
         if (requestObj.firstAccount !== undefined) {

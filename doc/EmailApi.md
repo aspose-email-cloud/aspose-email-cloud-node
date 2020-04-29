@@ -2035,7 +2035,7 @@ new GetEmailThreadRequest(
     threadId,
     firstAccount,
     secondAccount=secondAccount,
-    folder=folder,
+    folderId=folderId,
     storage=storage,
     storageFolder=storageFolder)
 ```
@@ -2045,7 +2045,7 @@ Name | Type | Description  | Notes
  **threadId** | **string**| Thread identifier | 
  **firstAccount** | **string**| Email account | 
  **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
- **folder** | **string**| Specifies account folder to get thread from (required for some account types, such as EWS)              | [optional] 
+ **folderId** | **string**| Specifies account folder to get thread from (required for some account types, such as EWS). Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.              | [optional] 
  **storage** | **string**| Storage name where account file(s) located | [optional] 
  **storageFolder** | **string**| Folder in storage where account file(s) located | [optional] 
 
@@ -2377,7 +2377,7 @@ Get message threads from folder. All messages are partly fetched (without email 
 ### Request Parameters
 ```typescript
 new ListEmailThreadsRequest(
-    folder,
+    folderId,
     firstAccount,
     secondAccount=secondAccount,
     storage=storage,
@@ -2388,7 +2388,7 @@ new ListEmailThreadsRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **folder** | **string**| A folder in email account | 
+ **folderId** | **string**| A folder id in email account. Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.              | 
  **firstAccount** | **string**| Email account | 
  **secondAccount** | **string**| Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)              | [optional] 
  **storage** | **string**| Storage name where account file(s) located | [optional] 
@@ -2673,7 +2673,7 @@ new SaveEmailModelRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **format** | **string**| File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
- **name** | **string**| iCalendar file name in storage. | 
+ **name** | **string**| Email document file name in storage. | 
  **rq** | [**StorageModelRqOfEmailDto**](StorageModelRqOfEmailDto.md)| Calendar properties update request. | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
