@@ -3,23 +3,24 @@ import * as requests from '../src/model/requests/requests';
 import uuidv4 from 'uuid/v4';
 import * as models from '../src/model/model';
 import fs from 'fs';
-
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
+import 'mocha';
+import { expect } from 'chai';
 
 describe('EmailApi', function() {
-    var api :EmailApi;
-    var folder :string;
-    var storage = 'First Storage';
+    let api: EmailApi;
+    let folder: string;
+    const storage = 'First Storage';
+    this.timeout(100000)
 
-    beforeAll(async function() {
+    before(async function() {
         api = new EmailApi(process.env.appSid, process.env.appKey, process.env.apiBaseUrl);
-        var authUrl = process.env.authUrl;
+        const authUrl = process.env.authUrl;
         if (authUrl != null) api.configuration.authUrl = authUrl;
         folder = uuidv4();
         await api.createFolder(new requests.CreateFolderRequest(folder, storage));
     })
 
-    afterAll(async function() {
+    after(async function() {
         await api.deleteFolder(new requests.DeleteFolderRequest(folder, storage, true));
     })
 
@@ -29,33 +30,33 @@ describe('EmailApi', function() {
      * and properly used in serialization and deserialization
      */
     it('HierarchicalObject #pipeline', async function() {
-        var calendarFile = await createCalendar();
-        var calendar = await api.getCalendar(new requests.GetCalendarRequest(calendarFile, folder, storage));
-        expect(calendar.body.name).toBe('CALENDAR');
-        var filtered = calendar.body.internalProperties.filter(item => item.type == 'PrimitiveObject');
-        expect(filtered.length).toBeGreaterThanOrEqual(3);
-        var primitive = filtered[0] as models.PrimitiveObject;
-        expect(primitive.value).toBeDefined();
+        const calendarFile = await createCalendar();
+        const calendar = await api.getCalendar(new requests.GetCalendarRequest(calendarFile, folder, storage));
+        expect(calendar.body.name).to.be.equal('CALENDAR');
+        const filtered = calendar.body.internalProperties.filter(item => item.type == 'PrimitiveObject');
+        expect(filtered.length).to.be.at.least(3);
+        const primitive = filtered[0] as models.PrimitiveObject;
+        expect(primitive.value).to.not.be.undefined;
     });
 
     /**
      * Buffer support test
      */
     it('FileTest #pipeline', async function() {
-        var calendarFile = await createCalendar();
-        var path = folder + '/' + calendarFile;
-        var downloaded = await api.downloadFile(new requests.DownloadFileRequest(path, storage));
-        var calendarRaw = downloaded.body.toString()
-        expect(calendarRaw).toContain('Organizer')
+        let calendarFile = await createCalendar();
+        let path = folder + '/' + calendarFile;
+        const downloaded = await api.downloadFile(new requests.DownloadFileRequest(path, storage));
+        const calendarRaw = downloaded.body.toString();
+        expect(calendarRaw).to.contain('Organizer')
         calendarFile = uuidv4() + '.ics'
         path = folder + '/' + calendarFile;
         await api.uploadFile(new requests.UploadFileRequest(path, downloaded.body, storage));
-        var exist = await api.objectExists(new requests.ObjectExistsRequest(path, storage));
-        expect(exist.body.exists).toBeTrue();
-        var calendar = await api.getCalendar(new requests.GetCalendarRequest(calendarFile, folder, storage));
-        var location = calendar.body.internalProperties
+        const exist = await api.objectExists(new requests.ObjectExistsRequest(path, storage));
+        expect(exist.body.exists).to.be.ok;
+        const calendar = await api.getCalendar(new requests.GetCalendarRequest(calendarFile, folder, storage));
+        const location = calendar.body.internalProperties
             .find(item => item.type == 'PrimitiveObject' && item.name == 'LOCATION') as models.PrimitiveObject;
-        expect(location.value).toEqual('location');
+        expect(location.value).to.equal('location');
     });
 
     /**
@@ -63,9 +64,9 @@ describe('EmailApi', function() {
      * Test checks that value parsing works properly
      */
     it('Contact format #pipeline', async function() {
-        for(var format of ['VCard', 'Msg']) {
-            var extension = (format == 'Msg') ? '.msg' : '.vcf';
-            var fileName = uuidv4() + extension;
+        for(const format of ['VCard', 'Msg']) {
+            const extension = (format == 'Msg') ? '.msg' : '.vcf';
+            const fileName = uuidv4() + extension;
             await api.createContact(new requests.CreateContactRequest(
                 format as 'VCard' | 'Msg',
                 fileName,
@@ -73,8 +74,8 @@ describe('EmailApi', function() {
                     new models.HierarchicalObject('CONTACT', undefined, []),
                     new models.StorageFolderLocation(storage, folder)
                 )));
-            var exists = await api.objectExists(new requests.ObjectExistsRequest(folder + '/' + fileName, storage));
-            expect(exists.body.exists).toBeTrue();
+            const exists = await api.objectExists(new requests.ObjectExistsRequest(folder + '/' + fileName, storage));
+            expect(exists.body.exists).to.be.ok;
         }
     });
 
@@ -84,77 +85,77 @@ describe('EmailApi', function() {
      * In most cases developer should carefully serialize and deserialize Date
      */
     it('Date #pipeline', async function() {
-        var startDate = getDate(undefined, 24);
+        const startDate = getDate(undefined, 24);
         startDate.setMilliseconds(0);
-        var calendarFile = await createCalendar(startDate);
-        var calendar = await api.getCalendar(new requests.GetCalendarRequest(calendarFile, folder, storage));
-        var startDateProperty = calendar.body.internalProperties.find(item => item.name == 'STARTDATE') as models.PrimitiveObject;
-        var factStartDate = new Date(startDateProperty.value);
-        expect(factStartDate).toEqual(startDate);
+        const calendarFile = await createCalendar(startDate);
+        const calendar = await api.getCalendar(new requests.GetCalendarRequest(calendarFile, folder, storage));
+        const startDateProperty = calendar.body.internalProperties.find(item => item.name == 'STARTDATE') as models.PrimitiveObject;
+        const factStartDate = new Date(startDateProperty.value);
+        expect(factStartDate.getTime()).to.equal(startDate.getTime());
     });
 
     it('Name gender detection #pipeline', async function() {
-        var result = await api.aiNameGenderize(new requests.AiNameGenderizeRequest('John Cane'));
-        expect(result.body.value.length).toBeGreaterThanOrEqual(1);
-        expect(result.body.value[0].gender).toEqual('Male');
+        const result = await api.aiNameGenderize(new requests.AiNameGenderizeRequest('John Cane'));
+        expect(result.body.value.length).to.be.at.least(1);
+        expect(result.body.value[0].gender).to.be.equal('Male');
     });
 
     it('Name formatting #pipeline', async function() {
-        var result = await api.aiNameFormat(new requests.AiNameFormatRequest(
+        const result = await api.aiNameFormat(new requests.AiNameFormatRequest(
             'Mr. John Michael Cane', undefined, undefined, undefined, undefined, '%t%L%f%m'));
-        expect(result.body.name).toEqual('Mr. Cane J. M.');
+        expect(result.body.name).to.be.equal('Mr. Cane J. M.');
     });
 
     it('Name match #pipeline', async function() {
-        var first = 'John Michael Cane';
-        var second = 'Cane J.';
-        var result = await api.aiNameMatch(new requests.AiNameMatchRequest(
+        const first = 'John Michael Cane';
+        const second = 'Cane J.';
+        const result = await api.aiNameMatch(new requests.AiNameMatchRequest(
             first, second));
-        expect(result.body.similarity).toBeGreaterThanOrEqual(0.5);
+        expect(result.body.similarity).to.be.at.least(0.5);
     });
 
     it('Name expand #pipeline', async function() {
-        var result = await api.aiNameExpand(new requests.AiNameExpandRequest(
+        const result = await api.aiNameExpand(new requests.AiNameExpandRequest(
             'Smith Bobby'));
-        var names = result.body.names
+        const names = result.body.names
             .map(weighted => weighted.name);
-        expect(names).toContain('Mr. Smith');
-        expect(names).toContain('B. Smith');
+        expect(names).to.contain('Mr. Smith');
+        expect(names).to.contain('B. Smith');
     });
 
     it('Name complete #pipeline', async function() {
-        var prefix = 'Dav';
-        var result = await api.aiNameComplete(new requests.AiNameCompleteRequest(
+        const prefix = 'Dav';
+        const result = await api.aiNameComplete(new requests.AiNameCompleteRequest(
             prefix));
-        var names = result.body.names
+        const names = result.body.names
             .map(weighted => prefix + weighted.name);
-        expect(names).toContain('David');
-        expect(names).toContain('Davis');
-        expect(names).toContain('Dave');
+        expect(names).to.contain('David');
+        expect(names).to.contain('Davis');
+        expect(names).to.contain('Dave');
     });
 
     it('Parse name from email address #pipeline', async function() {
-        var result = await api.aiNameParseEmailAddress(new requests.AiNameParseEmailAddressRequest(
+        const result = await api.aiNameParseEmailAddress(new requests.AiNameParseEmailAddressRequest(
             'john-cane@gmail.com'));
-        var extractedValues = result.body.value
+        const extractedValues = result.body.value
             .map(extracted => extracted.name)
             .reduce((accumulator, value) => accumulator.concat(value));
-        var givenName = extractedValues.find(extracted => extracted.category == 'GivenName');
-        var surname = extractedValues.find(extracted => extracted.category == 'Surname');
-        expect(givenName.value).toEqual('John');
-        expect(surname.value).toEqual('Cane');
+        const givenName = extractedValues.find(extracted => extracted.category == 'GivenName');
+        const surname = extractedValues.find(extracted => extracted.category == 'Surname');
+        expect(givenName.value).to.be.equal('John');
+        expect(surname.value).to.be.equal('Cane');
     });
 
     it('Parse business card images to VCard contact files #pipeline', async function() {
-        var imageData = fs.readFileSync('tests/data/test_single_0001.png');
-        var storageFileName = uuidv4() + '.png';
+        const imageData = fs.readFileSync('test/data/test_single_0001.png');
+        const storageFileName = uuidv4() + '.png';
         // 1) Upload business card image to storage
         await api.uploadFile(new requests.UploadFileRequest(folder + '/' + storageFileName, imageData, storage));
-        var outFolder = uuidv4();
-        var outFolderPath = folder + '/' + outFolder;
+        const outFolder = uuidv4();
+        const outFolderPath = folder + '/' + outFolder;
         await api.createFolder(new requests.CreateFolderRequest(outFolderPath, storage));
         // 2) Call business card recognition action
-        var result = await api.aiBcrParseStorage(
+        const result = await api.aiBcrParseStorage(
             new requests.AiBcrParseStorageRequest(new models.AiBcrParseStorageRq(
                 null,
                 [new models.AiBcrImageStorageFile(
@@ -162,31 +163,31 @@ describe('EmailApi', function() {
                     new models.StorageFileLocation(storage, folder, storageFileName))],
                 new models.StorageFolderLocation(storage, outFolderPath))));
         //Check that only one file produced
-        expect(result.body.value.length).toBe(1);
+        expect(result.body.value.length).to.be.equal(1);
         // 3) Get file name from recognition result
-        var contactFile = result.body.value[0];
+        const contactFile = result.body.value[0];
         // 4) Download VCard file, produced by recognition method, check it contains text "Thomas"
-        var contactBinary = await api.downloadFile(new requests.DownloadFileRequest(
+        const contactBinary = await api.downloadFile(new requests.DownloadFileRequest(
             contactFile.folderPath + '/' + contactFile.fileName, storage));
-        expect(contactBinary.body.toString()).toContain('Thomas');
+        expect(contactBinary.body.toString()).to.contain('Thomas');
         // 5) Get VCard object properties list, check that there are 3 properties or more
-        var contactProperties = await api.getContactProperties(new requests.GetContactPropertiesRequest(
+        const contactProperties = await api.getContactProperties(new requests.GetContactPropertiesRequest(
             'vcard', contactFile.fileName, contactFile.folderPath, contactFile.storage));
-        expect(contactProperties.body.internalProperties.length).toBeGreaterThanOrEqual(3);
+        expect(contactProperties.body.internalProperties.length).to.be.at.least(3);
     });
 
     it('Business card recognition without storage #pipeline', async function() {
-        var imageData = fs.readFileSync('tests/data/test_single_0001.png').toString('base64');
-        var result = await api.aiBcrParse(new requests.AiBcrParseRequest(
+        const imageData = fs.readFileSync('test/data/test_single_0001.png').toString('base64');
+        const result = await api.aiBcrParse(new requests.AiBcrParseRequest(
             new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
-        expect(result.body.value.length).toEqual(1);
-        var displayName = result.body.value[0].internalProperties
+        expect(result.body.value.length).to.be.equal(1);
+        const displayName = result.body.value[0].internalProperties
             .find(property => property.name == 'DISPLAYNAME') as models.PrimitiveObject;
-        expect(displayName.value).toContain("Thomas");
+        expect(displayName.value).to.contain("Thomas");
     });
 
     it('Create calendar email #pipeline', async function() {
-        var calendar = new models.CalendarDto();
+        const calendar = new models.CalendarDto();
         calendar.attendees = [
             new models.MailAddress('Attendee Name', 'attendee@am.ru', 'Accepted')
         ];
@@ -196,44 +197,44 @@ describe('EmailApi', function() {
         calendar.startDate = getDate(undefined, 1);
         calendar.endDate = getDate(calendar.startDate, 1);
         calendar.location = 'Some location';
-        var folderLocation = new models.StorageFolderLocation(storage, folder);
-        var calendarFile = uuidv4() + '.ics';
+        const folderLocation = new models.StorageFolderLocation(storage, folder);
+        const calendarFile = uuidv4() + '.ics';
         await api.saveCalendarModel(
             new requests.SaveCalendarModelRequest(
                 calendarFile,
                 new models.StorageModelRqOfCalendarDto(
                     calendar,
                     folderLocation)));
-        var exists = await api.objectExists(
+        const exists = await api.objectExists(
             new requests.ObjectExistsRequest(folder + '/' + calendarFile, storage));
-        expect(exists.body.exists).toBeTrue();
+        expect(exists.body.exists).to.be.ok;
 
-        var alternate = await api.convertCalendarModelToAlternate(
+        const alternate = await api.convertCalendarModelToAlternate(
             new requests.ConvertCalendarModelToAlternateRequest(
                 new models.CalendarDtoAlternateRq(calendar, 'Create')));
 
-        var email = new models.EmailDto();
+        const email = new models.EmailDto();
         email.alternateViews = [alternate.body];
         email.from = new models.MailAddress('From address', 'cloud.em@yandex.ru');
         email.to = [new models.MailAddress('To address', 'cloud.em@yandex.ru')];
         email.subject = 'Some subject';
         email.body = 'Some body';
 
-        var emailFile = uuidv4() + '.eml';
+        const emailFile = uuidv4() + '.eml';
         await api.saveEmailModel(
             new requests.SaveEmailModelRequest(
                 'Eml', emailFile, new models.StorageModelRqOfEmailDto(
                     email, folderLocation)));
 
-        var downloaded = await api.downloadFile(
+        const downloaded = await api.downloadFile(
             new requests.DownloadFileRequest(
                 folder + '/' + emailFile, storage));
-        var downloadedRaw = downloaded.body.toString();
-        expect(downloadedRaw).toContain('cloud.em@yandex.ru');
+        const downloadedRaw = downloaded.body.toString();
+        expect(downloadedRaw).to.contain('cloud.em@yandex.ru');
     });
 
     it('Save contact model #pipeline', async function() {
-        var contact = new models.ContactDto();
+        const contact = new models.ContactDto();
         contact.gender = 'Male';
         contact.surname = 'Thomas';
         contact.givenName = 'Alex';
@@ -244,27 +245,27 @@ describe('EmailApi', function() {
             new models.EnumWithCustomOfPhoneNumberCategory('Work'),
             '+49211424721', true)];
 
-        var contactFile = uuidv4() + '.vcf';
+        const contactFile = uuidv4() + '.vcf';
         await api.saveContactModel(
             new requests.SaveContactModelRequest(
                 'VCard', contactFile, new models.StorageModelRqOfContactDto(
                     contact, new models.StorageFolderLocation(storage, folder))));
-        var exists = await api.objectExists(
+        const exists = await api.objectExists(
             new requests.ObjectExistsRequest(
                 folder + '/' + contactFile, storage));
-        expect(exists.body.exists).toBeTrue();
+        expect(exists.body.exists).to.be.ok;
     });
 
     it('Parse contact model from image #pipeline', async function() {
-        var imageData = fs.readFileSync('tests/data/test_single_0001.png').toString('base64');
-        var result = await api.aiBcrParseModel(new requests.AiBcrParseModelRequest(
+        const imageData = fs.readFileSync('test/data/test_single_0001.png').toString('base64');
+        const result = await api.aiBcrParseModel(new requests.AiBcrParseModelRequest(
             new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
-        expect(result.body.value.length).toEqual(1);
-        expect(result.body.value[0].displayName).toContain("Thomas");
+        expect(result.body.value.length).to.be.equal(1);
+        expect(result.body.value[0].displayName).to.contain("Thomas");
     });
 
     it('Create MAPI file #pipeline', async function() {
-        var fileName = uuidv4() + '.msg';
+        const fileName = uuidv4() + '.msg';
         await api.createMapi(new requests.CreateMapiRequest(
             fileName, new models.HierarchicalObjectRequest(
                 new models.HierarchicalObject("IPM.Contact", undefined, [
@@ -283,101 +284,101 @@ describe('EmailApi', function() {
                         undefined, "1")
                 ]),
                 new models.StorageFolderLocation(storage, folder))));
-        var exist = await api.objectExists(new requests.ObjectExistsRequest(folder + "/" + fileName, storage));
-        expect(exist.body.exists).toBeTrue();
+        const exist = await api.objectExists(new requests.ObjectExistsRequest(folder + "/" + fileName, storage));
+        expect(exist.body.exists).to.be.ok;
     });
 
     it('Add attachment to MAPI #pipeline', async function() {
-        var fileName = await createCalendar();
-        var attachmentName = await createCalendar();
+        const fileName = await createCalendar();
+        const attachmentName = await createCalendar();
         await api.addMapiAttachment(new requests.AddMapiAttachmentRequest(
             fileName, attachmentName, new models.AddAttachmentRequest(
                 new models.StorageFolderLocation(storage, folder),
                 new models.StorageFolderLocation(storage, folder))));
-        var downloaded = await api.getCalendarAttachment(new requests.GetCalendarAttachmentRequest(
+        const downloaded = await api.getCalendarAttachment(new requests.GetCalendarAttachmentRequest(
             fileName, attachmentName, folder, storage));
-        var calendarRaw = downloaded.body.toString()
-        expect(calendarRaw).toContain('Aspose Ltd')
+        const calendarRaw = downloaded.body.toString();
+        expect(calendarRaw).to.contain('Aspose Ltd')
     });
 
     it('Get MAPI properties #pipeline', async function () {
-        var fileName = await createCalendar();
-        var properties = await api.getMapiProperties(new requests.GetMapiPropertiesRequest(
+        const fileName = await createCalendar();
+        const properties = await api.getMapiProperties(new requests.GetMapiPropertiesRequest(
             fileName, folder, storage));
-        expect(properties.body.hierarchicalObject.name).toContain("IPM.Schedule");
+        expect(properties.body.hierarchicalObject.name).to.contain("IPM.Schedule");
     });
 
     it('Discover email config #pipeline', async function() {
-        var configs = await api.discoverEmailConfig(new requests.DiscoverEmailConfigRequest(
+        const configs = await api.discoverEmailConfig(new requests.DiscoverEmailConfigRequest(
             'example@gmail.com', true));
-        expect(configs.body.value.length).toBeGreaterThanOrEqual(2);
-        var smtp = configs.body.value.filter(item => item.protocolType == 'SMTP')[0];
-        expect(smtp.host).toEqual('smtp.gmail.com');
+        expect(configs.body.value.length).to.be.at.least(2);
+        const smtp = configs.body.value.filter(item => item.protocolType == 'SMTP')[0];
+        expect(smtp.host).to.be.equal('smtp.gmail.com');
     });
 
     it('Check disposable email #pipeline', async function() {
-        var disposable = await api.isEmailAddressDisposable(
+        const disposable = await api.isEmailAddressDisposable(
             new requests.IsEmailAddressDisposableRequest('example@mailcatch.com'));
-        expect(disposable.body.value).toBeTrue();
-        var regular = await api.isEmailAddressDisposable(
+        expect(disposable.body.value).to.be.ok;
+        const regular = await api.isEmailAddressDisposable(
             new requests.IsEmailAddressDisposableRequest('example@gmail.com'));
-        expect(regular.body.value).toBeFalse();
+        expect(regular.body.value).to.not.be.ok;
     });
 
     it('Check EmailClientAccount #pipeline', async function() {
-        var accountCredentials = 
+        const accountCredentials =
             new models.EmailClientAccountPasswordCredentials(
                 'login', undefined, 'password');
-        var account = new models.EmailClientAccount(
+        const account = new models.EmailClientAccount(
             'smtp.gmail.com',
             551,
             'SSLAuto',
             'SMTP',
             accountCredentials);
-        var fileName = uuidv4() + '.account';
+        const fileName = uuidv4() + '.account';
         await api.saveEmailClientAccount(new requests.SaveEmailClientAccountRequest(
             new models.StorageFileRqOfEmailClientAccount(
                 account, new models.StorageFileLocation(storage, folder, fileName))));
-        var result = await api.getEmailClientAccount(new requests.GetEmailClientAccountRequest(
+        const result = await api.getEmailClientAccount(new requests.GetEmailClientAccountRequest(
             fileName, folder, storage));
-        expect(result.body.credentials.discriminator).toEqual(account.credentials.discriminator);
-        var resultCredentials = result.body.credentials as models.EmailClientAccountPasswordCredentials;
-        expect(resultCredentials.password).toEqual(accountCredentials.password);
-        expect(result.body.host).toEqual(account.host);
+        expect(result.body.credentials.discriminator).to.be.equal(account.credentials.discriminator);
+        const resultCredentials = result.body.credentials as models.EmailClientAccountPasswordCredentials;
+        expect(resultCredentials.password).to.be.equal(accountCredentials.password);
+        expect(result.body.host).to.be.equal(account.host);
     });
 
     it('Check EmailClientMultiAccount #pipeline', async function() {
         // Create multi account object
-        var multiAccount = new models.EmailClientMultiAccount(
+        const multiAccount = new models.EmailClientMultiAccount(
             [new models.EmailClientAccount('imap.gmail.com', 993, 'SSLAuto', 'IMAP',
                 new models.EmailClientAccountPasswordCredentials(
                     'example@gmail.com', undefined, 'password')),
-            new models.EmailClientAccount('exchange.outlook.com', 443, 'SSLAuto', 'EWS',
-                new models.EmailClientAccountOauthCredentials(
-                    'example@gmail.com', undefined, 'clientId', 'clientSecret', 'refreshToken'))],
+                new models.EmailClientAccount('exchange.outlook.com', 443, 'SSLAuto', 'EWS',
+                    new models.EmailClientAccountOauthCredentials(
+                        'example@gmail.com', undefined, 'clientId', 'clientSecret', 'refreshToken'))],
             new models.EmailClientAccount('smtp.gmail.com', 465, 'SSLAuto', 'SMTP',
                 new models.EmailClientAccountPasswordCredentials(
                     'example@gmail.com', undefined, 'password')));
-        var fileName = uuidv4() + '.multi.account';
+        const fileName = uuidv4() + '.multi.account';
         // Save multi account
         await api.saveEmailClientMultiAccount(new requests.SaveEmailClientMultiAccountRequest(
             new models.StorageFileRqOfEmailClientMultiAccount(
                 multiAccount,
                 new models.StorageFileLocation(storage, folder, fileName))));
         // Get multi account object from storage
-        var multiAccountFromStorage = await api.getEmailClientMultiAccount(
+        const multiAccountFromStorage = await api.getEmailClientMultiAccount(
             new requests.GetEmailClientMultiAccountRequest(
                 fileName, folder, storage));
 
-        expect(multiAccountFromStorage.body.receiveAccounts.length).toEqual(2);
+        expect(multiAccountFromStorage.body.receiveAccounts.length).to.be.equal(2);
         expect(multiAccountFromStorage.body.sendAccount.credentials.discriminator)
-            .toEqual(multiAccount.sendAccount.credentials.discriminator);
+            .to.be.equal(multiAccount.sendAccount.credentials.discriminator);
     });
 
     async function createCalendar(startDate? : Date) :Promise<string> {
-        var fileName = uuidv4() + '.ics';
+        const fileName = uuidv4() + '.ics';
         startDate = (startDate == null) ? getDate(undefined, 1) : startDate;
-        var endDate = getDate(startDate, 1);
+        const endDate = getDate(startDate, 1);
         await api.createCalendar(new requests.CreateCalendarRequest(
             fileName,
             new models.HierarchicalObjectRequest(
@@ -407,8 +408,8 @@ describe('EmailApi', function() {
     function getDate(baseDate?: Date, addHours?:number) : Date {
         baseDate = (baseDate == null) ? new Date() : baseDate;
         addHours = (addHours == null) ? 0 : addHours;
-        var hour = 60*60*1000;
-        var result = new Date();
+        const hour = 60 * 60 * 1000;
+        const result = new Date();
         result.setTime(baseDate.getTime() + addHours * hour);
         return result;
     }
