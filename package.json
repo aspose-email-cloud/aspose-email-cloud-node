@@ -35,7 +35,7 @@
   ],
   "scripts": {
     "compile": "tsc --build tsconfig.json",
-    "test-pipeline": "mocha  -r ts-node/register -f #pipeline ./test/*"
+    "test-pipeline": "mocha -r ts-node/register -f '#pipeline' ./test/*"
   },
   "dependencies": {
     "@types/request": "^2.47.0",
