@@ -7351,8 +7351,8 @@ export class DeleteEmailThreadAccountRq extends AccountBaseRequest {
      */
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: "folderId",
-            baseName: "folderId",
+            name: "folder",
+            baseName: "folder",
             type: "string",
         }    ];
 
@@ -7364,9 +7364,9 @@ export class DeleteEmailThreadAccountRq extends AccountBaseRequest {
     }
 
     /**
-     * Specifies account folder to get thread from (required for some account types, such as EWS). Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
+     * Specifies account folder to get thread from             
      */
-    public folderId: string;
+    public folder: string;
     
 
     /**
@@ -7374,18 +7374,18 @@ export class DeleteEmailThreadAccountRq extends AccountBaseRequest {
      * @param firstAccount First account storage file name             
      * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
-     * @param folderId Specifies account folder to get thread from (required for some account types, such as EWS). Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
+     * @param folder Specifies account folder to get thread from             
      */
     public constructor(
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        folderId?: string) {
+        folder?: string) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
         this.storageFolder = storageFolder;
-        this.folderId = folderId;
+        this.folder = folder;
     }
 }
 
@@ -7887,8 +7887,8 @@ export class EmailThreadReadFlagRq extends AccountBaseRequest {
             type: "boolean",
         },
         {
-            name: "folderId",
-            baseName: "folderId",
+            name: "folder",
+            baseName: "folder",
             type: "string",
         }    ];
 
@@ -7905,9 +7905,9 @@ export class EmailThreadReadFlagRq extends AccountBaseRequest {
     public isRead: boolean;
     
     /**
-     * Specifies account folder to get thread from (required for some account types, such as EWS). Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
+     * Specifies account folder to get thread from             
      */
-    public folderId: string;
+    public folder: string;
     
 
     /**
@@ -7916,20 +7916,20 @@ export class EmailThreadReadFlagRq extends AccountBaseRequest {
      * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param isRead Read flag to set. \"true\" by default             
-     * @param folderId Specifies account folder to get thread from (required for some account types, such as EWS). Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
+     * @param folder Specifies account folder to get thread from             
      */
     public constructor(
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
         isRead?: boolean,
-        folderId?: string) {
+        folder?: string) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
         this.storageFolder = storageFolder;
         this.isRead = isRead;
-        this.folderId = folderId;
+        this.folder = folder;
     }
 }
 
@@ -8296,8 +8296,8 @@ export class MoveEmailThreadRq extends AccountBaseRequest {
      */
     public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: "destinationFolderId",
-            baseName: "destinationFolderId",
+            name: "destinationFolder",
+            baseName: "destinationFolder",
             type: "string",
         }    ];
 
@@ -8309,9 +8309,9 @@ export class MoveEmailThreadRq extends AccountBaseRequest {
     }
 
     /**
-     * Email account folder id to move thread to. Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
+     * Email account folder to move thread to             
      */
-    public destinationFolderId: string;
+    public destinationFolder: string;
     
 
     /**
@@ -8319,18 +8319,18 @@ export class MoveEmailThreadRq extends AccountBaseRequest {
      * @param firstAccount First account storage file name             
      * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
-     * @param destinationFolderId Email account folder id to move thread to. Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
+     * @param destinationFolder Email account folder to move thread to             
      */
     public constructor(
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        destinationFolderId?: string) {
+        destinationFolder?: string) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
         this.storageFolder = storageFolder;
-        this.destinationFolderId = destinationFolderId;
+        this.destinationFolder = destinationFolder;
     }
 }
 

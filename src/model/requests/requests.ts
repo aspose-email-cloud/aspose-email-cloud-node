@@ -1687,6 +1687,66 @@ export class FetchEmailModelRequest {
 }
 
 /**
+ * Request model for fetchEmailThreadMessages operation.
+ */
+export class FetchEmailThreadMessagesRequest {
+    /**
+     * Thread identifier
+     */
+    public threadId: string;
+
+    /**
+     * Email account
+     */
+    public firstAccount: string;
+
+    /**
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     */
+    public secondAccount: string;
+
+    /**
+     * Specifies account folder to get thread from             
+     */
+    public folder: string;
+
+    /**
+     * Storage name where account file(s) located
+     */
+    public storage: string;
+
+    /**
+     * Folder in storage where account file(s) located
+     */
+    public storageFolder: string;
+
+    /**
+     * Request model for fetchEmailThreadMessages operation.
+     * @param threadId Thread identifier
+     * @param firstAccount Email account
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     * @param folder Specifies account folder to get thread from             
+     * @param storage Storage name where account file(s) located
+     * @param storageFolder Folder in storage where account file(s) located
+     */
+    public constructor(
+        threadId?: string, 
+        firstAccount?: string, 
+        secondAccount?: string, 
+        folder?: string, 
+        storage?: string, 
+        storageFolder?: string) {
+        
+        this.threadId = threadId;
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.folder = folder;
+        this.storage = storage;
+        this.storageFolder = storageFolder;
+    }
+}
+
+/**
  * Request model for getCalendar operation.
  */
 export class GetCalendarRequest {
@@ -2543,66 +2603,6 @@ export class GetEmailPropertyRequest {
 }
 
 /**
- * Request model for getEmailThread operation.
- */
-export class GetEmailThreadRequest {
-    /**
-     * Thread identifier
-     */
-    public threadId: string;
-
-    /**
-     * Email account
-     */
-    public firstAccount: string;
-
-    /**
-     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
-     */
-    public secondAccount: string;
-
-    /**
-     * Specifies account folder to get thread from (required for some account types, such as EWS). Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
-     */
-    public folderId: string;
-
-    /**
-     * Storage name where account file(s) located
-     */
-    public storage: string;
-
-    /**
-     * Folder in storage where account file(s) located
-     */
-    public storageFolder: string;
-
-    /**
-     * Request model for getEmailThread operation.
-     * @param threadId Thread identifier
-     * @param firstAccount Email account
-     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
-     * @param folderId Specifies account folder to get thread from (required for some account types, such as EWS). Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
-     * @param storage Storage name where account file(s) located
-     * @param storageFolder Folder in storage where account file(s) located
-     */
-    public constructor(
-        threadId?: string, 
-        firstAccount?: string, 
-        secondAccount?: string, 
-        folderId?: string, 
-        storage?: string, 
-        storageFolder?: string) {
-        
-        this.threadId = threadId;
-        this.firstAccount = firstAccount;
-        this.secondAccount = secondAccount;
-        this.folderId = folderId;
-        this.storage = storage;
-        this.storageFolder = storageFolder;
-    }
-}
-
-/**
  * Request model for getFileVersions operation.
  */
 export class GetFileVersionsRequest {
@@ -3031,9 +3031,9 @@ export class ListEmailModelsRequest {
  */
 export class ListEmailThreadsRequest {
     /**
-     * A folder id in email account. Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
+     * A folder in email account.             
      */
-    public folderId: string;
+    public folder: string;
 
     /**
      * Email account
@@ -3067,7 +3067,7 @@ export class ListEmailThreadsRequest {
 
     /**
      * Request model for listEmailThreads operation.
-     * @param folderId A folder id in email account. Use folder Id from ListEmailFolders (MailServerFolder.Id). For IMAP folder Id is always same as folder name.             
+     * @param folder A folder in email account.             
      * @param firstAccount Email account
      * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      * @param storage Storage name where account file(s) located
@@ -3076,7 +3076,7 @@ export class ListEmailThreadsRequest {
      * @param messagesCacheLimit Limit messages cache size if CacheFile is used. Ignored in accounts without limits support             
      */
     public constructor(
-        folderId?: string, 
+        folder?: string, 
         firstAccount?: string, 
         secondAccount?: string, 
         storage?: string, 
@@ -3084,7 +3084,7 @@ export class ListEmailThreadsRequest {
         updateFolderCache?: boolean, 
         messagesCacheLimit?: number) {
         
-        this.folderId = folderId;
+        this.folder = folder;
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
         this.storage = storage;
