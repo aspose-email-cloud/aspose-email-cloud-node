@@ -1,18 +1,18 @@
-import { EmailApi } from '../src/api'
+import {EmailApi} from '../src/api'
 import * as requests from '../src/model/requests/requests';
 import uuidv4 from 'uuid/v4';
 import * as models from '../src/model/model';
 import fs from 'fs';
 import 'mocha';
-import { expect } from 'chai';
+import {expect} from 'chai';
 
-describe('EmailApi', function() {
+describe('EmailApi', function () {
     let api: EmailApi;
     let folder: string;
     const storage = 'First Storage';
     this.timeout(100000)
 
-    before(async function() {
+    before(async function () {
         api = new EmailApi(process.env.appSid, process.env.appKey, process.env.apiBaseUrl);
         const authUrl = process.env.authUrl;
         if (authUrl != null) api.configuration.authUrl = authUrl;
@@ -20,7 +20,7 @@ describe('EmailApi', function() {
         await api.createFolder(new requests.CreateFolderRequest(folder, storage));
     })
 
-    after(async function() {
+    after(async function () {
         await api.deleteFolder(new requests.DeleteFolderRequest(folder, storage, true));
     })
 
@@ -29,7 +29,7 @@ describe('EmailApi', function() {
      * This test checks that BaseObject.Type field filled automatically by SDK
      * and properly used in serialization and deserialization
      */
-    it('HierarchicalObject #pipeline', async function() {
+    it('HierarchicalObject #pipeline', async function () {
         const calendarFile = await createCalendar();
         const calendar = await api.getCalendar(new requests.GetCalendarRequest(calendarFile, folder, storage));
         expect(calendar.body.name).to.be.equal('CALENDAR');
@@ -42,7 +42,7 @@ describe('EmailApi', function() {
     /**
      * Buffer support test
      */
-    it('FileTest #pipeline', async function() {
+    it('FileTest #pipeline', async function () {
         let calendarFile = await createCalendar();
         let path = folder + '/' + calendarFile;
         const downloaded = await api.downloadFile(new requests.DownloadFileRequest(path, storage));
@@ -63,8 +63,8 @@ describe('EmailApi', function() {
      * Contact format specified as Enum, but SDK represents it as an advanced type of string constants a string.
      * Test checks that value parsing works properly
      */
-    it('Contact format #pipeline', async function() {
-        for(const format of ['VCard', 'Msg']) {
+    it('Contact format #pipeline', async function () {
+        for (const format of ['VCard', 'Msg']) {
             const extension = (format == 'Msg') ? '.msg' : '.vcf';
             const fileName = uuidv4() + extension;
             await api.createContact(new requests.CreateContactRequest(
@@ -84,7 +84,7 @@ describe('EmailApi', function() {
      * Checks that SDK and Backend do not change Date during processing.
      * In most cases developer should carefully serialize and deserialize Date
      */
-    it('Date #pipeline', async function() {
+    it('Date #pipeline', async function () {
         const startDate = getDate(undefined, 24);
         startDate.setMilliseconds(0);
         const calendarFile = await createCalendar(startDate);
@@ -94,19 +94,19 @@ describe('EmailApi', function() {
         expect(factStartDate.getTime()).to.equal(startDate.getTime());
     });
 
-    it('Name gender detection #pipeline', async function() {
+    it('Name gender detection #pipeline', async function () {
         const result = await api.aiNameGenderize(new requests.AiNameGenderizeRequest('John Cane'));
         expect(result.body.value.length).to.be.at.least(1);
         expect(result.body.value[0].gender).to.be.equal('Male');
     });
 
-    it('Name formatting #pipeline', async function() {
+    it('Name formatting #pipeline', async function () {
         const result = await api.aiNameFormat(new requests.AiNameFormatRequest(
             'Mr. John Michael Cane', undefined, undefined, undefined, undefined, '%t%L%f%m'));
         expect(result.body.name).to.be.equal('Mr. Cane J. M.');
     });
 
-    it('Name match #pipeline', async function() {
+    it('Name match #pipeline', async function () {
         const first = 'John Michael Cane';
         const second = 'Cane J.';
         const result = await api.aiNameMatch(new requests.AiNameMatchRequest(
@@ -114,7 +114,7 @@ describe('EmailApi', function() {
         expect(result.body.similarity).to.be.at.least(0.5);
     });
 
-    it('Name expand #pipeline', async function() {
+    it('Name expand #pipeline', async function () {
         const result = await api.aiNameExpand(new requests.AiNameExpandRequest(
             'Smith Bobby'));
         const names = result.body.names
@@ -123,7 +123,7 @@ describe('EmailApi', function() {
         expect(names).to.contain('B. Smith');
     });
 
-    it('Name complete #pipeline', async function() {
+    it('Name complete #pipeline', async function () {
         const prefix = 'Dav';
         const result = await api.aiNameComplete(new requests.AiNameCompleteRequest(
             prefix));
@@ -134,7 +134,7 @@ describe('EmailApi', function() {
         expect(names).to.contain('Dave');
     });
 
-    it('Parse name from email address #pipeline', async function() {
+    it('Parse name from email address #pipeline', async function () {
         const result = await api.aiNameParseEmailAddress(new requests.AiNameParseEmailAddressRequest(
             'john-cane@gmail.com'));
         const extractedValues = result.body.value
@@ -146,7 +146,7 @@ describe('EmailApi', function() {
         expect(surname.value).to.be.equal('Cane');
     });
 
-    it('Parse business card images to VCard contact files #pipeline', async function() {
+    it('Parse business card images to VCard contact files #pipeline', async function () {
         const imageData = fs.readFileSync('test/data/test_single_0001.png');
         const storageFileName = uuidv4() + '.png';
         // 1) Upload business card image to storage
@@ -176,7 +176,7 @@ describe('EmailApi', function() {
         expect(contactProperties.body.internalProperties.length).to.be.at.least(3);
     });
 
-    it('Business card recognition without storage #pipeline', async function() {
+    it('Business card recognition without storage #pipeline', async function () {
         const imageData = fs.readFileSync('test/data/test_single_0001.png').toString('base64');
         const result = await api.aiBcrParse(new requests.AiBcrParseRequest(
             new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
@@ -186,7 +186,7 @@ describe('EmailApi', function() {
         expect(displayName.value).to.contain("Thomas");
     });
 
-    it('Create calendar email #pipeline', async function() {
+    it('Create calendar email #pipeline', async function () {
         const calendar = new models.CalendarDto();
         calendar.attendees = [
             new models.MailAddress('Attendee Name', 'attendee@am.ru', 'Accepted')
@@ -233,7 +233,7 @@ describe('EmailApi', function() {
         expect(downloadedRaw).to.contain('cloud.em@yandex.ru');
     });
 
-    it('Save contact model #pipeline', async function() {
+    it('Save contact model #pipeline', async function () {
         const contact = new models.ContactDto();
         contact.gender = 'Male';
         contact.surname = 'Thomas';
@@ -256,7 +256,7 @@ describe('EmailApi', function() {
         expect(exists.body.exists).to.be.ok;
     });
 
-    it('Parse contact model from image #pipeline', async function() {
+    it('Parse contact model from image #pipeline', async function () {
         const imageData = fs.readFileSync('test/data/test_single_0001.png').toString('base64');
         const result = await api.aiBcrParseModel(new requests.AiBcrParseModelRequest(
             new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
@@ -264,7 +264,7 @@ describe('EmailApi', function() {
         expect(result.body.value[0].displayName).to.contain("Thomas");
     });
 
-    it('Create MAPI file #pipeline', async function() {
+    it('Create MAPI file #pipeline', async function () {
         const fileName = uuidv4() + '.msg';
         await api.createMapi(new requests.CreateMapiRequest(
             fileName, new models.HierarchicalObjectRequest(
@@ -288,7 +288,7 @@ describe('EmailApi', function() {
         expect(exist.body.exists).to.be.ok;
     });
 
-    it('Add attachment to MAPI #pipeline', async function() {
+    it('Add attachment to MAPI #pipeline', async function () {
         const fileName = await createCalendar();
         const attachmentName = await createCalendar();
         await api.addMapiAttachment(new requests.AddMapiAttachmentRequest(
@@ -308,7 +308,7 @@ describe('EmailApi', function() {
         expect(properties.body.hierarchicalObject.name).to.contain("IPM.Schedule");
     });
 
-    it('Discover email config #pipeline', async function() {
+    it('Discover email config #pipeline', async function () {
         const configs = await api.discoverEmailConfig(new requests.DiscoverEmailConfigRequest(
             'example@gmail.com', true));
         expect(configs.body.value.length).to.be.at.least(2);
@@ -316,7 +316,7 @@ describe('EmailApi', function() {
         expect(smtp.host).to.be.equal('smtp.gmail.com');
     });
 
-    it('Check disposable email #pipeline', async function() {
+    it('Check disposable email #pipeline', async function () {
         const disposable = await api.isEmailAddressDisposable(
             new requests.IsEmailAddressDisposableRequest('example@mailcatch.com'));
         expect(disposable.body.value).to.be.ok;
@@ -325,16 +325,13 @@ describe('EmailApi', function() {
         expect(regular.body.value).to.not.be.ok;
     });
 
-    it('Check EmailClientAccount #pipeline', async function() {
+    it('Check EmailClientAccount #pipeline', async function () {
         const accountCredentials =
             new models.EmailClientAccountPasswordCredentials(
-                'login', undefined, 'password');
-        const account = new models.EmailClientAccount(
-            'smtp.gmail.com',
-            551,
-            'SSLAuto',
-            'SMTP',
-            accountCredentials);
+                'example@gmail.com', undefined, 'password');
+        const account = new models.EmailClientAccount('pop.gmail.com', 995, 'SSLAuto', 'POP3',
+            accountCredentials,
+            new models.StorageFileLocation(storage, folder, 'account.cache'));
         const fileName = uuidv4() + '.account';
         await api.saveEmailClientAccount(new requests.SaveEmailClientAccountRequest(
             new models.StorageFileRqOfEmailClientAccount(
@@ -347,7 +344,7 @@ describe('EmailApi', function() {
         expect(result.body.host).to.be.equal(account.host);
     });
 
-    it('Check EmailClientMultiAccount #pipeline', async function() {
+    it('Check EmailClientMultiAccount #pipeline', async function () {
         // Create multi account object
         const multiAccount = new models.EmailClientMultiAccount(
             [new models.EmailClientAccount('imap.gmail.com', 993, 'SSLAuto', 'IMAP',
@@ -375,7 +372,7 @@ describe('EmailApi', function() {
             .to.be.equal(multiAccount.sendAccount.credentials.discriminator);
     });
 
-    async function createCalendar(startDate? : Date) :Promise<string> {
+    async function createCalendar(startDate?: Date): Promise<string> {
         const fileName = uuidv4() + '.ics';
         startDate = (startDate == null) ? getDate(undefined, 1) : startDate;
         const endDate = getDate(startDate, 1);
@@ -389,9 +386,9 @@ describe('EmailApi', function() {
                         new models.PrimitiveObject("STARTDATE", undefined, startDate.toUTCString()),
                         new models.PrimitiveObject("ENDDATE", undefined, endDate.toUTCString()),
                         new models.HierarchicalObject("ORGANIZER", undefined, [
-                                new models.PrimitiveObject("ADDRESS", undefined, "organizer@am.ru"),
-                                new models.PrimitiveObject("DISPLAYNAME", undefined, "Organizer Name")
-                            ]),
+                            new models.PrimitiveObject("ADDRESS", undefined, "organizer@am.ru"),
+                            new models.PrimitiveObject("DISPLAYNAME", undefined, "Organizer Name")
+                        ]),
                         new models.HierarchicalObject("ATTENDEES", undefined, [
                             new models.IndexedHierarchicalObject("ATTENDEE", undefined, 0, [
                                 new models.PrimitiveObject("ADDRESS", undefined, "attendee@am.ru"),
@@ -405,7 +402,7 @@ describe('EmailApi', function() {
         return fileName;
     }
 
-    function getDate(baseDate?: Date, addHours?:number) : Date {
+    function getDate(baseDate?: Date, addHours?: number): Date {
         baseDate = (baseDate == null) ? new Date() : baseDate;
         addHours = (addHours == null) ? 0 : addHours;
         const hour = 60 * 60 * 1000;
@@ -413,4 +410,4 @@ describe('EmailApi', function() {
         result.setTime(baseDate.getTime() + addHours * hour);
         return result;
     }
-  });
+});
