@@ -851,6 +851,34 @@ export class AppendMimeMessageRequest {
 }
 
 /**
+ * Request model for convertCalendar operation.
+ */
+export class ConvertCalendarRequest {
+    /**
+     * File format Enum, available values: Ics, Msg
+     */
+    public format: string;
+
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for convertCalendar operation.
+     * @param format File format Enum, available values: Ics, Msg
+     * @param file File to convert
+     */
+    public constructor(
+        format?: string, 
+        file?: Buffer) {
+        
+        this.format = format;
+        this.file = file;
+    }
+}
+
+/**
  * Request model for convertCalendarModelToAlternate operation.
  */
 export class ConvertCalendarModelToAlternateRequest {
@@ -871,6 +899,98 @@ export class ConvertCalendarModelToAlternateRequest {
 }
 
 /**
+ * Request model for convertCalendarModelToFile operation.
+ */
+export class ConvertCalendarModelToFileRequest {
+    /**
+     * File format Enum, available values: Ics, Msg
+     */
+    public format: string;
+
+    /**
+     * Calendar model to convert
+     */
+    public calendarDto: model.CalendarDto;
+
+    /**
+     * Request model for convertCalendarModelToFile operation.
+     * @param format File format Enum, available values: Ics, Msg
+     * @param calendarDto Calendar model to convert
+     */
+    public constructor(
+        format?: string, 
+        calendarDto?: model.CalendarDto) {
+        
+        this.format = format;
+        this.calendarDto = calendarDto;
+    }
+}
+
+/**
+ * Request model for convertContact operation.
+ */
+export class ConvertContactRequest {
+    /**
+     * File format to convert to Enum, available values: VCard, WebDav, Msg
+     */
+    public destinationFormat: string;
+
+    /**
+     * File format to convert from Enum, available values: VCard, WebDav, Msg
+     */
+    public format: string;
+
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for convertContact operation.
+     * @param destinationFormat File format to convert to Enum, available values: VCard, WebDav, Msg
+     * @param format File format to convert from Enum, available values: VCard, WebDav, Msg
+     * @param file File to convert
+     */
+    public constructor(
+        destinationFormat?: string, 
+        format?: string, 
+        file?: Buffer) {
+        
+        this.destinationFormat = destinationFormat;
+        this.format = format;
+        this.file = file;
+    }
+}
+
+/**
+ * Request model for convertContactModelToFile operation.
+ */
+export class ConvertContactModelToFileRequest {
+    /**
+     * File format Enum, available values: VCard, WebDav, Msg
+     */
+    public destinationFormat: string;
+
+    /**
+     * Contact model to convert
+     */
+    public contactDto: model.ContactDto;
+
+    /**
+     * Request model for convertContactModelToFile operation.
+     * @param destinationFormat File format Enum, available values: VCard, WebDav, Msg
+     * @param contactDto Contact model to convert
+     */
+    public constructor(
+        destinationFormat?: string, 
+        contactDto?: model.ContactDto) {
+        
+        this.destinationFormat = destinationFormat;
+        this.contactDto = contactDto;
+    }
+}
+
+/**
  * Request model for convertEmail operation.
  */
 export class ConvertEmailRequest {
@@ -880,14 +1000,14 @@ export class ConvertEmailRequest {
     public format: string;
 
     /**
-     * File to upload
+     * File to convert
      */
     public file: Buffer;
 
     /**
      * Request model for convertEmail operation.
      * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
-     * @param file File to upload
+     * @param file File to convert
      */
     public constructor(
         format?: string, 
@@ -1783,6 +1903,50 @@ export class GetCalendarRequest {
 }
 
 /**
+ * Request model for getCalendarAsFile operation.
+ */
+export class GetCalendarAsFileRequest {
+    /**
+     * Calendar document file name
+     */
+    public fileName: string;
+
+    /**
+     * File format Enum, available values: Ics, Msg
+     */
+    public format: string;
+
+    /**
+     * Storage name
+     */
+    public storage: string;
+
+    /**
+     * Path to folder in storage
+     */
+    public folder: string;
+
+    /**
+     * Request model for getCalendarAsFile operation.
+     * @param fileName Calendar document file name
+     * @param format File format Enum, available values: Ics, Msg
+     * @param storage Storage name
+     * @param folder Path to folder in storage
+     */
+    public constructor(
+        fileName?: string, 
+        format?: string, 
+        storage?: string, 
+        folder?: string) {
+        
+        this.fileName = fileName;
+        this.format = format;
+        this.storage = storage;
+        this.folder = folder;
+    }
+}
+
+/**
  * Request model for getCalendarAttachment operation.
  */
 export class GetCalendarAttachmentRequest {
@@ -1999,6 +2163,58 @@ export class GetCalendarModelListRequest {
         this.itemsPerPage = itemsPerPage;
         this.pageNumber = pageNumber;
         this.storage = storage;
+    }
+}
+
+/**
+ * Request model for getContactAsFile operation.
+ */
+export class GetContactAsFileRequest {
+    /**
+     * Calendar document file name
+     */
+    public fileName: string;
+
+    /**
+     * File format Enum, available values: VCard, WebDav, Msg
+     */
+    public destinationFormat: string;
+
+    /**
+     * File format to convert from Enum, available values: VCard, WebDav, Msg
+     */
+    public format: string;
+
+    /**
+     * Storage name
+     */
+    public storage: string;
+
+    /**
+     * Path to folder in storage
+     */
+    public folder: string;
+
+    /**
+     * Request model for getContactAsFile operation.
+     * @param fileName Calendar document file name
+     * @param destinationFormat File format Enum, available values: VCard, WebDav, Msg
+     * @param format File format to convert from Enum, available values: VCard, WebDav, Msg
+     * @param storage Storage name
+     * @param folder Path to folder in storage
+     */
+    public constructor(
+        fileName?: string, 
+        destinationFormat?: string, 
+        format?: string, 
+        storage?: string, 
+        folder?: string) {
+        
+        this.fileName = fileName;
+        this.destinationFormat = destinationFormat;
+        this.format = format;
+        this.storage = storage;
+        this.folder = folder;
     }
 }
 

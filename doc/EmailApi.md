@@ -693,6 +693,33 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="convertcalendar"></a>
+# **convertCalendar**
+
+```typescript
+public async convertCalendar(requestObj: ConvertCalendarRequest) : Promise<{response: RequestResponse, body: Buffer; }>
+```
+
+Converts calendar document to specified format and returns as file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: Buffer; }>`
+
+### Request Parameters
+```typescript
+new ConvertCalendarRequest(
+    format,
+    file)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| File format Enum, available values: Ics, Msg | 
+ **file** | **Buffer**| File to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="convertcalendarmodeltoalternate"></a>
 # **convertCalendarModelToAlternate**
 
@@ -715,6 +742,89 @@ new ConvertCalendarModelToAlternateRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rq** | [**CalendarDtoAlternateRq**](CalendarDtoAlternateRq.md)| iCalendar to AlternateView request | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertcalendarmodeltofile"></a>
+# **convertCalendarModelToFile**
+
+```typescript
+public async convertCalendarModelToFile(requestObj: ConvertCalendarModelToFileRequest) : Promise<{response: RequestResponse, body: Buffer; }>
+```
+
+Converts calendar model to specified format and returns as file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: Buffer; }>`
+
+### Request Parameters
+```typescript
+new ConvertCalendarModelToFileRequest(
+    format,
+    calendarDto)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| File format Enum, available values: Ics, Msg | 
+ **calendarDto** | [**CalendarDto**](CalendarDto.md)| Calendar model to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertcontact"></a>
+# **convertContact**
+
+```typescript
+public async convertContact(requestObj: ConvertContactRequest) : Promise<{response: RequestResponse, body: Buffer; }>
+```
+
+Converts contact document to specified format and returns as file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: Buffer; }>`
+
+### Request Parameters
+```typescript
+new ConvertContactRequest(
+    destinationFormat,
+    format,
+    file)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **destinationFormat** | **string**| File format to convert to Enum, available values: VCard, WebDav, Msg | 
+ **format** | **string**| File format to convert from Enum, available values: VCard, WebDav, Msg | 
+ **file** | **Buffer**| File to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertcontactmodeltofile"></a>
+# **convertContactModelToFile**
+
+```typescript
+public async convertContactModelToFile(requestObj: ConvertContactModelToFileRequest) : Promise<{response: RequestResponse, body: Buffer; }>
+```
+
+Converts contact model to specified format and returns as file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: Buffer; }>`
+
+### Request Parameters
+```typescript
+new ConvertContactModelToFileRequest(
+    destinationFormat,
+    contactDto)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **destinationFormat** | **string**| File format Enum, available values: VCard, WebDav, Msg | 
+ **contactDto** | [**ContactDto**](ContactDto.md)| Contact model to convert | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -741,7 +851,7 @@ new ConvertEmailRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **format** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
- **file** | **Buffer**| File to upload | 
+ **file** | **Buffer**| File to convert | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1466,6 +1576,37 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="getcalendarasfile"></a>
+# **getCalendarAsFile**
+
+```typescript
+public async getCalendarAsFile(requestObj: GetCalendarAsFileRequest) : Promise<{response: RequestResponse, body: Buffer; }>
+```
+
+Converts calendar document from storage to specified format and returns as file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: Buffer; }>`
+
+### Request Parameters
+```typescript
+new GetCalendarAsFileRequest(
+    fileName,
+    format,
+    storage=storage,
+    folder=folder)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fileName** | **string**| Calendar document file name | 
+ **format** | **string**| File format Enum, available values: Ics, Msg | 
+ **storage** | **string**| Storage name | [optional] 
+ **folder** | **string**| Path to folder in storage | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="getcalendarattachment"></a>
 # **getCalendarAttachment**
 
@@ -1618,6 +1759,39 @@ Name | Type | Description  | Notes
  **itemsPerPage** | **number**| Count of items on page | [optional] [default to 10]
  **pageNumber** | **number**| Page number | [optional] [default to 0]
  **storage** | **string**| Storage name | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="getcontactasfile"></a>
+# **getContactAsFile**
+
+```typescript
+public async getContactAsFile(requestObj: GetContactAsFileRequest) : Promise<{response: RequestResponse, body: Buffer; }>
+```
+
+Converts calendar document from storage to specified format and returns as file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: Buffer; }>`
+
+### Request Parameters
+```typescript
+new GetContactAsFileRequest(
+    fileName,
+    destinationFormat,
+    format,
+    storage=storage,
+    folder=folder)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fileName** | **string**| Calendar document file name | 
+ **destinationFormat** | **string**| File format Enum, available values: VCard, WebDav, Msg | 
+ **format** | **string**| File format to convert from Enum, available values: VCard, WebDav, Msg | 
+ **storage** | **string**| Storage name | [optional] 
+ **folder** | **string**| Path to folder in storage | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

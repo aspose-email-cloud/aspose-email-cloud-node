@@ -1236,6 +1236,61 @@ export class EmailApi {
     }
 
     /**
+     * Converts calendar document to specified format and returns as file             
+     * @param requestObj contains request parameters
+     */
+    public async convertCalendar(requestObj: requestModels.ConvertCalendarRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/CalendarModel/convert/{format}"
+            .replace("{" + "format" + "}", String(requestObj.format));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling convertCalendar.');
+        }
+
+        // verify required parameter 'requestObj.file' is not null or undefined
+        if (requestObj.file === null || requestObj.file === undefined) {
+            throw new Error('Required parameter "requestObj.file" was null or undefined when calling convertCalendar.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        if (requestObj.file !== undefined) {
+            formParams.File = {
+                value: requestObj.file,
+                options: {
+                    filename: 'File'
+                }
+            };
+        }
+        useFormData = true;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            encoding: null,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Convert iCalendar to AlternateView             
      * @param requestObj contains request parameters
      */
@@ -1272,6 +1327,159 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "AlternateView");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts calendar model to specified format and returns as file             
+     * @param requestObj contains request parameters
+     */
+    public async convertCalendarModelToFile(requestObj: requestModels.ConvertCalendarModelToFileRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/CalendarModel/model-as-file/{format}"
+            .replace("{" + "format" + "}", String(requestObj.format));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling convertCalendarModelToFile.');
+        }
+
+        // verify required parameter 'requestObj.calendarDto' is not null or undefined
+        if (requestObj.calendarDto === null || requestObj.calendarDto === undefined) {
+            throw new Error('Required parameter "requestObj.calendarDto" was null or undefined when calling convertCalendarModelToFile.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            encoding: null,
+            body: ObjectSerializer.serialize(requestObj.calendarDto, "CalendarDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts contact document to specified format and returns as file             
+     * @param requestObj contains request parameters
+     */
+    public async convertContact(requestObj: requestModels.ConvertContactRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/ContactModel/{format}/convert/{destinationFormat}"
+            .replace("{" + "destinationFormat" + "}", String(requestObj.destinationFormat))
+            .replace("{" + "format" + "}", String(requestObj.format));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.destinationFormat' is not null or undefined
+        if (requestObj.destinationFormat === null || requestObj.destinationFormat === undefined) {
+            throw new Error('Required parameter "requestObj.destinationFormat" was null or undefined when calling convertContact.');
+        }
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling convertContact.');
+        }
+
+        // verify required parameter 'requestObj.file' is not null or undefined
+        if (requestObj.file === null || requestObj.file === undefined) {
+            throw new Error('Required parameter "requestObj.file" was null or undefined when calling convertContact.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        if (requestObj.file !== undefined) {
+            formParams.File = {
+                value: requestObj.file,
+                options: {
+                    filename: 'File'
+                }
+            };
+        }
+        useFormData = true;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            encoding: null,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts contact model to specified format and returns as file             
+     * @param requestObj contains request parameters
+     */
+    public async convertContactModelToFile(requestObj: requestModels.ConvertContactModelToFileRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/ContactModel/model-as-file/{destinationFormat}"
+            .replace("{" + "destinationFormat" + "}", String(requestObj.destinationFormat));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.destinationFormat' is not null or undefined
+        if (requestObj.destinationFormat === null || requestObj.destinationFormat === undefined) {
+            throw new Error('Required parameter "requestObj.destinationFormat" was null or undefined when calling convertContactModelToFile.');
+        }
+
+        // verify required parameter 'requestObj.contactDto' is not null or undefined
+        if (requestObj.contactDto === null || requestObj.contactDto === undefined) {
+            throw new Error('Required parameter "requestObj.contactDto" was null or undefined when calling convertContactModelToFile.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            encoding: null,
+            body: ObjectSerializer.serialize(requestObj.contactDto, "ContactDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "Buffer");
         return Promise.resolve({body: result, response});
     }
 
@@ -2573,6 +2781,60 @@ export class EmailApi {
     }
 
     /**
+     * Converts calendar document from storage to specified format and returns as file             
+     * @param requestObj contains request parameters
+     */
+    public async getCalendarAsFile(requestObj: requestModels.GetCalendarAsFileRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/CalendarModel/{fileName}/as-file/{format}"
+            .replace("{" + "fileName" + "}", String(requestObj.fileName))
+            .replace("{" + "format" + "}", String(requestObj.format));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.fileName' is not null or undefined
+        if (requestObj.fileName === null || requestObj.fileName === undefined) {
+            throw new Error('Required parameter "requestObj.fileName" was null or undefined when calling getCalendarAsFile.');
+        }
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling getCalendarAsFile.');
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            encoding: null,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Get iCalendar document attachment by name             
      * @param requestObj contains request parameters
      */
@@ -2849,6 +3111,66 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "CalendarDtoList");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts calendar document from storage to specified format and returns as file             
+     * @param requestObj contains request parameters
+     */
+    public async getContactAsFile(requestObj: requestModels.GetContactAsFileRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/ContactModel/{format}/{fileName}/as-file/{destinationFormat}"
+            .replace("{" + "fileName" + "}", String(requestObj.fileName))
+            .replace("{" + "destinationFormat" + "}", String(requestObj.destinationFormat))
+            .replace("{" + "format" + "}", String(requestObj.format));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.fileName' is not null or undefined
+        if (requestObj.fileName === null || requestObj.fileName === undefined) {
+            throw new Error('Required parameter "requestObj.fileName" was null or undefined when calling getContactAsFile.');
+        }
+
+        // verify required parameter 'requestObj.destinationFormat' is not null or undefined
+        if (requestObj.destinationFormat === null || requestObj.destinationFormat === undefined) {
+            throw new Error('Required parameter "requestObj.destinationFormat" was null or undefined when calling getContactAsFile.');
+        }
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling getContactAsFile.');
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            encoding: null,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "Buffer");
         return Promise.resolve({body: result, response});
     }
 
