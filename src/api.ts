@@ -1274,6 +1274,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
         };
 
@@ -1359,6 +1360,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
             body: ObjectSerializer.serialize(requestObj.calendarDto, "CalendarDto"),
         };
@@ -1421,6 +1423,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
         };
 
@@ -1466,6 +1469,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
             body: ObjectSerializer.serialize(requestObj.contactDto, "ContactDto"),
         };
@@ -1522,6 +1526,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
         };
 
@@ -1567,6 +1572,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
             body: ObjectSerializer.serialize(requestObj.emailDto, "EmailDto"),
         };
@@ -2561,6 +2567,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
         };
 
@@ -2864,6 +2871,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
         };
 
@@ -2918,6 +2926,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
         };
 
@@ -3253,6 +3262,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
         };
 
@@ -3313,6 +3323,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
         };
 
@@ -3728,6 +3739,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
         };
 
@@ -3782,6 +3794,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
         };
 
@@ -4265,6 +4278,7 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
+            json: true,
             encoding: null,
         };
 

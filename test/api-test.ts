@@ -89,7 +89,8 @@ describe('EmailApi', function () {
         startDate.setMilliseconds(0);
         const calendarFile = await createCalendar(startDate);
         const calendar = await api.getCalendar(new requests.GetCalendarRequest(calendarFile, folder, storage));
-        const startDateProperty = calendar.body.internalProperties.find(item => item.name == 'STARTDATE') as models.PrimitiveObject;
+        const startDateProperty = calendar.body.internalProperties.find(
+            item => item.name == 'STARTDATE') as models.PrimitiveObject;
         const factStartDate = new Date(startDateProperty.value);
         expect(factStartDate.getTime()).to.equal(startDate.getTime());
     });
@@ -277,7 +278,8 @@ describe('EmailApi', function () {
                     new models.PrimitiveObject("Tag:'PidTagBody':0x1000:String"),
                     new models.PrimitiveObject("Tag:'PidTagStoreSupportMask':0x340D:Integer32", undefined, "265849"),
                     new models.PrimitiveObject("Tag:'PidTagSurname':0x3A11:String", undefined, "Surname"),
-                    new models.PrimitiveObject("Tag:'PidTagOtherTelephoneNumber':0x3A1F:String", undefined, "+79123456789"),
+                    new models.PrimitiveObject("Tag:'PidTagOtherTelephoneNumber':0x3A1F:String", undefined,
+                        "+79123456789"),
                     new models.PrimitiveObject("Tag:'':0x6662:Integer32", undefined, "0"),
                     new models.PrimitiveObject(
                         "Lid:'PidLidAddressBookProviderArrayType':0x8029:Integer32:00062004-0000-0000-c000-000000000046",
@@ -370,6 +372,33 @@ describe('EmailApi', function () {
         expect(multiAccountFromStorage.body.receiveAccounts.length).to.be.equal(2);
         expect(multiAccountFromStorage.body.sendAccount.credentials.discriminator)
             .to.be.equal(multiAccount.sendAccount.credentials.discriminator);
+    });
+
+    it('Check calendar converter #pipeline', async function () {
+        const location = 'Some location';
+        //Create DTO with specified location:
+        let calendarDto = new models.CalendarDto();
+        calendarDto.location = 'Some location';
+        calendarDto.summary = 'Some summary';
+        calendarDto.description = 'some description';
+        calendarDto.startDate = getDate(undefined, 1);
+        calendarDto.endDate = getDate(calendarDto.startDate, 1);
+        calendarDto.organizer = new models.MailAddress('undefined', 'organizer@aspose.com');
+        calendarDto.attendees = [new models.MailAddress('undefined', "attendee@aspose.com")];
+        //We can convert this DTO to a MAPI or ICS file:
+        let mapi = await api.convertCalendarModelToFile(new requests.ConvertCalendarModelToFileRequest(
+            'Msg', calendarDto));
+        //File content is available at mapi.body as a Buffer object
+        //Let's convert this buffer to an ICS file:
+        let ics = await api.convertCalendar(new requests.ConvertCalendarRequest(
+            'Ics', mapi.body));
+        //ICS is a text format. We can convert the buffer to a string and check that it
+        //contains specified location as a substring:
+        let icsString = ics.body.toString();
+        expect(icsString).to.include(location);
+        //We can also convert a file buffer back to a CalendarDto
+        let dto = await api.getCalendarFileAsModel(new requests.GetCalendarFileAsModelRequest(ics.body));
+        expect(dto.body.location).to.be.equal(location);
     });
 
     async function createCalendar(startDate?: Date): Promise<string> {
