@@ -1539,6 +1539,52 @@ export class EmailApi {
     }
 
     /**
+     * Converts Email model to specified format and returns as file             
+     * @param requestObj contains request parameters
+     */
+    public async convertEmailModelToFile(requestObj: requestModels.ConvertEmailModelToFileRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/model/model-as-file/{destinationFormat}"
+            .replace("{" + "destinationFormat" + "}", String(requestObj.destinationFormat));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.destinationFormat' is not null or undefined
+        if (requestObj.destinationFormat === null || requestObj.destinationFormat === undefined) {
+            throw new Error('Required parameter "requestObj.destinationFormat" was null or undefined when calling convertEmailModelToFile.');
+        }
+
+        // verify required parameter 'requestObj.emailDto' is not null or undefined
+        if (requestObj.emailDto === null || requestObj.emailDto === undefined) {
+            throw new Error('Required parameter "requestObj.emailDto" was null or undefined when calling convertEmailModelToFile.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            encoding: null,
+            body: ObjectSerializer.serialize(requestObj.emailDto, "EmailDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Copy file
      * @param requestObj contains request parameters
      */
@@ -2889,6 +2935,55 @@ export class EmailApi {
     }
 
     /**
+     * Converts calendar document to a model representation             
+     * @param requestObj contains request parameters
+     */
+    public async getCalendarFileAsModel(requestObj: requestModels.GetCalendarFileAsModelRequest): Promise<{response: request.RequestResponse, body: model.CalendarDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/CalendarModel/file-as-model";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.file' is not null or undefined
+        if (requestObj.file === null || requestObj.file === undefined) {
+            throw new Error('Required parameter "requestObj.file" was null or undefined when calling getCalendarFileAsModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        if (requestObj.file !== undefined) {
+            formParams.File = {
+                value: requestObj.file,
+                options: {
+                    filename: 'File'
+                }
+            };
+        }
+        useFormData = true;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "CalendarDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Get iCalendar files list in folder on storage             
      * @param requestObj contains request parameters
      */
@@ -3231,6 +3326,61 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts contact document to a model representation             
+     * @param requestObj contains request parameters
+     */
+    public async getContactFileAsModel(requestObj: requestModels.GetContactFileAsModelRequest): Promise<{response: request.RequestResponse, body: model.ContactDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/ContactModel/{format}/file-as-model"
+            .replace("{" + "format" + "}", String(requestObj.format));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling getContactFileAsModel.');
+        }
+
+        // verify required parameter 'requestObj.file' is not null or undefined
+        if (requestObj.file === null || requestObj.file === undefined) {
+            throw new Error('Required parameter "requestObj.file" was null or undefined when calling getContactFileAsModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        if (requestObj.file !== undefined) {
+            formParams.File = {
+                value: requestObj.file,
+                options: {
+                    filename: 'File'
+                }
+            };
+        }
+        useFormData = true;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ContactDto");
         return Promise.resolve({body: result, response});
     }
 
@@ -3767,6 +3917,61 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailClientMultiAccount");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts email document to a model representation             
+     * @param requestObj contains request parameters
+     */
+    public async getEmailFileAsModel(requestObj: requestModels.GetEmailFileAsModelRequest): Promise<{response: request.RequestResponse, body: model.EmailDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/model/{format}/file-as-model"
+            .replace("{" + "format" + "}", String(requestObj.format));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling getEmailFileAsModel.');
+        }
+
+        // verify required parameter 'requestObj.file' is not null or undefined
+        if (requestObj.file === null || requestObj.file === undefined) {
+            throw new Error('Required parameter "requestObj.file" was null or undefined when calling getEmailFileAsModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        if (requestObj.file !== undefined) {
+            formParams.File = {
+                value: requestObj.file,
+                options: {
+                    filename: 'File'
+                }
+            };
+        }
+        useFormData = true;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "EmailDto");
         return Promise.resolve({body: result, response});
     }
 

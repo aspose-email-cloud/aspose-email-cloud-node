@@ -855,6 +855,33 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="convertemailmodeltofile"></a>
+# **convertEmailModelToFile**
+
+```typescript
+public async convertEmailModelToFile(requestObj: ConvertEmailModelToFileRequest) : Promise<{response: RequestResponse, body: Buffer; }>
+```
+
+Converts Email model to specified format and returns as file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: Buffer; }>`
+
+### Request Parameters
+```typescript
+new ConvertEmailModelToFileRequest(
+    destinationFormat,
+    emailDto)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **destinationFormat** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
+ **emailDto** | [**EmailDto**](EmailDto.md)| Email model to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="copyfile"></a>
 # **copyFile**
 
@@ -1638,6 +1665,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="getcalendarfileasmodel"></a>
+# **getCalendarFileAsModel**
+
+```typescript
+public async getCalendarFileAsModel(requestObj: GetCalendarFileAsModelRequest) : Promise<{response: RequestResponse, body: CalendarDto; }>
+```
+
+Converts calendar document to a model representation             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: CalendarDto; }>`
+
+### Request Parameters
+```typescript
+new GetCalendarFileAsModelRequest(
+    file)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **Buffer**| File to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="getcalendarlist"></a>
 # **getCalendarList**
 
@@ -1825,6 +1877,33 @@ Name | Type | Description  | Notes
  **attachment** | **string**| Attachment name or index | 
  **folder** | **string**| Path to folder in storage | [optional] 
  **storage** | **string**| Storage name | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="getcontactfileasmodel"></a>
+# **getContactFileAsModel**
+
+```typescript
+public async getContactFileAsModel(requestObj: GetContactFileAsModelRequest) : Promise<{response: RequestResponse, body: ContactDto; }>
+```
+
+Converts contact document to a model representation             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: ContactDto; }>`
+
+### Request Parameters
+```typescript
+new GetContactFileAsModelRequest(
+    format,
+    file)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| File format Enum, available values: VCard, WebDav, Msg | 
+ **file** | **Buffer**| File to convert | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2127,6 +2206,33 @@ Name | Type | Description  | Notes
  **name** | **string**| File name on storage | 
  **folder** | **string**| Folder on storage | 
  **storage** | **string**| Storage name | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="getemailfileasmodel"></a>
+# **getEmailFileAsModel**
+
+```typescript
+public async getEmailFileAsModel(requestObj: GetEmailFileAsModelRequest) : Promise<{response: RequestResponse, body: EmailDto; }>
+```
+
+Converts email document to a model representation             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: EmailDto; }>`
+
+### Request Parameters
+```typescript
+new GetEmailFileAsModelRequest(
+    format,
+    file)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
+ **file** | **Buffer**| File to convert | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

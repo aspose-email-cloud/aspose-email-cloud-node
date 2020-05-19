@@ -1019,6 +1019,34 @@ export class ConvertEmailRequest {
 }
 
 /**
+ * Request model for convertEmailModelToFile operation.
+ */
+export class ConvertEmailModelToFileRequest {
+    /**
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     */
+    public destinationFormat: string;
+
+    /**
+     * Email model to convert
+     */
+    public emailDto: model.EmailDto;
+
+    /**
+     * Request model for convertEmailModelToFile operation.
+     * @param destinationFormat File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param emailDto Email model to convert
+     */
+    public constructor(
+        destinationFormat?: string, 
+        emailDto?: model.EmailDto) {
+        
+        this.destinationFormat = destinationFormat;
+        this.emailDto = emailDto;
+    }
+}
+
+/**
  * Request model for copyFile operation.
  */
 export class CopyFileRequest {
@@ -1991,6 +2019,26 @@ export class GetCalendarAttachmentRequest {
 }
 
 /**
+ * Request model for getCalendarFileAsModel operation.
+ */
+export class GetCalendarFileAsModelRequest {
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for getCalendarFileAsModel operation.
+     * @param file File to convert
+     */
+    public constructor(
+        file?: Buffer) {
+        
+        this.file = file;
+    }
+}
+
+/**
  * Request model for getCalendarList operation.
  */
 export class GetCalendarListRequest {
@@ -2267,6 +2315,34 @@ export class GetContactAttachmentRequest {
         this.attachment = attachment;
         this.folder = folder;
         this.storage = storage;
+    }
+}
+
+/**
+ * Request model for getContactFileAsModel operation.
+ */
+export class GetContactFileAsModelRequest {
+    /**
+     * File format Enum, available values: VCard, WebDav, Msg
+     */
+    public format: string;
+
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for getContactFileAsModel operation.
+     * @param format File format Enum, available values: VCard, WebDav, Msg
+     * @param file File to convert
+     */
+    public constructor(
+        format?: string, 
+        file?: Buffer) {
+        
+        this.format = format;
+        this.file = file;
     }
 }
 
@@ -2675,6 +2751,34 @@ export class GetEmailClientMultiAccountRequest {
         this.name = name;
         this.folder = folder;
         this.storage = storage;
+    }
+}
+
+/**
+ * Request model for getEmailFileAsModel operation.
+ */
+export class GetEmailFileAsModelRequest {
+    /**
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     */
+    public format: string;
+
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for getEmailFileAsModel operation.
+     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param file File to convert
+     */
+    public constructor(
+        format?: string, 
+        file?: Buffer) {
+        
+        this.format = format;
+        this.file = file;
     }
 }
 
