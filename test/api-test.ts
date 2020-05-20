@@ -401,6 +401,43 @@ describe('EmailApi', function () {
         expect(dto.body.location).to.be.equal(location);
     });
 
+    it('Check contact converter #pipeline', async function () {
+        const surname = 'Cane';
+        let contactDto = new models.ContactDto();
+        contactDto.surname = surname;
+        contactDto.givenName = 'John';
+        contactDto.gender = 'Male';
+        contactDto.emailAddresses = [new models.EmailAddress(undefined, undefined, undefined, undefined,
+            'address@aspose.com')];
+        contactDto.phoneNumbers = [new models.PhoneNumber(undefined, '+47234325344')];
+        let mapi = await api.convertContactModelToFile(new requests.ConvertContactModelToFileRequest(
+            'Msg', contactDto));
+        let vcard = await api.convertContact(new requests.ConvertContactRequest(
+            'VCard', 'Msg', mapi.body));
+        let vcardString = vcard.body.toString();
+        expect(vcardString).to.include(surname);
+        let dto = await api.getContactFileAsModel(new requests.GetContactFileAsModelRequest('VCard', vcard.body));
+        expect(dto.body.surname).to.be.equal(surname);
+    });
+
+    it('Check email converter #pipeline', async function () {
+        const from = 'from@aspose.com';
+        let emailDto = new models.EmailDto();
+        emailDto.from = new models.MailAddress(undefined, from);
+        emailDto.to = [new models.MailAddress(undefined, 'to@aspose.com')];
+        emailDto.subject = 'Some subject';
+        emailDto.body = 'Some body';
+        emailDto.date = new Date();
+        let mapi = await api.convertEmailModelToFile(new requests.ConvertEmailModelToFileRequest(
+            'Msg', emailDto));
+        let eml = await api.convertEmail(new requests.ConvertEmailRequest(
+            'Eml', mapi.body));
+        let emlString = eml.body.toString();
+        expect(emlString).to.include(from);
+        let dto = await api.getEmailFileAsModel(new requests.GetEmailFileAsModelRequest(eml.body));
+        expect(dto.body.from.address).to.be.equal(from);
+    });
+
     async function createCalendar(startDate?: Date): Promise<string> {
         const fileName = uuidv4() + '.ics';
         startDate = (startDate == null) ? getDate(undefined, 1) : startDate;
