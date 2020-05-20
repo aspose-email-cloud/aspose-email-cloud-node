@@ -2759,25 +2759,17 @@ export class GetEmailClientMultiAccountRequest {
  */
 export class GetEmailFileAsModelRequest {
     /**
-     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
-     */
-    public format: string;
-
-    /**
      * File to convert
      */
     public file: Buffer;
 
     /**
      * Request model for getEmailFileAsModel operation.
-     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
      * @param file File to convert
      */
     public constructor(
-        format?: string, 
         file?: Buffer) {
         
-        this.format = format;
         this.file = file;
     }
 }

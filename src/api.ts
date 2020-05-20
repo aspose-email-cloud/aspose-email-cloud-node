@@ -3938,16 +3938,10 @@ export class EmailApi {
      * @param requestObj contains request parameters
      */
     public async getEmailFileAsModel(requestObj: requestModels.GetEmailFileAsModelRequest): Promise<{response: request.RequestResponse, body: model.EmailDto}> {
-        const localVarPath = this.configuration.getApiBaseUrl() + "/email/model/{format}/file-as-model"
-            .replace("{" + "format" + "}", String(requestObj.format));
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/model/file-as-model";
         const queryParameters: any = {};
         const headerParams: any = {};
         const formParams: any = {};
-
-        // verify required parameter 'requestObj.format' is not null or undefined
-        if (requestObj.format === null || requestObj.format === undefined) {
-            throw new Error('Required parameter "requestObj.format" was null or undefined when calling getEmailFileAsModel.');
-        }
 
         // verify required parameter 'requestObj.file' is not null or undefined
         if (requestObj.file === null || requestObj.file === undefined) {

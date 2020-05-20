@@ -2225,13 +2225,11 @@ Converts email document to a model representation
 ### Request Parameters
 ```typescript
 new GetEmailFileAsModelRequest(
-    format,
     file)
 ```
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **format** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
  **file** | **Buffer**| File to convert | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
