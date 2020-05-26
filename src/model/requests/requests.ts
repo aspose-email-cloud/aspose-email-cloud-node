@@ -1051,37 +1051,37 @@ export class ConvertEmailModelToFileRequest {
  */
 export class CopyFileRequest {
     /**
-     * Source file path e.g. '/folder/file.ext'
+     * Gets or sets srcPath
      */
     public srcPath: string;
 
     /**
-     * Destination file path
+     * Gets or sets destPath
      */
     public destPath: string;
 
     /**
-     * Source storage name
+     * Gets or sets srcStorageName
      */
     public srcStorageName: string;
 
     /**
-     * Destination storage name
+     * Gets or sets destStorageName
      */
     public destStorageName: string;
 
     /**
-     * File version ID to copy
+     * Gets or sets versionId
      */
     public versionId: string;
 
     /**
      * Request model for copyFile operation.
-     * @param srcPath Source file path e.g. '/folder/file.ext'
-     * @param destPath Destination file path
-     * @param srcStorageName Source storage name
-     * @param destStorageName Destination storage name
-     * @param versionId File version ID to copy
+     * @param srcPath 
+     * @param destPath 
+     * @param srcStorageName 
+     * @param destStorageName 
+     * @param versionId 
      */
     public constructor(
         srcPath?: string, 
@@ -1103,31 +1103,31 @@ export class CopyFileRequest {
  */
 export class CopyFolderRequest {
     /**
-     * Source folder path e.g. '/src'
+     * Gets or sets srcPath
      */
     public srcPath: string;
 
     /**
-     * Destination folder path e.g. '/dst'
+     * Gets or sets destPath
      */
     public destPath: string;
 
     /**
-     * Source storage name
+     * Gets or sets srcStorageName
      */
     public srcStorageName: string;
 
     /**
-     * Destination storage name
+     * Gets or sets destStorageName
      */
     public destStorageName: string;
 
     /**
      * Request model for copyFolder operation.
-     * @param srcPath Source folder path e.g. '/src'
-     * @param destPath Destination folder path e.g. '/dst'
-     * @param srcStorageName Source storage name
-     * @param destStorageName Destination storage name
+     * @param srcPath 
+     * @param destPath 
+     * @param srcStorageName 
+     * @param destStorageName 
      */
     public constructor(
         srcPath?: string, 
@@ -1259,19 +1259,19 @@ export class CreateEmailFolderRequest {
  */
 export class CreateFolderRequest {
     /**
-     * Folder path to create e.g. 'folder_1/folder_2/'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for createFolder operation.
-     * @param path Folder path to create e.g. 'folder_1/folder_2/'
-     * @param storageName Storage name
+     * @param path 
+     * @param storageName 
      */
     public constructor(
         path?: string, 
@@ -1479,25 +1479,25 @@ export class DeleteEmailThreadRequest {
  */
 export class DeleteFileRequest {
     /**
-     * File path e.g. '/folder/file.ext'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
-     * File version ID to delete
+     * Gets or sets versionId
      */
     public versionId: string;
 
     /**
      * Request model for deleteFile operation.
-     * @param path File path e.g. '/folder/file.ext'
-     * @param storageName Storage name
-     * @param versionId File version ID to delete
+     * @param path 
+     * @param storageName 
+     * @param versionId 
      */
     public constructor(
         path?: string, 
@@ -1515,25 +1515,25 @@ export class DeleteFileRequest {
  */
 export class DeleteFolderRequest {
     /**
-     * Folder path e.g. '/folder'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
-     * Enable to delete folders, subfolders and files
+     * Gets or sets recursive
      */
     public recursive: boolean;
 
     /**
      * Request model for deleteFolder operation.
-     * @param path Folder path e.g. '/folder'
-     * @param storageName Storage name
-     * @param recursive Enable to delete folders, subfolders and files
+     * @param path 
+     * @param storageName 
+     * @param recursive 
      */
     public constructor(
         path?: string, 
@@ -1683,25 +1683,25 @@ export class DiscoverEmailConfigPasswordRequest {
  */
 export class DownloadFileRequest {
     /**
-     * File path e.g. '/folder/file.ext'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
-     * File version ID to download
+     * Gets or sets versionId
      */
     public versionId: string;
 
     /**
      * Request model for downloadFile operation.
-     * @param path File path e.g. '/folder/file.ext'
-     * @param storageName Storage name
-     * @param versionId File version ID to download
+     * @param path 
+     * @param storageName 
+     * @param versionId 
      */
     public constructor(
         path?: string, 
@@ -2543,13 +2543,13 @@ export class GetContactPropertiesRequest {
  */
 export class GetDiscUsageRequest {
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for getDiscUsage operation.
-     * @param storageName Storage name
+     * @param storageName 
      */
     public constructor(
         storageName?: string) {
@@ -2919,19 +2919,19 @@ export class GetEmailPropertyRequest {
  */
 export class GetFileVersionsRequest {
     /**
-     * File path e.g. '/file.ext'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for getFileVersions operation.
-     * @param path File path e.g. '/file.ext'
-     * @param storageName Storage name
+     * @param path 
+     * @param storageName 
      */
     public constructor(
         path?: string, 
@@ -2947,19 +2947,19 @@ export class GetFileVersionsRequest {
  */
 export class GetFilesListRequest {
     /**
-     * Folder path e.g. '/folder'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for getFilesList operation.
-     * @param path Folder path e.g. '/folder'
-     * @param storageName Storage name
+     * @param path 
+     * @param storageName 
      */
     public constructor(
         path?: string, 
@@ -3459,37 +3459,37 @@ export class MoveEmailThreadRequest {
  */
 export class MoveFileRequest {
     /**
-     * Source file path e.g. '/src.ext'
+     * Gets or sets srcPath
      */
     public srcPath: string;
 
     /**
-     * Destination file path e.g. '/dest.ext'
+     * Gets or sets destPath
      */
     public destPath: string;
 
     /**
-     * Source storage name
+     * Gets or sets srcStorageName
      */
     public srcStorageName: string;
 
     /**
-     * Destination storage name
+     * Gets or sets destStorageName
      */
     public destStorageName: string;
 
     /**
-     * File version ID to move
+     * Gets or sets versionId
      */
     public versionId: string;
 
     /**
      * Request model for moveFile operation.
-     * @param srcPath Source file path e.g. '/src.ext'
-     * @param destPath Destination file path e.g. '/dest.ext'
-     * @param srcStorageName Source storage name
-     * @param destStorageName Destination storage name
-     * @param versionId File version ID to move
+     * @param srcPath 
+     * @param destPath 
+     * @param srcStorageName 
+     * @param destStorageName 
+     * @param versionId 
      */
     public constructor(
         srcPath?: string, 
@@ -3511,31 +3511,31 @@ export class MoveFileRequest {
  */
 export class MoveFolderRequest {
     /**
-     * Folder path to move e.g. '/folder'
+     * Gets or sets srcPath
      */
     public srcPath: string;
 
     /**
-     * Destination folder path to move to e.g '/dst'
+     * Gets or sets destPath
      */
     public destPath: string;
 
     /**
-     * Source storage name
+     * Gets or sets srcStorageName
      */
     public srcStorageName: string;
 
     /**
-     * Destination storage name
+     * Gets or sets destStorageName
      */
     public destStorageName: string;
 
     /**
      * Request model for moveFolder operation.
-     * @param srcPath Folder path to move e.g. '/folder'
-     * @param destPath Destination folder path to move to e.g '/dst'
-     * @param srcStorageName Source storage name
-     * @param destStorageName Destination storage name
+     * @param srcPath 
+     * @param destPath 
+     * @param srcStorageName 
+     * @param destStorageName 
      */
     public constructor(
         srcPath?: string, 
@@ -3555,25 +3555,25 @@ export class MoveFolderRequest {
  */
 export class ObjectExistsRequest {
     /**
-     * File or folder path e.g. '/file.ext' or '/folder'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
-     * File version ID
+     * Gets or sets versionId
      */
     public versionId: string;
 
     /**
      * Request model for objectExists operation.
-     * @param path File or folder path e.g. '/file.ext' or '/folder'
-     * @param storageName Storage name
-     * @param versionId File version ID
+     * @param path 
+     * @param storageName 
+     * @param versionId 
      */
     public constructor(
         path?: string, 
@@ -3915,13 +3915,13 @@ export class SetEmailThreadReadFlagRequest {
  */
 export class StorageExistsRequest {
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for storageExists operation.
-     * @param storageName Storage name
+     * @param storageName 
      */
     public constructor(
         storageName?: string) {
@@ -4027,7 +4027,7 @@ export class UpdateMapiPropertiesRequest {
  */
 export class UploadFileRequest {
     /**
-     * Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.             
+     * Gets or sets path
      */
     public path: string;
 
@@ -4037,15 +4037,15 @@ export class UploadFileRequest {
     public file: Buffer;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for uploadFile operation.
-     * @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.             
+     * @param path 
      * @param file File to upload
-     * @param storageName Storage name
+     * @param storageName 
      */
     public constructor(
         path?: string, 

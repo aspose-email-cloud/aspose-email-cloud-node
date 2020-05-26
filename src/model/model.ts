@@ -2604,9 +2604,6 @@ export class CustomerEvent {
     }
 }
 
-/**
- * Class for disc space information.
- */
 export class DiscUsage {
 
     /**
@@ -2631,21 +2628,15 @@ export class DiscUsage {
         return DiscUsage.attributeTypeMap;
     }
 
-    /**
-     * Application used disc space.
-     */
     public usedSize: number;
     
-    /**
-     * Total disc space.
-     */
     public totalSize: number;
     
 
     /**
-     * Class for disc space information.
-     * @param usedSize Application used disc space.
-     * @param totalSize Total disc space.
+     * 
+     * @param usedSize 
+     * @param totalSize 
      */
     public constructor(
         usedSize?: number,
@@ -4373,9 +4364,6 @@ export class EnumWithCustomOfUrlCategory {
     }
 }
 
-/**
- * The error details
- */
 export class ErrorDetails {
 
     /**
@@ -4400,21 +4388,15 @@ export class ErrorDetails {
         return ErrorDetails.attributeTypeMap;
     }
 
-    /**
-     * The request id
-     */
     public requestId: string;
     
-    /**
-     * Date
-     */
     public date: Date;
     
 
     /**
-     * The error details
-     * @param requestId The request id
-     * @param date Date
+     * 
+     * @param requestId 
+     * @param date 
      */
     public constructor(
         requestId?: string,
@@ -4425,9 +4407,6 @@ export class ErrorDetails {
     }
 }
 
-/**
- * File versions FileVersion.
- */
 export class FileVersions {
 
     /**
@@ -4447,15 +4426,12 @@ export class FileVersions {
         return FileVersions.attributeTypeMap;
     }
 
-    /**
-     * File versions FileVersion.
-     */
     public value: Array<FileVersion>;
     
 
     /**
-     * File versions FileVersion.
-     * @param value File versions FileVersion.
+     * 
+     * @param value 
      */
     public constructor(
         value?: Array<FileVersion>) {
@@ -4464,9 +4440,6 @@ export class FileVersions {
     }
 }
 
-/**
- * Files list
- */
 export class FilesList {
 
     /**
@@ -4486,15 +4459,12 @@ export class FilesList {
         return FilesList.attributeTypeMap;
     }
 
-    /**
-     * Files and folders contained by folder StorageFile.
-     */
     public value: Array<StorageFile>;
     
 
     /**
-     * Files list
-     * @param value Files and folders contained by folder StorageFile.
+     * 
+     * @param value 
      */
     public constructor(
         value?: Array<StorageFile>) {
@@ -4503,9 +4473,6 @@ export class FilesList {
     }
 }
 
-/**
- * File upload result
- */
 export class FilesUploadResult {
 
     /**
@@ -4530,21 +4497,15 @@ export class FilesUploadResult {
         return FilesUploadResult.attributeTypeMap;
     }
 
-    /**
-     * List of uploaded file names
-     */
     public uploaded: Array<string>;
     
-    /**
-     * List of errors.
-     */
     public errors: Array<Error>;
     
 
     /**
-     * File upload result
-     * @param uploaded List of uploaded file names
-     * @param errors List of errors.
+     * 
+     * @param uploaded 
+     * @param errors 
      */
     public constructor(
         uploaded?: Array<string>,
@@ -5499,9 +5460,6 @@ export class MimeResponse {
     }
 }
 
-/**
- * Error
- */
 export class ModelError {
 
     /**
@@ -5536,33 +5494,21 @@ export class ModelError {
         return ModelError.attributeTypeMap;
     }
 
-    /**
-     * Code             
-     */
     public code: string;
     
-    /**
-     * Message             
-     */
     public message: string;
     
-    /**
-     * Description             
-     */
     public description: string;
     
-    /**
-     * Inner Error             
-     */
     public innerError: ErrorDetails;
     
 
     /**
-     * Error
-     * @param code Code             
-     * @param message Message             
-     * @param description Description             
-     * @param innerError Inner Error             
+     * 
+     * @param code 
+     * @param message 
+     * @param description 
+     * @param innerError 
      */
     public constructor(
         code?: string,
@@ -5629,9 +5575,6 @@ export class NameValuePair {
     }
 }
 
-/**
- * Object exists
- */
 export class ObjectExist {
 
     /**
@@ -5656,21 +5599,15 @@ export class ObjectExist {
         return ObjectExist.attributeTypeMap;
     }
 
-    /**
-     * Indicates that the file or folder exists.
-     */
     public exists: boolean;
     
-    /**
-     * True if it is a folder, false if it is a file.
-     */
     public isFolder: boolean;
     
 
     /**
-     * Object exists
-     * @param exists Indicates that the file or folder exists.
-     * @param isFolder True if it is a folder, false if it is a file.
+     * 
+     * @param exists 
+     * @param isFolder 
      */
     public constructor(
         exists?: boolean,
@@ -6071,9 +6008,6 @@ export class SetEmailPropertyRequest {
     }
 }
 
-/**
- * Storage exists
- */
 export class StorageExist {
 
     /**
@@ -6093,15 +6027,12 @@ export class StorageExist {
         return StorageExist.attributeTypeMap;
     }
 
-    /**
-     * Shows that the storage exists.             
-     */
     public exists: boolean;
     
 
     /**
-     * Storage exists
-     * @param exists Shows that the storage exists.             
+     * 
+     * @param exists 
      */
     public constructor(
         exists?: boolean) {
@@ -6110,9 +6041,6 @@ export class StorageExist {
     }
 }
 
-/**
- * File or folder information
- */
 export class StorageFile {
 
     /**
@@ -6152,39 +6080,24 @@ export class StorageFile {
         return StorageFile.attributeTypeMap;
     }
 
-    /**
-     * File or folder name.
-     */
     public name: string;
     
-    /**
-     * True if it is a folder.
-     */
     public isFolder: boolean;
     
-    /**
-     * File or folder last modified DateTime.
-     */
     public modifiedDate: Date;
     
-    /**
-     * File or folder size.
-     */
     public size: number;
     
-    /**
-     * File or folder path.
-     */
     public path: string;
     
 
     /**
-     * File or folder information
-     * @param name File or folder name.
-     * @param isFolder True if it is a folder.
-     * @param modifiedDate File or folder last modified DateTime.
-     * @param size File or folder size.
-     * @param path File or folder path.
+     * 
+     * @param name 
+     * @param isFolder 
+     * @param modifiedDate 
+     * @param size 
+     * @param path 
      */
     public constructor(
         name?: string,
@@ -6830,7 +6743,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
         {
             name: "file",
             baseName: "file",
-            type: "StorageFileLocation",
+            type: "any",
         }    ];
 
     /**
@@ -6843,7 +6756,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
     /**
      * Image location             
      */
-    public file: StorageFileLocation;
+    public file: any;
     
 
     /**
@@ -6853,7 +6766,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
      */
     public constructor(
         isSingle?: boolean,
-        file?: StorageFileLocation) {
+        file?: any) {
         super();
         this.isSingle = isSingle;
         this.file = file;
@@ -7933,9 +7846,6 @@ export class EmailThreadReadFlagRq extends AccountBaseRequest {
     }
 }
 
-/**
- * File Version
- */
 export class FileVersion extends StorageFile {
 
     /**
@@ -7960,26 +7870,20 @@ export class FileVersion extends StorageFile {
         return super.getAttributeTypeMap().concat(FileVersion.attributeTypeMap);
     }
 
-    /**
-     * File Version ID.
-     */
     public versionId: string;
     
-    /**
-     * Specifies whether the file is (true) or is not (false) the latest version of an file.
-     */
     public isLatest: boolean;
     
 
     /**
-     * File Version
-     * @param name File or folder name.
-     * @param isFolder True if it is a folder.
-     * @param modifiedDate File or folder last modified DateTime.
-     * @param size File or folder size.
-     * @param path File or folder path.
-     * @param versionId File Version ID.
-     * @param isLatest Specifies whether the file is (true) or is not (false) the latest version of an file.
+     * 
+     * @param name 
+     * @param isFolder 
+     * @param modifiedDate 
+     * @param size 
+     * @param path 
+     * @param versionId 
+     * @param isLatest 
      */
     public constructor(
         name?: string,
@@ -8550,7 +8454,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
         {
             name: "emailFile",
             baseName: "emailFile",
-            type: "StorageFileLocation",
+            type: "any",
         }    ];
 
     /**
@@ -8563,7 +8467,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
     /**
      * Email document (*.eml) file location in storage             
      */
-    public emailFile: StorageFileLocation;
+    public emailFile: any;
     
 
     /**
@@ -8577,7 +8481,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        emailFile?: StorageFileLocation) {
+        emailFile?: any) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -8646,7 +8550,7 @@ export class SendEmailModelRq extends AccountBaseRequest {
         {
             name: "message",
             baseName: "message",
-            type: "EmailDto",
+            type: "any",
         }    ];
 
     /**
@@ -8659,7 +8563,7 @@ export class SendEmailModelRq extends AccountBaseRequest {
     /**
      * Message to send             
      */
-    public message: EmailDto;
+    public message: any;
     
 
     /**
@@ -8673,7 +8577,7 @@ export class SendEmailModelRq extends AccountBaseRequest {
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        message?: EmailDto) {
+        message?: any) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -8800,7 +8704,7 @@ export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
         {
             name: "outFolder",
             baseName: "outFolder",
-            type: "StorageFolderLocation",
+            type: "any",
         }    ];
 
     /**
@@ -8813,7 +8717,7 @@ export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
     /**
      * Parse output folder location on storage             
      */
-    public outFolder: StorageFolderLocation;
+    public outFolder: any;
     
 
     /**
@@ -8825,7 +8729,7 @@ export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
     public constructor(
         options?: AiBcrOptions,
         images?: Array<AiBcrImageStorageFile>,
-        outFolder?: StorageFolderLocation) {
+        outFolder?: any) {
         super();
         this.options = options;
         this.images = images;
@@ -8845,7 +8749,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
         {
             name: "emailFile",
             baseName: "emailFile",
-            type: "StorageFileLocation",
+            type: "any",
         }    ];
 
     /**
@@ -8858,7 +8762,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
     /**
      * Email document file location in storage             
      */
-    public emailFile: StorageFileLocation;
+    public emailFile: any;
     
 
     /**
@@ -8876,7 +8780,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
         storageFolder?: StorageFolderLocation,
         folder?: string,
         markAsSent?: boolean,
-        emailFile?: StorageFileLocation) {
+        emailFile?: any) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -8953,7 +8857,7 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
         {
             name: "message",
             baseName: "message",
-            type: "EmailDto",
+            type: "any",
         }    ];
 
     /**
@@ -8966,7 +8870,7 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
     /**
      * Email document             
      */
-    public message: EmailDto;
+    public message: any;
     
 
     /**
@@ -8984,7 +8888,7 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
         storageFolder?: StorageFolderLocation,
         folder?: string,
         markAsSent?: boolean,
-        message?: EmailDto) {
+        message?: any) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;

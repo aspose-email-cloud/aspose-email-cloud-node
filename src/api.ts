@@ -1591,7 +1591,7 @@ export class EmailApi {
     }
 
     /**
-     * Copy file
+     * 
      * @param requestObj contains request parameters
      */
     public async copyFile(requestObj: requestModels.CopyFileRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -1651,7 +1651,7 @@ export class EmailApi {
     }
 
     /**
-     * Copy folder
+     * 
      * @param requestObj contains request parameters
      */
     public async copyFolder(requestObj: requestModels.CopyFolderRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -1888,7 +1888,7 @@ export class EmailApi {
     }
 
     /**
-     * Create the folder
+     * 
      * @param requestObj contains request parameters
      */
     public async createFolder(requestObj: requestModels.CreateFolderRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -2219,7 +2219,7 @@ export class EmailApi {
     }
 
     /**
-     * Delete file
+     * 
      * @param requestObj contains request parameters
      */
     public async deleteFile(requestObj: requestModels.DeleteFileRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -2266,7 +2266,7 @@ export class EmailApi {
     }
 
     /**
-     * Delete folder
+     * 
      * @param requestObj contains request parameters
      */
     public async deleteFolder(requestObj: requestModels.DeleteFolderRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -2536,7 +2536,7 @@ export class EmailApi {
     }
 
     /**
-     * Download file
+     * 
      * @param requestObj contains request parameters
      */
     public async downloadFile(requestObj: requestModels.DownloadFileRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
@@ -3616,7 +3616,7 @@ export class EmailApi {
     }
 
     /**
-     * Get disc usage
+     * 
      * @param requestObj contains request parameters
      */
     public async getDiscUsage(requestObj: requestModels.GetDiscUsageRequest): Promise<{response: request.RequestResponse, body: model.DiscUsage}> {
@@ -4147,7 +4147,7 @@ export class EmailApi {
     }
 
     /**
-     * Get file versions
+     * 
      * @param requestObj contains request parameters
      */
     public async getFileVersions(requestObj: requestModels.GetFileVersionsRequest): Promise<{response: request.RequestResponse, body: model.FileVersions}> {
@@ -4191,7 +4191,7 @@ export class EmailApi {
     }
 
     /**
-     * Get all files and folders within a folder
+     * 
      * @param requestObj contains request parameters
      */
     public async getFilesList(requestObj: requestModels.GetFilesListRequest): Promise<{response: request.RequestResponse, body: model.FilesList}> {
@@ -4840,7 +4840,7 @@ export class EmailApi {
     }
 
     /**
-     * Move file
+     * 
      * @param requestObj contains request parameters
      */
     public async moveFile(requestObj: requestModels.MoveFileRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -4900,7 +4900,7 @@ export class EmailApi {
     }
 
     /**
-     * Move folder
+     * 
      * @param requestObj contains request parameters
      */
     public async moveFolder(requestObj: requestModels.MoveFolderRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -4956,7 +4956,7 @@ export class EmailApi {
     }
 
     /**
-     * Check if file or folder exists
+     * 
      * @param requestObj contains request parameters
      */
     public async objectExists(requestObj: requestModels.ObjectExistsRequest): Promise<{response: request.RequestResponse, body: model.ObjectExist}> {
@@ -5560,7 +5560,7 @@ export class EmailApi {
     }
 
     /**
-     * Check if storage exists
+     * 
      * @param requestObj contains request parameters
      */
     public async storageExists(requestObj: requestModels.StorageExistsRequest): Promise<{response: request.RequestResponse, body: model.StorageExist}> {
@@ -5741,7 +5741,7 @@ export class EmailApi {
     }
 
     /**
-     * Upload file
+     * 
      * @param requestObj contains request parameters
      */
     public async uploadFile(requestObj: requestModels.UploadFileRequest): Promise<{response: request.RequestResponse, body: model.FilesUploadResult}> {

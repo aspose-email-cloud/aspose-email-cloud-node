@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**versionId** | **string** | File Version ID. | [optional] [default to undefined]
-**isLatest** | **boolean** | Specifies whether the file is (true) or is not (false) the latest version of an file. | [default to undefined]
+**versionId** | **string** |  | [optional] [default to undefined]
+**isLatest** | **boolean** |  | [default to undefined]
 
  Parent class: [StorageFile](StorageFile.md)
 

@@ -889,7 +889,7 @@ Name | Type | Description  | Notes
 public async copyFile(requestObj: CopyFileRequest) : Promise<{response: RequestResponse, body?: any; }>
 ```
 
-Copy file
+
 
 ### Return type
 
@@ -907,11 +907,11 @@ new CopyFileRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **srcPath** | **string**| Source file path e.g. &#39;/folder/file.ext&#39; | 
- **destPath** | **string**| Destination file path | 
- **srcStorageName** | **string**| Source storage name | [optional] 
- **destStorageName** | **string**| Destination storage name | [optional] 
- **versionId** | **string**| File version ID to copy | [optional] 
+ **srcPath** | **string**|  | 
+ **destPath** | **string**|  | 
+ **srcStorageName** | **string**|  | [optional] 
+ **destStorageName** | **string**|  | [optional] 
+ **versionId** | **string**|  | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -922,7 +922,7 @@ Name | Type | Description  | Notes
 public async copyFolder(requestObj: CopyFolderRequest) : Promise<{response: RequestResponse, body?: any; }>
 ```
 
-Copy folder
+
 
 ### Return type
 
@@ -939,10 +939,10 @@ new CopyFolderRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **srcPath** | **string**| Source folder path e.g. &#39;/src&#39; | 
- **destPath** | **string**| Destination folder path e.g. &#39;/dst&#39; | 
- **srcStorageName** | **string**| Source storage name | [optional] 
- **destStorageName** | **string**| Destination storage name | [optional] 
+ **srcPath** | **string**|  | 
+ **destPath** | **string**|  | 
+ **srcStorageName** | **string**|  | [optional] 
+ **destStorageName** | **string**|  | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1061,7 +1061,7 @@ Name | Type | Description  | Notes
 public async createFolder(requestObj: CreateFolderRequest) : Promise<{response: RequestResponse, body?: any; }>
 ```
 
-Create the folder
+
 
 ### Return type
 
@@ -1076,8 +1076,8 @@ new CreateFolderRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **string**| Folder path to create e.g. &#39;folder_1/folder_2/&#39; | 
- **storageName** | **string**| Storage name | [optional] 
+ **path** | **string**|  | 
+ **storageName** | **string**|  | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1256,7 +1256,7 @@ Name | Type | Description  | Notes
 public async deleteFile(requestObj: DeleteFileRequest) : Promise<{response: RequestResponse, body?: any; }>
 ```
 
-Delete file
+
 
 ### Return type
 
@@ -1272,9 +1272,9 @@ new DeleteFileRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **string**| File path e.g. &#39;/folder/file.ext&#39; | 
- **storageName** | **string**| Storage name | [optional] 
- **versionId** | **string**| File version ID to delete | [optional] 
+ **path** | **string**|  | 
+ **storageName** | **string**|  | [optional] 
+ **versionId** | **string**|  | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1285,7 +1285,7 @@ Name | Type | Description  | Notes
 public async deleteFolder(requestObj: DeleteFolderRequest) : Promise<{response: RequestResponse, body?: any; }>
 ```
 
-Delete folder
+
 
 ### Return type
 
@@ -1301,9 +1301,9 @@ new DeleteFolderRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **string**| Folder path e.g. &#39;/folder&#39; | 
- **storageName** | **string**| Storage name | [optional] 
- **recursive** | **boolean**| Enable to delete folders, subfolders and files | [optional] [default to false]
+ **path** | **string**|  | 
+ **storageName** | **string**|  | [optional] 
+ **recursive** | **boolean**|  | [optional] [default to false]
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1447,7 +1447,7 @@ Name | Type | Description  | Notes
 public async downloadFile(requestObj: DownloadFileRequest) : Promise<{response: RequestResponse, body: Buffer; }>
 ```
 
-Download file
+
 
 ### Return type
 
@@ -1463,9 +1463,9 @@ new DownloadFileRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **string**| File path e.g. &#39;/folder/file.ext&#39; | 
- **storageName** | **string**| Storage name | [optional] 
- **versionId** | **string**| File version ID to download | [optional] 
+ **path** | **string**|  | 
+ **storageName** | **string**|  | [optional] 
+ **versionId** | **string**|  | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2042,7 +2042,7 @@ Name | Type | Description  | Notes
 public async getDiscUsage(requestObj: GetDiscUsageRequest) : Promise<{response: RequestResponse, body: DiscUsage; }>
 ```
 
-Get disc usage
+
 
 ### Return type
 
@@ -2056,7 +2056,7 @@ new GetDiscUsageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storageName** | **string**| Storage name | [optional] 
+ **storageName** | **string**|  | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2336,7 +2336,7 @@ Name | Type | Description  | Notes
 public async getFileVersions(requestObj: GetFileVersionsRequest) : Promise<{response: RequestResponse, body: FileVersions; }>
 ```
 
-Get file versions
+
 
 ### Return type
 
@@ -2351,8 +2351,8 @@ new GetFileVersionsRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **string**| File path e.g. &#39;/file.ext&#39; | 
- **storageName** | **string**| Storage name | [optional] 
+ **path** | **string**|  | 
+ **storageName** | **string**|  | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2363,7 +2363,7 @@ Name | Type | Description  | Notes
 public async getFilesList(requestObj: GetFilesListRequest) : Promise<{response: RequestResponse, body: FilesList; }>
 ```
 
-Get all files and folders within a folder
+
 
 ### Return type
 
@@ -2378,8 +2378,8 @@ new GetFilesListRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **string**| Folder path e.g. &#39;/folder&#39; | 
- **storageName** | **string**| Storage name | [optional] 
+ **path** | **string**|  | 
+ **storageName** | **string**|  | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2735,7 +2735,7 @@ Name | Type | Description  | Notes
 public async moveFile(requestObj: MoveFileRequest) : Promise<{response: RequestResponse, body?: any; }>
 ```
 
-Move file
+
 
 ### Return type
 
@@ -2753,11 +2753,11 @@ new MoveFileRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **srcPath** | **string**| Source file path e.g. &#39;/src.ext&#39; | 
- **destPath** | **string**| Destination file path e.g. &#39;/dest.ext&#39; | 
- **srcStorageName** | **string**| Source storage name | [optional] 
- **destStorageName** | **string**| Destination storage name | [optional] 
- **versionId** | **string**| File version ID to move | [optional] 
+ **srcPath** | **string**|  | 
+ **destPath** | **string**|  | 
+ **srcStorageName** | **string**|  | [optional] 
+ **destStorageName** | **string**|  | [optional] 
+ **versionId** | **string**|  | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2768,7 +2768,7 @@ Name | Type | Description  | Notes
 public async moveFolder(requestObj: MoveFolderRequest) : Promise<{response: RequestResponse, body?: any; }>
 ```
 
-Move folder
+
 
 ### Return type
 
@@ -2785,10 +2785,10 @@ new MoveFolderRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **srcPath** | **string**| Folder path to move e.g. &#39;/folder&#39; | 
- **destPath** | **string**| Destination folder path to move to e.g &#39;/dst&#39; | 
- **srcStorageName** | **string**| Source storage name | [optional] 
- **destStorageName** | **string**| Destination storage name | [optional] 
+ **srcPath** | **string**|  | 
+ **destPath** | **string**|  | 
+ **srcStorageName** | **string**|  | [optional] 
+ **destStorageName** | **string**|  | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2799,7 +2799,7 @@ Name | Type | Description  | Notes
 public async objectExists(requestObj: ObjectExistsRequest) : Promise<{response: RequestResponse, body: ObjectExist; }>
 ```
 
-Check if file or folder exists
+
 
 ### Return type
 
@@ -2815,9 +2815,9 @@ new ObjectExistsRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **string**| File or folder path e.g. &#39;/file.ext&#39; or &#39;/folder&#39; | 
- **storageName** | **string**| Storage name | [optional] 
- **versionId** | **string**| File version ID | [optional] 
+ **path** | **string**|  | 
+ **storageName** | **string**|  | [optional] 
+ **versionId** | **string**|  | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -3169,7 +3169,7 @@ Name | Type | Description  | Notes
 public async storageExists(requestObj: StorageExistsRequest) : Promise<{response: RequestResponse, body: StorageExist; }>
 ```
 
-Check if storage exists
+
 
 ### Return type
 
@@ -3183,7 +3183,7 @@ new StorageExistsRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storageName** | **string**| Storage name | 
+ **storageName** | **string**|  | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -3277,7 +3277,7 @@ Name | Type | Description  | Notes
 public async uploadFile(requestObj: UploadFileRequest) : Promise<{response: RequestResponse, body: FilesUploadResult; }>
 ```
 
-Upload file
+
 
 ### Return type
 
@@ -3293,9 +3293,9 @@ new UploadFileRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **string**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.              | 
+ **path** | **string**|  | 
  **file** | **Buffer**| File to upload | 
- **storageName** | **string**| Storage name | [optional] 
+ **storageName** | **string**|  | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
