@@ -8,23 +8,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: Compile
-        run: |
-          npm cache verify
-          npm install
-          npm run compile
-      - name: Test
-        env:
-          appSid: ${{secrets.appSidProd}}
-          appKey: ${{secrets.appKeyProd}}
-          apiBaseUrl: "https://api.aspose.cloud"
-        run: npm run test-pipeline
-      - name: Publish
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    - run: |
+        npm cache verify
+        npm install
+        npm run compile
+    - run: npm run test-pipeline
+      env:
+        appSid: ${{secrets.appSidProd}}
+        appKey: ${{secrets.appKeyProd}}
+        apiBaseUrl: "https://api.aspose.cloud"
+    - run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NODE_TOKEN}}
