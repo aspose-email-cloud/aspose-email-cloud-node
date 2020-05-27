@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | [**EmailDto**](EmailDto.md) | Message to send              | [optional] [default to undefined]
+**message** | **any** | Message to send              | [optional] [default to undefined]
 
  Parent class: [AccountBaseRequest](AccountBaseRequest.md)
 

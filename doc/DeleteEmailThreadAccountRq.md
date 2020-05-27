@@ -1,11 +1,11 @@
 
-# AiBcrParseStorageRq
+# DeleteEmailThreadAccountRq
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**outFolder** | **any** | Parse output folder location on storage              | [default to undefined]
+**folder** | **string** | Specifies account folder to get thread from              | [optional] [default to undefined]
 
- Parent class: [AiBcrStorageImageRq](AiBcrStorageImageRq.md)
+ Parent class: [AccountBaseRequest](AccountBaseRequest.md)
 
 [[Back to Model list]](README.md#documentation-for-models) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to README]](README.md)

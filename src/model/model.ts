@@ -2,7 +2,7 @@
 /*
 * MIT License
 
-* Copyright (c) 2018 Aspose Pty Ltd
+* Copyright (c) 2018-2020 Aspose Pty Ltd
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -56,12 +56,12 @@ export class AccountBaseRequest {
     }
 
     /**
-     * First account storage file name for receiving emails (or universal one)             
+     * First account storage file name             
      */
     public firstAccount: string;
     
     /**
-     * Second account storage file name for sending emails (ignored if first is universal)             
+     * Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      */
     public secondAccount: string;
     
@@ -73,8 +73,8 @@ export class AccountBaseRequest {
 
     /**
      * EmailClient accounts request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      */
     public constructor(
@@ -2604,9 +2604,6 @@ export class CustomerEvent {
     }
 }
 
-/**
- * Class for disc space information.
- */
 export class DiscUsage {
 
     /**
@@ -2631,21 +2628,15 @@ export class DiscUsage {
         return DiscUsage.attributeTypeMap;
     }
 
-    /**
-     * Application used disc space.
-     */
     public usedSize: number;
     
-    /**
-     * Total disc space.
-     */
     public totalSize: number;
     
 
     /**
-     * Class for disc space information.
-     * @param usedSize Application used disc space.
-     * @param totalSize Total disc space.
+     * 
+     * @param usedSize 
+     * @param totalSize 
      */
     public constructor(
         usedSize?: number,
@@ -3001,6 +2992,11 @@ export class EmailAddress {
             name: "address",
             baseName: "address",
             type: "string",
+        },
+        {
+            name: "originalAddressString",
+            baseName: "originalAddressString",
+            type: "string",
         }    ];
 
     /**
@@ -3035,6 +3031,11 @@ export class EmailAddress {
      */
     public address: string;
     
+    /**
+     * The original e-mail address string             
+     */
+    public originalAddressString: string;
+    
 
     /**
      * Email address.             
@@ -3043,19 +3044,22 @@ export class EmailAddress {
      * @param preferred Defines whether email address is preferred.             
      * @param routingType A routing type for an email.             
      * @param address Email address.             
+     * @param originalAddressString The original e-mail address string             
      */
     public constructor(
         category?: EnumWithCustomOfEmailAddressCategory,
         displayName?: string,
         preferred?: boolean,
         routingType?: string,
-        address?: string) {
+        address?: string,
+        originalAddressString?: string) {
         
         this.category = category;
         this.displayName = displayName;
         this.preferred = preferred;
         this.routingType = routingType;
         this.address = address;
+        this.originalAddressString = originalAddressString;
     }
 }
 
@@ -3092,6 +3096,11 @@ export class EmailClientAccount {
             name: "credentials",
             baseName: "credentials",
             type: "EmailClientAccountCredentials",
+        },
+        {
+            name: "cacheFile",
+            baseName: "cacheFile",
+            type: "StorageFileLocation",
         }    ];
 
     /**
@@ -3126,6 +3135,11 @@ export class EmailClientAccount {
      */
     public credentials: EmailClientAccountCredentials;
     
+    /**
+     * File with messages cache. Used to provide extra functions, which are not supported by account             
+     */
+    public cacheFile: StorageFileLocation;
+    
 
     /**
      * A universal email client account             
@@ -3134,19 +3148,22 @@ export class EmailClientAccount {
      * @param securityOptions Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      * @param protocolType Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
      * @param credentials Email client account credentials             
+     * @param cacheFile File with messages cache. Used to provide extra functions, which are not supported by account             
      */
     public constructor(
         host?: string,
         port?: number,
         securityOptions?: string,
         protocolType?: string,
-        credentials?: EmailClientAccountCredentials) {
+        credentials?: EmailClientAccountCredentials,
+        cacheFile?: StorageFileLocation) {
         
         this.host = host;
         this.port = port;
         this.securityOptions = securityOptions;
         this.protocolType = protocolType;
         this.credentials = credentials;
+        this.cacheFile = cacheFile;
     }
 }
 
@@ -3947,6 +3964,84 @@ export class EmailPropertyResponse {
     }
 }
 
+/**
+ * Email messages thread             
+ */
+export class EmailThread {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "id",
+            baseName: "id",
+            type: "string",
+        },
+        {
+            name: "subject",
+            baseName: "subject",
+            type: "string",
+        },
+        {
+            name: "messages",
+            baseName: "messages",
+            type: "Array<EmailDto>",
+        },
+        {
+            name: "folder",
+            baseName: "folder",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return EmailThread.attributeTypeMap;
+    }
+
+    /**
+     * Thread identifier             
+     */
+    public id: string;
+    
+    /**
+     * Thread subject             
+     */
+    public subject: string;
+    
+    /**
+     * List of messages in thread             
+     */
+    public messages: Array<EmailDto>;
+    
+    /**
+     * Thread folder location             
+     */
+    public folder: string;
+    
+
+    /**
+     * Email messages thread             
+     * @param id Thread identifier             
+     * @param subject Thread subject             
+     * @param messages List of messages in thread             
+     * @param folder Thread folder location             
+     */
+    public constructor(
+        id?: string,
+        subject?: string,
+        messages?: Array<EmailDto>,
+        folder?: string) {
+        
+        this.id = id;
+        this.subject = subject;
+        this.messages = messages;
+        this.folder = folder;
+    }
+}
+
 export class EnumWithCustomOfAssociatedPersonCategory {
 
     /**
@@ -4269,9 +4364,6 @@ export class EnumWithCustomOfUrlCategory {
     }
 }
 
-/**
- * The error details
- */
 export class ErrorDetails {
 
     /**
@@ -4296,21 +4388,15 @@ export class ErrorDetails {
         return ErrorDetails.attributeTypeMap;
     }
 
-    /**
-     * The request id
-     */
     public requestId: string;
     
-    /**
-     * Date
-     */
     public date: Date;
     
 
     /**
-     * The error details
-     * @param requestId The request id
-     * @param date Date
+     * 
+     * @param requestId 
+     * @param date 
      */
     public constructor(
         requestId?: string,
@@ -4321,9 +4407,6 @@ export class ErrorDetails {
     }
 }
 
-/**
- * File versions FileVersion.
- */
 export class FileVersions {
 
     /**
@@ -4343,15 +4426,12 @@ export class FileVersions {
         return FileVersions.attributeTypeMap;
     }
 
-    /**
-     * File versions FileVersion.
-     */
     public value: Array<FileVersion>;
     
 
     /**
-     * File versions FileVersion.
-     * @param value File versions FileVersion.
+     * 
+     * @param value 
      */
     public constructor(
         value?: Array<FileVersion>) {
@@ -4360,9 +4440,6 @@ export class FileVersions {
     }
 }
 
-/**
- * Files list
- */
 export class FilesList {
 
     /**
@@ -4382,15 +4459,12 @@ export class FilesList {
         return FilesList.attributeTypeMap;
     }
 
-    /**
-     * Files and folders contained by folder StorageFile.
-     */
     public value: Array<StorageFile>;
     
 
     /**
-     * Files list
-     * @param value Files and folders contained by folder StorageFile.
+     * 
+     * @param value 
      */
     public constructor(
         value?: Array<StorageFile>) {
@@ -4399,9 +4473,6 @@ export class FilesList {
     }
 }
 
-/**
- * File upload result
- */
 export class FilesUploadResult {
 
     /**
@@ -4426,21 +4497,15 @@ export class FilesUploadResult {
         return FilesUploadResult.attributeTypeMap;
     }
 
-    /**
-     * List of uploaded file names
-     */
     public uploaded: Array<string>;
     
-    /**
-     * List of errors.
-     */
     public errors: Array<Error>;
     
 
     /**
-     * File upload result
-     * @param uploaded List of uploaded file names
-     * @param errors List of errors.
+     * 
+     * @param uploaded 
+     * @param errors 
      */
     public constructor(
         uploaded?: Array<string>,
@@ -4929,6 +4994,39 @@ export class ListResponseOfEmailDto {
     }
 }
 
+export class ListResponseOfEmailThread {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Array<EmailThread>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return ListResponseOfEmailThread.attributeTypeMap;
+    }
+
+    public value: Array<EmailThread>;
+    
+
+    /**
+     * 
+     * @param value 
+     */
+    public constructor(
+        value?: Array<EmailThread>) {
+        
+        this.value = value;
+    }
+}
+
 export class ListResponseOfHierarchicalObject {
 
     /**
@@ -5216,6 +5314,11 @@ export class MailAddress {
             name: "participationStatus",
             baseName: "participationStatus",
             type: "string",
+        },
+        {
+            name: "originalAddressString",
+            baseName: "originalAddressString",
+            type: "string",
         }    ];
 
     /**
@@ -5240,21 +5343,29 @@ export class MailAddress {
      */
     public participationStatus: string;
     
+    /**
+     * The original e-mail address string             
+     */
+    public originalAddressString: string;
+    
 
     /**
      * Represents the address of a message.
      * @param displayName Display name             
      * @param address Address             
      * @param participationStatus Identifies the participation status for the calendar user. Enum, available values: NeedsAction, Accepted, Declined, Tentative, Delegated
+     * @param originalAddressString The original e-mail address string             
      */
     public constructor(
         displayName?: string,
         address?: string,
-        participationStatus?: string) {
+        participationStatus?: string,
+        originalAddressString?: string) {
         
         this.displayName = displayName;
         this.address = address;
         this.participationStatus = participationStatus;
+        this.originalAddressString = originalAddressString;
     }
 }
 
@@ -5349,9 +5460,6 @@ export class MimeResponse {
     }
 }
 
-/**
- * Error
- */
 export class ModelError {
 
     /**
@@ -5386,33 +5494,21 @@ export class ModelError {
         return ModelError.attributeTypeMap;
     }
 
-    /**
-     * Code             
-     */
     public code: string;
     
-    /**
-     * Message             
-     */
     public message: string;
     
-    /**
-     * Description             
-     */
     public description: string;
     
-    /**
-     * Inner Error             
-     */
     public innerError: ErrorDetails;
     
 
     /**
-     * Error
-     * @param code Code             
-     * @param message Message             
-     * @param description Description             
-     * @param innerError Inner Error             
+     * 
+     * @param code 
+     * @param message 
+     * @param description 
+     * @param innerError 
      */
     public constructor(
         code?: string,
@@ -5479,9 +5575,6 @@ export class NameValuePair {
     }
 }
 
-/**
- * Object exists
- */
 export class ObjectExist {
 
     /**
@@ -5506,21 +5599,15 @@ export class ObjectExist {
         return ObjectExist.attributeTypeMap;
     }
 
-    /**
-     * Indicates that the file or folder exists.
-     */
     public exists: boolean;
     
-    /**
-     * True if it is a folder, false if it is a file.
-     */
     public isFolder: boolean;
     
 
     /**
-     * Object exists
-     * @param exists Indicates that the file or folder exists.
-     * @param isFolder True if it is a folder, false if it is a file.
+     * 
+     * @param exists 
+     * @param isFolder 
      */
     public constructor(
         exists?: boolean,
@@ -5921,9 +6008,6 @@ export class SetEmailPropertyRequest {
     }
 }
 
-/**
- * Storage exists
- */
 export class StorageExist {
 
     /**
@@ -5943,15 +6027,12 @@ export class StorageExist {
         return StorageExist.attributeTypeMap;
     }
 
-    /**
-     * Shows that the storage exists.             
-     */
     public exists: boolean;
     
 
     /**
-     * Storage exists
-     * @param exists Shows that the storage exists.             
+     * 
+     * @param exists 
      */
     public constructor(
         exists?: boolean) {
@@ -5960,9 +6041,6 @@ export class StorageExist {
     }
 }
 
-/**
- * File or folder information
- */
 export class StorageFile {
 
     /**
@@ -6002,39 +6080,24 @@ export class StorageFile {
         return StorageFile.attributeTypeMap;
     }
 
-    /**
-     * File or folder name.
-     */
     public name: string;
     
-    /**
-     * True if it is a folder.
-     */
     public isFolder: boolean;
     
-    /**
-     * File or folder last modified DateTime.
-     */
     public modifiedDate: Date;
     
-    /**
-     * File or folder size.
-     */
     public size: number;
     
-    /**
-     * File or folder path.
-     */
     public path: string;
     
 
     /**
-     * File or folder information
-     * @param name File or folder name.
-     * @param isFolder True if it is a folder.
-     * @param modifiedDate File or folder last modified DateTime.
-     * @param size File or folder size.
-     * @param path File or folder path.
+     * 
+     * @param name 
+     * @param isFolder 
+     * @param modifiedDate 
+     * @param size 
+     * @param path 
      */
     public constructor(
         name?: string,
@@ -6680,7 +6743,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
         {
             name: "file",
             baseName: "file",
-            type: "StorageFileLocation",
+            type: "any",
         }    ];
 
     /**
@@ -6693,7 +6756,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
     /**
      * Image location             
      */
-    public file: StorageFileLocation;
+    public file: any;
     
 
     /**
@@ -6703,7 +6766,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
      */
     public constructor(
         isSingle?: boolean,
-        file?: StorageFileLocation) {
+        file?: any) {
         super();
         this.isSingle = isSingle;
         this.file = file;
@@ -6946,8 +7009,8 @@ export class AppendEmailAccountBaseRequest extends AccountBaseRequest {
 
     /**
      * Append email to account request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param folder Email account folder to store a message             
      * @param markAsSent Mark message as sent             
@@ -7170,8 +7233,8 @@ export class CreateFolderBaseRequest extends AccountBaseRequest {
 
     /**
      * Create folder request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param folder Folder name             
      * @param parentFolder Parent folder path             
@@ -7188,6 +7251,54 @@ export class CreateFolderBaseRequest extends AccountBaseRequest {
         this.storageFolder = storageFolder;
         this.folder = folder;
         this.parentFolder = parentFolder;
+    }
+}
+
+/**
+ * Delete thread request             
+ */
+export class DeleteEmailThreadAccountRq extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "folder",
+            baseName: "folder",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(DeleteEmailThreadAccountRq.attributeTypeMap);
+    }
+
+    /**
+     * Specifies account folder to get thread from             
+     */
+    public folder: string;
+    
+
+    /**
+     * Delete thread request             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
+     * @param storageFolder Storage folder location of account files             
+     * @param folder Specifies account folder to get thread from             
+     */
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        folder?: string) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.folder = folder;
     }
 }
 
@@ -7231,8 +7342,8 @@ export class DeleteFolderBaseRequest extends AccountBaseRequest {
 
     /**
      * Delete folder request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param folder Folder name             
      * @param deletePermanently Specifies that folder should be deleted permanently             
@@ -7267,6 +7378,11 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
             type: "string",
         },
         {
+            name: "folder",
+            baseName: "folder",
+            type: "string",
+        },
+        {
             name: "deletePermanently",
             baseName: "deletePermanently",
             type: "boolean",
@@ -7285,6 +7401,11 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
     public messageId: string;
     
     /**
+     * Account folder where message located. Should be specified for some accounts             
+     */
+    public folder: string;
+    
+    /**
      * Specifies that message should be deleted permanently             
      */
     public deletePermanently: boolean;
@@ -7292,10 +7413,11 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
 
     /**
      * Delete message request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param messageId Message identifier             
+     * @param folder Account folder where message located. Should be specified for some accounts             
      * @param deletePermanently Specifies that message should be deleted permanently             
      */
     public constructor(
@@ -7303,12 +7425,14 @@ export class DeleteMessageBaseRequest extends AccountBaseRequest {
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
         messageId?: string,
+        folder?: string,
         deletePermanently?: boolean) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
         this.storageFolder = storageFolder;
         this.messageId = messageId;
+        this.folder = folder;
         this.deletePermanently = deletePermanently;
     }
 }
@@ -7602,7 +7726,7 @@ export class EmailClientAccountPasswordCredentials extends EmailClientAccountCre
 }
 
 /**
- * List of email documents             
+ * List of email documents from storage             
  */
 export class EmailDtoList extends ListResponseOfStorageModelOfEmailDto {
 
@@ -7621,7 +7745,7 @@ export class EmailDtoList extends ListResponseOfStorageModelOfEmailDto {
 
 
     /**
-     * List of email documents             
+     * List of email documents from storage             
      * @param value 
      */
     public constructor(
@@ -7632,8 +7756,96 @@ export class EmailDtoList extends ListResponseOfStorageModelOfEmailDto {
 }
 
 /**
- * File Version
+ * List of email threads             
  */
+export class EmailThreadList extends ListResponseOfEmailThread {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(EmailThreadList.attributeTypeMap);
+    }
+
+
+    /**
+     * List of email threads             
+     * @param value 
+     */
+    public constructor(
+        value?: Array<EmailThread>) {
+        super();
+        this.value = value;
+    }
+}
+
+/**
+ * Request to mark all messages in thread as read or unread             
+ */
+export class EmailThreadReadFlagRq extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "isRead",
+            baseName: "isRead",
+            type: "boolean",
+        },
+        {
+            name: "folder",
+            baseName: "folder",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(EmailThreadReadFlagRq.attributeTypeMap);
+    }
+
+    /**
+     * Read flag to set. \"true\" by default             
+     */
+    public isRead: boolean;
+    
+    /**
+     * Specifies account folder to get thread from             
+     */
+    public folder: string;
+    
+
+    /**
+     * Request to mark all messages in thread as read or unread             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
+     * @param storageFolder Storage folder location of account files             
+     * @param isRead Read flag to set. \"true\" by default             
+     * @param folder Specifies account folder to get thread from             
+     */
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        isRead?: boolean,
+        folder?: string) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.isRead = isRead;
+        this.folder = folder;
+    }
+}
+
 export class FileVersion extends StorageFile {
 
     /**
@@ -7658,26 +7870,20 @@ export class FileVersion extends StorageFile {
         return super.getAttributeTypeMap().concat(FileVersion.attributeTypeMap);
     }
 
-    /**
-     * File Version ID.
-     */
     public versionId: string;
     
-    /**
-     * Specifies whether the file is (true) or is not (false) the latest version of an file.
-     */
     public isLatest: boolean;
     
 
     /**
-     * File Version
-     * @param name File or folder name.
-     * @param isFolder True if it is a folder.
-     * @param modifiedDate File or folder last modified DateTime.
-     * @param size File or folder size.
-     * @param path File or folder path.
-     * @param versionId File Version ID.
-     * @param isLatest Specifies whether the file is (true) or is not (false) the latest version of an file.
+     * 
+     * @param name 
+     * @param isFolder 
+     * @param modifiedDate 
+     * @param size 
+     * @param path 
+     * @param versionId 
+     * @param isLatest 
      */
     public constructor(
         name?: string,
@@ -7911,6 +8117,128 @@ export class LinkedResource extends AttachmentBase {
 }
 
 /**
+ * Move email message request             
+ */
+export class MoveEmailMessageRq extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "messageId",
+            baseName: "messageId",
+            type: "string",
+        },
+        {
+            name: "sourceFolder",
+            baseName: "sourceFolder",
+            type: "string",
+        },
+        {
+            name: "destinationFolder",
+            baseName: "destinationFolder",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MoveEmailMessageRq.attributeTypeMap);
+    }
+
+    /**
+     * Message identifier             
+     */
+    public messageId: string;
+    
+    /**
+     * Message source folder. Account root folder by default             
+     */
+    public sourceFolder: string;
+    
+    /**
+     * Folder in email account to move message to             
+     */
+    public destinationFolder: string;
+    
+
+    /**
+     * Move email message request             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
+     * @param storageFolder Storage folder location of account files             
+     * @param messageId Message identifier             
+     * @param sourceFolder Message source folder. Account root folder by default             
+     * @param destinationFolder Folder in email account to move message to             
+     */
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        messageId?: string,
+        sourceFolder?: string,
+        destinationFolder?: string) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.messageId = messageId;
+        this.sourceFolder = sourceFolder;
+        this.destinationFolder = destinationFolder;
+    }
+}
+
+/**
+ * Email thread move request             
+ */
+export class MoveEmailThreadRq extends AccountBaseRequest {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "destinationFolder",
+            baseName: "destinationFolder",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MoveEmailThreadRq.attributeTypeMap);
+    }
+
+    /**
+     * Email account folder to move thread to             
+     */
+    public destinationFolder: string;
+    
+
+    /**
+     * Email thread move request             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
+     * @param storageFolder Storage folder location of account files             
+     * @param destinationFolder Email account folder to move thread to             
+     */
+    public constructor(
+        firstAccount?: string,
+        secondAccount?: string,
+        storageFolder?: StorageFolderLocation,
+        destinationFolder?: string) {
+        super();
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storageFolder = storageFolder;
+        this.destinationFolder = destinationFolder;
+    }
+}
+
+/**
  * Simple property object             
  */
 export class PrimitiveObject extends BaseObject {
@@ -8126,7 +8454,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
         {
             name: "emailFile",
             baseName: "emailFile",
-            type: "StorageFileLocation",
+            type: "any",
         }    ];
 
     /**
@@ -8139,13 +8467,13 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
     /**
      * Email document (*.eml) file location in storage             
      */
-    public emailFile: StorageFileLocation;
+    public emailFile: any;
     
 
     /**
      * Send email file request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param emailFile Email document (*.eml) file location in storage             
      */
@@ -8153,7 +8481,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        emailFile?: StorageFileLocation) {
+        emailFile?: any) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -8192,8 +8520,8 @@ export class SendEmailMimeBaseRequest extends AccountBaseRequest {
 
     /**
      * Send email MIME request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param base64MimeMessage Email document serialized as MIME             
      */
@@ -8222,7 +8550,7 @@ export class SendEmailModelRq extends AccountBaseRequest {
         {
             name: "message",
             baseName: "message",
-            type: "EmailDto",
+            type: "any",
         }    ];
 
     /**
@@ -8235,13 +8563,13 @@ export class SendEmailModelRq extends AccountBaseRequest {
     /**
      * Message to send             
      */
-    public message: EmailDto;
+    public message: any;
     
 
     /**
      * Send email model request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param message Message to send             
      */
@@ -8249,7 +8577,7 @@ export class SendEmailModelRq extends AccountBaseRequest {
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        message?: EmailDto) {
+        message?: any) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -8298,8 +8626,8 @@ export class SetMessageReadFlagAccountBaseRequest extends AccountBaseRequest {
 
     /**
      * Set message is read request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param messageId Message identifier             
      * @param isRead Specifies that message should be marked read or unread             
@@ -8376,7 +8704,7 @@ export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
         {
             name: "outFolder",
             baseName: "outFolder",
-            type: "StorageFolderLocation",
+            type: "any",
         }    ];
 
     /**
@@ -8389,7 +8717,7 @@ export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
     /**
      * Parse output folder location on storage             
      */
-    public outFolder: StorageFolderLocation;
+    public outFolder: any;
     
 
     /**
@@ -8401,7 +8729,7 @@ export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
     public constructor(
         options?: AiBcrOptions,
         images?: Array<AiBcrImageStorageFile>,
-        outFolder?: StorageFolderLocation) {
+        outFolder?: any) {
         super();
         this.options = options;
         this.images = images;
@@ -8421,7 +8749,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
         {
             name: "emailFile",
             baseName: "emailFile",
-            type: "StorageFileLocation",
+            type: "any",
         }    ];
 
     /**
@@ -8434,13 +8762,13 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
     /**
      * Email document file location in storage             
      */
-    public emailFile: StorageFileLocation;
+    public emailFile: any;
     
 
     /**
      * Append email from storage file to account request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param folder Email account folder to store a message             
      * @param markAsSent Mark message as sent             
@@ -8452,7 +8780,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
         storageFolder?: StorageFolderLocation,
         folder?: string,
         markAsSent?: boolean,
-        emailFile?: StorageFileLocation) {
+        emailFile?: any) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -8493,8 +8821,8 @@ export class AppendEmailMimeBaseRequest extends AppendEmailAccountBaseRequest {
 
     /**
      * Append email from MIME string to account request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param folder Email account folder to store a message             
      * @param markAsSent Mark message as sent             
@@ -8529,7 +8857,7 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
         {
             name: "message",
             baseName: "message",
-            type: "EmailDto",
+            type: "any",
         }    ];
 
     /**
@@ -8542,13 +8870,13 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
     /**
      * Email document             
      */
-    public message: EmailDto;
+    public message: any;
     
 
     /**
      * Append email request             
-     * @param firstAccount First account storage file name for receiving emails (or universal one)             
-     * @param secondAccount Second account storage file name for sending emails (ignored if first is universal)             
+     * @param firstAccount First account storage file name             
+     * @param secondAccount Additional email account (for example, FirstAccount could be IMAP, and second one could be SMTP)             
      * @param storageFolder Storage folder location of account files             
      * @param folder Email account folder to store a message             
      * @param markAsSent Mark message as sent             
@@ -8560,7 +8888,7 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
         storageFolder?: StorageFolderLocation,
         folder?: string,
         markAsSent?: boolean,
-        message?: EmailDto) {
+        message?: any) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -8619,6 +8947,7 @@ const typeMap = {
             EmailProperties,
             EmailProperty,
             EmailPropertyResponse,
+            EmailThread,
             EnumWithCustomOfAssociatedPersonCategory,
             EnumWithCustomOfEmailAddressCategory,
             EnumWithCustomOfEventCategory,
@@ -8641,6 +8970,7 @@ const typeMap = {
             ListResponseOfContactDto,
             ListResponseOfEmailAccountConfig,
             ListResponseOfEmailDto,
+            ListResponseOfEmailThread,
             ListResponseOfHierarchicalObject,
             ListResponseOfHierarchicalObjectResponse,
             ListResponseOfMailServerFolder,
@@ -8686,6 +9016,7 @@ const typeMap = {
             CalendarDtoList,
             ContactDtoList,
             CreateFolderBaseRequest,
+            DeleteEmailThreadAccountRq,
             DeleteFolderBaseRequest,
             DeleteMessageBaseRequest,
             DiscoverEmailConfigOauth,
@@ -8694,11 +9025,15 @@ const typeMap = {
             EmailClientAccountOauthCredentials,
             EmailClientAccountPasswordCredentials,
             EmailDtoList,
+            EmailThreadList,
+            EmailThreadReadFlagRq,
             FileVersion,
             HierarchicalObject,
             IndexedHierarchicalObject,
             IndexedPrimitiveObject,
             LinkedResource,
+            MoveEmailMessageRq,
+            MoveEmailThreadRq,
             PrimitiveObject,
             SaveEmailAccountRequest,
             SaveOAuthEmailAccountRequest,

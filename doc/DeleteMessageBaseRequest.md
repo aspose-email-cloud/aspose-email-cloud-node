@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **messageId** | **string** | Message identifier              | [default to undefined]
+**folder** | **string** | Account folder where message located. Should be specified for some accounts              | [optional] [default to undefined]
 **deletePermanently** | **boolean** | Specifies that message should be deleted permanently              | [default to undefined]
 
  Parent class: [AccountBaseRequest](AccountBaseRequest.md)

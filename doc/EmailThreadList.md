@@ -1,11 +1,10 @@
 
-# AiBcrParseStorageRq
+# EmailThreadList
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**outFolder** | **any** | Parse output folder location on storage              | [default to undefined]
 
- Parent class: [AiBcrStorageImageRq](AiBcrStorageImageRq.md)
+ Parent class: [ListResponseOfEmailThread](ListResponseOfEmailThread.md)
 
 [[Back to Model list]](README.md#documentation-for-models) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to README]](README.md)

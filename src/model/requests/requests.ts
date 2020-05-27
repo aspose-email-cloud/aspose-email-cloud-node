@@ -851,6 +851,34 @@ export class AppendMimeMessageRequest {
 }
 
 /**
+ * Request model for convertCalendar operation.
+ */
+export class ConvertCalendarRequest {
+    /**
+     * File format Enum, available values: Ics, Msg
+     */
+    public format: string;
+
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for convertCalendar operation.
+     * @param format File format Enum, available values: Ics, Msg
+     * @param file File to convert
+     */
+    public constructor(
+        format?: string, 
+        file?: Buffer) {
+        
+        this.format = format;
+        this.file = file;
+    }
+}
+
+/**
  * Request model for convertCalendarModelToAlternate operation.
  */
 export class ConvertCalendarModelToAlternateRequest {
@@ -871,6 +899,98 @@ export class ConvertCalendarModelToAlternateRequest {
 }
 
 /**
+ * Request model for convertCalendarModelToFile operation.
+ */
+export class ConvertCalendarModelToFileRequest {
+    /**
+     * File format Enum, available values: Ics, Msg
+     */
+    public format: string;
+
+    /**
+     * Calendar model to convert
+     */
+    public calendarDto: model.CalendarDto;
+
+    /**
+     * Request model for convertCalendarModelToFile operation.
+     * @param format File format Enum, available values: Ics, Msg
+     * @param calendarDto Calendar model to convert
+     */
+    public constructor(
+        format?: string, 
+        calendarDto?: model.CalendarDto) {
+        
+        this.format = format;
+        this.calendarDto = calendarDto;
+    }
+}
+
+/**
+ * Request model for convertContact operation.
+ */
+export class ConvertContactRequest {
+    /**
+     * File format to convert to Enum, available values: VCard, WebDav, Msg
+     */
+    public destinationFormat: string;
+
+    /**
+     * File format to convert from Enum, available values: VCard, WebDav, Msg
+     */
+    public format: string;
+
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for convertContact operation.
+     * @param destinationFormat File format to convert to Enum, available values: VCard, WebDav, Msg
+     * @param format File format to convert from Enum, available values: VCard, WebDav, Msg
+     * @param file File to convert
+     */
+    public constructor(
+        destinationFormat?: string, 
+        format?: string, 
+        file?: Buffer) {
+        
+        this.destinationFormat = destinationFormat;
+        this.format = format;
+        this.file = file;
+    }
+}
+
+/**
+ * Request model for convertContactModelToFile operation.
+ */
+export class ConvertContactModelToFileRequest {
+    /**
+     * File format Enum, available values: VCard, WebDav, Msg
+     */
+    public destinationFormat: string;
+
+    /**
+     * Contact model to convert
+     */
+    public contactDto: model.ContactDto;
+
+    /**
+     * Request model for convertContactModelToFile operation.
+     * @param destinationFormat File format Enum, available values: VCard, WebDav, Msg
+     * @param contactDto Contact model to convert
+     */
+    public constructor(
+        destinationFormat?: string, 
+        contactDto?: model.ContactDto) {
+        
+        this.destinationFormat = destinationFormat;
+        this.contactDto = contactDto;
+    }
+}
+
+/**
  * Request model for convertEmail operation.
  */
 export class ConvertEmailRequest {
@@ -880,14 +1000,14 @@ export class ConvertEmailRequest {
     public format: string;
 
     /**
-     * File to upload
+     * File to convert
      */
     public file: Buffer;
 
     /**
      * Request model for convertEmail operation.
      * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
-     * @param file File to upload
+     * @param file File to convert
      */
     public constructor(
         format?: string, 
@@ -899,41 +1019,69 @@ export class ConvertEmailRequest {
 }
 
 /**
+ * Request model for convertEmailModelToFile operation.
+ */
+export class ConvertEmailModelToFileRequest {
+    /**
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     */
+    public destinationFormat: string;
+
+    /**
+     * Email model to convert
+     */
+    public emailDto: model.EmailDto;
+
+    /**
+     * Request model for convertEmailModelToFile operation.
+     * @param destinationFormat File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param emailDto Email model to convert
+     */
+    public constructor(
+        destinationFormat?: string, 
+        emailDto?: model.EmailDto) {
+        
+        this.destinationFormat = destinationFormat;
+        this.emailDto = emailDto;
+    }
+}
+
+/**
  * Request model for copyFile operation.
  */
 export class CopyFileRequest {
     /**
-     * Source file path e.g. '/folder/file.ext'
+     * Gets or sets srcPath
      */
     public srcPath: string;
 
     /**
-     * Destination file path
+     * Gets or sets destPath
      */
     public destPath: string;
 
     /**
-     * Source storage name
+     * Gets or sets srcStorageName
      */
     public srcStorageName: string;
 
     /**
-     * Destination storage name
+     * Gets or sets destStorageName
      */
     public destStorageName: string;
 
     /**
-     * File version ID to copy
+     * Gets or sets versionId
      */
     public versionId: string;
 
     /**
      * Request model for copyFile operation.
-     * @param srcPath Source file path e.g. '/folder/file.ext'
-     * @param destPath Destination file path
-     * @param srcStorageName Source storage name
-     * @param destStorageName Destination storage name
-     * @param versionId File version ID to copy
+     * @param srcPath 
+     * @param destPath 
+     * @param srcStorageName 
+     * @param destStorageName 
+     * @param versionId 
      */
     public constructor(
         srcPath?: string, 
@@ -955,31 +1103,31 @@ export class CopyFileRequest {
  */
 export class CopyFolderRequest {
     /**
-     * Source folder path e.g. '/src'
+     * Gets or sets srcPath
      */
     public srcPath: string;
 
     /**
-     * Destination folder path e.g. '/dst'
+     * Gets or sets destPath
      */
     public destPath: string;
 
     /**
-     * Source storage name
+     * Gets or sets srcStorageName
      */
     public srcStorageName: string;
 
     /**
-     * Destination storage name
+     * Gets or sets destStorageName
      */
     public destStorageName: string;
 
     /**
      * Request model for copyFolder operation.
-     * @param srcPath Source folder path e.g. '/src'
-     * @param destPath Destination folder path e.g. '/dst'
-     * @param srcStorageName Source storage name
-     * @param destStorageName Destination storage name
+     * @param srcPath 
+     * @param destPath 
+     * @param srcStorageName 
+     * @param destStorageName 
      */
     public constructor(
         srcPath?: string, 
@@ -1111,19 +1259,19 @@ export class CreateEmailFolderRequest {
  */
 export class CreateFolderRequest {
     /**
-     * Folder path to create e.g. 'folder_1/folder_2/'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for createFolder operation.
-     * @param path Folder path to create e.g. 'folder_1/folder_2/'
-     * @param storageName Storage name
+     * @param path 
+     * @param storageName 
      */
     public constructor(
         path?: string, 
@@ -1299,29 +1447,57 @@ export class DeleteEmailMessageRequest {
 }
 
 /**
+ * Request model for deleteEmailThread operation.
+ */
+export class DeleteEmailThreadRequest {
+    /**
+     * Thread id
+     */
+    public threadId: string;
+
+    /**
+     * Email account specifier
+     */
+    public request: model.DeleteEmailThreadAccountRq;
+
+    /**
+     * Request model for deleteEmailThread operation.
+     * @param threadId Thread id
+     * @param request Email account specifier
+     */
+    public constructor(
+        threadId?: string, 
+        request?: model.DeleteEmailThreadAccountRq) {
+        
+        this.threadId = threadId;
+        this.request = request;
+    }
+}
+
+/**
  * Request model for deleteFile operation.
  */
 export class DeleteFileRequest {
     /**
-     * File path e.g. '/folder/file.ext'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
-     * File version ID to delete
+     * Gets or sets versionId
      */
     public versionId: string;
 
     /**
      * Request model for deleteFile operation.
-     * @param path File path e.g. '/folder/file.ext'
-     * @param storageName Storage name
-     * @param versionId File version ID to delete
+     * @param path 
+     * @param storageName 
+     * @param versionId 
      */
     public constructor(
         path?: string, 
@@ -1339,25 +1515,25 @@ export class DeleteFileRequest {
  */
 export class DeleteFolderRequest {
     /**
-     * Folder path e.g. '/folder'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
-     * Enable to delete folders, subfolders and files
+     * Gets or sets recursive
      */
     public recursive: boolean;
 
     /**
      * Request model for deleteFolder operation.
-     * @param path Folder path e.g. '/folder'
-     * @param storageName Storage name
-     * @param recursive Enable to delete folders, subfolders and files
+     * @param path 
+     * @param storageName 
+     * @param recursive 
      */
     public constructor(
         path?: string, 
@@ -1507,25 +1683,25 @@ export class DiscoverEmailConfigPasswordRequest {
  */
 export class DownloadFileRequest {
     /**
-     * File path e.g. '/folder/file.ext'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
-     * File version ID to download
+     * Gets or sets versionId
      */
     public versionId: string;
 
     /**
      * Request model for downloadFile operation.
-     * @param path File path e.g. '/folder/file.ext'
-     * @param storageName Storage name
-     * @param versionId File version ID to download
+     * @param path 
+     * @param storageName 
+     * @param versionId 
      */
     public constructor(
         path?: string, 
@@ -1553,9 +1729,14 @@ export class FetchEmailMessageRequest {
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      */
     public secondAccount: string;
+
+    /**
+     * Account folder to fetch from (should be specified for some protocols such as IMAP)             
+     */
+    public folder: string;
 
     /**
      * Storage name where account file(s) located
@@ -1571,7 +1752,8 @@ export class FetchEmailMessageRequest {
      * Request model for fetchEmailMessage operation.
      * @param messageId Message identifier
      * @param firstAccount Email account
-     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     * @param folder Account folder to fetch from (should be specified for some protocols such as IMAP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      */
@@ -1579,12 +1761,14 @@ export class FetchEmailMessageRequest {
         messageId?: string, 
         firstAccount?: string, 
         secondAccount?: string, 
+        folder?: string, 
         storage?: string, 
         storageFolder?: string) {
         
         this.messageId = messageId;
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
+        this.folder = folder;
         this.storage = storage;
         this.storageFolder = storageFolder;
     }
@@ -1605,9 +1789,14 @@ export class FetchEmailModelRequest {
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      */
     public secondAccount: string;
+
+    /**
+     * Account folder to fetch from (should be specified for some protocols such as IMAP)             
+     */
+    public folder: string;
 
     /**
      * Storage name where account file(s) located
@@ -1623,7 +1812,8 @@ export class FetchEmailModelRequest {
      * Request model for fetchEmailModel operation.
      * @param messageId Message identifier
      * @param firstAccount Email account
-     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     * @param folder Account folder to fetch from (should be specified for some protocols such as IMAP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      */
@@ -1631,12 +1821,74 @@ export class FetchEmailModelRequest {
         messageId?: string, 
         firstAccount?: string, 
         secondAccount?: string, 
+        folder?: string, 
         storage?: string, 
         storageFolder?: string) {
         
         this.messageId = messageId;
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
+        this.folder = folder;
+        this.storage = storage;
+        this.storageFolder = storageFolder;
+    }
+}
+
+/**
+ * Request model for fetchEmailThreadMessages operation.
+ */
+export class FetchEmailThreadMessagesRequest {
+    /**
+     * Thread identifier
+     */
+    public threadId: string;
+
+    /**
+     * Email account
+     */
+    public firstAccount: string;
+
+    /**
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     */
+    public secondAccount: string;
+
+    /**
+     * Specifies account folder to get thread from             
+     */
+    public folder: string;
+
+    /**
+     * Storage name where account file(s) located
+     */
+    public storage: string;
+
+    /**
+     * Folder in storage where account file(s) located
+     */
+    public storageFolder: string;
+
+    /**
+     * Request model for fetchEmailThreadMessages operation.
+     * @param threadId Thread identifier
+     * @param firstAccount Email account
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     * @param folder Specifies account folder to get thread from             
+     * @param storage Storage name where account file(s) located
+     * @param storageFolder Folder in storage where account file(s) located
+     */
+    public constructor(
+        threadId?: string, 
+        firstAccount?: string, 
+        secondAccount?: string, 
+        folder?: string, 
+        storage?: string, 
+        storageFolder?: string) {
+        
+        this.threadId = threadId;
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.folder = folder;
         this.storage = storage;
         this.storageFolder = storageFolder;
     }
@@ -1675,6 +1927,50 @@ export class GetCalendarRequest {
         this.name = name;
         this.folder = folder;
         this.storage = storage;
+    }
+}
+
+/**
+ * Request model for getCalendarAsFile operation.
+ */
+export class GetCalendarAsFileRequest {
+    /**
+     * Calendar document file name
+     */
+    public fileName: string;
+
+    /**
+     * File format Enum, available values: Ics, Msg
+     */
+    public format: string;
+
+    /**
+     * Storage name
+     */
+    public storage: string;
+
+    /**
+     * Path to folder in storage
+     */
+    public folder: string;
+
+    /**
+     * Request model for getCalendarAsFile operation.
+     * @param fileName Calendar document file name
+     * @param format File format Enum, available values: Ics, Msg
+     * @param storage Storage name
+     * @param folder Path to folder in storage
+     */
+    public constructor(
+        fileName?: string, 
+        format?: string, 
+        storage?: string, 
+        folder?: string) {
+        
+        this.fileName = fileName;
+        this.format = format;
+        this.storage = storage;
+        this.folder = folder;
     }
 }
 
@@ -1719,6 +2015,26 @@ export class GetCalendarAttachmentRequest {
         this.attachment = attachment;
         this.folder = folder;
         this.storage = storage;
+    }
+}
+
+/**
+ * Request model for getCalendarFileAsModel operation.
+ */
+export class GetCalendarFileAsModelRequest {
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for getCalendarFileAsModel operation.
+     * @param file File to convert
+     */
+    public constructor(
+        file?: Buffer) {
+        
+        this.file = file;
     }
 }
 
@@ -1899,6 +2215,58 @@ export class GetCalendarModelListRequest {
 }
 
 /**
+ * Request model for getContactAsFile operation.
+ */
+export class GetContactAsFileRequest {
+    /**
+     * Calendar document file name
+     */
+    public fileName: string;
+
+    /**
+     * File format Enum, available values: VCard, WebDav, Msg
+     */
+    public destinationFormat: string;
+
+    /**
+     * File format to convert from Enum, available values: VCard, WebDav, Msg
+     */
+    public format: string;
+
+    /**
+     * Storage name
+     */
+    public storage: string;
+
+    /**
+     * Path to folder in storage
+     */
+    public folder: string;
+
+    /**
+     * Request model for getContactAsFile operation.
+     * @param fileName Calendar document file name
+     * @param destinationFormat File format Enum, available values: VCard, WebDav, Msg
+     * @param format File format to convert from Enum, available values: VCard, WebDav, Msg
+     * @param storage Storage name
+     * @param folder Path to folder in storage
+     */
+    public constructor(
+        fileName?: string, 
+        destinationFormat?: string, 
+        format?: string, 
+        storage?: string, 
+        folder?: string) {
+        
+        this.fileName = fileName;
+        this.destinationFormat = destinationFormat;
+        this.format = format;
+        this.storage = storage;
+        this.folder = folder;
+    }
+}
+
+/**
  * Request model for getContactAttachment operation.
  */
 export class GetContactAttachmentRequest {
@@ -1947,6 +2315,34 @@ export class GetContactAttachmentRequest {
         this.attachment = attachment;
         this.folder = folder;
         this.storage = storage;
+    }
+}
+
+/**
+ * Request model for getContactFileAsModel operation.
+ */
+export class GetContactFileAsModelRequest {
+    /**
+     * File format Enum, available values: VCard, WebDav, Msg
+     */
+    public format: string;
+
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for getContactFileAsModel operation.
+     * @param format File format Enum, available values: VCard, WebDav, Msg
+     * @param file File to convert
+     */
+    public constructor(
+        format?: string, 
+        file?: Buffer) {
+        
+        this.format = format;
+        this.file = file;
     }
 }
 
@@ -2147,13 +2543,13 @@ export class GetContactPropertiesRequest {
  */
 export class GetDiscUsageRequest {
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for getDiscUsage operation.
-     * @param storageName Storage name
+     * @param storageName 
      */
     public constructor(
         storageName?: string) {
@@ -2359,6 +2755,26 @@ export class GetEmailClientMultiAccountRequest {
 }
 
 /**
+ * Request model for getEmailFileAsModel operation.
+ */
+export class GetEmailFileAsModelRequest {
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for getEmailFileAsModel operation.
+     * @param file File to convert
+     */
+    public constructor(
+        file?: Buffer) {
+        
+        this.file = file;
+    }
+}
+
+/**
  * Request model for getEmailModel operation.
  */
 export class GetEmailModelRequest {
@@ -2503,19 +2919,19 @@ export class GetEmailPropertyRequest {
  */
 export class GetFileVersionsRequest {
     /**
-     * File path e.g. '/file.ext'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for getFileVersions operation.
-     * @param path File path e.g. '/file.ext'
-     * @param storageName Storage name
+     * @param path 
+     * @param storageName 
      */
     public constructor(
         path?: string, 
@@ -2531,19 +2947,19 @@ export class GetFileVersionsRequest {
  */
 export class GetFilesListRequest {
     /**
-     * Folder path e.g. '/folder'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for getFilesList operation.
-     * @param path Folder path e.g. '/folder'
-     * @param storageName Storage name
+     * @param path 
+     * @param storageName 
      */
     public constructor(
         path?: string, 
@@ -2744,7 +3160,7 @@ export class ListEmailFoldersRequest {
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      */
     public secondAccount: string;
 
@@ -2766,7 +3182,7 @@ export class ListEmailFoldersRequest {
     /**
      * Request model for listEmailFolders operation.
      * @param firstAccount Email account
-     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      * @param parentFolder Folder in which subfolders should be listed
@@ -2806,7 +3222,7 @@ export class ListEmailMessagesRequest {
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      */
     public secondAccount: string;
 
@@ -2830,7 +3246,7 @@ export class ListEmailMessagesRequest {
      * @param folder A folder in email account
      * @param queryString A MailQuery search string
      * @param firstAccount Email account
-     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      * @param recursive Specifies that should message be searched in subfolders recursively
@@ -2864,17 +3280,17 @@ export class ListEmailModelsRequest {
     public folder: string;
 
     /**
-     * A MailQuery search string
-     */
-    public queryString: string;
-
-    /**
      * Email account
      */
     public firstAccount: string;
 
     /**
-     * Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * A MailQuery search string
+     */
+    public queryString: string;
+
+    /**
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      */
     public secondAccount: string;
 
@@ -2896,25 +3312,25 @@ export class ListEmailModelsRequest {
     /**
      * Request model for listEmailModels operation.
      * @param folder A folder in email account
-     * @param queryString A MailQuery search string
      * @param firstAccount Email account
-     * @param secondAccount Additional email account (should be specified for POP/IMAP accounts and should be SMTP account)             
+     * @param queryString A MailQuery search string
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
      * @param storage Storage name where account file(s) located
      * @param storageFolder Folder in storage where account file(s) located
      * @param recursive Specifies that should message be searched in subfolders recursively
      */
     public constructor(
         folder?: string, 
-        queryString?: string, 
         firstAccount?: string, 
+        queryString?: string, 
         secondAccount?: string, 
         storage?: string, 
         storageFolder?: string, 
         recursive?: boolean) {
         
         this.folder = folder;
-        this.queryString = queryString;
         this.firstAccount = firstAccount;
+        this.queryString = queryString;
         this.secondAccount = secondAccount;
         this.storage = storage;
         this.storageFolder = storageFolder;
@@ -2923,41 +3339,157 @@ export class ListEmailModelsRequest {
 }
 
 /**
+ * Request model for listEmailThreads operation.
+ */
+export class ListEmailThreadsRequest {
+    /**
+     * A folder in email account.             
+     */
+    public folder: string;
+
+    /**
+     * Email account
+     */
+    public firstAccount: string;
+
+    /**
+     * Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     */
+    public secondAccount: string;
+
+    /**
+     * Storage name where account file(s) located
+     */
+    public storage: string;
+
+    /**
+     * Folder in storage where account file(s) located
+     */
+    public storageFolder: string;
+
+    /**
+     * This parameter is only used in accounts with CacheFile. If true - get new messages and update threads cache for given folder. If false, get only threads from cache without any calls to an email account             
+     */
+    public updateFolderCache: boolean;
+
+    /**
+     * Limit messages cache size if CacheFile is used. Ignored in accounts without limits support             
+     */
+    public messagesCacheLimit: number;
+
+    /**
+     * Request model for listEmailThreads operation.
+     * @param folder A folder in email account.             
+     * @param firstAccount Email account
+     * @param secondAccount Additional email account (for example, firstAccount could be IMAP, and second one could be SMTP)             
+     * @param storage Storage name where account file(s) located
+     * @param storageFolder Folder in storage where account file(s) located
+     * @param updateFolderCache This parameter is only used in accounts with CacheFile. If true - get new messages and update threads cache for given folder. If false, get only threads from cache without any calls to an email account             
+     * @param messagesCacheLimit Limit messages cache size if CacheFile is used. Ignored in accounts without limits support             
+     */
+    public constructor(
+        folder?: string, 
+        firstAccount?: string, 
+        secondAccount?: string, 
+        storage?: string, 
+        storageFolder?: string, 
+        updateFolderCache?: boolean, 
+        messagesCacheLimit?: number) {
+        
+        this.folder = folder;
+        this.firstAccount = firstAccount;
+        this.secondAccount = secondAccount;
+        this.storage = storage;
+        this.storageFolder = storageFolder;
+        this.updateFolderCache = updateFolderCache;
+        this.messagesCacheLimit = messagesCacheLimit;
+    }
+}
+
+/**
+ * Request model for moveEmailMessage operation.
+ */
+export class MoveEmailMessageRequest {
+    /**
+     * Email account, folder and message specifier
+     */
+    public request: model.MoveEmailMessageRq;
+
+    /**
+     * Request model for moveEmailMessage operation.
+     * @param request Email account, folder and message specifier
+     */
+    public constructor(
+        request?: model.MoveEmailMessageRq) {
+        
+        this.request = request;
+    }
+}
+
+/**
+ * Request model for moveEmailThread operation.
+ */
+export class MoveEmailThreadRequest {
+    /**
+     * Thread identifier
+     */
+    public threadId: string;
+
+    /**
+     * Move thread request
+     */
+    public request: model.MoveEmailThreadRq;
+
+    /**
+     * Request model for moveEmailThread operation.
+     * @param threadId Thread identifier
+     * @param request Move thread request
+     */
+    public constructor(
+        threadId?: string, 
+        request?: model.MoveEmailThreadRq) {
+        
+        this.threadId = threadId;
+        this.request = request;
+    }
+}
+
+/**
  * Request model for moveFile operation.
  */
 export class MoveFileRequest {
     /**
-     * Source file path e.g. '/src.ext'
+     * Gets or sets srcPath
      */
     public srcPath: string;
 
     /**
-     * Destination file path e.g. '/dest.ext'
+     * Gets or sets destPath
      */
     public destPath: string;
 
     /**
-     * Source storage name
+     * Gets or sets srcStorageName
      */
     public srcStorageName: string;
 
     /**
-     * Destination storage name
+     * Gets or sets destStorageName
      */
     public destStorageName: string;
 
     /**
-     * File version ID to move
+     * Gets or sets versionId
      */
     public versionId: string;
 
     /**
      * Request model for moveFile operation.
-     * @param srcPath Source file path e.g. '/src.ext'
-     * @param destPath Destination file path e.g. '/dest.ext'
-     * @param srcStorageName Source storage name
-     * @param destStorageName Destination storage name
-     * @param versionId File version ID to move
+     * @param srcPath 
+     * @param destPath 
+     * @param srcStorageName 
+     * @param destStorageName 
+     * @param versionId 
      */
     public constructor(
         srcPath?: string, 
@@ -2979,31 +3511,31 @@ export class MoveFileRequest {
  */
 export class MoveFolderRequest {
     /**
-     * Folder path to move e.g. '/folder'
+     * Gets or sets srcPath
      */
     public srcPath: string;
 
     /**
-     * Destination folder path to move to e.g '/dst'
+     * Gets or sets destPath
      */
     public destPath: string;
 
     /**
-     * Source storage name
+     * Gets or sets srcStorageName
      */
     public srcStorageName: string;
 
     /**
-     * Destination storage name
+     * Gets or sets destStorageName
      */
     public destStorageName: string;
 
     /**
      * Request model for moveFolder operation.
-     * @param srcPath Folder path to move e.g. '/folder'
-     * @param destPath Destination folder path to move to e.g '/dst'
-     * @param srcStorageName Source storage name
-     * @param destStorageName Destination storage name
+     * @param srcPath 
+     * @param destPath 
+     * @param srcStorageName 
+     * @param destStorageName 
      */
     public constructor(
         srcPath?: string, 
@@ -3023,25 +3555,25 @@ export class MoveFolderRequest {
  */
 export class ObjectExistsRequest {
     /**
-     * File or folder path e.g. '/file.ext' or '/folder'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
-     * File version ID
+     * Gets or sets versionId
      */
     public versionId: string;
 
     /**
      * Request model for objectExists operation.
-     * @param path File or folder path e.g. '/file.ext' or '/folder'
-     * @param storageName Storage name
-     * @param versionId File version ID
+     * @param path 
+     * @param storageName 
+     * @param versionId 
      */
     public constructor(
         path?: string, 
@@ -3168,7 +3700,7 @@ export class SaveEmailModelRequest {
     public format: string;
 
     /**
-     * iCalendar file name in storage.
+     * Email document file name in storage.
      */
     public name: string;
 
@@ -3180,7 +3712,7 @@ export class SaveEmailModelRequest {
     /**
      * Request model for saveEmailModel operation.
      * @param format File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
-     * @param name iCalendar file name in storage.
+     * @param name Email document file name in storage.
      * @param rq Calendar properties update request.
      */
     public constructor(
@@ -3351,17 +3883,45 @@ export class SetEmailReadFlagRequest {
 }
 
 /**
+ * Request model for setEmailThreadReadFlag operation.
+ */
+export class SetEmailThreadReadFlagRequest {
+    /**
+     * Thread id
+     */
+    public threadId: string;
+
+    /**
+     * Email account specifier and IsRead flag
+     */
+    public request: model.EmailThreadReadFlagRq;
+
+    /**
+     * Request model for setEmailThreadReadFlag operation.
+     * @param threadId Thread id
+     * @param request Email account specifier and IsRead flag
+     */
+    public constructor(
+        threadId?: string, 
+        request?: model.EmailThreadReadFlagRq) {
+        
+        this.threadId = threadId;
+        this.request = request;
+    }
+}
+
+/**
  * Request model for storageExists operation.
  */
 export class StorageExistsRequest {
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for storageExists operation.
-     * @param storageName Storage name
+     * @param storageName 
      */
     public constructor(
         storageName?: string) {
@@ -3467,7 +4027,7 @@ export class UpdateMapiPropertiesRequest {
  */
 export class UploadFileRequest {
     /**
-     * Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.             
+     * Gets or sets path
      */
     public path: string;
 
@@ -3477,15 +4037,15 @@ export class UploadFileRequest {
     public file: Buffer;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for uploadFile operation.
-     * @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.             
+     * @param path 
      * @param file File to upload
-     * @param storageName Storage name
+     * @param storageName 
      */
     public constructor(
         path?: string, 

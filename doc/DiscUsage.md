@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**usedSize** | **number** | Application used disc space. | [default to undefined]
-**totalSize** | **number** | Total disc space. | [default to undefined]
+**usedSize** | **number** |  | [default to undefined]
+**totalSize** | **number** |  | [default to undefined]
 
 
 

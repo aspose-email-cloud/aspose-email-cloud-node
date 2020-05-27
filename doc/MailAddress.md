@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **displayName** | **string** | Display name              | [optional] [default to undefined]
 **address** | **string** | Address              | [optional] [default to undefined]
 **participationStatus** | **string** | Identifies the participation status for the calendar user. Enum, available values: NeedsAction, Accepted, Declined, Tentative, Delegated | [default to undefined]
+**originalAddressString** | **string** | The original e-mail address string              | [optional] [default to undefined]
 
 
 

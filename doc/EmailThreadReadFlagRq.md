@@ -1,10 +1,11 @@
 
-# SendEmailBaseRequest
+# EmailThreadReadFlagRq
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emailFile** | **any** | Email document (*.eml) file location in storage              | [default to undefined]
+**isRead** | **boolean** | Read flag to set. \"true\" by default              | [default to undefined]
+**folder** | **string** | Specifies account folder to get thread from              | [optional] [default to undefined]
 
  Parent class: [AccountBaseRequest](AccountBaseRequest.md)
 
