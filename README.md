@@ -1,21 +1,50 @@
-﻿# Aspose.Email Cloud SDK for Node.Js [![npm](https://img.shields.io/npm/v/@asposecloud/aspose-email-cloud)](https://www.npmjs.com/package/@asposecloud/aspose-email-cloud) [![License](https://img.shields.io/github/license/aspose-email-cloud/aspose-email-cloud-node)](https://www.npmjs.com/package/@asposecloud/aspose-email-cloud) [![node](https://img.shields.io/node/v/@asposecloud/aspose-email-cloud)](https://www.npmjs.com/package/@asposecloud/aspose-email-cloud)  [![types](https://img.shields.io/npm/types/@asposecloud/aspose-email-cloud)](https://www.npmjs.com/package/@asposecloud/aspose-email-cloud) ![tests](https://github.com/aspose-email-cloud/aspose-email-cloud-node/workflows/tests/badge.svg)
+﻿# Aspose.Email Cloud SDK for Node.Js
+
+[![npm](https://img.shields.io/npm/v/@asposecloud/aspose-email-cloud)](https://www.npmjs.com/package/@asposecloud/aspose-email-cloud) [![License](https://img.shields.io/github/license/aspose-email-cloud/aspose-email-cloud-node)](https://www.npmjs.com/package/@asposecloud/aspose-email-cloud) [![node](https://img.shields.io/node/v/@asposecloud/aspose-email-cloud)](https://www.npmjs.com/package/@asposecloud/aspose-email-cloud)  [![types](https://img.shields.io/npm/types/@asposecloud/aspose-email-cloud)](https://www.npmjs.com/package/@asposecloud/aspose-email-cloud) ![tests](https://github.com/aspose-email-cloud/aspose-email-cloud-node/workflows/tests/badge.svg)
+
 This repository contains Aspose.Email Cloud SDK for Node.Js source code. This SDK allows you to work with Aspose.Email Cloud REST APIs in your Node.Js applications quickly and easily, with zero initial cost.
 
 [Aspose.Email Cloud home](https://products.aspose.cloud/email/family "Aspose.Email Cloud")  
 [API Reference](https://apireference.aspose.cloud/email/)  
 
 # Key features
-
 Aspose.Email Cloud is a REST API for creating email applications that work with standard email file formats. This SDK:
 - Lets developers manipulate different emails’ formats such as Outlook MSG, EML, VCard, and iCalendar files
-- Has a built-in email client
-- Supports AI functionalities:
+- Lets developers manipulate different emails' formats such as Outlook MSG, EML, VCard, and iCalendar files
+- Supports AI functions:
     - The Business card recognition
     - The Name API for parsing and handling personal names
+- Has a built-in email client. This client provides:
+    - Unified REST API for different email protocols: IMAP, POP3, SMTP, EWS, WebDav
+    - Virtual multi-account
+    - Message threads (POP3 accounts are also supported)
+- Email configuration discovery
+- Disposable email address detection
+
+## New features in version 20.5
+- [Manipulating message threads using Aspose.Email Cloud build-in client](https://docs.aspose.cloud/display/emailcloud/Email+Client+Threads)
+- [File converters](https://docs.aspose.cloud/display/emailcloud/Convert+Email%2C+Calendar+and+Contact+Files):
+    - EmailDto<->EML<->MSG<->MHTML
+    - ContactDto<->VCard VCF<->MapiContact MSG
+    - CalendarDto<->iCalendar ICS<->MapiCalendar MSG
+
+See [Release notes](https://docs.aspose.cloud/display/emailcloud/Aspose.Email+Cloud+20.5+Release+Notes)
 
 ## How to use the SDK?
 The complete source code is available in the GIT repository.
-Use [SDK tutorials](https://docs.aspose.cloud/display/emailcloud/SDK+Tutorials), [reference documentation](https://github.com/aspose-email-cloud/aspose-email-cloud-node/blob/master/doc/README.md) and [examples from this document](#usage-examples)
+
+Use [SDK tutorials](https://docs.aspose.cloud/display/emailcloud/SDK+Tutorials):
+- [SDK setup](https://docs.aspose.cloud/display/emailcloud/SDK+setup) - installation, account setup, first API calls
+- [Business Cards Recognition API](https://docs.aspose.cloud/display/emailcloud/Business+Cards+Recognition+API) - convert captured business cards and name card images, into a vCard format
+- [Working with Name API](https://docs.aspose.cloud/display/emailcloud/Working+with+Name+API) - format, genderize, compare, parse, autocomplete names
+- [Email Message Files](https://docs.aspose.cloud/display/emailcloud/Email+Message+Files) - Convert EML to MSG and back, edit EML files, etc.
+- [Quick Start With iCalendar API](https://docs.aspose.cloud/display/emailcloud/Quick+Start+With+iCalendar+API) - Crate and edit iCalendar files
+- [Quick Start With VCard API](https://docs.aspose.cloud/display/emailcloud/Quick+Start+With+VCard+API) - Create and edit VCard files, business card recognition
+- [Quick Start With Email Client](https://docs.aspose.cloud/display/emailcloud/Quick+Start+With+Email+Client) - Setup builtin email client, search/fetch/send/move/delete messages
+- [Email Client Threads](https://docs.aspose.cloud/display/emailcloud/Email+Client+Threads) - Fetch/Move/Delete email message threads using builtin email client
+- [File converters](https://docs.aspose.cloud/display/emailcloud/Convert+Email%2C+Calendar+and+Contact+Files)
+
+SDK reference documentation is available in [this README](doc/README.md)
 
 ### Prerequisites
 To use this SDK, you need an App SID and an App Key; they can be looked up at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) (it requires free registration in Aspose Cloud for this).
@@ -26,6 +55,8 @@ From the command line:
 
 	npm install @asposecloud/aspose-email-cloud --save
 
+See more details about SDK installation in this tutorial: [SDK setup](https://docs.aspose.cloud/display/emailcloud/SDK+setup)
+
 ### Usage examples
 To use the API, you should create an EmailApi object:
 ```typescript
@@ -35,142 +66,18 @@ var api = new EmailApi(appSid, appKey);
 ```
 
 #### Business cards recognition API
-See examples below:
 
-<details open>
-    <summary>Parse business card images to VCard contact files</summary>
+Use `AiBcrParseModel` method to parse business card image to VCard DTO:
 
 ```typescript
-var folder = 'some/folder/on/storage';
-var storage = 'First Storage'; //Your storage name
-var imageData = fs.readFileSync('some/business/card/image/file/on/disk');
-var storageFileName = 'someFileName.png'; //Supports different image formats: PNG, JPEG, BMP, TIFF, GIF, etc.
-// Upload business card image to storage
-await api.uploadFile(new requests.UploadFileRequest(folder + '/' + storageFileName, imageData, storage));
-var outFolder = 'some/other/folder/on/storage'; //Business card recognition results will be saved here
-await api.createFolder(new requests.CreateFolderRequest(outFolder, storage));
-// Call business card recognition action
-var result = await api.aiBcrParseStorage(
-    new requests.AiBcrParseStorageRequest(new models.AiBcrParseStorageRq(
-        null,
-        [new models.AiBcrImageStorageFile( //We can process multiple images in one request
-            true, //the image contains only one business card (you can upload image with multiple cards on it)
-            new models.StorageFileLocation(storage, folder, storageFileName))],
-        new models.StorageFolderLocation(storage, outFolder))));
-// Get file name from recognition result
-var contactFile = result.body.value[0]; //result.body.value can contain multiple files, if we sent multicard images or multiple images
-// You can download the VCard file, which produced by the recognition method ...
-var contactBinary = await api.downloadFile(new requests.DownloadFileRequest(
-    contactFile.folderPath + '/' + contactFile.fileName, storage));
-// ... and print it to console
-console.log(contactBinary.body.toString());
-// Also, you can get VCard object properties’ list using Contact API
-var contactProperties = await api.getContactProperties(new requests.GetContactPropertiesRequest(
-    'vcard', contactFile.fileName, contactFile.folderPath, contactFile.storage));
-//All VCard’s properties are available as a list. Complex properties are represented as hierarchical structures.
-//Let's print all primitive properties’ values:
-contactProperties.body.internalProperties
-    .filter(property => property.type == 'PrimitiveObject')
-    .map(property => property as models.PrimitiveObject)
-    .forEach(property =>
-        console.log('Property name:' + property.name + ' value:' + property.value));
+var imageData = fs.readFileSync("/tmp/alex.png").toString('base64');
+var result = await api.aiBcrParseModel(new requests.AiBcrParseModelRequest(
+    new models.AiBcrBase64Rq(
+        undefined, [new models.AiBcrBase64Image(true, imageData)])));
+var contact = result.body.value[0];
 ```
-</details>
 
-<details>
-    <summary>Parse images directly, without the using of a storage</summary>
-
-```typescript
-//Read image from file and convert it to Base64 string
-var imageData = fs.readFileSync('some/business/card/image/file/on/disk').toString('base64');
-var result = await api.aiBcrParse(new requests.AiBcrParseRequest(
-    new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
-//Result contains all recognized VCard objects (only the one in our case)
-var contactProperties = result.body.value[0];
-//VCard object is available as a list of properties, without any external calls:
-contactProperties.internalProperties
-    .filter(property => property.type == 'PrimitiveObject')
-    .map(property => property as models.PrimitiveObject)
-    .forEach(property =>
-        console.log('Property name:' + property.name + ' value:' + property.value));
-```
-</details>
-
-#### Name API
-See examples below:
-<details open>
-    <summary>Detect a person's gender by name</summary>
-
-```typescript
-var result = await api.aiNameGenderize(new requests.AiNameGenderizeRequest('John Cane'));
-//the result contains a list of hypothesis about a person's gender.
-//all hypothesis include score, so you can use the most scored version, which will be the first in a list:
-console.log(result.body.value[0].gender); //prints 'Male'
-```
-</details>
-
-<details>
-    <summary>Format person's name using defined format</summary>
-
-```typescript
-var result = await api.aiNameFormat(new requests.AiNameFormatRequest(
-    'Mr. John Michael Cane', undefined, undefined, undefined, undefined, '%t%L%f%m'));
-console.log(result.body.name); //prints 'Mr. Cane J. M.'
-```
-</details>
-
-<details>
-    <summary>Compare the names to find out if they belong to the same person or not</summary>
-
-```typescript
-var first = 'John Michael Cane';
-var second = 'Cane J.';
-var result = await api.aiNameMatch(new requests.AiNameMatchRequest(
-    first, second));
-console.log(result.body.similarity > 0.5); //prints 'true', names look similar
-```
-</details>
-
-<details>
-    <summary>Expand a person's name into a list of possible alternatives</summary>
-
-```typescript
-var result = await api.aiNameExpand(new requests.AiNameExpandRequest(
-    'Smith Bobby'));
-var names = result.body.names
-    .map(weighted => weighted.name)
-    .forEach(name => console.log(name)); //prints 'Mr. Smith', 'B. Smith', etc.
-```
-</details>
-
-<details>
-    <summary>Get k most probable names for given starting characters</summary>
-
-```typescript
-var prefix = 'Dav';
-var result = await api.aiNameComplete(new requests.AiNameCompleteRequest(
-    prefix));
-var names = result.body.names
-    .map(weighted => prefix + weighted.name)
-    .forEach(name => console.log(name)); //prints 'David', 'Dave', 'Davis', etc.
-```
-</details>
-
-<details>
-    <summary>Parse out a person's name from an email address.</summary>
-
-```typescript
-var result = await api.aiNameParseEmailAddress(new requests.AiNameParseEmailAddressRequest(
-    'john-cane@gmail.com'));
-var extractedValues = result.body.value
-    .map(extracted => extracted.name)
-    .reduce((accumulator, value) => accumulator.concat(value));
-var givenName = extractedValues.find(extracted => extracted.category == 'GivenName');
-var surname = extractedValues.find(extracted => extracted.category == 'Surname');
-console.log(givenName.value); // 'John'
-console.log(surname.value); // 'Cane'
-```
-</details>
+See more details [here](https://docs.aspose.cloud/display/emailcloud/Parse+Image+To+VCard+File) and [here](https://docs.aspose.cloud/display/emailcloud/Business+Cards+Recognition+API)
 
 # Licensing
 All Aspose.Email Cloud SDKs, helper scripts and templates are licensed under [MIT License](LICENSE).
