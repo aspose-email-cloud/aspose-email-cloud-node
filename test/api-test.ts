@@ -147,7 +147,7 @@ describe('EmailApi', function () {
         expect(surname.value).to.be.equal('Cane');
     });
 
-    it('Parse business card images to VCard contact files #pipeline', async function () {
+    it('Parse business card images to VCard contact files #aiBcr', async function () {
         const imageData = fs.readFileSync('test/data/test_single_0001.png');
         const storageFileName = uuidv4() + '.png';
         // 1) Upload business card image to storage
@@ -177,7 +177,7 @@ describe('EmailApi', function () {
         expect(contactProperties.body.internalProperties.length).to.be.at.least(3);
     });
 
-    it('Business card recognition without storage #pipeline', async function () {
+    it('Business card recognition without storage #aiBcr', async function () {
         const imageData = fs.readFileSync('test/data/test_single_0001.png').toString('base64');
         const result = await api.aiBcrParse(new requests.AiBcrParseRequest(
             new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
@@ -257,7 +257,7 @@ describe('EmailApi', function () {
         expect(exists.body.exists).to.be.ok;
     });
 
-    it('Parse contact model from image #pipeline', async function () {
+    it('Parse contact model from image #aiBcr', async function () {
         const imageData = fs.readFileSync('test/data/test_single_0001.png').toString('base64');
         const result = await api.aiBcrParseModel(new requests.AiBcrParseModelRequest(
             new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
