@@ -720,6 +720,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="convertcalendardtotomapimodel"></a>
+# **convertCalendarDtoToMapiModel**
+
+```typescript
+public async convertCalendarDtoToMapiModel(requestObj: ConvertCalendarDtoToMapiModelRequest) : Promise<{response: RequestResponse, body: MapiCalendarDto; }>
+```
+
+Convert CalendarDto to MapiCalendarDto             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: MapiCalendarDto; }>`
+
+### Request Parameters
+```typescript
+new ConvertCalendarDtoToMapiModelRequest(
+    calendarDto)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **calendarDto** | [**CalendarDto**](CalendarDto.md)| iCalendar model calendar representation | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="convertcalendarmodeltoalternate"></a>
 # **convertCalendarModelToAlternate**
 
@@ -828,6 +853,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="convertcontactmodeltomapimodel"></a>
+# **convertContactModelToMapiModel**
+
+```typescript
+public async convertContactModelToMapiModel(requestObj: ConvertContactModelToMapiModelRequest) : Promise<{response: RequestResponse, body: MapiContactDto; }>
+```
+
+Convert contact model to MAPI model contact representation             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: MapiContactDto; }>`
+
+### Request Parameters
+```typescript
+new ConvertContactModelToMapiModelRequest(
+    contactDto)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contactDto** | [**ContactDto**](ContactDto.md)| Contact model to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="convertemail"></a>
 # **convertEmail**
 
@@ -879,6 +929,187 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **destinationFormat** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
  **emailDto** | [**EmailDto**](EmailDto.md)| Email model to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertemailmodeltomapimodel"></a>
+# **convertEmailModelToMapiModel**
+
+```typescript
+public async convertEmailModelToMapiModel(requestObj: ConvertEmailModelToMapiModelRequest) : Promise<{response: RequestResponse, body: MapiMessageDto; }>
+```
+
+Converts Email model to MAPI model message representation             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: MapiMessageDto; }>`
+
+### Request Parameters
+```typescript
+new ConvertEmailModelToMapiModelRequest(
+    emailDto)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **emailDto** | [**EmailDto**](EmailDto.md)| Email model to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertmapicalendarmodeltocalendarmodel"></a>
+# **convertMapiCalendarModelToCalendarModel**
+
+```typescript
+public async convertMapiCalendarModelToCalendarModel(requestObj: ConvertMapiCalendarModelToCalendarModelRequest) : Promise<{response: RequestResponse, body: CalendarDto; }>
+```
+
+Converts MAPI calendar model to CalendarDto model             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: CalendarDto; }>`
+
+### Request Parameters
+```typescript
+new ConvertMapiCalendarModelToCalendarModelRequest(
+    mapiCalendarDto)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mapiCalendarDto** | [**MapiCalendarDto**](MapiCalendarDto.md)| MAPI calendar model to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertmapicalendarmodeltofile"></a>
+# **convertMapiCalendarModelToFile**
+
+```typescript
+public async convertMapiCalendarModelToFile(requestObj: ConvertMapiCalendarModelToFileRequest) : Promise<{response: RequestResponse, body: Buffer; }>
+```
+
+Converts MAPI calendar model to specified format and returns as file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: Buffer; }>`
+
+### Request Parameters
+```typescript
+new ConvertMapiCalendarModelToFileRequest(
+    destinationFormat,
+    mapiCalendarDto)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **destinationFormat** | **string**| File format Enum, available values: Ics, Msg | 
+ **mapiCalendarDto** | [**MapiCalendarDto**](MapiCalendarDto.md)| MAPI calendar model to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertmapicontactmodeltocontactmodel"></a>
+# **convertMapiContactModelToContactModel**
+
+```typescript
+public async convertMapiContactModelToContactModel(requestObj: ConvertMapiContactModelToContactModelRequest) : Promise<{response: RequestResponse, body: ContactDto; }>
+```
+
+Converts MAPI contact model to Contact model             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: ContactDto; }>`
+
+### Request Parameters
+```typescript
+new ConvertMapiContactModelToContactModelRequest(
+    mapiContactDto)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mapiContactDto** | [**MapiContactDto**](MapiContactDto.md)| MAPI contact model to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertmapicontactmodeltofile"></a>
+# **convertMapiContactModelToFile**
+
+```typescript
+public async convertMapiContactModelToFile(requestObj: ConvertMapiContactModelToFileRequest) : Promise<{response: RequestResponse, body: Buffer; }>
+```
+
+Converts MAPI contact model to specified format and returns as file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: Buffer; }>`
+
+### Request Parameters
+```typescript
+new ConvertMapiContactModelToFileRequest(
+    destinationFormat,
+    mapiContactDto)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **destinationFormat** | **string**| File format Enum, available values: VCard, WebDav, Msg | 
+ **mapiContactDto** | [**MapiContactDto**](MapiContactDto.md)| MAPI contact model to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertmapimessagemodeltoemailmodel"></a>
+# **convertMapiMessageModelToEmailModel**
+
+```typescript
+public async convertMapiMessageModelToEmailModel(requestObj: ConvertMapiMessageModelToEmailModelRequest) : Promise<{response: RequestResponse, body: EmailDto; }>
+```
+
+Converts MAPI message model to EmailDto model             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: EmailDto; }>`
+
+### Request Parameters
+```typescript
+new ConvertMapiMessageModelToEmailModelRequest(
+    mapiMessage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mapiMessage** | [**MapiMessageDto**](MapiMessageDto.md)| MAPI message model to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertmapimessagemodeltofile"></a>
+# **convertMapiMessageModelToFile**
+
+```typescript
+public async convertMapiMessageModelToFile(requestObj: ConvertMapiMessageModelToFileRequest) : Promise<{response: RequestResponse, body: Buffer; }>
+```
+
+Converts MAPI message model to specified format and returns as file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: Buffer; }>`
+
+### Request Parameters
+```typescript
+new ConvertMapiMessageModelToFileRequest(
+    destinationFormat,
+    mapiMessage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **destinationFormat** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
+ **mapiMessage** | [**MapiMessageDto**](MapiMessageDto.md)| MAPI message model to convert | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1665,6 +1896,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="getcalendarfileasmapimodel"></a>
+# **getCalendarFileAsMapiModel**
+
+```typescript
+public async getCalendarFileAsMapiModel(requestObj: GetCalendarFileAsMapiModelRequest) : Promise<{response: RequestResponse, body: MapiCalendarDto; }>
+```
+
+Converts calendar file to a MAPI model representation             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: MapiCalendarDto; }>`
+
+### Request Parameters
+```typescript
+new GetCalendarFileAsMapiModelRequest(
+    file)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **Buffer**| File to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="getcalendarfileasmodel"></a>
 # **getCalendarFileAsModel**
 
@@ -1877,6 +2133,33 @@ Name | Type | Description  | Notes
  **attachment** | **string**| Attachment name or index | 
  **folder** | **string**| Path to folder in storage | [optional] 
  **storage** | **string**| Storage name | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="getcontactfileasmapimodel"></a>
+# **getContactFileAsMapiModel**
+
+```typescript
+public async getContactFileAsMapiModel(requestObj: GetContactFileAsMapiModelRequest) : Promise<{response: RequestResponse, body: MapiContactDto; }>
+```
+
+Converts contact file to a MAPI model representation             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: MapiContactDto; }>`
+
+### Request Parameters
+```typescript
+new GetContactFileAsMapiModelRequest(
+    fileFormat,
+    file)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fileFormat** | **string**| File format Enum, available values: VCard, WebDav, Msg | 
+ **file** | **Buffer**| File to convert | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2209,6 +2492,33 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="getemailfileasmapimodel"></a>
+# **getEmailFileAsMapiModel**
+
+```typescript
+public async getEmailFileAsMapiModel(requestObj: GetEmailFileAsMapiModelRequest) : Promise<{response: RequestResponse, body: MapiMessageDto; }>
+```
+
+Converts email file to a MAPI model representation             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: MapiMessageDto; }>`
+
+### Request Parameters
+```typescript
+new GetEmailFileAsMapiModelRequest(
+    fileFormat,
+    file)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fileFormat** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
+ **file** | **Buffer**| File to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="getemailfileasmodel"></a>
 # **getEmailFileAsModel**
 
@@ -2443,6 +2753,66 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+<a name="getmapicalendarmodel"></a>
+# **getMapiCalendarModel**
+
+```typescript
+public async getMapiCalendarModel(requestObj: GetMapiCalendarModelRequest) : Promise<{response: RequestResponse, body: MapiCalendarDto; }>
+```
+
+Get calendar file             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: MapiCalendarDto; }>`
+
+### Request Parameters
+```typescript
+new GetMapiCalendarModelRequest(
+    name,
+    folder=folder,
+    storage=storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Calendar file name in storage | 
+ **folder** | **string**| Path to folder in storage | [optional] 
+ **storage** | **string**| Storage name | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="getmapicontactmodel"></a>
+# **getMapiContactModel**
+
+```typescript
+public async getMapiContactModel(requestObj: GetMapiContactModelRequest) : Promise<{response: RequestResponse, body: MapiContactDto; }>
+```
+
+Get contact document.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: MapiContactDto; }>`
+
+### Request Parameters
+```typescript
+new GetMapiContactModelRequest(
+    format,
+    name,
+    folder=folder,
+    storage=storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| Contact document format. Enum, available values: VCard, WebDav, Msg | 
+ **name** | **string**| Contact document file name. | 
+ **folder** | **string**| Path to folder in storage. | [optional] 
+ **storage** | **string**| Storage name. | [optional] 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 <a name="getmapilist"></a>
 # **getMapiList**
 
@@ -2471,6 +2841,37 @@ Name | Type | Description  | Notes
  **storage** | **string**| Storage name | [optional] 
  **itemsPerPage** | **number**| Count of items on page | [optional] [default to 10]
  **pageNumber** | **number**| Page number | [optional] [default to 0]
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="getmapimessagemodel"></a>
+# **getMapiMessageModel**
+
+```typescript
+public async getMapiMessageModel(requestObj: GetMapiMessageModelRequest) : Promise<{response: RequestResponse, body: MapiMessageDto; }>
+```
+
+MAPI message document.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: MapiMessageDto; }>`
+
+### Request Parameters
+```typescript
+new GetMapiMessageModelRequest(
+    format,
+    name,
+    folder=folder,
+    storage=storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
+ **name** | **string**| Email document file name. | 
+ **folder** | **string**| Path to folder in storage. | [optional] 
+ **storage** | **string**| Storage name. | [optional] 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2844,7 +3245,7 @@ new SaveCalendarModelRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| iCalendar file name in storage | 
- **rq** | [**StorageModelRqOfCalendarDto**](StorageModelRqOfCalendarDto.md)| Calendar properties update request | 
+ **rq** | [**StorageModelRqOfCalendarDto**](StorageModelRqOfCalendarDto.md)| Calendar update request | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2873,7 +3274,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **format** | **string**| Contact document format. Enum, available values: VCard, WebDav, Msg | 
  **name** | **string**| Contact document file name. | 
- **rq** | [**StorageModelRqOfContactDto**](StorageModelRqOfContactDto.md)| Create contact request. | 
+ **rq** | [**StorageModelRqOfContactDto**](StorageModelRqOfContactDto.md)| Create/Update contact request. | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2952,7 +3353,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **format** | **string**| File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
  **name** | **string**| Email document file name in storage. | 
- **rq** | [**StorageModelRqOfEmailDto**](StorageModelRqOfEmailDto.md)| Calendar properties update request. | 
+ **rq** | [**StorageModelRqOfEmailDto**](StorageModelRqOfEmailDto.md)| Email document create/update request. | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -3003,6 +3404,93 @@ new SaveMailOAuthAccountRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **request** | [**SaveOAuthEmailAccountRequest**](SaveOAuthEmailAccountRequest.md)| Email account information | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="savemapicalendarmodel"></a>
+# **saveMapiCalendarModel**
+
+```typescript
+public async saveMapiCalendarModel(requestObj: SaveMapiCalendarModelRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Save MAPI Calendar to storage.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new SaveMapiCalendarModelRequest(
+    name,
+    format,
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Calendar file name in storage | 
+ **format** | **string**| File format Enum, available values: Ics, Msg | 
+ **rq** | [**StorageModelRqOfMapiCalendarDto**](StorageModelRqOfMapiCalendarDto.md)| Calendar update request | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="savemapicontactmodel"></a>
+# **saveMapiContactModel**
+
+```typescript
+public async saveMapiContactModel(requestObj: SaveMapiContactModelRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Save contact.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new SaveMapiContactModelRequest(
+    format,
+    name,
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| Contact document format. Enum, available values: VCard, WebDav, Msg | 
+ **name** | **string**| Contact document file name. | 
+ **rq** | [**StorageModelRqOfMapiContactDto**](StorageModelRqOfMapiContactDto.md)| Create/Update contact request. | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="savemapimessagemodel"></a>
+# **saveMapiMessageModel**
+
+```typescript
+public async saveMapiMessageModel(requestObj: SaveMapiMessageModelRequest) : Promise<{response: RequestResponse, body?: any; }>
+```
+
+Save MAPI message.             
+
+### Return type
+
+`Promise<{response: RequestResponse, body?: any; }>`
+
+### Request Parameters
+```typescript
+new SaveMapiMessageModelRequest(
+    format,
+    name,
+    rq)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html | 
+ **name** | **string**| Message file name in storage. | 
+ **rq** | [**StorageModelRqOfMapiMessageDto**](StorageModelRqOfMapiMessageDto.md)| Message create/update request. | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
