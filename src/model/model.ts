@@ -1397,6 +1397,11 @@ export class CalendarDto {
             type: "string",
         },
         {
+            name: "recurrence",
+            baseName: "recurrence",
+            type: "RecurrencePatternDto",
+        },
+        {
             name: "reminders",
             baseName: "reminders",
             type: "Array<CalendarReminder>",
@@ -1505,9 +1510,14 @@ export class CalendarDto {
     public organizer: MailAddress;
     
     /**
-     * String representation of recurrence pattern (See iCalendar RFC, \"Recurrence rule\" section). For example:               For daily recurrence:         \"FREQ=DAILY;COUNT=10;WKST=MO\"                   For monthly recurrence:         \"BYSETPOS=1;BYDAY=MO,TU,WE,TH,FR;FREQ=MONTHLY;INTERVAL=10;WKST=MO\"                   For yearly recurrence:         \"BYMONTHDAY=30;BYMONTH=1;FREQ=YEARLY;WKST=MO\"                   
+     * Deprecated, use 'Recurrence' property. String representation of recurrence pattern (See iCalendar RFC, \"Recurrence rule\" section). For example:               For daily recurrence:         \"FREQ=DAILY;COUNT=10;WKST=MO\"                   For monthly recurrence:         \"BYSETPOS=1;BYDAY=MO,TU,WE,TH,FR;FREQ=MONTHLY;INTERVAL=10;WKST=MO\"                   For yearly recurrence:         \"BYMONTHDAY=30;BYMONTH=1;FREQ=YEARLY;WKST=MO\"                   
      */
     public recurrenceString: string;
+    
+    /**
+     * Recurrence pattern             
+     */
+    public recurrence: RecurrencePatternDto;
     
     /**
      * Reminders.
@@ -1560,7 +1570,8 @@ export class CalendarDto {
      * @param microsoftIntendedStatus Specifies the INTENDED status. Enum, available values: NotDefined, Free, Tentative, Busy, Oof
      * @param optionalAttendees Optional attendees.             
      * @param organizer Event organizer.             
-     * @param recurrenceString String representation of recurrence pattern (See iCalendar RFC, \"Recurrence rule\" section). For example:               For daily recurrence:         \"FREQ=DAILY;COUNT=10;WKST=MO\"                   For monthly recurrence:         \"BYSETPOS=1;BYDAY=MO,TU,WE,TH,FR;FREQ=MONTHLY;INTERVAL=10;WKST=MO\"                   For yearly recurrence:         \"BYMONTHDAY=30;BYMONTH=1;FREQ=YEARLY;WKST=MO\"                   
+     * @param recurrenceString Deprecated, use 'Recurrence' property. String representation of recurrence pattern (See iCalendar RFC, \"Recurrence rule\" section). For example:               For daily recurrence:         \"FREQ=DAILY;COUNT=10;WKST=MO\"                   For monthly recurrence:         \"BYSETPOS=1;BYDAY=MO,TU,WE,TH,FR;FREQ=MONTHLY;INTERVAL=10;WKST=MO\"                   For yearly recurrence:         \"BYMONTHDAY=30;BYMONTH=1;FREQ=YEARLY;WKST=MO\"                   
+     * @param recurrence Recurrence pattern             
      * @param reminders Reminders.
      * @param sequenceId The sequence id. Read only.
      * @param startDate Start date.
@@ -1584,6 +1595,7 @@ export class CalendarDto {
         optionalAttendees?: Array<MailAddress>,
         organizer?: MailAddress,
         recurrenceString?: string,
+        recurrence?: RecurrencePatternDto,
         reminders?: Array<CalendarReminder>,
         sequenceId?: string,
         startDate?: Date,
@@ -1606,6 +1618,7 @@ export class CalendarDto {
         this.optionalAttendees = optionalAttendees;
         this.organizer = organizer;
         this.recurrenceString = recurrenceString;
+        this.recurrence = recurrence;
         this.reminders = reminders;
         this.sequenceId = sequenceId;
         this.startDate = startDate;
@@ -7861,6 +7874,97 @@ export class MapiContactTelephonePropertySetDto {
 }
 
 /**
+ * Refers to the group of properties that define the e-mail address or fax address.             
+ */
+export class MapiElectronicAddressDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "addressType",
+            baseName: "addressType",
+            type: "string",
+        },
+        {
+            name: "emailAddress",
+            baseName: "emailAddress",
+            type: "string",
+        },
+        {
+            name: "displayName",
+            baseName: "displayName",
+            type: "string",
+        },
+        {
+            name: "faxNumber",
+            baseName: "faxNumber",
+            type: "string",
+        },
+        {
+            name: "originalDisplayName",
+            baseName: "originalDisplayName",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiElectronicAddressDto.attributeTypeMap;
+    }
+
+    /**
+     * Address type.             
+     */
+    public addressType: string;
+    
+    /**
+     * Email address.             
+     */
+    public emailAddress: string;
+    
+    /**
+     * User-readable display name for the e-mail address.             
+     */
+    public displayName: string;
+    
+    /**
+     * Telephone number of the mail user's primary fax machine.             
+     */
+    public faxNumber: string;
+    
+    /**
+     * SMTP e-mail address that  corresponds to the e-mail address.             
+     */
+    public originalDisplayName: string;
+    
+
+    /**
+     * Refers to the group of properties that define the e-mail address or fax address.             
+     * @param addressType Address type.             
+     * @param emailAddress Email address.             
+     * @param displayName User-readable display name for the e-mail address.             
+     * @param faxNumber Telephone number of the mail user's primary fax machine.             
+     * @param originalDisplayName SMTP e-mail address that  corresponds to the e-mail address.             
+     */
+    public constructor(
+        addressType?: string,
+        emailAddress?: string,
+        displayName?: string,
+        faxNumber?: string,
+        originalDisplayName?: string) {
+        
+        this.addressType = addressType;
+        this.emailAddress = emailAddress;
+        this.displayName = displayName;
+        this.faxNumber = faxNumber;
+        this.originalDisplayName = originalDisplayName;
+    }
+}
+
+/**
  * Base Dto for MapiMessage, MapiCalendar or MapiContact             
  */
 export class MapiMessageItemBaseDto {
@@ -8716,6 +8820,101 @@ export class PostalAddress {
         this.preferred = preferred;
         this.stateOrProvince = stateOrProvince;
         this.street = street;
+    }
+}
+
+/**
+ * iCalendar recurrence pattern.             
+ */
+export class RecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "interval",
+            baseName: "interval",
+            type: "number",
+        },
+        {
+            name: "occurs",
+            baseName: "occurs",
+            type: "number",
+        },
+        {
+            name: "endDate",
+            baseName: "endDate",
+            type: "Date",
+        },
+        {
+            name: "weekStart",
+            baseName: "weekStart",
+            type: "string",
+        },
+        {
+            name: "discriminator",
+            baseName: "discriminator",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return RecurrencePatternDto.attributeTypeMap;
+    }
+
+    /**
+     * Number of recurrence units.             
+     */
+    public interval: number;
+    
+    /**
+     * Number of occurrences of the recurrence pattern.             
+     */
+    public occurs: number;
+    
+    /**
+     * End date.             
+     */
+    public endDate: Date;
+    
+    /**
+     * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     */
+    public weekStart: string;
+    
+
+    get discriminator(): string {
+        return this.constructor.name;
+    }
+
+    set discriminator(_newType: string) {
+        /* do nothing */
+    }
+    
+
+    /**
+     * iCalendar recurrence pattern.             
+     * @param interval Number of recurrence units.             
+     * @param occurs Number of occurrences of the recurrence pattern.             
+     * @param endDate End date.             
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param discriminator 
+     */
+    public constructor(
+        interval?: number,
+        occurs?: number,
+        endDate?: Date,
+        weekStart?: string,
+        discriminator?: string) {
+        
+        this.interval = interval;
+        this.occurs = occurs;
+        this.endDate = endDate;
+        this.weekStart = weekStart;
+        this.discriminator = discriminator;
     }
 }
 
@@ -10251,6 +10450,48 @@ export class CreateFolderBaseRequest extends AccountBaseRequest {
 }
 
 /**
+ * Daily recurrence.             
+ */
+export class DailyRecurrencePatternDto extends RecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(DailyRecurrencePatternDto.attributeTypeMap);
+    }
+
+
+    /**
+     * Daily recurrence.             
+     * @param interval Number of recurrence units.             
+     * @param occurs Number of occurrences of the recurrence pattern.             
+     * @param endDate End date.             
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param discriminator 
+     */
+    public constructor(
+        interval?: number,
+        occurs?: number,
+        endDate?: Date,
+        weekStart?: string,
+        discriminator?: string) {
+        super();
+        this.interval = interval;
+        this.occurs = occurs;
+        this.endDate = endDate;
+        this.weekStart = weekStart;
+        this.discriminator = discriminator;
+    }
+}
+
+/**
  * Delete thread request             
  */
 export class DeleteEmailThreadAccountRq extends AccountBaseRequest {
@@ -11376,6 +11617,11 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
             name: "uid",
             baseName: "uid",
             type: "string",
+        },
+        {
+            name: "organizer",
+            baseName: "organizer",
+            type: "any",
         }    ];
 
     /**
@@ -11470,6 +11716,11 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
      */
     public uid: string;
     
+    /**
+     * Organizer             
+     */
+    public organizer: any;
+    
 
     /**
      * Represents the mapi calendar object             
@@ -11507,6 +11758,7 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
      * @param startDate Start date and time of the event. If the date is not set, default value for DateTime is returned.             
      * @param startDateTimeZone Time zone information that indicates the time zone of the StartDate property.             
      * @param uid Unique identifier.             
+     * @param organizer Organizer             
      */
     public constructor(
         attachments?: Array<MapiAttachmentDto>,
@@ -11542,7 +11794,8 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
         sequence?: number,
         startDate?: Date,
         startDateTimeZone?: any,
-        uid?: string) {
+        uid?: string,
+        organizer?: any) {
         super();
         this.attachments = attachments;
         this.billing = billing;
@@ -11578,6 +11831,7 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
         this.startDate = startDate;
         this.startDateTimeZone = startDateTimeZone;
         this.uid = uid;
+        this.organizer = organizer;
     }
 }
 
@@ -12944,6 +13198,86 @@ export class MapiStringPropertyDto extends MapiPropertyDto {
 }
 
 /**
+ * Monthly recurrence pattern.             
+ */
+export class MonthlyRecurrencePatternDto extends RecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "startDay",
+            baseName: "startDay",
+            type: "string",
+        },
+        {
+            name: "startOffset",
+            baseName: "startOffset",
+            type: "number",
+        },
+        {
+            name: "startPosition",
+            baseName: "startPosition",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MonthlyRecurrencePatternDto.attributeTypeMap);
+    }
+
+    /**
+     * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     */
+    public startDay: string;
+    
+    /**
+     * Start offset.             
+     */
+    public startOffset: number;
+    
+    /**
+     * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     */
+    public startPosition: string;
+    
+
+    /**
+     * Monthly recurrence pattern.             
+     * @param interval Number of recurrence units.             
+     * @param occurs Number of occurrences of the recurrence pattern.             
+     * @param endDate End date.             
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param discriminator 
+     * @param startDay Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param startOffset Start offset.             
+     * @param startPosition Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     */
+    public constructor(
+        interval?: number,
+        occurs?: number,
+        endDate?: Date,
+        weekStart?: string,
+        discriminator?: string,
+        startDay?: string,
+        startOffset?: number,
+        startPosition?: string) {
+        super();
+        this.interval = interval;
+        this.occurs = occurs;
+        this.endDate = endDate;
+        this.weekStart = weekStart;
+        this.discriminator = discriminator;
+        this.startDay = startDay;
+        this.startOffset = startOffset;
+        this.startPosition = startPosition;
+    }
+}
+
+/**
  * Move email message request             
  */
 export class MoveEmailMessageRq extends AccountBaseRequest {
@@ -13520,6 +13854,207 @@ export class StorageFileLocation extends StorageFolderLocation {
 }
 
 /**
+ * Represents the regenerating recurrence pattern that specifies how many days, weeks, months or years after the completion of the current task the next occurrence will be due.             
+ */
+export class TaskRegeneratingPatternDto extends RecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "regeneratingType",
+            baseName: "regeneratingType",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(TaskRegeneratingPatternDto.attributeTypeMap);
+    }
+
+    /**
+     * Enumerates the types of regenerating pattern. Enum, available values: Daily, Weekly, Monthly, Yearly
+     */
+    public regeneratingType: string;
+    
+
+    /**
+     * Represents the regenerating recurrence pattern that specifies how many days, weeks, months or years after the completion of the current task the next occurrence will be due.             
+     * @param interval Number of recurrence units.             
+     * @param occurs Number of occurrences of the recurrence pattern.             
+     * @param endDate End date.             
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param discriminator 
+     * @param regeneratingType Enumerates the types of regenerating pattern. Enum, available values: Daily, Weekly, Monthly, Yearly
+     */
+    public constructor(
+        interval?: number,
+        occurs?: number,
+        endDate?: Date,
+        weekStart?: string,
+        discriminator?: string,
+        regeneratingType?: string) {
+        super();
+        this.interval = interval;
+        this.occurs = occurs;
+        this.endDate = endDate;
+        this.weekStart = weekStart;
+        this.discriminator = discriminator;
+        this.regeneratingType = regeneratingType;
+    }
+}
+
+/**
+ * Weekly recurrence pattern.             
+ */
+export class WeeklyRecurrencePatternDto extends RecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "startDays",
+            baseName: "startDays",
+            type: "Array<string>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(WeeklyRecurrencePatternDto.attributeTypeMap);
+    }
+
+    /**
+     * Start days              Items: Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     */
+    public startDays: Array<string>;
+    
+
+    /**
+     * Weekly recurrence pattern.             
+     * @param interval Number of recurrence units.             
+     * @param occurs Number of occurrences of the recurrence pattern.             
+     * @param endDate End date.             
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param discriminator 
+     * @param startDays Start days             
+     */
+    public constructor(
+        interval?: number,
+        occurs?: number,
+        endDate?: Date,
+        weekStart?: string,
+        discriminator?: string,
+        startDays?: Array<string>) {
+        super();
+        this.interval = interval;
+        this.occurs = occurs;
+        this.endDate = endDate;
+        this.weekStart = weekStart;
+        this.discriminator = discriminator;
+        this.startDays = startDays;
+    }
+}
+
+/**
+ * Yearly recurrence pattern.             
+ */
+export class YearlyRecurrencePatternDto extends RecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "startDay",
+            baseName: "startDay",
+            type: "string",
+        },
+        {
+            name: "startMonth",
+            baseName: "startMonth",
+            type: "string",
+        },
+        {
+            name: "startOffset",
+            baseName: "startOffset",
+            type: "number",
+        },
+        {
+            name: "startPosition",
+            baseName: "startPosition",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(YearlyRecurrencePatternDto.attributeTypeMap);
+    }
+
+    /**
+     * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     */
+    public startDay: string;
+    
+    /**
+     * Represents a calendar month. Enum, available values: None, January, February, March, April, May, June, July, August, September, October, November, December
+     */
+    public startMonth: string;
+    
+    /**
+     * Start offset.             
+     */
+    public startOffset: number;
+    
+    /**
+     * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     */
+    public startPosition: string;
+    
+
+    /**
+     * Yearly recurrence pattern.             
+     * @param interval Number of recurrence units.             
+     * @param occurs Number of occurrences of the recurrence pattern.             
+     * @param endDate End date.             
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param discriminator 
+     * @param startDay Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param startMonth Represents a calendar month. Enum, available values: None, January, February, March, April, May, June, July, August, September, October, November, December
+     * @param startOffset Start offset.             
+     * @param startPosition Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     */
+    public constructor(
+        interval?: number,
+        occurs?: number,
+        endDate?: Date,
+        weekStart?: string,
+        discriminator?: string,
+        startDay?: string,
+        startMonth?: string,
+        startOffset?: number,
+        startPosition?: string) {
+        super();
+        this.interval = interval;
+        this.occurs = occurs;
+        this.endDate = endDate;
+        this.weekStart = weekStart;
+        this.discriminator = discriminator;
+        this.startDay = startDay;
+        this.startMonth = startMonth;
+        this.startOffset = startOffset;
+        this.startPosition = startPosition;
+    }
+}
+
+/**
  * Parse business card images from Storage request             
  */
 export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
@@ -14014,6 +14549,7 @@ const typeMap = {
             MapiContactPhysicalAddressPropertySetDto,
             MapiContactProfessionalPropertySetDto,
             MapiContactTelephonePropertySetDto,
+            MapiElectronicAddressDto,
             MapiMessageItemBaseDto,
             MapiPropertyDescriptor,
             MapiPropertyDto,
@@ -14024,6 +14560,7 @@ const typeMap = {
             ObjectExist,
             PhoneNumber,
             PostalAddress,
+            RecurrencePatternDto,
             ReminderAttendee,
             ReminderTrigger,
             SetEmailPropertyRequest,
@@ -14056,6 +14593,7 @@ const typeMap = {
             CalendarDtoList,
             ContactDtoList,
             CreateFolderBaseRequest,
+            DailyRecurrencePatternDto,
             DeleteEmailThreadAccountRq,
             DeleteFolderBaseRequest,
             DeleteMessageBaseRequest,
@@ -14092,6 +14630,7 @@ const typeMap = {
             MapiPidPropertyDescriptor,
             MapiResponseTypePropertyDto,
             MapiStringPropertyDto,
+            MonthlyRecurrencePatternDto,
             MoveEmailMessageRq,
             MoveEmailThreadRq,
             PrimitiveObject,
@@ -14102,6 +14641,9 @@ const typeMap = {
             SendEmailModelRq,
             SetMessageReadFlagAccountBaseRequest,
             StorageFileLocation,
+            TaskRegeneratingPatternDto,
+            WeeklyRecurrencePatternDto,
+            YearlyRecurrencePatternDto,
             AiBcrParseStorageRq,
             AppendEmailBaseRequest,
             AppendEmailMimeBaseRequest,
