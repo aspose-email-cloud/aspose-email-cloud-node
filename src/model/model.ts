@@ -5965,7 +5965,7 @@ export class MapiCalendarRecurrencePatternDto {
         {
             name: "weekStartDay",
             baseName: "weekStartDay",
-            type: "any",
+            type: "string",
         },
         {
             name: "discriminator",
@@ -6041,9 +6041,9 @@ export class MapiCalendarRecurrencePatternDto {
     public startDate: Date;
     
     /**
-     * First day of the calendar week.             
+     * Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      */
-    public weekStartDay: any;
+    public weekStartDay: string;
     
 
     get discriminator(): string {
@@ -6069,7 +6069,7 @@ export class MapiCalendarRecurrencePatternDto {
      * @param period Interval at which the meeting pattern repeats.             
      * @param slidingFlag Defines whether pattern is sliding or not.             
      * @param startDate Start date of an item recurrence pattern.             
-     * @param weekStartDay First day of the calendar week.             
+     * @param weekStartDay Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      * @param discriminator 
      */
     public constructor(
@@ -6085,7 +6085,7 @@ export class MapiCalendarRecurrencePatternDto {
         period?: number,
         slidingFlag?: boolean,
         startDate?: Date,
-        weekStartDay?: any,
+        weekStartDay?: string,
         discriminator?: string) {
         
         this.calendarType = calendarType;
@@ -6291,7 +6291,7 @@ export class MapiCalendarTimeZoneRuleDto {
         {
             name: "dayOfWeek",
             baseName: "dayOfWeek",
-            type: "any",
+            type: "string",
         },
         {
             name: "hour",
@@ -6342,9 +6342,9 @@ export class MapiCalendarTimeZoneRuleDto {
     public date: Date;
     
     /**
-     * Day of week.             
+     * Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      */
-    public dayOfWeek: any;
+    public dayOfWeek: string;
     
     /**
      * Hour.             
@@ -6385,7 +6385,7 @@ export class MapiCalendarTimeZoneRuleDto {
     /**
      * Represents time zone rule that indicate when to begin using the Standard/Daylight time.             
      * @param date Date and time that indicate when to begin using the Standard/Daylight time.             
-     * @param dayOfWeek Day of week.             
+     * @param dayOfWeek Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      * @param hour Hour.             
      * @param milliseconds Milliseconds.             
      * @param minute Minute.             
@@ -6396,7 +6396,7 @@ export class MapiCalendarTimeZoneRuleDto {
      */
     public constructor(
         date?: Date,
-        dayOfWeek?: any,
+        dayOfWeek?: string,
         hour?: number,
         milliseconds?: number,
         minute?: number,
@@ -11485,7 +11485,7 @@ export class MapiCalendarDailyRecurrencePatternDto extends MapiCalendarRecurrenc
      * @param period Interval at which the meeting pattern repeats.             
      * @param slidingFlag Defines whether pattern is sliding or not.             
      * @param startDate Start date of an item recurrence pattern.             
-     * @param weekStartDay First day of the calendar week.             
+     * @param weekStartDay Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      * @param discriminator 
      * @param dayOfWeek Days of week at which the event occurs.             
      */
@@ -11502,7 +11502,7 @@ export class MapiCalendarDailyRecurrencePatternDto extends MapiCalendarRecurrenc
         period?: number,
         slidingFlag?: boolean,
         startDate?: Date,
-        weekStartDay?: any,
+        weekStartDay?: string,
         discriminator?: string,
         dayOfWeek?: Array<string>) {
         super();
@@ -11877,7 +11877,7 @@ export class MapiCalendarWeeklyRecurrencePatternDto extends MapiCalendarRecurren
      * @param period Interval at which the meeting pattern repeats.             
      * @param slidingFlag Defines whether pattern is sliding or not.             
      * @param startDate Start date of an item recurrence pattern.             
-     * @param weekStartDay First day of the calendar week.             
+     * @param weekStartDay Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      * @param discriminator 
      * @param dayOfWeek Days of week at which the event occurs.             
      */
@@ -11894,7 +11894,7 @@ export class MapiCalendarWeeklyRecurrencePatternDto extends MapiCalendarRecurren
         period?: number,
         slidingFlag?: boolean,
         startDate?: Date,
-        weekStartDay?: any,
+        weekStartDay?: string,
         discriminator?: string,
         dayOfWeek?: Array<string>) {
         super();
@@ -11978,7 +11978,7 @@ export class MapiCalendarYearlyAndMonthlyRecurrencePatternDto extends MapiCalend
      * @param period Interval at which the meeting pattern repeats.             
      * @param slidingFlag Defines whether pattern is sliding or not.             
      * @param startDate Start date of an item recurrence pattern.             
-     * @param weekStartDay First day of the calendar week.             
+     * @param weekStartDay Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      * @param discriminator 
      * @param day Day of the month on which the recurrence falls.             
      * @param dayOfWeek Days of week at which the event occurs.             
@@ -11997,7 +11997,7 @@ export class MapiCalendarYearlyAndMonthlyRecurrencePatternDto extends MapiCalend
         period?: number,
         slidingFlag?: boolean,
         startDate?: Date,
-        weekStartDay?: any,
+        weekStartDay?: string,
         discriminator?: string,
         day?: number,
         dayOfWeek?: Array<string>,
