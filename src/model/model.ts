@@ -6041,7 +6041,7 @@ export class MapiCalendarRecurrencePatternDto {
     public startDate: Date;
     
     /**
-     * Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      */
     public weekStartDay: string;
     
@@ -6069,7 +6069,7 @@ export class MapiCalendarRecurrencePatternDto {
      * @param period Interval at which the meeting pattern repeats.             
      * @param slidingFlag Defines whether pattern is sliding or not.             
      * @param startDate Start date of an item recurrence pattern.             
-     * @param weekStartDay Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * @param weekStartDay Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      * @param discriminator 
      */
     public constructor(
@@ -6342,7 +6342,7 @@ export class MapiCalendarTimeZoneRuleDto {
     public date: Date;
     
     /**
-     * Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      */
     public dayOfWeek: string;
     
@@ -6385,7 +6385,7 @@ export class MapiCalendarTimeZoneRuleDto {
     /**
      * Represents time zone rule that indicate when to begin using the Standard/Daylight time.             
      * @param date Date and time that indicate when to begin using the Standard/Daylight time.             
-     * @param dayOfWeek Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * @param dayOfWeek Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      * @param hour Hour.             
      * @param milliseconds Milliseconds.             
      * @param minute Minute.             
@@ -9938,7 +9938,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
         {
             name: "file",
             baseName: "file",
-            type: "any",
+            type: "StorageFileLocation",
         }    ];
 
     /**
@@ -9951,7 +9951,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
     /**
      * Image location             
      */
-    public file: any;
+    public file: StorageFileLocation;
     
 
     /**
@@ -9961,7 +9961,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
      */
     public constructor(
         isSingle?: boolean,
-        file?: any) {
+        file?: StorageFileLocation) {
         super();
         this.isSingle = isSingle;
         this.file = file;
@@ -11485,7 +11485,7 @@ export class MapiCalendarDailyRecurrencePatternDto extends MapiCalendarRecurrenc
      * @param period Interval at which the meeting pattern repeats.             
      * @param slidingFlag Defines whether pattern is sliding or not.             
      * @param startDate Start date of an item recurrence pattern.             
-     * @param weekStartDay Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * @param weekStartDay Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      * @param discriminator 
      * @param dayOfWeek Days of week at which the event occurs.             
      */
@@ -11541,7 +11541,7 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
         {
             name: "attendees",
             baseName: "attendees",
-            type: "any",
+            type: "MapiCalendarAttendeesDto",
         },
         {
             name: "busyStatus",
@@ -11561,7 +11561,7 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
         {
             name: "endDateTimeZone",
             baseName: "endDateTimeZone",
-            type: "any",
+            type: "MapiCalendarTimeZoneDto",
         },
         {
             name: "isAllDay",
@@ -11581,7 +11581,7 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
         {
             name: "recurrence",
             baseName: "recurrence",
-            type: "any",
+            type: "MapiCalendarEventRecurrenceDto",
         },
         {
             name: "reminderDelta",
@@ -11611,7 +11611,7 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
         {
             name: "startDateTimeZone",
             baseName: "startDateTimeZone",
-            type: "any",
+            type: "MapiCalendarTimeZoneDto",
         },
         {
             name: "uid",
@@ -11621,7 +11621,7 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
         {
             name: "organizer",
             baseName: "organizer",
-            type: "any",
+            type: "MapiElectronicAddressDto",
         }    ];
 
     /**
@@ -11639,7 +11639,7 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
     /**
      * Attendees             
      */
-    public attendees: any;
+    public attendees: MapiCalendarAttendeesDto;
     
     /**
      * Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
@@ -11659,7 +11659,7 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
     /**
      * Time zone information that indicates the time zone of the EndDate property.             
      */
-    public endDateTimeZone: any;
+    public endDateTimeZone: MapiCalendarTimeZoneDto;
     
     /**
      * Value indicating whether the event is an all-day event.             
@@ -11679,7 +11679,7 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
     /**
      * Recurrence properties.             
      */
-    public recurrence: any;
+    public recurrence: MapiCalendarEventRecurrenceDto;
     
     /**
      * Interval, in minutes, between the time at which the reminder first becomes overdue and the start time of the Calendar object.             
@@ -11709,7 +11709,7 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
     /**
      * Time zone information that indicates the time zone of the StartDate property.             
      */
-    public startDateTimeZone: any;
+    public startDateTimeZone: MapiCalendarTimeZoneDto;
     
     /**
      * Unique identifier.             
@@ -11719,7 +11719,7 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
     /**
      * Organizer             
      */
-    public organizer: any;
+    public organizer: MapiElectronicAddressDto;
     
 
     /**
@@ -11779,23 +11779,23 @@ export class MapiCalendarDto extends MapiMessageItemBaseDto {
         properties?: Array<MapiPropertyDto>,
         discriminator?: string,
         appointmentCounterProposal?: boolean,
-        attendees?: any,
+        attendees?: MapiCalendarAttendeesDto,
         busyStatus?: string,
         clientIntent?: Array<string>,
         endDate?: Date,
-        endDateTimeZone?: any,
+        endDateTimeZone?: MapiCalendarTimeZoneDto,
         isAllDay?: boolean,
         keyWords?: string,
         location?: string,
-        recurrence?: any,
+        recurrence?: MapiCalendarEventRecurrenceDto,
         reminderDelta?: number,
         reminderFileParameter?: string,
         reminderSet?: boolean,
         sequence?: number,
         startDate?: Date,
-        startDateTimeZone?: any,
+        startDateTimeZone?: MapiCalendarTimeZoneDto,
         uid?: string,
-        organizer?: any) {
+        organizer?: MapiElectronicAddressDto) {
         super();
         this.attachments = attachments;
         this.billing = billing;
@@ -11877,7 +11877,7 @@ export class MapiCalendarWeeklyRecurrencePatternDto extends MapiCalendarRecurren
      * @param period Interval at which the meeting pattern repeats.             
      * @param slidingFlag Defines whether pattern is sliding or not.             
      * @param startDate Start date of an item recurrence pattern.             
-     * @param weekStartDay Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * @param weekStartDay Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      * @param discriminator 
      * @param dayOfWeek Days of week at which the event occurs.             
      */
@@ -11978,7 +11978,7 @@ export class MapiCalendarYearlyAndMonthlyRecurrencePatternDto extends MapiCalend
      * @param period Interval at which the meeting pattern repeats.             
      * @param slidingFlag Defines whether pattern is sliding or not.             
      * @param startDate Start date of an item recurrence pattern.             
-     * @param weekStartDay Day of week Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * @param weekStartDay Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      * @param discriminator 
      * @param day Day of the month on which the recurrence falls.             
      * @param dayOfWeek Days of week at which the event occurs.             
@@ -12035,47 +12035,47 @@ export class MapiContactDto extends MapiMessageItemBaseDto {
         {
             name: "electronicAddresses",
             baseName: "electronicAddresses",
-            type: "any",
+            type: "MapiContactElectronicAddressPropertySetDto",
         },
         {
             name: "events",
             baseName: "events",
-            type: "any",
+            type: "MapiContactEventPropertySetDto",
         },
         {
             name: "nameInfo",
             baseName: "nameInfo",
-            type: "any",
+            type: "MapiContactNamePropertySetDto",
         },
         {
             name: "otherFields",
             baseName: "otherFields",
-            type: "any",
+            type: "MapiContactOtherPropertySetDto",
         },
         {
             name: "personalInfo",
             baseName: "personalInfo",
-            type: "any",
+            type: "MapiContactPersonalInfoPropertySetDto",
         },
         {
             name: "photo",
             baseName: "photo",
-            type: "any",
+            type: "MapiContactPhotoDto",
         },
         {
             name: "physicalAddresses",
             baseName: "physicalAddresses",
-            type: "any",
+            type: "MapiContactPhysicalAddressPropertySetDto",
         },
         {
             name: "professionalInfo",
             baseName: "professionalInfo",
-            type: "any",
+            type: "MapiContactProfessionalPropertySetDto",
         },
         {
             name: "telephones",
             baseName: "telephones",
-            type: "any",
+            type: "MapiContactTelephonePropertySetDto",
         }    ];
 
     /**
@@ -12088,47 +12088,47 @@ export class MapiContactDto extends MapiMessageItemBaseDto {
     /**
      * Specify properties for up to three different e-mail addresses and three different fax addresses.             
      */
-    public electronicAddresses: any;
+    public electronicAddresses: MapiContactElectronicAddressPropertySetDto;
     
     /**
      * Specify events associated with a contact.             
      */
-    public events: any;
+    public events: MapiContactEventPropertySetDto;
     
     /**
      * The properties are used to specify the name of the person represented by the contact.             
      */
-    public nameInfo: any;
+    public nameInfo: MapiContactNamePropertySetDto;
     
     /**
      * Specify other fields of contact.             
      */
-    public otherFields: any;
+    public otherFields: MapiContactOtherPropertySetDto;
     
     /**
      * Specify other additional contact information.             
      */
-    public personalInfo: any;
+    public personalInfo: MapiContactPersonalInfoPropertySetDto;
     
     /**
      * Contact photo.             
      */
-    public photo: any;
+    public photo: MapiContactPhotoDto;
     
     /**
      * Specify three physical addresses: Home Address, Work Address, and Other Address. One of the addresses can be marked as the Mailing Address.             
      */
-    public physicalAddresses: any;
+    public physicalAddresses: MapiContactPhysicalAddressPropertySetDto;
     
     /**
      * Properties are used to store professional details for the person represented by the contact.             
      */
-    public professionalInfo: any;
+    public professionalInfo: MapiContactProfessionalPropertySetDto;
     
     /**
      * Specify telephone numbers for the contact.             
      */
-    public telephones: any;
+    public telephones: MapiContactTelephonePropertySetDto;
     
 
     /**
@@ -12178,15 +12178,15 @@ export class MapiContactDto extends MapiMessageItemBaseDto {
         subjectPrefix?: string,
         properties?: Array<MapiPropertyDto>,
         discriminator?: string,
-        electronicAddresses?: any,
-        events?: any,
-        nameInfo?: any,
-        otherFields?: any,
-        personalInfo?: any,
-        photo?: any,
-        physicalAddresses?: any,
-        professionalInfo?: any,
-        telephones?: any) {
+        electronicAddresses?: MapiContactElectronicAddressPropertySetDto,
+        events?: MapiContactEventPropertySetDto,
+        nameInfo?: MapiContactNamePropertySetDto,
+        otherFields?: MapiContactOtherPropertySetDto,
+        personalInfo?: MapiContactPersonalInfoPropertySetDto,
+        photo?: MapiContactPhotoDto,
+        physicalAddresses?: MapiContactPhysicalAddressPropertySetDto,
+        professionalInfo?: MapiContactProfessionalPropertySetDto,
+        telephones?: MapiContactTelephonePropertySetDto) {
         super();
         this.attachments = attachments;
         this.billing = billing;
@@ -13615,7 +13615,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
         {
             name: "emailFile",
             baseName: "emailFile",
-            type: "any",
+            type: "StorageFileLocation",
         }    ];
 
     /**
@@ -13628,7 +13628,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
     /**
      * Email document (*.eml) file location in storage             
      */
-    public emailFile: any;
+    public emailFile: StorageFileLocation;
     
 
     /**
@@ -13642,7 +13642,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        emailFile?: any) {
+        emailFile?: StorageFileLocation) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -13711,7 +13711,7 @@ export class SendEmailModelRq extends AccountBaseRequest {
         {
             name: "message",
             baseName: "message",
-            type: "any",
+            type: "EmailDto",
         }    ];
 
     /**
@@ -13724,7 +13724,7 @@ export class SendEmailModelRq extends AccountBaseRequest {
     /**
      * Message to send             
      */
-    public message: any;
+    public message: EmailDto;
     
 
     /**
@@ -13738,7 +13738,7 @@ export class SendEmailModelRq extends AccountBaseRequest {
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        message?: any) {
+        message?: EmailDto) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -14066,7 +14066,7 @@ export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
         {
             name: "outFolder",
             baseName: "outFolder",
-            type: "any",
+            type: "StorageFolderLocation",
         }    ];
 
     /**
@@ -14079,7 +14079,7 @@ export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
     /**
      * Parse output folder location on storage             
      */
-    public outFolder: any;
+    public outFolder: StorageFolderLocation;
     
 
     /**
@@ -14091,7 +14091,7 @@ export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
     public constructor(
         options?: AiBcrOptions,
         images?: Array<AiBcrImageStorageFile>,
-        outFolder?: any) {
+        outFolder?: StorageFolderLocation) {
         super();
         this.options = options;
         this.images = images;
@@ -14111,7 +14111,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
         {
             name: "emailFile",
             baseName: "emailFile",
-            type: "any",
+            type: "StorageFileLocation",
         }    ];
 
     /**
@@ -14124,7 +14124,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
     /**
      * Email document file location in storage             
      */
-    public emailFile: any;
+    public emailFile: StorageFileLocation;
     
 
     /**
@@ -14142,7 +14142,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
         storageFolder?: StorageFolderLocation,
         folder?: string,
         markAsSent?: boolean,
-        emailFile?: any) {
+        emailFile?: StorageFileLocation) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -14219,7 +14219,7 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
         {
             name: "message",
             baseName: "message",
-            type: "any",
+            type: "EmailDto",
         }    ];
 
     /**
@@ -14232,7 +14232,7 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
     /**
      * Email document             
      */
-    public message: any;
+    public message: EmailDto;
     
 
     /**
@@ -14250,7 +14250,7 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
         storageFolder?: StorageFolderLocation,
         folder?: string,
         markAsSent?: boolean,
-        message?: any) {
+        message?: EmailDto) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;

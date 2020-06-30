@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file** | **any** | Image location              | [optional] [default to undefined]
+**file** | [**StorageFileLocation**](StorageFileLocation.md) | Image location              | [optional] [default to undefined]
 
  Parent class: [AiBcrImage](AiBcrImage.md)
 

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **any** | Email document              | [default to undefined]
+**message** | [**EmailDto**](EmailDto.md) | Email document              | [default to undefined]
 
  Parent class: [AppendEmailAccountBaseRequest](AppendEmailAccountBaseRequest.md)
 
