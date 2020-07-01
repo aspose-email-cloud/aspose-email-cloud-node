@@ -1292,46 +1292,6 @@ export class EmailApi {
     }
 
     /**
-     * Convert CalendarDto to MapiCalendarDto             
-     * @param requestObj contains request parameters
-     */
-    public async convertCalendarDtoToMapiModel(requestObj: requestModels.ConvertCalendarDtoToMapiModelRequest): Promise<{response: request.RequestResponse, body: model.MapiCalendarDto}> {
-        const localVarPath = this.configuration.getApiBaseUrl() + "/email/CalendarModel/model-as-mapi-model";
-        const queryParameters: any = {};
-        const headerParams: any = {};
-        const formParams: any = {};
-
-        // verify required parameter 'requestObj.calendarDto' is not null or undefined
-        if (requestObj.calendarDto === null || requestObj.calendarDto === undefined) {
-            throw new Error('Required parameter "requestObj.calendarDto" was null or undefined when calling convertCalendarDtoToMapiModel.');
-        }
-
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
-
-        const requestOptions: request.Options = {
-            method: "PUT",
-            qs: queryParameters,
-            headers: headerParams,
-            uri: localVarPath,
-            json: true,
-            body: ObjectSerializer.serialize(requestObj.calendarDto, "CalendarDto"),
-        };
-
-        if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
-        }
-
-        const response = await invokeApiMethod(requestOptions, this.configuration);
-        const result =  ObjectSerializer.deserialize(response.body, "MapiCalendarDto");
-        return Promise.resolve({body: result, response});
-    }
-
-    /**
      * Convert iCalendar to AlternateView             
      * @param requestObj contains request parameters
      */
@@ -1415,6 +1375,46 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Convert CalendarDto to MapiCalendarDto             
+     * @param requestObj contains request parameters
+     */
+    public async convertCalendarModelToMapiModel(requestObj: requestModels.ConvertCalendarModelToMapiModelRequest): Promise<{response: request.RequestResponse, body: model.MapiCalendarDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/CalendarModel/model-as-mapi-model";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.calendarDto' is not null or undefined
+        if (requestObj.calendarDto === null || requestObj.calendarDto === undefined) {
+            throw new Error('Required parameter "requestObj.calendarDto" was null or undefined when calling convertCalendarModelToMapiModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.calendarDto, "CalendarDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "MapiCalendarDto");
         return Promise.resolve({body: result, response});
     }
 

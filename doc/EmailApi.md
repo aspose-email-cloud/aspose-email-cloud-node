@@ -720,31 +720,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-<a name="convertcalendardtotomapimodel"></a>
-# **convertCalendarDtoToMapiModel**
-
-```typescript
-public async convertCalendarDtoToMapiModel(requestObj: ConvertCalendarDtoToMapiModelRequest) : Promise<{response: RequestResponse, body: MapiCalendarDto; }>
-```
-
-Convert CalendarDto to MapiCalendarDto             
-
-### Return type
-
-`Promise<{response: RequestResponse, body: MapiCalendarDto; }>`
-
-### Request Parameters
-```typescript
-new ConvertCalendarDtoToMapiModelRequest(
-    calendarDto)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **calendarDto** | [**CalendarDto**](CalendarDto.md)| iCalendar model calendar representation | 
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 <a name="convertcalendarmodeltoalternate"></a>
 # **convertCalendarModelToAlternate**
 
@@ -794,6 +769,31 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **format** | **string**| File format Enum, available values: Ics, Msg | 
  **calendarDto** | [**CalendarDto**](CalendarDto.md)| Calendar model to convert | 
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+<a name="convertcalendarmodeltomapimodel"></a>
+# **convertCalendarModelToMapiModel**
+
+```typescript
+public async convertCalendarModelToMapiModel(requestObj: ConvertCalendarModelToMapiModelRequest) : Promise<{response: RequestResponse, body: MapiCalendarDto; }>
+```
+
+Convert CalendarDto to MapiCalendarDto             
+
+### Return type
+
+`Promise<{response: RequestResponse, body: MapiCalendarDto; }>`
+
+### Request Parameters
+```typescript
+new ConvertCalendarModelToMapiModelRequest(
+    calendarDto)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **calendarDto** | [**CalendarDto**](CalendarDto.md)| iCalendar model calendar representation | 
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

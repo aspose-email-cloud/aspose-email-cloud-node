@@ -879,26 +879,6 @@ export class ConvertCalendarRequest {
 }
 
 /**
- * Request model for convertCalendarDtoToMapiModel operation.
- */
-export class ConvertCalendarDtoToMapiModelRequest {
-    /**
-     * iCalendar model calendar representation
-     */
-    public calendarDto: model.CalendarDto;
-
-    /**
-     * Request model for convertCalendarDtoToMapiModel operation.
-     * @param calendarDto iCalendar model calendar representation
-     */
-    public constructor(
-        calendarDto?: model.CalendarDto) {
-        
-        this.calendarDto = calendarDto;
-    }
-}
-
-/**
  * Request model for convertCalendarModelToAlternate operation.
  */
 export class ConvertCalendarModelToAlternateRequest {
@@ -942,6 +922,26 @@ export class ConvertCalendarModelToFileRequest {
         calendarDto?: model.CalendarDto) {
         
         this.format = format;
+        this.calendarDto = calendarDto;
+    }
+}
+
+/**
+ * Request model for convertCalendarModelToMapiModel operation.
+ */
+export class ConvertCalendarModelToMapiModelRequest {
+    /**
+     * iCalendar model calendar representation
+     */
+    public calendarDto: model.CalendarDto;
+
+    /**
+     * Request model for convertCalendarModelToMapiModel operation.
+     * @param calendarDto iCalendar model calendar representation
+     */
+    public constructor(
+        calendarDto?: model.CalendarDto) {
+        
         this.calendarDto = calendarDto;
     }
 }
