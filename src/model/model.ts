@@ -12968,6 +12968,51 @@ export class MapiMultiIntPropertyDto extends MapiPropertyDto {
 }
 
 /**
+ * Mapi property with Multiple String values             
+ */
+export class MapiMultiStringPropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "values",
+            baseName: "values",
+            type: "Array<string>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiMultiStringPropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Property values             
+     */
+    public values: Array<string>;
+    
+
+    /**
+     * Mapi property with Multiple String values             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param values Property values             
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        values?: Array<string>) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.values = values;
+    }
+}
+
+/**
  * Mapi property with PhysicalAddressIndexType value             
  */
 export class MapiPhysicalAddressIndexPropertyDto extends MapiPropertyDto {
@@ -13040,11 +13085,6 @@ export class MapiPidPropertyDescriptor extends MapiPropertyDescriptor {
             name: "name",
             baseName: "name",
             type: "string",
-        },
-        {
-            name: "discriminator",
-            baseName: "discriminator",
-            type: "string",
         }    ];
 
     /**
@@ -13073,15 +13113,6 @@ export class MapiPidPropertyDescriptor extends MapiPropertyDescriptor {
      * A string that identifies the property             
      */
     public name: string;
-    
-
-    get discriminator(): string {
-        return this.constructor.name;
-    }
-
-    set discriminator(_newType: string) {
-        /* do nothing */
-    }
     
 
     /**
@@ -14626,6 +14657,7 @@ const typeMap = {
             MapiLegacyFreeBusyPropertyDto,
             MapiMessageDto,
             MapiMultiIntPropertyDto,
+            MapiMultiStringPropertyDto,
             MapiPhysicalAddressIndexPropertyDto,
             MapiPidPropertyDescriptor,
             MapiResponseTypePropertyDto,
