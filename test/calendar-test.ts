@@ -48,14 +48,7 @@ describe('Calendar tests', function() {
     it('Check calendar converter #pipeline', async function () {
         const location = 'Some location';
         //Create DTO with specified location:
-        let calendarDto = new models.CalendarDto();
-        calendarDto.location = 'Some location';
-        calendarDto.summary = 'Some summary';
-        calendarDto.description = 'some description';
-        calendarDto.startDate = td.getDate(undefined, 1);
-        calendarDto.endDate = td.getDate(calendarDto.startDate, 1);
-        calendarDto.organizer = new models.MailAddress('undefined', 'organizer@aspose.com');
-        calendarDto.attendees = [new models.MailAddress('undefined', "attendee@aspose.com")];
+        let calendarDto = getCalendarDto();
         //We can convert this DTO to a MAPI or ICS file:
         let mapi = await td.api().convertCalendarModelToFile(new requests.ConvertCalendarModelToFileRequest(
             'Msg', calendarDto));
@@ -90,16 +83,7 @@ describe('Calendar tests', function() {
     });
 
     it('Create calendar email #pipeline', async function () {
-        const calendar = new models.CalendarDto();
-        calendar.attendees = [
-            new models.MailAddress('Attendee Name', 'attendee@am.ru', 'Accepted')
-        ];
-        calendar.description = 'Some description';
-        calendar.summary = 'Some summary';
-        calendar.organizer = new models.MailAddress('Organizer Name', 'organizer@am.ru');
-        calendar.startDate = td.getDate(undefined, 1);
-        calendar.endDate = td.getDate(calendar.startDate, 1);
-        calendar.location = 'Some location';
+        const calendar = getCalendarDto();
         const folderLocation = new models.StorageFolderLocation(td.storage(), td.folder());
         const calendarFile = uuidv4() + '.ics';
         await td.api().saveCalendarModel(
@@ -135,4 +119,26 @@ describe('Calendar tests', function() {
         const downloadedRaw = downloaded.body.toString();
         expect(downloadedRaw).to.contain('cloud.em@yandex.ru');
     });
+
+    it('Convert model to MapiModel #pipeline', async () => {
+        const calendarDto = getCalendarDto();
+        const mapiCalendarDto = await td.api().convertCalendarModelToMapiModel(
+            new requests.ConvertCalendarModelToMapiModelRequest(calendarDto));
+        expect(calendarDto.location).to.be.eq(mapiCalendarDto.body.location);
+    });
+
+    function getCalendarDto(): models.CalendarDto {
+        let calendar = new models.CalendarDto();
+        calendar.attendees = [
+            new models.MailAddress('Attendee Name', 'attendee@am.ru', 'Accepted')
+        ];
+        calendar.description = 'Some description';
+        calendar.summary = 'Some summary';
+        calendar.organizer = new models.MailAddress('Organizer Name', 'organizer@am.ru');
+        calendar.startDate = td.getDate(undefined, 1);
+        calendar.endDate = td.getDate(calendar.startDate, 1);
+        calendar.location = 'Some location';
+
+        return calendar;
+    }
 });

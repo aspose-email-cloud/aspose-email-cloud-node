@@ -60,15 +60,14 @@ export function suiteBase(suite: Suite): SuiteBase {
     let folder: string;
     const storage = 'First Storage';
     suite.timeout(100000);
-    before(async () => {
+    suite.beforeAll(async () => {
         api = new EmailApi(process.env.appSid, process.env.appKey, process.env.apiBaseUrl);
         const authUrl = process.env.authUrl;
         if (authUrl != null) api.configuration.authUrl = authUrl;
         folder = uuidv4();
         await api.createFolder(new requests.CreateFolderRequest(folder, storage));
     });
-
-    after(async () => {
+    suite.afterAll(async () => {
         await api.deleteFolder(new requests.DeleteFolderRequest(folder, storage, true));
     });
 

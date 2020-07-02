@@ -7,6 +7,7 @@ import {suiteBase} from "./suite-base";
 
 describe('Contact tests', function() {
     let td = suiteBase(this);
+    const surname = 'Cane';
 
     /**
      * Contact format specified as Enum, but SDK represents it as an advanced type of string constants a string.
@@ -29,16 +30,7 @@ describe('Contact tests', function() {
     });
 
     it('Save contact model #pipeline', async function () {
-        const contact = new models.ContactDto();
-        contact.gender = 'Male';
-        contact.surname = 'Thomas';
-        contact.givenName = 'Alex';
-        contact.emailAddresses = [new models.EmailAddress(
-            new models.EnumWithCustomOfEmailAddressCategory('Work'),
-            'Alex Thomas', true, undefined, 'alex.thomas@work.com')];
-        contact.phoneNumbers = [new models.PhoneNumber(
-            new models.EnumWithCustomOfPhoneNumberCategory('Work'),
-            '+49211424721', true)];
+        const contact = getContactDto();
 
         const contactFile = uuidv4() + '.vcf';
         await td.api().saveContactModel(
@@ -52,14 +44,7 @@ describe('Contact tests', function() {
     });
 
     it('Check contact converter #pipeline', async function () {
-        const surname = 'Cane';
-        let contactDto = new models.ContactDto();
-        contactDto.surname = surname;
-        contactDto.givenName = 'John';
-        contactDto.gender = 'Male';
-        contactDto.emailAddresses = [new models.EmailAddress(undefined, undefined, undefined, undefined,
-            'address@aspose.com')];
-        contactDto.phoneNumbers = [new models.PhoneNumber(undefined, '+47234325344')];
+        let contactDto = getContactDto();
         let mapi = await td.api().convertContactModelToFile(new requests.ConvertContactModelToFileRequest(
             'Msg', contactDto));
         let vcard = await td.api().convertContact(new requests.ConvertContactRequest(
@@ -69,4 +54,22 @@ describe('Contact tests', function() {
         let dto = await td.api().getContactFileAsModel(new requests.GetContactFileAsModelRequest('VCard', vcard.body));
         expect(dto.body.surname).to.be.equal(surname);
     });
+
+    it('Convert model to MapiModel #pipeline', async () => {
+        const contactDto = getContactDto();
+        const mapiContactDto = await td.api().convertContactModelToMapiModel(
+            new requests.ConvertContactModelToMapiModelRequest(contactDto));
+        expect(contactDto.surname).to.be.eq(mapiContactDto.body.nameInfo.surname);
+    });
+
+    function getContactDto() {
+        let contactDto = new models.ContactDto();
+        contactDto.surname = surname;
+        contactDto.givenName = 'John';
+        contactDto.gender = 'Male';
+        contactDto.emailAddresses = [new models.EmailAddress(undefined, undefined, undefined, undefined,
+            'address@aspose.com')];
+        contactDto.phoneNumbers = [new models.PhoneNumber(undefined, '+47234325344')];
+        return contactDto;
+    }
 });
