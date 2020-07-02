@@ -5,7 +5,7 @@ import 'mocha';
 import {expect} from 'chai';
 import {suiteBase} from "./suite-base";
 
-describe('Calendar tests', function() {
+describe('Calendar tests', function () {
     let td = suiteBase(this);
 
     /*
