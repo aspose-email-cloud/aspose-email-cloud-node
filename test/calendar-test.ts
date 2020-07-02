@@ -32,8 +32,8 @@ describe('Calendar tests', function() {
         let path = td.folder() + '/' + calendarFile;
         const downloaded = await td.api().downloadFile(new requests.DownloadFileRequest(path, td.storage()));
         const calendarRaw = downloaded.body.toString();
-        expect(calendarRaw).to.contain('Organizer')
-        calendarFile = uuidv4() + '.ics'
+        expect(calendarRaw).to.contain('Organizer');
+        calendarFile = uuidv4() + '.ics';
         path = td.folder() + '/' + calendarFile;
         await td.api().uploadFile(new requests.UploadFileRequest(path, downloaded.body, td.storage()));
         const exist = await td.api().objectExists(new requests.ObjectExistsRequest(path, td.storage()));

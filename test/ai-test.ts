@@ -63,7 +63,7 @@ describe('AI tests', function () {
     });
 
     it('Parse business card images to VCard contact files #aiBcr', async function () {
-        const imageData = fs.readFileSync('test/td/test_single_0001.png');
+        const imageData = fs.readFileSync('test/data/test_single_0001.png');
         const storageFileName = uuidv4() + '.png';
         // 1) Upload business card image to storage
         await td.api().uploadFile(
@@ -94,7 +94,7 @@ describe('AI tests', function () {
     });
 
     it('Business card recognition without storage #aiBcr', async function () {
-        const imageData = fs.readFileSync('test/td/test_single_0001.png').toString('base64');
+        const imageData = fs.readFileSync('test/data/test_single_0001.png').toString('base64');
         const result = await td.api().aiBcrParse(new requests.AiBcrParseRequest(
             new models.AiBcrBase64Rq(undefined, [new models.AiBcrBase64Image(true, imageData)])));
         expect(result.body.value.length).to.be.equal(1);

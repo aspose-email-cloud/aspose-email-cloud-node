@@ -53,6 +53,10 @@ class SuiteBase {
         ));
         return fileName;
     }
+
+    public getStorageFolderLocation(): models.StorageFolderLocation {
+        return new models.StorageFolderLocation(this.storage(), this.folder());
+    }
 }
 
 export function suiteBase(suite: Suite): SuiteBase {
