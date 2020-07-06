@@ -1,6 +1,7 @@
 import * as requests from '../src/model/requests/requests';
 import uuidv4 from 'uuid/v4';
 import * as models from '../src/model/model';
+import {DailyRecurrencePatternDto} from '../src/model/model';
 import 'mocha';
 import {expect} from 'chai';
 import {suiteBase} from "./suite-base";
@@ -125,6 +126,8 @@ describe('Calendar tests', function () {
         const mapiCalendarDto = await td.api().convertCalendarModelToMapiModel(
             new requests.ConvertCalendarModelToMapiModelRequest(calendarDto));
         expect(calendarDto.location).to.be.eq(mapiCalendarDto.body.location);
+        expect('MapiCalendarDailyRecurrencePatternDto').to.be.eq(
+            mapiCalendarDto.body.recurrence.recurrencePattern.discriminator);
     });
 
     function getCalendarDto(): models.CalendarDto {
@@ -138,7 +141,7 @@ describe('Calendar tests', function () {
         calendar.startDate = td.getDate(undefined, 1);
         calendar.endDate = td.getDate(calendar.startDate, 1);
         calendar.location = 'Some location';
-
+        calendar.recurrence = new DailyRecurrencePatternDto(undefined, 10, undefined, "Monday");
         return calendar;
     }
 });
