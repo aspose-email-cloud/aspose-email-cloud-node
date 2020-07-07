@@ -1035,7 +1035,7 @@ export class ConvertContactModelToMapiModelRequest {
  */
 export class ConvertEmailRequest {
     /**
-     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
 
@@ -1046,7 +1046,7 @@ export class ConvertEmailRequest {
 
     /**
      * Request model for convertEmail operation.
-     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param file File to convert
      */
     public constructor(
@@ -1063,7 +1063,7 @@ export class ConvertEmailRequest {
  */
 export class ConvertEmailModelToFileRequest {
     /**
-     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public destinationFormat: string;
 
@@ -1074,7 +1074,7 @@ export class ConvertEmailModelToFileRequest {
 
     /**
      * Request model for convertEmailModelToFile operation.
-     * @param destinationFormat File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param destinationFormat File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param emailDto Email model to convert
      */
     public constructor(
@@ -1227,7 +1227,7 @@ export class ConvertMapiMessageModelToEmailModelRequest {
  */
 export class ConvertMapiMessageModelToFileRequest {
     /**
-     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public destinationFormat: string;
 
@@ -1238,7 +1238,7 @@ export class ConvertMapiMessageModelToFileRequest {
 
     /**
      * Request model for convertMapiMessageModelToFile operation.
-     * @param destinationFormat File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param destinationFormat File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param mapiMessage MAPI message model to convert
      */
     public constructor(
@@ -2856,7 +2856,7 @@ export class GetEmailAsFileRequest {
     public fileName: string;
 
     /**
-     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
 
@@ -2873,7 +2873,7 @@ export class GetEmailAsFileRequest {
     /**
      * Request model for getEmailAsFile operation.
      * @param fileName Email document file name
-     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param storage Storage name
      * @param folder Path to folder in storage
      */
@@ -3011,7 +3011,7 @@ export class GetEmailClientMultiAccountRequest {
  */
 export class GetEmailFileAsMapiModelRequest {
     /**
-     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public fileFormat: string;
 
@@ -3022,7 +3022,7 @@ export class GetEmailFileAsMapiModelRequest {
 
     /**
      * Request model for getEmailFileAsMapiModel operation.
-     * @param fileFormat File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param fileFormat File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param file File to convert
      */
     public constructor(
@@ -3059,7 +3059,7 @@ export class GetEmailFileAsModelRequest {
  */
 export class GetEmailModelRequest {
     /**
-     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
 
@@ -3080,7 +3080,7 @@ export class GetEmailModelRequest {
 
     /**
      * Request model for getEmailModel operation.
-     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param name Email document file name.
      * @param folder Path to folder in storage.
      * @param storage Storage name.
@@ -3103,7 +3103,7 @@ export class GetEmailModelRequest {
  */
 export class GetEmailModelListRequest {
     /**
-     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
 
@@ -3129,7 +3129,7 @@ export class GetEmailModelListRequest {
 
     /**
      * Request model for getEmailModelList operation.
-     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param folder Path to folder in storage.
      * @param storage Storage name.
      * @param itemsPerPage Count of items on page.
@@ -3459,7 +3459,7 @@ export class GetMapiListRequest {
  */
 export class GetMapiMessageModelRequest {
     /**
-     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
 
@@ -3480,7 +3480,7 @@ export class GetMapiMessageModelRequest {
 
     /**
      * Request model for getMapiMessageModel operation.
-     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param name Email document file name.
      * @param folder Path to folder in storage.
      * @param storage Storage name.
@@ -4099,7 +4099,7 @@ export class SaveEmailClientMultiAccountRequest {
  */
 export class SaveEmailModelRequest {
     /**
-     * File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
 
@@ -4115,7 +4115,7 @@ export class SaveEmailModelRequest {
 
     /**
      * Request model for saveEmailModel operation.
-     * @param format File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param format File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param name Email document file name in storage.
      * @param rq Email document create/update request.
      */
@@ -4247,7 +4247,7 @@ export class SaveMapiContactModelRequest {
  */
 export class SaveMapiMessageModelRequest {
     /**
-     * File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
 
@@ -4263,7 +4263,7 @@ export class SaveMapiMessageModelRequest {
 
     /**
      * Request model for saveMapiMessageModel operation.
-     * @param format File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param format File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param name Message file name in storage.
      * @param rq Message create/update request.
      */
