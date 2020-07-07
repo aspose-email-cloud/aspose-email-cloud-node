@@ -67,8 +67,9 @@ describe('Contact tests', function() {
         contactDto.surname = surname;
         contactDto.givenName = 'John';
         contactDto.gender = 'Male';
-        contactDto.emailAddresses = [new models.EmailAddress(undefined, undefined, undefined, undefined,
-            'address@aspose.com')];
+        const emailAddress = new models.EmailAddress();
+        emailAddress.address = 'address@aspose.com'
+        contactDto.emailAddresses = [emailAddress];
         contactDto.phoneNumbers = [new models.PhoneNumber(undefined, '+47234325344')];
         return contactDto;
     }
