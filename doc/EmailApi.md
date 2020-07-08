@@ -779,7 +779,7 @@ Name | Type | Description  | Notes
 public async convertCalendarModelToMapiModel(requestObj: ConvertCalendarModelToMapiModelRequest) : Promise<{response: RequestResponse, body: MapiCalendarDto; }>
 ```
 
-Convert CalendarDto to MapiCalendarDto             
+Converts CalendarDto to MapiCalendarDto.             
 
 ### Return type
 
@@ -860,7 +860,7 @@ Name | Type | Description  | Notes
 public async convertContactModelToMapiModel(requestObj: ConvertContactModelToMapiModelRequest) : Promise<{response: RequestResponse, body: MapiContactDto; }>
 ```
 
-Convert contact model to MAPI model contact representation             
+Converts ContactDto to MapiContactDto.             
 
 ### Return type
 
@@ -939,7 +939,7 @@ Name | Type | Description  | Notes
 public async convertEmailModelToMapiModel(requestObj: ConvertEmailModelToMapiModelRequest) : Promise<{response: RequestResponse, body: MapiMessageDto; }>
 ```
 
-Converts Email model to MAPI model message representation             
+Converts EmailDto to MapiMessageDto.             
 
 ### Return type
 
@@ -1016,7 +1016,7 @@ Name | Type | Description  | Notes
 public async convertMapiContactModelToContactModel(requestObj: ConvertMapiContactModelToContactModelRequest) : Promise<{response: RequestResponse, body: ContactDto; }>
 ```
 
-Converts MAPI contact model to Contact model             
+Converts MAPI contact model to ContactDto model             
 
 ### Return type
 
@@ -2760,7 +2760,7 @@ Name | Type | Description  | Notes
 public async getMapiCalendarModel(requestObj: GetMapiCalendarModelRequest) : Promise<{response: RequestResponse, body: MapiCalendarDto; }>
 ```
 
-Get calendar file             
+Get MAPI calendar document.             
 
 ### Return type
 
@@ -2789,7 +2789,7 @@ Name | Type | Description  | Notes
 public async getMapiContactModel(requestObj: GetMapiContactModelRequest) : Promise<{response: RequestResponse, body: MapiContactDto; }>
 ```
 
-Get contact document.             
+Get MAPI contact document.             
 
 ### Return type
 
@@ -2851,7 +2851,7 @@ Name | Type | Description  | Notes
 public async getMapiMessageModel(requestObj: GetMapiMessageModelRequest) : Promise<{response: RequestResponse, body: MapiMessageDto; }>
 ```
 
-MAPI message document.             
+Get MAPI message document.             
 
 ### Return type
 
@@ -3443,7 +3443,7 @@ Name | Type | Description  | Notes
 public async saveMapiContactModel(requestObj: SaveMapiContactModelRequest) : Promise<{response: RequestResponse, body?: any; }>
 ```
 
-Save contact.             
+Save MAPI Contact to storage.             
 
 ### Return type
 
@@ -3472,7 +3472,7 @@ Name | Type | Description  | Notes
 public async saveMapiMessageModel(requestObj: SaveMapiMessageModelRequest) : Promise<{response: RequestResponse, body?: any; }>
 ```
 
-Save MAPI message.             
+Save MAPI message to storage.             
 
 ### Return type
 

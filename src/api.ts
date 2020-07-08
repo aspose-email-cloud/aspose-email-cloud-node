@@ -1379,7 +1379,7 @@ export class EmailApi {
     }
 
     /**
-     * Convert CalendarDto to MapiCalendarDto             
+     * Converts CalendarDto to MapiCalendarDto.             
      * @param requestObj contains request parameters
      */
     public async convertCalendarModelToMapiModel(requestObj: requestModels.ConvertCalendarModelToMapiModelRequest): Promise<{response: request.RequestResponse, body: model.MapiCalendarDto}> {
@@ -1528,7 +1528,7 @@ export class EmailApi {
     }
 
     /**
-     * Convert contact model to MAPI model contact representation             
+     * Converts ContactDto to MapiContactDto.             
      * @param requestObj contains request parameters
      */
     public async convertContactModelToMapiModel(requestObj: requestModels.ConvertContactModelToMapiModelRequest): Promise<{response: request.RequestResponse, body: model.MapiContactDto}> {
@@ -1671,7 +1671,7 @@ export class EmailApi {
     }
 
     /**
-     * Converts Email model to MAPI model message representation             
+     * Converts EmailDto to MapiMessageDto.             
      * @param requestObj contains request parameters
      */
     public async convertEmailModelToMapiModel(requestObj: requestModels.ConvertEmailModelToMapiModelRequest): Promise<{response: request.RequestResponse, body: model.MapiMessageDto}> {
@@ -1798,7 +1798,7 @@ export class EmailApi {
     }
 
     /**
-     * Converts MAPI contact model to Contact model             
+     * Converts MAPI contact model to ContactDto model             
      * @param requestObj contains request parameters
      */
     public async convertMapiContactModelToContactModel(requestObj: requestModels.ConvertMapiContactModelToContactModelRequest): Promise<{response: request.RequestResponse, body: model.ContactDto}> {
@@ -4878,7 +4878,7 @@ export class EmailApi {
     }
 
     /**
-     * Get calendar file             
+     * Get MAPI calendar document.             
      * @param requestObj contains request parameters
      */
     public async getMapiCalendarModel(requestObj: requestModels.GetMapiCalendarModelRequest): Promise<{response: request.RequestResponse, body: model.MapiCalendarDto}> {
@@ -4926,7 +4926,7 @@ export class EmailApi {
     }
 
     /**
-     * Get contact document.             
+     * Get MAPI contact document.             
      * @param requestObj contains request parameters
      */
     public async getMapiContactModel(requestObj: requestModels.GetMapiContactModelRequest): Promise<{response: request.RequestResponse, body: model.MapiContactDto}> {
@@ -5030,7 +5030,7 @@ export class EmailApi {
     }
 
     /**
-     * MAPI message document.             
+     * Get MAPI message document.             
      * @param requestObj contains request parameters
      */
     public async getMapiMessageModel(requestObj: requestModels.GetMapiMessageModelRequest): Promise<{response: request.RequestResponse, body: model.MapiMessageDto}> {
@@ -6054,7 +6054,7 @@ export class EmailApi {
     }
 
     /**
-     * Save contact.             
+     * Save MAPI Contact to storage.             
      * @param requestObj contains request parameters
      */
     public async saveMapiContactModel(requestObj: requestModels.SaveMapiContactModelRequest): Promise<{response: request.RequestResponse, body?: any; }> {
@@ -6105,7 +6105,7 @@ export class EmailApi {
     }
 
     /**
-     * Save MAPI message.             
+     * Save MAPI message to storage.             
      * @param requestObj contains request parameters
      */
     public async saveMapiMessageModel(requestObj: requestModels.SaveMapiMessageModelRequest): Promise<{response: request.RequestResponse, body?: any; }> {
