@@ -1379,6 +1379,46 @@ export class EmailApi {
     }
 
     /**
+     * Converts CalendarDto to MapiCalendarDto.             
+     * @param requestObj contains request parameters
+     */
+    public async convertCalendarModelToMapiModel(requestObj: requestModels.ConvertCalendarModelToMapiModelRequest): Promise<{response: request.RequestResponse, body: model.MapiCalendarDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/CalendarModel/model-as-mapi-model";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.calendarDto' is not null or undefined
+        if (requestObj.calendarDto === null || requestObj.calendarDto === undefined) {
+            throw new Error('Required parameter "requestObj.calendarDto" was null or undefined when calling convertCalendarModelToMapiModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.calendarDto, "CalendarDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "MapiCalendarDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Converts contact document to specified format and returns as file             
      * @param requestObj contains request parameters
      */
@@ -1488,6 +1528,46 @@ export class EmailApi {
     }
 
     /**
+     * Converts ContactDto to MapiContactDto.             
+     * @param requestObj contains request parameters
+     */
+    public async convertContactModelToMapiModel(requestObj: requestModels.ConvertContactModelToMapiModelRequest): Promise<{response: request.RequestResponse, body: model.MapiContactDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/ContactModel/model-as-mapi-model";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.contactDto' is not null or undefined
+        if (requestObj.contactDto === null || requestObj.contactDto === undefined) {
+            throw new Error('Required parameter "requestObj.contactDto" was null or undefined when calling convertContactModelToMapiModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.contactDto, "ContactDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "MapiContactDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Converts email document to specified format and returns as file             
      * @param requestObj contains request parameters
      */
@@ -1575,6 +1655,307 @@ export class EmailApi {
             json: true,
             encoding: null,
             body: ObjectSerializer.serialize(requestObj.emailDto, "EmailDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts EmailDto to MapiMessageDto.             
+     * @param requestObj contains request parameters
+     */
+    public async convertEmailModelToMapiModel(requestObj: requestModels.ConvertEmailModelToMapiModelRequest): Promise<{response: request.RequestResponse, body: model.MapiMessageDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/model/model-as-mapi-model";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.emailDto' is not null or undefined
+        if (requestObj.emailDto === null || requestObj.emailDto === undefined) {
+            throw new Error('Required parameter "requestObj.emailDto" was null or undefined when calling convertEmailModelToMapiModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.emailDto, "EmailDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "MapiMessageDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts MAPI calendar model to CalendarDto model             
+     * @param requestObj contains request parameters
+     */
+    public async convertMapiCalendarModelToCalendarModel(requestObj: requestModels.ConvertMapiCalendarModelToCalendarModelRequest): Promise<{response: request.RequestResponse, body: model.CalendarDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiCalendar/model-as-calendar-model";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.mapiCalendarDto' is not null or undefined
+        if (requestObj.mapiCalendarDto === null || requestObj.mapiCalendarDto === undefined) {
+            throw new Error('Required parameter "requestObj.mapiCalendarDto" was null or undefined when calling convertMapiCalendarModelToCalendarModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.mapiCalendarDto, "MapiCalendarDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "CalendarDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts MAPI calendar model to specified format and returns as file             
+     * @param requestObj contains request parameters
+     */
+    public async convertMapiCalendarModelToFile(requestObj: requestModels.ConvertMapiCalendarModelToFileRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiCalendar/model-as-file/{destinationFormat}"
+            .replace("{" + "destinationFormat" + "}", String(requestObj.destinationFormat));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.destinationFormat' is not null or undefined
+        if (requestObj.destinationFormat === null || requestObj.destinationFormat === undefined) {
+            throw new Error('Required parameter "requestObj.destinationFormat" was null or undefined when calling convertMapiCalendarModelToFile.');
+        }
+
+        // verify required parameter 'requestObj.mapiCalendarDto' is not null or undefined
+        if (requestObj.mapiCalendarDto === null || requestObj.mapiCalendarDto === undefined) {
+            throw new Error('Required parameter "requestObj.mapiCalendarDto" was null or undefined when calling convertMapiCalendarModelToFile.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            encoding: null,
+            body: ObjectSerializer.serialize(requestObj.mapiCalendarDto, "MapiCalendarDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts MAPI contact model to ContactDto model             
+     * @param requestObj contains request parameters
+     */
+    public async convertMapiContactModelToContactModel(requestObj: requestModels.ConvertMapiContactModelToContactModelRequest): Promise<{response: request.RequestResponse, body: model.ContactDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiContact/model-as-contact-model";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.mapiContactDto' is not null or undefined
+        if (requestObj.mapiContactDto === null || requestObj.mapiContactDto === undefined) {
+            throw new Error('Required parameter "requestObj.mapiContactDto" was null or undefined when calling convertMapiContactModelToContactModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.mapiContactDto, "MapiContactDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "ContactDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts MAPI contact model to specified format and returns as file             
+     * @param requestObj contains request parameters
+     */
+    public async convertMapiContactModelToFile(requestObj: requestModels.ConvertMapiContactModelToFileRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiContact/model-as-file/{destinationFormat}"
+            .replace("{" + "destinationFormat" + "}", String(requestObj.destinationFormat));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.destinationFormat' is not null or undefined
+        if (requestObj.destinationFormat === null || requestObj.destinationFormat === undefined) {
+            throw new Error('Required parameter "requestObj.destinationFormat" was null or undefined when calling convertMapiContactModelToFile.');
+        }
+
+        // verify required parameter 'requestObj.mapiContactDto' is not null or undefined
+        if (requestObj.mapiContactDto === null || requestObj.mapiContactDto === undefined) {
+            throw new Error('Required parameter "requestObj.mapiContactDto" was null or undefined when calling convertMapiContactModelToFile.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            encoding: null,
+            body: ObjectSerializer.serialize(requestObj.mapiContactDto, "MapiContactDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts MAPI message model to EmailDto model             
+     * @param requestObj contains request parameters
+     */
+    public async convertMapiMessageModelToEmailModel(requestObj: requestModels.ConvertMapiMessageModelToEmailModelRequest): Promise<{response: request.RequestResponse, body: model.EmailDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiMessage/model-as-email-model";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.mapiMessage' is not null or undefined
+        if (requestObj.mapiMessage === null || requestObj.mapiMessage === undefined) {
+            throw new Error('Required parameter "requestObj.mapiMessage" was null or undefined when calling convertMapiMessageModelToEmailModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.mapiMessage, "MapiMessageDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "EmailDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts MAPI message model to specified format and returns as file             
+     * @param requestObj contains request parameters
+     */
+    public async convertMapiMessageModelToFile(requestObj: requestModels.ConvertMapiMessageModelToFileRequest): Promise<{response: request.RequestResponse, body: Buffer}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiMessage/model-as-file/{destinationFormat}"
+            .replace("{" + "destinationFormat" + "}", String(requestObj.destinationFormat));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.destinationFormat' is not null or undefined
+        if (requestObj.destinationFormat === null || requestObj.destinationFormat === undefined) {
+            throw new Error('Required parameter "requestObj.destinationFormat" was null or undefined when calling convertMapiMessageModelToFile.');
+        }
+
+        // verify required parameter 'requestObj.mapiMessage' is not null or undefined
+        if (requestObj.mapiMessage === null || requestObj.mapiMessage === undefined) {
+            throw new Error('Required parameter "requestObj.mapiMessage" was null or undefined when calling convertMapiMessageModelToFile.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            encoding: null,
+            body: ObjectSerializer.serialize(requestObj.mapiMessage, "MapiMessageDto"),
         };
 
         if (Object.keys(formParams).length) {
@@ -2944,6 +3325,55 @@ export class EmailApi {
     }
 
     /**
+     * Converts calendar file to a MAPI model representation             
+     * @param requestObj contains request parameters
+     */
+    public async getCalendarFileAsMapiModel(requestObj: requestModels.GetCalendarFileAsMapiModelRequest): Promise<{response: request.RequestResponse, body: model.MapiCalendarDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiCalendar/file-as-model";
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.file' is not null or undefined
+        if (requestObj.file === null || requestObj.file === undefined) {
+            throw new Error('Required parameter "requestObj.file" was null or undefined when calling getCalendarFileAsMapiModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        if (requestObj.file !== undefined) {
+            formParams.File = {
+                value: requestObj.file,
+                options: {
+                    filename: 'File'
+                }
+            };
+        }
+        useFormData = true;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "MapiCalendarDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Converts calendar document to a model representation             
      * @param requestObj contains request parameters
      */
@@ -3337,6 +3767,61 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Converts contact file to a MAPI model representation             
+     * @param requestObj contains request parameters
+     */
+    public async getContactFileAsMapiModel(requestObj: requestModels.GetContactFileAsMapiModelRequest): Promise<{response: request.RequestResponse, body: model.MapiContactDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiContact/{fileFormat}/file-as-model"
+            .replace("{" + "fileFormat" + "}", String(requestObj.fileFormat));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.fileFormat' is not null or undefined
+        if (requestObj.fileFormat === null || requestObj.fileFormat === undefined) {
+            throw new Error('Required parameter "requestObj.fileFormat" was null or undefined when calling getContactFileAsMapiModel.');
+        }
+
+        // verify required parameter 'requestObj.file' is not null or undefined
+        if (requestObj.file === null || requestObj.file === undefined) {
+            throw new Error('Required parameter "requestObj.file" was null or undefined when calling getContactFileAsMapiModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        if (requestObj.file !== undefined) {
+            formParams.File = {
+                value: requestObj.file,
+                options: {
+                    filename: 'File'
+                }
+            };
+        }
+        useFormData = true;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "MapiContactDto");
         return Promise.resolve({body: result, response});
     }
 
@@ -3934,6 +4419,61 @@ export class EmailApi {
     }
 
     /**
+     * Converts email file to a MAPI model representation             
+     * @param requestObj contains request parameters
+     */
+    public async getEmailFileAsMapiModel(requestObj: requestModels.GetEmailFileAsMapiModelRequest): Promise<{response: request.RequestResponse, body: model.MapiMessageDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiMessage/{fileFormat}/file-as-model"
+            .replace("{" + "fileFormat" + "}", String(requestObj.fileFormat));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.fileFormat' is not null or undefined
+        if (requestObj.fileFormat === null || requestObj.fileFormat === undefined) {
+            throw new Error('Required parameter "requestObj.fileFormat" was null or undefined when calling getEmailFileAsMapiModel.');
+        }
+
+        // verify required parameter 'requestObj.file' is not null or undefined
+        if (requestObj.file === null || requestObj.file === undefined) {
+            throw new Error('Required parameter "requestObj.file" was null or undefined when calling getEmailFileAsMapiModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        if (requestObj.file !== undefined) {
+            formParams.File = {
+                value: requestObj.file,
+                options: {
+                    filename: 'File'
+                }
+            };
+        }
+        useFormData = true;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "MapiMessageDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Converts email document to a model representation             
      * @param requestObj contains request parameters
      */
@@ -4338,6 +4878,108 @@ export class EmailApi {
     }
 
     /**
+     * Get MAPI calendar document.             
+     * @param requestObj contains request parameters
+     */
+    public async getMapiCalendarModel(requestObj: requestModels.GetMapiCalendarModelRequest): Promise<{response: request.RequestResponse, body: model.MapiCalendarDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiCalendar/{name}"
+            .replace("{" + "name" + "}", String(requestObj.name));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling getMapiCalendarModel.');
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "MapiCalendarDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Get MAPI contact document.             
+     * @param requestObj contains request parameters
+     */
+    public async getMapiContactModel(requestObj: requestModels.GetMapiContactModelRequest): Promise<{response: request.RequestResponse, body: model.MapiContactDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiContact/{format}/{name}"
+            .replace("{" + "format" + "}", String(requestObj.format))
+            .replace("{" + "name" + "}", String(requestObj.name));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling getMapiContactModel.');
+        }
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling getMapiContactModel.');
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "MapiContactDto");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
      * Get document list from storage folder             
      * @param requestObj contains request parameters
      */
@@ -4384,6 +5026,60 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "ListResponseOfHierarchicalObjectResponse");
+        return Promise.resolve({body: result, response});
+    }
+
+    /**
+     * Get MAPI message document.             
+     * @param requestObj contains request parameters
+     */
+    public async getMapiMessageModel(requestObj: requestModels.GetMapiMessageModelRequest): Promise<{response: request.RequestResponse, body: model.MapiMessageDto}> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiMessage/{format}/{name}"
+            .replace("{" + "format" + "}", String(requestObj.format))
+            .replace("{" + "name" + "}", String(requestObj.name));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling getMapiMessageModel.');
+        }
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling getMapiMessageModel.');
+        }
+
+        if (requestObj.folder !== undefined) {
+            queryParameters.folder = ObjectSerializer.serialize(requestObj.folder, "string");
+        }
+
+        if (requestObj.storage !== undefined) {
+            queryParameters.storage = ObjectSerializer.serialize(requestObj.storage, "string");
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "GET",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        const result =  ObjectSerializer.deserialize(response.body, "MapiMessageDto");
         return Promise.resolve({body: result, response});
     }
 
@@ -5292,6 +5988,159 @@ export class EmailApi {
             uri: localVarPath,
             json: true,
             body: ObjectSerializer.serialize(requestObj.request, "SaveOAuthEmailAccountRequest"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
+     * Save MAPI Calendar to storage.             
+     * @param requestObj contains request parameters
+     */
+    public async saveMapiCalendarModel(requestObj: requestModels.SaveMapiCalendarModelRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiCalendar/{format}/{name}"
+            .replace("{" + "name" + "}", String(requestObj.name))
+            .replace("{" + "format" + "}", String(requestObj.format));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling saveMapiCalendarModel.');
+        }
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling saveMapiCalendarModel.');
+        }
+
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling saveMapiCalendarModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.rq, "StorageModelRqOfMapiCalendarDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
+     * Save MAPI Contact to storage.             
+     * @param requestObj contains request parameters
+     */
+    public async saveMapiContactModel(requestObj: requestModels.SaveMapiContactModelRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiContact/{format}/{name}"
+            .replace("{" + "format" + "}", String(requestObj.format))
+            .replace("{" + "name" + "}", String(requestObj.name));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling saveMapiContactModel.');
+        }
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling saveMapiContactModel.');
+        }
+
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling saveMapiContactModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.rq, "StorageModelRqOfMapiContactDto"),
+        };
+
+        if (Object.keys(formParams).length) {
+            if (useFormData) {
+                (requestOptions as any).formData = formParams;
+            } else {
+                requestOptions.form = formParams;
+            }
+        }
+
+        const response = await invokeApiMethod(requestOptions, this.configuration);
+        return Promise.resolve({body: null, response});
+    }
+
+    /**
+     * Save MAPI message to storage.             
+     * @param requestObj contains request parameters
+     */
+    public async saveMapiMessageModel(requestObj: requestModels.SaveMapiMessageModelRequest): Promise<{response: request.RequestResponse, body?: any; }> {
+        const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiMessage/{format}/{name}"
+            .replace("{" + "format" + "}", String(requestObj.format))
+            .replace("{" + "name" + "}", String(requestObj.name));
+        const queryParameters: any = {};
+        const headerParams: any = {};
+        const formParams: any = {};
+
+        // verify required parameter 'requestObj.format' is not null or undefined
+        if (requestObj.format === null || requestObj.format === undefined) {
+            throw new Error('Required parameter "requestObj.format" was null or undefined when calling saveMapiMessageModel.');
+        }
+
+        // verify required parameter 'requestObj.name' is not null or undefined
+        if (requestObj.name === null || requestObj.name === undefined) {
+            throw new Error('Required parameter "requestObj.name" was null or undefined when calling saveMapiMessageModel.');
+        }
+
+        // verify required parameter 'requestObj.rq' is not null or undefined
+        if (requestObj.rq === null || requestObj.rq === undefined) {
+            throw new Error('Required parameter "requestObj.rq" was null or undefined when calling saveMapiMessageModel.');
+        }
+
+        // tslint:disable-next-line:prefer-const
+        let useFormData = false;
+
+        const requestOptions: request.Options = {
+            method: "PUT",
+            qs: queryParameters,
+            headers: headerParams,
+            uri: localVarPath,
+            json: true,
+            body: ObjectSerializer.serialize(requestObj.rq, "StorageModelRqOfMapiMessageDto"),
         };
 
         if (Object.keys(formParams).length) {

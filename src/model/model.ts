@@ -1397,6 +1397,11 @@ export class CalendarDto {
             type: "string",
         },
         {
+            name: "recurrence",
+            baseName: "recurrence",
+            type: "RecurrencePatternDto",
+        },
+        {
             name: "reminders",
             baseName: "reminders",
             type: "Array<CalendarReminder>",
@@ -1505,9 +1510,14 @@ export class CalendarDto {
     public organizer: MailAddress;
     
     /**
-     * String representation of recurrence pattern (See iCalendar RFC, \"Recurrence rule\" section). For example:               For daily recurrence:         \"FREQ=DAILY;COUNT=10;WKST=MO\"                   For monthly recurrence:         \"BYSETPOS=1;BYDAY=MO,TU,WE,TH,FR;FREQ=MONTHLY;INTERVAL=10;WKST=MO\"                   For yearly recurrence:         \"BYMONTHDAY=30;BYMONTH=1;FREQ=YEARLY;WKST=MO\"                   
+     * Deprecated, use 'Recurrence' property. String representation of recurrence pattern (See iCalendar RFC, \"Recurrence rule\" section). For example:               For daily recurrence:         \"FREQ=DAILY;COUNT=10;WKST=MO\"                   For monthly recurrence:         \"BYSETPOS=1;BYDAY=MO,TU,WE,TH,FR;FREQ=MONTHLY;INTERVAL=10;WKST=MO\"                   For yearly recurrence:         \"BYMONTHDAY=30;BYMONTH=1;FREQ=YEARLY;WKST=MO\"                   
      */
     public recurrenceString: string;
+    
+    /**
+     * Recurrence pattern             
+     */
+    public recurrence: RecurrencePatternDto;
     
     /**
      * Reminders.
@@ -1560,7 +1570,8 @@ export class CalendarDto {
      * @param microsoftIntendedStatus Specifies the INTENDED status. Enum, available values: NotDefined, Free, Tentative, Busy, Oof
      * @param optionalAttendees Optional attendees.             
      * @param organizer Event organizer.             
-     * @param recurrenceString String representation of recurrence pattern (See iCalendar RFC, \"Recurrence rule\" section). For example:               For daily recurrence:         \"FREQ=DAILY;COUNT=10;WKST=MO\"                   For monthly recurrence:         \"BYSETPOS=1;BYDAY=MO,TU,WE,TH,FR;FREQ=MONTHLY;INTERVAL=10;WKST=MO\"                   For yearly recurrence:         \"BYMONTHDAY=30;BYMONTH=1;FREQ=YEARLY;WKST=MO\"                   
+     * @param recurrenceString Deprecated, use 'Recurrence' property. String representation of recurrence pattern (See iCalendar RFC, \"Recurrence rule\" section). For example:               For daily recurrence:         \"FREQ=DAILY;COUNT=10;WKST=MO\"                   For monthly recurrence:         \"BYSETPOS=1;BYDAY=MO,TU,WE,TH,FR;FREQ=MONTHLY;INTERVAL=10;WKST=MO\"                   For yearly recurrence:         \"BYMONTHDAY=30;BYMONTH=1;FREQ=YEARLY;WKST=MO\"                   
+     * @param recurrence Recurrence pattern             
      * @param reminders Reminders.
      * @param sequenceId The sequence id. Read only.
      * @param startDate Start date.
@@ -1584,6 +1595,7 @@ export class CalendarDto {
         optionalAttendees?: Array<MailAddress>,
         organizer?: MailAddress,
         recurrenceString?: string,
+        recurrence?: RecurrencePatternDto,
         reminders?: Array<CalendarReminder>,
         sequenceId?: string,
         startDate?: Date,
@@ -1606,6 +1618,7 @@ export class CalendarDto {
         this.optionalAttendees = optionalAttendees;
         this.organizer = organizer;
         this.recurrenceString = recurrenceString;
+        this.recurrence = recurrence;
         this.reminders = reminders;
         this.sequenceId = sequenceId;
         this.startDate = startDate;
@@ -2323,6 +2336,11 @@ export class ContactPhoto {
             name: "base64Data",
             baseName: "base64Data",
             type: "string",
+        },
+        {
+            name: "discriminator",
+            baseName: "discriminator",
+            type: "string",
         }    ];
 
     /**
@@ -2343,17 +2361,29 @@ export class ContactPhoto {
     public base64Data: string;
     
 
+    get discriminator(): string {
+        return this.constructor.name;
+    }
+
+    set discriminator(_newType: string) {
+        /* do nothing */
+    }
+    
+
     /**
      * Person's photo.             
      * @param photoImageFormat MapiContact photo image format. Enum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
      * @param base64Data Photo serialized as base64 string.             
+     * @param discriminator 
      */
     public constructor(
         photoImageFormat?: string,
-        base64Data?: string) {
+        base64Data?: string,
+        discriminator?: string) {
         
         this.photoImageFormat = photoImageFormat;
         this.base64Data = base64Data;
+        this.discriminator = discriminator;
     }
 }
 
@@ -5422,6 +5452,2947 @@ export class MailServerFolder {
 }
 
 /**
+ * Mapi attachment             
+ */
+export class MapiAttachmentDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "name",
+            baseName: "name",
+            type: "string",
+        },
+        {
+            name: "dataBase64",
+            baseName: "dataBase64",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiAttachmentDto.attributeTypeMap;
+    }
+
+    /**
+     * Attachment's name             
+     */
+    public name: string;
+    
+    /**
+     * Attachment data represented as Base64 string.             
+     */
+    public dataBase64: string;
+    
+
+    /**
+     * Mapi attachment             
+     * @param name Attachment's name             
+     * @param dataBase64 Attachment data represented as Base64 string.             
+     */
+    public constructor(
+        name?: string,
+        dataBase64?: string) {
+        
+        this.name = name;
+        this.dataBase64 = dataBase64;
+    }
+}
+
+/**
+ * Mapi calendar attendees.             
+ */
+export class MapiCalendarAttendeesDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "appointmentRecipients",
+            baseName: "appointmentRecipients",
+            type: "Array<MapiRecipientDto>",
+        },
+        {
+            name: "appointmentUnsendableRecipients",
+            baseName: "appointmentUnsendableRecipients",
+            type: "Array<MapiRecipientDto>",
+        },
+        {
+            name: "notAllowPropose",
+            baseName: "notAllowPropose",
+            type: "boolean",
+        },
+        {
+            name: "responseRequested",
+            baseName: "responseRequested",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiCalendarAttendeesDto.attributeTypeMap;
+    }
+
+    /**
+     * List of attendees.             
+     */
+    public appointmentRecipients: Array<MapiRecipientDto>;
+    
+    /**
+     * List of unsendable attendees.             
+     */
+    public appointmentUnsendableRecipients: Array<MapiRecipientDto>;
+    
+    /**
+     * Value indicating whether attendees are not allowed to propose a new date and/or time for the meeting.             
+     */
+    public notAllowPropose: boolean;
+    
+    /**
+     * Value indicating whether a response is requested to a Message object.             
+     */
+    public responseRequested: boolean;
+    
+
+    /**
+     * Mapi calendar attendees.             
+     * @param appointmentRecipients List of attendees.             
+     * @param appointmentUnsendableRecipients List of unsendable attendees.             
+     * @param notAllowPropose Value indicating whether attendees are not allowed to propose a new date and/or time for the meeting.             
+     * @param responseRequested Value indicating whether a response is requested to a Message object.             
+     */
+    public constructor(
+        appointmentRecipients?: Array<MapiRecipientDto>,
+        appointmentUnsendableRecipients?: Array<MapiRecipientDto>,
+        notAllowPropose?: boolean,
+        responseRequested?: boolean) {
+        
+        this.appointmentRecipients = appointmentRecipients;
+        this.appointmentUnsendableRecipients = appointmentUnsendableRecipients;
+        this.notAllowPropose = notAllowPropose;
+        this.responseRequested = responseRequested;
+    }
+}
+
+/**
+ * Recurrence properties of calendar object.             
+ */
+export class MapiCalendarEventRecurrenceDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "appointmentTimeZoneDefinitionRecur",
+            baseName: "appointmentTimeZoneDefinitionRecur",
+            type: "MapiCalendarTimeZoneDto",
+        },
+        {
+            name: "clipEnd",
+            baseName: "clipEnd",
+            type: "Date",
+        },
+        {
+            name: "clipStart",
+            baseName: "clipStart",
+            type: "Date",
+        },
+        {
+            name: "isException",
+            baseName: "isException",
+            type: "boolean",
+        },
+        {
+            name: "recurrencePattern",
+            baseName: "recurrencePattern",
+            type: "MapiCalendarRecurrencePatternDto",
+        },
+        {
+            name: "timeZoneStruct",
+            baseName: "timeZoneStruct",
+            type: "MapiCalendarTimeZoneDto",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiCalendarEventRecurrenceDto.attributeTypeMap;
+    }
+
+    /**
+     * Time zone information that describes how to convert the meeting date and time on a recurring series to and from UTC.             
+     */
+    public appointmentTimeZoneDefinitionRecur: MapiCalendarTimeZoneDto;
+    
+    /**
+     * Date of the last instance.             
+     */
+    public clipEnd: Date;
+    
+    /**
+     * Date of the first instance.             
+     */
+    public clipStart: Date;
+    
+    /**
+     * Value indicating whether the object represents an exception.             
+     */
+    public isException: boolean;
+    
+    /**
+     * Recurrence pattern.             
+     */
+    public recurrencePattern: MapiCalendarRecurrencePatternDto;
+    
+    /**
+     * Time zone information for a recurring meeting.             
+     */
+    public timeZoneStruct: MapiCalendarTimeZoneDto;
+    
+
+    /**
+     * Recurrence properties of calendar object.             
+     * @param appointmentTimeZoneDefinitionRecur Time zone information that describes how to convert the meeting date and time on a recurring series to and from UTC.             
+     * @param clipEnd Date of the last instance.             
+     * @param clipStart Date of the first instance.             
+     * @param isException Value indicating whether the object represents an exception.             
+     * @param recurrencePattern Recurrence pattern.             
+     * @param timeZoneStruct Time zone information for a recurring meeting.             
+     */
+    public constructor(
+        appointmentTimeZoneDefinitionRecur?: MapiCalendarTimeZoneDto,
+        clipEnd?: Date,
+        clipStart?: Date,
+        isException?: boolean,
+        recurrencePattern?: MapiCalendarRecurrencePatternDto,
+        timeZoneStruct?: MapiCalendarTimeZoneDto) {
+        
+        this.appointmentTimeZoneDefinitionRecur = appointmentTimeZoneDefinitionRecur;
+        this.clipEnd = clipEnd;
+        this.clipStart = clipStart;
+        this.isException = isException;
+        this.recurrencePattern = recurrencePattern;
+        this.timeZoneStruct = timeZoneStruct;
+    }
+}
+
+/**
+ * An exception specifies changes to an instance of a recurring series.             
+ */
+export class MapiCalendarExceptionInfoDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "attachments",
+            baseName: "attachments",
+            type: "Array<MapiAttachmentDto>",
+        },
+        {
+            name: "body",
+            baseName: "body",
+            type: "string",
+        },
+        {
+            name: "busyStatus",
+            baseName: "busyStatus",
+            type: "string",
+        },
+        {
+            name: "endDateTime",
+            baseName: "endDateTime",
+            type: "Date",
+        },
+        {
+            name: "hasAttachment",
+            baseName: "hasAttachment",
+            type: "boolean",
+        },
+        {
+            name: "location",
+            baseName: "location",
+            type: "string",
+        },
+        {
+            name: "meetingType",
+            baseName: "meetingType",
+            type: "string",
+        },
+        {
+            name: "originalStartDate",
+            baseName: "originalStartDate",
+            type: "Date",
+        },
+        {
+            name: "overrideFlags",
+            baseName: "overrideFlags",
+            type: "Array<string>",
+        },
+        {
+            name: "reminderDelta",
+            baseName: "reminderDelta",
+            type: "number",
+        },
+        {
+            name: "reminderSet",
+            baseName: "reminderSet",
+            type: "boolean",
+        },
+        {
+            name: "startDateTime",
+            baseName: "startDateTime",
+            type: "Date",
+        },
+        {
+            name: "subject",
+            baseName: "subject",
+            type: "string",
+        },
+        {
+            name: "subType",
+            baseName: "subType",
+            type: "number",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiCalendarExceptionInfoDto.attributeTypeMap;
+    }
+
+    /**
+     * Attachments in the recurrence exception.             
+     */
+    public attachments: Array<MapiAttachmentDto>;
+    
+    /**
+     * Body.             
+     */
+    public body: string;
+    
+    /**
+     * Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
+     */
+    public busyStatus: string;
+    
+    /**
+     * End date.             
+     */
+    public endDateTime: Date;
+    
+    /**
+     * Value of this field specifies whether the Exception Embedded Message object contains attachments.             
+     */
+    public hasAttachment: boolean;
+    
+    /**
+     * Location.             
+     */
+    public location: string;
+    
+    /**
+     * Enumerates the appointment state Enum, available values: Meeting, Received, Canceled
+     */
+    public meetingType: string;
+    
+    /**
+     * Original start date.             
+     */
+    public originalStartDate: Date;
+    
+    /**
+     * Override flags.              Items: Specifies what data in the MapiCalendarOverride structure has a value different from the recurring series. Enum, available values: Subject, MeetingType, ReminderDelta, Reminder, Location, BusyStatus, Attachment, Subtype, AppointmentColor, ExceptionalBody
+     */
+    public overrideFlags: Array<string>;
+    
+    /**
+     * Reminder delta.             
+     */
+    public reminderDelta: number;
+    
+    /**
+     * Value for the PidLidReminderSet property.             
+     */
+    public reminderSet: boolean;
+    
+    /**
+     * Start date.             
+     */
+    public startDateTime: Date;
+    
+    /**
+     * Subject.             
+     */
+    public subject: string;
+    
+    /**
+     * SubType.             
+     */
+    public subType: number;
+    
+
+    /**
+     * An exception specifies changes to an instance of a recurring series.             
+     * @param attachments Attachments in the recurrence exception.             
+     * @param body Body.             
+     * @param busyStatus Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
+     * @param endDateTime End date.             
+     * @param hasAttachment Value of this field specifies whether the Exception Embedded Message object contains attachments.             
+     * @param location Location.             
+     * @param meetingType Enumerates the appointment state Enum, available values: Meeting, Received, Canceled
+     * @param originalStartDate Original start date.             
+     * @param overrideFlags Override flags.             
+     * @param reminderDelta Reminder delta.             
+     * @param reminderSet Value for the PidLidReminderSet property.             
+     * @param startDateTime Start date.             
+     * @param subject Subject.             
+     * @param subType SubType.             
+     */
+    public constructor(
+        attachments?: Array<MapiAttachmentDto>,
+        body?: string,
+        busyStatus?: string,
+        endDateTime?: Date,
+        hasAttachment?: boolean,
+        location?: string,
+        meetingType?: string,
+        originalStartDate?: Date,
+        overrideFlags?: Array<string>,
+        reminderDelta?: number,
+        reminderSet?: boolean,
+        startDateTime?: Date,
+        subject?: string,
+        subType?: number) {
+        
+        this.attachments = attachments;
+        this.body = body;
+        this.busyStatus = busyStatus;
+        this.endDateTime = endDateTime;
+        this.hasAttachment = hasAttachment;
+        this.location = location;
+        this.meetingType = meetingType;
+        this.originalStartDate = originalStartDate;
+        this.overrideFlags = overrideFlags;
+        this.reminderDelta = reminderDelta;
+        this.reminderSet = reminderSet;
+        this.startDateTime = startDateTime;
+        this.subject = subject;
+        this.subType = subType;
+    }
+}
+
+/**
+ * Mapi recurrence pattern.             
+ */
+export class MapiCalendarRecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "calendarType",
+            baseName: "calendarType",
+            type: "string",
+        },
+        {
+            name: "deletedInstanceDates",
+            baseName: "deletedInstanceDates",
+            type: "Array<Date>",
+        },
+        {
+            name: "endDate",
+            baseName: "endDate",
+            type: "Date",
+        },
+        {
+            name: "endType",
+            baseName: "endType",
+            type: "string",
+        },
+        {
+            name: "exceptions",
+            baseName: "exceptions",
+            type: "Array<MapiCalendarExceptionInfoDto>",
+        },
+        {
+            name: "frequency",
+            baseName: "frequency",
+            type: "string",
+        },
+        {
+            name: "modifiedInstanceDates",
+            baseName: "modifiedInstanceDates",
+            type: "Array<Date>",
+        },
+        {
+            name: "occurrenceCount",
+            baseName: "occurrenceCount",
+            type: "number",
+        },
+        {
+            name: "patternType",
+            baseName: "patternType",
+            type: "string",
+        },
+        {
+            name: "period",
+            baseName: "period",
+            type: "number",
+        },
+        {
+            name: "slidingFlag",
+            baseName: "slidingFlag",
+            type: "boolean",
+        },
+        {
+            name: "startDate",
+            baseName: "startDate",
+            type: "Date",
+        },
+        {
+            name: "weekStartDay",
+            baseName: "weekStartDay",
+            type: "string",
+        },
+        {
+            name: "discriminator",
+            baseName: "discriminator",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiCalendarRecurrencePatternDto.attributeTypeMap;
+    }
+
+    /**
+     * Enumerated the calendar type of the mapi recurrence Enum, available values: Default, CalGregorian, CalGregorianUs, CalJapan, CalTaiwan, CalKorea, CalHijri, CalThai, CalHebrew, CalGregorianMeFrench, CalGregorianArabic, CalGregorianXLitEnglish, CalGregorianXLitFrench, CalLunarJapanese, CalChineseLunar, CalSaka, CalLunarEtoChn, CalLunarEtoKor, CalLunarRokuyou, CalLunarKorean, CalUmAlQura
+     */
+    public calendarType: string;
+    
+    /**
+     * An array of dates, each of which is the original instance date of either a deleted instance or a modified instance for this recurrence.             
+     */
+    public deletedInstanceDates: Array<Date>;
+    
+    /**
+     * End date of an item recurrence pattern.             
+     */
+    public endDate: Date;
+    
+    /**
+     * Enumerates the ending type for the recurrence. Enum, available values: None, EndAfterDate, EndAfterNOccurrences, NeverEnd
+     */
+    public endType: string;
+    
+    /**
+     * An exception specifies changes to an instance of a recurring series.             
+     */
+    public exceptions: Array<MapiCalendarExceptionInfoDto>;
+    
+    /**
+     * Enumerates mapi calendar recurrence frequency Enum, available values: None, Daily, Weekly, Monthly, Yearly
+     */
+    public frequency: string;
+    
+    /**
+     * An array of dates, each of which is the date of a modified instance.             
+     */
+    public modifiedInstanceDates: Array<Date>;
+    
+    /**
+     * Number of occurrences in a recurrence.             
+     */
+    public occurrenceCount: number;
+    
+    /**
+     * Enumerates the mapi calendar recurrence pattern types Enum, available values: Day, Week, Month, MonthEnd, MonthNth, HjMonth, HjMonthNth, HjMonthEnd
+     */
+    public patternType: string;
+    
+    /**
+     * Interval at which the meeting pattern repeats.             
+     */
+    public period: number;
+    
+    /**
+     * Defines whether pattern is sliding or not.             
+     */
+    public slidingFlag: boolean;
+    
+    /**
+     * Start date of an item recurrence pattern.             
+     */
+    public startDate: Date;
+    
+    /**
+     * Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     */
+    public weekStartDay: string;
+    
+
+    get discriminator(): string {
+        return this.constructor.name;
+    }
+
+    set discriminator(_newType: string) {
+        /* do nothing */
+    }
+    
+
+    /**
+     * Mapi recurrence pattern.             
+     * @param calendarType Enumerated the calendar type of the mapi recurrence Enum, available values: Default, CalGregorian, CalGregorianUs, CalJapan, CalTaiwan, CalKorea, CalHijri, CalThai, CalHebrew, CalGregorianMeFrench, CalGregorianArabic, CalGregorianXLitEnglish, CalGregorianXLitFrench, CalLunarJapanese, CalChineseLunar, CalSaka, CalLunarEtoChn, CalLunarEtoKor, CalLunarRokuyou, CalLunarKorean, CalUmAlQura
+     * @param deletedInstanceDates An array of dates, each of which is the original instance date of either a deleted instance or a modified instance for this recurrence.             
+     * @param endDate End date of an item recurrence pattern.             
+     * @param endType Enumerates the ending type for the recurrence. Enum, available values: None, EndAfterDate, EndAfterNOccurrences, NeverEnd
+     * @param exceptions An exception specifies changes to an instance of a recurring series.             
+     * @param frequency Enumerates mapi calendar recurrence frequency Enum, available values: None, Daily, Weekly, Monthly, Yearly
+     * @param modifiedInstanceDates An array of dates, each of which is the date of a modified instance.             
+     * @param occurrenceCount Number of occurrences in a recurrence.             
+     * @param patternType Enumerates the mapi calendar recurrence pattern types Enum, available values: Day, Week, Month, MonthEnd, MonthNth, HjMonth, HjMonthNth, HjMonthEnd
+     * @param period Interval at which the meeting pattern repeats.             
+     * @param slidingFlag Defines whether pattern is sliding or not.             
+     * @param startDate Start date of an item recurrence pattern.             
+     * @param weekStartDay Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * @param discriminator 
+     */
+    public constructor(
+        calendarType?: string,
+        deletedInstanceDates?: Array<Date>,
+        endDate?: Date,
+        endType?: string,
+        exceptions?: Array<MapiCalendarExceptionInfoDto>,
+        frequency?: string,
+        modifiedInstanceDates?: Array<Date>,
+        occurrenceCount?: number,
+        patternType?: string,
+        period?: number,
+        slidingFlag?: boolean,
+        startDate?: Date,
+        weekStartDay?: string,
+        discriminator?: string) {
+        
+        this.calendarType = calendarType;
+        this.deletedInstanceDates = deletedInstanceDates;
+        this.endDate = endDate;
+        this.endType = endType;
+        this.exceptions = exceptions;
+        this.frequency = frequency;
+        this.modifiedInstanceDates = modifiedInstanceDates;
+        this.occurrenceCount = occurrenceCount;
+        this.patternType = patternType;
+        this.period = period;
+        this.slidingFlag = slidingFlag;
+        this.startDate = startDate;
+        this.weekStartDay = weekStartDay;
+        this.discriminator = discriminator;
+    }
+}
+
+/**
+ * Represents the mapi calendar time zone information.             
+ */
+export class MapiCalendarTimeZoneDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "keyName",
+            baseName: "keyName",
+            type: "string",
+        },
+        {
+            name: "timeZoneRules",
+            baseName: "timeZoneRules",
+            type: "Array<MapiCalendarTimeZoneInfoDto>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiCalendarTimeZoneDto.attributeTypeMap;
+    }
+
+    /**
+     * Human-readable description of the time zone.             
+     */
+    public keyName: string;
+    
+    /**
+     * Time zone rules             
+     */
+    public timeZoneRules: Array<MapiCalendarTimeZoneInfoDto>;
+    
+
+    /**
+     * Represents the mapi calendar time zone information.             
+     * @param keyName Human-readable description of the time zone.             
+     * @param timeZoneRules Time zone rules             
+     */
+    public constructor(
+        keyName?: string,
+        timeZoneRules?: Array<MapiCalendarTimeZoneInfoDto>) {
+        
+        this.keyName = keyName;
+        this.timeZoneRules = timeZoneRules;
+    }
+}
+
+/**
+ * Represents the mapi calendar time zone rule.             
+ */
+export class MapiCalendarTimeZoneInfoDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "bias",
+            baseName: "bias",
+            type: "number",
+        },
+        {
+            name: "daylightBias",
+            baseName: "daylightBias",
+            type: "number",
+        },
+        {
+            name: "daylightDate",
+            baseName: "daylightDate",
+            type: "MapiCalendarTimeZoneRuleDto",
+        },
+        {
+            name: "standardBias",
+            baseName: "standardBias",
+            type: "number",
+        },
+        {
+            name: "standardDate",
+            baseName: "standardDate",
+            type: "MapiCalendarTimeZoneRuleDto",
+        },
+        {
+            name: "timeZoneFlags",
+            baseName: "timeZoneFlags",
+            type: "Array<string>",
+        },
+        {
+            name: "year",
+            baseName: "year",
+            type: "number",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiCalendarTimeZoneInfoDto.attributeTypeMap;
+    }
+
+    /**
+     * Time zone's offset in minutes from UTC.             
+     */
+    public bias: number;
+    
+    /**
+     * Offset in minutes from lBias during daylight saving time.             
+     */
+    public daylightBias: number;
+    
+    /**
+     * Date and local time that indicate when to begin using the DaylightBias.             
+     */
+    public daylightDate: MapiCalendarTimeZoneRuleDto;
+    
+    /**
+     * Offset in minutes from lBias during standard time.             
+     */
+    public standardBias: number;
+    
+    /**
+     * Date and local time that indicate when to begin using the StandardBias.             
+     */
+    public standardDate: MapiCalendarTimeZoneRuleDto;
+    
+    /**
+     * Individual bit flags that specify information about this TimeZoneRule.              Items: Enumerates the individual bit flags that specify information about TimeZoneRule Enum, available values: TzRuleFlagRecurCurrentTzReg, TzRuleFlagEffectiveTzReg
+     */
+    public timeZoneFlags: Array<string>;
+    
+    /**
+     * Year in which this rule is scheduled to take effect.             
+     */
+    public year: number;
+    
+
+    /**
+     * Represents the mapi calendar time zone rule.             
+     * @param bias Time zone's offset in minutes from UTC.             
+     * @param daylightBias Offset in minutes from lBias during daylight saving time.             
+     * @param daylightDate Date and local time that indicate when to begin using the DaylightBias.             
+     * @param standardBias Offset in minutes from lBias during standard time.             
+     * @param standardDate Date and local time that indicate when to begin using the StandardBias.             
+     * @param timeZoneFlags Individual bit flags that specify information about this TimeZoneRule.             
+     * @param year Year in which this rule is scheduled to take effect.             
+     */
+    public constructor(
+        bias?: number,
+        daylightBias?: number,
+        daylightDate?: MapiCalendarTimeZoneRuleDto,
+        standardBias?: number,
+        standardDate?: MapiCalendarTimeZoneRuleDto,
+        timeZoneFlags?: Array<string>,
+        year?: number) {
+        
+        this.bias = bias;
+        this.daylightBias = daylightBias;
+        this.daylightDate = daylightDate;
+        this.standardBias = standardBias;
+        this.standardDate = standardDate;
+        this.timeZoneFlags = timeZoneFlags;
+        this.year = year;
+    }
+}
+
+/**
+ * Represents time zone rule that indicate when to begin using the Standard/Daylight time.             
+ */
+export class MapiCalendarTimeZoneRuleDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "date",
+            baseName: "date",
+            type: "Date",
+        },
+        {
+            name: "dayOfWeek",
+            baseName: "dayOfWeek",
+            type: "string",
+        },
+        {
+            name: "hour",
+            baseName: "hour",
+            type: "number",
+        },
+        {
+            name: "milliseconds",
+            baseName: "milliseconds",
+            type: "number",
+        },
+        {
+            name: "minute",
+            baseName: "minute",
+            type: "number",
+        },
+        {
+            name: "month",
+            baseName: "month",
+            type: "number",
+        },
+        {
+            name: "position",
+            baseName: "position",
+            type: "string",
+        },
+        {
+            name: "seconds",
+            baseName: "seconds",
+            type: "number",
+        },
+        {
+            name: "year",
+            baseName: "year",
+            type: "number",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiCalendarTimeZoneRuleDto.attributeTypeMap;
+    }
+
+    /**
+     * Date and time that indicate when to begin using the Standard/Daylight time.             
+     */
+    public date: Date;
+    
+    /**
+     * Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     */
+    public dayOfWeek: string;
+    
+    /**
+     * Hour.             
+     */
+    public hour: number;
+    
+    /**
+     * Milliseconds.             
+     */
+    public milliseconds: number;
+    
+    /**
+     * Minute.             
+     */
+    public minute: number;
+    
+    /**
+     * Month.             
+     */
+    public month: number;
+    
+    /**
+     * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     */
+    public position: string;
+    
+    /**
+     * Seconds.             
+     */
+    public seconds: number;
+    
+    /**
+     * Year.             
+     */
+    public year: number;
+    
+
+    /**
+     * Represents time zone rule that indicate when to begin using the Standard/Daylight time.             
+     * @param date Date and time that indicate when to begin using the Standard/Daylight time.             
+     * @param dayOfWeek Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * @param hour Hour.             
+     * @param milliseconds Milliseconds.             
+     * @param minute Minute.             
+     * @param month Month.             
+     * @param position Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     * @param seconds Seconds.             
+     * @param year Year.             
+     */
+    public constructor(
+        date?: Date,
+        dayOfWeek?: string,
+        hour?: number,
+        milliseconds?: number,
+        minute?: number,
+        month?: number,
+        position?: string,
+        seconds?: number,
+        year?: number) {
+        
+        this.date = date;
+        this.dayOfWeek = dayOfWeek;
+        this.hour = hour;
+        this.milliseconds = milliseconds;
+        this.minute = minute;
+        this.month = month;
+        this.position = position;
+        this.seconds = seconds;
+        this.year = year;
+    }
+}
+
+/**
+ * Refers to the group of properties that define the e-mail address or fax address for a contact.             
+ */
+export class MapiContactElectronicAddressDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "addressType",
+            baseName: "addressType",
+            type: "string",
+        },
+        {
+            name: "displayName",
+            baseName: "displayName",
+            type: "string",
+        },
+        {
+            name: "emailAddress",
+            baseName: "emailAddress",
+            type: "string",
+        },
+        {
+            name: "faxNumber",
+            baseName: "faxNumber",
+            type: "string",
+        },
+        {
+            name: "isEmpty",
+            baseName: "isEmpty",
+            type: "boolean",
+        },
+        {
+            name: "originalDisplayName",
+            baseName: "originalDisplayName",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiContactElectronicAddressDto.attributeTypeMap;
+    }
+
+    /**
+     * Address type of an electronic address
+     */
+    public addressType: string;
+    
+    /**
+     * User-readable display name for the e-mail address
+     */
+    public displayName: string;
+    
+    /**
+     * E-mail address of the contact
+     */
+    public emailAddress: string;
+    
+    /**
+     * Telephone number of the mail user's primary fax machine
+     */
+    public faxNumber: string;
+    
+    /**
+     * Shows if MapiContactElectronicAddress is empty
+     */
+    public isEmpty: boolean;
+    
+    /**
+     * SMTP e-mail address that corresponds to the e-mail address for the Contact object.
+     */
+    public originalDisplayName: string;
+    
+
+    /**
+     * Refers to the group of properties that define the e-mail address or fax address for a contact.             
+     * @param addressType Address type of an electronic address
+     * @param displayName User-readable display name for the e-mail address
+     * @param emailAddress E-mail address of the contact
+     * @param faxNumber Telephone number of the mail user's primary fax machine
+     * @param isEmpty Shows if MapiContactElectronicAddress is empty
+     * @param originalDisplayName SMTP e-mail address that corresponds to the e-mail address for the Contact object.
+     */
+    public constructor(
+        addressType?: string,
+        displayName?: string,
+        emailAddress?: string,
+        faxNumber?: string,
+        isEmpty?: boolean,
+        originalDisplayName?: string) {
+        
+        this.addressType = addressType;
+        this.displayName = displayName;
+        this.emailAddress = emailAddress;
+        this.faxNumber = faxNumber;
+        this.isEmpty = isEmpty;
+        this.originalDisplayName = originalDisplayName;
+    }
+}
+
+/**
+ * Specify properties for up to three different e-mail addresses (Email1, Email2, and Email3) and three different fax addresses (Primary Fax, Business Fax, and Home Fax)             
+ */
+export class MapiContactElectronicAddressPropertySetDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "businessFax",
+            baseName: "businessFax",
+            type: "MapiContactElectronicAddressDto",
+        },
+        {
+            name: "defaultEmailAddress",
+            baseName: "defaultEmailAddress",
+            type: "MapiContactElectronicAddressDto",
+        },
+        {
+            name: "email1",
+            baseName: "email1",
+            type: "MapiContactElectronicAddressDto",
+        },
+        {
+            name: "email2",
+            baseName: "email2",
+            type: "MapiContactElectronicAddressDto",
+        },
+        {
+            name: "email3",
+            baseName: "email3",
+            type: "MapiContactElectronicAddressDto",
+        },
+        {
+            name: "homeFax",
+            baseName: "homeFax",
+            type: "MapiContactElectronicAddressDto",
+        },
+        {
+            name: "isEmpty",
+            baseName: "isEmpty",
+            type: "boolean",
+        },
+        {
+            name: "primaryFax",
+            baseName: "primaryFax",
+            type: "MapiContactElectronicAddressDto",
+        },
+        {
+            name: "useAutocomplete",
+            baseName: "useAutocomplete",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiContactElectronicAddressPropertySetDto.attributeTypeMap;
+    }
+
+    /**
+     * Refers to the group of properties that define the business fax address for a contact.
+     */
+    public businessFax: MapiContactElectronicAddressDto;
+    
+    /**
+     * Default value of electronic address Uses when user does not set any electronic address if UseAutocomplete property is set 'true'             
+     */
+    public defaultEmailAddress: MapiContactElectronicAddressDto;
+    
+    /**
+     * Refers to the group of properties that define the first e-mail address for a contact.             
+     */
+    public email1: MapiContactElectronicAddressDto;
+    
+    /**
+     * Refers to the group of properties that define the second e-mail address for a contact.             
+     */
+    public email2: MapiContactElectronicAddressDto;
+    
+    /**
+     * Refers to the group of properties that define the third e-mail address for a contact.             
+     */
+    public email3: MapiContactElectronicAddressDto;
+    
+    /**
+     * Refers to the group of properties that define the home fax address for a contact.             
+     */
+    public homeFax: MapiContactElectronicAddressDto;
+    
+    /**
+     * Shows if MapiContactElectronicAddressPropertySetDto is empty
+     */
+    public isEmpty: boolean;
+    
+    /**
+     * Refers to the group of properties that define the primary fax address for a contact.             
+     */
+    public primaryFax: MapiContactElectronicAddressDto;
+    
+    /**
+     * Indicates that one electronic address is completed automatically in case if user does not set any electronic address             
+     */
+    public useAutocomplete: boolean;
+    
+
+    /**
+     * Specify properties for up to three different e-mail addresses (Email1, Email2, and Email3) and three different fax addresses (Primary Fax, Business Fax, and Home Fax)             
+     * @param businessFax Refers to the group of properties that define the business fax address for a contact.
+     * @param defaultEmailAddress Default value of electronic address Uses when user does not set any electronic address if UseAutocomplete property is set 'true'             
+     * @param email1 Refers to the group of properties that define the first e-mail address for a contact.             
+     * @param email2 Refers to the group of properties that define the second e-mail address for a contact.             
+     * @param email3 Refers to the group of properties that define the third e-mail address for a contact.             
+     * @param homeFax Refers to the group of properties that define the home fax address for a contact.             
+     * @param isEmpty Shows if MapiContactElectronicAddressPropertySetDto is empty
+     * @param primaryFax Refers to the group of properties that define the primary fax address for a contact.             
+     * @param useAutocomplete Indicates that one electronic address is completed automatically in case if user does not set any electronic address             
+     */
+    public constructor(
+        businessFax?: MapiContactElectronicAddressDto,
+        defaultEmailAddress?: MapiContactElectronicAddressDto,
+        email1?: MapiContactElectronicAddressDto,
+        email2?: MapiContactElectronicAddressDto,
+        email3?: MapiContactElectronicAddressDto,
+        homeFax?: MapiContactElectronicAddressDto,
+        isEmpty?: boolean,
+        primaryFax?: MapiContactElectronicAddressDto,
+        useAutocomplete?: boolean) {
+        
+        this.businessFax = businessFax;
+        this.defaultEmailAddress = defaultEmailAddress;
+        this.email1 = email1;
+        this.email2 = email2;
+        this.email3 = email3;
+        this.homeFax = homeFax;
+        this.isEmpty = isEmpty;
+        this.primaryFax = primaryFax;
+        this.useAutocomplete = useAutocomplete;
+    }
+}
+
+/**
+ * Specify events associated with a contact.             
+ */
+export class MapiContactEventPropertySetDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "birthday",
+            baseName: "birthday",
+            type: "Date",
+        },
+        {
+            name: "weddingAnniversary",
+            baseName: "weddingAnniversary",
+            type: "Date",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiContactEventPropertySetDto.attributeTypeMap;
+    }
+
+    /**
+     * Specifies the birthday of the contact.
+     */
+    public birthday: Date;
+    
+    /**
+     * Specifies the wedding anniversary of the contact.             
+     */
+    public weddingAnniversary: Date;
+    
+
+    /**
+     * Specify events associated with a contact.             
+     * @param birthday Specifies the birthday of the contact.
+     * @param weddingAnniversary Specifies the wedding anniversary of the contact.             
+     */
+    public constructor(
+        birthday?: Date,
+        weddingAnniversary?: Date) {
+        
+        this.birthday = birthday;
+        this.weddingAnniversary = weddingAnniversary;
+    }
+}
+
+/**
+ * The properties are used to specify the name of the person represented by the contact             
+ */
+export class MapiContactNamePropertySetDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "displayName",
+            baseName: "displayName",
+            type: "string",
+        },
+        {
+            name: "displayNamePrefix",
+            baseName: "displayNamePrefix",
+            type: "string",
+        },
+        {
+            name: "fileUnder",
+            baseName: "fileUnder",
+            type: "string",
+        },
+        {
+            name: "fileUnderId",
+            baseName: "fileUnderId",
+            type: "number",
+        },
+        {
+            name: "generation",
+            baseName: "generation",
+            type: "string",
+        },
+        {
+            name: "givenName",
+            baseName: "givenName",
+            type: "string",
+        },
+        {
+            name: "initials",
+            baseName: "initials",
+            type: "string",
+        },
+        {
+            name: "middleName",
+            baseName: "middleName",
+            type: "string",
+        },
+        {
+            name: "nickname",
+            baseName: "nickname",
+            type: "string",
+        },
+        {
+            name: "surname",
+            baseName: "surname",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiContactNamePropertySetDto.attributeTypeMap;
+    }
+
+    /**
+     * Full name of the contact             
+     */
+    public displayName: string;
+    
+    /**
+     * Title of the contact             
+     */
+    public displayNamePrefix: string;
+    
+    /**
+     * Name under which to file this contact when displaying a list of contacts             
+     */
+    public fileUnder: string;
+    
+    /**
+     * Value specifying how to generate and recompute the property when other properties are changed             
+     */
+    public fileUnderId: number;
+    
+    /**
+     * Generation suffix of the contact             
+     */
+    public generation: string;
+    
+    /**
+     * Given name (first name) of the contact             
+     */
+    public givenName: string;
+    
+    /**
+     * Initials of the contact             
+     */
+    public initials: string;
+    
+    /**
+     * Middle name of the contact             
+     */
+    public middleName: string;
+    
+    /**
+     * Nickname of the contact             
+     */
+    public nickname: string;
+    
+    /**
+     * Surname (family name) of the contact             
+     */
+    public surname: string;
+    
+
+    /**
+     * The properties are used to specify the name of the person represented by the contact             
+     * @param displayName Full name of the contact             
+     * @param displayNamePrefix Title of the contact             
+     * @param fileUnder Name under which to file this contact when displaying a list of contacts             
+     * @param fileUnderId Value specifying how to generate and recompute the property when other properties are changed             
+     * @param generation Generation suffix of the contact             
+     * @param givenName Given name (first name) of the contact             
+     * @param initials Initials of the contact             
+     * @param middleName Middle name of the contact             
+     * @param nickname Nickname of the contact             
+     * @param surname Surname (family name) of the contact             
+     */
+    public constructor(
+        displayName?: string,
+        displayNamePrefix?: string,
+        fileUnder?: string,
+        fileUnderId?: number,
+        generation?: string,
+        givenName?: string,
+        initials?: string,
+        middleName?: string,
+        nickname?: string,
+        surname?: string) {
+        
+        this.displayName = displayName;
+        this.displayNamePrefix = displayNamePrefix;
+        this.fileUnder = fileUnder;
+        this.fileUnderId = fileUnderId;
+        this.generation = generation;
+        this.givenName = givenName;
+        this.initials = initials;
+        this.middleName = middleName;
+        this.nickname = nickname;
+        this.surname = surname;
+    }
+}
+
+/**
+ * The properties are used to specify additional properties of contact.             
+ */
+export class MapiContactOtherPropertySetDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "_private",
+            baseName: "private",
+            type: "boolean",
+        },
+        {
+            name: "journal",
+            baseName: "journal",
+            type: "boolean",
+        },
+        {
+            name: "reminderTime",
+            baseName: "reminderTime",
+            type: "Date",
+        },
+        {
+            name: "reminderTopic",
+            baseName: "reminderTopic",
+            type: "string",
+        },
+        {
+            name: "userField1",
+            baseName: "userField1",
+            type: "string",
+        },
+        {
+            name: "userField2",
+            baseName: "userField2",
+            type: "string",
+        },
+        {
+            name: "userField3",
+            baseName: "userField3",
+            type: "string",
+        },
+        {
+            name: "userField4",
+            baseName: "userField4",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiContactOtherPropertySetDto.attributeTypeMap;
+    }
+
+    /**
+     * Indicates whether the end-user wants this message object hidden from other users who have access to the message object.             
+     */
+    public _private: boolean;
+    
+    /**
+     * Specifies whether to create a journal for each action associated with this contact.             
+     */
+    public journal: boolean;
+    
+    /**
+     * Specifies the initial signal time for a reminder.             
+     */
+    public reminderTime: Date;
+    
+    /**
+     * Represents the status of a meeting request.             
+     */
+    public reminderTopic: string;
+    
+    /**
+     * Specifies the first field on the contact that is intended for miscellaneous use for the contact.             
+     */
+    public userField1: string;
+    
+    /**
+     * Specifies the second field on the contact that is intended for miscellaneous use for the contact.             
+     */
+    public userField2: string;
+    
+    /**
+     * Specifies the third field on the contact that is intended for miscellaneous use for the contact.             
+     */
+    public userField3: string;
+    
+    /**
+     * Specifies the forth field on the contact that is intended for miscellaneous use for the contact.             
+     */
+    public userField4: string;
+    
+
+    /**
+     * The properties are used to specify additional properties of contact.             
+     * @param _private Indicates whether the end-user wants this message object hidden from other users who have access to the message object.             
+     * @param journal Specifies whether to create a journal for each action associated with this contact.             
+     * @param reminderTime Specifies the initial signal time for a reminder.             
+     * @param reminderTopic Represents the status of a meeting request.             
+     * @param userField1 Specifies the first field on the contact that is intended for miscellaneous use for the contact.             
+     * @param userField2 Specifies the second field on the contact that is intended for miscellaneous use for the contact.             
+     * @param userField3 Specifies the third field on the contact that is intended for miscellaneous use for the contact.             
+     * @param userField4 Specifies the forth field on the contact that is intended for miscellaneous use for the contact.             
+     */
+    public constructor(
+        _private?: boolean,
+        journal?: boolean,
+        reminderTime?: Date,
+        reminderTopic?: string,
+        userField1?: string,
+        userField2?: string,
+        userField3?: string,
+        userField4?: string) {
+        
+        this._private = _private;
+        this.journal = journal;
+        this.reminderTime = reminderTime;
+        this.reminderTopic = reminderTopic;
+        this.userField1 = userField1;
+        this.userField2 = userField2;
+        this.userField3 = userField3;
+        this.userField4 = userField4;
+    }
+}
+
+/**
+ * Specify other additional contact information.             
+ */
+export class MapiContactPersonalInfoPropertySetDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "spouseName",
+            baseName: "spouseName",
+            type: "string",
+        },
+        {
+            name: "personalHomePage",
+            baseName: "personalHomePage",
+            type: "string",
+        },
+        {
+            name: "language",
+            baseName: "language",
+            type: "string",
+        },
+        {
+            name: "notes",
+            baseName: "notes",
+            type: "string",
+        },
+        {
+            name: "hobbies",
+            baseName: "hobbies",
+            type: "string",
+        },
+        {
+            name: "location",
+            baseName: "location",
+            type: "string",
+        },
+        {
+            name: "instantMessagingAddress",
+            baseName: "instantMessagingAddress",
+            type: "string",
+        },
+        {
+            name: "organizationalIdNumber",
+            baseName: "organizationalIdNumber",
+            type: "string",
+        },
+        {
+            name: "customerId",
+            baseName: "customerId",
+            type: "string",
+        },
+        {
+            name: "governmentIdNumber",
+            baseName: "governmentIdNumber",
+            type: "string",
+        },
+        {
+            name: "freeBusyLocation",
+            baseName: "freeBusyLocation",
+            type: "string",
+        },
+        {
+            name: "account",
+            baseName: "account",
+            type: "string",
+        },
+        {
+            name: "html",
+            baseName: "html",
+            type: "string",
+        },
+        {
+            name: "businessHomePage",
+            baseName: "businessHomePage",
+            type: "string",
+        },
+        {
+            name: "ftpSite",
+            baseName: "ftpSite",
+            type: "string",
+        },
+        {
+            name: "computerNetworkName",
+            baseName: "computerNetworkName",
+            type: "string",
+        },
+        {
+            name: "gender",
+            baseName: "gender",
+            type: "string",
+        },
+        {
+            name: "referredByName",
+            baseName: "referredByName",
+            type: "string",
+        },
+        {
+            name: "children",
+            baseName: "children",
+            type: "Array<string>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiContactPersonalInfoPropertySetDto.attributeTypeMap;
+    }
+
+    /**
+     * Specifies the name of the contact's spouse/partner             
+     */
+    public spouseName: string;
+    
+    /**
+     * Specifies the contact's personal web page URL             
+     */
+    public personalHomePage: string;
+    
+    /**
+     * Specifies the language that the contact uses             
+     */
+    public language: string;
+    
+    /**
+     * Specifies the additional notes             
+     */
+    public notes: string;
+    
+    /**
+     * Specifies the hobbies of the contact             
+     */
+    public hobbies: string;
+    
+    /**
+     * Specifies the location of the contact             
+     */
+    public location: string;
+    
+    /**
+     * Specifies the contact's instant messaging address             
+     */
+    public instantMessagingAddress: string;
+    
+    /**
+     * Specifies an organizational ID number for the contact             
+     */
+    public organizationalIdNumber: string;
+    
+    /**
+     * Specifies the contact's customer ID number             
+     */
+    public customerId: string;
+    
+    /**
+     * Specifies the contact's government ID number             
+     */
+    public governmentIdNumber: string;
+    
+    /**
+     * Specifies a URL path from which a client can retrieve free/busy information for the contact as an iCal file             
+     */
+    public freeBusyLocation: string;
+    
+    /**
+     * Specifies the account name of the contact             
+     */
+    public account: string;
+    
+    /**
+     * Specifies the contact's business web page URL             
+     */
+    public html: string;
+    
+    /**
+     * Specifies the contact's business web page URL             
+     */
+    public businessHomePage: string;
+    
+    /**
+     * Specifies the contact's File Transfer Protocol (FTP) URL             
+     */
+    public ftpSite: string;
+    
+    /**
+     * Specifies the name of the network to which the contact's computer is connected             
+     */
+    public computerNetworkName: string;
+    
+    /**
+     * Gender of the contact Enum, available values: Unspecified, Female, Male
+     */
+    public gender: string;
+    
+    /**
+     * Specifies the name of the person who referred this contact to the user             
+     */
+    public referredByName: string;
+    
+    /**
+     * Contains a list of names of children.             
+     */
+    public children: Array<string>;
+    
+
+    /**
+     * Specify other additional contact information.             
+     * @param spouseName Specifies the name of the contact's spouse/partner             
+     * @param personalHomePage Specifies the contact's personal web page URL             
+     * @param language Specifies the language that the contact uses             
+     * @param notes Specifies the additional notes             
+     * @param hobbies Specifies the hobbies of the contact             
+     * @param location Specifies the location of the contact             
+     * @param instantMessagingAddress Specifies the contact's instant messaging address             
+     * @param organizationalIdNumber Specifies an organizational ID number for the contact             
+     * @param customerId Specifies the contact's customer ID number             
+     * @param governmentIdNumber Specifies the contact's government ID number             
+     * @param freeBusyLocation Specifies a URL path from which a client can retrieve free/busy information for the contact as an iCal file             
+     * @param account Specifies the account name of the contact             
+     * @param html Specifies the contact's business web page URL             
+     * @param businessHomePage Specifies the contact's business web page URL             
+     * @param ftpSite Specifies the contact's File Transfer Protocol (FTP) URL             
+     * @param computerNetworkName Specifies the name of the network to which the contact's computer is connected             
+     * @param gender Gender of the contact Enum, available values: Unspecified, Female, Male
+     * @param referredByName Specifies the name of the person who referred this contact to the user             
+     * @param children Contains a list of names of children.             
+     */
+    public constructor(
+        spouseName?: string,
+        personalHomePage?: string,
+        language?: string,
+        notes?: string,
+        hobbies?: string,
+        location?: string,
+        instantMessagingAddress?: string,
+        organizationalIdNumber?: string,
+        customerId?: string,
+        governmentIdNumber?: string,
+        freeBusyLocation?: string,
+        account?: string,
+        html?: string,
+        businessHomePage?: string,
+        ftpSite?: string,
+        computerNetworkName?: string,
+        gender?: string,
+        referredByName?: string,
+        children?: Array<string>) {
+        
+        this.spouseName = spouseName;
+        this.personalHomePage = personalHomePage;
+        this.language = language;
+        this.notes = notes;
+        this.hobbies = hobbies;
+        this.location = location;
+        this.instantMessagingAddress = instantMessagingAddress;
+        this.organizationalIdNumber = organizationalIdNumber;
+        this.customerId = customerId;
+        this.governmentIdNumber = governmentIdNumber;
+        this.freeBusyLocation = freeBusyLocation;
+        this.account = account;
+        this.html = html;
+        this.businessHomePage = businessHomePage;
+        this.ftpSite = ftpSite;
+        this.computerNetworkName = computerNetworkName;
+        this.gender = gender;
+        this.referredByName = referredByName;
+        this.children = children;
+    }
+}
+
+/**
+ * Refers to the group of properties that define physical address for a contact.             
+ */
+export class MapiContactPhysicalAddressDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "isMailingAddress",
+            baseName: "isMailingAddress",
+            type: "boolean",
+        },
+        {
+            name: "street",
+            baseName: "street",
+            type: "string",
+        },
+        {
+            name: "city",
+            baseName: "city",
+            type: "string",
+        },
+        {
+            name: "stateOrProvince",
+            baseName: "stateOrProvince",
+            type: "string",
+        },
+        {
+            name: "postalCode",
+            baseName: "postalCode",
+            type: "string",
+        },
+        {
+            name: "country",
+            baseName: "country",
+            type: "string",
+        },
+        {
+            name: "countryCode",
+            baseName: "countryCode",
+            type: "string",
+        },
+        {
+            name: "address",
+            baseName: "address",
+            type: "string",
+        },
+        {
+            name: "postOfficeBox",
+            baseName: "postOfficeBox",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiContactPhysicalAddressDto.attributeTypeMap;
+    }
+
+    /**
+     * Gets or sets a value indicating whether this address is mailing address             
+     */
+    public isMailingAddress: boolean;
+    
+    /**
+     * Specifies the street portion of the contact's address             
+     */
+    public street: string;
+    
+    /**
+     * Specifies the city or locality portion of the contact's address             
+     */
+    public city: string;
+    
+    /**
+     * Specifies the state or province portion of the contact's address             
+     */
+    public stateOrProvince: string;
+    
+    /**
+     * Specifies the postal code (ZIP code) portion of the contact's address             
+     */
+    public postalCode: string;
+    
+    /**
+     * Specifies the country or region portion of the contact's address             
+     */
+    public country: string;
+    
+    /**
+     * Specifies the country code portion of the contact's address             
+     */
+    public countryCode: string;
+    
+    /**
+     * Specifies the complete address of the contact's address             
+     */
+    public address: string;
+    
+    /**
+     * Gets or sets the post office box             
+     */
+    public postOfficeBox: string;
+    
+
+    /**
+     * Refers to the group of properties that define physical address for a contact.             
+     * @param isMailingAddress Gets or sets a value indicating whether this address is mailing address             
+     * @param street Specifies the street portion of the contact's address             
+     * @param city Specifies the city or locality portion of the contact's address             
+     * @param stateOrProvince Specifies the state or province portion of the contact's address             
+     * @param postalCode Specifies the postal code (ZIP code) portion of the contact's address             
+     * @param country Specifies the country or region portion of the contact's address             
+     * @param countryCode Specifies the country code portion of the contact's address             
+     * @param address Specifies the complete address of the contact's address             
+     * @param postOfficeBox Gets or sets the post office box             
+     */
+    public constructor(
+        isMailingAddress?: boolean,
+        street?: string,
+        city?: string,
+        stateOrProvince?: string,
+        postalCode?: string,
+        country?: string,
+        countryCode?: string,
+        address?: string,
+        postOfficeBox?: string) {
+        
+        this.isMailingAddress = isMailingAddress;
+        this.street = street;
+        this.city = city;
+        this.stateOrProvince = stateOrProvince;
+        this.postalCode = postalCode;
+        this.country = country;
+        this.countryCode = countryCode;
+        this.address = address;
+        this.postOfficeBox = postOfficeBox;
+    }
+}
+
+/**
+ * Specify three physical addresses: Home Address, Work Address, and Other Address. One of the addresses can be marked as the Mailing Address             
+ */
+export class MapiContactPhysicalAddressPropertySetDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "workAddress",
+            baseName: "workAddress",
+            type: "MapiContactPhysicalAddressDto",
+        },
+        {
+            name: "homeAddress",
+            baseName: "homeAddress",
+            type: "MapiContactPhysicalAddressDto",
+        },
+        {
+            name: "otherAddress",
+            baseName: "otherAddress",
+            type: "MapiContactPhysicalAddressDto",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiContactPhysicalAddressPropertySetDto.attributeTypeMap;
+    }
+
+    /**
+     * Specifies the address of the contact's work             
+     */
+    public workAddress: MapiContactPhysicalAddressDto;
+    
+    /**
+     * Specifies the address of the contact's home             
+     */
+    public homeAddress: MapiContactPhysicalAddressDto;
+    
+    /**
+     * Specifies the other contact's address             
+     */
+    public otherAddress: MapiContactPhysicalAddressDto;
+    
+
+    /**
+     * Specify three physical addresses: Home Address, Work Address, and Other Address. One of the addresses can be marked as the Mailing Address             
+     * @param workAddress Specifies the address of the contact's work             
+     * @param homeAddress Specifies the address of the contact's home             
+     * @param otherAddress Specifies the other contact's address             
+     */
+    public constructor(
+        workAddress?: MapiContactPhysicalAddressDto,
+        homeAddress?: MapiContactPhysicalAddressDto,
+        otherAddress?: MapiContactPhysicalAddressDto) {
+        
+        this.workAddress = workAddress;
+        this.homeAddress = homeAddress;
+        this.otherAddress = otherAddress;
+    }
+}
+
+/**
+ * Properties are used to store professional details for the person represented by the contact             
+ */
+export class MapiContactProfessionalPropertySetDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "title",
+            baseName: "title",
+            type: "string",
+        },
+        {
+            name: "companyName",
+            baseName: "companyName",
+            type: "string",
+        },
+        {
+            name: "departmentName",
+            baseName: "departmentName",
+            type: "string",
+        },
+        {
+            name: "officeLocation",
+            baseName: "officeLocation",
+            type: "string",
+        },
+        {
+            name: "managerName",
+            baseName: "managerName",
+            type: "string",
+        },
+        {
+            name: "assistant",
+            baseName: "assistant",
+            type: "string",
+        },
+        {
+            name: "profession",
+            baseName: "profession",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiContactProfessionalPropertySetDto.attributeTypeMap;
+    }
+
+    /**
+     * Gets or sets the job title of the contact             
+     */
+    public title: string;
+    
+    /**
+     * Gets or sets the company that employs the contact             
+     */
+    public companyName: string;
+    
+    /**
+     * Gets or sets the name of the department to which the contact belongs             
+     */
+    public departmentName: string;
+    
+    /**
+     * Gets or sets the location of the office that the contact works in             
+     */
+    public officeLocation: string;
+    
+    /**
+     * Gets or sets the name of the contact's manager             
+     */
+    public managerName: string;
+    
+    /**
+     * Gets or sets the name of the contact's assistant             
+     */
+    public assistant: string;
+    
+    /**
+     * Gets or sets the profession of the contact             
+     */
+    public profession: string;
+    
+
+    /**
+     * Properties are used to store professional details for the person represented by the contact             
+     * @param title Gets or sets the job title of the contact             
+     * @param companyName Gets or sets the company that employs the contact             
+     * @param departmentName Gets or sets the name of the department to which the contact belongs             
+     * @param officeLocation Gets or sets the location of the office that the contact works in             
+     * @param managerName Gets or sets the name of the contact's manager             
+     * @param assistant Gets or sets the name of the contact's assistant             
+     * @param profession Gets or sets the profession of the contact             
+     */
+    public constructor(
+        title?: string,
+        companyName?: string,
+        departmentName?: string,
+        officeLocation?: string,
+        managerName?: string,
+        assistant?: string,
+        profession?: string) {
+        
+        this.title = title;
+        this.companyName = companyName;
+        this.departmentName = departmentName;
+        this.officeLocation = officeLocation;
+        this.managerName = managerName;
+        this.assistant = assistant;
+        this.profession = profession;
+    }
+}
+
+/**
+ * Specify optional telephone numbers for the contact.             
+ */
+export class MapiContactTelephonePropertySetDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "isEmpty",
+            baseName: "isEmpty",
+            type: "boolean",
+        },
+        {
+            name: "defaultTelephoneNumber",
+            baseName: "defaultTelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "useAutocomplete",
+            baseName: "useAutocomplete",
+            type: "boolean",
+        },
+        {
+            name: "callbackTelephoneNumber",
+            baseName: "callbackTelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "businessTelephoneNumber",
+            baseName: "businessTelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "homeTelephoneNumber",
+            baseName: "homeTelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "primaryTelephoneNumber",
+            baseName: "primaryTelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "business2TelephoneNumber",
+            baseName: "business2TelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "mobileTelephoneNumber",
+            baseName: "mobileTelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "radioTelephoneNumber",
+            baseName: "radioTelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "carTelephoneNumber",
+            baseName: "carTelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "otherTelephoneNumber",
+            baseName: "otherTelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "assistantTelephoneNumber",
+            baseName: "assistantTelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "home2TelephoneNumber",
+            baseName: "home2TelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "ttyTddPhoneNumber",
+            baseName: "ttyTddPhoneNumber",
+            type: "string",
+        },
+        {
+            name: "companyMainTelephoneNumber",
+            baseName: "companyMainTelephoneNumber",
+            type: "string",
+        },
+        {
+            name: "telexNumber",
+            baseName: "telexNumber",
+            type: "string",
+        },
+        {
+            name: "isdnNumber",
+            baseName: "isdnNumber",
+            type: "string",
+        },
+        {
+            name: "pagerTelephoneNumber",
+            baseName: "pagerTelephoneNumber",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiContactTelephonePropertySetDto.attributeTypeMap;
+    }
+
+    /**
+     * Shows if MapiContactTelephonePropertySet is empty             
+     */
+    public isEmpty: boolean;
+    
+    /**
+     * Default value of electronic address Uses when user does not set any electronic address if UseAutocomplete property is set 'true'             
+     */
+    public defaultTelephoneNumber: string;
+    
+    /**
+     * Indicates that one electronic address is completed automatically in case if user does not set any electronic address             
+     */
+    public useAutocomplete: boolean;
+    
+    /**
+     * Gets or sets the callback telephone number             
+     */
+    public callbackTelephoneNumber: string;
+    
+    /**
+     * Gets or sets the business telephone number             
+     */
+    public businessTelephoneNumber: string;
+    
+    /**
+     * Gets or sets the home telephone number             
+     */
+    public homeTelephoneNumber: string;
+    
+    /**
+     * Gets or sets the primary telephone number             
+     */
+    public primaryTelephoneNumber: string;
+    
+    /**
+     * Gets or sets the second business telephone number             
+     */
+    public business2TelephoneNumber: string;
+    
+    /**
+     * Gets or sets the mobile telephone number             
+     */
+    public mobileTelephoneNumber: string;
+    
+    /**
+     * Gets or sets the radio telephone number             
+     */
+    public radioTelephoneNumber: string;
+    
+    /**
+     * Gets or sets the car telephone number             
+     */
+    public carTelephoneNumber: string;
+    
+    /**
+     * Gets or sets an alternate telephone number             
+     */
+    public otherTelephoneNumber: string;
+    
+    /**
+     * Gets or sets the telephone number of the contact's assistant             
+     */
+    public assistantTelephoneNumber: string;
+    
+    /**
+     * Gets or sets a second home telephone number             
+     */
+    public home2TelephoneNumber: string;
+    
+    /**
+     * Gets or sets the telephone number for the contact's text telephone (TTY) or telecommunication device for the deaf (TDD)             
+     */
+    public ttyTddPhoneNumber: string;
+    
+    /**
+     * Gets or sets the company phone number             
+     */
+    public companyMainTelephoneNumber: string;
+    
+    /**
+     * Gets or sets the telex number             
+     */
+    public telexNumber: string;
+    
+    /**
+     * Gets or sets the integrated services digital network (ISDN) number             
+     */
+    public isdnNumber: string;
+    
+    /**
+     * Gets or sets a pager telephone number             
+     */
+    public pagerTelephoneNumber: string;
+    
+
+    /**
+     * Specify optional telephone numbers for the contact.             
+     * @param isEmpty Shows if MapiContactTelephonePropertySet is empty             
+     * @param defaultTelephoneNumber Default value of electronic address Uses when user does not set any electronic address if UseAutocomplete property is set 'true'             
+     * @param useAutocomplete Indicates that one electronic address is completed automatically in case if user does not set any electronic address             
+     * @param callbackTelephoneNumber Gets or sets the callback telephone number             
+     * @param businessTelephoneNumber Gets or sets the business telephone number             
+     * @param homeTelephoneNumber Gets or sets the home telephone number             
+     * @param primaryTelephoneNumber Gets or sets the primary telephone number             
+     * @param business2TelephoneNumber Gets or sets the second business telephone number             
+     * @param mobileTelephoneNumber Gets or sets the mobile telephone number             
+     * @param radioTelephoneNumber Gets or sets the radio telephone number             
+     * @param carTelephoneNumber Gets or sets the car telephone number             
+     * @param otherTelephoneNumber Gets or sets an alternate telephone number             
+     * @param assistantTelephoneNumber Gets or sets the telephone number of the contact's assistant             
+     * @param home2TelephoneNumber Gets or sets a second home telephone number             
+     * @param ttyTddPhoneNumber Gets or sets the telephone number for the contact's text telephone (TTY) or telecommunication device for the deaf (TDD)             
+     * @param companyMainTelephoneNumber Gets or sets the company phone number             
+     * @param telexNumber Gets or sets the telex number             
+     * @param isdnNumber Gets or sets the integrated services digital network (ISDN) number             
+     * @param pagerTelephoneNumber Gets or sets a pager telephone number             
+     */
+    public constructor(
+        isEmpty?: boolean,
+        defaultTelephoneNumber?: string,
+        useAutocomplete?: boolean,
+        callbackTelephoneNumber?: string,
+        businessTelephoneNumber?: string,
+        homeTelephoneNumber?: string,
+        primaryTelephoneNumber?: string,
+        business2TelephoneNumber?: string,
+        mobileTelephoneNumber?: string,
+        radioTelephoneNumber?: string,
+        carTelephoneNumber?: string,
+        otherTelephoneNumber?: string,
+        assistantTelephoneNumber?: string,
+        home2TelephoneNumber?: string,
+        ttyTddPhoneNumber?: string,
+        companyMainTelephoneNumber?: string,
+        telexNumber?: string,
+        isdnNumber?: string,
+        pagerTelephoneNumber?: string) {
+        
+        this.isEmpty = isEmpty;
+        this.defaultTelephoneNumber = defaultTelephoneNumber;
+        this.useAutocomplete = useAutocomplete;
+        this.callbackTelephoneNumber = callbackTelephoneNumber;
+        this.businessTelephoneNumber = businessTelephoneNumber;
+        this.homeTelephoneNumber = homeTelephoneNumber;
+        this.primaryTelephoneNumber = primaryTelephoneNumber;
+        this.business2TelephoneNumber = business2TelephoneNumber;
+        this.mobileTelephoneNumber = mobileTelephoneNumber;
+        this.radioTelephoneNumber = radioTelephoneNumber;
+        this.carTelephoneNumber = carTelephoneNumber;
+        this.otherTelephoneNumber = otherTelephoneNumber;
+        this.assistantTelephoneNumber = assistantTelephoneNumber;
+        this.home2TelephoneNumber = home2TelephoneNumber;
+        this.ttyTddPhoneNumber = ttyTddPhoneNumber;
+        this.companyMainTelephoneNumber = companyMainTelephoneNumber;
+        this.telexNumber = telexNumber;
+        this.isdnNumber = isdnNumber;
+        this.pagerTelephoneNumber = pagerTelephoneNumber;
+    }
+}
+
+/**
+ * Refers to the group of properties that define the e-mail address or fax address.             
+ */
+export class MapiElectronicAddressDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "addressType",
+            baseName: "addressType",
+            type: "string",
+        },
+        {
+            name: "emailAddress",
+            baseName: "emailAddress",
+            type: "string",
+        },
+        {
+            name: "displayName",
+            baseName: "displayName",
+            type: "string",
+        },
+        {
+            name: "faxNumber",
+            baseName: "faxNumber",
+            type: "string",
+        },
+        {
+            name: "originalDisplayName",
+            baseName: "originalDisplayName",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiElectronicAddressDto.attributeTypeMap;
+    }
+
+    /**
+     * Address type.             
+     */
+    public addressType: string;
+    
+    /**
+     * Email address.             
+     */
+    public emailAddress: string;
+    
+    /**
+     * User-readable display name for the e-mail address.             
+     */
+    public displayName: string;
+    
+    /**
+     * Telephone number of the mail user's primary fax machine.             
+     */
+    public faxNumber: string;
+    
+    /**
+     * SMTP e-mail address that  corresponds to the e-mail address.             
+     */
+    public originalDisplayName: string;
+    
+
+    /**
+     * Refers to the group of properties that define the e-mail address or fax address.             
+     * @param addressType Address type.             
+     * @param emailAddress Email address.             
+     * @param displayName User-readable display name for the e-mail address.             
+     * @param faxNumber Telephone number of the mail user's primary fax machine.             
+     * @param originalDisplayName SMTP e-mail address that  corresponds to the e-mail address.             
+     */
+    public constructor(
+        addressType?: string,
+        emailAddress?: string,
+        displayName?: string,
+        faxNumber?: string,
+        originalDisplayName?: string) {
+        
+        this.addressType = addressType;
+        this.emailAddress = emailAddress;
+        this.displayName = displayName;
+        this.faxNumber = faxNumber;
+        this.originalDisplayName = originalDisplayName;
+    }
+}
+
+/**
+ * Base Dto for MapiMessage, MapiCalendar or MapiContact             
+ */
+export class MapiMessageItemBaseDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "attachments",
+            baseName: "attachments",
+            type: "Array<MapiAttachmentDto>",
+        },
+        {
+            name: "billing",
+            baseName: "billing",
+            type: "string",
+        },
+        {
+            name: "body",
+            baseName: "body",
+            type: "string",
+        },
+        {
+            name: "bodyHtml",
+            baseName: "bodyHtml",
+            type: "string",
+        },
+        {
+            name: "bodyRtf",
+            baseName: "bodyRtf",
+            type: "string",
+        },
+        {
+            name: "bodyType",
+            baseName: "bodyType",
+            type: "string",
+        },
+        {
+            name: "categories",
+            baseName: "categories",
+            type: "Array<string>",
+        },
+        {
+            name: "companies",
+            baseName: "companies",
+            type: "Array<string>",
+        },
+        {
+            name: "itemId",
+            baseName: "itemId",
+            type: "string",
+        },
+        {
+            name: "messageClass",
+            baseName: "messageClass",
+            type: "string",
+        },
+        {
+            name: "mileage",
+            baseName: "mileage",
+            type: "string",
+        },
+        {
+            name: "recipients",
+            baseName: "recipients",
+            type: "Array<MapiRecipientDto>",
+        },
+        {
+            name: "sensitivity",
+            baseName: "sensitivity",
+            type: "string",
+        },
+        {
+            name: "subject",
+            baseName: "subject",
+            type: "string",
+        },
+        {
+            name: "subjectPrefix",
+            baseName: "subjectPrefix",
+            type: "string",
+        },
+        {
+            name: "properties",
+            baseName: "properties",
+            type: "Array<MapiPropertyDto>",
+        },
+        {
+            name: "discriminator",
+            baseName: "discriminator",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiMessageItemBaseDto.attributeTypeMap;
+    }
+
+    /**
+     * Message item attachments.             
+     */
+    public attachments: Array<MapiAttachmentDto>;
+    
+    /**
+     * Billing information associated with an item.             
+     */
+    public billing: string;
+    
+    /**
+     * Message text.             
+     */
+    public body: string;
+    
+    /**
+     * Gets the BodyRtf of the message converted to HTML, if present, otherwise an empty string.             
+     */
+    public bodyHtml: string;
+    
+    /**
+     * RTF formatted message text.             
+     */
+    public bodyRtf: string;
+    
+    /**
+     * The content type of message body. Enum, available values: PlainText, Html, Rtf
+     */
+    public bodyType: string;
+    
+    /**
+     * Contains keywords or categories for the message object.             
+     */
+    public categories: Array<string>;
+    
+    /**
+     * Contains the names of the companies that are associated with an item.             
+     */
+    public companies: Array<string>;
+    
+    /**
+     * The item id, uses with a server.             
+     */
+    public itemId: string;
+    
+    /**
+     * Case-sensitive string that identifies the sender-defined message class, such as IPM.Note. The message class specifies the type, purpose, or content of the message.             
+     */
+    public messageClass: string;
+    
+    /**
+     * Contains the mileage information that is associated with an item.             
+     */
+    public mileage: string;
+    
+    /**
+     * Recipients of the message.             
+     */
+    public recipients: Array<MapiRecipientDto>;
+    
+    /**
+     * Contains values that indicate the message sensitivity. Enum, available values: None, Personal, Private, CompanyConfidential
+     */
+    public sensitivity: string;
+    
+    /**
+     * Subject of the message.             
+     */
+    public subject: string;
+    
+    /**
+     * Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
+     */
+    public subjectPrefix: string;
+    
+    /**
+     * List of MAPI properties             
+     */
+    public properties: Array<MapiPropertyDto>;
+    
+
+    get discriminator(): string {
+        return this.constructor.name;
+    }
+
+    set discriminator(_newType: string) {
+        /* do nothing */
+    }
+    
+
+    /**
+     * Base Dto for MapiMessage, MapiCalendar or MapiContact             
+     * @param attachments Message item attachments.             
+     * @param billing Billing information associated with an item.             
+     * @param body Message text.             
+     * @param bodyHtml Gets the BodyRtf of the message converted to HTML, if present, otherwise an empty string.             
+     * @param bodyRtf RTF formatted message text.             
+     * @param bodyType The content type of message body. Enum, available values: PlainText, Html, Rtf
+     * @param categories Contains keywords or categories for the message object.             
+     * @param companies Contains the names of the companies that are associated with an item.             
+     * @param itemId The item id, uses with a server.             
+     * @param messageClass Case-sensitive string that identifies the sender-defined message class, such as IPM.Note. The message class specifies the type, purpose, or content of the message.             
+     * @param mileage Contains the mileage information that is associated with an item.             
+     * @param recipients Recipients of the message.             
+     * @param sensitivity Contains values that indicate the message sensitivity. Enum, available values: None, Personal, Private, CompanyConfidential
+     * @param subject Subject of the message.             
+     * @param subjectPrefix Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
+     * @param properties List of MAPI properties             
+     * @param discriminator 
+     */
+    public constructor(
+        attachments?: Array<MapiAttachmentDto>,
+        billing?: string,
+        body?: string,
+        bodyHtml?: string,
+        bodyRtf?: string,
+        bodyType?: string,
+        categories?: Array<string>,
+        companies?: Array<string>,
+        itemId?: string,
+        messageClass?: string,
+        mileage?: string,
+        recipients?: Array<MapiRecipientDto>,
+        sensitivity?: string,
+        subject?: string,
+        subjectPrefix?: string,
+        properties?: Array<MapiPropertyDto>,
+        discriminator?: string) {
+        
+        this.attachments = attachments;
+        this.billing = billing;
+        this.body = body;
+        this.bodyHtml = bodyHtml;
+        this.bodyRtf = bodyRtf;
+        this.bodyType = bodyType;
+        this.categories = categories;
+        this.companies = companies;
+        this.itemId = itemId;
+        this.messageClass = messageClass;
+        this.mileage = mileage;
+        this.recipients = recipients;
+        this.sensitivity = sensitivity;
+        this.subject = subject;
+        this.subjectPrefix = subjectPrefix;
+        this.properties = properties;
+        this.discriminator = discriminator;
+    }
+}
+
+/**
+ * Mapi property descriptor             
+ */
+export class MapiPropertyDescriptor {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "discriminator",
+            baseName: "discriminator",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiPropertyDescriptor.attributeTypeMap;
+    }
+
+
+    get discriminator(): string {
+        return this.constructor.name;
+    }
+
+    set discriminator(_newType: string) {
+        /* do nothing */
+    }
+    
+
+    /**
+     * Mapi property descriptor             
+     * @param discriminator 
+     */
+    public constructor(
+        discriminator?: string) {
+        
+        this.discriminator = discriminator;
+    }
+}
+
+/**
+ * Mapi property             
+ */
+export class MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "descriptor",
+            baseName: "descriptor",
+            type: "MapiPropertyDescriptor",
+        },
+        {
+            name: "discriminator",
+            baseName: "discriminator",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiPropertyDto.attributeTypeMap;
+    }
+
+    /**
+     * Property descriptor             
+     */
+    public descriptor: MapiPropertyDescriptor;
+    
+
+    get discriminator(): string {
+        return this.constructor.name;
+    }
+
+    set discriminator(_newType: string) {
+        /* do nothing */
+    }
+    
+
+    /**
+     * Mapi property             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string) {
+        
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+    }
+}
+
+/**
+ * Represents the recipient information in the Microsoft Outlook Message.             
+ */
+export class MapiRecipientDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "emailAddress",
+            baseName: "emailAddress",
+            type: "string",
+        },
+        {
+            name: "addressType",
+            baseName: "addressType",
+            type: "string",
+        },
+        {
+            name: "displayName",
+            baseName: "displayName",
+            type: "string",
+        },
+        {
+            name: "recipientType",
+            baseName: "recipientType",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return MapiRecipientDto.attributeTypeMap;
+    }
+
+    /**
+     * Email address of the message recipient or sender.             
+     */
+    public emailAddress: string;
+    
+    /**
+     * Type of the address of the message recipient or sender.             
+     */
+    public addressType: string;
+    
+    /**
+     * Display name of the message recipient or sender.             
+     */
+    public displayName: string;
+    
+    /**
+     * Represent the PR_RECIPIENT_TYPE property which contains the recipient type for a message recipient. Enum, available values: Unknown, MapiBcc, MapiCc, MapiP1, MapiSubmitted, MapiTo
+     */
+    public recipientType: string;
+    
+
+    /**
+     * Represents the recipient information in the Microsoft Outlook Message.             
+     * @param emailAddress Email address of the message recipient or sender.             
+     * @param addressType Type of the address of the message recipient or sender.             
+     * @param displayName Display name of the message recipient or sender.             
+     * @param recipientType Represent the PR_RECIPIENT_TYPE property which contains the recipient type for a message recipient. Enum, available values: Unknown, MapiBcc, MapiCc, MapiP1, MapiSubmitted, MapiTo
+     */
+    public constructor(
+        emailAddress?: string,
+        addressType?: string,
+        displayName?: string,
+        recipientType?: string) {
+        
+        this.emailAddress = emailAddress;
+        this.addressType = addressType;
+        this.displayName = displayName;
+        this.recipientType = recipientType;
+    }
+}
+
+/**
  * Email document property DTO.             
  */
 export class MimeResponse {
@@ -5849,6 +8820,101 @@ export class PostalAddress {
         this.preferred = preferred;
         this.stateOrProvince = stateOrProvince;
         this.street = street;
+    }
+}
+
+/**
+ * iCalendar recurrence pattern.             
+ */
+export class RecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "interval",
+            baseName: "interval",
+            type: "number",
+        },
+        {
+            name: "occurs",
+            baseName: "occurs",
+            type: "number",
+        },
+        {
+            name: "endDate",
+            baseName: "endDate",
+            type: "Date",
+        },
+        {
+            name: "weekStart",
+            baseName: "weekStart",
+            type: "string",
+        },
+        {
+            name: "discriminator",
+            baseName: "discriminator",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return RecurrencePatternDto.attributeTypeMap;
+    }
+
+    /**
+     * Number of recurrence units.             
+     */
+    public interval: number;
+    
+    /**
+     * Number of occurrences of the recurrence pattern.             
+     */
+    public occurs: number;
+    
+    /**
+     * End date.             
+     */
+    public endDate: Date;
+    
+    /**
+     * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     */
+    public weekStart: string;
+    
+
+    get discriminator(): string {
+        return this.constructor.name;
+    }
+
+    set discriminator(_newType: string) {
+        /* do nothing */
+    }
+    
+
+    /**
+     * iCalendar recurrence pattern.             
+     * @param interval Number of recurrence units.             
+     * @param occurs Number of occurrences of the recurrence pattern.             
+     * @param endDate End date.             
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param discriminator 
+     */
+    public constructor(
+        interval?: number,
+        occurs?: number,
+        endDate?: Date,
+        weekStart?: string,
+        discriminator?: string) {
+        
+        this.interval = interval;
+        this.occurs = occurs;
+        this.endDate = endDate;
+        this.weekStart = weekStart;
+        this.discriminator = discriminator;
     }
 }
 
@@ -6510,6 +9576,135 @@ export class StorageModelRqOfEmailDto {
     }
 }
 
+export class StorageModelRqOfMapiCalendarDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "MapiCalendarDto",
+        },
+        {
+            name: "storageFolder",
+            baseName: "storageFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageModelRqOfMapiCalendarDto.attributeTypeMap;
+    }
+
+    public value: MapiCalendarDto;
+    
+    public storageFolder: StorageFolderLocation;
+    
+
+    /**
+     * 
+     * @param value 
+     * @param storageFolder 
+     */
+    public constructor(
+        value?: MapiCalendarDto,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.value = value;
+        this.storageFolder = storageFolder;
+    }
+}
+
+export class StorageModelRqOfMapiContactDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "MapiContactDto",
+        },
+        {
+            name: "storageFolder",
+            baseName: "storageFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageModelRqOfMapiContactDto.attributeTypeMap;
+    }
+
+    public value: MapiContactDto;
+    
+    public storageFolder: StorageFolderLocation;
+    
+
+    /**
+     * 
+     * @param value 
+     * @param storageFolder 
+     */
+    public constructor(
+        value?: MapiContactDto,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.value = value;
+        this.storageFolder = storageFolder;
+    }
+}
+
+export class StorageModelRqOfMapiMessageDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "MapiMessageDto",
+        },
+        {
+            name: "storageFolder",
+            baseName: "storageFolder",
+            type: "StorageFolderLocation",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return StorageModelRqOfMapiMessageDto.attributeTypeMap;
+    }
+
+    public value: MapiMessageDto;
+    
+    public storageFolder: StorageFolderLocation;
+    
+
+    /**
+     * 
+     * @param value 
+     * @param storageFolder 
+     */
+    public constructor(
+        value?: MapiMessageDto,
+        storageFolder?: StorageFolderLocation) {
+        
+        this.value = value;
+        this.storageFolder = storageFolder;
+    }
+}
+
 /**
  * Url and its category.             
  */
@@ -6743,7 +9938,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
         {
             name: "file",
             baseName: "file",
-            type: "any",
+            type: "StorageFileLocation",
         }    ];
 
     /**
@@ -6756,7 +9951,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
     /**
      * Image location             
      */
-    public file: any;
+    public file: StorageFileLocation;
     
 
     /**
@@ -6766,7 +9961,7 @@ export class AiBcrImageStorageFile extends AiBcrImage {
      */
     public constructor(
         isSingle?: boolean,
-        file?: any) {
+        file?: StorageFileLocation) {
         super();
         this.isSingle = isSingle;
         this.file = file;
@@ -7251,6 +10446,48 @@ export class CreateFolderBaseRequest extends AccountBaseRequest {
         this.storageFolder = storageFolder;
         this.folder = folder;
         this.parentFolder = parentFolder;
+    }
+}
+
+/**
+ * Daily recurrence.             
+ */
+export class DailyRecurrencePatternDto extends RecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(DailyRecurrencePatternDto.attributeTypeMap);
+    }
+
+
+    /**
+     * Daily recurrence.             
+     * @param interval Number of recurrence units.             
+     * @param occurs Number of occurrences of the recurrence pattern.             
+     * @param endDate End date.             
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param discriminator 
+     */
+    public constructor(
+        interval?: number,
+        occurs?: number,
+        endDate?: Date,
+        weekStart?: string,
+        discriminator?: string) {
+        super();
+        this.interval = interval;
+        this.occurs = occurs;
+        this.endDate = endDate;
+        this.weekStart = weekStart;
+        this.discriminator = discriminator;
     }
 }
 
@@ -8117,6 +11354,1961 @@ export class LinkedResource extends AttachmentBase {
 }
 
 /**
+ * Mapi property with Binary value represented as a Base64 string             
+ */
+export class MapiBinaryPropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "valueBase64",
+            baseName: "valueBase64",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiBinaryPropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Property value converted to Base64             
+     */
+    public valueBase64: string;
+    
+
+    /**
+     * Mapi property with Binary value represented as a Base64 string             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param valueBase64 Property value converted to Base64             
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        valueBase64?: string) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.valueBase64 = valueBase64;
+    }
+}
+
+/**
+ * Mapi property with Boolean value             
+ */
+export class MapiBooleanPropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "boolean",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiBooleanPropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Property value             
+     */
+    public value: boolean;
+    
+
+    /**
+     * Mapi property with Boolean value             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param value Property value             
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        value?: boolean) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.value = value;
+    }
+}
+
+/**
+ * Represents the daily recurrence pattern of the mapi calendar.             
+ */
+export class MapiCalendarDailyRecurrencePatternDto extends MapiCalendarRecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "dayOfWeek",
+            baseName: "dayOfWeek",
+            type: "Array<string>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiCalendarDailyRecurrencePatternDto.attributeTypeMap);
+    }
+
+    /**
+     * Days of week at which the event occurs.              Items: Enumerates the days of week of the mapi calendar recurrence pattern Enum, available values: Saturday, Friday, Thursday, Wednesday, Tuesday, Monday, Sunday
+     */
+    public dayOfWeek: Array<string>;
+    
+
+    /**
+     * Represents the daily recurrence pattern of the mapi calendar.             
+     * @param calendarType Enumerated the calendar type of the mapi recurrence Enum, available values: Default, CalGregorian, CalGregorianUs, CalJapan, CalTaiwan, CalKorea, CalHijri, CalThai, CalHebrew, CalGregorianMeFrench, CalGregorianArabic, CalGregorianXLitEnglish, CalGregorianXLitFrench, CalLunarJapanese, CalChineseLunar, CalSaka, CalLunarEtoChn, CalLunarEtoKor, CalLunarRokuyou, CalLunarKorean, CalUmAlQura
+     * @param deletedInstanceDates An array of dates, each of which is the original instance date of either a deleted instance or a modified instance for this recurrence.             
+     * @param endDate End date of an item recurrence pattern.             
+     * @param endType Enumerates the ending type for the recurrence. Enum, available values: None, EndAfterDate, EndAfterNOccurrences, NeverEnd
+     * @param exceptions An exception specifies changes to an instance of a recurring series.             
+     * @param frequency Enumerates mapi calendar recurrence frequency Enum, available values: None, Daily, Weekly, Monthly, Yearly
+     * @param modifiedInstanceDates An array of dates, each of which is the date of a modified instance.             
+     * @param occurrenceCount Number of occurrences in a recurrence.             
+     * @param patternType Enumerates the mapi calendar recurrence pattern types Enum, available values: Day, Week, Month, MonthEnd, MonthNth, HjMonth, HjMonthNth, HjMonthEnd
+     * @param period Interval at which the meeting pattern repeats.             
+     * @param slidingFlag Defines whether pattern is sliding or not.             
+     * @param startDate Start date of an item recurrence pattern.             
+     * @param weekStartDay Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * @param discriminator 
+     * @param dayOfWeek Days of week at which the event occurs.             
+     */
+    public constructor(
+        calendarType?: string,
+        deletedInstanceDates?: Array<Date>,
+        endDate?: Date,
+        endType?: string,
+        exceptions?: Array<MapiCalendarExceptionInfoDto>,
+        frequency?: string,
+        modifiedInstanceDates?: Array<Date>,
+        occurrenceCount?: number,
+        patternType?: string,
+        period?: number,
+        slidingFlag?: boolean,
+        startDate?: Date,
+        weekStartDay?: string,
+        discriminator?: string,
+        dayOfWeek?: Array<string>) {
+        super();
+        this.calendarType = calendarType;
+        this.deletedInstanceDates = deletedInstanceDates;
+        this.endDate = endDate;
+        this.endType = endType;
+        this.exceptions = exceptions;
+        this.frequency = frequency;
+        this.modifiedInstanceDates = modifiedInstanceDates;
+        this.occurrenceCount = occurrenceCount;
+        this.patternType = patternType;
+        this.period = period;
+        this.slidingFlag = slidingFlag;
+        this.startDate = startDate;
+        this.weekStartDay = weekStartDay;
+        this.discriminator = discriminator;
+        this.dayOfWeek = dayOfWeek;
+    }
+}
+
+/**
+ * Represents the mapi calendar object             
+ */
+export class MapiCalendarDto extends MapiMessageItemBaseDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "appointmentCounterProposal",
+            baseName: "appointmentCounterProposal",
+            type: "boolean",
+        },
+        {
+            name: "attendees",
+            baseName: "attendees",
+            type: "MapiCalendarAttendeesDto",
+        },
+        {
+            name: "busyStatus",
+            baseName: "busyStatus",
+            type: "string",
+        },
+        {
+            name: "clientIntent",
+            baseName: "clientIntent",
+            type: "Array<string>",
+        },
+        {
+            name: "endDate",
+            baseName: "endDate",
+            type: "Date",
+        },
+        {
+            name: "endDateTimeZone",
+            baseName: "endDateTimeZone",
+            type: "MapiCalendarTimeZoneDto",
+        },
+        {
+            name: "isAllDay",
+            baseName: "isAllDay",
+            type: "boolean",
+        },
+        {
+            name: "keyWords",
+            baseName: "keyWords",
+            type: "string",
+        },
+        {
+            name: "location",
+            baseName: "location",
+            type: "string",
+        },
+        {
+            name: "recurrence",
+            baseName: "recurrence",
+            type: "MapiCalendarEventRecurrenceDto",
+        },
+        {
+            name: "reminderDelta",
+            baseName: "reminderDelta",
+            type: "number",
+        },
+        {
+            name: "reminderFileParameter",
+            baseName: "reminderFileParameter",
+            type: "string",
+        },
+        {
+            name: "reminderSet",
+            baseName: "reminderSet",
+            type: "boolean",
+        },
+        {
+            name: "sequence",
+            baseName: "sequence",
+            type: "number",
+        },
+        {
+            name: "startDate",
+            baseName: "startDate",
+            type: "Date",
+        },
+        {
+            name: "startDateTimeZone",
+            baseName: "startDateTimeZone",
+            type: "MapiCalendarTimeZoneDto",
+        },
+        {
+            name: "uid",
+            baseName: "uid",
+            type: "string",
+        },
+        {
+            name: "organizer",
+            baseName: "organizer",
+            type: "MapiElectronicAddressDto",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiCalendarDto.attributeTypeMap);
+    }
+
+    /**
+     * Value indicating whether a Meeting Response object is a counter proposal.             
+     */
+    public appointmentCounterProposal: boolean;
+    
+    /**
+     * Attendees             
+     */
+    public attendees: MapiCalendarAttendeesDto;
+    
+    /**
+     * Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
+     */
+    public busyStatus: string;
+    
+    /**
+     * Actions the user has taken on this Meeting object.              Items: Enumerates the actions the user can taken on the Meeting object Enum, available values: Manager, Delegate, DeletedWithNoResponse, DeletedExceptionWithNoResponse, RespondedTentative, RespondedAccept, RespondedDecline, ModifiedStartTime, ModifiedEndTime, ModifiedLocation, RespondedExceptionDecline, Canceled, ExceptionCanceled
+     */
+    public clientIntent: Array<string>;
+    
+    /**
+     * End date and time of the event. If the date is not set, default value for DateTime is returned.             
+     */
+    public endDate: Date;
+    
+    /**
+     * Time zone information that indicates the time zone of the EndDate property.             
+     */
+    public endDateTimeZone: MapiCalendarTimeZoneDto;
+    
+    /**
+     * Value indicating whether the event is an all-day event.             
+     */
+    public isAllDay: boolean;
+    
+    /**
+     * Categories of the calendar object.             
+     */
+    public keyWords: string;
+    
+    /**
+     * Location of the event.             
+     */
+    public location: string;
+    
+    /**
+     * Recurrence properties.             
+     */
+    public recurrence: MapiCalendarEventRecurrenceDto;
+    
+    /**
+     * Interval, in minutes, between the time at which the reminder first becomes overdue and the start time of the Calendar object.             
+     */
+    public reminderDelta: number;
+    
+    /**
+     * Full path of the sound that a client SHOULD play when the reminder becomes overdue.             
+     */
+    public reminderFileParameter: string;
+    
+    /**
+     * Value indicating whether a reminder is set on the object.             
+     */
+    public reminderSet: boolean;
+    
+    /**
+     * Sequence number.             
+     */
+    public sequence: number;
+    
+    /**
+     * Start date and time of the event. If the date is not set, default value for DateTime is returned.             
+     */
+    public startDate: Date;
+    
+    /**
+     * Time zone information that indicates the time zone of the StartDate property.             
+     */
+    public startDateTimeZone: MapiCalendarTimeZoneDto;
+    
+    /**
+     * Unique identifier.             
+     */
+    public uid: string;
+    
+    /**
+     * Organizer             
+     */
+    public organizer: MapiElectronicAddressDto;
+    
+
+    /**
+     * Represents the mapi calendar object             
+     * @param attachments Message item attachments.             
+     * @param billing Billing information associated with an item.             
+     * @param body Message text.             
+     * @param bodyHtml Gets the BodyRtf of the message converted to HTML, if present, otherwise an empty string.             
+     * @param bodyRtf RTF formatted message text.             
+     * @param bodyType The content type of message body. Enum, available values: PlainText, Html, Rtf
+     * @param categories Contains keywords or categories for the message object.             
+     * @param companies Contains the names of the companies that are associated with an item.             
+     * @param itemId The item id, uses with a server.             
+     * @param messageClass Case-sensitive string that identifies the sender-defined message class, such as IPM.Note. The message class specifies the type, purpose, or content of the message.             
+     * @param mileage Contains the mileage information that is associated with an item.             
+     * @param recipients Recipients of the message.             
+     * @param sensitivity Contains values that indicate the message sensitivity. Enum, available values: None, Personal, Private, CompanyConfidential
+     * @param subject Subject of the message.             
+     * @param subjectPrefix Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
+     * @param properties List of MAPI properties             
+     * @param discriminator 
+     * @param appointmentCounterProposal Value indicating whether a Meeting Response object is a counter proposal.             
+     * @param attendees Attendees             
+     * @param busyStatus Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
+     * @param clientIntent Actions the user has taken on this Meeting object.             
+     * @param endDate End date and time of the event. If the date is not set, default value for DateTime is returned.             
+     * @param endDateTimeZone Time zone information that indicates the time zone of the EndDate property.             
+     * @param isAllDay Value indicating whether the event is an all-day event.             
+     * @param keyWords Categories of the calendar object.             
+     * @param location Location of the event.             
+     * @param recurrence Recurrence properties.             
+     * @param reminderDelta Interval, in minutes, between the time at which the reminder first becomes overdue and the start time of the Calendar object.             
+     * @param reminderFileParameter Full path of the sound that a client SHOULD play when the reminder becomes overdue.             
+     * @param reminderSet Value indicating whether a reminder is set on the object.             
+     * @param sequence Sequence number.             
+     * @param startDate Start date and time of the event. If the date is not set, default value for DateTime is returned.             
+     * @param startDateTimeZone Time zone information that indicates the time zone of the StartDate property.             
+     * @param uid Unique identifier.             
+     * @param organizer Organizer             
+     */
+    public constructor(
+        attachments?: Array<MapiAttachmentDto>,
+        billing?: string,
+        body?: string,
+        bodyHtml?: string,
+        bodyRtf?: string,
+        bodyType?: string,
+        categories?: Array<string>,
+        companies?: Array<string>,
+        itemId?: string,
+        messageClass?: string,
+        mileage?: string,
+        recipients?: Array<MapiRecipientDto>,
+        sensitivity?: string,
+        subject?: string,
+        subjectPrefix?: string,
+        properties?: Array<MapiPropertyDto>,
+        discriminator?: string,
+        appointmentCounterProposal?: boolean,
+        attendees?: MapiCalendarAttendeesDto,
+        busyStatus?: string,
+        clientIntent?: Array<string>,
+        endDate?: Date,
+        endDateTimeZone?: MapiCalendarTimeZoneDto,
+        isAllDay?: boolean,
+        keyWords?: string,
+        location?: string,
+        recurrence?: MapiCalendarEventRecurrenceDto,
+        reminderDelta?: number,
+        reminderFileParameter?: string,
+        reminderSet?: boolean,
+        sequence?: number,
+        startDate?: Date,
+        startDateTimeZone?: MapiCalendarTimeZoneDto,
+        uid?: string,
+        organizer?: MapiElectronicAddressDto) {
+        super();
+        this.attachments = attachments;
+        this.billing = billing;
+        this.body = body;
+        this.bodyHtml = bodyHtml;
+        this.bodyRtf = bodyRtf;
+        this.bodyType = bodyType;
+        this.categories = categories;
+        this.companies = companies;
+        this.itemId = itemId;
+        this.messageClass = messageClass;
+        this.mileage = mileage;
+        this.recipients = recipients;
+        this.sensitivity = sensitivity;
+        this.subject = subject;
+        this.subjectPrefix = subjectPrefix;
+        this.properties = properties;
+        this.discriminator = discriminator;
+        this.appointmentCounterProposal = appointmentCounterProposal;
+        this.attendees = attendees;
+        this.busyStatus = busyStatus;
+        this.clientIntent = clientIntent;
+        this.endDate = endDate;
+        this.endDateTimeZone = endDateTimeZone;
+        this.isAllDay = isAllDay;
+        this.keyWords = keyWords;
+        this.location = location;
+        this.recurrence = recurrence;
+        this.reminderDelta = reminderDelta;
+        this.reminderFileParameter = reminderFileParameter;
+        this.reminderSet = reminderSet;
+        this.sequence = sequence;
+        this.startDate = startDate;
+        this.startDateTimeZone = startDateTimeZone;
+        this.uid = uid;
+        this.organizer = organizer;
+    }
+}
+
+/**
+ * Represents the weekly recurrence pattern of the mapi calendar             
+ */
+export class MapiCalendarWeeklyRecurrencePatternDto extends MapiCalendarRecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "dayOfWeek",
+            baseName: "dayOfWeek",
+            type: "Array<string>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiCalendarWeeklyRecurrencePatternDto.attributeTypeMap);
+    }
+
+    /**
+     * Days of week at which the event occurs.              Items: Enumerates the days of week of the mapi calendar recurrence pattern Enum, available values: Saturday, Friday, Thursday, Wednesday, Tuesday, Monday, Sunday
+     */
+    public dayOfWeek: Array<string>;
+    
+
+    /**
+     * Represents the weekly recurrence pattern of the mapi calendar             
+     * @param calendarType Enumerated the calendar type of the mapi recurrence Enum, available values: Default, CalGregorian, CalGregorianUs, CalJapan, CalTaiwan, CalKorea, CalHijri, CalThai, CalHebrew, CalGregorianMeFrench, CalGregorianArabic, CalGregorianXLitEnglish, CalGregorianXLitFrench, CalLunarJapanese, CalChineseLunar, CalSaka, CalLunarEtoChn, CalLunarEtoKor, CalLunarRokuyou, CalLunarKorean, CalUmAlQura
+     * @param deletedInstanceDates An array of dates, each of which is the original instance date of either a deleted instance or a modified instance for this recurrence.             
+     * @param endDate End date of an item recurrence pattern.             
+     * @param endType Enumerates the ending type for the recurrence. Enum, available values: None, EndAfterDate, EndAfterNOccurrences, NeverEnd
+     * @param exceptions An exception specifies changes to an instance of a recurring series.             
+     * @param frequency Enumerates mapi calendar recurrence frequency Enum, available values: None, Daily, Weekly, Monthly, Yearly
+     * @param modifiedInstanceDates An array of dates, each of which is the date of a modified instance.             
+     * @param occurrenceCount Number of occurrences in a recurrence.             
+     * @param patternType Enumerates the mapi calendar recurrence pattern types Enum, available values: Day, Week, Month, MonthEnd, MonthNth, HjMonth, HjMonthNth, HjMonthEnd
+     * @param period Interval at which the meeting pattern repeats.             
+     * @param slidingFlag Defines whether pattern is sliding or not.             
+     * @param startDate Start date of an item recurrence pattern.             
+     * @param weekStartDay Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * @param discriminator 
+     * @param dayOfWeek Days of week at which the event occurs.             
+     */
+    public constructor(
+        calendarType?: string,
+        deletedInstanceDates?: Array<Date>,
+        endDate?: Date,
+        endType?: string,
+        exceptions?: Array<MapiCalendarExceptionInfoDto>,
+        frequency?: string,
+        modifiedInstanceDates?: Array<Date>,
+        occurrenceCount?: number,
+        patternType?: string,
+        period?: number,
+        slidingFlag?: boolean,
+        startDate?: Date,
+        weekStartDay?: string,
+        discriminator?: string,
+        dayOfWeek?: Array<string>) {
+        super();
+        this.calendarType = calendarType;
+        this.deletedInstanceDates = deletedInstanceDates;
+        this.endDate = endDate;
+        this.endType = endType;
+        this.exceptions = exceptions;
+        this.frequency = frequency;
+        this.modifiedInstanceDates = modifiedInstanceDates;
+        this.occurrenceCount = occurrenceCount;
+        this.patternType = patternType;
+        this.period = period;
+        this.slidingFlag = slidingFlag;
+        this.startDate = startDate;
+        this.weekStartDay = weekStartDay;
+        this.discriminator = discriminator;
+        this.dayOfWeek = dayOfWeek;
+    }
+}
+
+/**
+ * Represents the yearly and monthly recurrence pattern of the mapi calendar             
+ */
+export class MapiCalendarYearlyAndMonthlyRecurrencePatternDto extends MapiCalendarRecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "day",
+            baseName: "day",
+            type: "number",
+        },
+        {
+            name: "dayOfWeek",
+            baseName: "dayOfWeek",
+            type: "Array<string>",
+        },
+        {
+            name: "position",
+            baseName: "position",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiCalendarYearlyAndMonthlyRecurrencePatternDto.attributeTypeMap);
+    }
+
+    /**
+     * Day of the month on which the recurrence falls.             
+     */
+    public day: number;
+    
+    /**
+     * Days of week at which the event occurs.              Items: Enumerates the days of week of the mapi calendar recurrence pattern Enum, available values: Saturday, Friday, Thursday, Wednesday, Tuesday, Monday, Sunday
+     */
+    public dayOfWeek: Array<string>;
+    
+    /**
+     * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     */
+    public position: string;
+    
+
+    /**
+     * Represents the yearly and monthly recurrence pattern of the mapi calendar             
+     * @param calendarType Enumerated the calendar type of the mapi recurrence Enum, available values: Default, CalGregorian, CalGregorianUs, CalJapan, CalTaiwan, CalKorea, CalHijri, CalThai, CalHebrew, CalGregorianMeFrench, CalGregorianArabic, CalGregorianXLitEnglish, CalGregorianXLitFrench, CalLunarJapanese, CalChineseLunar, CalSaka, CalLunarEtoChn, CalLunarEtoKor, CalLunarRokuyou, CalLunarKorean, CalUmAlQura
+     * @param deletedInstanceDates An array of dates, each of which is the original instance date of either a deleted instance or a modified instance for this recurrence.             
+     * @param endDate End date of an item recurrence pattern.             
+     * @param endType Enumerates the ending type for the recurrence. Enum, available values: None, EndAfterDate, EndAfterNOccurrences, NeverEnd
+     * @param exceptions An exception specifies changes to an instance of a recurring series.             
+     * @param frequency Enumerates mapi calendar recurrence frequency Enum, available values: None, Daily, Weekly, Monthly, Yearly
+     * @param modifiedInstanceDates An array of dates, each of which is the date of a modified instance.             
+     * @param occurrenceCount Number of occurrences in a recurrence.             
+     * @param patternType Enumerates the mapi calendar recurrence pattern types Enum, available values: Day, Week, Month, MonthEnd, MonthNth, HjMonth, HjMonthNth, HjMonthEnd
+     * @param period Interval at which the meeting pattern repeats.             
+     * @param slidingFlag Defines whether pattern is sliding or not.             
+     * @param startDate Start date of an item recurrence pattern.             
+     * @param weekStartDay Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * @param discriminator 
+     * @param day Day of the month on which the recurrence falls.             
+     * @param dayOfWeek Days of week at which the event occurs.             
+     * @param position Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     */
+    public constructor(
+        calendarType?: string,
+        deletedInstanceDates?: Array<Date>,
+        endDate?: Date,
+        endType?: string,
+        exceptions?: Array<MapiCalendarExceptionInfoDto>,
+        frequency?: string,
+        modifiedInstanceDates?: Array<Date>,
+        occurrenceCount?: number,
+        patternType?: string,
+        period?: number,
+        slidingFlag?: boolean,
+        startDate?: Date,
+        weekStartDay?: string,
+        discriminator?: string,
+        day?: number,
+        dayOfWeek?: Array<string>,
+        position?: string) {
+        super();
+        this.calendarType = calendarType;
+        this.deletedInstanceDates = deletedInstanceDates;
+        this.endDate = endDate;
+        this.endType = endType;
+        this.exceptions = exceptions;
+        this.frequency = frequency;
+        this.modifiedInstanceDates = modifiedInstanceDates;
+        this.occurrenceCount = occurrenceCount;
+        this.patternType = patternType;
+        this.period = period;
+        this.slidingFlag = slidingFlag;
+        this.startDate = startDate;
+        this.weekStartDay = weekStartDay;
+        this.discriminator = discriminator;
+        this.day = day;
+        this.dayOfWeek = dayOfWeek;
+        this.position = position;
+    }
+}
+
+/**
+ * Represents outlook contact information.             
+ */
+export class MapiContactDto extends MapiMessageItemBaseDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "electronicAddresses",
+            baseName: "electronicAddresses",
+            type: "MapiContactElectronicAddressPropertySetDto",
+        },
+        {
+            name: "events",
+            baseName: "events",
+            type: "MapiContactEventPropertySetDto",
+        },
+        {
+            name: "nameInfo",
+            baseName: "nameInfo",
+            type: "MapiContactNamePropertySetDto",
+        },
+        {
+            name: "otherFields",
+            baseName: "otherFields",
+            type: "MapiContactOtherPropertySetDto",
+        },
+        {
+            name: "personalInfo",
+            baseName: "personalInfo",
+            type: "MapiContactPersonalInfoPropertySetDto",
+        },
+        {
+            name: "photo",
+            baseName: "photo",
+            type: "MapiContactPhotoDto",
+        },
+        {
+            name: "physicalAddresses",
+            baseName: "physicalAddresses",
+            type: "MapiContactPhysicalAddressPropertySetDto",
+        },
+        {
+            name: "professionalInfo",
+            baseName: "professionalInfo",
+            type: "MapiContactProfessionalPropertySetDto",
+        },
+        {
+            name: "telephones",
+            baseName: "telephones",
+            type: "MapiContactTelephonePropertySetDto",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiContactDto.attributeTypeMap);
+    }
+
+    /**
+     * Specify properties for up to three different e-mail addresses and three different fax addresses.             
+     */
+    public electronicAddresses: MapiContactElectronicAddressPropertySetDto;
+    
+    /**
+     * Specify events associated with a contact.             
+     */
+    public events: MapiContactEventPropertySetDto;
+    
+    /**
+     * The properties are used to specify the name of the person represented by the contact.             
+     */
+    public nameInfo: MapiContactNamePropertySetDto;
+    
+    /**
+     * Specify other fields of contact.             
+     */
+    public otherFields: MapiContactOtherPropertySetDto;
+    
+    /**
+     * Specify other additional contact information.             
+     */
+    public personalInfo: MapiContactPersonalInfoPropertySetDto;
+    
+    /**
+     * Contact photo.             
+     */
+    public photo: MapiContactPhotoDto;
+    
+    /**
+     * Specify three physical addresses: Home Address, Work Address, and Other Address. One of the addresses can be marked as the Mailing Address.             
+     */
+    public physicalAddresses: MapiContactPhysicalAddressPropertySetDto;
+    
+    /**
+     * Properties are used to store professional details for the person represented by the contact.             
+     */
+    public professionalInfo: MapiContactProfessionalPropertySetDto;
+    
+    /**
+     * Specify telephone numbers for the contact.             
+     */
+    public telephones: MapiContactTelephonePropertySetDto;
+    
+
+    /**
+     * Represents outlook contact information.             
+     * @param attachments Message item attachments.             
+     * @param billing Billing information associated with an item.             
+     * @param body Message text.             
+     * @param bodyHtml Gets the BodyRtf of the message converted to HTML, if present, otherwise an empty string.             
+     * @param bodyRtf RTF formatted message text.             
+     * @param bodyType The content type of message body. Enum, available values: PlainText, Html, Rtf
+     * @param categories Contains keywords or categories for the message object.             
+     * @param companies Contains the names of the companies that are associated with an item.             
+     * @param itemId The item id, uses with a server.             
+     * @param messageClass Case-sensitive string that identifies the sender-defined message class, such as IPM.Note. The message class specifies the type, purpose, or content of the message.             
+     * @param mileage Contains the mileage information that is associated with an item.             
+     * @param recipients Recipients of the message.             
+     * @param sensitivity Contains values that indicate the message sensitivity. Enum, available values: None, Personal, Private, CompanyConfidential
+     * @param subject Subject of the message.             
+     * @param subjectPrefix Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
+     * @param properties List of MAPI properties             
+     * @param discriminator 
+     * @param electronicAddresses Specify properties for up to three different e-mail addresses and three different fax addresses.             
+     * @param events Specify events associated with a contact.             
+     * @param nameInfo The properties are used to specify the name of the person represented by the contact.             
+     * @param otherFields Specify other fields of contact.             
+     * @param personalInfo Specify other additional contact information.             
+     * @param photo Contact photo.             
+     * @param physicalAddresses Specify three physical addresses: Home Address, Work Address, and Other Address. One of the addresses can be marked as the Mailing Address.             
+     * @param professionalInfo Properties are used to store professional details for the person represented by the contact.             
+     * @param telephones Specify telephone numbers for the contact.             
+     */
+    public constructor(
+        attachments?: Array<MapiAttachmentDto>,
+        billing?: string,
+        body?: string,
+        bodyHtml?: string,
+        bodyRtf?: string,
+        bodyType?: string,
+        categories?: Array<string>,
+        companies?: Array<string>,
+        itemId?: string,
+        messageClass?: string,
+        mileage?: string,
+        recipients?: Array<MapiRecipientDto>,
+        sensitivity?: string,
+        subject?: string,
+        subjectPrefix?: string,
+        properties?: Array<MapiPropertyDto>,
+        discriminator?: string,
+        electronicAddresses?: MapiContactElectronicAddressPropertySetDto,
+        events?: MapiContactEventPropertySetDto,
+        nameInfo?: MapiContactNamePropertySetDto,
+        otherFields?: MapiContactOtherPropertySetDto,
+        personalInfo?: MapiContactPersonalInfoPropertySetDto,
+        photo?: MapiContactPhotoDto,
+        physicalAddresses?: MapiContactPhysicalAddressPropertySetDto,
+        professionalInfo?: MapiContactProfessionalPropertySetDto,
+        telephones?: MapiContactTelephonePropertySetDto) {
+        super();
+        this.attachments = attachments;
+        this.billing = billing;
+        this.body = body;
+        this.bodyHtml = bodyHtml;
+        this.bodyRtf = bodyRtf;
+        this.bodyType = bodyType;
+        this.categories = categories;
+        this.companies = companies;
+        this.itemId = itemId;
+        this.messageClass = messageClass;
+        this.mileage = mileage;
+        this.recipients = recipients;
+        this.sensitivity = sensitivity;
+        this.subject = subject;
+        this.subjectPrefix = subjectPrefix;
+        this.properties = properties;
+        this.discriminator = discriminator;
+        this.electronicAddresses = electronicAddresses;
+        this.events = events;
+        this.nameInfo = nameInfo;
+        this.otherFields = otherFields;
+        this.personalInfo = personalInfo;
+        this.photo = photo;
+        this.physicalAddresses = physicalAddresses;
+        this.professionalInfo = professionalInfo;
+        this.telephones = telephones;
+    }
+}
+
+/**
+ * Contains data and type of contact's photo.             
+ */
+export class MapiContactPhotoDto extends ContactPhoto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiContactPhotoDto.attributeTypeMap);
+    }
+
+
+    /**
+     * Contains data and type of contact's photo.             
+     * @param photoImageFormat MapiContact photo image format. Enum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
+     * @param base64Data Photo serialized as base64 string.             
+     * @param discriminator 
+     */
+    public constructor(
+        photoImageFormat?: string,
+        base64Data?: string,
+        discriminator?: string) {
+        super();
+        this.photoImageFormat = photoImageFormat;
+        this.base64Data = base64Data;
+        this.discriminator = discriminator;
+    }
+}
+
+/**
+ * Mapi property with DateTime value             
+ */
+export class MapiDateTimePropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "Date",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiDateTimePropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Property value             
+     */
+    public value: Date;
+    
+
+    /**
+     * Mapi property with DateTime value             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param value Property value             
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        value?: Date) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.value = value;
+    }
+}
+
+/**
+ * Mapi property with FileAsMapping value             
+ */
+export class MapiFileAsPropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiFileAsPropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Defines how to construct what is displayed for a contact in the FileAs property. Enum, available values: None, LastCommaFirst, FirstSpaceLast, Company, LastCommaFirstCompany, CompanyLastFirst, LastFirst, LastFirstCompany, CompanyLastCommaFirst, LastFirstSuffix, LastSpaceFirstCompany, CompanyLastSpaceFirst, LastSpaceFirst, DisplayName, FirstName, LastFirstMiddleSuffix, LastName, Empty
+     */
+    public value: string;
+    
+
+    /**
+     * Mapi property with FileAsMapping value             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param value Defines how to construct what is displayed for a contact in the FileAs property. Enum, available values: None, LastCommaFirst, FirstSpaceLast, Company, LastCommaFirstCompany, CompanyLastFirst, LastFirst, LastFirstCompany, CompanyLastCommaFirst, LastFirstSuffix, LastSpaceFirstCompany, CompanyLastSpaceFirst, LastSpaceFirst, DisplayName, FirstName, LastFirstMiddleSuffix, LastName, Empty
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        value?: string) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.value = value;
+    }
+}
+
+/**
+ * Mapi property with ImportanceChoicesType value             
+ */
+export class MapiImportancePropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiImportancePropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Levels of importance for an item. Enum, available values: Low, Normal, High
+     */
+    public value: string;
+    
+
+    /**
+     * Mapi property with ImportanceChoicesType value             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param value Levels of importance for an item. Enum, available values: Low, Normal, High
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        value?: string) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.value = value;
+    }
+}
+
+/**
+ * Mapi property with Integer value             
+ */
+export class MapiIntPropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "number",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiIntPropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Property value             
+     */
+    public value: number;
+    
+
+    /**
+     * Mapi property with Integer value             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param value Property value             
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        value?: number) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.value = value;
+    }
+}
+
+/**
+ * Known Mapi Property descriptor             
+ */
+export class MapiKnownPropertyDescriptor extends MapiPropertyDescriptor {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "name",
+            baseName: "name",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiKnownPropertyDescriptor.attributeTypeMap);
+    }
+
+    /**
+     * Known property name.  See all known properties here: https://apireference.aspose.com/email/net/aspose.email.mapi/knownpropertylist/fields/index  Possible values: Mileage, ObjectUri, GDataContactVersion, GDataPhotoVersion, AddressBookProviderArrayType, AddressBookProviderEmailList, AddressCountryCode, AgingDontAgeMe, AllAttendeesString, AllowExternalCheck, AnniversaryEventEntryId, AppointmentAuxiliaryFlags, AppointmentColor, AppointmentCounterProposal, AppointmentDuration, AppointmentEndDate, AppointmentEndTime, AppointmentEndWhole, AppointmentLastSequence, AppointmentMessageClass, AppointmentNotAllowPropose, AppointmentProposalNumber, AppointmentProposedDuration, AppointmentProposedEndWhole, AppointmentProposedStartWhole, AppointmentRecur, AppointmentReplyName, AppointmentReplyTime, AppointmentSequence, AppointmentSequenceTime, AppointmentStartDate, AppointmentStartTime, AppointmentStartWhole, AppointmentStateFlags, AppointmentSubType, AppointmentTimeZoneDefinitionEndDisplay, AppointmentTimeZoneDefinitionRecur, AppointmentTimeZoneDefinitionStartDisplay, AppointmentUnsendableRecipients, AppointmentUpdateTime, AttendeeCriticalChange, AutoFillLocation, AutoLog, AutoProcessState, AutoStartCheck, Billing, BirthdayEventEntryId, BirthdayLocal, BusinessCardCardPicture, BusinessCardDisplayDefinition, BusyStatus, CalendarType, Categories, CcAttendeesString, ChangeHighlight, Classification, ClassificationDescription, ClassificationGuid, ClassificationKeep, Classified, CleanGlobalObjectId, ClientIntent, ClipEnd, ClipStart, CollaborateDoc, CommonEnd, CommonStart, Companies, ConferencingCheck, ConferencingType, ContactCharacterSet, ContactItemData, ContactLinkedGlobalAddressListEntryId, ContactLinkEntry, ContactLinkGlobalAddressListLinkId, ContactLinkGlobalAddressListLinkState, ContactLinkLinkRejectHistory, ContactLinkName, ContactLinkSearchKey, ContactLinkSMTPAddressCache, Contacts, ContactUserField1, ContactUserField2, ContactUserField3, ContactUserField4, ConversationActionLastAppliedTime, ConversationActionMaxDeliveryTime, ConversationActionMoveFolderEid, ConversationActionMoveStoreEid, ConversationActionVersion, ConversationProcessed, CurrentVersion, CurrentVersionName, DayInterval, DayOfMonth, DelegateMail, Department, Directory, DistributionListChecksum, DistributionListMembers, DistributionListName, DistributionListOneOffMembers, DistributionListStream, Email1AddressType, Email1DisplayName, Email1EmailAddress, Email1OriginalDisplayName, Email1OriginalEntryId, Email2AddressType, Email2DisplayName, Email2EmailAddress, Email2OriginalDisplayName, Email2OriginalEntryId, Email3AddressType, Email3DisplayName, Email3EmailAddress, Email3OriginalDisplayName, Email3OriginalEntryId, EndRecurrenceDate, EndRecurrenceTime, ExceptionReplaceTime, Fax1AddressType, Fax1EmailAddress, Fax1OriginalDisplayName, Fax1OriginalEntryId, Fax2AddressType, Fax2EmailAddress, Fax2OriginalDisplayName, Fax2OriginalEntryId, Fax3AddressType, Fax3EmailAddress, Fax3OriginalDisplayName, Fax3OriginalEntryId, FExceptionalAttendees, FExceptionalBody, FileUnder, FileUnderId, FileUnderList, FInvited, FlagRequest, FlagString, ForwardInstance, ForwardNotificationRecipients, FOthersAppointment, FreeBusyLocation, GlobalObjectId, HasPicture, HomeAddress, HomeAddressCountryCode, Html, ICalendarDayOfWeekMask, InboundICalStream, InfoPathFormName, InstantMessagingAddress, IntendedBusyStatus, InternetAccountName, InternetAccountStamp, IsContactLinked, IsException, IsRecurring, IsSilent, LinkedTaskItems, Location, LogDocumentPosted, LogDocumentPrinted, LogDocumentRouted, LogDocumentSaved, LogDuration, LogEnd, LogFlags, LogStart, LogType, LogTypeDesc, MeetingType, MeetingWorkspaceUrl, MonthInterval, MonthOfYear, MonthOfYearMask, NetShowUrl, NoEndDateFlag, NonSendableBcc, NonSendableCc, NonSendableTo, NonSendBccTrackStatus, NonSendCcTrackStatus, NonSendToTrackStatus, NoteColor, NoteHeight, NoteWidth, NoteX, NoteY, Occurrences, OldLocation, OldRecurrenceType, OldWhenEndWhole, OldWhenStartWhole, OnlinePassword, OptionalAttendees, OrganizerAlias, OriginalStoreEntryId, OtherAddress, OtherAddressCountryCode, OwnerCriticalChange, OwnerName, PendingStateForSiteMailboxDocument, PercentComplete, PostalAddressId, PostRssChannel, PostRssChannelLink, PostRssItemGuid, PostRssItemHash, PostRssItemLink, PostRssItemXml, PostRssSubscription, Private, PromptSendUpdate, RecurrenceDuration, RecurrencePattern, RecurrenceType, Recurring, ReferenceEntryId, ReminderDelta, ReminderFileParameter, ReminderOverride, ReminderPlaySound, ReminderSet, ReminderSignalTime, ReminderTime, ReminderTimeDate, ReminderTimeTime, ReminderType, RemoteStatus, RequiredAttendees, ResourceAttendees, ResponseStatus, ServerProcessed, ServerProcessingActions, SharingAnonymity, SharingBindingEntryId, SharingBrowseUrl, SharingCapabilities, SharingConfigurationUrl, SharingDataRangeEnd, SharingDataRangeStart, SharingDetail, SharingExtensionXml, SharingFilter, SharingFlags, SharingFlavor, SharingFolderEntryId, SharingIndexEntryId, SharingInitiatorEntryId, SharingInitiatorName, SharingInitiatorSmtp, SharingInstanceGuid, SharingLastAutoSyncTime, SharingLastSyncTime, SharingLocalComment, SharingLocalLastModificationTime, SharingLocalName, SharingLocalPath, SharingLocalStoreUid, SharingLocalType, SharingLocalUid, SharingOriginalMessageEntryId, SharingParentBindingEntryId, SharingParticipants, SharingPermissions, SharingProviderExtension, SharingProviderGuid, SharingProviderName, SharingProviderUrl, SharingRangeEnd, SharingRangeStart, SharingReciprocation, SharingRemoteByteSize, SharingRemoteComment, SharingRemoteCrc, SharingRemoteLastModificationTime, SharingRemoteMessageCount, SharingRemoteName, SharingRemotePass, SharingRemotePath, SharingRemoteStoreUid, SharingRemoteType, SharingRemoteUid, SharingRemoteUser, SharingRemoteVersion, SharingResponseTime, SharingResponseType, SharingRoamLog, SharingStart, SharingStatus, SharingStop, SharingSyncFlags, SharingSyncInterval, SharingTimeToLive, SharingTimeToLiveAuto, SharingWorkingHoursDays, SharingWorkingHoursEnd, SharingWorkingHoursStart, SharingWorkingHoursTimeZone, SideEffects, SingleBodyICal, SmartNoAttach, SpamOriginalFolder, StartRecurrenceDate, StartRecurrenceTime, TaskAcceptanceState, TaskAccepted, TaskActualEffort, TaskAssigner, TaskAssigners, TaskComplete, TaskCustomFlags, TaskDateCompleted, TaskDeadOccurrence, TaskDueDate, TaskEstimatedEffort, TaskFCreator, TaskFFixOffline, TaskFRecurring, TaskGlobalId, TaskHistory, TaskLastDelegate, TaskLastUpdate, TaskLastUser, TaskMode, TaskMultipleRecipients, TaskNoCompute, TaskOrdinal, TaskOwner, TaskOwnership, TaskRecurrence, TaskResetReminder, TaskRole, TaskStartDate, TaskState, TaskStatus, TaskStatusOnComplete, TaskUpdates, TaskVersion, TeamTask, TimeZone, TimeZoneDescription, TimeZoneStruct, ToAttendeesString, ToDoOrdinalDate, ToDoSubOrdinal, ToDoTitle, UseTnef, ValidFlagStringProof, VerbResponse, VerbStream, WeddingAnniversaryLocal, WeekInterval, Where, WorkAddress, WorkAddressCity, WorkAddressCountry, WorkAddressCountryCode, WorkAddressPostalCode, WorkAddressPostOfficeBox, WorkAddressState, WorkAddressStreet, YearInterval, YomiCompanyName, YomiFirstName, YomiLastName, AcceptLanguage, ApplicationName, AttachmentMacContentType, AttachmentMacInfo, AudioNotes, Author, AutomaticSpeechRecognitionData, ByteCount, CalendarAttendeeRole, CalendarBusystatus, CalendarContact, CalendarContactUrl, CalendarCreated, CalendarDescriptionUrl, CalendarDuration, CalendarExceptionDate, CalendarExceptionRule, CalendarGeoLatitude, CalendarGeoLongitude, CalendarInstanceType, CalendarIsOrganizer, CalendarLastModified, CalendarLocationUrl, CalendarMeetingStatus, CalendarMethod, CalendarProductId, CalendarRecurrenceIdRange, CalendarReminderOffset, CalendarResources, CalendarRsvp, CalendarSequence, CalendarTimeZone, CalendarTimeZoneId, CalendarTransparent, CalendarUid, CalendarVersion, Category, CharacterCount, Comments, Company, ContentBase, ContentClass, ContentType, CreateDateTimeReadOnly, CrossReference, DavId, DavIsCollection, DavIsStructuredDocument, DavParentName, DavUid, DocumentParts, EditTime, ExchangeIntendedBusyStatus, ExchangeJunkEmailMoveStamp, ExchangeModifyExceptionStructure, ExchangeNoModifyExceptions, ExchangePatternEnd, ExchangePatternStart, ExchangeReminderInterval, ExchDatabaseSchema, ExchDataExpectedContentClass, ExchDataSchemaCollectionReference, ExtractedAddresses, ExtractedContacts, ExtractedEmails, ExtractedMeetings, ExtractedPhones, ExtractedTasks, ExtractedUrls, From, HeadingPairs, HiddenCount, HttpmailCalendar, HttpmailHtmlDescription, HttpmailSendMessage, ICalendarRecurrenceDate, ICalendarRecurrenceRule, InternetSubject, Keywords, LastAuthor, LastPrinted, LastSaveDateTime, LineCount, LinksDirty, LocationUrl, Manager, MultimediaClipCount, NoteCount, OMSAccountGuid, OMSMobileModel, OMSScheduleTime, OMSServiceType, OMSSourceType, PageCount, ParagraphCount, PhishingStamp, PresentationFormat, QuarantineOriginalSender, RevisionNumber, RightsManagementLicense, Scale, Security, SlideCount, Subject, Template, Thumbnail, Title, WordCount, XCallId, XFaxNumberOfPages, XRequireProtectedPlayOnPhone, XSenderTelephoneNumber, XSharingBrowseUrl, XSharingCapabilities, XSharingConfigUrl, XSharingExendedCaps, XSharingFlavor, XSharingInstanceGuid, XSharingLocalType, XSharingProviderGuid, XSharingProviderName, XSharingProviderUrl, XSharingRemoteName, XSharingRemotePath, XSharingRemoteStoreUid, XSharingRemoteType, XSharingRemoteUid, XVoiceMessageAttachmentOrder, XVoiceMessageDuration, XVoiceMessageSenderName, Access, AccessControlListData, AccessLevel, Account, AdditionalRenEntryIds, AdditionalRenEntryIdsEx, AddressBookAuthorizedSenders, AddressBookContainerId, AddressBookDeliveryContentLength, AddressBookDisplayNamePrintable, AddressBookDisplayTypeExtended, AddressBookDistributionListExternalMemberCount, AddressBookDistributionListMemberCount, AddressBookDistributionListMemberSubmitAccepted, AddressBookDistributionListMemberSubmitRejected, AddressBookDistributionListRejectMessagesFromDLMembers, AddressBookEntryId, AddressBookExtensionAttribute1, AddressBookExtensionAttribute10, AddressBookExtensionAttribute11, AddressBookExtensionAttribute12, AddressBookExtensionAttribute13, AddressBookExtensionAttribute14, AddressBookExtensionAttribute15, AddressBookExtensionAttribute2, AddressBookExtensionAttribute3, AddressBookExtensionAttribute4, AddressBookExtensionAttribute5, AddressBookExtensionAttribute6, AddressBookExtensionAttribute7, AddressBookExtensionAttribute8, AddressBookExtensionAttribute9, AddressBookFolderPathname, AddressBookHierarchicalChildDepartments, AddressBookHierarchicalDepartmentMembers, AddressBookHierarchicalIsHierarchicalGroup, AddressBookHierarchicalParentDepartment, AddressBookHierarchicalRootDepartment, AddressBookHierarchicalShowInDepartments, AddressBookHomeMessageDatabase, AddressBookIsMaster, AddressBookIsMemberOfDistributionList, AddressBookManageDistributionList, AddressBookManager, AddressBookManagerDistinguishedName, AddressBookMember, AddressBookMessageId, AddressBookModerationEnabled, AddressBookNetworkAddress, AddressBookObjectDistinguishedName, AddressBookObjectGuid, AddressBookOrganizationalUnitRootDistinguishedName, AddressBookOwner, AddressBookOwnerBackLink, AddressBookParentEntryId, AddressBookPhoneticCompanyName, AddressBookPhoneticDepartmentName, AddressBookPhoneticDisplayName, AddressBookPhoneticGivenName, AddressBookPhoneticSurname, AddressBookProxyAddresses, AddressBookPublicDelegates, AddressBookReports, AddressBookRoomCapacity, AddressBookRoomContainers, AddressBookRoomDescription, AddressBookSenderHintTranslations, AddressBookSeniorityIndex, AddressBookTargetAddress, AddressBookUnauthorizedSenders, AddressBookX509Certificate, AddressType, AlternateRecipientAllowed, Anr, ArchiveDate, ArchivePeriod, ArchiveTag, Assistant, AssistantTelephoneNumber, Associated, AttachAdditionalInformation, AttachContentBase, AttachContentId, AttachContentLocation, AttachDataBinary, AttachDataObject, AttachEncoding, AttachExtension, AttachFilename, AttachFlags, AttachLongFilename, AttachLongPathname, AttachmentContactPhoto, AttachmentFlags, AttachmentHidden, AttachmentLinkId, AttachMethod, AttachMimeTag, AttachNumber, AttachPathname, AttachPayloadClass, AttachPayloadProviderGuidString, AttachRendering, AttachSize, AttachTag, AttachTransportName, AttributeHidden, AttributeReadOnly, AutoForwardComment, AutoForwarded, AutoResponseSuppress, Birthday, BlockStatus, Body, BodyContentId, BodyContentLocation, BodyHtml, Business2TelephoneNumber, Business2TelephoneNumbers, BusinessFaxNumber, BusinessHomePage, BusinessTelephoneNumber, CallbackTelephoneNumber, CallId, CarTelephoneNumber, CdoRecurrenceid, ChangeKey, ChangeNumber, ChildrensNames, ClientActions, ClientSubmitTime, CodePageId, Comment, CompanyMainTelephoneNumber, CompanyName, ComputerNetworkName, ConflictEntryId, ContainerClass, ContainerContents, ContainerFlags, ContainerHierarchy, ContentCount, ContentFilterSpamConfidenceLevel, ContentUnreadCount, ConversationId, ConversationIndex, ConversationIndexTracking, ConversationTopic, Country, CreationTime, CreatorEntryId, CreatorName, CustomerId, DamBackPatched, DamOriginalEntryId, DefaultPostMessageClass, DeferredActionMessageOriginalEntryId, DeferredDeliveryTime, DeferredSendNumber, DeferredSendTime, DeferredSendUnits, DelegatedByRule, DelegateFlags, DeleteAfterSubmit, DeletedCountTotal, DeletedOn, DeliverTime, DepartmentName, Depth, DisplayBcc, DisplayCc, DisplayName, DisplayNamePrefix, DisplayTo, DisplayType, DisplayTypeEx, EmailAddress, EndDate, EntryId, ExceptionEndTime, TagExceptionReplaceTime, ExceptionStartTime, ExchangeNTSecurityDescriptor, ExpiryNumber, ExpiryTime, ExpiryUnits, ExtendedFolderFlags, ExtendedRuleMessageActions, ExtendedRuleMessageCondition, ExtendedRuleSizeLimit, FaxNumberOfPages, FlagCompleteTime, FlagStatus, FlatUrlName, FolderAssociatedContents, FolderId, FolderFlags, FolderType, FollowupIcon, FreeBusyCountMonths, FreeBusyEntryIds, FreeBusyMessageEmailAddress, FreeBusyPublishEnd, FreeBusyPublishStart, FreeBusyRangeTimestamp, FtpSite, GatewayNeedsToRefresh, Gender, Generation, GivenName, GovernmentIdNumber, HasAttachments, HasDeferredActionMessages, HasNamedProperties, HasRules, HierarchyChangeNumber, HierRev, Hobbies, Home2TelephoneNumber, Home2TelephoneNumbers, HomeAddressCity, HomeAddressCountry, HomeAddressPostalCode, HomeAddressPostOfficeBox, HomeAddressStateOrProvince, HomeAddressStreet, HomeFaxNumber, HomeTelephoneNumber, TagHtml, ICalendarEndTime, ICalendarReminderNextTime, ICalendarStartTime, IconIndex, Importance, InConflict, InitialDetailsPane, Initials, InReplyToId, InstanceKey, InstanceNum, InstID, InternetCodepage, InternetMailOverrideFormat, InternetMessageId, InternetReferences, IpmAppointmentEntryId, IpmContactEntryId, IpmDraftsEntryId, IpmJournalEntryId, IpmNoteEntryId, IpmTaskEntryId, IsdnNumber, JunkAddRecipientsToSafeSendersList, JunkIncludeContacts, JunkPermanentlyDelete, JunkPhishingEnableLinks, JunkThreshold, Keyword, Language, LastModificationTime, LastModifierEntryId, LastModifierName, LastVerbExecuted, LastVerbExecutionTime, ListHelp, ListSubscribe, ListUnsubscribe, LocalCommitTime, LocalCommitTimeMax, LocaleId, Locality, TagLocation, MailboxOwnerEntryId, MailboxOwnerName, ManagerName, MappingSignature, MaximumSubmitMessageSize, MemberId, MemberName, MemberRights, MessageAttachments, MessageCcMe, MessageClass, MessageCodepage, MessageDeliveryTime, MessageEditorFormat, MessageFlags, MessageHandlingSystemCommonName, MessageLocaleId, MessageRecipientMe, MessageRecipients, MessageSize, MessageSizeExtended, MessageStatus, MessageSubmissionId, MessageToMe, Mid, MiddleName, MimeSkeleton, MobileTelephoneNumber, NativeBody, NextSendAcct, Nickname, NonDeliveryReportDiagCode, NonDeliveryReportReasonCode, NonDeliveryReportStatusCode, NonReceiptNotificationRequested, NormalizedSubject, ObjectType, OfficeLocation, OfflineAddressBookContainerGuid, OfflineAddressBookDistinguishedName, OfflineAddressBookMessageClass, OfflineAddressBookName, OfflineAddressBookSequence, OfflineAddressBookTruncatedProperties, OrdinalMost, OrganizationalIdNumber, OriginalAuthorEntryId, OriginalAuthorName, OriginalDeliveryTime, OriginalDisplayBcc, OriginalDisplayCc, OriginalDisplayTo, OriginalEntryId, OriginalMessageClass, OriginalMessageId, OriginalSenderAddressType, OriginalSenderEmailAddress, OriginalSenderEntryId, OriginalSenderName, OriginalSenderSearchKey, OriginalSensitivity, OriginalSentRepresentingAddressType, OriginalSentRepresentingEmailAddress, OriginalSentRepresentingEntryId, OriginalSentRepresentingName, OriginalSentRepresentingSearchKey, OriginalSubject, OriginalSubmitTime, OriginatorDeliveryReportRequested, OriginatorNonDeliveryReportRequested, OscSyncEnabled, OtherAddressCity, OtherAddressCountry, OtherAddressPostalCode, OtherAddressPostOfficeBox, OtherAddressStateOrProvince, OtherAddressStreet, OtherTelephoneNumber, OutOfOfficeState, OwnerAppointmentId, PagerTelephoneNumber, ParentEntryId, ParentFolderId, ParentKey, ParentSourceKey, PersonalHomePage, PolicyTag, PostalAddress, PostalCode, PostOfficeBox, PredecessorChangeList, PrimaryFaxNumber, PrimarySendAccount, PrimaryTelephoneNumber, Priority, Processed, Profession, ProhibitReceiveQuota, ProhibitSendQuota, PurportedSenderDomain, RadioTelephoneNumber, Read, ReadReceiptAddressType, ReadReceiptEmailAddress, ReadReceiptEntryId, ReadReceiptName, ReadReceiptRequested, ReadReceiptSearchKey, ReadReceiptSmtpAddress, ReceiptTime, ReceivedByAddressType, ReceivedByEmailAddress, ReceivedByEntryId, ReceivedByName, ReceivedBySearchKey, ReceivedBySmtpAddress, ReceivedRepresentingAddressType, ReceivedRepresentingEmailAddress, ReceivedRepresentingEntryId, ReceivedRepresentingName, ReceivedRepresentingSearchKey, ReceivedRepresentingSmtpAddress, RecipientDisplayName, RecipientEntryId, RecipientFlags, RecipientOrder, RecipientProposed, RecipientProposedEndTime, RecipientProposedStartTime, RecipientReassignmentProhibited, RecipientTrackStatus, RecipientTrackStatusTime, RecipientType, RecordKey, ReferredByName, RemindersOnlineEntryId, RemoteMessageTransferAgent, RenderingPosition, ReplyRecipientEntries, ReplyRecipientNames, ReplyRequested, ReplyTemplateId, ReplyTime, ReportDisposition, ReportDispositionMode, ReportEntryId, ReportingMessageTransferAgent, ReportName, ReportSearchKey, ReportTag, ReportText, ReportTime, ResolveMethod, ResponseRequested, Responsibility, RetentionDate, RetentionFlags, RetentionPeriod, Rights, RoamingDatatypes, RoamingDictionary, RoamingXmlStream, Rowid, RowType, RtfCompressed, RtfInSync, RuleActionNumber, RuleActions, RuleActionType, RuleCondition, RuleError, RuleFolderEntryId, RuleId, RuleIds, RuleLevel, RuleMessageLevel, RuleMessageName, RuleMessageProvider, RuleMessageProviderData, RuleMessageSequence, RuleMessageState, RuleMessageUserFlags, RuleName, RuleProvider, RuleProviderData, RuleSequence, RuleState, RuleUserFlags, RwRulesStream, ScheduleInfoAppointmentTombstone, ScheduleInfoAutoAcceptAppointments, ScheduleInfoDelegateEntryIds, ScheduleInfoDelegateNames, ScheduleInfoDelegateNamesW, ScheduleInfoDelegatorWantsCopy, ScheduleInfoDelegatorWantsInfo, ScheduleInfoDisallowOverlappingAppts, ScheduleInfoDisallowRecurringAppts, ScheduleInfoDontMailDelegates, ScheduleInfoFreeBusy, ScheduleInfoFreeBusyAway, ScheduleInfoFreeBusyBusy, ScheduleInfoFreeBusyMerged, ScheduleInfoFreeBusyTentative, ScheduleInfoMonthsAway, ScheduleInfoMonthsBusy, ScheduleInfoMonthsMerged, ScheduleInfoMonthsTentative, ScheduleInfoResourceType, SchedulePlusFreeBusyEntryId, ScriptData, SearchFolderDefinition, SearchFolderEfpFlags, SearchFolderExpiration, SearchFolderId, SearchFolderLastUsed, SearchFolderRecreateInfo, SearchFolderStorageType, SearchFolderTag, SearchFolderTemplateId, SearchKey, SecurityDescriptorAsXml, Selectable, SenderAddressType, SenderEmailAddress, SenderEntryId, SenderIdStatus, SenderName, SenderSearchKey, SenderSmtpAddress, SenderTelephoneNumber, SendInternetEncoding, SendRichInfo, Sensitivity, SentMailSvrEID, SentRepresentingAddressType, SentRepresentingEmailAddress, SentRepresentingEntryId, SentRepresentingFlags, SentRepresentingName, SentRepresentingSearchKey, SentRepresentingSmtpAddress, SmtpAddress, SortLocaleId, SourceKey, SpokenName, SpouseName, StartDate, StartDateEtc, StateOrProvince, StoreEntryId, StoreState, StoreSupportMask, StreetAddress, Subfolders, TagSubject, SubjectPrefix, SupplementaryInfo, Surname, SwappedToDoData, SwappedToDoStore, TargetEntryId, TelecommunicationsDeviceForDeafTelephoneNumber, TelexNumber, TemplateData, Templateid, TextAttachmentCharset, ThumbnailPhoto, TagTitle, TnefCorrelationKey, ToDoItemFlags, TransmittableDisplayName, TransportMessageHeaders, TrustSender, UserCertificate, UserEntryId, UserX509Certificate, ViewDescriptorBinary, ViewDescriptorName, ViewDescriptorStrings, ViewDescriptorVersion, VoiceMessageAttachmentOrder, VoiceMessageDuration, VoiceMessageSenderName, WeddingAnniversary, WlinkAddressBookEID, WlinkAddressBookStoreEID, WlinkCalendarColor, WlinkClientID, WlinkEntryId, WlinkFlags, WlinkFolderType, WlinkGroupClsid, WlinkGroupHeaderID, WlinkGroupName, WlinkOrdinal, WlinkRecordKey, WlinkROGroupType, WlinkSaveStamp, WlinkSection, WlinkStoreEntryId, WlinkType, Abstract, ActiveUserEntryid, AddrbookForLocalSiteEntryid, AddressBookDisplayName, ArrivalTime, AssocMessageSize, AssocMessageSizeExtended, AssocMsgWAttachCount, AttachOnAssocMsgCount, AttachOnNormalMsgCount, AutoAddNewSubs, BilateralInfo, CachedColumnCount, CategCount, ChangeAdvisor, ChangeNotificationGuid, Collector, ContactCount, ContentSearchKey, ContentsSynchronizer, DeletedAssocMessageSizeExtended, DeletedAssocMsgCount, DeletedFolderCount, DeletedMessageSizeExtended, DeletedMsgCount, DeletedNormalMessageSizeExtended, DesignInProgress, DisableFullFidelity, DisableWinsock, DlReportFlags, EformsForLocaleEntryid, EformsLocaleId, EformsRegistryEntryid, EmsAbAccessCategory, EmsAbActivationSchedule, EmsAbActivationStyle, EmsAbAddressEntryDisplayTable, EmsAbAddressEntryDisplayTableMsdos, EmsAbAddressSyntax, EmsAbAddressType, EmsAbAdmd, EmsAbAdminDescription, EmsAbAdminDisplayName, EmsAbAdminExtensionDll, EmsAbAliasedObjectName, EmsAbAliasedObjectNameO, EmsAbAltRecipient, EmsAbAltRecipientBl, EmsAbAltRecipientBlO, EmsAbAltRecipientO, EmsAbAncestorId, EmsAbAnonymousAccess, EmsAbAnonymousAccount, EmsAbAssocNtAccount, EmsAbAssocProtocolCfgNntp, EmsAbAssocProtocolCfgNntpO, EmsAbAssocRemoteDxa, EmsAbAssocRemoteDxaO, EmsAbAssociationLifetime, EmsAbAttributeCertificate, EmsAbAuthOrigBl, EmsAbAuthOrigBlO, EmsAbAuthenticationToUse, EmsAbAuthorityRevocationList, EmsAbAuthorizedDomain, EmsAbAuthorizedPassword, EmsAbAuthorizedPasswordConfirm, EmsAbAuthorizedUser, EmsAbAutoreply, EmsAbAutoreplyMessage, EmsAbAutoreplySubject, EmsAbAvailableAuthorizationPackages, EmsAbAvailableDistributions, EmsAbBridgeheadServers, EmsAbBridgeheadServersO, EmsAbBusinessCategory, EmsAbBusinessRoles, EmsAbCaCertificate, EmsAbCanCreatePf, EmsAbCanCreatePfBl, EmsAbCanCreatePfBlO, EmsAbCanCreatePfDl, EmsAbCanCreatePfDlBl, EmsAbCanCreatePfDlBlO, EmsAbCanCreatePfDlO, EmsAbCanCreatePfO, EmsAbCanNotCreatePf, EmsAbCanNotCreatePfBl, EmsAbCanNotCreatePfBlO, EmsAbCanNotCreatePfDl, EmsAbCanNotCreatePfDlBl, EmsAbCanNotCreatePfDlBlO, EmsAbCanNotCreatePfDlO, EmsAbCanNotCreatePfO, EmsAbCanPreserveDns, EmsAbCertificateChainV3, EmsAbCertificateRevocationList, EmsAbCertificateRevocationListV1, EmsAbCertificateRevocationListV3, EmsAbCharacterSet, EmsAbCharacterSetList, EmsAbChildRdns, EmsAbClientAccessEnabled, EmsAbClockAlertOffset, EmsAbClockAlertRepair, EmsAbClockWarningOffset, EmsAbClockWarningRepair, EmsAbCompromisedKeyList, EmsAbComputerName, EmsAbConnectedDomains, EmsAbConnectionListFilter, EmsAbConnectionListFilterType, EmsAbConnectionType, EmsAbContainerInfo, EmsAbContentType, EmsAbControlMsgFolderId, EmsAbControlMsgRules, EmsAbCost, EmsAbCountryName, EmsAbCrossCertificateCrl, EmsAbCrossCertificatePair, EmsAbDefaultMessageFormat, EmsAbDelegateUser, EmsAbDelivEits, EmsAbDelivExtContTypes, EmsAbDeliverAndRedirect, EmsAbDeliveryMechanism, EmsAbDeltaRevocationList, EmsAbDescription, EmsAbDestinationIndicator, EmsAbDiagnosticRegKey, EmsAbDisableDeferredCommit, EmsAbDisabledGatewayProxy, EmsAbDisplayNameOverride, EmsAbDisplayNameSuffix, EmsAbDlMemRejectPermsBl, EmsAbDlMemRejectPermsBlO, EmsAbDlMemberRule, EmsAbDmdName, EmsAbDoOabVersion, EmsAbDomainDefAltRecip, EmsAbDomainDefAltRecipO, EmsAbDomainName, EmsAbDsaSignature, EmsAbDxaAdminCopy, EmsAbDxaAdminForward, EmsAbDxaAdminUpdate, EmsAbDxaAppendReqcn, EmsAbDxaConfContainerList, EmsAbDxaConfContainerListO, EmsAbDxaConfReqTime, EmsAbDxaConfSeq, EmsAbDxaConfSeqUsn, EmsAbDxaExchangeOptions, EmsAbDxaExportNow, EmsAbDxaFlags, EmsAbDxaImpSeq, EmsAbDxaImpSeqTime, EmsAbDxaImpSeqUsn, EmsAbDxaImportNow, EmsAbDxaInTemplateMap, EmsAbDxaLocalAdmin, EmsAbDxaLocalAdminO, EmsAbDxaLoggingLevel, EmsAbDxaNativeAddressType, EmsAbDxaOutTemplateMap, EmsAbDxaPassword, EmsAbDxaPrevExchangeOptions, EmsAbDxaPrevExportNativeOnly, EmsAbDxaPrevInExchangeSensitivity, EmsAbDxaPrevRemoteEntries, EmsAbDxaPrevRemoteEntriesO, EmsAbDxaPrevReplicationSensitivity, EmsAbDxaPrevTemplateOptions, EmsAbDxaPrevTypes, EmsAbDxaRecipientCp, EmsAbDxaRemoteClient, EmsAbDxaRemoteClientO, EmsAbDxaReqSeq, EmsAbDxaReqSeqTime, EmsAbDxaReqSeqUsn, EmsAbDxaReqname, EmsAbDxaSvrSeq, EmsAbDxaSvrSeqTime, EmsAbDxaSvrSeqUsn, EmsAbDxaTask, EmsAbDxaTemplateOptions, EmsAbDxaTemplateTimestamp, EmsAbDxaTypes, EmsAbDxaUnconfContainerList, EmsAbDxaUnconfContainerListO, EmsAbEmployeeNumber, EmsAbEmployeeType, EmsAbEnableCompatibility, EmsAbEnabled, EmsAbEnabledAuthorizationPackages, EmsAbEnabledProtocolCfg, EmsAbEnabledProtocols, EmsAbEncapsulationMethod, EmsAbEncrypt, EmsAbEncryptAlgListNa, EmsAbEncryptAlgListOther, EmsAbEncryptAlgSelectedNa, EmsAbEncryptAlgSelectedOther, EmsAbExpandDlsLocally, EmsAbExpirationTime, EmsAbExportContainers, EmsAbExportContainersO, EmsAbExportCustomRecipients, EmsAbExtendedCharsAllowed, EmsAbExtensionData, EmsAbExtensionName, EmsAbExtensionNameInherited, EmsAbFacsimileTelephoneNumber, EmsAbFileVersion, EmsAbFilterLocalAddresses, EmsAbFoldersContainer, EmsAbFoldersContainerO, EmsAbFormData, EmsAbForwardingAddress, EmsAbGarbageCollPeriod, EmsAbGatewayLocalCred, EmsAbGatewayLocalDesig, EmsAbGatewayProxy, EmsAbGatewayRoutingTree, EmsAbGenerationQualifier, EmsAbGroupByAttr1, EmsAbGroupByAttr2, EmsAbGroupByAttr3, EmsAbGroupByAttr4, EmsAbGroupByAttrValueDn, EmsAbGroupByAttrValueDnO, EmsAbGroupByAttrValueStr, EmsAbGwartLastModified, EmsAbHasFullReplicaNcs, EmsAbHasFullReplicaNcsO, EmsAbHasMasterNcs, EmsAbHasMasterNcsO, EmsAbHelpData16, EmsAbHelpData32, EmsAbHelpFileName, EmsAbHeuristics, EmsAbHideDlMembership, EmsAbHideFromAddressBook, EmsAbHierarchyPath, EmsAbHomeMdbBl, EmsAbHomeMdbBlO, EmsAbHomeMta, EmsAbHomeMtaO, EmsAbHomePublicServer, EmsAbHomePublicServerO, EmsAbHouseIdentifier, EmsAbHttpPubAbAttributes, EmsAbHttpPubGal, EmsAbHttpPubGalLimit, EmsAbHttpPubPf, EmsAbHttpServers, EmsAbImportContainer, EmsAbImportContainerO, EmsAbImportSensitivity, EmsAbImportedFrom, EmsAbInboundAcceptAll, EmsAbInboundDn, EmsAbInboundDnO, EmsAbInboundHost, EmsAbInboundNewsfeed, EmsAbInboundNewsfeedType, EmsAbInboundSites, EmsAbInboundSitesO, EmsAbIncomingMsgSizeLimit, EmsAbIncomingPassword, EmsAbInsadmin, EmsAbInsadminO, EmsAbInstanceType, EmsAbInternationalIsdnNumber, EmsAbInvocationId, EmsAbIsDeleted, EmsAbIsSingleValued, EmsAbKccStatus, EmsAbKmServer, EmsAbKmServerO, EmsAbKnowledgeInformation, EmsAbLabeleduri, EmsAbLanguage, EmsAbLanguageIso639, EmsAbLdapDisplayName, EmsAbLdapSearchCfg, EmsAbLineWrap, EmsAbLinkId, EmsAbListPublicFolders, EmsAbLocalBridgeHead, EmsAbLocalBridgeHeadAddress, EmsAbLocalInitialTurn, EmsAbLocalScope, EmsAbLocalScopeO, EmsAbLogFilename, EmsAbLogRolloverInterval, EmsAbMailDrop, EmsAbMaintainAutoreplyHistory, EmsAbMapiDisplayType, EmsAbMapiId, EmsAbMaximumObjectId, EmsAbMdbBackoffInterval, EmsAbMdbMsgTimeOutPeriod, EmsAbMdbOverQuotaLimit, EmsAbMdbStorageQuota, EmsAbMdbUnreadLimit, EmsAbMdbUseDefaults, EmsAbMessageTrackingEnabled, EmsAbMimeTypes, EmsAbModerated, EmsAbModerator, EmsAbMonitorClock, EmsAbMonitorServers, EmsAbMonitorServices, EmsAbMonitoredConfigurations, EmsAbMonitoredConfigurationsO, EmsAbMonitoredServers, EmsAbMonitoredServersO, EmsAbMonitoredServices, EmsAbMonitoringAlertDelay, EmsAbMonitoringAlertUnits, EmsAbMonitoringAvailabilityStyle, EmsAbMonitoringAvailabilityWindow, EmsAbMonitoringCachedViaMail, EmsAbMonitoringCachedViaMailO, EmsAbMonitoringCachedViaRpc, EmsAbMonitoringCachedViaRpcO, EmsAbMonitoringEscalationProcedure, EmsAbMonitoringHotsitePollInterval, EmsAbMonitoringHotsitePollUnits, EmsAbMonitoringMailUpdateInterval, EmsAbMonitoringMailUpdateUnits, EmsAbMonitoringNormalPollInterval, EmsAbMonitoringNormalPollUnits, EmsAbMonitoringRecipients, EmsAbMonitoringRecipientsNdr, EmsAbMonitoringRecipientsNdrO, EmsAbMonitoringRecipientsO, EmsAbMonitoringRpcUpdateInterval, EmsAbMonitoringRpcUpdateUnits, EmsAbMonitoringWarningDelay, EmsAbMonitoringWarningUnits, EmsAbMtaLocalCred, EmsAbMtaLocalDesig, EmsAbNAddress, EmsAbNAddressType, EmsAbNewsfeedType, EmsAbNewsgroup, EmsAbNewsgroupList, EmsAbNntpCharacterSet, EmsAbNntpContentFormat, EmsAbNntpDistributions, EmsAbNntpDistributionsFlag, EmsAbNntpNewsfeeds, EmsAbNntpNewsfeedsO, EmsAbNtMachineName, EmsAbNtSecurityDescriptor, EmsAbNumOfOpenRetries, EmsAbNumOfTransferRetries, EmsAbObjViewContainers, EmsAbObjViewContainersO, EmsAbObjectClassCategory, EmsAbObjectOid, EmsAbObjectVersion, EmsAbOffLineAbContainers, EmsAbOffLineAbContainersO, EmsAbOffLineAbSchedule, EmsAbOffLineAbServer, EmsAbOffLineAbServerO, EmsAbOffLineAbStyle, EmsAbOidType, EmsAbOmObjectClass, EmsAbOmSyntax, EmsAbOofReplyToOriginator, EmsAbOpenRetryInterval, EmsAbOrganizationName, EmsAbOrganizationalUnitName, EmsAbOriginalDisplayTable, EmsAbOriginalDisplayTableMsdos, EmsAbOtherRecips, EmsAbOutboundHost, EmsAbOutboundHostType, EmsAbOutboundNewsfeed, EmsAbOutboundSites, EmsAbOutboundSitesO, EmsAbOutgoingMsgSizeLimit, EmsAbOverrideNntpContentFormat, EmsAbOwaServer, EmsAbPSelector, EmsAbPSelectorInbound, EmsAbPerMsgDialogDisplayTable, EmsAbPerRecipDialogDisplayTable, EmsAbPeriodRepSyncTimes, EmsAbPeriodReplStagger, EmsAbPersonalTitle, EmsAbPfContacts, EmsAbPfContactsO, EmsAbPopCharacterSet, EmsAbPopContentFormat, EmsAbPortNumber, EmsAbPostalAddress, EmsAbPreferredDeliveryMethod, EmsAbPreserveInternetContent, EmsAbPrmd, EmsAbPromoExpiration, EmsAbProtocolSettings, EmsAbProxyGenerationEnabled, EmsAbProxyGeneratorDll, EmsAbPublicDelegatesBl, EmsAbPublicDelegatesBlO, EmsAbQuotaNotificationSchedule, EmsAbQuotaNotificationStyle, EmsAbRangeLower, EmsAbRangeUpper, EmsAbRasAccount, EmsAbRasCallbackNumber, EmsAbRasPassword, EmsAbRasPhoneNumber, EmsAbRasPhonebookEntryName, EmsAbRasRemoteSrvrName, EmsAbReferralList, EmsAbRegisteredAddress, EmsAbRemoteBridgeHead, EmsAbRemoteBridgeHeadAddress, EmsAbRemoteOutBhServer, EmsAbRemoteOutBhServerO, EmsAbRemoteSite, EmsAbRemoteSiteO, EmsAbReplicatedObjectVersion, EmsAbReplicationMailMsgSize, EmsAbReplicationSensitivity, EmsAbReplicationStagger, EmsAbReportToOriginator, EmsAbReportToOwner, EmsAbReqSeq, EmsAbRequireSsl, EmsAbResponsibleLocalDxa, EmsAbResponsibleLocalDxaO, EmsAbReturnExactMsgSize, EmsAbRidServer, EmsAbRidServerO, EmsAbRoleOccupant, EmsAbRoleOccupantO, EmsAbRootNewsgroupsFolderId, EmsAbRoutingList, EmsAbRtsCheckpointSize, EmsAbRtsRecoveryTimeout, EmsAbRtsWindowSize, EmsAbRunsOn, EmsAbRunsOnO, EmsAbSSelector, EmsAbSSelectorInbound, EmsAbSchemaFlags, EmsAbSchemaVersion, EmsAbSearchFlags, EmsAbSearchGuide, EmsAbSecurityPolicy, EmsAbSecurityProtocol, EmsAbSeeAlso, EmsAbSeeAlsoO, EmsAbSendEmailMessage, EmsAbSendTnef, EmsAbSerialNumber, EmsAbServer, EmsAbServiceActionFirst, EmsAbServiceActionOther, EmsAbServiceActionSecond, EmsAbServiceRestartDelay, EmsAbServiceRestartMessage, EmsAbSessionDisconnectTimer, EmsAbSiteAffinity, EmsAbSiteFolderGuid, EmsAbSiteFolderServer, EmsAbSiteFolderServerO, EmsAbSiteProxySpace, EmsAbSmimeAlgListNa, EmsAbSmimeAlgListOther, EmsAbSmimeAlgSelectedNa, EmsAbSmimeAlgSelectedOther, EmsAbSpaceLastComputed, EmsAbStreetAddress, EmsAbSubRefs, EmsAbSubRefsO, EmsAbSubSite, EmsAbSubmissionContLength, EmsAbSupportSmimeSignatures, EmsAbSupportedAlgorithms, EmsAbSupportedApplicationContext, EmsAbSupportingStack, EmsAbSupportingStackBl, EmsAbSupportingStackBlO, EmsAbSupportingStackO, EmsAbTSelector, EmsAbTSelectorInbound, EmsAbTargetMtas, EmsAbTelephoneNumber, EmsAbTelephonePersonalPager, EmsAbTeletexTerminalIdentifier, EmsAbTempAssocThreshold, EmsAbTombstoneLifetime, EmsAbTrackingLogPathName, EmsAbTransRetryMins, EmsAbTransTimeoutMins, EmsAbTransferRetryInterval, EmsAbTransferTimeoutNonUrgent, EmsAbTransferTimeoutNormal, EmsAbTransferTimeoutUrgent, EmsAbTranslationTableUsed, EmsAbTransportExpeditedData, EmsAbTrustLevel, EmsAbTurnRequestThreshold, EmsAbTwoWayAlternateFacility, EmsAbType, EmsAbUnauthOrigBl, EmsAbUnauthOrigBlO, EmsAbUseServerValues, EmsAbUseSiteValues, EmsAbUsenetSiteName, EmsAbUserPassword, EmsAbUsnChanged, EmsAbUsnCreated, EmsAbUsnDsaLastObjRemoved, EmsAbUsnIntersite, EmsAbUsnLastObjRem, EmsAbUsnSource, EmsAbViewContainer1, EmsAbViewContainer2, EmsAbViewContainer3, EmsAbViewDefinition, EmsAbViewFlags, EmsAbViewSite, EmsAbVoiceMailFlags, EmsAbVoiceMailGreetings, EmsAbVoiceMailPassword, EmsAbVoiceMailRecordedName, EmsAbVoiceMailRecordingLength, EmsAbVoiceMailSpeed, EmsAbVoiceMailSystemGuid, EmsAbVoiceMailUserId, EmsAbVoiceMailVolume, EmsAbWwwHomePage, EmsAbX121Address, EmsAbX25CallUserDataIncoming, EmsAbX25CallUserDataOutgoing, EmsAbX25FacilitiesDataIncoming, EmsAbX25FacilitiesDataOutgoing, EmsAbX25LeasedLinePort, EmsAbX25LeasedOrSwitched, EmsAbX25RemoteMtaPhone, EmsAbX400AttachmentType, EmsAbX400SelectorSyntax, EmsAbX500AccessControlList, EmsAbX500Nc, EmsAbX500Rdn, EmsAbXmitTimeoutNonUrgent, EmsAbXmitTimeoutNormal, EmsAbXmitTimeoutUrgent, EventsRootFolderEntryid, ExcessStorageUsed, ExtendedAclData, FastTransfer, FavoritesDefaultName, FolderChildCount, FolderDesignFlags, FolderPathname, ForeignId, ForeignReportId, ForeignSubjectId, FreeBusyForLocalSiteEntryid, GwAdminOperations, GwMtsinEntryid, GwMtsoutEntryid, HasModeratorRules, HierarchyServer, HierarchySynchronizer, ImapInternalDate, InTransit, InboundNewsfeedDn, InternetCharset, InternetNewsgroupName, IpmDafEntryid, IpmFavoritesEntryid, IpmPublicFoldersEntryid, IsNewsgroup, IsNewsgroupAnchor, LastAccessTime, LastFullBackup, LastLogoffTime, LastLogonTime, LongtermEntryidFromTable, MessageProcessed, MessageSiteName, MoveToFolderEntryid, MoveToStoreEntryid, MsgBodyId, MtsSubjectId, NewSubsGetAutoAdd, NewsfeedInfo, NewsgroupComponent, NewsgroupRootFolderEntryid, NntpArticleFolderEntryid, NntpControlFolderEntryid, NonIpmSubtreeEntryid, NormalMessageSize, NormalMessageSizeExtended, NormalMsgWAttachCount, NtUserName, OfflineAddrbookEntryid, OfflineFlags, OfflineMessageEntryid, OldestDeletedOn, OriginatorAddr, OriginatorAddrtype, OriginatorEntryid, OriginatorName, OstEncryption, OutboundNewsfeedDn, OverallAgeLimit, OverallMsgAgeLimit, OwaUrl, OwnerCount, P1Content, P1ContentType, PreventMsgCreate, Preview, PreviewUnread, ProfileAbFilesPath, ProfileAddrInfo, ProfileAllpubComment, ProfileAllpubDisplayName, ProfileBindingOrder, ProfileConfigFlags, ProfileConnectFlags, ProfileFavfldComment, ProfileFavfldDisplayName, ProfileHomeServer, ProfileHomeServerAddrs, ProfileHomeServerDn, ProfileMailbox, ProfileMaxRestrict, ProfileMoab, ProfileMoabGuid, ProfileMoabSeq, ProfileOfflineInfo, ProfileOfflineStorePath, ProfileOpenFlags, ProfileOptionsData, ProfileSecureMailbox, ProfileServer, ProfileServerDn, ProfileTransportFlags, ProfileType, ProfileUiState, ProfileUnresolvedName, ProfileUnresolvedServer, ProfileUser, ProfileVersion, PstEncryption, PstPath, PstPwSzOld, PstRememberPw, PublicFolderEntryid, PublishInAddressBook, RecipientNumber, RecipientOnAssocMsgCount, RecipientOnNormalMsgCount, ReplicaList, ReplicaServer, ReplicaVersion, ReplicationAlwaysInterval, ReplicationMessagePriority, ReplicationMsgSize, ReplicationSchedule, ReplicationStyle, ReplyRecipientSmtpProxies, ReportDestinationEntryid, ReportDestinationName, RestrictionCount, RetentionAgeLimit, RuleTriggerHistory, RulesData, RulesTable, ScheduleFolderEntryid, SecureInSite, SecureOrigination, StorageLimitInformation, StorageQuotaLimit, StoreOffline, StoreSlowlink, SubjectTraceInfo, SvrGeneratingQuotaMsg, SynchronizeFlags, SysConfigFolderEntryid, TestLineSpeed, TraceInfo, TransferEnabled, UserName, X400EnvelopeType, AbDefaultDir, AbDefaultPab, AbProviderId, AbProviders, AbSearchPath, AbSearchPathUpdate, AlternateRecipient, AssocContentCount, AttachmentX400Parameters, AuthorizingUsers, BodyCrc, CommonViewsEntryid, ContactAddrtypes, ContactDefaultAddressIndex, ContactEmailAddresses, ContactEntryids, ContactVersion, ContainerModifyVersion, ContentConfidentialityAlgorithmId, ContentCorrelator, ContentIdentifier, ContentIntegrityCheck, ContentLength, ContentReturnRequested, ContentsSortOrder, ControlFlags, ControlId, ControlStructure, ControlType, ConversationKey, ConversionEits, ConversionProhibited, ConversionWithLossProhibited, ConvertedEits, Correlate, CorrelateMtsid, CreateTemplates, CreationVersion, ExCurrentVersion, DefCreateDl, DefCreateMailuser, DefaultProfile, DefaultStore, DefaultViewEntryid, Delegation, DeliveryPoint, Deltax, Deltay, DetailsTable, DiscVal, DiscardReason, DiscloseRecipients, DisclosureOfRecipients, DiscreteValues, DlExpansionHistory, DlExpansionProhibited, ExplicitConversion, FilteringHooks, FinderEntryid, FormCategory, FormCategorySub, FormClsid, FormContactName, FormDesignerGuid, FormDesignerName, FormHidden, FormHostMap, FormMessageBehavior, FormVersion, HeaderFolderEntryid, Icon, IdentityDisplay, IdentityEntryid, IdentitySearchKey, ImplicitConversionProhibited, IncompleteCopy, InternetApproved, InternetArticleNumber, InternetControl, InternetDistribution, InternetFollowupTo, InternetLines, InternetNewsgroups, InternetNntpPath, InternetOrganization, InternetPrecedence, IpmId, IpmOutboxEntryid, IpmOutboxSearchKey, IpmReturnRequested, IpmSentmailEntryid, IpmSentmailSearchKey, IpmSubtreeEntryid, IpmSubtreeSearchKey, IpmWastebasketEntryid, IpmWastebasketSearchKey, Languages, LatestDeliveryTime, MailPermission, MdbProvider, MessageDeliveryId, MessageDownloadTime, MessageSecurityLabel, MessageToken, MiniIcon, ModifyVersion, NewsgroupName, NntpXref, NonReceiptReason, ObsoletedIpms, OriginCheck, OriginalAuthorAddrtype, OriginalAuthorEmailAddress, OriginalAuthorSearchKey, OriginalDisplayName, OriginalEits, OriginalSearchKey, OriginallyIntendedRecipAddrtype, OriginallyIntendedRecipEmailAddress, OriginallyIntendedRecipEntryid, OriginallyIntendedRecipientName, OriginatingMtaCertificate, OriginatorAndDlExpansionHistory, OriginatorCertificate, OriginatorRequestedAlternateRecipient, OriginatorReturnAddress, OwnStoreEntryid, ParentDisplay, PhysicalDeliveryBureauFaxDelivery, PhysicalDeliveryMode, PhysicalDeliveryReportRequest, PhysicalForwardingAddress, PhysicalForwardingAddressRequested, PhysicalForwardingProhibited, PhysicalRenditionAttributes, PostFolderEntries, PostFolderNames, PostReplyDenied, PostReplyFolderEntries, PostReplyFolderNames, Preprocess, PrimaryCapability, ProfileName, ProofOfDelivery, ProofOfDeliveryRequested, ProofOfSubmission, ProofOfSubmissionRequested, ProviderDisplay, ProviderDllName, ProviderOrdinal, ProviderSubmitTime, ProviderUid, ReceiveFolderSettings, RecipientCertificate, RecipientNumberForAdvice, RecipientStatus, RedirectionHistory, RegisteredMailType, RelatedIpms, RemoteProgress, RemoteProgressText, RemoteValidateOk, ReportingDlName, ReportingMtaCertificate, RequestedDeliveryMethod, ResourceFlags, ResourceMethods, ResourcePath, ResourceType, ReturnedIpm, RtfSyncBodyCount, RtfSyncBodyCrc, RtfSyncBodyTag, RtfSyncPrefixCount, RtfSyncTrailingCount, Search, ExSecurity, SentmailEntryid, ServiceDeleteFiles, ServiceDllName, ServiceEntryName, ServiceExtraUids, ServiceName, ServiceSupportFiles, ServiceUid, Services, SpoolerStatus, Status, StatusCode, StatusString, StoreProviders, StoreRecordKey, SubjectIpm, SubmitFlags, Supersedes, TransportKey, TransportProviders, TransportStatus, TypeOfMtsUser, ValidFolderMask, ViewsEntryid, X400ContentType, X400DeferredDeliveryCancel, Xpos, Ypos
+     */
+    public name: string;
+    
+
+    /**
+     * Known Mapi Property descriptor             
+     * @param discriminator 
+     * @param name Known property name.  See all known properties here: https://apireference.aspose.com/email/net/aspose.email.mapi/knownpropertylist/fields/index  Possible values: Mileage, ObjectUri, GDataContactVersion, GDataPhotoVersion, AddressBookProviderArrayType, AddressBookProviderEmailList, AddressCountryCode, AgingDontAgeMe, AllAttendeesString, AllowExternalCheck, AnniversaryEventEntryId, AppointmentAuxiliaryFlags, AppointmentColor, AppointmentCounterProposal, AppointmentDuration, AppointmentEndDate, AppointmentEndTime, AppointmentEndWhole, AppointmentLastSequence, AppointmentMessageClass, AppointmentNotAllowPropose, AppointmentProposalNumber, AppointmentProposedDuration, AppointmentProposedEndWhole, AppointmentProposedStartWhole, AppointmentRecur, AppointmentReplyName, AppointmentReplyTime, AppointmentSequence, AppointmentSequenceTime, AppointmentStartDate, AppointmentStartTime, AppointmentStartWhole, AppointmentStateFlags, AppointmentSubType, AppointmentTimeZoneDefinitionEndDisplay, AppointmentTimeZoneDefinitionRecur, AppointmentTimeZoneDefinitionStartDisplay, AppointmentUnsendableRecipients, AppointmentUpdateTime, AttendeeCriticalChange, AutoFillLocation, AutoLog, AutoProcessState, AutoStartCheck, Billing, BirthdayEventEntryId, BirthdayLocal, BusinessCardCardPicture, BusinessCardDisplayDefinition, BusyStatus, CalendarType, Categories, CcAttendeesString, ChangeHighlight, Classification, ClassificationDescription, ClassificationGuid, ClassificationKeep, Classified, CleanGlobalObjectId, ClientIntent, ClipEnd, ClipStart, CollaborateDoc, CommonEnd, CommonStart, Companies, ConferencingCheck, ConferencingType, ContactCharacterSet, ContactItemData, ContactLinkedGlobalAddressListEntryId, ContactLinkEntry, ContactLinkGlobalAddressListLinkId, ContactLinkGlobalAddressListLinkState, ContactLinkLinkRejectHistory, ContactLinkName, ContactLinkSearchKey, ContactLinkSMTPAddressCache, Contacts, ContactUserField1, ContactUserField2, ContactUserField3, ContactUserField4, ConversationActionLastAppliedTime, ConversationActionMaxDeliveryTime, ConversationActionMoveFolderEid, ConversationActionMoveStoreEid, ConversationActionVersion, ConversationProcessed, CurrentVersion, CurrentVersionName, DayInterval, DayOfMonth, DelegateMail, Department, Directory, DistributionListChecksum, DistributionListMembers, DistributionListName, DistributionListOneOffMembers, DistributionListStream, Email1AddressType, Email1DisplayName, Email1EmailAddress, Email1OriginalDisplayName, Email1OriginalEntryId, Email2AddressType, Email2DisplayName, Email2EmailAddress, Email2OriginalDisplayName, Email2OriginalEntryId, Email3AddressType, Email3DisplayName, Email3EmailAddress, Email3OriginalDisplayName, Email3OriginalEntryId, EndRecurrenceDate, EndRecurrenceTime, ExceptionReplaceTime, Fax1AddressType, Fax1EmailAddress, Fax1OriginalDisplayName, Fax1OriginalEntryId, Fax2AddressType, Fax2EmailAddress, Fax2OriginalDisplayName, Fax2OriginalEntryId, Fax3AddressType, Fax3EmailAddress, Fax3OriginalDisplayName, Fax3OriginalEntryId, FExceptionalAttendees, FExceptionalBody, FileUnder, FileUnderId, FileUnderList, FInvited, FlagRequest, FlagString, ForwardInstance, ForwardNotificationRecipients, FOthersAppointment, FreeBusyLocation, GlobalObjectId, HasPicture, HomeAddress, HomeAddressCountryCode, Html, ICalendarDayOfWeekMask, InboundICalStream, InfoPathFormName, InstantMessagingAddress, IntendedBusyStatus, InternetAccountName, InternetAccountStamp, IsContactLinked, IsException, IsRecurring, IsSilent, LinkedTaskItems, Location, LogDocumentPosted, LogDocumentPrinted, LogDocumentRouted, LogDocumentSaved, LogDuration, LogEnd, LogFlags, LogStart, LogType, LogTypeDesc, MeetingType, MeetingWorkspaceUrl, MonthInterval, MonthOfYear, MonthOfYearMask, NetShowUrl, NoEndDateFlag, NonSendableBcc, NonSendableCc, NonSendableTo, NonSendBccTrackStatus, NonSendCcTrackStatus, NonSendToTrackStatus, NoteColor, NoteHeight, NoteWidth, NoteX, NoteY, Occurrences, OldLocation, OldRecurrenceType, OldWhenEndWhole, OldWhenStartWhole, OnlinePassword, OptionalAttendees, OrganizerAlias, OriginalStoreEntryId, OtherAddress, OtherAddressCountryCode, OwnerCriticalChange, OwnerName, PendingStateForSiteMailboxDocument, PercentComplete, PostalAddressId, PostRssChannel, PostRssChannelLink, PostRssItemGuid, PostRssItemHash, PostRssItemLink, PostRssItemXml, PostRssSubscription, Private, PromptSendUpdate, RecurrenceDuration, RecurrencePattern, RecurrenceType, Recurring, ReferenceEntryId, ReminderDelta, ReminderFileParameter, ReminderOverride, ReminderPlaySound, ReminderSet, ReminderSignalTime, ReminderTime, ReminderTimeDate, ReminderTimeTime, ReminderType, RemoteStatus, RequiredAttendees, ResourceAttendees, ResponseStatus, ServerProcessed, ServerProcessingActions, SharingAnonymity, SharingBindingEntryId, SharingBrowseUrl, SharingCapabilities, SharingConfigurationUrl, SharingDataRangeEnd, SharingDataRangeStart, SharingDetail, SharingExtensionXml, SharingFilter, SharingFlags, SharingFlavor, SharingFolderEntryId, SharingIndexEntryId, SharingInitiatorEntryId, SharingInitiatorName, SharingInitiatorSmtp, SharingInstanceGuid, SharingLastAutoSyncTime, SharingLastSyncTime, SharingLocalComment, SharingLocalLastModificationTime, SharingLocalName, SharingLocalPath, SharingLocalStoreUid, SharingLocalType, SharingLocalUid, SharingOriginalMessageEntryId, SharingParentBindingEntryId, SharingParticipants, SharingPermissions, SharingProviderExtension, SharingProviderGuid, SharingProviderName, SharingProviderUrl, SharingRangeEnd, SharingRangeStart, SharingReciprocation, SharingRemoteByteSize, SharingRemoteComment, SharingRemoteCrc, SharingRemoteLastModificationTime, SharingRemoteMessageCount, SharingRemoteName, SharingRemotePass, SharingRemotePath, SharingRemoteStoreUid, SharingRemoteType, SharingRemoteUid, SharingRemoteUser, SharingRemoteVersion, SharingResponseTime, SharingResponseType, SharingRoamLog, SharingStart, SharingStatus, SharingStop, SharingSyncFlags, SharingSyncInterval, SharingTimeToLive, SharingTimeToLiveAuto, SharingWorkingHoursDays, SharingWorkingHoursEnd, SharingWorkingHoursStart, SharingWorkingHoursTimeZone, SideEffects, SingleBodyICal, SmartNoAttach, SpamOriginalFolder, StartRecurrenceDate, StartRecurrenceTime, TaskAcceptanceState, TaskAccepted, TaskActualEffort, TaskAssigner, TaskAssigners, TaskComplete, TaskCustomFlags, TaskDateCompleted, TaskDeadOccurrence, TaskDueDate, TaskEstimatedEffort, TaskFCreator, TaskFFixOffline, TaskFRecurring, TaskGlobalId, TaskHistory, TaskLastDelegate, TaskLastUpdate, TaskLastUser, TaskMode, TaskMultipleRecipients, TaskNoCompute, TaskOrdinal, TaskOwner, TaskOwnership, TaskRecurrence, TaskResetReminder, TaskRole, TaskStartDate, TaskState, TaskStatus, TaskStatusOnComplete, TaskUpdates, TaskVersion, TeamTask, TimeZone, TimeZoneDescription, TimeZoneStruct, ToAttendeesString, ToDoOrdinalDate, ToDoSubOrdinal, ToDoTitle, UseTnef, ValidFlagStringProof, VerbResponse, VerbStream, WeddingAnniversaryLocal, WeekInterval, Where, WorkAddress, WorkAddressCity, WorkAddressCountry, WorkAddressCountryCode, WorkAddressPostalCode, WorkAddressPostOfficeBox, WorkAddressState, WorkAddressStreet, YearInterval, YomiCompanyName, YomiFirstName, YomiLastName, AcceptLanguage, ApplicationName, AttachmentMacContentType, AttachmentMacInfo, AudioNotes, Author, AutomaticSpeechRecognitionData, ByteCount, CalendarAttendeeRole, CalendarBusystatus, CalendarContact, CalendarContactUrl, CalendarCreated, CalendarDescriptionUrl, CalendarDuration, CalendarExceptionDate, CalendarExceptionRule, CalendarGeoLatitude, CalendarGeoLongitude, CalendarInstanceType, CalendarIsOrganizer, CalendarLastModified, CalendarLocationUrl, CalendarMeetingStatus, CalendarMethod, CalendarProductId, CalendarRecurrenceIdRange, CalendarReminderOffset, CalendarResources, CalendarRsvp, CalendarSequence, CalendarTimeZone, CalendarTimeZoneId, CalendarTransparent, CalendarUid, CalendarVersion, Category, CharacterCount, Comments, Company, ContentBase, ContentClass, ContentType, CreateDateTimeReadOnly, CrossReference, DavId, DavIsCollection, DavIsStructuredDocument, DavParentName, DavUid, DocumentParts, EditTime, ExchangeIntendedBusyStatus, ExchangeJunkEmailMoveStamp, ExchangeModifyExceptionStructure, ExchangeNoModifyExceptions, ExchangePatternEnd, ExchangePatternStart, ExchangeReminderInterval, ExchDatabaseSchema, ExchDataExpectedContentClass, ExchDataSchemaCollectionReference, ExtractedAddresses, ExtractedContacts, ExtractedEmails, ExtractedMeetings, ExtractedPhones, ExtractedTasks, ExtractedUrls, From, HeadingPairs, HiddenCount, HttpmailCalendar, HttpmailHtmlDescription, HttpmailSendMessage, ICalendarRecurrenceDate, ICalendarRecurrenceRule, InternetSubject, Keywords, LastAuthor, LastPrinted, LastSaveDateTime, LineCount, LinksDirty, LocationUrl, Manager, MultimediaClipCount, NoteCount, OMSAccountGuid, OMSMobileModel, OMSScheduleTime, OMSServiceType, OMSSourceType, PageCount, ParagraphCount, PhishingStamp, PresentationFormat, QuarantineOriginalSender, RevisionNumber, RightsManagementLicense, Scale, Security, SlideCount, Subject, Template, Thumbnail, Title, WordCount, XCallId, XFaxNumberOfPages, XRequireProtectedPlayOnPhone, XSenderTelephoneNumber, XSharingBrowseUrl, XSharingCapabilities, XSharingConfigUrl, XSharingExendedCaps, XSharingFlavor, XSharingInstanceGuid, XSharingLocalType, XSharingProviderGuid, XSharingProviderName, XSharingProviderUrl, XSharingRemoteName, XSharingRemotePath, XSharingRemoteStoreUid, XSharingRemoteType, XSharingRemoteUid, XVoiceMessageAttachmentOrder, XVoiceMessageDuration, XVoiceMessageSenderName, Access, AccessControlListData, AccessLevel, Account, AdditionalRenEntryIds, AdditionalRenEntryIdsEx, AddressBookAuthorizedSenders, AddressBookContainerId, AddressBookDeliveryContentLength, AddressBookDisplayNamePrintable, AddressBookDisplayTypeExtended, AddressBookDistributionListExternalMemberCount, AddressBookDistributionListMemberCount, AddressBookDistributionListMemberSubmitAccepted, AddressBookDistributionListMemberSubmitRejected, AddressBookDistributionListRejectMessagesFromDLMembers, AddressBookEntryId, AddressBookExtensionAttribute1, AddressBookExtensionAttribute10, AddressBookExtensionAttribute11, AddressBookExtensionAttribute12, AddressBookExtensionAttribute13, AddressBookExtensionAttribute14, AddressBookExtensionAttribute15, AddressBookExtensionAttribute2, AddressBookExtensionAttribute3, AddressBookExtensionAttribute4, AddressBookExtensionAttribute5, AddressBookExtensionAttribute6, AddressBookExtensionAttribute7, AddressBookExtensionAttribute8, AddressBookExtensionAttribute9, AddressBookFolderPathname, AddressBookHierarchicalChildDepartments, AddressBookHierarchicalDepartmentMembers, AddressBookHierarchicalIsHierarchicalGroup, AddressBookHierarchicalParentDepartment, AddressBookHierarchicalRootDepartment, AddressBookHierarchicalShowInDepartments, AddressBookHomeMessageDatabase, AddressBookIsMaster, AddressBookIsMemberOfDistributionList, AddressBookManageDistributionList, AddressBookManager, AddressBookManagerDistinguishedName, AddressBookMember, AddressBookMessageId, AddressBookModerationEnabled, AddressBookNetworkAddress, AddressBookObjectDistinguishedName, AddressBookObjectGuid, AddressBookOrganizationalUnitRootDistinguishedName, AddressBookOwner, AddressBookOwnerBackLink, AddressBookParentEntryId, AddressBookPhoneticCompanyName, AddressBookPhoneticDepartmentName, AddressBookPhoneticDisplayName, AddressBookPhoneticGivenName, AddressBookPhoneticSurname, AddressBookProxyAddresses, AddressBookPublicDelegates, AddressBookReports, AddressBookRoomCapacity, AddressBookRoomContainers, AddressBookRoomDescription, AddressBookSenderHintTranslations, AddressBookSeniorityIndex, AddressBookTargetAddress, AddressBookUnauthorizedSenders, AddressBookX509Certificate, AddressType, AlternateRecipientAllowed, Anr, ArchiveDate, ArchivePeriod, ArchiveTag, Assistant, AssistantTelephoneNumber, Associated, AttachAdditionalInformation, AttachContentBase, AttachContentId, AttachContentLocation, AttachDataBinary, AttachDataObject, AttachEncoding, AttachExtension, AttachFilename, AttachFlags, AttachLongFilename, AttachLongPathname, AttachmentContactPhoto, AttachmentFlags, AttachmentHidden, AttachmentLinkId, AttachMethod, AttachMimeTag, AttachNumber, AttachPathname, AttachPayloadClass, AttachPayloadProviderGuidString, AttachRendering, AttachSize, AttachTag, AttachTransportName, AttributeHidden, AttributeReadOnly, AutoForwardComment, AutoForwarded, AutoResponseSuppress, Birthday, BlockStatus, Body, BodyContentId, BodyContentLocation, BodyHtml, Business2TelephoneNumber, Business2TelephoneNumbers, BusinessFaxNumber, BusinessHomePage, BusinessTelephoneNumber, CallbackTelephoneNumber, CallId, CarTelephoneNumber, CdoRecurrenceid, ChangeKey, ChangeNumber, ChildrensNames, ClientActions, ClientSubmitTime, CodePageId, Comment, CompanyMainTelephoneNumber, CompanyName, ComputerNetworkName, ConflictEntryId, ContainerClass, ContainerContents, ContainerFlags, ContainerHierarchy, ContentCount, ContentFilterSpamConfidenceLevel, ContentUnreadCount, ConversationId, ConversationIndex, ConversationIndexTracking, ConversationTopic, Country, CreationTime, CreatorEntryId, CreatorName, CustomerId, DamBackPatched, DamOriginalEntryId, DefaultPostMessageClass, DeferredActionMessageOriginalEntryId, DeferredDeliveryTime, DeferredSendNumber, DeferredSendTime, DeferredSendUnits, DelegatedByRule, DelegateFlags, DeleteAfterSubmit, DeletedCountTotal, DeletedOn, DeliverTime, DepartmentName, Depth, DisplayBcc, DisplayCc, DisplayName, DisplayNamePrefix, DisplayTo, DisplayType, DisplayTypeEx, EmailAddress, EndDate, EntryId, ExceptionEndTime, TagExceptionReplaceTime, ExceptionStartTime, ExchangeNTSecurityDescriptor, ExpiryNumber, ExpiryTime, ExpiryUnits, ExtendedFolderFlags, ExtendedRuleMessageActions, ExtendedRuleMessageCondition, ExtendedRuleSizeLimit, FaxNumberOfPages, FlagCompleteTime, FlagStatus, FlatUrlName, FolderAssociatedContents, FolderId, FolderFlags, FolderType, FollowupIcon, FreeBusyCountMonths, FreeBusyEntryIds, FreeBusyMessageEmailAddress, FreeBusyPublishEnd, FreeBusyPublishStart, FreeBusyRangeTimestamp, FtpSite, GatewayNeedsToRefresh, Gender, Generation, GivenName, GovernmentIdNumber, HasAttachments, HasDeferredActionMessages, HasNamedProperties, HasRules, HierarchyChangeNumber, HierRev, Hobbies, Home2TelephoneNumber, Home2TelephoneNumbers, HomeAddressCity, HomeAddressCountry, HomeAddressPostalCode, HomeAddressPostOfficeBox, HomeAddressStateOrProvince, HomeAddressStreet, HomeFaxNumber, HomeTelephoneNumber, TagHtml, ICalendarEndTime, ICalendarReminderNextTime, ICalendarStartTime, IconIndex, Importance, InConflict, InitialDetailsPane, Initials, InReplyToId, InstanceKey, InstanceNum, InstID, InternetCodepage, InternetMailOverrideFormat, InternetMessageId, InternetReferences, IpmAppointmentEntryId, IpmContactEntryId, IpmDraftsEntryId, IpmJournalEntryId, IpmNoteEntryId, IpmTaskEntryId, IsdnNumber, JunkAddRecipientsToSafeSendersList, JunkIncludeContacts, JunkPermanentlyDelete, JunkPhishingEnableLinks, JunkThreshold, Keyword, Language, LastModificationTime, LastModifierEntryId, LastModifierName, LastVerbExecuted, LastVerbExecutionTime, ListHelp, ListSubscribe, ListUnsubscribe, LocalCommitTime, LocalCommitTimeMax, LocaleId, Locality, TagLocation, MailboxOwnerEntryId, MailboxOwnerName, ManagerName, MappingSignature, MaximumSubmitMessageSize, MemberId, MemberName, MemberRights, MessageAttachments, MessageCcMe, MessageClass, MessageCodepage, MessageDeliveryTime, MessageEditorFormat, MessageFlags, MessageHandlingSystemCommonName, MessageLocaleId, MessageRecipientMe, MessageRecipients, MessageSize, MessageSizeExtended, MessageStatus, MessageSubmissionId, MessageToMe, Mid, MiddleName, MimeSkeleton, MobileTelephoneNumber, NativeBody, NextSendAcct, Nickname, NonDeliveryReportDiagCode, NonDeliveryReportReasonCode, NonDeliveryReportStatusCode, NonReceiptNotificationRequested, NormalizedSubject, ObjectType, OfficeLocation, OfflineAddressBookContainerGuid, OfflineAddressBookDistinguishedName, OfflineAddressBookMessageClass, OfflineAddressBookName, OfflineAddressBookSequence, OfflineAddressBookTruncatedProperties, OrdinalMost, OrganizationalIdNumber, OriginalAuthorEntryId, OriginalAuthorName, OriginalDeliveryTime, OriginalDisplayBcc, OriginalDisplayCc, OriginalDisplayTo, OriginalEntryId, OriginalMessageClass, OriginalMessageId, OriginalSenderAddressType, OriginalSenderEmailAddress, OriginalSenderEntryId, OriginalSenderName, OriginalSenderSearchKey, OriginalSensitivity, OriginalSentRepresentingAddressType, OriginalSentRepresentingEmailAddress, OriginalSentRepresentingEntryId, OriginalSentRepresentingName, OriginalSentRepresentingSearchKey, OriginalSubject, OriginalSubmitTime, OriginatorDeliveryReportRequested, OriginatorNonDeliveryReportRequested, OscSyncEnabled, OtherAddressCity, OtherAddressCountry, OtherAddressPostalCode, OtherAddressPostOfficeBox, OtherAddressStateOrProvince, OtherAddressStreet, OtherTelephoneNumber, OutOfOfficeState, OwnerAppointmentId, PagerTelephoneNumber, ParentEntryId, ParentFolderId, ParentKey, ParentSourceKey, PersonalHomePage, PolicyTag, PostalAddress, PostalCode, PostOfficeBox, PredecessorChangeList, PrimaryFaxNumber, PrimarySendAccount, PrimaryTelephoneNumber, Priority, Processed, Profession, ProhibitReceiveQuota, ProhibitSendQuota, PurportedSenderDomain, RadioTelephoneNumber, Read, ReadReceiptAddressType, ReadReceiptEmailAddress, ReadReceiptEntryId, ReadReceiptName, ReadReceiptRequested, ReadReceiptSearchKey, ReadReceiptSmtpAddress, ReceiptTime, ReceivedByAddressType, ReceivedByEmailAddress, ReceivedByEntryId, ReceivedByName, ReceivedBySearchKey, ReceivedBySmtpAddress, ReceivedRepresentingAddressType, ReceivedRepresentingEmailAddress, ReceivedRepresentingEntryId, ReceivedRepresentingName, ReceivedRepresentingSearchKey, ReceivedRepresentingSmtpAddress, RecipientDisplayName, RecipientEntryId, RecipientFlags, RecipientOrder, RecipientProposed, RecipientProposedEndTime, RecipientProposedStartTime, RecipientReassignmentProhibited, RecipientTrackStatus, RecipientTrackStatusTime, RecipientType, RecordKey, ReferredByName, RemindersOnlineEntryId, RemoteMessageTransferAgent, RenderingPosition, ReplyRecipientEntries, ReplyRecipientNames, ReplyRequested, ReplyTemplateId, ReplyTime, ReportDisposition, ReportDispositionMode, ReportEntryId, ReportingMessageTransferAgent, ReportName, ReportSearchKey, ReportTag, ReportText, ReportTime, ResolveMethod, ResponseRequested, Responsibility, RetentionDate, RetentionFlags, RetentionPeriod, Rights, RoamingDatatypes, RoamingDictionary, RoamingXmlStream, Rowid, RowType, RtfCompressed, RtfInSync, RuleActionNumber, RuleActions, RuleActionType, RuleCondition, RuleError, RuleFolderEntryId, RuleId, RuleIds, RuleLevel, RuleMessageLevel, RuleMessageName, RuleMessageProvider, RuleMessageProviderData, RuleMessageSequence, RuleMessageState, RuleMessageUserFlags, RuleName, RuleProvider, RuleProviderData, RuleSequence, RuleState, RuleUserFlags, RwRulesStream, ScheduleInfoAppointmentTombstone, ScheduleInfoAutoAcceptAppointments, ScheduleInfoDelegateEntryIds, ScheduleInfoDelegateNames, ScheduleInfoDelegateNamesW, ScheduleInfoDelegatorWantsCopy, ScheduleInfoDelegatorWantsInfo, ScheduleInfoDisallowOverlappingAppts, ScheduleInfoDisallowRecurringAppts, ScheduleInfoDontMailDelegates, ScheduleInfoFreeBusy, ScheduleInfoFreeBusyAway, ScheduleInfoFreeBusyBusy, ScheduleInfoFreeBusyMerged, ScheduleInfoFreeBusyTentative, ScheduleInfoMonthsAway, ScheduleInfoMonthsBusy, ScheduleInfoMonthsMerged, ScheduleInfoMonthsTentative, ScheduleInfoResourceType, SchedulePlusFreeBusyEntryId, ScriptData, SearchFolderDefinition, SearchFolderEfpFlags, SearchFolderExpiration, SearchFolderId, SearchFolderLastUsed, SearchFolderRecreateInfo, SearchFolderStorageType, SearchFolderTag, SearchFolderTemplateId, SearchKey, SecurityDescriptorAsXml, Selectable, SenderAddressType, SenderEmailAddress, SenderEntryId, SenderIdStatus, SenderName, SenderSearchKey, SenderSmtpAddress, SenderTelephoneNumber, SendInternetEncoding, SendRichInfo, Sensitivity, SentMailSvrEID, SentRepresentingAddressType, SentRepresentingEmailAddress, SentRepresentingEntryId, SentRepresentingFlags, SentRepresentingName, SentRepresentingSearchKey, SentRepresentingSmtpAddress, SmtpAddress, SortLocaleId, SourceKey, SpokenName, SpouseName, StartDate, StartDateEtc, StateOrProvince, StoreEntryId, StoreState, StoreSupportMask, StreetAddress, Subfolders, TagSubject, SubjectPrefix, SupplementaryInfo, Surname, SwappedToDoData, SwappedToDoStore, TargetEntryId, TelecommunicationsDeviceForDeafTelephoneNumber, TelexNumber, TemplateData, Templateid, TextAttachmentCharset, ThumbnailPhoto, TagTitle, TnefCorrelationKey, ToDoItemFlags, TransmittableDisplayName, TransportMessageHeaders, TrustSender, UserCertificate, UserEntryId, UserX509Certificate, ViewDescriptorBinary, ViewDescriptorName, ViewDescriptorStrings, ViewDescriptorVersion, VoiceMessageAttachmentOrder, VoiceMessageDuration, VoiceMessageSenderName, WeddingAnniversary, WlinkAddressBookEID, WlinkAddressBookStoreEID, WlinkCalendarColor, WlinkClientID, WlinkEntryId, WlinkFlags, WlinkFolderType, WlinkGroupClsid, WlinkGroupHeaderID, WlinkGroupName, WlinkOrdinal, WlinkRecordKey, WlinkROGroupType, WlinkSaveStamp, WlinkSection, WlinkStoreEntryId, WlinkType, Abstract, ActiveUserEntryid, AddrbookForLocalSiteEntryid, AddressBookDisplayName, ArrivalTime, AssocMessageSize, AssocMessageSizeExtended, AssocMsgWAttachCount, AttachOnAssocMsgCount, AttachOnNormalMsgCount, AutoAddNewSubs, BilateralInfo, CachedColumnCount, CategCount, ChangeAdvisor, ChangeNotificationGuid, Collector, ContactCount, ContentSearchKey, ContentsSynchronizer, DeletedAssocMessageSizeExtended, DeletedAssocMsgCount, DeletedFolderCount, DeletedMessageSizeExtended, DeletedMsgCount, DeletedNormalMessageSizeExtended, DesignInProgress, DisableFullFidelity, DisableWinsock, DlReportFlags, EformsForLocaleEntryid, EformsLocaleId, EformsRegistryEntryid, EmsAbAccessCategory, EmsAbActivationSchedule, EmsAbActivationStyle, EmsAbAddressEntryDisplayTable, EmsAbAddressEntryDisplayTableMsdos, EmsAbAddressSyntax, EmsAbAddressType, EmsAbAdmd, EmsAbAdminDescription, EmsAbAdminDisplayName, EmsAbAdminExtensionDll, EmsAbAliasedObjectName, EmsAbAliasedObjectNameO, EmsAbAltRecipient, EmsAbAltRecipientBl, EmsAbAltRecipientBlO, EmsAbAltRecipientO, EmsAbAncestorId, EmsAbAnonymousAccess, EmsAbAnonymousAccount, EmsAbAssocNtAccount, EmsAbAssocProtocolCfgNntp, EmsAbAssocProtocolCfgNntpO, EmsAbAssocRemoteDxa, EmsAbAssocRemoteDxaO, EmsAbAssociationLifetime, EmsAbAttributeCertificate, EmsAbAuthOrigBl, EmsAbAuthOrigBlO, EmsAbAuthenticationToUse, EmsAbAuthorityRevocationList, EmsAbAuthorizedDomain, EmsAbAuthorizedPassword, EmsAbAuthorizedPasswordConfirm, EmsAbAuthorizedUser, EmsAbAutoreply, EmsAbAutoreplyMessage, EmsAbAutoreplySubject, EmsAbAvailableAuthorizationPackages, EmsAbAvailableDistributions, EmsAbBridgeheadServers, EmsAbBridgeheadServersO, EmsAbBusinessCategory, EmsAbBusinessRoles, EmsAbCaCertificate, EmsAbCanCreatePf, EmsAbCanCreatePfBl, EmsAbCanCreatePfBlO, EmsAbCanCreatePfDl, EmsAbCanCreatePfDlBl, EmsAbCanCreatePfDlBlO, EmsAbCanCreatePfDlO, EmsAbCanCreatePfO, EmsAbCanNotCreatePf, EmsAbCanNotCreatePfBl, EmsAbCanNotCreatePfBlO, EmsAbCanNotCreatePfDl, EmsAbCanNotCreatePfDlBl, EmsAbCanNotCreatePfDlBlO, EmsAbCanNotCreatePfDlO, EmsAbCanNotCreatePfO, EmsAbCanPreserveDns, EmsAbCertificateChainV3, EmsAbCertificateRevocationList, EmsAbCertificateRevocationListV1, EmsAbCertificateRevocationListV3, EmsAbCharacterSet, EmsAbCharacterSetList, EmsAbChildRdns, EmsAbClientAccessEnabled, EmsAbClockAlertOffset, EmsAbClockAlertRepair, EmsAbClockWarningOffset, EmsAbClockWarningRepair, EmsAbCompromisedKeyList, EmsAbComputerName, EmsAbConnectedDomains, EmsAbConnectionListFilter, EmsAbConnectionListFilterType, EmsAbConnectionType, EmsAbContainerInfo, EmsAbContentType, EmsAbControlMsgFolderId, EmsAbControlMsgRules, EmsAbCost, EmsAbCountryName, EmsAbCrossCertificateCrl, EmsAbCrossCertificatePair, EmsAbDefaultMessageFormat, EmsAbDelegateUser, EmsAbDelivEits, EmsAbDelivExtContTypes, EmsAbDeliverAndRedirect, EmsAbDeliveryMechanism, EmsAbDeltaRevocationList, EmsAbDescription, EmsAbDestinationIndicator, EmsAbDiagnosticRegKey, EmsAbDisableDeferredCommit, EmsAbDisabledGatewayProxy, EmsAbDisplayNameOverride, EmsAbDisplayNameSuffix, EmsAbDlMemRejectPermsBl, EmsAbDlMemRejectPermsBlO, EmsAbDlMemberRule, EmsAbDmdName, EmsAbDoOabVersion, EmsAbDomainDefAltRecip, EmsAbDomainDefAltRecipO, EmsAbDomainName, EmsAbDsaSignature, EmsAbDxaAdminCopy, EmsAbDxaAdminForward, EmsAbDxaAdminUpdate, EmsAbDxaAppendReqcn, EmsAbDxaConfContainerList, EmsAbDxaConfContainerListO, EmsAbDxaConfReqTime, EmsAbDxaConfSeq, EmsAbDxaConfSeqUsn, EmsAbDxaExchangeOptions, EmsAbDxaExportNow, EmsAbDxaFlags, EmsAbDxaImpSeq, EmsAbDxaImpSeqTime, EmsAbDxaImpSeqUsn, EmsAbDxaImportNow, EmsAbDxaInTemplateMap, EmsAbDxaLocalAdmin, EmsAbDxaLocalAdminO, EmsAbDxaLoggingLevel, EmsAbDxaNativeAddressType, EmsAbDxaOutTemplateMap, EmsAbDxaPassword, EmsAbDxaPrevExchangeOptions, EmsAbDxaPrevExportNativeOnly, EmsAbDxaPrevInExchangeSensitivity, EmsAbDxaPrevRemoteEntries, EmsAbDxaPrevRemoteEntriesO, EmsAbDxaPrevReplicationSensitivity, EmsAbDxaPrevTemplateOptions, EmsAbDxaPrevTypes, EmsAbDxaRecipientCp, EmsAbDxaRemoteClient, EmsAbDxaRemoteClientO, EmsAbDxaReqSeq, EmsAbDxaReqSeqTime, EmsAbDxaReqSeqUsn, EmsAbDxaReqname, EmsAbDxaSvrSeq, EmsAbDxaSvrSeqTime, EmsAbDxaSvrSeqUsn, EmsAbDxaTask, EmsAbDxaTemplateOptions, EmsAbDxaTemplateTimestamp, EmsAbDxaTypes, EmsAbDxaUnconfContainerList, EmsAbDxaUnconfContainerListO, EmsAbEmployeeNumber, EmsAbEmployeeType, EmsAbEnableCompatibility, EmsAbEnabled, EmsAbEnabledAuthorizationPackages, EmsAbEnabledProtocolCfg, EmsAbEnabledProtocols, EmsAbEncapsulationMethod, EmsAbEncrypt, EmsAbEncryptAlgListNa, EmsAbEncryptAlgListOther, EmsAbEncryptAlgSelectedNa, EmsAbEncryptAlgSelectedOther, EmsAbExpandDlsLocally, EmsAbExpirationTime, EmsAbExportContainers, EmsAbExportContainersO, EmsAbExportCustomRecipients, EmsAbExtendedCharsAllowed, EmsAbExtensionData, EmsAbExtensionName, EmsAbExtensionNameInherited, EmsAbFacsimileTelephoneNumber, EmsAbFileVersion, EmsAbFilterLocalAddresses, EmsAbFoldersContainer, EmsAbFoldersContainerO, EmsAbFormData, EmsAbForwardingAddress, EmsAbGarbageCollPeriod, EmsAbGatewayLocalCred, EmsAbGatewayLocalDesig, EmsAbGatewayProxy, EmsAbGatewayRoutingTree, EmsAbGenerationQualifier, EmsAbGroupByAttr1, EmsAbGroupByAttr2, EmsAbGroupByAttr3, EmsAbGroupByAttr4, EmsAbGroupByAttrValueDn, EmsAbGroupByAttrValueDnO, EmsAbGroupByAttrValueStr, EmsAbGwartLastModified, EmsAbHasFullReplicaNcs, EmsAbHasFullReplicaNcsO, EmsAbHasMasterNcs, EmsAbHasMasterNcsO, EmsAbHelpData16, EmsAbHelpData32, EmsAbHelpFileName, EmsAbHeuristics, EmsAbHideDlMembership, EmsAbHideFromAddressBook, EmsAbHierarchyPath, EmsAbHomeMdbBl, EmsAbHomeMdbBlO, EmsAbHomeMta, EmsAbHomeMtaO, EmsAbHomePublicServer, EmsAbHomePublicServerO, EmsAbHouseIdentifier, EmsAbHttpPubAbAttributes, EmsAbHttpPubGal, EmsAbHttpPubGalLimit, EmsAbHttpPubPf, EmsAbHttpServers, EmsAbImportContainer, EmsAbImportContainerO, EmsAbImportSensitivity, EmsAbImportedFrom, EmsAbInboundAcceptAll, EmsAbInboundDn, EmsAbInboundDnO, EmsAbInboundHost, EmsAbInboundNewsfeed, EmsAbInboundNewsfeedType, EmsAbInboundSites, EmsAbInboundSitesO, EmsAbIncomingMsgSizeLimit, EmsAbIncomingPassword, EmsAbInsadmin, EmsAbInsadminO, EmsAbInstanceType, EmsAbInternationalIsdnNumber, EmsAbInvocationId, EmsAbIsDeleted, EmsAbIsSingleValued, EmsAbKccStatus, EmsAbKmServer, EmsAbKmServerO, EmsAbKnowledgeInformation, EmsAbLabeleduri, EmsAbLanguage, EmsAbLanguageIso639, EmsAbLdapDisplayName, EmsAbLdapSearchCfg, EmsAbLineWrap, EmsAbLinkId, EmsAbListPublicFolders, EmsAbLocalBridgeHead, EmsAbLocalBridgeHeadAddress, EmsAbLocalInitialTurn, EmsAbLocalScope, EmsAbLocalScopeO, EmsAbLogFilename, EmsAbLogRolloverInterval, EmsAbMailDrop, EmsAbMaintainAutoreplyHistory, EmsAbMapiDisplayType, EmsAbMapiId, EmsAbMaximumObjectId, EmsAbMdbBackoffInterval, EmsAbMdbMsgTimeOutPeriod, EmsAbMdbOverQuotaLimit, EmsAbMdbStorageQuota, EmsAbMdbUnreadLimit, EmsAbMdbUseDefaults, EmsAbMessageTrackingEnabled, EmsAbMimeTypes, EmsAbModerated, EmsAbModerator, EmsAbMonitorClock, EmsAbMonitorServers, EmsAbMonitorServices, EmsAbMonitoredConfigurations, EmsAbMonitoredConfigurationsO, EmsAbMonitoredServers, EmsAbMonitoredServersO, EmsAbMonitoredServices, EmsAbMonitoringAlertDelay, EmsAbMonitoringAlertUnits, EmsAbMonitoringAvailabilityStyle, EmsAbMonitoringAvailabilityWindow, EmsAbMonitoringCachedViaMail, EmsAbMonitoringCachedViaMailO, EmsAbMonitoringCachedViaRpc, EmsAbMonitoringCachedViaRpcO, EmsAbMonitoringEscalationProcedure, EmsAbMonitoringHotsitePollInterval, EmsAbMonitoringHotsitePollUnits, EmsAbMonitoringMailUpdateInterval, EmsAbMonitoringMailUpdateUnits, EmsAbMonitoringNormalPollInterval, EmsAbMonitoringNormalPollUnits, EmsAbMonitoringRecipients, EmsAbMonitoringRecipientsNdr, EmsAbMonitoringRecipientsNdrO, EmsAbMonitoringRecipientsO, EmsAbMonitoringRpcUpdateInterval, EmsAbMonitoringRpcUpdateUnits, EmsAbMonitoringWarningDelay, EmsAbMonitoringWarningUnits, EmsAbMtaLocalCred, EmsAbMtaLocalDesig, EmsAbNAddress, EmsAbNAddressType, EmsAbNewsfeedType, EmsAbNewsgroup, EmsAbNewsgroupList, EmsAbNntpCharacterSet, EmsAbNntpContentFormat, EmsAbNntpDistributions, EmsAbNntpDistributionsFlag, EmsAbNntpNewsfeeds, EmsAbNntpNewsfeedsO, EmsAbNtMachineName, EmsAbNtSecurityDescriptor, EmsAbNumOfOpenRetries, EmsAbNumOfTransferRetries, EmsAbObjViewContainers, EmsAbObjViewContainersO, EmsAbObjectClassCategory, EmsAbObjectOid, EmsAbObjectVersion, EmsAbOffLineAbContainers, EmsAbOffLineAbContainersO, EmsAbOffLineAbSchedule, EmsAbOffLineAbServer, EmsAbOffLineAbServerO, EmsAbOffLineAbStyle, EmsAbOidType, EmsAbOmObjectClass, EmsAbOmSyntax, EmsAbOofReplyToOriginator, EmsAbOpenRetryInterval, EmsAbOrganizationName, EmsAbOrganizationalUnitName, EmsAbOriginalDisplayTable, EmsAbOriginalDisplayTableMsdos, EmsAbOtherRecips, EmsAbOutboundHost, EmsAbOutboundHostType, EmsAbOutboundNewsfeed, EmsAbOutboundSites, EmsAbOutboundSitesO, EmsAbOutgoingMsgSizeLimit, EmsAbOverrideNntpContentFormat, EmsAbOwaServer, EmsAbPSelector, EmsAbPSelectorInbound, EmsAbPerMsgDialogDisplayTable, EmsAbPerRecipDialogDisplayTable, EmsAbPeriodRepSyncTimes, EmsAbPeriodReplStagger, EmsAbPersonalTitle, EmsAbPfContacts, EmsAbPfContactsO, EmsAbPopCharacterSet, EmsAbPopContentFormat, EmsAbPortNumber, EmsAbPostalAddress, EmsAbPreferredDeliveryMethod, EmsAbPreserveInternetContent, EmsAbPrmd, EmsAbPromoExpiration, EmsAbProtocolSettings, EmsAbProxyGenerationEnabled, EmsAbProxyGeneratorDll, EmsAbPublicDelegatesBl, EmsAbPublicDelegatesBlO, EmsAbQuotaNotificationSchedule, EmsAbQuotaNotificationStyle, EmsAbRangeLower, EmsAbRangeUpper, EmsAbRasAccount, EmsAbRasCallbackNumber, EmsAbRasPassword, EmsAbRasPhoneNumber, EmsAbRasPhonebookEntryName, EmsAbRasRemoteSrvrName, EmsAbReferralList, EmsAbRegisteredAddress, EmsAbRemoteBridgeHead, EmsAbRemoteBridgeHeadAddress, EmsAbRemoteOutBhServer, EmsAbRemoteOutBhServerO, EmsAbRemoteSite, EmsAbRemoteSiteO, EmsAbReplicatedObjectVersion, EmsAbReplicationMailMsgSize, EmsAbReplicationSensitivity, EmsAbReplicationStagger, EmsAbReportToOriginator, EmsAbReportToOwner, EmsAbReqSeq, EmsAbRequireSsl, EmsAbResponsibleLocalDxa, EmsAbResponsibleLocalDxaO, EmsAbReturnExactMsgSize, EmsAbRidServer, EmsAbRidServerO, EmsAbRoleOccupant, EmsAbRoleOccupantO, EmsAbRootNewsgroupsFolderId, EmsAbRoutingList, EmsAbRtsCheckpointSize, EmsAbRtsRecoveryTimeout, EmsAbRtsWindowSize, EmsAbRunsOn, EmsAbRunsOnO, EmsAbSSelector, EmsAbSSelectorInbound, EmsAbSchemaFlags, EmsAbSchemaVersion, EmsAbSearchFlags, EmsAbSearchGuide, EmsAbSecurityPolicy, EmsAbSecurityProtocol, EmsAbSeeAlso, EmsAbSeeAlsoO, EmsAbSendEmailMessage, EmsAbSendTnef, EmsAbSerialNumber, EmsAbServer, EmsAbServiceActionFirst, EmsAbServiceActionOther, EmsAbServiceActionSecond, EmsAbServiceRestartDelay, EmsAbServiceRestartMessage, EmsAbSessionDisconnectTimer, EmsAbSiteAffinity, EmsAbSiteFolderGuid, EmsAbSiteFolderServer, EmsAbSiteFolderServerO, EmsAbSiteProxySpace, EmsAbSmimeAlgListNa, EmsAbSmimeAlgListOther, EmsAbSmimeAlgSelectedNa, EmsAbSmimeAlgSelectedOther, EmsAbSpaceLastComputed, EmsAbStreetAddress, EmsAbSubRefs, EmsAbSubRefsO, EmsAbSubSite, EmsAbSubmissionContLength, EmsAbSupportSmimeSignatures, EmsAbSupportedAlgorithms, EmsAbSupportedApplicationContext, EmsAbSupportingStack, EmsAbSupportingStackBl, EmsAbSupportingStackBlO, EmsAbSupportingStackO, EmsAbTSelector, EmsAbTSelectorInbound, EmsAbTargetMtas, EmsAbTelephoneNumber, EmsAbTelephonePersonalPager, EmsAbTeletexTerminalIdentifier, EmsAbTempAssocThreshold, EmsAbTombstoneLifetime, EmsAbTrackingLogPathName, EmsAbTransRetryMins, EmsAbTransTimeoutMins, EmsAbTransferRetryInterval, EmsAbTransferTimeoutNonUrgent, EmsAbTransferTimeoutNormal, EmsAbTransferTimeoutUrgent, EmsAbTranslationTableUsed, EmsAbTransportExpeditedData, EmsAbTrustLevel, EmsAbTurnRequestThreshold, EmsAbTwoWayAlternateFacility, EmsAbType, EmsAbUnauthOrigBl, EmsAbUnauthOrigBlO, EmsAbUseServerValues, EmsAbUseSiteValues, EmsAbUsenetSiteName, EmsAbUserPassword, EmsAbUsnChanged, EmsAbUsnCreated, EmsAbUsnDsaLastObjRemoved, EmsAbUsnIntersite, EmsAbUsnLastObjRem, EmsAbUsnSource, EmsAbViewContainer1, EmsAbViewContainer2, EmsAbViewContainer3, EmsAbViewDefinition, EmsAbViewFlags, EmsAbViewSite, EmsAbVoiceMailFlags, EmsAbVoiceMailGreetings, EmsAbVoiceMailPassword, EmsAbVoiceMailRecordedName, EmsAbVoiceMailRecordingLength, EmsAbVoiceMailSpeed, EmsAbVoiceMailSystemGuid, EmsAbVoiceMailUserId, EmsAbVoiceMailVolume, EmsAbWwwHomePage, EmsAbX121Address, EmsAbX25CallUserDataIncoming, EmsAbX25CallUserDataOutgoing, EmsAbX25FacilitiesDataIncoming, EmsAbX25FacilitiesDataOutgoing, EmsAbX25LeasedLinePort, EmsAbX25LeasedOrSwitched, EmsAbX25RemoteMtaPhone, EmsAbX400AttachmentType, EmsAbX400SelectorSyntax, EmsAbX500AccessControlList, EmsAbX500Nc, EmsAbX500Rdn, EmsAbXmitTimeoutNonUrgent, EmsAbXmitTimeoutNormal, EmsAbXmitTimeoutUrgent, EventsRootFolderEntryid, ExcessStorageUsed, ExtendedAclData, FastTransfer, FavoritesDefaultName, FolderChildCount, FolderDesignFlags, FolderPathname, ForeignId, ForeignReportId, ForeignSubjectId, FreeBusyForLocalSiteEntryid, GwAdminOperations, GwMtsinEntryid, GwMtsoutEntryid, HasModeratorRules, HierarchyServer, HierarchySynchronizer, ImapInternalDate, InTransit, InboundNewsfeedDn, InternetCharset, InternetNewsgroupName, IpmDafEntryid, IpmFavoritesEntryid, IpmPublicFoldersEntryid, IsNewsgroup, IsNewsgroupAnchor, LastAccessTime, LastFullBackup, LastLogoffTime, LastLogonTime, LongtermEntryidFromTable, MessageProcessed, MessageSiteName, MoveToFolderEntryid, MoveToStoreEntryid, MsgBodyId, MtsSubjectId, NewSubsGetAutoAdd, NewsfeedInfo, NewsgroupComponent, NewsgroupRootFolderEntryid, NntpArticleFolderEntryid, NntpControlFolderEntryid, NonIpmSubtreeEntryid, NormalMessageSize, NormalMessageSizeExtended, NormalMsgWAttachCount, NtUserName, OfflineAddrbookEntryid, OfflineFlags, OfflineMessageEntryid, OldestDeletedOn, OriginatorAddr, OriginatorAddrtype, OriginatorEntryid, OriginatorName, OstEncryption, OutboundNewsfeedDn, OverallAgeLimit, OverallMsgAgeLimit, OwaUrl, OwnerCount, P1Content, P1ContentType, PreventMsgCreate, Preview, PreviewUnread, ProfileAbFilesPath, ProfileAddrInfo, ProfileAllpubComment, ProfileAllpubDisplayName, ProfileBindingOrder, ProfileConfigFlags, ProfileConnectFlags, ProfileFavfldComment, ProfileFavfldDisplayName, ProfileHomeServer, ProfileHomeServerAddrs, ProfileHomeServerDn, ProfileMailbox, ProfileMaxRestrict, ProfileMoab, ProfileMoabGuid, ProfileMoabSeq, ProfileOfflineInfo, ProfileOfflineStorePath, ProfileOpenFlags, ProfileOptionsData, ProfileSecureMailbox, ProfileServer, ProfileServerDn, ProfileTransportFlags, ProfileType, ProfileUiState, ProfileUnresolvedName, ProfileUnresolvedServer, ProfileUser, ProfileVersion, PstEncryption, PstPath, PstPwSzOld, PstRememberPw, PublicFolderEntryid, PublishInAddressBook, RecipientNumber, RecipientOnAssocMsgCount, RecipientOnNormalMsgCount, ReplicaList, ReplicaServer, ReplicaVersion, ReplicationAlwaysInterval, ReplicationMessagePriority, ReplicationMsgSize, ReplicationSchedule, ReplicationStyle, ReplyRecipientSmtpProxies, ReportDestinationEntryid, ReportDestinationName, RestrictionCount, RetentionAgeLimit, RuleTriggerHistory, RulesData, RulesTable, ScheduleFolderEntryid, SecureInSite, SecureOrigination, StorageLimitInformation, StorageQuotaLimit, StoreOffline, StoreSlowlink, SubjectTraceInfo, SvrGeneratingQuotaMsg, SynchronizeFlags, SysConfigFolderEntryid, TestLineSpeed, TraceInfo, TransferEnabled, UserName, X400EnvelopeType, AbDefaultDir, AbDefaultPab, AbProviderId, AbProviders, AbSearchPath, AbSearchPathUpdate, AlternateRecipient, AssocContentCount, AttachmentX400Parameters, AuthorizingUsers, BodyCrc, CommonViewsEntryid, ContactAddrtypes, ContactDefaultAddressIndex, ContactEmailAddresses, ContactEntryids, ContactVersion, ContainerModifyVersion, ContentConfidentialityAlgorithmId, ContentCorrelator, ContentIdentifier, ContentIntegrityCheck, ContentLength, ContentReturnRequested, ContentsSortOrder, ControlFlags, ControlId, ControlStructure, ControlType, ConversationKey, ConversionEits, ConversionProhibited, ConversionWithLossProhibited, ConvertedEits, Correlate, CorrelateMtsid, CreateTemplates, CreationVersion, ExCurrentVersion, DefCreateDl, DefCreateMailuser, DefaultProfile, DefaultStore, DefaultViewEntryid, Delegation, DeliveryPoint, Deltax, Deltay, DetailsTable, DiscVal, DiscardReason, DiscloseRecipients, DisclosureOfRecipients, DiscreteValues, DlExpansionHistory, DlExpansionProhibited, ExplicitConversion, FilteringHooks, FinderEntryid, FormCategory, FormCategorySub, FormClsid, FormContactName, FormDesignerGuid, FormDesignerName, FormHidden, FormHostMap, FormMessageBehavior, FormVersion, HeaderFolderEntryid, Icon, IdentityDisplay, IdentityEntryid, IdentitySearchKey, ImplicitConversionProhibited, IncompleteCopy, InternetApproved, InternetArticleNumber, InternetControl, InternetDistribution, InternetFollowupTo, InternetLines, InternetNewsgroups, InternetNntpPath, InternetOrganization, InternetPrecedence, IpmId, IpmOutboxEntryid, IpmOutboxSearchKey, IpmReturnRequested, IpmSentmailEntryid, IpmSentmailSearchKey, IpmSubtreeEntryid, IpmSubtreeSearchKey, IpmWastebasketEntryid, IpmWastebasketSearchKey, Languages, LatestDeliveryTime, MailPermission, MdbProvider, MessageDeliveryId, MessageDownloadTime, MessageSecurityLabel, MessageToken, MiniIcon, ModifyVersion, NewsgroupName, NntpXref, NonReceiptReason, ObsoletedIpms, OriginCheck, OriginalAuthorAddrtype, OriginalAuthorEmailAddress, OriginalAuthorSearchKey, OriginalDisplayName, OriginalEits, OriginalSearchKey, OriginallyIntendedRecipAddrtype, OriginallyIntendedRecipEmailAddress, OriginallyIntendedRecipEntryid, OriginallyIntendedRecipientName, OriginatingMtaCertificate, OriginatorAndDlExpansionHistory, OriginatorCertificate, OriginatorRequestedAlternateRecipient, OriginatorReturnAddress, OwnStoreEntryid, ParentDisplay, PhysicalDeliveryBureauFaxDelivery, PhysicalDeliveryMode, PhysicalDeliveryReportRequest, PhysicalForwardingAddress, PhysicalForwardingAddressRequested, PhysicalForwardingProhibited, PhysicalRenditionAttributes, PostFolderEntries, PostFolderNames, PostReplyDenied, PostReplyFolderEntries, PostReplyFolderNames, Preprocess, PrimaryCapability, ProfileName, ProofOfDelivery, ProofOfDeliveryRequested, ProofOfSubmission, ProofOfSubmissionRequested, ProviderDisplay, ProviderDllName, ProviderOrdinal, ProviderSubmitTime, ProviderUid, ReceiveFolderSettings, RecipientCertificate, RecipientNumberForAdvice, RecipientStatus, RedirectionHistory, RegisteredMailType, RelatedIpms, RemoteProgress, RemoteProgressText, RemoteValidateOk, ReportingDlName, ReportingMtaCertificate, RequestedDeliveryMethod, ResourceFlags, ResourceMethods, ResourcePath, ResourceType, ReturnedIpm, RtfSyncBodyCount, RtfSyncBodyCrc, RtfSyncBodyTag, RtfSyncPrefixCount, RtfSyncTrailingCount, Search, ExSecurity, SentmailEntryid, ServiceDeleteFiles, ServiceDllName, ServiceEntryName, ServiceExtraUids, ServiceName, ServiceSupportFiles, ServiceUid, Services, SpoolerStatus, Status, StatusCode, StatusString, StoreProviders, StoreRecordKey, SubjectIpm, SubmitFlags, Supersedes, TransportKey, TransportProviders, TransportStatus, TypeOfMtsUser, ValidFolderMask, ViewsEntryid, X400ContentType, X400DeferredDeliveryCancel, Xpos, Ypos
+     */
+    public constructor(
+        discriminator?: string,
+        name?: string) {
+        super();
+        this.discriminator = discriminator;
+        this.name = name;
+    }
+}
+
+/**
+ * Mapi property with LegacyFreeBusyType value             
+ */
+export class MapiLegacyFreeBusyPropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiLegacyFreeBusyPropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Represents the free/busy status for a calendar event. Enum, available values: Free, Tentative, Busy, Oof, WorkingElsewhere, NoData
+     */
+    public value: string;
+    
+
+    /**
+     * Mapi property with LegacyFreeBusyType value             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param value Represents the free/busy status for a calendar event. Enum, available values: Free, Tentative, Busy, Oof, WorkingElsewhere, NoData
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        value?: string) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.value = value;
+    }
+}
+
+/**
+ * Represents an Outlook Message format document.             
+ */
+export class MapiMessageDto extends MapiMessageItemBaseDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "messageBody",
+            baseName: "messageBody",
+            type: "string",
+        },
+        {
+            name: "clientSubmitTime",
+            baseName: "clientSubmitTime",
+            type: "Date",
+        },
+        {
+            name: "conversationTopic",
+            baseName: "conversationTopic",
+            type: "string",
+        },
+        {
+            name: "deliveryTime",
+            baseName: "deliveryTime",
+            type: "Date",
+        },
+        {
+            name: "displayBcc",
+            baseName: "displayBcc",
+            type: "string",
+        },
+        {
+            name: "displayCc",
+            baseName: "displayCc",
+            type: "string",
+        },
+        {
+            name: "displayName",
+            baseName: "displayName",
+            type: "string",
+        },
+        {
+            name: "displayNamePrefix",
+            baseName: "displayNamePrefix",
+            type: "string",
+        },
+        {
+            name: "displayTo",
+            baseName: "displayTo",
+            type: "string",
+        },
+        {
+            name: "flags",
+            baseName: "flags",
+            type: "Array<string>",
+        },
+        {
+            name: "headers",
+            baseName: "headers",
+            type: "{ [key: string]: string; }",
+        },
+        {
+            name: "internetMessageId",
+            baseName: "internetMessageId",
+            type: "string",
+        },
+        {
+            name: "messageFormat",
+            baseName: "messageFormat",
+            type: "string",
+        },
+        {
+            name: "normalizedSubject",
+            baseName: "normalizedSubject",
+            type: "string",
+        },
+        {
+            name: "readReceiptRequested",
+            baseName: "readReceiptRequested",
+            type: "boolean",
+        },
+        {
+            name: "replyTo",
+            baseName: "replyTo",
+            type: "string",
+        },
+        {
+            name: "senderAddressType",
+            baseName: "senderAddressType",
+            type: "string",
+        },
+        {
+            name: "senderEmailAddress",
+            baseName: "senderEmailAddress",
+            type: "string",
+        },
+        {
+            name: "senderName",
+            baseName: "senderName",
+            type: "string",
+        },
+        {
+            name: "senderSmtpAddress",
+            baseName: "senderSmtpAddress",
+            type: "string",
+        },
+        {
+            name: "sentRepresentingAddressType",
+            baseName: "sentRepresentingAddressType",
+            type: "string",
+        },
+        {
+            name: "sentRepresentingEmailAddress",
+            baseName: "sentRepresentingEmailAddress",
+            type: "string",
+        },
+        {
+            name: "sentRepresentingName",
+            baseName: "sentRepresentingName",
+            type: "string",
+        },
+        {
+            name: "sentRepresentingSmtpAddress",
+            baseName: "sentRepresentingSmtpAddress",
+            type: "string",
+        },
+        {
+            name: "transportMessageHeaders",
+            baseName: "transportMessageHeaders",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiMessageDto.attributeTypeMap);
+    }
+
+    /**
+     * Message text             
+     */
+    public messageBody: string;
+    
+    /**
+     * Date and time the message sender submitted a message.             
+     */
+    public clientSubmitTime: Date;
+    
+    /**
+     * Topic of the first message in a conversation thread.             
+     */
+    public conversationTopic: string;
+    
+    /**
+     * Date and time a message was delivered.             
+     */
+    public deliveryTime: Date;
+    
+    /**
+     * List of the display names of any blind carbon copy (BCC) message recipients, separated by semicolons (;).             
+     */
+    public displayBcc: string;
+    
+    /**
+     * List of the display names of any carbon copy (CC) message recipients, separated by semicolons (;).             
+     */
+    public displayCc: string;
+    
+    /**
+     * Display name for the message.             
+     */
+    public displayName: string;
+    
+    /**
+     * Prefix of the display name.             
+     */
+    public displayNamePrefix: string;
+    
+    /**
+     * List of the display names of the primary (To) message recipients, separated by semicolons (;).             
+     */
+    public displayTo: string;
+    
+    /**
+     * Message flags.              Items: Mapi message flags. Enum, available values: MsgFlagZero, MsgFlagRead, MsgFlagUnmodified, MsgFlagSubmit, MsgFlagUnsent, MsgFlagHasAttach, MsgFlagFromMe, MsgFlagAssociated, MsgFlagResend, MsgFlagNotifyRead, MsgFlagNotifyUnread, MsgFlagEverRead, MsgFlagOriginX400, MsgFlagOriginInternet, MsgFlagOriginMiscExt
+     */
+    public flags: Array<string>;
+    
+    /**
+     * Transport message headers             
+     */
+    public headers: { [key: string]: string; };
+    
+    /**
+     * Internet message id of the message.             
+     */
+    public internetMessageId: string;
+    
+    /**
+     * Represents outlook message format. Enum, available values: Ascii, Unicode
+     */
+    public messageFormat: string;
+    
+    /**
+     * Normalized subject of the message.             
+     */
+    public normalizedSubject: string;
+    
+    /**
+     * Value indicating whether the read receipt is requested.
+     */
+    public readReceiptRequested: boolean;
+    
+    /**
+     * Reply to names.
+     */
+    public replyTo: string;
+    
+    /**
+     * Message sender's e-mail address type.
+     */
+    public senderAddressType: string;
+    
+    /**
+     * Message sender's e-mail address.
+     */
+    public senderEmailAddress: string;
+    
+    /**
+     * Message sender's display name.
+     */
+    public senderName: string;
+    
+    /**
+     * Message sender's e-mail address.
+     */
+    public senderSmtpAddress: string;
+    
+    /**
+     * Address type for the messaging user represented by the sender.
+     */
+    public sentRepresentingAddressType: string;
+    
+    /**
+     * E-mail address for the messaging user represented by the sender.
+     */
+    public sentRepresentingEmailAddress: string;
+    
+    /**
+     * Display name for the messaging user represented by the sender.
+     */
+    public sentRepresentingName: string;
+    
+    /**
+     * E-mail address for the messaging user represented by the sender.
+     */
+    public sentRepresentingSmtpAddress: string;
+    
+    /**
+     * Transport-specific message envelope information.
+     */
+    public transportMessageHeaders: string;
+    
+
+    /**
+     * Represents an Outlook Message format document.             
+     * @param attachments Message item attachments.             
+     * @param billing Billing information associated with an item.             
+     * @param body Message text.             
+     * @param bodyHtml Gets the BodyRtf of the message converted to HTML, if present, otherwise an empty string.             
+     * @param bodyRtf RTF formatted message text.             
+     * @param bodyType The content type of message body. Enum, available values: PlainText, Html, Rtf
+     * @param categories Contains keywords or categories for the message object.             
+     * @param companies Contains the names of the companies that are associated with an item.             
+     * @param itemId The item id, uses with a server.             
+     * @param messageClass Case-sensitive string that identifies the sender-defined message class, such as IPM.Note. The message class specifies the type, purpose, or content of the message.             
+     * @param mileage Contains the mileage information that is associated with an item.             
+     * @param recipients Recipients of the message.             
+     * @param sensitivity Contains values that indicate the message sensitivity. Enum, available values: None, Personal, Private, CompanyConfidential
+     * @param subject Subject of the message.             
+     * @param subjectPrefix Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
+     * @param properties List of MAPI properties             
+     * @param discriminator 
+     * @param messageBody Message text             
+     * @param clientSubmitTime Date and time the message sender submitted a message.             
+     * @param conversationTopic Topic of the first message in a conversation thread.             
+     * @param deliveryTime Date and time a message was delivered.             
+     * @param displayBcc List of the display names of any blind carbon copy (BCC) message recipients, separated by semicolons (;).             
+     * @param displayCc List of the display names of any carbon copy (CC) message recipients, separated by semicolons (;).             
+     * @param displayName Display name for the message.             
+     * @param displayNamePrefix Prefix of the display name.             
+     * @param displayTo List of the display names of the primary (To) message recipients, separated by semicolons (;).             
+     * @param flags Message flags.             
+     * @param headers Transport message headers             
+     * @param internetMessageId Internet message id of the message.             
+     * @param messageFormat Represents outlook message format. Enum, available values: Ascii, Unicode
+     * @param normalizedSubject Normalized subject of the message.             
+     * @param readReceiptRequested Value indicating whether the read receipt is requested.
+     * @param replyTo Reply to names.
+     * @param senderAddressType Message sender's e-mail address type.
+     * @param senderEmailAddress Message sender's e-mail address.
+     * @param senderName Message sender's display name.
+     * @param senderSmtpAddress Message sender's e-mail address.
+     * @param sentRepresentingAddressType Address type for the messaging user represented by the sender.
+     * @param sentRepresentingEmailAddress E-mail address for the messaging user represented by the sender.
+     * @param sentRepresentingName Display name for the messaging user represented by the sender.
+     * @param sentRepresentingSmtpAddress E-mail address for the messaging user represented by the sender.
+     * @param transportMessageHeaders Transport-specific message envelope information.
+     */
+    public constructor(
+        attachments?: Array<MapiAttachmentDto>,
+        billing?: string,
+        body?: string,
+        bodyHtml?: string,
+        bodyRtf?: string,
+        bodyType?: string,
+        categories?: Array<string>,
+        companies?: Array<string>,
+        itemId?: string,
+        messageClass?: string,
+        mileage?: string,
+        recipients?: Array<MapiRecipientDto>,
+        sensitivity?: string,
+        subject?: string,
+        subjectPrefix?: string,
+        properties?: Array<MapiPropertyDto>,
+        discriminator?: string,
+        messageBody?: string,
+        clientSubmitTime?: Date,
+        conversationTopic?: string,
+        deliveryTime?: Date,
+        displayBcc?: string,
+        displayCc?: string,
+        displayName?: string,
+        displayNamePrefix?: string,
+        displayTo?: string,
+        flags?: Array<string>,
+        headers?: { [key: string]: string; },
+        internetMessageId?: string,
+        messageFormat?: string,
+        normalizedSubject?: string,
+        readReceiptRequested?: boolean,
+        replyTo?: string,
+        senderAddressType?: string,
+        senderEmailAddress?: string,
+        senderName?: string,
+        senderSmtpAddress?: string,
+        sentRepresentingAddressType?: string,
+        sentRepresentingEmailAddress?: string,
+        sentRepresentingName?: string,
+        sentRepresentingSmtpAddress?: string,
+        transportMessageHeaders?: string) {
+        super();
+        this.attachments = attachments;
+        this.billing = billing;
+        this.body = body;
+        this.bodyHtml = bodyHtml;
+        this.bodyRtf = bodyRtf;
+        this.bodyType = bodyType;
+        this.categories = categories;
+        this.companies = companies;
+        this.itemId = itemId;
+        this.messageClass = messageClass;
+        this.mileage = mileage;
+        this.recipients = recipients;
+        this.sensitivity = sensitivity;
+        this.subject = subject;
+        this.subjectPrefix = subjectPrefix;
+        this.properties = properties;
+        this.discriminator = discriminator;
+        this.messageBody = messageBody;
+        this.clientSubmitTime = clientSubmitTime;
+        this.conversationTopic = conversationTopic;
+        this.deliveryTime = deliveryTime;
+        this.displayBcc = displayBcc;
+        this.displayCc = displayCc;
+        this.displayName = displayName;
+        this.displayNamePrefix = displayNamePrefix;
+        this.displayTo = displayTo;
+        this.flags = flags;
+        this.headers = headers;
+        this.internetMessageId = internetMessageId;
+        this.messageFormat = messageFormat;
+        this.normalizedSubject = normalizedSubject;
+        this.readReceiptRequested = readReceiptRequested;
+        this.replyTo = replyTo;
+        this.senderAddressType = senderAddressType;
+        this.senderEmailAddress = senderEmailAddress;
+        this.senderName = senderName;
+        this.senderSmtpAddress = senderSmtpAddress;
+        this.sentRepresentingAddressType = sentRepresentingAddressType;
+        this.sentRepresentingEmailAddress = sentRepresentingEmailAddress;
+        this.sentRepresentingName = sentRepresentingName;
+        this.sentRepresentingSmtpAddress = sentRepresentingSmtpAddress;
+        this.transportMessageHeaders = transportMessageHeaders;
+    }
+}
+
+/**
+ * Mapi property with Multiple Integer values             
+ */
+export class MapiMultiIntPropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "values",
+            baseName: "values",
+            type: "Array<number>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiMultiIntPropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Property values             
+     */
+    public values: Array<number>;
+    
+
+    /**
+     * Mapi property with Multiple Integer values             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param values Property values             
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        values?: Array<number>) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.values = values;
+    }
+}
+
+/**
+ * Mapi property with Multiple String values             
+ */
+export class MapiMultiStringPropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "values",
+            baseName: "values",
+            type: "Array<string>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiMultiStringPropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Property values             
+     */
+    public values: Array<string>;
+    
+
+    /**
+     * Mapi property with Multiple String values             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param values Property values             
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        values?: Array<string>) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.values = values;
+    }
+}
+
+/**
+ * Mapi property with PhysicalAddressIndexType value             
+ */
+export class MapiPhysicalAddressIndexPropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiPhysicalAddressIndexPropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Identifies the display types for physical addresses. Enum, available values: None, Home, Business, Other
+     */
+    public value: string;
+    
+
+    /**
+     * Mapi property with PhysicalAddressIndexType value             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param value Identifies the display types for physical addresses. Enum, available values: None, Home, Business, Other
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        value?: string) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.value = value;
+    }
+}
+
+/**
+ * Mapi pid property descriptor base class             
+ */
+export class MapiPidPropertyDescriptor extends MapiPropertyDescriptor {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "canonicalName",
+            baseName: "canonicalName",
+            type: "string",
+        },
+        {
+            name: "dataType",
+            baseName: "dataType",
+            type: "string",
+        },
+        {
+            name: "multipleValuesDataType",
+            baseName: "multipleValuesDataType",
+            type: "boolean",
+        },
+        {
+            name: "name",
+            baseName: "name",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiPidPropertyDescriptor.attributeTypeMap);
+    }
+
+    /**
+     * The name used to refer to the property in the documentation. The prefix of the canonical name identifies the basic characteristics of a property to the implementer. The canonical naming structure uses three categories that are denoted by the following prefixes to the canonical property name: * PidLid prefix: Properties identified by an unsigned 32-bit quantity along with a property set. * PidName prefix: Properties identified by a string name along with a property set. * PidTag prefix: Properties identified by an unsigned 16-bit quantity.             
+     */
+    public canonicalName: string;
+    
+    /**
+     * [MS-OXCDATA]: Data Structures Enum, available values: Unspecified, Null, Integer16, Integer32, Floating32, Floating64, Currency, FloatingTime, ErrorCode, Boolean, Integer64, String, String8, Time, Guid, ServerId, Restriction, RuleAction, Binary, MultipleInteger16, MultipleInteger32, MultipleFloating32, MultipleFloating64, MultipleCurrency, MultipleFloatingTime, MultipleBoolean, MultipleInteger64, MultipleString, MultipleString8, MultipleTime, MultipleGuid, MultipleBinary, Object
+     */
+    public dataType: string;
+    
+    /**
+     * Indicates if data type contains of multiple values             
+     */
+    public multipleValuesDataType: boolean;
+    
+    /**
+     * A string that identifies the property             
+     */
+    public name: string;
+    
+
+    /**
+     * Mapi pid property descriptor base class             
+     * @param discriminator 
+     * @param canonicalName The name used to refer to the property in the documentation. The prefix of the canonical name identifies the basic characteristics of a property to the implementer. The canonical naming structure uses three categories that are denoted by the following prefixes to the canonical property name: * PidLid prefix: Properties identified by an unsigned 32-bit quantity along with a property set. * PidName prefix: Properties identified by a string name along with a property set. * PidTag prefix: Properties identified by an unsigned 16-bit quantity.             
+     * @param dataType [MS-OXCDATA]: Data Structures Enum, available values: Unspecified, Null, Integer16, Integer32, Floating32, Floating64, Currency, FloatingTime, ErrorCode, Boolean, Integer64, String, String8, Time, Guid, ServerId, Restriction, RuleAction, Binary, MultipleInteger16, MultipleInteger32, MultipleFloating32, MultipleFloating64, MultipleCurrency, MultipleFloatingTime, MultipleBoolean, MultipleInteger64, MultipleString, MultipleString8, MultipleTime, MultipleGuid, MultipleBinary, Object
+     * @param multipleValuesDataType Indicates if data type contains of multiple values             
+     * @param name A string that identifies the property             
+     */
+    public constructor(
+        discriminator?: string,
+        canonicalName?: string,
+        dataType?: string,
+        multipleValuesDataType?: boolean,
+        name?: string) {
+        super();
+        this.discriminator = discriminator;
+        this.canonicalName = canonicalName;
+        this.dataType = dataType;
+        this.multipleValuesDataType = multipleValuesDataType;
+        this.name = name;
+    }
+}
+
+/**
+ * Mapi property with response type value             
+ */
+export class MapiResponseTypePropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiResponseTypePropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Represents the types of recipient responses that are received for a meeting. Enum, available values: Unknown, Organizer, Tentative, Accept, Decline, NoResponseReceived
+     */
+    public value: string;
+    
+
+    /**
+     * Mapi property with response type value             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param value Represents the types of recipient responses that are received for a meeting. Enum, available values: Unknown, Organizer, Tentative, Accept, Decline, NoResponseReceived
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        value?: string) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.value = value;
+    }
+}
+
+/**
+ * Mapi property with string value             
+ */
+export class MapiStringPropertyDto extends MapiPropertyDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "value",
+            baseName: "value",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiStringPropertyDto.attributeTypeMap);
+    }
+
+    /**
+     * Property value             
+     */
+    public value: string;
+    
+
+    /**
+     * Mapi property with string value             
+     * @param descriptor Property descriptor             
+     * @param discriminator 
+     * @param value Property value             
+     */
+    public constructor(
+        descriptor?: MapiPropertyDescriptor,
+        discriminator?: string,
+        value?: string) {
+        super();
+        this.descriptor = descriptor;
+        this.discriminator = discriminator;
+        this.value = value;
+    }
+}
+
+/**
+ * Monthly recurrence pattern.             
+ */
+export class MonthlyRecurrencePatternDto extends RecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "startDay",
+            baseName: "startDay",
+            type: "string",
+        },
+        {
+            name: "startOffset",
+            baseName: "startOffset",
+            type: "number",
+        },
+        {
+            name: "startPosition",
+            baseName: "startPosition",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MonthlyRecurrencePatternDto.attributeTypeMap);
+    }
+
+    /**
+     * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     */
+    public startDay: string;
+    
+    /**
+     * Start offset.             
+     */
+    public startOffset: number;
+    
+    /**
+     * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     */
+    public startPosition: string;
+    
+
+    /**
+     * Monthly recurrence pattern.             
+     * @param interval Number of recurrence units.             
+     * @param occurs Number of occurrences of the recurrence pattern.             
+     * @param endDate End date.             
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param discriminator 
+     * @param startDay Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param startOffset Start offset.             
+     * @param startPosition Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     */
+    public constructor(
+        interval?: number,
+        occurs?: number,
+        endDate?: Date,
+        weekStart?: string,
+        discriminator?: string,
+        startDay?: string,
+        startOffset?: number,
+        startPosition?: string) {
+        super();
+        this.interval = interval;
+        this.occurs = occurs;
+        this.endDate = endDate;
+        this.weekStart = weekStart;
+        this.discriminator = discriminator;
+        this.startDay = startDay;
+        this.startOffset = startOffset;
+        this.startPosition = startPosition;
+    }
+}
+
+/**
  * Move email message request             
  */
 export class MoveEmailMessageRq extends AccountBaseRequest {
@@ -8454,7 +13646,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
         {
             name: "emailFile",
             baseName: "emailFile",
-            type: "any",
+            type: "StorageFileLocation",
         }    ];
 
     /**
@@ -8467,7 +13659,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
     /**
      * Email document (*.eml) file location in storage             
      */
-    public emailFile: any;
+    public emailFile: StorageFileLocation;
     
 
     /**
@@ -8481,7 +13673,7 @@ export class SendEmailBaseRequest extends AccountBaseRequest {
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        emailFile?: any) {
+        emailFile?: StorageFileLocation) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -8550,7 +13742,7 @@ export class SendEmailModelRq extends AccountBaseRequest {
         {
             name: "message",
             baseName: "message",
-            type: "any",
+            type: "EmailDto",
         }    ];
 
     /**
@@ -8563,7 +13755,7 @@ export class SendEmailModelRq extends AccountBaseRequest {
     /**
      * Message to send             
      */
-    public message: any;
+    public message: EmailDto;
     
 
     /**
@@ -8577,7 +13769,7 @@ export class SendEmailModelRq extends AccountBaseRequest {
         firstAccount?: string,
         secondAccount?: string,
         storageFolder?: StorageFolderLocation,
-        message?: any) {
+        message?: EmailDto) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -8693,6 +13885,207 @@ export class StorageFileLocation extends StorageFolderLocation {
 }
 
 /**
+ * Represents the regenerating recurrence pattern that specifies how many days, weeks, months or years after the completion of the current task the next occurrence will be due.             
+ */
+export class TaskRegeneratingPatternDto extends RecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "regeneratingType",
+            baseName: "regeneratingType",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(TaskRegeneratingPatternDto.attributeTypeMap);
+    }
+
+    /**
+     * Enumerates the types of regenerating pattern. Enum, available values: Daily, Weekly, Monthly, Yearly
+     */
+    public regeneratingType: string;
+    
+
+    /**
+     * Represents the regenerating recurrence pattern that specifies how many days, weeks, months or years after the completion of the current task the next occurrence will be due.             
+     * @param interval Number of recurrence units.             
+     * @param occurs Number of occurrences of the recurrence pattern.             
+     * @param endDate End date.             
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param discriminator 
+     * @param regeneratingType Enumerates the types of regenerating pattern. Enum, available values: Daily, Weekly, Monthly, Yearly
+     */
+    public constructor(
+        interval?: number,
+        occurs?: number,
+        endDate?: Date,
+        weekStart?: string,
+        discriminator?: string,
+        regeneratingType?: string) {
+        super();
+        this.interval = interval;
+        this.occurs = occurs;
+        this.endDate = endDate;
+        this.weekStart = weekStart;
+        this.discriminator = discriminator;
+        this.regeneratingType = regeneratingType;
+    }
+}
+
+/**
+ * Weekly recurrence pattern.             
+ */
+export class WeeklyRecurrencePatternDto extends RecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "startDays",
+            baseName: "startDays",
+            type: "Array<string>",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(WeeklyRecurrencePatternDto.attributeTypeMap);
+    }
+
+    /**
+     * Start days              Items: Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     */
+    public startDays: Array<string>;
+    
+
+    /**
+     * Weekly recurrence pattern.             
+     * @param interval Number of recurrence units.             
+     * @param occurs Number of occurrences of the recurrence pattern.             
+     * @param endDate End date.             
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param discriminator 
+     * @param startDays Start days             
+     */
+    public constructor(
+        interval?: number,
+        occurs?: number,
+        endDate?: Date,
+        weekStart?: string,
+        discriminator?: string,
+        startDays?: Array<string>) {
+        super();
+        this.interval = interval;
+        this.occurs = occurs;
+        this.endDate = endDate;
+        this.weekStart = weekStart;
+        this.discriminator = discriminator;
+        this.startDays = startDays;
+    }
+}
+
+/**
+ * Yearly recurrence pattern.             
+ */
+export class YearlyRecurrencePatternDto extends RecurrencePatternDto {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "startDay",
+            baseName: "startDay",
+            type: "string",
+        },
+        {
+            name: "startMonth",
+            baseName: "startMonth",
+            type: "string",
+        },
+        {
+            name: "startOffset",
+            baseName: "startOffset",
+            type: "number",
+        },
+        {
+            name: "startPosition",
+            baseName: "startPosition",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(YearlyRecurrencePatternDto.attributeTypeMap);
+    }
+
+    /**
+     * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     */
+    public startDay: string;
+    
+    /**
+     * Represents a calendar month. Enum, available values: None, January, February, March, April, May, June, July, August, September, October, November, December
+     */
+    public startMonth: string;
+    
+    /**
+     * Start offset.             
+     */
+    public startOffset: number;
+    
+    /**
+     * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     */
+    public startPosition: string;
+    
+
+    /**
+     * Yearly recurrence pattern.             
+     * @param interval Number of recurrence units.             
+     * @param occurs Number of occurrences of the recurrence pattern.             
+     * @param endDate End date.             
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param discriminator 
+     * @param startDay Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param startMonth Represents a calendar month. Enum, available values: None, January, February, March, April, May, June, July, August, September, October, November, December
+     * @param startOffset Start offset.             
+     * @param startPosition Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     */
+    public constructor(
+        interval?: number,
+        occurs?: number,
+        endDate?: Date,
+        weekStart?: string,
+        discriminator?: string,
+        startDay?: string,
+        startMonth?: string,
+        startOffset?: number,
+        startPosition?: string) {
+        super();
+        this.interval = interval;
+        this.occurs = occurs;
+        this.endDate = endDate;
+        this.weekStart = weekStart;
+        this.discriminator = discriminator;
+        this.startDay = startDay;
+        this.startMonth = startMonth;
+        this.startOffset = startOffset;
+        this.startPosition = startPosition;
+    }
+}
+
+/**
  * Parse business card images from Storage request             
  */
 export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
@@ -8704,7 +14097,7 @@ export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
         {
             name: "outFolder",
             baseName: "outFolder",
-            type: "any",
+            type: "StorageFolderLocation",
         }    ];
 
     /**
@@ -8717,7 +14110,7 @@ export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
     /**
      * Parse output folder location on storage             
      */
-    public outFolder: any;
+    public outFolder: StorageFolderLocation;
     
 
     /**
@@ -8729,7 +14122,7 @@ export class AiBcrParseStorageRq extends AiBcrStorageImageRq {
     public constructor(
         options?: AiBcrOptions,
         images?: Array<AiBcrImageStorageFile>,
-        outFolder?: any) {
+        outFolder?: StorageFolderLocation) {
         super();
         this.options = options;
         this.images = images;
@@ -8749,7 +14142,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
         {
             name: "emailFile",
             baseName: "emailFile",
-            type: "any",
+            type: "StorageFileLocation",
         }    ];
 
     /**
@@ -8762,7 +14155,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
     /**
      * Email document file location in storage             
      */
-    public emailFile: any;
+    public emailFile: StorageFileLocation;
     
 
     /**
@@ -8780,7 +14173,7 @@ export class AppendEmailBaseRequest extends AppendEmailAccountBaseRequest {
         storageFolder?: StorageFolderLocation,
         folder?: string,
         markAsSent?: boolean,
-        emailFile?: any) {
+        emailFile?: StorageFileLocation) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -8857,7 +14250,7 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
         {
             name: "message",
             baseName: "message",
-            type: "any",
+            type: "EmailDto",
         }    ];
 
     /**
@@ -8870,7 +14263,7 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
     /**
      * Email document             
      */
-    public message: any;
+    public message: EmailDto;
     
 
     /**
@@ -8888,7 +14281,7 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
         storageFolder?: StorageFolderLocation,
         folder?: string,
         markAsSent?: boolean,
-        message?: any) {
+        message?: EmailDto) {
         super();
         this.firstAccount = firstAccount;
         this.secondAccount = secondAccount;
@@ -8896,6 +14289,194 @@ export class AppendEmailModelRq extends AppendEmailAccountBaseRequest {
         this.folder = folder;
         this.markAsSent = markAsSent;
         this.message = message;
+    }
+}
+
+/**
+ * Property identified by an unsigned 32-bit quantity along with a property set             
+ */
+export class MapiPidLidPropertyDescriptor extends MapiPidPropertyDescriptor {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "longId",
+            baseName: "longId",
+            type: "number",
+        },
+        {
+            name: "propertySet",
+            baseName: "propertySet",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiPidLidPropertyDescriptor.attributeTypeMap);
+    }
+
+    /**
+     * An unsigned 32-bit quantity that, along with the property set, identifies a named property.             
+     */
+    public longId: number;
+    
+    /**
+     * A GUID that identifies a group of properties with a similar purpose.             
+     */
+    public propertySet: string;
+    
+
+    /**
+     * Property identified by an unsigned 32-bit quantity along with a property set             
+     * @param discriminator 
+     * @param canonicalName The name used to refer to the property in the documentation. The prefix of the canonical name identifies the basic characteristics of a property to the implementer. The canonical naming structure uses three categories that are denoted by the following prefixes to the canonical property name: * PidLid prefix: Properties identified by an unsigned 32-bit quantity along with a property set. * PidName prefix: Properties identified by a string name along with a property set. * PidTag prefix: Properties identified by an unsigned 16-bit quantity.             
+     * @param dataType [MS-OXCDATA]: Data Structures Enum, available values: Unspecified, Null, Integer16, Integer32, Floating32, Floating64, Currency, FloatingTime, ErrorCode, Boolean, Integer64, String, String8, Time, Guid, ServerId, Restriction, RuleAction, Binary, MultipleInteger16, MultipleInteger32, MultipleFloating32, MultipleFloating64, MultipleCurrency, MultipleFloatingTime, MultipleBoolean, MultipleInteger64, MultipleString, MultipleString8, MultipleTime, MultipleGuid, MultipleBinary, Object
+     * @param multipleValuesDataType Indicates if data type contains of multiple values             
+     * @param name A string that identifies the property             
+     * @param longId An unsigned 32-bit quantity that, along with the property set, identifies a named property.             
+     * @param propertySet A GUID that identifies a group of properties with a similar purpose.             
+     */
+    public constructor(
+        discriminator?: string,
+        canonicalName?: string,
+        dataType?: string,
+        multipleValuesDataType?: boolean,
+        name?: string,
+        longId?: number,
+        propertySet?: string) {
+        super();
+        this.discriminator = discriminator;
+        this.canonicalName = canonicalName;
+        this.dataType = dataType;
+        this.multipleValuesDataType = multipleValuesDataType;
+        this.name = name;
+        this.longId = longId;
+        this.propertySet = propertySet;
+    }
+}
+
+/**
+ * Property identified by a string name along with a property set             
+ */
+export class MapiPidNamePropertyDescriptor extends MapiPidPropertyDescriptor {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "propertySet",
+            baseName: "propertySet",
+            type: "string",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiPidNamePropertyDescriptor.attributeTypeMap);
+    }
+
+    /**
+     * A GUID that identifies a group of properties with a similar purpose.             
+     */
+    public propertySet: string;
+    
+
+    /**
+     * Property identified by a string name along with a property set             
+     * @param discriminator 
+     * @param canonicalName The name used to refer to the property in the documentation. The prefix of the canonical name identifies the basic characteristics of a property to the implementer. The canonical naming structure uses three categories that are denoted by the following prefixes to the canonical property name: * PidLid prefix: Properties identified by an unsigned 32-bit quantity along with a property set. * PidName prefix: Properties identified by a string name along with a property set. * PidTag prefix: Properties identified by an unsigned 16-bit quantity.             
+     * @param dataType [MS-OXCDATA]: Data Structures Enum, available values: Unspecified, Null, Integer16, Integer32, Floating32, Floating64, Currency, FloatingTime, ErrorCode, Boolean, Integer64, String, String8, Time, Guid, ServerId, Restriction, RuleAction, Binary, MultipleInteger16, MultipleInteger32, MultipleFloating32, MultipleFloating64, MultipleCurrency, MultipleFloatingTime, MultipleBoolean, MultipleInteger64, MultipleString, MultipleString8, MultipleTime, MultipleGuid, MultipleBinary, Object
+     * @param multipleValuesDataType Indicates if data type contains of multiple values             
+     * @param name A string that identifies the property             
+     * @param propertySet A GUID that identifies a group of properties with a similar purpose.             
+     */
+    public constructor(
+        discriminator?: string,
+        canonicalName?: string,
+        dataType?: string,
+        multipleValuesDataType?: boolean,
+        name?: string,
+        propertySet?: string) {
+        super();
+        this.discriminator = discriminator;
+        this.canonicalName = canonicalName;
+        this.dataType = dataType;
+        this.multipleValuesDataType = multipleValuesDataType;
+        this.name = name;
+        this.propertySet = propertySet;
+    }
+}
+
+/**
+ * A property that is defined by a 16-bit property ID and a 16-bit property type. The property ID for a tagged property is in the range 0x001 - 0x7FFF. Property IDs in the range 0x8000 - 0x8FFF are reserved for assignment to named properties             
+ */
+export class MapiPidTagPropertyDescriptor extends MapiPidPropertyDescriptor {
+
+    /**
+     * Attribute type map
+     */
+    public static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            name: "id",
+            baseName: "id",
+            type: "number",
+        },
+        {
+            name: "tag",
+            baseName: "tag",
+            type: "number",
+        }    ];
+
+    /**
+     * Returns attribute type map
+     */
+    public static getAttributeTypeMap() {
+        return super.getAttributeTypeMap().concat(MapiPidTagPropertyDescriptor.attributeTypeMap);
+    }
+
+    /**
+     * An unsigned 16-bit quantity that identifies a tagged property. Property IDs are not necessarily unique. With the exception of property IDs in the range from 0x6800 to 0x7BFF, the combination of property ID and data type are unique. Property IDs in the range from 0x6800 to 0x7BFF are defined by the message class.             
+     */
+    public id: number;
+    
+    /**
+     * A property tag is a 32-bit number that contains a unique property identifier in bits 16 through 31 and a property type in bits 0 through 15.             
+     */
+    public tag: number;
+    
+
+    /**
+     * A property that is defined by a 16-bit property ID and a 16-bit property type. The property ID for a tagged property is in the range 0x001 - 0x7FFF. Property IDs in the range 0x8000 - 0x8FFF are reserved for assignment to named properties             
+     * @param discriminator 
+     * @param canonicalName The name used to refer to the property in the documentation. The prefix of the canonical name identifies the basic characteristics of a property to the implementer. The canonical naming structure uses three categories that are denoted by the following prefixes to the canonical property name: * PidLid prefix: Properties identified by an unsigned 32-bit quantity along with a property set. * PidName prefix: Properties identified by a string name along with a property set. * PidTag prefix: Properties identified by an unsigned 16-bit quantity.             
+     * @param dataType [MS-OXCDATA]: Data Structures Enum, available values: Unspecified, Null, Integer16, Integer32, Floating32, Floating64, Currency, FloatingTime, ErrorCode, Boolean, Integer64, String, String8, Time, Guid, ServerId, Restriction, RuleAction, Binary, MultipleInteger16, MultipleInteger32, MultipleFloating32, MultipleFloating64, MultipleCurrency, MultipleFloatingTime, MultipleBoolean, MultipleInteger64, MultipleString, MultipleString8, MultipleTime, MultipleGuid, MultipleBinary, Object
+     * @param multipleValuesDataType Indicates if data type contains of multiple values             
+     * @param name A string that identifies the property             
+     * @param id An unsigned 16-bit quantity that identifies a tagged property. Property IDs are not necessarily unique. With the exception of property IDs in the range from 0x6800 to 0x7BFF, the combination of property ID and data type are unique. Property IDs in the range from 0x6800 to 0x7BFF are defined by the message class.             
+     * @param tag A property tag is a 32-bit number that contains a unique property identifier in bits 16 through 31 and a property type in bits 0 through 15.             
+     */
+    public constructor(
+        discriminator?: string,
+        canonicalName?: string,
+        dataType?: string,
+        multipleValuesDataType?: boolean,
+        name?: string,
+        id?: number,
+        tag?: number) {
+        super();
+        this.discriminator = discriminator;
+        this.canonicalName = canonicalName;
+        this.dataType = dataType;
+        this.multipleValuesDataType = multipleValuesDataType;
+        this.name = name;
+        this.id = id;
+        this.tag = tag;
     }
 }
 
@@ -8981,12 +14562,36 @@ const typeMap = {
             ListResponseOfString,
             MailAddress,
             MailServerFolder,
+            MapiAttachmentDto,
+            MapiCalendarAttendeesDto,
+            MapiCalendarEventRecurrenceDto,
+            MapiCalendarExceptionInfoDto,
+            MapiCalendarRecurrencePatternDto,
+            MapiCalendarTimeZoneDto,
+            MapiCalendarTimeZoneInfoDto,
+            MapiCalendarTimeZoneRuleDto,
+            MapiContactElectronicAddressDto,
+            MapiContactElectronicAddressPropertySetDto,
+            MapiContactEventPropertySetDto,
+            MapiContactNamePropertySetDto,
+            MapiContactOtherPropertySetDto,
+            MapiContactPersonalInfoPropertySetDto,
+            MapiContactPhysicalAddressDto,
+            MapiContactPhysicalAddressPropertySetDto,
+            MapiContactProfessionalPropertySetDto,
+            MapiContactTelephonePropertySetDto,
+            MapiElectronicAddressDto,
+            MapiMessageItemBaseDto,
+            MapiPropertyDescriptor,
+            MapiPropertyDto,
+            MapiRecipientDto,
             MimeResponse,
             ModelError,
             NameValuePair,
             ObjectExist,
             PhoneNumber,
             PostalAddress,
+            RecurrencePatternDto,
             ReminderAttendee,
             ReminderTrigger,
             SetEmailPropertyRequest,
@@ -9001,6 +14606,9 @@ const typeMap = {
             StorageModelRqOfCalendarDto,
             StorageModelRqOfContactDto,
             StorageModelRqOfEmailDto,
+            StorageModelRqOfMapiCalendarDto,
+            StorageModelRqOfMapiContactDto,
+            StorageModelRqOfMapiMessageDto,
             Url,
             ValueResponse,
             ValueTOfBoolean,
@@ -9016,6 +14624,7 @@ const typeMap = {
             CalendarDtoList,
             ContactDtoList,
             CreateFolderBaseRequest,
+            DailyRecurrencePatternDto,
             DeleteEmailThreadAccountRq,
             DeleteFolderBaseRequest,
             DeleteMessageBaseRequest,
@@ -9032,6 +14641,28 @@ const typeMap = {
             IndexedHierarchicalObject,
             IndexedPrimitiveObject,
             LinkedResource,
+            MapiBinaryPropertyDto,
+            MapiBooleanPropertyDto,
+            MapiCalendarDailyRecurrencePatternDto,
+            MapiCalendarDto,
+            MapiCalendarWeeklyRecurrencePatternDto,
+            MapiCalendarYearlyAndMonthlyRecurrencePatternDto,
+            MapiContactDto,
+            MapiContactPhotoDto,
+            MapiDateTimePropertyDto,
+            MapiFileAsPropertyDto,
+            MapiImportancePropertyDto,
+            MapiIntPropertyDto,
+            MapiKnownPropertyDescriptor,
+            MapiLegacyFreeBusyPropertyDto,
+            MapiMessageDto,
+            MapiMultiIntPropertyDto,
+            MapiMultiStringPropertyDto,
+            MapiPhysicalAddressIndexPropertyDto,
+            MapiPidPropertyDescriptor,
+            MapiResponseTypePropertyDto,
+            MapiStringPropertyDto,
+            MonthlyRecurrencePatternDto,
             MoveEmailMessageRq,
             MoveEmailThreadRq,
             PrimitiveObject,
@@ -9042,10 +14673,16 @@ const typeMap = {
             SendEmailModelRq,
             SetMessageReadFlagAccountBaseRequest,
             StorageFileLocation,
+            TaskRegeneratingPatternDto,
+            WeeklyRecurrencePatternDto,
+            YearlyRecurrencePatternDto,
             AiBcrParseStorageRq,
             AppendEmailBaseRequest,
             AppendEmailMimeBaseRequest,
             AppendEmailModelRq,
+            MapiPidLidPropertyDescriptor,
+            MapiPidNamePropertyDescriptor,
+            MapiPidTagPropertyDescriptor,
 };
 
 export {enumsMap, typeMap};

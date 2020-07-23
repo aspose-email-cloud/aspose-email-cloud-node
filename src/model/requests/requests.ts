@@ -927,6 +927,26 @@ export class ConvertCalendarModelToFileRequest {
 }
 
 /**
+ * Request model for convertCalendarModelToMapiModel operation.
+ */
+export class ConvertCalendarModelToMapiModelRequest {
+    /**
+     * iCalendar model calendar representation
+     */
+    public calendarDto: model.CalendarDto;
+
+    /**
+     * Request model for convertCalendarModelToMapiModel operation.
+     * @param calendarDto iCalendar model calendar representation
+     */
+    public constructor(
+        calendarDto?: model.CalendarDto) {
+        
+        this.calendarDto = calendarDto;
+    }
+}
+
+/**
  * Request model for convertContact operation.
  */
 export class ConvertContactRequest {
@@ -991,11 +1011,31 @@ export class ConvertContactModelToFileRequest {
 }
 
 /**
+ * Request model for convertContactModelToMapiModel operation.
+ */
+export class ConvertContactModelToMapiModelRequest {
+    /**
+     * Contact model to convert
+     */
+    public contactDto: model.ContactDto;
+
+    /**
+     * Request model for convertContactModelToMapiModel operation.
+     * @param contactDto Contact model to convert
+     */
+    public constructor(
+        contactDto?: model.ContactDto) {
+        
+        this.contactDto = contactDto;
+    }
+}
+
+/**
  * Request model for convertEmail operation.
  */
 export class ConvertEmailRequest {
     /**
-     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
 
@@ -1006,7 +1046,7 @@ export class ConvertEmailRequest {
 
     /**
      * Request model for convertEmail operation.
-     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param file File to convert
      */
     public constructor(
@@ -1023,7 +1063,7 @@ export class ConvertEmailRequest {
  */
 export class ConvertEmailModelToFileRequest {
     /**
-     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public destinationFormat: string;
 
@@ -1034,7 +1074,7 @@ export class ConvertEmailModelToFileRequest {
 
     /**
      * Request model for convertEmailModelToFile operation.
-     * @param destinationFormat File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param destinationFormat File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param emailDto Email model to convert
      */
     public constructor(
@@ -1043,6 +1083,170 @@ export class ConvertEmailModelToFileRequest {
         
         this.destinationFormat = destinationFormat;
         this.emailDto = emailDto;
+    }
+}
+
+/**
+ * Request model for convertEmailModelToMapiModel operation.
+ */
+export class ConvertEmailModelToMapiModelRequest {
+    /**
+     * Email model to convert
+     */
+    public emailDto: model.EmailDto;
+
+    /**
+     * Request model for convertEmailModelToMapiModel operation.
+     * @param emailDto Email model to convert
+     */
+    public constructor(
+        emailDto?: model.EmailDto) {
+        
+        this.emailDto = emailDto;
+    }
+}
+
+/**
+ * Request model for convertMapiCalendarModelToCalendarModel operation.
+ */
+export class ConvertMapiCalendarModelToCalendarModelRequest {
+    /**
+     * MAPI calendar model to convert
+     */
+    public mapiCalendarDto: model.MapiCalendarDto;
+
+    /**
+     * Request model for convertMapiCalendarModelToCalendarModel operation.
+     * @param mapiCalendarDto MAPI calendar model to convert
+     */
+    public constructor(
+        mapiCalendarDto?: model.MapiCalendarDto) {
+        
+        this.mapiCalendarDto = mapiCalendarDto;
+    }
+}
+
+/**
+ * Request model for convertMapiCalendarModelToFile operation.
+ */
+export class ConvertMapiCalendarModelToFileRequest {
+    /**
+     * File format Enum, available values: Ics, Msg
+     */
+    public destinationFormat: string;
+
+    /**
+     * MAPI calendar model to convert
+     */
+    public mapiCalendarDto: model.MapiCalendarDto;
+
+    /**
+     * Request model for convertMapiCalendarModelToFile operation.
+     * @param destinationFormat File format Enum, available values: Ics, Msg
+     * @param mapiCalendarDto MAPI calendar model to convert
+     */
+    public constructor(
+        destinationFormat?: string, 
+        mapiCalendarDto?: model.MapiCalendarDto) {
+        
+        this.destinationFormat = destinationFormat;
+        this.mapiCalendarDto = mapiCalendarDto;
+    }
+}
+
+/**
+ * Request model for convertMapiContactModelToContactModel operation.
+ */
+export class ConvertMapiContactModelToContactModelRequest {
+    /**
+     * MAPI contact model to convert
+     */
+    public mapiContactDto: model.MapiContactDto;
+
+    /**
+     * Request model for convertMapiContactModelToContactModel operation.
+     * @param mapiContactDto MAPI contact model to convert
+     */
+    public constructor(
+        mapiContactDto?: model.MapiContactDto) {
+        
+        this.mapiContactDto = mapiContactDto;
+    }
+}
+
+/**
+ * Request model for convertMapiContactModelToFile operation.
+ */
+export class ConvertMapiContactModelToFileRequest {
+    /**
+     * File format Enum, available values: VCard, WebDav, Msg
+     */
+    public destinationFormat: string;
+
+    /**
+     * MAPI contact model to convert
+     */
+    public mapiContactDto: model.MapiContactDto;
+
+    /**
+     * Request model for convertMapiContactModelToFile operation.
+     * @param destinationFormat File format Enum, available values: VCard, WebDav, Msg
+     * @param mapiContactDto MAPI contact model to convert
+     */
+    public constructor(
+        destinationFormat?: string, 
+        mapiContactDto?: model.MapiContactDto) {
+        
+        this.destinationFormat = destinationFormat;
+        this.mapiContactDto = mapiContactDto;
+    }
+}
+
+/**
+ * Request model for convertMapiMessageModelToEmailModel operation.
+ */
+export class ConvertMapiMessageModelToEmailModelRequest {
+    /**
+     * MAPI message model to convert
+     */
+    public mapiMessage: model.MapiMessageDto;
+
+    /**
+     * Request model for convertMapiMessageModelToEmailModel operation.
+     * @param mapiMessage MAPI message model to convert
+     */
+    public constructor(
+        mapiMessage?: model.MapiMessageDto) {
+        
+        this.mapiMessage = mapiMessage;
+    }
+}
+
+/**
+ * Request model for convertMapiMessageModelToFile operation.
+ */
+export class ConvertMapiMessageModelToFileRequest {
+    /**
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     */
+    public destinationFormat: string;
+
+    /**
+     * MAPI message model to convert
+     */
+    public mapiMessage: model.MapiMessageDto;
+
+    /**
+     * Request model for convertMapiMessageModelToFile operation.
+     * @param destinationFormat File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * @param mapiMessage MAPI message model to convert
+     */
+    public constructor(
+        destinationFormat?: string, 
+        mapiMessage?: model.MapiMessageDto) {
+        
+        this.destinationFormat = destinationFormat;
+        this.mapiMessage = mapiMessage;
     }
 }
 
@@ -2019,6 +2223,26 @@ export class GetCalendarAttachmentRequest {
 }
 
 /**
+ * Request model for getCalendarFileAsMapiModel operation.
+ */
+export class GetCalendarFileAsMapiModelRequest {
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for getCalendarFileAsMapiModel operation.
+     * @param file File to convert
+     */
+    public constructor(
+        file?: Buffer) {
+        
+        this.file = file;
+    }
+}
+
+/**
  * Request model for getCalendarFileAsModel operation.
  */
 export class GetCalendarFileAsModelRequest {
@@ -2319,6 +2543,34 @@ export class GetContactAttachmentRequest {
 }
 
 /**
+ * Request model for getContactFileAsMapiModel operation.
+ */
+export class GetContactFileAsMapiModelRequest {
+    /**
+     * File format Enum, available values: VCard, WebDav, Msg
+     */
+    public fileFormat: string;
+
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for getContactFileAsMapiModel operation.
+     * @param fileFormat File format Enum, available values: VCard, WebDav, Msg
+     * @param file File to convert
+     */
+    public constructor(
+        fileFormat?: string, 
+        file?: Buffer) {
+        
+        this.fileFormat = fileFormat;
+        this.file = file;
+    }
+}
+
+/**
  * Request model for getContactFileAsModel operation.
  */
 export class GetContactFileAsModelRequest {
@@ -2604,7 +2856,7 @@ export class GetEmailAsFileRequest {
     public fileName: string;
 
     /**
-     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
 
@@ -2621,7 +2873,7 @@ export class GetEmailAsFileRequest {
     /**
      * Request model for getEmailAsFile operation.
      * @param fileName Email document file name
-     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param storage Storage name
      * @param folder Path to folder in storage
      */
@@ -2755,6 +3007,34 @@ export class GetEmailClientMultiAccountRequest {
 }
 
 /**
+ * Request model for getEmailFileAsMapiModel operation.
+ */
+export class GetEmailFileAsMapiModelRequest {
+    /**
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     */
+    public fileFormat: string;
+
+    /**
+     * File to convert
+     */
+    public file: Buffer;
+
+    /**
+     * Request model for getEmailFileAsMapiModel operation.
+     * @param fileFormat File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * @param file File to convert
+     */
+    public constructor(
+        fileFormat?: string, 
+        file?: Buffer) {
+        
+        this.fileFormat = fileFormat;
+        this.file = file;
+    }
+}
+
+/**
  * Request model for getEmailFileAsModel operation.
  */
 export class GetEmailFileAsModelRequest {
@@ -2779,7 +3059,7 @@ export class GetEmailFileAsModelRequest {
  */
 export class GetEmailModelRequest {
     /**
-     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
 
@@ -2800,7 +3080,7 @@ export class GetEmailModelRequest {
 
     /**
      * Request model for getEmailModel operation.
-     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param name Email document file name.
      * @param folder Path to folder in storage.
      * @param storage Storage name.
@@ -2823,7 +3103,7 @@ export class GetEmailModelRequest {
  */
 export class GetEmailModelListRequest {
     /**
-     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
 
@@ -2849,7 +3129,7 @@ export class GetEmailModelListRequest {
 
     /**
      * Request model for getEmailModelList operation.
-     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param folder Path to folder in storage.
      * @param storage Storage name.
      * @param itemsPerPage Count of items on page.
@@ -3051,6 +3331,86 @@ export class GetMapiAttachmentsRequest {
 }
 
 /**
+ * Request model for getMapiCalendarModel operation.
+ */
+export class GetMapiCalendarModelRequest {
+    /**
+     * Calendar file name in storage
+     */
+    public name: string;
+
+    /**
+     * Path to folder in storage
+     */
+    public folder: string;
+
+    /**
+     * Storage name
+     */
+    public storage: string;
+
+    /**
+     * Request model for getMapiCalendarModel operation.
+     * @param name Calendar file name in storage
+     * @param folder Path to folder in storage
+     * @param storage Storage name
+     */
+    public constructor(
+        name?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.name = name;
+        this.folder = folder;
+        this.storage = storage;
+    }
+}
+
+/**
+ * Request model for getMapiContactModel operation.
+ */
+export class GetMapiContactModelRequest {
+    /**
+     * Contact document format. Enum, available values: VCard, WebDav, Msg
+     */
+    public format: string;
+
+    /**
+     * Contact document file name.
+     */
+    public name: string;
+
+    /**
+     * Path to folder in storage.
+     */
+    public folder: string;
+
+    /**
+     * Storage name.
+     */
+    public storage: string;
+
+    /**
+     * Request model for getMapiContactModel operation.
+     * @param format Contact document format. Enum, available values: VCard, WebDav, Msg
+     * @param name Contact document file name.
+     * @param folder Path to folder in storage.
+     * @param storage Storage name.
+     */
+    public constructor(
+        format?: string, 
+        name?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.format = format;
+        this.name = name;
+        this.folder = folder;
+        this.storage = storage;
+    }
+}
+
+/**
  * Request model for getMapiList operation.
  */
 export class GetMapiListRequest {
@@ -3091,6 +3451,50 @@ export class GetMapiListRequest {
         this.storage = storage;
         this.itemsPerPage = itemsPerPage;
         this.pageNumber = pageNumber;
+    }
+}
+
+/**
+ * Request model for getMapiMessageModel operation.
+ */
+export class GetMapiMessageModelRequest {
+    /**
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     */
+    public format: string;
+
+    /**
+     * Email document file name.
+     */
+    public name: string;
+
+    /**
+     * Path to folder in storage.
+     */
+    public folder: string;
+
+    /**
+     * Storage name.
+     */
+    public storage: string;
+
+    /**
+     * Request model for getMapiMessageModel operation.
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * @param name Email document file name.
+     * @param folder Path to folder in storage.
+     * @param storage Storage name.
+     */
+    public constructor(
+        format?: string, 
+        name?: string, 
+        folder?: string, 
+        storage?: string) {
+        
+        this.format = format;
+        this.name = name;
+        this.folder = folder;
+        this.storage = storage;
     }
 }
 
@@ -3596,14 +4000,14 @@ export class SaveCalendarModelRequest {
     public name: string;
 
     /**
-     * Calendar properties update request
+     * Calendar update request
      */
     public rq: model.StorageModelRqOfCalendarDto;
 
     /**
      * Request model for saveCalendarModel operation.
      * @param name iCalendar file name in storage
-     * @param rq Calendar properties update request
+     * @param rq Calendar update request
      */
     public constructor(
         name?: string, 
@@ -3629,7 +4033,7 @@ export class SaveContactModelRequest {
     public name: string;
 
     /**
-     * Create contact request.
+     * Create/Update contact request.
      */
     public rq: model.StorageModelRqOfContactDto;
 
@@ -3637,7 +4041,7 @@ export class SaveContactModelRequest {
      * Request model for saveContactModel operation.
      * @param format Contact document format. Enum, available values: VCard, WebDav, Msg
      * @param name Contact document file name.
-     * @param rq Create contact request.
+     * @param rq Create/Update contact request.
      */
     public constructor(
         format?: string, 
@@ -3695,7 +4099,7 @@ export class SaveEmailClientMultiAccountRequest {
  */
 export class SaveEmailModelRequest {
     /**
-     * File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
 
@@ -3705,15 +4109,15 @@ export class SaveEmailModelRequest {
     public name: string;
 
     /**
-     * Calendar properties update request.
+     * Email document create/update request.
      */
     public rq: model.StorageModelRqOfEmailDto;
 
     /**
      * Request model for saveEmailModel operation.
-     * @param format File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html
+     * @param format File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param name Email document file name in storage.
-     * @param rq Calendar properties update request.
+     * @param rq Email document create/update request.
      */
     public constructor(
         format?: string, 
@@ -3763,6 +4167,114 @@ export class SaveMailOAuthAccountRequest {
         request?: model.SaveOAuthEmailAccountRequest) {
         
         this.request = request;
+    }
+}
+
+/**
+ * Request model for saveMapiCalendarModel operation.
+ */
+export class SaveMapiCalendarModelRequest {
+    /**
+     * Calendar file name in storage
+     */
+    public name: string;
+
+    /**
+     * File format Enum, available values: Ics, Msg
+     */
+    public format: string;
+
+    /**
+     * Calendar update request
+     */
+    public rq: model.StorageModelRqOfMapiCalendarDto;
+
+    /**
+     * Request model for saveMapiCalendarModel operation.
+     * @param name Calendar file name in storage
+     * @param format File format Enum, available values: Ics, Msg
+     * @param rq Calendar update request
+     */
+    public constructor(
+        name?: string, 
+        format?: string, 
+        rq?: model.StorageModelRqOfMapiCalendarDto) {
+        
+        this.name = name;
+        this.format = format;
+        this.rq = rq;
+    }
+}
+
+/**
+ * Request model for saveMapiContactModel operation.
+ */
+export class SaveMapiContactModelRequest {
+    /**
+     * Contact document format. Enum, available values: VCard, WebDav, Msg
+     */
+    public format: string;
+
+    /**
+     * Contact document file name.
+     */
+    public name: string;
+
+    /**
+     * Create/Update contact request.
+     */
+    public rq: model.StorageModelRqOfMapiContactDto;
+
+    /**
+     * Request model for saveMapiContactModel operation.
+     * @param format Contact document format. Enum, available values: VCard, WebDav, Msg
+     * @param name Contact document file name.
+     * @param rq Create/Update contact request.
+     */
+    public constructor(
+        format?: string, 
+        name?: string, 
+        rq?: model.StorageModelRqOfMapiContactDto) {
+        
+        this.format = format;
+        this.name = name;
+        this.rq = rq;
+    }
+}
+
+/**
+ * Request model for saveMapiMessageModel operation.
+ */
+export class SaveMapiMessageModelRequest {
+    /**
+     * File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     */
+    public format: string;
+
+    /**
+     * Message file name in storage.
+     */
+    public name: string;
+
+    /**
+     * Message create/update request.
+     */
+    public rq: model.StorageModelRqOfMapiMessageDto;
+
+    /**
+     * Request model for saveMapiMessageModel operation.
+     * @param format File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * @param name Message file name in storage.
+     * @param rq Message create/update request.
+     */
+    public constructor(
+        format?: string, 
+        name?: string, 
+        rq?: model.StorageModelRqOfMapiMessageDto) {
+        
+        this.format = format;
+        this.name = name;
+        this.rq = rq;
     }
 }
 

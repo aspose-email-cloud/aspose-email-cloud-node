@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emailFile** | **any** | Email document (*.eml) file location in storage              | [default to undefined]
+**emailFile** | [**StorageFileLocation**](StorageFileLocation.md) | Email document (*.eml) file location in storage              | [default to undefined]
 
  Parent class: [AccountBaseRequest](AccountBaseRequest.md)
 
