@@ -38,21 +38,45 @@ import { StorageApi } from "./storage-api";
  */
 export class CloudStorageGroup {
     
-    public file: FileApi;
+    private readonly _file: FileApi;
     
-    public folder: FolderApi;
+    private readonly _folder: FolderApi;
     
-    public storage: StorageApi;
+    private readonly _storage: StorageApi;
     
+
+    
+    /**
+     *  File operations controller
+     */
+    public get file(): FileApi {
+        return this._file;
+    }
+    
+    /**
+     *  Folder operations controller
+     */
+    public get folder(): FolderApi {
+        return this._folder;
+    }
+    
+    /**
+     *  Storage operations controller
+     */
+    public get storage(): StorageApi {
+        return this._storage;
+    }
+    
+
 
     constructor(configuration: Configuration)
     {
     
-        this.file = new FileApi(configuration);
+        this._file = new FileApi(configuration);
     
-        this.folder = new FolderApi(configuration);
+        this._folder = new FolderApi(configuration);
     
-        this.storage = new StorageApi(configuration);
+        this._storage = new StorageApi(configuration);
     
     }
 }

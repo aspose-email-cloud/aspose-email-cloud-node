@@ -53,25 +53,91 @@ export class EmailCloud {
     public configuration: Configuration;
 
     
-    public calendar: CalendarApi;
+    private readonly _calendar: CalendarApi;
     
-    public contact: ContactApi;
+    private readonly _contact: ContactApi;
     
-    public email: EmailApi;
+    private readonly _email: EmailApi;
     
-    public disposableEmail: DisposableEmailApi;
+    private readonly _disposableEmail: DisposableEmailApi;
     
-    public emailConfig: EmailConfigApi;
+    private readonly _emailConfig: EmailConfigApi;
     
     
-    public mapi: MapiGroup;
+    private readonly _mapi: MapiGroup;
     
-    public client: ClientGroup;
+    private readonly _client: ClientGroup;
     
-    public ai: AiGroup;
+    private readonly _ai: AiGroup;
     
-    public cloudStorage: CloudStorageGroup;
-        
+    private readonly _cloudStorage: CloudStorageGroup;
+    
+
+    
+    /**
+     *  iCalendar document operations.             
+     */
+    public get calendar(): CalendarApi {
+        return this._calendar;
+    }
+    
+    /**
+     *  Contact document operations. Supported formats: VCard, MSG, WebDav             
+     */
+    public get contact(): ContactApi {
+        return this._contact;
+    }
+    
+    /**
+     *  Email document (*.eml) operations.             
+     */
+    public get email(): EmailApi {
+        return this._email;
+    }
+    
+    /**
+     *  Check email address is disposable operations             
+     */
+    public get disposableEmail(): DisposableEmailApi {
+        return this._disposableEmail;
+    }
+    
+    /**
+     *  Email server configuration discovery.             
+     */
+    public get emailConfig(): EmailConfigApi {
+        return this._emailConfig;
+    }
+    
+    
+    /**
+     *  MAPI operations.             
+     */
+    public get mapi(): MapiGroup {
+        return this._mapi;
+    }
+    
+    /**
+     *  Builtin Email client operations.             
+     */
+    public get client(): ClientGroup {
+        return this._client;
+    }
+    
+    /**
+     *  AI powered operations.             
+     */
+    public get ai(): AiGroup {
+        return this._ai;
+    }
+    
+    /**
+     *  Cloud file storage operations.             
+     */
+    public get cloudStorage(): CloudStorageGroup {
+        return this._cloudStorage;
+    }
+    
 
     /**
      * @param appSID App SID.
@@ -82,24 +148,24 @@ export class EmailCloud {
     constructor(appSID: string, appKey: string, baseUrl?: string, debugMode?: boolean) {
         this.configuration = new Configuration(appKey, appSID, baseUrl, debugMode);
     
-        this.calendar = new CalendarApi(this.configuration);
+        this._calendar = new CalendarApi(this.configuration);
     
-        this.contact = new ContactApi(this.configuration);
+        this._contact = new ContactApi(this.configuration);
     
-        this.email = new EmailApi(this.configuration);
+        this._email = new EmailApi(this.configuration);
     
-        this.disposableEmail = new DisposableEmailApi(this.configuration);
+        this._disposableEmail = new DisposableEmailApi(this.configuration);
     
-        this.emailConfig = new EmailConfigApi(this.configuration);
+        this._emailConfig = new EmailConfigApi(this.configuration);
     
     
-        this.mapi = new MapiGroup(this.configuration);
+        this._mapi = new MapiGroup(this.configuration);
     
-        this.client = new ClientGroup(this.configuration);
+        this._client = new ClientGroup(this.configuration);
     
-        this.ai = new AiGroup(this.configuration);
+        this._ai = new AiGroup(this.configuration);
     
-        this.cloudStorage = new CloudStorageGroup(this.configuration);
+        this._cloudStorage = new CloudStorageGroup(this.configuration);
     
     }
 }

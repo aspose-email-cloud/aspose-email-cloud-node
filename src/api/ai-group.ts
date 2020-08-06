@@ -36,17 +36,34 @@ import { AiNameApi } from "./ai-name-api";
  */
 export class AiGroup {
     
-    public bcr: AiBcrApi;
+    private readonly _bcr: AiBcrApi;
     
-    public name: AiNameApi;
+    private readonly _name: AiNameApi;
     
+
+    
+    /**
+     *  AI Business card recognition operations.             
+     */
+    public get bcr(): AiBcrApi {
+        return this._bcr;
+    }
+    
+    /**
+     *  AI Name operations.             
+     */
+    public get name(): AiNameApi {
+        return this._name;
+    }
+    
+
 
     constructor(configuration: Configuration)
     {
     
-        this.bcr = new AiBcrApi(configuration);
+        this._bcr = new AiBcrApi(configuration);
     
-        this.name = new AiNameApi(configuration);
+        this._name = new AiNameApi(configuration);
     
     }
 }

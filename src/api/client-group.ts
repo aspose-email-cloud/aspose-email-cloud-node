@@ -40,25 +40,56 @@ import { ClientThreadApi } from "./client-thread-api";
  */
 export class ClientGroup {
     
-    public account: ClientAccountApi;
+    private readonly _account: ClientAccountApi;
     
-    public folder: ClientFolderApi;
+    private readonly _folder: ClientFolderApi;
     
-    public message: ClientMessageApi;
+    private readonly _message: ClientMessageApi;
     
-    public thread: ClientThreadApi;
+    private readonly _thread: ClientThreadApi;
     
+
+    
+    /**
+     *  Email server account for built-in client operations.             
+     */
+    public get account(): ClientAccountApi {
+        return this._account;
+    }
+    
+    /**
+     *  Email client folder operations.             
+     */
+    public get folder(): ClientFolderApi {
+        return this._folder;
+    }
+    
+    /**
+     *  Email client message operations.             
+     */
+    public get message(): ClientMessageApi {
+        return this._message;
+    }
+    
+    /**
+     *  Email client thread operations.             
+     */
+    public get thread(): ClientThreadApi {
+        return this._thread;
+    }
+    
+
 
     constructor(configuration: Configuration)
     {
     
-        this.account = new ClientAccountApi(configuration);
+        this._account = new ClientAccountApi(configuration);
     
-        this.folder = new ClientFolderApi(configuration);
+        this._folder = new ClientFolderApi(configuration);
     
-        this.message = new ClientMessageApi(configuration);
+        this._message = new ClientMessageApi(configuration);
     
-        this.thread = new ClientThreadApi(configuration);
+        this._thread = new ClientThreadApi(configuration);
     
     }
 }

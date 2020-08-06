@@ -38,21 +38,45 @@ import { MapiMessageApi } from "./mapi-message-api";
  */
 export class MapiGroup {
     
-    public calendar: MapiCalendarApi;
+    private readonly _calendar: MapiCalendarApi;
     
-    public contact: MapiContactApi;
+    private readonly _contact: MapiContactApi;
     
-    public message: MapiMessageApi;
+    private readonly _message: MapiMessageApi;
     
+
+    
+    /**
+     *  MAPI calendar operations.             
+     */
+    public get calendar(): MapiCalendarApi {
+        return this._calendar;
+    }
+    
+    /**
+     *  MAPI contact operations             
+     */
+    public get contact(): MapiContactApi {
+        return this._contact;
+    }
+    
+    /**
+     *  MAPI message operations             
+     */
+    public get message(): MapiMessageApi {
+        return this._message;
+    }
+    
+
 
     constructor(configuration: Configuration)
     {
     
-        this.calendar = new MapiCalendarApi(configuration);
+        this._calendar = new MapiCalendarApi(configuration);
     
-        this.contact = new MapiContactApi(configuration);
+        this._contact = new MapiContactApi(configuration);
     
-        this.message = new MapiMessageApi(configuration);
+        this._message = new MapiMessageApi(configuration);
     
     }
 }
