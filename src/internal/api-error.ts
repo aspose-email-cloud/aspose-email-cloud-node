@@ -22,7 +22,7 @@
 * SOFTWARE.
 */
 
-import * as model from "../model/model";
+import {ModelError} from "../model";
 
 /**
  * API error class.
@@ -37,7 +37,7 @@ export class ApiError extends Error {
     /**
      * Request error
      */
-    public readonly error: model.ModelError;
+    public readonly error: ModelError;
 
     /**
      * 
@@ -45,7 +45,7 @@ export class ApiError extends Error {
      * @param status Status code
      * @param requestError Request error
      */
-    constructor(message: string, status: number, requestError: model.ModelError) {
+    constructor(message: string, status: number, requestError: ModelError) {
         super(message);
 
         this.statusCode = status;

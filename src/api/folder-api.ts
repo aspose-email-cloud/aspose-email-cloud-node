@@ -96,7 +96,7 @@ export class FolderApi {
             }
         }
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 
@@ -140,7 +140,7 @@ export class FolderApi {
             }
         }
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 
@@ -188,7 +188,7 @@ export class FolderApi {
             }
         }
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 
@@ -290,7 +290,7 @@ export class FolderApi {
             }
         }
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 

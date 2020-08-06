@@ -2,7 +2,7 @@ import {EmailCloud} from "../src/api";
 import uuidv4 from "uuid/v4";
 import 'mocha';
 import {Suite} from "mocha";
-import {CreateFolderRequest, DeleteFolderRequest, StorageFolderLocation} from "../src/model";
+import {CreateFolderRequest, DeleteFolderRequest} from "../src/model";
 
 class SuiteBase {
     public api: () => EmailCloud;
@@ -21,10 +21,6 @@ class SuiteBase {
         const result = new Date();
         result.setTime(baseDate.getTime() + addHours * hour);
         return result;
-    }
-
-    public getStorageFolderLocation(): StorageFolderLocation {
-        return new StorageFolderLocation(this.storage(), this.folder());
     }
 }
 

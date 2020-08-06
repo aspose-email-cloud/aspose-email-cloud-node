@@ -219,7 +219,7 @@ export class MapiCalendarApi {
             body: ObjectSerializer.serialize(request, "MapiCalendarSaveRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 

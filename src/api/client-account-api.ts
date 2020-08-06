@@ -168,7 +168,7 @@ export class ClientAccountApi {
             body: ObjectSerializer.serialize(request, "ClientAccountSaveRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 
@@ -193,7 +193,7 @@ export class ClientAccountApi {
             body: ObjectSerializer.serialize(request, "ClientAccountSaveMultiRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 

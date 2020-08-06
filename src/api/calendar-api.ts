@@ -488,7 +488,7 @@ export class CalendarApi {
             body: ObjectSerializer.serialize(request, "CalendarSaveRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 

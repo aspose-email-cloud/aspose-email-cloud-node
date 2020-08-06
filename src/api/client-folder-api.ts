@@ -64,7 +64,7 @@ export class ClientFolderApi {
             body: ObjectSerializer.serialize(request, "ClientFolderCreateRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 
@@ -89,7 +89,7 @@ export class ClientFolderApi {
             body: ObjectSerializer.serialize(request, "ClientFolderDeleteRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 

@@ -419,7 +419,7 @@ export class EmailApi {
             body: ObjectSerializer.serialize(request, "EmailSaveRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 

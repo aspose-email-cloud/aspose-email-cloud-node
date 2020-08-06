@@ -169,7 +169,7 @@ export class ClientMessageApi {
             body: ObjectSerializer.serialize(request, "ClientMessageDeleteRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 
@@ -414,7 +414,7 @@ export class ClientMessageApi {
             body: ObjectSerializer.serialize(request, "ClientMessageMoveRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 
@@ -439,7 +439,7 @@ export class ClientMessageApi {
             body: ObjectSerializer.serialize(request, "ClientMessageSendRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 
@@ -509,7 +509,7 @@ export class ClientMessageApi {
             }
         }
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 
@@ -534,7 +534,7 @@ export class ClientMessageApi {
             body: ObjectSerializer.serialize(request, "ClientMessageSetIsReadRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 

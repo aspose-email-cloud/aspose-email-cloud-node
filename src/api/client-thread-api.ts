@@ -64,7 +64,7 @@ export class ClientThreadApi {
             body: ObjectSerializer.serialize(request, "ClientThreadDeleteRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 
@@ -223,7 +223,7 @@ export class ClientThreadApi {
             body: ObjectSerializer.serialize(request, "ClientThreadMoveRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 
@@ -248,7 +248,7 @@ export class ClientThreadApi {
             body: ObjectSerializer.serialize(request, "ClientThreadSetIsReadRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 

@@ -437,7 +437,7 @@ export class ContactApi {
             body: ObjectSerializer.serialize(request, "ContactSaveRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 

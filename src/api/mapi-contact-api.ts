@@ -237,7 +237,7 @@ export class MapiContactApi {
             body: ObjectSerializer.serialize(request, "MapiContactSaveRequest"),
         };
 
-        const response = await invokeApiMethod(requestOptions, this.configuration);
+        await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
 
