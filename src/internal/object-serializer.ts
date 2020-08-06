@@ -22,7 +22,7 @@
 * SOFTWARE.
 */
 
-import { enumsMap, typeMap } from "../model/model";
+import { typeMap } from "../model";
 
 const primitives = [
     "string",
@@ -41,7 +41,7 @@ const primitives = [
 export class ObjectSerializer {
 
     /**
-     * Serilize object to json string.
+     * Serialize object to json string.
      */
     public static serialize(data: any, type: string) {
         if (data == null) {
@@ -62,9 +62,6 @@ export class ObjectSerializer {
         } else if (type === "Date") {
             return (data as Date).toISOString();
         } else {
-            if (enumsMap[type]) {
-                return data;
-            }
             if (!typeMap[type]) { // in case we dont know the type
                 return data;
             }
@@ -116,10 +113,6 @@ export class ObjectSerializer {
         } else if (type === "Date") {
             return new Date(data);
         } else {
-            if (enumsMap[type]) {// is Enum
-                return data;
-            }
-
             if (!typeMap[type]) { // dont know the type
                 return data;
             }
@@ -156,10 +149,6 @@ export class ObjectSerializer {
         } else if (expectedType === "Date") {
             return expectedType;
         } else {
-            if (enumsMap[expectedType]) {
-                return expectedType;
-            }
-
             if (!typeMap[expectedType]) {
                 return expectedType; // w/e we don't know the type
             }

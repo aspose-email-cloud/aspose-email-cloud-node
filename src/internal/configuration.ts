@@ -22,7 +22,7 @@
 * SOFTWARE.
 */
 
-import { IAuthentication, JwtAuth  } from "../internal/auth";
+import { IAuthentication, JwtAuth  } from "./auth";
 const defaultBasePath = "https://api.aspose.cloud/";
 
 /**
@@ -57,7 +57,7 @@ export class Configuration {
     /**
      * Gets or sets the API version.
      */
-    public apiVersion: string = "v3.0";
+    public apiVersion: string = "v4.0";
 
     /**
      * Should not be used
