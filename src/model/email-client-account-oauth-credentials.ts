@@ -83,26 +83,29 @@ export class EmailClientAccountOauthCredentials extends model.EmailClientAccount
     /**
      * Represents email client account OAuth 2.0 credentials             
      * @param login Email client account login             
-     * @param discriminator 
      * @param clientId The client ID obtained from the Google Cloud Console during application registration.             
      * @param clientSecret The client secret obtained during application registration.             
      * @param refreshToken OAuth 2.0 refresh token             
      * @param requestUrl The url to obtain access token. If not specified, will try to discover from email client account host.             
      */
     public constructor(
-        login?: string,
-        discriminator?: string,
+        
+        login?: string
+        ,
         clientId?: string,
         clientSecret?: string,
         refreshToken?: string,
-        requestUrl?: string) {
+        requestUrl?: string
+    ) {
         super();
         this.login = login;
-        this.discriminator = discriminator;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.refreshToken = refreshToken;
         this.requestUrl = requestUrl;
+        
     }
 }
+
+
 

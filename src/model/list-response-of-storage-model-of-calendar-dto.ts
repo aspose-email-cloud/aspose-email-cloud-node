@@ -52,9 +52,14 @@ export class ListResponseOfStorageModelOfCalendarDto {
      * @param value 
      */
     public constructor(
-        value?: Array< model.StorageModelOfCalendarDto >) {
+        
+        value?: Array< model.StorageModelOfCalendarDto >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

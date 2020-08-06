@@ -68,11 +68,16 @@ export class EmailClientMultiAccount {
      * @param sendAccount Email client send account             
      */
     public constructor(
+        
         receiveAccounts?: Array< model.EmailClientAccount >,
-        sendAccount?: model.EmailClientAccount) {
+        sendAccount?: model.EmailClientAccount
+    ) {
         
         this.receiveAccounts = receiveAccounts;
         this.sendAccount = sendAccount;
+        
     }
 }
+
+
 

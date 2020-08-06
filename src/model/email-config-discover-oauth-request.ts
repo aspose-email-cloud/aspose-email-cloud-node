@@ -88,13 +88,15 @@ export class EmailConfigDiscoverOauthRequest extends model.DiscoverEmailConfigRe
      * @param requestUrl The url to obtain access token. If not specified, will be discovered from email configuration.             
      */
     public constructor(
+        
         address?: string,
         fastProcessing?: boolean,
         login?: string,
         clientId?: string,
         clientSecret?: string,
         refreshToken?: string,
-        requestUrl?: string) {
+        requestUrl?: string
+    ) {
         super();
         this.address = address;
         this.fastProcessing = fastProcessing;
@@ -103,6 +105,9 @@ export class EmailConfigDiscoverOauthRequest extends model.DiscoverEmailConfigRe
         this.clientSecret = clientSecret;
         this.refreshToken = refreshToken;
         this.requestUrl = requestUrl;
+        
     }
 }
+
+
 

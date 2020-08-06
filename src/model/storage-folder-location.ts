@@ -68,11 +68,16 @@ export class StorageFolderLocation {
      * @param folderPath A path to a folder in specified storage             
      */
     public constructor(
+        
         storage?: string,
-        folderPath?: string) {
+        folderPath?: string
+    ) {
         
         this.storage = storage;
         this.folderPath = folderPath;
+        
     }
 }
+
+
 

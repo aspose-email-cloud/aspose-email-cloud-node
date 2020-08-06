@@ -98,17 +98,22 @@ export class AiNameCulturalContext {
      * @param style Name writing style. Enum, available values: Formal, Informal, Legal, Academic
      */
     public constructor(
+        
         language?: string,
         location?: string,
         script?: string,
         encoding?: string,
-        style?: string) {
+        style?: string
+    ) {
         
         this.language = language;
         this.location = location;
         this.script = script;
         this.encoding = encoding;
         this.style = style;
+        
     }
 }
+
+
 

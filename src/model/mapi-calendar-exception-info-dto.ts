@@ -188,6 +188,7 @@ export class MapiCalendarExceptionInfoDto {
      * @param subType SubType.             
      */
     public constructor(
+        
         attachments?: Array< model.MapiAttachmentDto >,
         body?: string,
         busyStatus?: string,
@@ -201,7 +202,8 @@ export class MapiCalendarExceptionInfoDto {
         reminderSet?: boolean,
         startDateTime?: Date,
         subject?: string,
-        subType?: number) {
+        subType?: number
+    ) {
         
         this.attachments = attachments;
         this.body = body;
@@ -217,6 +219,9 @@ export class MapiCalendarExceptionInfoDto {
         this.startDateTime = startDateTime;
         this.subject = subject;
         this.subType = subType;
+        
     }
 }
+
+
 

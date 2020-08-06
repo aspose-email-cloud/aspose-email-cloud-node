@@ -59,11 +59,16 @@ export class StorageModelOfEmailClientMultiAccount {
      * @param value 
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
-        value?: model.EmailClientMultiAccount) {
+        value?: model.EmailClientMultiAccount
+    ) {
         
         this.storageFile = storageFile;
         this.value = value;
+        
     }
 }
+
+
 

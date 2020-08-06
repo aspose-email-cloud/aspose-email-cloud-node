@@ -68,11 +68,16 @@ export class AiNameFormatted {
      * @param comments Usually empty; can contain extra message describing some issue occurred during the formatting             
      */
     public constructor(
+        
         name?: string,
-        comments?: string) {
+        comments?: string
+    ) {
         
         this.name = name;
         this.comments = comments;
+        
     }
 }
+
+
 

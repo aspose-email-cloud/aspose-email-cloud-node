@@ -78,13 +78,18 @@ export class AiNameParsedRequest {
      * @param parsedName Parsed name             
      */
     public constructor(
+        
         culturalContext?: model.AiNameCulturalContext,
         format?: string,
-        parsedName?: Array< model.AiNameComponent >) {
+        parsedName?: Array< model.AiNameComponent >
+    ) {
         
         this.culturalContext = culturalContext;
         this.format = format;
         this.parsedName = parsedName;
+        
     }
 }
+
+
 

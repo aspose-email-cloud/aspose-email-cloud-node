@@ -60,13 +60,18 @@ export class MapiCalendarSaveRequest extends model.StorageModelOfMapiCalendarDto
      * @param format Calendar file format Enum, available values: Ics, Msg
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
         value?: model.MapiCalendarDto,
-        format?: string) {
+        format?: string
+    ) {
         super();
         this.storageFile = storageFile;
         this.value = value;
         this.format = format;
+        
     }
 }
+
+
 

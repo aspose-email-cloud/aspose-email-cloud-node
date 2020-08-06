@@ -68,11 +68,16 @@ export class CustomerEvent {
      * @param date Event date.             
      */
     public constructor(
+        
         category?: model.EnumWithCustomOfEventCategory,
-        date?: Date) {
+        date?: Date
+    ) {
         
         this.category = category;
         this.date = date;
+        
     }
 }
+
+
 

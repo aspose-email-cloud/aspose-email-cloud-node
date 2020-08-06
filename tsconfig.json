@@ -13,16 +13,14 @@
         "declaration": true,
         "lib": ["es6", "scripthost", "es2017"],
         "outDir": "dist",
-        "rootDir": "./",
+        "rootDir": ".",
         "esModuleInterop": true
     },
     "include": [
-        "src",
-        "test",
         "index.ts"
     ],
     "exclude": [
         "node_modules",
-        "exclude"
+        "dist"
     ]
 }

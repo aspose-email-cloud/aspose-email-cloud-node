@@ -68,11 +68,16 @@ export class ContactAsFileRequest {
      * @param value Contact model.             
      */
     public constructor(
+        
         format?: string,
-        value?: model.ContactDto) {
+        value?: model.ContactDto
+    ) {
         
         this.format = format;
         this.value = value;
+        
     }
 }
+
+
 

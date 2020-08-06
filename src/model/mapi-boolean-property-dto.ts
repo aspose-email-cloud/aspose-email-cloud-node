@@ -56,17 +56,20 @@ export class MapiBooleanPropertyDto extends model.MapiPropertyDto {
     /**
      * Mapi property with Boolean value             
      * @param descriptor Property descriptor             
-     * @param discriminator 
      * @param value Property value             
      */
     public constructor(
-        descriptor?: model.MapiPropertyDescriptor,
-        discriminator?: string,
-        value?: boolean) {
+        
+        descriptor?: model.MapiPropertyDescriptor
+        ,
+        value?: boolean
+    ) {
         super();
         this.descriptor = descriptor;
-        this.discriminator = discriminator;
         this.value = value;
+        
     }
 }
+
+
 

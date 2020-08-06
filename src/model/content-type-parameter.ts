@@ -68,11 +68,16 @@ export class ContentTypeParameter {
      * @param value Parameter value             
      */
     public constructor(
+        
         name?: string,
-        value?: string) {
+        value?: string
+    ) {
         
         this.name = name;
         this.value = value;
+        
     }
 }
+
+
 

@@ -59,11 +59,16 @@ export class StorageModelOfEmailDto {
      * @param value 
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
-        value?: model.EmailDto) {
+        value?: model.EmailDto
+    ) {
         
         this.storageFile = storageFile;
         this.value = value;
+        
     }
 }
+
+
 

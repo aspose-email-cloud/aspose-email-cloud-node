@@ -368,6 +368,7 @@ export class EmailDto {
      * @param xMailer The X-Mailer the software that created the e-mail message.             
      */
     public constructor(
+        
         alternateViews?: Array< model.AlternateView >,
         attachments?: Array< model.Attachment >,
         bcc?: Array< model.MailAddress >,
@@ -399,7 +400,8 @@ export class EmailDto {
         subjectEncoding?: string,
         timeZoneOffset?: number,
         to?: Array< model.MailAddress >,
-        xMailer?: string) {
+        xMailer?: string
+    ) {
         
         this.alternateViews = alternateViews;
         this.attachments = attachments;
@@ -433,6 +435,9 @@ export class EmailDto {
         this.timeZoneOffset = timeZoneOffset;
         this.to = to;
         this.xMailer = xMailer;
+        
     }
 }
+
+
 

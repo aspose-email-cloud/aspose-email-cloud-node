@@ -78,13 +78,18 @@ export class InstantMessengerAddress {
      * @param preferred Determines whether this address is preferred.             
      */
     public constructor(
+        
         category?: model.EnumWithCustomOfInstantMessengerCategory,
         address?: string,
-        preferred?: boolean) {
+        preferred?: boolean
+    ) {
         
         this.category = category;
         this.address = address;
         this.preferred = preferred;
+        
     }
 }
+
+
 

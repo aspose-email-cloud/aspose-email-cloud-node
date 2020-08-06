@@ -52,9 +52,14 @@ export class ListResponseOfEmailAccountConfig {
      * @param value 
      */
     public constructor(
-        value?: Array< model.EmailAccountConfig >) {
+        
+        value?: Array< model.EmailAccountConfig >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

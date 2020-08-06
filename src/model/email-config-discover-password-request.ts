@@ -58,15 +58,20 @@ export class EmailConfigDiscoverPasswordRequest extends model.DiscoverEmailConfi
      * @param password Email account password.             
      */
     public constructor(
+        
         address?: string,
         fastProcessing?: boolean,
         login?: string,
-        password?: string) {
+        password?: string
+    ) {
         super();
         this.address = address;
         this.fastProcessing = fastProcessing;
         this.login = login;
         this.password = password;
+        
     }
 }
+
+
 

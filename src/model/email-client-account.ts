@@ -108,12 +108,14 @@ export class EmailClientAccount {
      * @param cacheFile File with messages cache. Used to provide extra functions, which are not supported by account             
      */
     public constructor(
+        
         host?: string,
         port?: number,
         securityOptions?: string,
         protocolType?: string,
         credentials?: model.EmailClientAccountCredentials,
-        cacheFile?: model.StorageFileLocation) {
+        cacheFile?: model.StorageFileLocation
+    ) {
         
         this.host = host;
         this.port = port;
@@ -121,6 +123,9 @@ export class EmailClientAccount {
         this.protocolType = protocolType;
         this.credentials = credentials;
         this.cacheFile = cacheFile;
+        
     }
 }
+
+
 

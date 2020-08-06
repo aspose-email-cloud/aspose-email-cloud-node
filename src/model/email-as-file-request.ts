@@ -68,11 +68,16 @@ export class EmailAsFileRequest {
      * @param value Email model.             
      */
     public constructor(
+        
         format?: string,
-        value?: model.EmailDto) {
+        value?: model.EmailDto
+    ) {
         
         this.format = format;
         this.value = value;
+        
     }
 }
+
+
 

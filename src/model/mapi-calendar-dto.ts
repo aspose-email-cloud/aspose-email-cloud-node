@@ -224,7 +224,6 @@ export class MapiCalendarDto extends model.MapiMessageItemBaseDto {
      * @param subject Subject of the message.             
      * @param subjectPrefix Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
      * @param properties List of MAPI properties             
-     * @param discriminator 
      * @param appointmentCounterProposal Value indicating whether a Meeting Response object is a counter proposal.             
      * @param attendees Attendees             
      * @param busyStatus Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
@@ -245,6 +244,7 @@ export class MapiCalendarDto extends model.MapiMessageItemBaseDto {
      * @param organizer Organizer             
      */
     public constructor(
+        
         attachments?: Array< model.MapiAttachmentDto >,
         billing?: string,
         body?: string,
@@ -260,8 +260,8 @@ export class MapiCalendarDto extends model.MapiMessageItemBaseDto {
         sensitivity?: string,
         subject?: string,
         subjectPrefix?: string,
-        properties?: Array< model.MapiPropertyDto >,
-        discriminator?: string,
+        properties?: Array< model.MapiPropertyDto >
+        ,
         appointmentCounterProposal?: boolean,
         attendees?: model.MapiCalendarAttendeesDto,
         busyStatus?: string,
@@ -279,7 +279,8 @@ export class MapiCalendarDto extends model.MapiMessageItemBaseDto {
         startDate?: Date,
         startDateTimeZone?: model.MapiCalendarTimeZoneDto,
         uid?: string,
-        organizer?: model.MapiElectronicAddressDto) {
+        organizer?: model.MapiElectronicAddressDto
+    ) {
         super();
         this.attachments = attachments;
         this.billing = billing;
@@ -297,7 +298,6 @@ export class MapiCalendarDto extends model.MapiMessageItemBaseDto {
         this.subject = subject;
         this.subjectPrefix = subjectPrefix;
         this.properties = properties;
-        this.discriminator = discriminator;
         this.appointmentCounterProposal = appointmentCounterProposal;
         this.attendees = attendees;
         this.busyStatus = busyStatus;
@@ -316,6 +316,9 @@ export class MapiCalendarDto extends model.MapiMessageItemBaseDto {
         this.startDateTimeZone = startDateTimeZone;
         this.uid = uid;
         this.organizer = organizer;
+        
     }
 }
+
+
 

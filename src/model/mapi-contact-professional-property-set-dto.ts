@@ -118,13 +118,15 @@ export class MapiContactProfessionalPropertySetDto {
      * @param profession Gets or sets the profession of the contact             
      */
     public constructor(
+        
         title?: string,
         companyName?: string,
         departmentName?: string,
         officeLocation?: string,
         managerName?: string,
         assistant?: string,
-        profession?: string) {
+        profession?: string
+    ) {
         
         this.title = title;
         this.companyName = companyName;
@@ -133,6 +135,9 @@ export class MapiContactProfessionalPropertySetDto {
         this.managerName = managerName;
         this.assistant = assistant;
         this.profession = profession;
+        
     }
 }
+
+
 

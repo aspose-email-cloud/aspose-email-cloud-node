@@ -60,13 +60,18 @@ export class ClientMessageDeleteRequest extends model.ClientMessageBaseRequest {
      * @param folder Folder to delete message from.             
      */
     public constructor(
+        
         accountLocation?: model.StorageFileLocation,
         messageId?: string,
-        folder?: string) {
+        folder?: string
+    ) {
         super();
         this.accountLocation = accountLocation;
         this.messageId = messageId;
         this.folder = folder;
+        
     }
 }
+
+
 

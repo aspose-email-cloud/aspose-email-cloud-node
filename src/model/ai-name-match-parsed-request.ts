@@ -61,15 +61,20 @@ export class AiNameMatchParsedRequest extends model.AiNameParsedRequest {
      * @param otherParsedName Other parsed name to match             
      */
     public constructor(
+        
         culturalContext?: model.AiNameCulturalContext,
         format?: string,
         parsedName?: Array< model.AiNameComponent >,
-        otherParsedName?: Array< model.AiNameComponent >) {
+        otherParsedName?: Array< model.AiNameComponent >
+    ) {
         super();
         this.culturalContext = culturalContext;
         this.format = format;
         this.parsedName = parsedName;
         this.otherParsedName = otherParsedName;
+        
     }
 }
+
+
 

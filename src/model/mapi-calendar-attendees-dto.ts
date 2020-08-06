@@ -88,15 +88,20 @@ export class MapiCalendarAttendeesDto {
      * @param responseRequested Value indicating whether a response is requested to a Message object.             
      */
     public constructor(
+        
         appointmentRecipients?: Array< model.MapiRecipientDto >,
         appointmentUnsendableRecipients?: Array< model.MapiRecipientDto >,
         notAllowPropose?: boolean,
-        responseRequested?: boolean) {
+        responseRequested?: boolean
+    ) {
         
         this.appointmentRecipients = appointmentRecipients;
         this.appointmentUnsendableRecipients = appointmentUnsendableRecipients;
         this.notAllowPropose = notAllowPropose;
         this.responseRequested = responseRequested;
+        
     }
 }
+
+
 

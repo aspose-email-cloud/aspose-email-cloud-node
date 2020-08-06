@@ -52,9 +52,14 @@ export class ListResponseOfContactDto {
      * @param value 
      */
     public constructor(
-        value?: Array< model.ContactDto >) {
+        
+        value?: Array< model.ContactDto >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

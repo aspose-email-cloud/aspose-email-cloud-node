@@ -68,11 +68,16 @@ export class MapiAttachmentDto {
      * @param dataBase64 Attachment data represented as Base64 string.             
      */
     public constructor(
+        
         name?: string,
-        dataBase64?: string) {
+        dataBase64?: string
+    ) {
         
         this.name = name;
         this.dataBase64 = dataBase64;
+        
     }
 }
+
+
 

@@ -58,9 +58,14 @@ export class ReminderAttendee {
      * @param address Contains the email address.
      */
     public constructor(
-        address?: string) {
+        
+        address?: string
+    ) {
         
         this.address = address;
+        
     }
 }
+
+
 

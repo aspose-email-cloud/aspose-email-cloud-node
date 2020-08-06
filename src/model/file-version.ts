@@ -73,13 +73,15 @@ export class FileVersion extends model.StorageFile {
      * @param isLatest Specifies whether the file is (true) or is not (false) the latest version of an file.
      */
     public constructor(
+        
         name?: string,
         isFolder?: boolean,
         modifiedDate?: Date,
         size?: number,
         path?: string,
         versionId?: string,
-        isLatest?: boolean) {
+        isLatest?: boolean
+    ) {
         super();
         this.name = name;
         this.isFolder = isFolder;
@@ -88,6 +90,9 @@ export class FileVersion extends model.StorageFile {
         this.path = path;
         this.versionId = versionId;
         this.isLatest = isLatest;
+        
     }
 }
+
+
 

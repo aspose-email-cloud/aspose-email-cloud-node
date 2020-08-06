@@ -78,13 +78,18 @@ export class CalendarAsAlternateRequest {
      * @param sequenceId iCalendar sequence id             
      */
     public constructor(
+        
         value?: model.CalendarDto,
         action?: string,
-        sequenceId?: string) {
+        sequenceId?: string
+    ) {
         
         this.value = value;
         this.action = action;
         this.sequenceId = sequenceId;
+        
     }
 }
+
+
 

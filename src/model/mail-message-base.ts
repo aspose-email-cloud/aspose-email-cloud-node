@@ -61,12 +61,15 @@ export class MailMessageBase {
 
     /**
      * Universal object that stores email messages in different formats.             
-     * @param discriminator 
      */
     public constructor(
-        discriminator?: string) {
         
-        this.discriminator = discriminator;
+        
+    ) {
+        
+        
     }
 }
+
+
 

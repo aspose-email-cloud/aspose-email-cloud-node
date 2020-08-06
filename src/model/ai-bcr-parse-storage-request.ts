@@ -78,13 +78,18 @@ export class AiBcrParseStorageRequest {
      * @param options Recognition options.             
      */
     public constructor(
+        
         outFolder?: model.StorageFolderLocation,
         images?: Array< model.AiBcrImageStorageFile >,
-        options?: model.AiBcrOptions) {
+        options?: model.AiBcrOptions
+    ) {
         
         this.outFolder = outFolder;
         this.images = images;
         this.options = options;
+        
     }
 }
+
+
 

@@ -50,9 +50,14 @@ export class StorageFileLocationList extends model.ListResponseOfStorageFileLoca
      * @param value 
      */
     public constructor(
-        value?: Array< model.StorageFileLocation >) {
+        
+        value?: Array< model.StorageFileLocation >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

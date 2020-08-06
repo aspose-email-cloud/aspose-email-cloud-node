@@ -68,11 +68,16 @@ export class AiNameExtracted {
      * @param score Extracted name score             
      */
     public constructor(
+        
         name?: Array< model.AiNameExtractedComponent >,
-        score?: number) {
+        score?: number
+    ) {
         
         this.name = name;
         this.score = score;
+        
     }
 }
+
+
 

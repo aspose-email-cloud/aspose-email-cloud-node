@@ -68,11 +68,16 @@ export class ErrorDetails {
      * @param date Date
      */
     public constructor(
+        
         requestId?: string,
-        date?: Date) {
+        date?: Date
+    ) {
         
         this.requestId = requestId;
         this.date = date;
+        
     }
 }
+
+
 

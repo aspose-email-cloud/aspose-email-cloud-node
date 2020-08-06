@@ -52,9 +52,14 @@ export class ListResponseOfMailServerFolder {
      * @param value 
      */
     public constructor(
-        value?: Array< model.MailServerFolder >) {
+        
+        value?: Array< model.MailServerFolder >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

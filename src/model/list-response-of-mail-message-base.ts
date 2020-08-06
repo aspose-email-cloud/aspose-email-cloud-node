@@ -52,9 +52,14 @@ export class ListResponseOfMailMessageBase {
      * @param value 
      */
     public constructor(
-        value?: Array< model.MailMessageBase >) {
+        
+        value?: Array< model.MailMessageBase >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

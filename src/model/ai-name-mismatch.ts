@@ -78,13 +78,18 @@ export class AiNameMismatch {
      * @param explanation Explanation or mismatch subtype             
      */
     public constructor(
+        
         category?: string,
         similarity?: number,
-        explanation?: string) {
+        explanation?: string
+    ) {
         
         this.category = category;
         this.similarity = similarity;
         this.explanation = explanation;
+        
     }
 }
+
+
 

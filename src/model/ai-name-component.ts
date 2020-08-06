@@ -88,15 +88,20 @@ export class AiNameComponent {
      * @param position Component position from 0             
      */
     public constructor(
+        
         value?: string,
         category?: string,
         score?: number,
-        position?: number) {
+        position?: number
+    ) {
         
         this.value = value;
         this.category = category;
         this.score = score;
         this.position = position;
+        
     }
 }
+
+
 

@@ -77,29 +77,32 @@ export class MonthlyRecurrencePatternDto extends model.RecurrencePatternDto {
      * @param occurs Number of occurrences of the recurrence pattern.             
      * @param endDate End date.             
      * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
-     * @param discriminator 
      * @param startDay Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
      * @param startOffset Start offset.             
      * @param startPosition Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
      */
     public constructor(
+        
         interval?: number,
         occurs?: number,
         endDate?: Date,
-        weekStart?: string,
-        discriminator?: string,
+        weekStart?: string
+        ,
         startDay?: string,
         startOffset?: number,
-        startPosition?: string) {
+        startPosition?: string
+    ) {
         super();
         this.interval = interval;
         this.occurs = occurs;
         this.endDate = endDate;
         this.weekStart = weekStart;
-        this.discriminator = discriminator;
         this.startDay = startDay;
         this.startOffset = startOffset;
         this.startPosition = startPosition;
+        
     }
 }
+
+
 

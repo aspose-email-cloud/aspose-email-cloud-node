@@ -60,13 +60,18 @@ export class MapiContactSaveRequest extends model.StorageModelOfMapiContactDto {
      * @param format Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
         value?: model.MapiContactDto,
-        format?: string) {
+        format?: string
+    ) {
         super();
         this.storageFile = storageFile;
         this.value = value;
         this.format = format;
+        
     }
 }
+
+
 

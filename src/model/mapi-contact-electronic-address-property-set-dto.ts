@@ -138,6 +138,7 @@ export class MapiContactElectronicAddressPropertySetDto {
      * @param useAutocomplete Indicates that one electronic address is completed automatically in case if user does not set any electronic address             
      */
     public constructor(
+        
         businessFax?: model.MapiContactElectronicAddressDto,
         defaultEmailAddress?: model.MapiContactElectronicAddressDto,
         email1?: model.MapiContactElectronicAddressDto,
@@ -146,7 +147,8 @@ export class MapiContactElectronicAddressPropertySetDto {
         homeFax?: model.MapiContactElectronicAddressDto,
         isEmpty?: boolean,
         primaryFax?: model.MapiContactElectronicAddressDto,
-        useAutocomplete?: boolean) {
+        useAutocomplete?: boolean
+    ) {
         
         this.businessFax = businessFax;
         this.defaultEmailAddress = defaultEmailAddress;
@@ -157,6 +159,9 @@ export class MapiContactElectronicAddressPropertySetDto {
         this.isEmpty = isEmpty;
         this.primaryFax = primaryFax;
         this.useAutocomplete = useAutocomplete;
+        
     }
 }
+
+
 

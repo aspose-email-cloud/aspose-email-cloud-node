@@ -78,13 +78,18 @@ export class PhoneNumber {
      * @param preferred Defines whether phone number is preferred.             
      */
     public constructor(
+        
         category?: model.EnumWithCustomOfPhoneNumberCategory,
         number?: string,
-        preferred?: boolean) {
+        preferred?: boolean
+    ) {
         
         this.category = category;
         this.number = number;
         this.preferred = preferred;
+        
     }
 }
+
+
 

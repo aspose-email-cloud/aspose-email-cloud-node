@@ -56,17 +56,20 @@ export class MapiDateTimePropertyDto extends model.MapiPropertyDto {
     /**
      * Mapi property with DateTime value             
      * @param descriptor Property descriptor             
-     * @param discriminator 
      * @param value Property value             
      */
     public constructor(
-        descriptor?: model.MapiPropertyDescriptor,
-        discriminator?: string,
-        value?: Date) {
+        
+        descriptor?: model.MapiPropertyDescriptor
+        ,
+        value?: Date
+    ) {
         super();
         this.descriptor = descriptor;
-        this.discriminator = discriminator;
         this.value = value;
+        
     }
 }
+
+
 

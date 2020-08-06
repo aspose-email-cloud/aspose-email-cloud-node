@@ -61,12 +61,15 @@ export class MapiPropertyDescriptor {
 
     /**
      * Mapi property descriptor             
-     * @param discriminator 
      */
     public constructor(
-        discriminator?: string) {
         
-        this.discriminator = discriminator;
+        
+    ) {
+        
+        
     }
 }
+
+
 

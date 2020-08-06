@@ -60,13 +60,18 @@ export class MapiMessageSaveRequest extends model.StorageModelOfMapiMessageDto {
      * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
         value?: model.MapiMessageDto,
-        format?: string) {
+        format?: string
+    ) {
         super();
         this.storageFile = storageFile;
         this.value = value;
         this.format = format;
+        
     }
 }
+
+
 

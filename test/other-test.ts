@@ -38,7 +38,7 @@ describe('Other tests', function () {
     it('Check EmailClientAccount #pipeline', async function () {
         const accountCredentials =
             new EmailClientAccountPasswordCredentials(
-                'example@gmail.com', undefined, 'password');
+                'example@gmail.com', 'password');
         const account = new EmailClientAccount('pop.gmail.com', 995, 'SSLAuto', 'POP3',
             accountCredentials,
             new StorageFileLocation(td.storage(), td.folder(), 'account.cache'));
@@ -58,13 +58,13 @@ describe('Other tests', function () {
         const multiAccount = new EmailClientMultiAccount(
             [new EmailClientAccount('imap.gmail.com', 993, 'SSLAuto', 'IMAP',
                 new EmailClientAccountPasswordCredentials(
-                    'example@gmail.com', undefined, 'password')),
+                    'example@gmail.com', 'password')),
                 new EmailClientAccount('exchange.outlook.com', 443, 'SSLAuto', 'EWS',
                     new EmailClientAccountOauthCredentials(
                         'example@gmail.com', undefined, 'clientId', 'clientSecret', 'refreshToken'))],
             new EmailClientAccount('smtp.gmail.com', 465, 'SSLAuto', 'SMTP',
                 new EmailClientAccountPasswordCredentials(
-                    'example@gmail.com', undefined, 'password')));
+                    'example@gmail.com', 'password')));
         const fileName = uuidv4() + '.multi.account';
         // Save multi account
         await td.api().client.account.saveMulti(

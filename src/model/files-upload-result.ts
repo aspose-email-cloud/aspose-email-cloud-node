@@ -68,11 +68,16 @@ export class FilesUploadResult {
      * @param errors List of errors.
      */
     public constructor(
+        
         uploaded?: Array<string>,
-        errors?: Array<Error>) {
+        errors?: Array<Error>
+    ) {
         
         this.uploaded = uploaded;
         this.errors = errors;
+        
     }
 }
+
+
 

@@ -108,12 +108,14 @@ export class EmailAddress {
      * @param originalAddressString The original e-mail address string             
      */
     public constructor(
+        
         category?: model.EnumWithCustomOfEmailAddressCategory,
         displayName?: string,
         preferred?: boolean,
         routingType?: string,
         address?: string,
-        originalAddressString?: string) {
+        originalAddressString?: string
+    ) {
         
         this.category = category;
         this.displayName = displayName;
@@ -121,6 +123,9 @@ export class EmailAddress {
         this.routingType = routingType;
         this.address = address;
         this.originalAddressString = originalAddressString;
+        
     }
 }
+
+
 

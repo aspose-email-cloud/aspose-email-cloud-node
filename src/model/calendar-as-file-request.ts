@@ -68,11 +68,16 @@ export class CalendarAsFileRequest {
      * @param value iCalendar model             
      */
     public constructor(
+        
         format?: string,
-        value?: model.CalendarDto) {
+        value?: model.CalendarDto
+    ) {
         
         this.format = format;
         this.value = value;
+        
     }
 }
+
+
 

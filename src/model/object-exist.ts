@@ -68,11 +68,16 @@ export class ObjectExist {
      * @param isFolder True if it is a folder, false if it is a file.
      */
     public constructor(
+        
         exists?: boolean,
-        isFolder?: boolean) {
+        isFolder?: boolean
+    ) {
         
         this.exists = exists;
         this.isFolder = isFolder;
+        
     }
 }
+
+
 

@@ -98,17 +98,22 @@ export class MapiElectronicAddressDto {
      * @param originalDisplayName SMTP e-mail address that  corresponds to the e-mail address.             
      */
     public constructor(
+        
         addressType?: string,
         emailAddress?: string,
         displayName?: string,
         faxNumber?: string,
-        originalDisplayName?: string) {
+        originalDisplayName?: string
+    ) {
         
         this.addressType = addressType;
         this.emailAddress = emailAddress;
         this.displayName = displayName;
         this.faxNumber = faxNumber;
         this.originalDisplayName = originalDisplayName;
+        
     }
 }
+
+
 

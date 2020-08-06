@@ -68,11 +68,16 @@ export class NameValuePair {
      * @param value Property value             
      */
     public constructor(
+        
         name?: string,
-        value?: string) {
+        value?: string
+    ) {
         
         this.name = name;
         this.value = value;
+        
     }
 }
+
+
 

@@ -52,9 +52,14 @@ export class ListResponseOfStorageFileLocation {
      * @param value 
      */
     public constructor(
-        value?: Array< model.StorageFileLocation >) {
+        
+        value?: Array< model.StorageFileLocation >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

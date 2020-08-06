@@ -64,18 +64,21 @@ export class MailMessageBase64 extends model.MailMessageBase {
 
     /**
      * Email message represented as file, encoded to Base64 format.             
-     * @param discriminator 
      * @param valueBase64 Email message file data encoded to Base64 string.             
      * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public constructor(
-        discriminator?: string,
+        
+        //,
         valueBase64?: string,
-        format?: string) {
+        format?: string
+    ) {
         super();
-        this.discriminator = discriminator;
         this.valueBase64 = valueBase64;
         this.format = format;
+        
     }
 }
+
+
 

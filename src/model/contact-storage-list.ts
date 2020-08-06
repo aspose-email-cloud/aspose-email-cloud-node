@@ -50,9 +50,14 @@ export class ContactStorageList extends model.ListResponseOfStorageModelOfContac
      * @param value 
      */
     public constructor(
-        value?: Array< model.StorageModelOfContactDto >) {
+        
+        value?: Array< model.StorageModelOfContactDto >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

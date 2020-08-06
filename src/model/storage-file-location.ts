@@ -60,13 +60,18 @@ export class StorageFileLocation extends model.StorageFolderLocation {
      * @param fileName A file name in storage             
      */
     public constructor(
+        
         storage?: string,
         folderPath?: string,
-        fileName?: string) {
+        fileName?: string
+    ) {
         super();
         this.storage = storage;
         this.folderPath = folderPath;
         this.fileName = fileName;
+        
     }
 }
+
+
 

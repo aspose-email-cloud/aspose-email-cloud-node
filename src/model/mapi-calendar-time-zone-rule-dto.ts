@@ -138,6 +138,7 @@ export class MapiCalendarTimeZoneRuleDto {
      * @param year Year.             
      */
     public constructor(
+        
         date?: Date,
         dayOfWeek?: string,
         hour?: number,
@@ -146,7 +147,8 @@ export class MapiCalendarTimeZoneRuleDto {
         month?: number,
         position?: string,
         seconds?: number,
-        year?: number) {
+        year?: number
+    ) {
         
         this.date = date;
         this.dayOfWeek = dayOfWeek;
@@ -157,6 +159,9 @@ export class MapiCalendarTimeZoneRuleDto {
         this.position = position;
         this.seconds = seconds;
         this.year = year;
+        
     }
 }
+
+
 

@@ -58,9 +58,14 @@ export class AiBcrImage {
      * @param isSingle Determines that image contains single VCard or more.             
      */
     public constructor(
-        isSingle?: boolean) {
+        
+        isSingle?: boolean
+    ) {
         
         this.isSingle = isSingle;
+        
     }
 }
+
+
 

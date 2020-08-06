@@ -68,11 +68,16 @@ export class MapiCalendarAsFileRequest {
      * @param value MAPI calendar model.             
      */
     public constructor(
+        
         format?: string,
-        value?: model.MapiCalendarDto) {
+        value?: model.MapiCalendarDto
+    ) {
         
         this.format = format;
         this.value = value;
+        
     }
 }
+
+
 

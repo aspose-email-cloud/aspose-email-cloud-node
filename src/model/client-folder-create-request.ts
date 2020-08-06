@@ -69,13 +69,18 @@ export class ClientFolderCreateRequest extends model.ClientAccountBaseRequest {
      * @param folderName Folder name.             
      */
     public constructor(
+        
         accountLocation?: model.StorageFileLocation,
         parentFolder?: string,
-        folderName?: string) {
+        folderName?: string
+    ) {
         super();
         this.accountLocation = accountLocation;
         this.parentFolder = parentFolder;
         this.folderName = folderName;
+        
     }
 }
+
+
 

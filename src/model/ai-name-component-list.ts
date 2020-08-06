@@ -50,9 +50,14 @@ export class AiNameComponentList extends model.ListResponseOfAiNameComponent {
      * @param value 
      */
     public constructor(
-        value?: Array< model.AiNameComponent >) {
+        
+        value?: Array< model.AiNameComponent >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

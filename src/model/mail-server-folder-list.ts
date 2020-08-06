@@ -50,9 +50,14 @@ export class MailServerFolderList extends model.ListResponseOfMailServerFolder {
      * @param value 
      */
     public constructor(
-        value?: Array< model.MailServerFolder >) {
+        
+        value?: Array< model.MailServerFolder >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

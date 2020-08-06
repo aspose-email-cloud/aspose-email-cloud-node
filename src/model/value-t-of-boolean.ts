@@ -52,9 +52,14 @@ export class ValueTOfBoolean {
      * @param value 
      */
     public constructor(
-        value?: boolean) {
+        
+        value?: boolean
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

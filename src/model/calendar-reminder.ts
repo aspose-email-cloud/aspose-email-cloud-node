@@ -128,6 +128,7 @@ export class CalendarReminder {
      * @param trigger Specifies when an alarm will trigger.
      */
     public constructor(
+        
         action?: string,
         attachments?: Array<string>,
         attendees?: Array< model.ReminderAttendee >,
@@ -135,7 +136,8 @@ export class CalendarReminder {
         duration?: number,
         repeat?: number,
         summary?: string,
-        trigger?: model.ReminderTrigger) {
+        trigger?: model.ReminderTrigger
+    ) {
         
         this.action = action;
         this.attachments = attachments;
@@ -145,6 +147,9 @@ export class CalendarReminder {
         this.repeat = repeat;
         this.summary = summary;
         this.trigger = trigger;
+        
     }
 }
+
+
 

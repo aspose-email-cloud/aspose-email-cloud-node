@@ -78,13 +78,18 @@ export class ReminderTrigger {
      * @param related Specify the relationship of the alarm trigger with respect to the start or end of the event. Enum, available values: Start, End
      */
     public constructor(
+        
         dateTime?: Date,
         duration?: number,
-        related?: string) {
+        related?: string
+    ) {
         
         this.dateTime = dateTime;
         this.duration = duration;
         this.related = related;
+        
     }
 }
+
+
 

@@ -68,11 +68,16 @@ export class MapiContactAsFileRequest {
      * @param value MAPI contact model.             
      */
     public constructor(
+        
         format?: string,
-        value?: model.MapiContactDto) {
+        value?: model.MapiContactDto
+    ) {
         
         this.format = format;
         this.value = value;
+        
     }
 }
+
+
 

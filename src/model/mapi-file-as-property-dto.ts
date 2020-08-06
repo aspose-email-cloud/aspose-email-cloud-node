@@ -56,17 +56,20 @@ export class MapiFileAsPropertyDto extends model.MapiPropertyDto {
     /**
      * Mapi property with FileAsMapping value             
      * @param descriptor Property descriptor             
-     * @param discriminator 
      * @param value Defines how to construct what is displayed for a contact in the FileAs property. Enum, available values: None, LastCommaFirst, FirstSpaceLast, Company, LastCommaFirstCompany, CompanyLastFirst, LastFirst, LastFirstCompany, CompanyLastCommaFirst, LastFirstSuffix, LastSpaceFirstCompany, CompanyLastSpaceFirst, LastSpaceFirst, DisplayName, FirstName, LastFirstMiddleSuffix, LastName, Empty
      */
     public constructor(
-        descriptor?: model.MapiPropertyDescriptor,
-        discriminator?: string,
-        value?: string) {
+        
+        descriptor?: model.MapiPropertyDescriptor
+        ,
+        value?: string
+    ) {
         super();
         this.descriptor = descriptor;
-        this.discriminator = discriminator;
         this.value = value;
+        
     }
 }
+
+
 

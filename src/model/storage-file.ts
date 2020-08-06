@@ -98,17 +98,22 @@ export class StorageFile {
      * @param path File or folder path.
      */
     public constructor(
+        
         name?: string,
         isFolder?: boolean,
         modifiedDate?: Date,
         size?: number,
-        path?: string) {
+        path?: string
+    ) {
         
         this.name = name;
         this.isFolder = isFolder;
         this.modifiedDate = modifiedDate;
         this.size = size;
         this.path = path;
+        
     }
 }
+
+
 

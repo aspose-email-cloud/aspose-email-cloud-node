@@ -60,13 +60,18 @@ export class EmailSaveRequest extends model.StorageModelOfEmailDto {
      * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
         value?: model.EmailDto,
-        format?: string) {
+        format?: string
+    ) {
         super();
         this.storageFile = storageFile;
         this.value = value;
         this.format = format;
+        
     }
 }
+
+
 

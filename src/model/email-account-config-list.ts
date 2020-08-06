@@ -50,9 +50,14 @@ export class EmailAccountConfigList extends model.ListResponseOfEmailAccountConf
      * @param value 
      */
     public constructor(
-        value?: Array< model.EmailAccountConfig >) {
+        
+        value?: Array< model.EmailAccountConfig >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

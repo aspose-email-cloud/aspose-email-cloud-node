@@ -58,9 +58,14 @@ export class FileVersions {
      * @param value File versions FileVersion.
      */
     public constructor(
-        value?: Array< model.FileVersion >) {
+        
+        value?: Array< model.FileVersion >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

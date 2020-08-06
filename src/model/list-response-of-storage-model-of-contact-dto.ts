@@ -52,9 +52,14 @@ export class ListResponseOfStorageModelOfContactDto {
      * @param value 
      */
     public constructor(
-        value?: Array< model.StorageModelOfContactDto >) {
+        
+        value?: Array< model.StorageModelOfContactDto >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

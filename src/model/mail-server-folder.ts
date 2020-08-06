@@ -68,11 +68,16 @@ export class MailServerFolder {
      * @param id Gets or sets mail folder id             
      */
     public constructor(
+        
         name?: string,
-        id?: string) {
+        id?: string
+    ) {
         
         this.name = name;
         this.id = id;
+        
     }
 }
+
+
 

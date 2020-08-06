@@ -108,12 +108,14 @@ export class MapiCalendarEventRecurrenceDto {
      * @param timeZoneStruct Time zone information for a recurring meeting.             
      */
     public constructor(
+        
         appointmentTimeZoneDefinitionRecur?: model.MapiCalendarTimeZoneDto,
         clipEnd?: Date,
         clipStart?: Date,
         isException?: boolean,
         recurrencePattern?: model.MapiCalendarRecurrencePatternDto,
-        timeZoneStruct?: model.MapiCalendarTimeZoneDto) {
+        timeZoneStruct?: model.MapiCalendarTimeZoneDto
+    ) {
         
         this.appointmentTimeZoneDefinitionRecur = appointmentTimeZoneDefinitionRecur;
         this.clipEnd = clipEnd;
@@ -121,6 +123,9 @@ export class MapiCalendarEventRecurrenceDto {
         this.isException = isException;
         this.recurrencePattern = recurrencePattern;
         this.timeZoneStruct = timeZoneStruct;
+        
     }
 }
+
+
 

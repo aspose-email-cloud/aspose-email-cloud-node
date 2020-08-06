@@ -68,11 +68,16 @@ export class AiNameExtractedComponent {
      * @param value Extracted value             
      */
     public constructor(
+        
         category?: string,
-        value?: string) {
+        value?: string
+    ) {
         
         this.category = category;
         this.value = value;
+        
     }
 }
+
+
 

@@ -128,6 +128,7 @@ export class MapiContactOtherPropertySetDto {
      * @param userField4 Specifies the forth field on the contact that is intended for miscellaneous use for the contact.             
      */
     public constructor(
+        
         _private?: boolean,
         journal?: boolean,
         reminderTime?: Date,
@@ -135,7 +136,8 @@ export class MapiContactOtherPropertySetDto {
         userField1?: string,
         userField2?: string,
         userField3?: string,
-        userField4?: string) {
+        userField4?: string
+    ) {
         
         this._private = _private;
         this.journal = journal;
@@ -145,6 +147,9 @@ export class MapiContactOtherPropertySetDto {
         this.userField2 = userField2;
         this.userField3 = userField3;
         this.userField4 = userField4;
+        
     }
 }
+
+
 

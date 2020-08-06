@@ -68,11 +68,16 @@ export class AiNameGenderHypothesis {
      * @param score Hypothesis score             
      */
     public constructor(
+        
         gender?: string,
-        score?: number) {
+        score?: number
+    ) {
         
         this.gender = gender;
         this.score = score;
+        
     }
 }
+
+
 

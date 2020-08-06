@@ -58,9 +58,14 @@ export class StorageExist {
      * @param exists Shows that the storage exists.             
      */
     public constructor(
-        exists?: boolean) {
+        
+        exists?: boolean
+    ) {
         
         this.exists = exists;
+        
     }
 }
+
+
 

@@ -55,15 +55,18 @@ export class MailMessageMapi extends model.MailMessageBase {
 
     /**
      * Email message represented as MAPI object.             
-     * @param discriminator 
      * @param value Email message object.             
      */
     public constructor(
-        discriminator?: string,
-        value?: model.MapiMessageDto) {
+        
+        //,
+        value?: model.MapiMessageDto
+    ) {
         super();
-        this.discriminator = discriminator;
         this.value = value;
+        
     }
 }
+
+
 

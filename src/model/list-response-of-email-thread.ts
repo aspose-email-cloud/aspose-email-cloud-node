@@ -52,9 +52,14 @@ export class ListResponseOfEmailThread {
      * @param value 
      */
     public constructor(
-        value?: Array< model.EmailThread >) {
+        
+        value?: Array< model.EmailThread >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

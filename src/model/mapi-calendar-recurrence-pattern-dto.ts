@@ -191,9 +191,9 @@ export class MapiCalendarRecurrencePatternDto {
      * @param slidingFlag Defines whether pattern is sliding or not.             
      * @param startDate Start date of an item recurrence pattern.             
      * @param weekStartDay Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
-     * @param discriminator 
      */
     public constructor(
+        
         calendarType?: string,
         deletedInstanceDates?: Array<Date>,
         endDate?: Date,
@@ -206,8 +206,9 @@ export class MapiCalendarRecurrencePatternDto {
         period?: number,
         slidingFlag?: boolean,
         startDate?: Date,
-        weekStartDay?: string,
-        discriminator?: string) {
+        weekStartDay?: string
+        
+    ) {
         
         this.calendarType = calendarType;
         this.deletedInstanceDates = deletedInstanceDates;
@@ -222,7 +223,9 @@ export class MapiCalendarRecurrencePatternDto {
         this.slidingFlag = slidingFlag;
         this.startDate = startDate;
         this.weekStartDay = weekStartDay;
-        this.discriminator = discriminator;
+        
     }
 }
+
+
 

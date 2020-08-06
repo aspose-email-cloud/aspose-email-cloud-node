@@ -78,13 +78,18 @@ export class DiscoverEmailConfigRequest {
      * @param login Email account login. If not specified, address used as a login.             
      */
     public constructor(
+        
         address?: string,
         fastProcessing?: boolean,
-        login?: string) {
+        login?: string
+    ) {
         
         this.address = address;
         this.fastProcessing = fastProcessing;
         this.login = login;
+        
     }
 }
+
+
 

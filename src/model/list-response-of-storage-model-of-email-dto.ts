@@ -52,9 +52,14 @@ export class ListResponseOfStorageModelOfEmailDto {
      * @param value 
      */
     public constructor(
-        value?: Array< model.StorageModelOfEmailDto >) {
+        
+        value?: Array< model.StorageModelOfEmailDto >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

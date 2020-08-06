@@ -70,15 +70,20 @@ export class ClientMessageMoveRequest extends model.ClientMessageBaseRequest {
      * @param destinationFolder Folder to move message to.             
      */
     public constructor(
+        
         accountLocation?: model.StorageFileLocation,
         messageId?: string,
         sourceFolder?: string,
-        destinationFolder?: string) {
+        destinationFolder?: string
+    ) {
         super();
         this.accountLocation = accountLocation;
         this.messageId = messageId;
         this.sourceFolder = sourceFolder;
         this.destinationFolder = destinationFolder;
+        
     }
 }
+
+
 

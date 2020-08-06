@@ -51,11 +51,16 @@ export class ClientAccountSaveMultiRequest extends model.StorageModelOfEmailClie
      * @param value 
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
-        value?: model.EmailClientMultiAccount) {
+        value?: model.EmailClientMultiAccount
+    ) {
         super();
         this.storageFile = storageFile;
         this.value = value;
+        
     }
 }
+
+
 

@@ -60,13 +60,18 @@ export class CalendarSaveRequest extends model.StorageModelOfCalendarDto {
      * @param format Calendar file format Enum, available values: Ics, Msg
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
         value?: model.CalendarDto,
-        format?: string) {
+        format?: string
+    ) {
         super();
         this.storageFile = storageFile;
         this.value = value;
         this.format = format;
+        
     }
 }
+
+
 

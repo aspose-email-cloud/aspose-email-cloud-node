@@ -59,11 +59,16 @@ export class ClientFolderDeleteRequest extends model.ClientAccountBaseRequest {
      * @param folder Path to folder to delete.             
      */
     public constructor(
+        
         accountLocation?: model.StorageFileLocation,
-        folder?: string) {
+        folder?: string
+    ) {
         super();
         this.accountLocation = accountLocation;
         this.folder = folder;
+        
     }
 }
+
+
 

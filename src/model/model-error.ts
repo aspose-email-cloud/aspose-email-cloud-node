@@ -88,15 +88,20 @@ export class ModelError {
      * @param innerError Inner Error             
      */
     public constructor(
+        
         code?: string,
         message?: string,
         description?: string,
-        innerError?: model.ErrorDetails) {
+        innerError?: model.ErrorDetails
+    ) {
         
         this.code = code;
         this.message = message;
         this.description = description;
         this.innerError = innerError;
+        
     }
 }
+
+
 

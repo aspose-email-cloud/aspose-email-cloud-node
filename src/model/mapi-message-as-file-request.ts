@@ -68,11 +68,16 @@ export class MapiMessageAsFileRequest {
      * @param value MAPI message model.             
      */
     public constructor(
+        
         format?: string,
-        value?: model.MapiMessageDto) {
+        value?: model.MapiMessageDto
+    ) {
         
         this.format = format;
         this.value = value;
+        
     }
 }
+
+
 

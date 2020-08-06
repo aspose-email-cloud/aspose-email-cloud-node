@@ -59,11 +59,16 @@ export class ClientThreadBaseRequest extends model.ClientAccountBaseRequest {
      * @param threadId Thread identifier.             
      */
     public constructor(
+        
         accountLocation?: model.StorageFileLocation,
-        threadId?: string) {
+        threadId?: string
+    ) {
         super();
         this.accountLocation = accountLocation;
         this.threadId = threadId;
+        
     }
 }
+
+
 

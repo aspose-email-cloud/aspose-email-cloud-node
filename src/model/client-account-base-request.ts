@@ -58,9 +58,14 @@ export class ClientAccountBaseRequest {
      * @param accountLocation Email client account configuration location on storage.             
      */
     public constructor(
-        accountLocation?: model.StorageFileLocation) {
+        
+        accountLocation?: model.StorageFileLocation
+    ) {
         
         this.accountLocation = accountLocation;
+        
     }
 }
+
+
 

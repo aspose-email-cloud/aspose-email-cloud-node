@@ -50,9 +50,14 @@ export class EmailThreadList extends model.ListResponseOfEmailThread {
      * @param value 
      */
     public constructor(
-        value?: Array< model.EmailThread >) {
+        
+        value?: Array< model.EmailThread >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

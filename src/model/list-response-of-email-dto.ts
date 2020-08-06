@@ -52,9 +52,14 @@ export class ListResponseOfEmailDto {
      * @param value 
      */
     public constructor(
-        value?: Array< model.EmailDto >) {
+        
+        value?: Array< model.EmailDto >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

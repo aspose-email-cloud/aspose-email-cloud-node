@@ -59,11 +59,16 @@ export class StorageModelOfCalendarDto {
      * @param value 
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
-        value?: model.CalendarDto) {
+        value?: model.CalendarDto
+    ) {
         
         this.storageFile = storageFile;
         this.value = value;
+        
     }
 }
+
+
 

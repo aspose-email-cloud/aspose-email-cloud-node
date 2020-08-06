@@ -68,11 +68,16 @@ export class AiNameMatchResult {
      * @param mismatches Detailed description of mismatches             
      */
     public constructor(
+        
         similarity?: number,
-        mismatches?: Array< model.AiNameMismatch >) {
+        mismatches?: Array< model.AiNameMismatch >
+    ) {
         
         this.similarity = similarity;
         this.mismatches = mismatches;
+        
     }
 }
+
+
 

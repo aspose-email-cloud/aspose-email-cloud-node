@@ -52,9 +52,14 @@ export class ValueTOfString {
      * @param value 
      */
     public constructor(
-        value?: string) {
+        
+        value?: string
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

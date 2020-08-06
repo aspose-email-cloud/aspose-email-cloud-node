@@ -88,15 +88,20 @@ export class MapiRecipientDto {
      * @param recipientType Represent the PR_RECIPIENT_TYPE property which contains the recipient type for a message recipient. Enum, available values: Unknown, MapiBcc, MapiCc, MapiP1, MapiSubmitted, MapiTo
      */
     public constructor(
+        
         emailAddress?: string,
         addressType?: string,
         displayName?: string,
-        recipientType?: string) {
+        recipientType?: string
+    ) {
         
         this.emailAddress = emailAddress;
         this.addressType = addressType;
         this.displayName = displayName;
         this.recipientType = recipientType;
+        
     }
 }
+
+
 

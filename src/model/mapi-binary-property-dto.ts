@@ -56,17 +56,20 @@ export class MapiBinaryPropertyDto extends model.MapiPropertyDto {
     /**
      * Mapi property with Binary value represented as a Base64 string             
      * @param descriptor Property descriptor             
-     * @param discriminator 
      * @param valueBase64 Property value converted to Base64             
      */
     public constructor(
-        descriptor?: model.MapiPropertyDescriptor,
-        discriminator?: string,
-        valueBase64?: string) {
+        
+        descriptor?: model.MapiPropertyDescriptor
+        ,
+        valueBase64?: string
+    ) {
         super();
         this.descriptor = descriptor;
-        this.discriminator = discriminator;
         this.valueBase64 = valueBase64;
+        
     }
 }
+
+
 

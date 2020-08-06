@@ -68,11 +68,16 @@ export class AiNameWeighted {
      * @param score Score of name             
      */
     public constructor(
+        
         name?: string,
-        score?: number) {
+        score?: number
+    ) {
         
         this.name = name;
         this.score = score;
+        
     }
 }
+
+
 

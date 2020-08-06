@@ -102,6 +102,7 @@ export class Attachment extends model.AttachmentBase {
      * @param preferredTextEncoding Preferred text encoding.             
      */
     public constructor(
+        
         base64Data?: string,
         contentId?: string,
         contentType?: model.ContentType,
@@ -110,7 +111,8 @@ export class Attachment extends model.AttachmentBase {
         isEmbeddedMessage?: boolean,
         name?: string,
         nameEncoding?: string,
-        preferredTextEncoding?: string) {
+        preferredTextEncoding?: string
+    ) {
         super();
         this.base64Data = base64Data;
         this.contentId = contentId;
@@ -121,6 +123,9 @@ export class Attachment extends model.AttachmentBase {
         this.name = name;
         this.nameEncoding = nameEncoding;
         this.preferredTextEncoding = preferredTextEncoding;
+        
     }
 }
+
+
 

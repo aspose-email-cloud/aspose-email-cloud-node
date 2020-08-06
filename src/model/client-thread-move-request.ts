@@ -60,13 +60,18 @@ export class ClientThreadMoveRequest extends model.ClientThreadBaseRequest {
      * @param destinationFolder Email account folder to move thread to.             
      */
     public constructor(
+        
         accountLocation?: model.StorageFileLocation,
         threadId?: string,
-        destinationFolder?: string) {
+        destinationFolder?: string
+    ) {
         super();
         this.accountLocation = accountLocation;
         this.threadId = threadId;
         this.destinationFolder = destinationFolder;
+        
     }
 }
+
+
 

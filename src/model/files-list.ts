@@ -58,9 +58,14 @@ export class FilesList {
      * @param value Files and folders contained by folder StorageFile.
      */
     public constructor(
-        value?: Array< model.StorageFile >) {
+        
+        value?: Array< model.StorageFile >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

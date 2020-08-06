@@ -68,11 +68,16 @@ export class AiBcrOptions {
      * @param countries Comma-separated codes of countries.             
      */
     public constructor(
+        
         languages?: string,
-        countries?: string) {
+        countries?: string
+    ) {
         
         this.languages = languages;
         this.countries = countries;
+        
     }
 }
+
+
 

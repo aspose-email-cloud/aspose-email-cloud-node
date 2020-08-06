@@ -148,6 +148,7 @@ export class MapiContactNamePropertySetDto {
      * @param surname Surname (family name) of the contact             
      */
     public constructor(
+        
         displayName?: string,
         displayNamePrefix?: string,
         fileUnder?: string,
@@ -157,7 +158,8 @@ export class MapiContactNamePropertySetDto {
         initials?: string,
         middleName?: string,
         nickname?: string,
-        surname?: string) {
+        surname?: string
+    ) {
         
         this.displayName = displayName;
         this.displayNamePrefix = displayNamePrefix;
@@ -169,6 +171,9 @@ export class MapiContactNamePropertySetDto {
         this.middleName = middleName;
         this.nickname = nickname;
         this.surname = surname;
+        
     }
 }
+
+
 

@@ -68,11 +68,16 @@ export class DiscUsage {
      * @param totalSize Total disc space.
      */
     public constructor(
+        
         usedSize?: number,
-        totalSize?: number) {
+        totalSize?: number
+    ) {
         
         this.usedSize = usedSize;
         this.totalSize = totalSize;
+        
     }
 }
+
+
 

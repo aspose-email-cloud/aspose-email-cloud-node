@@ -68,11 +68,16 @@ export class MapiCalendarTimeZoneDto {
      * @param timeZoneRules Time zone rules             
      */
     public constructor(
+        
         keyName?: string,
-        timeZoneRules?: Array< model.MapiCalendarTimeZoneInfoDto >) {
+        timeZoneRules?: Array< model.MapiCalendarTimeZoneInfoDto >
+    ) {
         
         this.keyName = keyName;
         this.timeZoneRules = timeZoneRules;
+        
     }
 }
+
+
 

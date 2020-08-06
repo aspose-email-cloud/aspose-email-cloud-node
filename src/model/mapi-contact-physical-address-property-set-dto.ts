@@ -78,13 +78,18 @@ export class MapiContactPhysicalAddressPropertySetDto {
      * @param otherAddress Specifies the other contact's address             
      */
     public constructor(
+        
         workAddress?: model.MapiContactPhysicalAddressDto,
         homeAddress?: model.MapiContactPhysicalAddressDto,
-        otherAddress?: model.MapiContactPhysicalAddressDto) {
+        otherAddress?: model.MapiContactPhysicalAddressDto
+    ) {
         
         this.workAddress = workAddress;
         this.homeAddress = homeAddress;
         this.otherAddress = otherAddress;
+        
     }
 }
+
+
 

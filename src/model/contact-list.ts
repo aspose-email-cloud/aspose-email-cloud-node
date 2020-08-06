@@ -50,9 +50,14 @@ export class ContactList extends model.ListResponseOfContactDto {
      * @param value 
      */
     public constructor(
-        value?: Array< model.ContactDto >) {
+        
+        value?: Array< model.ContactDto >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

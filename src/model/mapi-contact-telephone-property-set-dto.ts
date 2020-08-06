@@ -238,6 +238,7 @@ export class MapiContactTelephonePropertySetDto {
      * @param pagerTelephoneNumber Gets or sets a pager telephone number             
      */
     public constructor(
+        
         isEmpty?: boolean,
         defaultTelephoneNumber?: string,
         useAutocomplete?: boolean,
@@ -256,7 +257,8 @@ export class MapiContactTelephonePropertySetDto {
         companyMainTelephoneNumber?: string,
         telexNumber?: string,
         isdnNumber?: string,
-        pagerTelephoneNumber?: string) {
+        pagerTelephoneNumber?: string
+    ) {
         
         this.isEmpty = isEmpty;
         this.defaultTelephoneNumber = defaultTelephoneNumber;
@@ -277,6 +279,9 @@ export class MapiContactTelephonePropertySetDto {
         this.telexNumber = telexNumber;
         this.isdnNumber = isdnNumber;
         this.pagerTelephoneNumber = pagerTelephoneNumber;
+        
     }
 }
+
+
 

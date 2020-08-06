@@ -71,14 +71,17 @@ export class MapiPropertyDto {
     /**
      * Mapi property             
      * @param descriptor Property descriptor             
-     * @param discriminator 
      */
     public constructor(
-        descriptor?: model.MapiPropertyDescriptor,
-        discriminator?: string) {
+        
+        descriptor?: model.MapiPropertyDescriptor
+        
+    ) {
         
         this.descriptor = descriptor;
-        this.discriminator = discriminator;
+        
     }
 }
+
+
 

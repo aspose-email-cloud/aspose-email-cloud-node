@@ -138,6 +138,7 @@ export class MapiContactPhysicalAddressDto {
      * @param postOfficeBox Gets or sets the post office box             
      */
     public constructor(
+        
         isMailingAddress?: boolean,
         street?: string,
         city?: string,
@@ -146,7 +147,8 @@ export class MapiContactPhysicalAddressDto {
         country?: string,
         countryCode?: string,
         address?: string,
-        postOfficeBox?: string) {
+        postOfficeBox?: string
+    ) {
         
         this.isMailingAddress = isMailingAddress;
         this.street = street;
@@ -157,6 +159,9 @@ export class MapiContactPhysicalAddressDto {
         this.countryCode = countryCode;
         this.address = address;
         this.postOfficeBox = postOfficeBox;
+        
     }
 }
+
+
 

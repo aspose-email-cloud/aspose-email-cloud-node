@@ -60,13 +60,18 @@ export class ClientThreadDeleteRequest extends model.ClientThreadBaseRequest {
      * @param folder Folder on email server, where thread is stored.             
      */
     public constructor(
+        
         accountLocation?: model.StorageFileLocation,
         threadId?: string,
-        folder?: string) {
+        folder?: string
+    ) {
         super();
         this.accountLocation = accountLocation;
         this.threadId = threadId;
         this.folder = folder;
+        
     }
 }
+
+
 

@@ -50,9 +50,14 @@ export class CalendarStorageList extends model.ListResponseOfStorageModelOfCalen
      * @param value 
      */
     public constructor(
-        value?: Array< model.StorageModelOfCalendarDto >) {
+        
+        value?: Array< model.StorageModelOfCalendarDto >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

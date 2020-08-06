@@ -158,6 +158,7 @@ export class PostalAddress {
      * @param street Address's street.             
      */
     public constructor(
+        
         address?: string,
         category?: model.EnumWithCustomOfPostalAddressCategory,
         city?: string,
@@ -168,7 +169,8 @@ export class PostalAddress {
         postOfficeBox?: string,
         preferred?: boolean,
         stateOrProvince?: string,
-        street?: string) {
+        street?: string
+    ) {
         
         this.address = address;
         this.category = category;
@@ -181,6 +183,9 @@ export class PostalAddress {
         this.preferred = preferred;
         this.stateOrProvince = stateOrProvince;
         this.street = street;
+        
     }
 }
+
+
 

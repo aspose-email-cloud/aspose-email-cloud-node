@@ -88,15 +88,20 @@ export class AttachmentBase {
      * @param headers Attachment headers.             
      */
     public constructor(
+        
         base64Data?: string,
         contentId?: string,
         contentType?: model.ContentType,
-        headers?: { [key: string]: string; }) {
+        headers?: { [key: string]: string; }
+    ) {
         
         this.base64Data = base64Data;
         this.contentId = contentId;
         this.contentType = contentType;
         this.headers = headers;
+        
     }
 }
+
+
 

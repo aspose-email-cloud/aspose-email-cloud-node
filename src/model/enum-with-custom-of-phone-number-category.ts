@@ -62,11 +62,16 @@ export class EnumWithCustomOfPhoneNumberCategory {
      * @param description 
      */
     public constructor(
+        
         value?: string,
-        description?: string) {
+        description?: string
+    ) {
         
         this.value = value;
         this.description = description;
+        
     }
 }
+
+
 

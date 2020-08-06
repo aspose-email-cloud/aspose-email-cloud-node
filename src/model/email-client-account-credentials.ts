@@ -71,14 +71,17 @@ export class EmailClientAccountCredentials {
     /**
      * Represents email client account credentials             
      * @param login Email client account login             
-     * @param discriminator 
      */
     public constructor(
-        login?: string,
-        discriminator?: string) {
+        
+        login?: string
+        
+    ) {
         
         this.login = login;
-        this.discriminator = discriminator;
+        
     }
 }
+
+
 

@@ -68,11 +68,16 @@ export class MapiContactEventPropertySetDto {
      * @param weddingAnniversary Specifies the wedding anniversary of the contact.             
      */
     public constructor(
+        
         birthday?: Date,
-        weddingAnniversary?: Date) {
+        weddingAnniversary?: Date
+    ) {
         
         this.birthday = birthday;
         this.weddingAnniversary = weddingAnniversary;
+        
     }
 }
+
+
 

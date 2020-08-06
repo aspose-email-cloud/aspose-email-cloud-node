@@ -88,15 +88,20 @@ export class EmailThread {
      * @param folder Thread folder location             
      */
     public constructor(
+        
         id?: string,
         subject?: string,
         messages?: Array< model.EmailDto >,
-        folder?: string) {
+        folder?: string
+    ) {
         
         this.id = id;
         this.subject = subject;
         this.messages = messages;
         this.folder = folder;
+        
     }
 }
+
+
 

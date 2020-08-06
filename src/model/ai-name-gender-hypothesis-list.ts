@@ -50,9 +50,14 @@ export class AiNameGenderHypothesisList extends model.ListResponseOfAiNameGender
      * @param value 
      */
     public constructor(
-        value?: Array< model.AiNameGenderHypothesis >) {
+        
+        value?: Array< model.AiNameGenderHypothesis >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

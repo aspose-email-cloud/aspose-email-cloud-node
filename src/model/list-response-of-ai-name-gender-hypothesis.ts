@@ -52,9 +52,14 @@ export class ListResponseOfAiNameGenderHypothesis {
      * @param value 
      */
     public constructor(
-        value?: Array< model.AiNameGenderHypothesis >) {
+        
+        value?: Array< model.AiNameGenderHypothesis >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

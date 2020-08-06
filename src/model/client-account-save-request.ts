@@ -51,11 +51,16 @@ export class ClientAccountSaveRequest extends model.StorageModelOfEmailClientAcc
      * @param value 
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
-        value?: model.EmailClientAccount) {
+        value?: model.EmailClientAccount
+    ) {
         super();
         this.storageFile = storageFile;
         this.value = value;
+        
     }
 }
+
+
 

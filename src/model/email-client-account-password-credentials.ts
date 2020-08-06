@@ -56,17 +56,20 @@ export class EmailClientAccountPasswordCredentials extends model.EmailClientAcco
     /**
      * Represents email client account password credentials             
      * @param login Email client account login             
-     * @param discriminator 
      * @param password Email client account password             
      */
     public constructor(
-        login?: string,
-        discriminator?: string,
-        password?: string) {
+        
+        login?: string
+        ,
+        password?: string
+    ) {
         super();
         this.login = login;
-        this.discriminator = discriminator;
         this.password = password;
+        
     }
 }
+
+
 

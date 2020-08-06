@@ -68,11 +68,16 @@ export class AiNameWeightedVariants {
      * @param comments Usually empty; can contain extra message describing some issue occurred during processing             
      */
     public constructor(
+        
         names?: Array< model.AiNameWeighted >,
-        comments?: string) {
+        comments?: string
+    ) {
         
         this.names = names;
         this.comments = comments;
+        
     }
 }
+
+
 

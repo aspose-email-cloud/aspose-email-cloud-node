@@ -56,17 +56,20 @@ export class MapiMultiStringPropertyDto extends model.MapiPropertyDto {
     /**
      * Mapi property with Multiple String values             
      * @param descriptor Property descriptor             
-     * @param discriminator 
      * @param values Property values             
      */
     public constructor(
-        descriptor?: model.MapiPropertyDescriptor,
-        discriminator?: string,
-        values?: Array<string>) {
+        
+        descriptor?: model.MapiPropertyDescriptor
+        ,
+        values?: Array<string>
+    ) {
         super();
         this.descriptor = descriptor;
-        this.discriminator = discriminator;
         this.values = values;
+        
     }
 }
+
+
 

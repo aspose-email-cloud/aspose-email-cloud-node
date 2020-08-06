@@ -50,9 +50,14 @@ export class EmailList extends model.ListResponseOfEmailDto {
      * @param value 
      */
     public constructor(
-        value?: Array< model.EmailDto >) {
+        
+        value?: Array< model.EmailDto >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

@@ -287,7 +287,6 @@ export class MapiMessageDto extends model.MapiMessageItemBaseDto {
      * @param subject Subject of the message.             
      * @param subjectPrefix Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
      * @param properties List of MAPI properties             
-     * @param discriminator 
      * @param messageBody Message text             
      * @param clientSubmitTime Date and time the message sender submitted a message.             
      * @param conversationTopic Topic of the first message in a conversation thread.             
@@ -315,6 +314,7 @@ export class MapiMessageDto extends model.MapiMessageItemBaseDto {
      * @param transportMessageHeaders Transport-specific message envelope information.
      */
     public constructor(
+        
         attachments?: Array< model.MapiAttachmentDto >,
         billing?: string,
         body?: string,
@@ -330,8 +330,8 @@ export class MapiMessageDto extends model.MapiMessageItemBaseDto {
         sensitivity?: string,
         subject?: string,
         subjectPrefix?: string,
-        properties?: Array< model.MapiPropertyDto >,
-        discriminator?: string,
+        properties?: Array< model.MapiPropertyDto >
+        ,
         messageBody?: string,
         clientSubmitTime?: Date,
         conversationTopic?: string,
@@ -356,7 +356,8 @@ export class MapiMessageDto extends model.MapiMessageItemBaseDto {
         sentRepresentingEmailAddress?: string,
         sentRepresentingName?: string,
         sentRepresentingSmtpAddress?: string,
-        transportMessageHeaders?: string) {
+        transportMessageHeaders?: string
+    ) {
         super();
         this.attachments = attachments;
         this.billing = billing;
@@ -374,7 +375,6 @@ export class MapiMessageDto extends model.MapiMessageItemBaseDto {
         this.subject = subject;
         this.subjectPrefix = subjectPrefix;
         this.properties = properties;
-        this.discriminator = discriminator;
         this.messageBody = messageBody;
         this.clientSubmitTime = clientSubmitTime;
         this.conversationTopic = conversationTopic;
@@ -400,6 +400,9 @@ export class MapiMessageDto extends model.MapiMessageItemBaseDto {
         this.sentRepresentingName = sentRepresentingName;
         this.sentRepresentingSmtpAddress = sentRepresentingSmtpAddress;
         this.transportMessageHeaders = transportMessageHeaders;
+        
     }
 }
+
+
 

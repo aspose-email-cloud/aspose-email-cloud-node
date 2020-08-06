@@ -128,6 +128,7 @@ export class EmailAccountConfig {
      * @param isValidated Determines that configuration validated. Set to false if validation skipped.             
      */
     public constructor(
+        
         displayName?: string,
         protocolType?: string,
         host?: string,
@@ -135,7 +136,8 @@ export class EmailAccountConfig {
         socketType?: string,
         authenticationTypes?: Array<string>,
         extraInfo?: Array< model.NameValuePair >,
-        isValidated?: boolean) {
+        isValidated?: boolean
+    ) {
         
         this.displayName = displayName;
         this.protocolType = protocolType;
@@ -145,6 +147,9 @@ export class EmailAccountConfig {
         this.authenticationTypes = authenticationTypes;
         this.extraInfo = extraInfo;
         this.isValidated = isValidated;
+        
     }
 }
+
+
 

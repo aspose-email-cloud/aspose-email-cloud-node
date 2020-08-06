@@ -221,9 +221,9 @@ export class MapiMessageItemBaseDto {
      * @param subject Subject of the message.             
      * @param subjectPrefix Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
      * @param properties List of MAPI properties             
-     * @param discriminator 
      */
     public constructor(
+        
         attachments?: Array< model.MapiAttachmentDto >,
         billing?: string,
         body?: string,
@@ -239,8 +239,9 @@ export class MapiMessageItemBaseDto {
         sensitivity?: string,
         subject?: string,
         subjectPrefix?: string,
-        properties?: Array< model.MapiPropertyDto >,
-        discriminator?: string) {
+        properties?: Array< model.MapiPropertyDto >
+        
+    ) {
         
         this.attachments = attachments;
         this.billing = billing;
@@ -258,7 +259,9 @@ export class MapiMessageItemBaseDto {
         this.subject = subject;
         this.subjectPrefix = subjectPrefix;
         this.properties = properties;
-        this.discriminator = discriminator;
+        
     }
 }
+
+
 

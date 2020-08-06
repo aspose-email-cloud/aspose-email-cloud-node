@@ -55,15 +55,18 @@ export class MailMessageDto extends model.MailMessageBase {
 
     /**
      * Represents email message, stored as an EmailDto object.             
-     * @param discriminator 
      * @param value Message document object.             
      */
     public constructor(
-        discriminator?: string,
-        value?: model.EmailDto) {
+        
+        //,
+        value?: model.EmailDto
+    ) {
         super();
-        this.discriminator = discriminator;
         this.value = value;
+        
     }
 }
+
+
 

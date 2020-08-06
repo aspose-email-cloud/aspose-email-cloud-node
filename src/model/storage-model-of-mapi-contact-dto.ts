@@ -59,11 +59,16 @@ export class StorageModelOfMapiContactDto {
      * @param value 
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
-        value?: model.MapiContactDto) {
+        value?: model.MapiContactDto
+    ) {
         
         this.storageFile = storageFile;
         this.value = value;
+        
     }
 }
+
+
 

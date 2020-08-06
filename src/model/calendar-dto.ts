@@ -268,6 +268,7 @@ export class CalendarDto {
      * @param transparency Specifies whether or not this appointment is intended to be visible in availability searches. Enum, available values: NotDefined, Transparent, Opaque
      */
     public constructor(
+        
         attachments?: Array< model.Attachment >,
         attendees?: Array< model.MailAddress >,
         description?: string,
@@ -289,7 +290,8 @@ export class CalendarDto {
         startTimeZone?: string,
         status?: string,
         summary?: string,
-        transparency?: string) {
+        transparency?: string
+    ) {
         
         this.attachments = attachments;
         this.attendees = attendees;
@@ -313,6 +315,9 @@ export class CalendarDto {
         this.status = status;
         this.summary = summary;
         this.transparency = transparency;
+        
     }
 }
+
+
 

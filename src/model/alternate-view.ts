@@ -72,12 +72,14 @@ export class AlternateView extends model.AttachmentBase {
      * @param linkedResources Embedded resources referred to by this alternate view.             
      */
     public constructor(
+        
         base64Data?: string,
         contentId?: string,
         contentType?: model.ContentType,
         headers?: { [key: string]: string; },
         baseUri?: string,
-        linkedResources?: Array< model.LinkedResource >) {
+        linkedResources?: Array< model.LinkedResource >
+    ) {
         super();
         this.base64Data = base64Data;
         this.contentId = contentId;
@@ -85,6 +87,9 @@ export class AlternateView extends model.AttachmentBase {
         this.headers = headers;
         this.baseUri = baseUri;
         this.linkedResources = linkedResources;
+        
     }
 }
+
+
 

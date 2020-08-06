@@ -81,16 +81,19 @@ export class ContactPhoto {
      * Person's photo.             
      * @param photoImageFormat MapiContact photo image format. Enum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
      * @param base64Data Photo serialized as base64 string.             
-     * @param discriminator 
      */
     public constructor(
+        
         photoImageFormat?: string,
-        base64Data?: string,
-        discriminator?: string) {
+        base64Data?: string
+        
+    ) {
         
         this.photoImageFormat = photoImageFormat;
         this.base64Data = base64Data;
-        this.discriminator = discriminator;
+        
     }
 }
+
+
 

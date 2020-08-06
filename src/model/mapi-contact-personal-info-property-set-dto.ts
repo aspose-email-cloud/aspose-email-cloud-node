@@ -238,6 +238,7 @@ export class MapiContactPersonalInfoPropertySetDto {
      * @param children Contains a list of names of children.             
      */
     public constructor(
+        
         spouseName?: string,
         personalHomePage?: string,
         language?: string,
@@ -256,7 +257,8 @@ export class MapiContactPersonalInfoPropertySetDto {
         computerNetworkName?: string,
         gender?: string,
         referredByName?: string,
-        children?: Array<string>) {
+        children?: Array<string>
+    ) {
         
         this.spouseName = spouseName;
         this.personalHomePage = personalHomePage;
@@ -277,6 +279,9 @@ export class MapiContactPersonalInfoPropertySetDto {
         this.gender = gender;
         this.referredByName = referredByName;
         this.children = children;
+        
     }
 }
+
+
 

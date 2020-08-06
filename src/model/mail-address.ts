@@ -88,15 +88,20 @@ export class MailAddress {
      * @param originalAddressString The original e-mail address string             
      */
     public constructor(
+        
         displayName?: string,
         address?: string,
         participationStatus?: string,
-        originalAddressString?: string) {
+        originalAddressString?: string
+    ) {
         
         this.displayName = displayName;
         this.address = address;
         this.participationStatus = participationStatus;
         this.originalAddressString = originalAddressString;
+        
     }
 }
+
+
 

@@ -52,9 +52,14 @@ export class ListResponseOfAiNameComponent {
      * @param value 
      */
     public constructor(
-        value?: Array< model.AiNameComponent >) {
+        
+        value?: Array< model.AiNameComponent >
+    ) {
         
         this.value = value;
+        
     }
 }
+
+
 

@@ -59,11 +59,16 @@ export class ClientMessageBaseRequest extends model.ClientAccountBaseRequest {
      * @param messageId Message identifier.             
      */
     public constructor(
+        
         accountLocation?: model.StorageFileLocation,
-        messageId?: string) {
+        messageId?: string
+    ) {
         super();
         this.accountLocation = accountLocation;
         this.messageId = messageId;
+        
     }
 }
+
+
 

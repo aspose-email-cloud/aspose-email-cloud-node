@@ -60,13 +60,18 @@ export class ClientMessageSetIsReadRequest extends model.ClientMessageBaseReques
      * @param isRead Message is read flag.             
      */
     public constructor(
+        
         accountLocation?: model.StorageFileLocation,
         messageId?: string,
-        isRead?: boolean) {
+        isRead?: boolean
+    ) {
         super();
         this.accountLocation = accountLocation;
         this.messageId = messageId;
         this.isRead = isRead;
+        
     }
 }
+
+
 

@@ -108,12 +108,14 @@ export class MapiContactElectronicAddressDto {
      * @param originalDisplayName SMTP e-mail address that corresponds to the e-mail address for the Contact object.
      */
     public constructor(
+        
         addressType?: string,
         displayName?: string,
         emailAddress?: string,
         faxNumber?: string,
         isEmpty?: boolean,
-        originalDisplayName?: string) {
+        originalDisplayName?: string
+    ) {
         
         this.addressType = addressType;
         this.displayName = displayName;
@@ -121,6 +123,9 @@ export class MapiContactElectronicAddressDto {
         this.faxNumber = faxNumber;
         this.isEmpty = isEmpty;
         this.originalDisplayName = originalDisplayName;
+        
     }
 }
+
+
 

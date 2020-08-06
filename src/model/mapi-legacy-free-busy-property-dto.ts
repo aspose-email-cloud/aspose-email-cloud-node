@@ -56,17 +56,20 @@ export class MapiLegacyFreeBusyPropertyDto extends model.MapiPropertyDto {
     /**
      * Mapi property with LegacyFreeBusyType value             
      * @param descriptor Property descriptor             
-     * @param discriminator 
      * @param value Represents the free/busy status for a calendar event. Enum, available values: Free, Tentative, Busy, Oof, WorkingElsewhere, NoData
      */
     public constructor(
-        descriptor?: model.MapiPropertyDescriptor,
-        discriminator?: string,
-        value?: string) {
+        
+        descriptor?: model.MapiPropertyDescriptor
+        ,
+        value?: string
+    ) {
         super();
         this.descriptor = descriptor;
-        this.discriminator = discriminator;
         this.value = value;
+        
     }
 }
+
+
 

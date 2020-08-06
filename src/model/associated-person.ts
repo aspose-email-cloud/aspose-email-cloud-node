@@ -78,13 +78,18 @@ export class AssociatedPerson {
      * @param preferred Defines whether associated person is preferred.             
      */
     public constructor(
+        
         name?: string,
         category?: model.EnumWithCustomOfAssociatedPersonCategory,
-        preferred?: boolean) {
+        preferred?: boolean
+    ) {
         
         this.name = name;
         this.category = category;
         this.preferred = preferred;
+        
     }
 }
+
+
 

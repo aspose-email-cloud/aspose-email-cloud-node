@@ -98,17 +98,22 @@ export class ContentType {
      * @param parameters Full list of parameters             
      */
     public constructor(
+        
         boundary?: string,
         charSet?: string,
         mediaType?: string,
         name?: string,
-        parameters?: Array< model.ContentTypeParameter >) {
+        parameters?: Array< model.ContentTypeParameter >
+    ) {
         
         this.boundary = boundary;
         this.charSet = charSet;
         this.mediaType = mediaType;
         this.name = name;
         this.parameters = parameters;
+        
     }
 }
+
+
 

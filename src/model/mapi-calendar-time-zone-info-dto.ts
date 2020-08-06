@@ -118,13 +118,15 @@ export class MapiCalendarTimeZoneInfoDto {
      * @param year Year in which this rule is scheduled to take effect.             
      */
     public constructor(
+        
         bias?: number,
         daylightBias?: number,
         daylightDate?: model.MapiCalendarTimeZoneRuleDto,
         standardBias?: number,
         standardDate?: model.MapiCalendarTimeZoneRuleDto,
         timeZoneFlags?: Array<string>,
-        year?: number) {
+        year?: number
+    ) {
         
         this.bias = bias;
         this.daylightBias = daylightBias;
@@ -133,6 +135,9 @@ export class MapiCalendarTimeZoneInfoDto {
         this.standardDate = standardDate;
         this.timeZoneFlags = timeZoneFlags;
         this.year = year;
+        
     }
 }
+
+
 

@@ -59,11 +59,16 @@ export class AiBcrImageStorageFile extends model.AiBcrImage {
      * @param file Image location             
      */
     public constructor(
+        
         isSingle?: boolean,
-        file?: model.StorageFileLocation) {
+        file?: model.StorageFileLocation
+    ) {
         super();
         this.isSingle = isSingle;
         this.file = file;
+        
     }
 }
+
+
 

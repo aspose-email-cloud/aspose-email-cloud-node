@@ -59,11 +59,16 @@ export class StorageModelOfContactDto {
      * @param value 
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
-        value?: model.ContactDto) {
+        value?: model.ContactDto
+    ) {
         
         this.storageFile = storageFile;
         this.value = value;
+        
     }
 }
+
+
 

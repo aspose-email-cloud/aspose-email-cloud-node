@@ -143,7 +143,6 @@ export class MapiContactDto extends model.MapiMessageItemBaseDto {
      * @param subject Subject of the message.             
      * @param subjectPrefix Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
      * @param properties List of MAPI properties             
-     * @param discriminator 
      * @param electronicAddresses Specify properties for up to three different e-mail addresses and three different fax addresses.             
      * @param events Specify events associated with a contact.             
      * @param nameInfo The properties are used to specify the name of the person represented by the contact.             
@@ -155,6 +154,7 @@ export class MapiContactDto extends model.MapiMessageItemBaseDto {
      * @param telephones Specify telephone numbers for the contact.             
      */
     public constructor(
+        
         attachments?: Array< model.MapiAttachmentDto >,
         billing?: string,
         body?: string,
@@ -170,8 +170,8 @@ export class MapiContactDto extends model.MapiMessageItemBaseDto {
         sensitivity?: string,
         subject?: string,
         subjectPrefix?: string,
-        properties?: Array< model.MapiPropertyDto >,
-        discriminator?: string,
+        properties?: Array< model.MapiPropertyDto >
+        ,
         electronicAddresses?: model.MapiContactElectronicAddressPropertySetDto,
         events?: model.MapiContactEventPropertySetDto,
         nameInfo?: model.MapiContactNamePropertySetDto,
@@ -180,7 +180,8 @@ export class MapiContactDto extends model.MapiMessageItemBaseDto {
         photo?: model.MapiContactPhotoDto,
         physicalAddresses?: model.MapiContactPhysicalAddressPropertySetDto,
         professionalInfo?: model.MapiContactProfessionalPropertySetDto,
-        telephones?: model.MapiContactTelephonePropertySetDto) {
+        telephones?: model.MapiContactTelephonePropertySetDto
+    ) {
         super();
         this.attachments = attachments;
         this.billing = billing;
@@ -198,7 +199,6 @@ export class MapiContactDto extends model.MapiMessageItemBaseDto {
         this.subject = subject;
         this.subjectPrefix = subjectPrefix;
         this.properties = properties;
-        this.discriminator = discriminator;
         this.electronicAddresses = electronicAddresses;
         this.events = events;
         this.nameInfo = nameInfo;
@@ -208,6 +208,9 @@ export class MapiContactDto extends model.MapiMessageItemBaseDto {
         this.physicalAddresses = physicalAddresses;
         this.professionalInfo = professionalInfo;
         this.telephones = telephones;
+        
     }
 }
+
+
 

@@ -56,17 +56,20 @@ export class MapiImportancePropertyDto extends model.MapiPropertyDto {
     /**
      * Mapi property with ImportanceChoicesType value             
      * @param descriptor Property descriptor             
-     * @param discriminator 
      * @param value Levels of importance for an item. Enum, available values: Low, Normal, High
      */
     public constructor(
-        descriptor?: model.MapiPropertyDescriptor,
-        discriminator?: string,
-        value?: string) {
+        
+        descriptor?: model.MapiPropertyDescriptor
+        ,
+        value?: string
+    ) {
         super();
         this.descriptor = descriptor;
-        this.discriminator = discriminator;
         this.value = value;
+        
     }
 }
+
+
 

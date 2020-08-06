@@ -56,17 +56,20 @@ export class MapiResponseTypePropertyDto extends model.MapiPropertyDto {
     /**
      * Mapi property with response type value             
      * @param descriptor Property descriptor             
-     * @param discriminator 
      * @param value Represents the types of recipient responses that are received for a meeting. Enum, available values: Unknown, Organizer, Tentative, Accept, Decline, NoResponseReceived
      */
     public constructor(
-        descriptor?: model.MapiPropertyDescriptor,
-        discriminator?: string,
-        value?: string) {
+        
+        descriptor?: model.MapiPropertyDescriptor
+        ,
+        value?: string
+    ) {
         super();
         this.descriptor = descriptor;
-        this.discriminator = discriminator;
         this.value = value;
+        
     }
 }
+
+
 

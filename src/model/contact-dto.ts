@@ -408,6 +408,7 @@ export class ContactDto {
      * @param urls Person's urls.             
      */
     public constructor(
+        
         associatedPersons?: Array< model.AssociatedPerson >,
         attachments?: Array< model.Attachment >,
         companyName?: string,
@@ -443,7 +444,8 @@ export class ContactDto {
         profession?: string,
         suffix?: string,
         surname?: string,
-        urls?: Array< model.Url >) {
+        urls?: Array< model.Url >
+    ) {
         
         this.associatedPersons = associatedPersons;
         this.attachments = attachments;
@@ -481,6 +483,9 @@ export class ContactDto {
         this.suffix = suffix;
         this.surname = surname;
         this.urls = urls;
+        
     }
 }
+
+
 

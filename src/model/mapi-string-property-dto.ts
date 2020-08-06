@@ -56,17 +56,20 @@ export class MapiStringPropertyDto extends model.MapiPropertyDto {
     /**
      * Mapi property with string value             
      * @param descriptor Property descriptor             
-     * @param discriminator 
      * @param value Property value             
      */
     public constructor(
-        descriptor?: model.MapiPropertyDescriptor,
-        discriminator?: string,
-        value?: string) {
+        
+        descriptor?: model.MapiPropertyDescriptor
+        ,
+        value?: string
+    ) {
         super();
         this.descriptor = descriptor;
-        this.discriminator = discriminator;
         this.value = value;
+        
     }
 }
+
+
 

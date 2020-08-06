@@ -70,15 +70,20 @@ export class ClientThreadSetIsReadRequest extends model.ClientThreadBaseRequest 
      * @param folder Folder on email server, where thread is stored.             
      */
     public constructor(
+        
         accountLocation?: model.StorageFileLocation,
         threadId?: string,
         isRead?: boolean,
-        folder?: string) {
+        folder?: string
+    ) {
         super();
         this.accountLocation = accountLocation;
         this.threadId = threadId;
         this.isRead = isRead;
         this.folder = folder;
+        
     }
 }
+
+
 

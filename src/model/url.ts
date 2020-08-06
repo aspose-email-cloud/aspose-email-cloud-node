@@ -78,13 +78,18 @@ export class Url {
      * @param href URL.             
      */
     public constructor(
+        
         category?: model.EnumWithCustomOfUrlCategory,
         preferred?: boolean,
-        href?: string) {
+        href?: string
+    ) {
         
         this.category = category;
         this.preferred = preferred;
         this.href = href;
+        
     }
 }
+
+
 

@@ -59,11 +59,16 @@ export class StorageModelOfMapiCalendarDto {
      * @param value 
      */
     public constructor(
+        
         storageFile?: model.StorageFileLocation,
-        value?: model.MapiCalendarDto) {
+        value?: model.MapiCalendarDto
+    ) {
         
         this.storageFile = storageFile;
         this.value = value;
+        
     }
 }
+
+
 

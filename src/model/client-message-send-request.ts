@@ -59,11 +59,16 @@ export class ClientMessageSendRequest extends model.ClientAccountBaseRequest {
      * @param message Message to send             
      */
     public constructor(
+        
         accountLocation?: model.StorageFileLocation,
-        message?: model.MailMessageBase) {
+        message?: model.MailMessageBase
+    ) {
         super();
         this.accountLocation = accountLocation;
         this.message = message;
+        
     }
 }
+
+
 

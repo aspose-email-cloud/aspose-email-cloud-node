@@ -56,17 +56,20 @@ export class MapiMultiIntPropertyDto extends model.MapiPropertyDto {
     /**
      * Mapi property with Multiple Integer values             
      * @param descriptor Property descriptor             
-     * @param discriminator 
      * @param values Property values             
      */
     public constructor(
-        descriptor?: model.MapiPropertyDescriptor,
-        discriminator?: string,
-        values?: Array<number>) {
+        
+        descriptor?: model.MapiPropertyDescriptor
+        ,
+        values?: Array<number>
+    ) {
         super();
         this.descriptor = descriptor;
-        this.discriminator = discriminator;
         this.values = values;
+        
     }
 }
+
+
 

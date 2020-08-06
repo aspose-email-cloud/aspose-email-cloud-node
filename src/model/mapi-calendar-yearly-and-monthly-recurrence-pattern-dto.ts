@@ -86,12 +86,12 @@ export class MapiCalendarYearlyAndMonthlyRecurrencePatternDto extends model.Mapi
      * @param slidingFlag Defines whether pattern is sliding or not.             
      * @param startDate Start date of an item recurrence pattern.             
      * @param weekStartDay Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
-     * @param discriminator 
      * @param day Day of the month on which the recurrence falls.             
      * @param dayOfWeek Days of week at which the event occurs.             
      * @param position Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
      */
     public constructor(
+        
         calendarType?: string,
         deletedInstanceDates?: Array<Date>,
         endDate?: Date,
@@ -104,11 +104,12 @@ export class MapiCalendarYearlyAndMonthlyRecurrencePatternDto extends model.Mapi
         period?: number,
         slidingFlag?: boolean,
         startDate?: Date,
-        weekStartDay?: string,
-        discriminator?: string,
+        weekStartDay?: string
+        ,
         day?: number,
         dayOfWeek?: Array<string>,
-        position?: string) {
+        position?: string
+    ) {
         super();
         this.calendarType = calendarType;
         this.deletedInstanceDates = deletedInstanceDates;
@@ -123,10 +124,12 @@ export class MapiCalendarYearlyAndMonthlyRecurrencePatternDto extends model.Mapi
         this.slidingFlag = slidingFlag;
         this.startDate = startDate;
         this.weekStartDay = weekStartDay;
-        this.discriminator = discriminator;
         this.day = day;
         this.dayOfWeek = dayOfWeek;
         this.position = position;
+        
     }
 }
+
+
 

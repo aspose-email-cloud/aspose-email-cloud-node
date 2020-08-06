@@ -50,9 +50,14 @@ export class MailMessageBaseList extends model.ListResponseOfMailMessageBase {
      * @param value 
      */
     public constructor(
-        value?: Array< model.MailMessageBase >) {
+        
+        value?: Array< model.MailMessageBase >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

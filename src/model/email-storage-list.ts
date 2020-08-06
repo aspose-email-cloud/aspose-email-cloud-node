@@ -50,9 +50,14 @@ export class EmailStorageList extends model.ListResponseOfStorageModelOfEmailDto
      * @param value 
      */
     public constructor(
-        value?: Array< model.StorageModelOfEmailDto >) {
+        
+        value?: Array< model.StorageModelOfEmailDto >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

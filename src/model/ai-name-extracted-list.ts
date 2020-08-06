@@ -50,9 +50,14 @@ export class AiNameExtractedList extends model.ListResponseOfAiNameExtracted {
      * @param value 
      */
     public constructor(
-        value?: Array< model.AiNameExtracted >) {
+        
+        value?: Array< model.AiNameExtracted >
+    ) {
         super();
         this.value = value;
+        
     }
 }
+
+
 

@@ -79,15 +79,20 @@ export class ClientMessageAppendRequest extends model.ClientAccountBaseRequest {
      * @param markAsSent Determines that appended message should be market as sent or not.             
      */
     public constructor(
+        
         accountLocation?: model.StorageFileLocation,
         folder?: string,
         message?: model.MailMessageBase,
-        markAsSent?: boolean) {
+        markAsSent?: boolean
+    ) {
         super();
         this.accountLocation = accountLocation;
         this.folder = folder;
         this.message = message;
         this.markAsSent = markAsSent;
+        
     }
 }
+
+
 
