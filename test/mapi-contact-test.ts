@@ -15,7 +15,7 @@ import {
     MapiContactSaveRequest,
     MapiContactTelephonePropertySetDto,
     StorageFileLocation
-} from "../src/model";
+} from "..";
 
 
 describe('MAPI contact tests', function () {

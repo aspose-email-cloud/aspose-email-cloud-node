@@ -18,7 +18,7 @@ import {
     StorageFileLocation,
     StorageFolderLocation,
     UploadFileRequest
-} from "../src/model";
+} from "..";
 
 
 describe('AI tests', function () {

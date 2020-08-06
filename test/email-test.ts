@@ -1,7 +1,7 @@
 import 'mocha';
 import {expect} from 'chai';
 import {suiteBase} from "./suite-base";
-import {EmailAsFileRequest, EmailConvertRequest, EmailDto, EmailFromFileRequest, MailAddress} from "../src/model";
+import {EmailAsFileRequest, EmailConvertRequest, EmailDto, EmailFromFileRequest, MailAddress} from "..";
 
 
 describe('Email tests', function () {

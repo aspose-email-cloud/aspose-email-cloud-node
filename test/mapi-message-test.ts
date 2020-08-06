@@ -13,7 +13,7 @@ import {
     MapiRecipientDto,
     MapiStringPropertyDto,
     StorageFileLocation
-} from "../src/model";
+} from "..";
 
 
 describe('MAPI contact tests', function () {

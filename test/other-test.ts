@@ -4,12 +4,17 @@ import {expect} from 'chai';
 import {suiteBase} from "./suite-base";
 import {
     ClientAccountGetMultiRequest,
-    ClientAccountGetRequest, ClientAccountSaveMultiRequest,
+    ClientAccountGetRequest,
+    ClientAccountSaveMultiRequest,
     ClientAccountSaveRequest,
-    DisposableEmailIsDisposableRequest, EmailClientAccount, EmailClientAccountOauthCredentials,
-    EmailClientAccountPasswordCredentials, EmailClientMultiAccount,
-    EmailConfigDiscoverRequest, StorageFileLocation
-} from "../src/model";
+    DisposableEmailIsDisposableRequest,
+    EmailClientAccount,
+    EmailClientAccountOauthCredentials,
+    EmailClientAccountPasswordCredentials,
+    EmailClientMultiAccount,
+    EmailConfigDiscoverRequest,
+    StorageFileLocation
+} from "..";
 
 describe('Other tests', function () {
     let td = suiteBase(this);
@@ -38,8 +43,10 @@ describe('Other tests', function () {
             accountCredentials,
             new StorageFileLocation(td.storage(), td.folder(), 'account.cache'));
         const fileName = uuidv4() + '.account';
-        await td.api().client.account.save(new ClientAccountSaveRequest(new StorageFileLocation(td.storage(), td.folder(), fileName), account));
-        const result = await td.api().client.account.get(new ClientAccountGetRequest(fileName, td.folder(), td.storage()));
+        await td.api().client.account.save(
+            new ClientAccountSaveRequest(new StorageFileLocation(td.storage(), td.folder(), fileName), account));
+        const result = await td.api().client.account.get(
+            new ClientAccountGetRequest(fileName, td.folder(), td.storage()));
         expect(result.credentials.discriminator).to.be.equal(account.credentials.discriminator);
         const resultCredentials = result.credentials as EmailClientAccountPasswordCredentials;
         expect(resultCredentials.password).to.be.equal(accountCredentials.password);
@@ -60,9 +67,12 @@ describe('Other tests', function () {
                     'example@gmail.com', undefined, 'password')));
         const fileName = uuidv4() + '.multi.account';
         // Save multi account
-        await td.api().client.account.saveMulti(new ClientAccountSaveMultiRequest(new StorageFileLocation(td.storage(),td.folder(),fileName), multiAccount));
+        await td.api().client.account.saveMulti(
+            new ClientAccountSaveMultiRequest(new StorageFileLocation(td.storage(), td.folder(), fileName),
+                multiAccount));
         // Get multi account object from td.storage()
-        const multiAccountFromStorage = await td.api().client.account.getMulti(new ClientAccountGetMultiRequest(fileName, td.folder(), td.storage()));
+        const multiAccountFromStorage = await td.api().client.account.getMulti(
+            new ClientAccountGetMultiRequest(fileName, td.folder(), td.storage()));
 
         expect(multiAccountFromStorage.receiveAccounts.length).to.be.equal(2);
         expect(multiAccountFromStorage.sendAccount.credentials.discriminator)

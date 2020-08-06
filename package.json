@@ -28,8 +28,8 @@
     "MHT"
   ],
   "readmeFilename": "README.md",
-  "main": "dist/lib/api.js",
-  "types": "dist/lib/api.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/src"
   ],

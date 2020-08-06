@@ -1,13 +1,13 @@
-import {EmailCloud} from "../src/api";
 import uuidv4 from "uuid/v4";
 import 'mocha';
 import {Suite} from "mocha";
-import {CreateFolderRequest, DeleteFolderRequest} from "../src/model";
+import {CreateFolderRequest, DeleteFolderRequest, EmailCloud} from "..";
 
 class SuiteBase {
     public api: () => EmailCloud;
     public folder: () => string;
     public storage: () => string;
+
     constructor(getApi: () => EmailCloud, getFolder: () => string, getStorage: () => string) {
         this.api = getApi;
         this.folder = getFolder;

@@ -12,7 +12,7 @@ import {
     ObjectExistsRequest,
     PhoneNumber,
     StorageFileLocation
-} from "../src/model";
+} from "..";
 
 describe('Contact tests', function () {
     let td = suiteBase(this);

@@ -14,7 +14,7 @@ import {
     MapiElectronicAddressDto,
     MapiRecipientDto,
     StorageFileLocation
-} from "../src/model";
+} from "..";
 
 
 describe('MAPI calendar tests', function () {

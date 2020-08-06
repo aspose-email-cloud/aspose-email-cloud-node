@@ -16,7 +16,7 @@ import {
     MailAddress,
     ObjectExistsRequest,
     StorageFileLocation
-} from "../src/model";
+} from "..";
 
 describe('Calendar tests', function () {
     let td = suiteBase(this);
