@@ -82,37 +82,30 @@ export class MapiContactProfessionalPropertySetDto {
      * Gets or sets the job title of the contact             
      */
     public title: string;
-    
     /**
      * Gets or sets the company that employs the contact             
      */
     public companyName: string;
-    
     /**
      * Gets or sets the name of the department to which the contact belongs             
      */
     public departmentName: string;
-    
     /**
      * Gets or sets the location of the office that the contact works in             
      */
     public officeLocation: string;
-    
     /**
      * Gets or sets the name of the contact's manager             
      */
     public managerName: string;
-    
     /**
      * Gets or sets the name of the contact's assistant             
      */
     public assistant: string;
-    
     /**
      * Gets or sets the profession of the contact             
      */
     public profession: string;
-    
 
     /**
      * Properties are used to store professional details for the person represented by the contact             

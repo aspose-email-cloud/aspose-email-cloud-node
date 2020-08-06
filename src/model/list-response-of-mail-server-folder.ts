@@ -46,7 +46,6 @@ export class ListResponseOfMailServerFolder {
     }
 
     public value: Array< model.MailServerFolder >;
-    
 
     /**
      * 

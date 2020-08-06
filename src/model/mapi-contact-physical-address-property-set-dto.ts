@@ -62,17 +62,14 @@ export class MapiContactPhysicalAddressPropertySetDto {
      * Specifies the address of the contact's work             
      */
     public workAddress: model.MapiContactPhysicalAddressDto;
-    
     /**
      * Specifies the address of the contact's home             
      */
     public homeAddress: model.MapiContactPhysicalAddressDto;
-    
     /**
      * Specifies the other contact's address             
      */
     public otherAddress: model.MapiContactPhysicalAddressDto;
-    
 
     /**
      * Specify three physical addresses: Home Address, Work Address, and Other Address. One of the addresses can be marked as the Mailing Address             

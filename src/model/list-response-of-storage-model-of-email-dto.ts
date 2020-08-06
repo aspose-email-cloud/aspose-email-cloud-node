@@ -46,7 +46,6 @@ export class ListResponseOfStorageModelOfEmailDto {
     }
 
     public value: Array< model.StorageModelOfEmailDto >;
-    
 
     /**
      * 

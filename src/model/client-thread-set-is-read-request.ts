@@ -57,12 +57,10 @@ export class ClientThreadSetIsReadRequest extends model.ClientThreadBaseRequest 
      * Message is read flag.             
      */
     public isRead: boolean;
-    
     /**
      * Folder on email server, where thread is stored.             
      */
     public folder: string;
-    
 
     /**
      * Mark thread messages as read or unread request.             

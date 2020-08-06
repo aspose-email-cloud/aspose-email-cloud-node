@@ -72,27 +72,22 @@ export class Attachment extends model.AttachmentBase {
      * Content-Disposition header. Read only.             
      */
     public contentDisposition: string;
-    
     /**
      * Determines if attachment is an embedded message. Read only.             
      */
     public isEmbeddedMessage: boolean;
-    
     /**
      * Attachment name.             
      */
     public name: string;
-    
     /**
      * Encoding of attachment name.             
      */
     public nameEncoding: string;
-    
     /**
      * Preferred text encoding.             
      */
     public preferredTextEncoding: string;
-    
 
     /**
      * Document attachment.             

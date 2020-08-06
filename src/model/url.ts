@@ -62,17 +62,14 @@ export class Url {
      * Url category.             
      */
     public category: model.EnumWithCustomOfUrlCategory;
-    
     /**
      * Defines whether url is preferred.             
      */
     public preferred: boolean;
-    
     /**
      * URL.             
      */
     public href: string;
-    
 
     /**
      * Url and its category.             

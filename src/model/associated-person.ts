@@ -62,17 +62,14 @@ export class AssociatedPerson {
      * Associated person's name.             
      */
     public name: string;
-    
     /**
      * Associated person's category.             
      */
     public category: model.EnumWithCustomOfAssociatedPersonCategory;
-    
     /**
      * Defines whether associated person is preferred.             
      */
     public preferred: boolean;
-    
 
     /**
      * Describes associated person.             

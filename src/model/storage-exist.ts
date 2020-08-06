@@ -52,7 +52,6 @@ export class StorageExist {
      * Shows that the storage exists.             
      */
     public exists: boolean;
-    
 
     /**
      * Storage exists

@@ -52,7 +52,6 @@ export class AiBcrImageStorageFile extends model.AiBcrImage {
      * Image location             
      */
     public file: model.StorageFileLocation;
-    
 
     /**
      * Image from storage for recognition             

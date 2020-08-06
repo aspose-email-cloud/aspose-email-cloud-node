@@ -52,7 +52,6 @@ export class AiBcrImage {
      * Determines that image contains single VCard or more.             
      */
     public isSingle: boolean;
-    
 
     /**
      * Image for recognition             

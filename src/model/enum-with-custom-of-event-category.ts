@@ -54,9 +54,7 @@ export class EnumWithCustomOfEventCategory {
      * Event category. Enum, available values: Custom, Birthday, Anniversary
      */
     public value: string;
-    
     public description: string;
-    
 
     /**
      * 

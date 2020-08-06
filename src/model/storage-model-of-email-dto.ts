@@ -51,9 +51,7 @@ export class StorageModelOfEmailDto {
     }
 
     public storageFile: model.StorageFileLocation;
-    
     public value: model.EmailDto;
-    
 
     /**
      * 

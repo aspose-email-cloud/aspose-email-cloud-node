@@ -46,7 +46,6 @@ export class ListResponseOfEmailAccountConfig {
     }
 
     public value: Array< model.EmailAccountConfig >;
-    
 
     /**
      * 

@@ -62,17 +62,14 @@ export class InstantMessengerAddress {
      * Address category.             
      */
     public category: model.EnumWithCustomOfInstantMessengerCategory;
-    
     /**
      * Address.             
      */
     public address: string;
-    
     /**
      * Determines whether this address is preferred.             
      */
     public preferred: boolean;
-    
 
     /**
      * Instant messenger address.             

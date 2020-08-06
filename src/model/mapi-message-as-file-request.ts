@@ -57,12 +57,10 @@ export class MapiMessageAsFileRequest {
      * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
-    
     /**
      * MAPI message model.             
      */
     public value: model.MapiMessageDto;
-    
 
     /**
      * Convert MapiMessage to file request.             

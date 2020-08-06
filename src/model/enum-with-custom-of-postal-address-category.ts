@@ -54,9 +54,7 @@ export class EnumWithCustomOfPostalAddressCategory {
      * Address category. Enum, available values: Home, Work, Custom
      */
     public value: string;
-    
     public description: string;
-    
 
     /**
      * 

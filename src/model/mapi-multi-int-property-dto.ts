@@ -52,7 +52,6 @@ export class MapiMultiIntPropertyDto extends model.MapiPropertyDto {
      * Property values             
      */
     public values: Array<number>;
-    
 
     /**
      * Mapi property with Multiple Integer values             

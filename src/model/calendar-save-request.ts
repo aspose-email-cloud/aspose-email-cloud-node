@@ -52,7 +52,6 @@ export class CalendarSaveRequest extends model.StorageModelOfCalendarDto {
      * Calendar file format Enum, available values: Ics, Msg
      */
     public format: string;
-    
 
     /**
      * Save iCalendar to storage request.             

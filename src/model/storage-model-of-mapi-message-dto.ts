@@ -51,9 +51,7 @@ export class StorageModelOfMapiMessageDto {
     }
 
     public storageFile: model.StorageFileLocation;
-    
     public value: model.MapiMessageDto;
-    
 
     /**
      * 

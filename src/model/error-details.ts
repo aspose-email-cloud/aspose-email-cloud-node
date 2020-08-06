@@ -57,12 +57,10 @@ export class ErrorDetails {
      * The request id
      */
     public requestId: string;
-    
     /**
      * Date
      */
     public date: Date;
-    
 
     /**
      * The error details

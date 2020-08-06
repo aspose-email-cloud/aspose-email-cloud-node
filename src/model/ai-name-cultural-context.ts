@@ -72,27 +72,22 @@ export class AiNameCulturalContext {
      * An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)             
      */
     public language: string;
-    
     /**
      * A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France             
      */
     public location: string;
-    
     /**
      * A writing system code; starts with the ISO-15924 script name             
      */
     public script: string;
-    
     /**
      * A character encoding name             
      */
     public encoding: string;
-    
     /**
      * Name writing style. Enum, available values: Formal, Informal, Legal, Academic
      */
     public style: string;
-    
 
     /**
      * AiName cultural context             

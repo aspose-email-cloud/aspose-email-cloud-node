@@ -51,9 +51,7 @@ export class StorageModelOfMapiContactDto {
     }
 
     public storageFile: model.StorageFileLocation;
-    
     public value: model.MapiContactDto;
-    
 
     /**
      * 

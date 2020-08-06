@@ -132,84 +132,76 @@ export class MapiMessageItemBaseDto {
      * Message item attachments.             
      */
     public attachments: Array< model.MapiAttachmentDto >;
-    
     /**
      * Billing information associated with an item.             
      */
     public billing: string;
-    
     /**
      * Message text.             
      */
     public body: string;
-    
     /**
      * Gets the BodyRtf of the message converted to HTML, if present, otherwise an empty string.             
      */
     public bodyHtml: string;
-    
     /**
      * RTF formatted message text.             
      */
     public bodyRtf: string;
-    
     /**
      * The content type of message body. Enum, available values: PlainText, Html, Rtf
      */
     public bodyType: string;
-    
     /**
      * Contains keywords or categories for the message object.             
      */
     public categories: Array<string>;
-    
     /**
      * Contains the names of the companies that are associated with an item.             
      */
     public companies: Array<string>;
-    
     /**
      * The item id, uses with a server.             
      */
     public itemId: string;
-    
     /**
      * Case-sensitive string that identifies the sender-defined message class, such as IPM.Note. The message class specifies the type, purpose, or content of the message.             
      */
     public messageClass: string;
-    
     /**
      * Contains the mileage information that is associated with an item.             
      */
     public mileage: string;
-    
     /**
      * Recipients of the message.             
      */
     public recipients: Array< model.MapiRecipientDto >;
-    
     /**
      * Contains values that indicate the message sensitivity. Enum, available values: None, Personal, Private, CompanyConfidential
      */
     public sensitivity: string;
-    
     /**
      * Subject of the message.             
      */
     public subject: string;
-    
     /**
      * Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
      */
     public subjectPrefix: string;
-    
     /**
      * List of MAPI properties             
      */
     public properties: Array< model.MapiPropertyDto >;
-    
-    public discriminator: string;
-    
+    /**
+     * Model type discriminator. Used for serialization purposes. Field is set automatically by SDK.
+     */
+    public get discriminator(): string {
+        return this.constructor.name;
+    }
+    public set discriminator(_newType: string) {
+        /* do nothing */
+    };
+
 
     /**
      * Base Dto for MapiMessage, MapiCalendar or MapiContact             

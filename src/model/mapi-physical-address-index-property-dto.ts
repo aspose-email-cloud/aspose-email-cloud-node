@@ -52,7 +52,6 @@ export class MapiPhysicalAddressIndexPropertyDto extends model.MapiPropertyDto {
      * Identifies the display types for physical addresses. Enum, available values: None, Home, Business, Other
      */
     public value: string;
-    
 
     /**
      * Mapi property with PhysicalAddressIndexType value             

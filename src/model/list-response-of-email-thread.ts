@@ -46,7 +46,6 @@ export class ListResponseOfEmailThread {
     }
 
     public value: Array< model.EmailThread >;
-    
 
     /**
      * 

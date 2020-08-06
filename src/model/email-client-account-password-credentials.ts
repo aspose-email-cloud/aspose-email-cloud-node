@@ -52,7 +52,6 @@ export class EmailClientAccountPasswordCredentials extends model.EmailClientAcco
      * Email client account password             
      */
     public password: string;
-    
 
     /**
      * Represents email client account password credentials             

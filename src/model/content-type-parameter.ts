@@ -57,12 +57,10 @@ export class ContentTypeParameter {
      * Parameter name             
      */
     public name: string;
-    
     /**
      * Parameter value             
      */
     public value: string;
-    
 
     /**
      * Content-Type header parameter             

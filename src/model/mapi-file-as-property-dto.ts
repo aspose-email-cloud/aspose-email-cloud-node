@@ -52,7 +52,6 @@ export class MapiFileAsPropertyDto extends model.MapiPropertyDto {
      * Defines how to construct what is displayed for a contact in the FileAs property. Enum, available values: None, LastCommaFirst, FirstSpaceLast, Company, LastCommaFirstCompany, CompanyLastFirst, LastFirst, LastFirstCompany, CompanyLastCommaFirst, LastFirstSuffix, LastSpaceFirstCompany, CompanyLastSpaceFirst, LastSpaceFirst, DisplayName, FirstName, LastFirstMiddleSuffix, LastName, Empty
      */
     public value: string;
-    
 
     /**
      * Mapi property with FileAsMapping value             

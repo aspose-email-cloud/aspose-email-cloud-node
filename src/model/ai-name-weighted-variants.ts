@@ -57,12 +57,10 @@ export class AiNameWeightedVariants {
      * List of name variations             
      */
     public names: Array< model.AiNameWeighted >;
-    
     /**
      * Usually empty; can contain extra message describing some issue occurred during processing             
      */
     public comments: string;
-    
 
     /**
      * Name variants             

@@ -72,27 +72,22 @@ export class StorageFile {
      * File or folder name.
      */
     public name: string;
-    
     /**
      * True if it is a folder.
      */
     public isFolder: boolean;
-    
     /**
      * File or folder last modified DateTime.
      */
     public modifiedDate: Date;
-    
     /**
      * File or folder size.
      */
     public size: number;
-    
     /**
      * File or folder path.
      */
     public path: string;
-    
 
     /**
      * File or folder information

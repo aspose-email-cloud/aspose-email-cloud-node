@@ -72,27 +72,22 @@ export class MapiElectronicAddressDto {
      * Address type.             
      */
     public addressType: string;
-    
     /**
      * Email address.             
      */
     public emailAddress: string;
-    
     /**
      * User-readable display name for the e-mail address.             
      */
     public displayName: string;
-    
     /**
      * Telephone number of the mail user's primary fax machine.             
      */
     public faxNumber: string;
-    
     /**
      * SMTP e-mail address that  corresponds to the e-mail address.             
      */
     public originalDisplayName: string;
-    
 
     /**
      * Refers to the group of properties that define the e-mail address or fax address.             

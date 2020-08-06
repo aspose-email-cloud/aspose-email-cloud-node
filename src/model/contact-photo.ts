@@ -62,14 +62,20 @@ export class ContactPhoto {
      * MapiContact photo image format. Enum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
      */
     public photoImageFormat: string;
-    
     /**
      * Photo serialized as base64 string.             
      */
     public base64Data: string;
-    
-    public discriminator: string;
-    
+    /**
+     * Model type discriminator. Used for serialization purposes. Field is set automatically by SDK.
+     */
+    public get discriminator(): string {
+        return this.constructor.name;
+    }
+    public set discriminator(_newType: string) {
+        /* do nothing */
+    };
+
 
     /**
      * Person's photo.             

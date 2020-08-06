@@ -62,17 +62,14 @@ export class DiscoverEmailConfigRequest {
      * Email address to discover.             
      */
     public address: string;
-    
     /**
      * Turns on fast processing. All discover systems will run in parallel. First discovered result will be returned.             
      */
     public fastProcessing: boolean;
-    
     /**
      * Email account login. If not specified, address used as a login.             
      */
     public login: string;
-    
 
     /**
      * Discover email configuration request.             

@@ -62,17 +62,14 @@ export class CalendarAsAlternateRequest {
      * iCalendar document model             
      */
     public value: model.CalendarDto;
-    
     /**
      * iCalendar actions. Enum, available values: Create, Update, Cancel
      */
     public action: string;
-    
     /**
      * iCalendar sequence id             
      */
     public sequenceId: string;
-    
 
     /**
      * Convert iCalendar to AlternateView request             

@@ -57,12 +57,10 @@ export class StorageFolderLocation {
      * A storage name             
      */
     public storage: string;
-    
     /**
      * A path to a folder in specified storage             
      */
     public folderPath: string;
-    
 
     /**
      * A storage folder location information             

@@ -57,12 +57,10 @@ export class AiNameFormatted {
      * Formatted name value             
      */
     public name: string;
-    
     /**
      * Usually empty; can contain extra message describing some issue occurred during the formatting             
      */
     public comments: string;
-    
 
     /**
      * Formatted name             

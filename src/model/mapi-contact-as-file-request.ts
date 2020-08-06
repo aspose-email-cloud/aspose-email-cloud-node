@@ -57,12 +57,10 @@ export class MapiContactAsFileRequest {
      * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
      */
     public format: string;
-    
     /**
      * MAPI contact model.             
      */
     public value: model.MapiContactDto;
-    
 
     /**
      * Convert MapiContact to file request.             

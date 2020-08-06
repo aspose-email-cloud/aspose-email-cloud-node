@@ -52,7 +52,6 @@ export class AiNameMatchParsedRequest extends model.AiNameParsedRequest {
      * Other parsed name to match             
      */
     public otherParsedName: Array< model.AiNameComponent >;
-    
 
     /**
      * Two parsed names to match request             

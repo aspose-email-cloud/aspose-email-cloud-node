@@ -46,7 +46,6 @@ export class ValueTOfString {
     }
 
     public value: string;
-    
 
     /**
      * 

@@ -52,7 +52,6 @@ export class FilesList {
      * Files and folders contained by folder StorageFile.
      */
     public value: Array< model.StorageFile >;
-    
 
     /**
      * Files list

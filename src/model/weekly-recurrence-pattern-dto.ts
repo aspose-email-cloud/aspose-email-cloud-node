@@ -52,7 +52,6 @@ export class WeeklyRecurrencePatternDto extends model.RecurrencePatternDto {
      * Start days              Items: Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
      */
     public startDays: Array<string>;
-    
 
     /**
      * Weekly recurrence pattern.             

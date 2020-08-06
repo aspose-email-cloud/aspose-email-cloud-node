@@ -77,32 +77,26 @@ export class MapiContactElectronicAddressDto {
      * Address type of an electronic address
      */
     public addressType: string;
-    
     /**
      * User-readable display name for the e-mail address
      */
     public displayName: string;
-    
     /**
      * E-mail address of the contact
      */
     public emailAddress: string;
-    
     /**
      * Telephone number of the mail user's primary fax machine
      */
     public faxNumber: string;
-    
     /**
      * Shows if MapiContactElectronicAddress is empty
      */
     public isEmpty: boolean;
-    
     /**
      * SMTP e-mail address that corresponds to the e-mail address for the Contact object.
      */
     public originalDisplayName: string;
-    
 
     /**
      * Refers to the group of properties that define the e-mail address or fax address for a contact.             

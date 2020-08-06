@@ -77,32 +77,26 @@ export class MapiCalendarEventRecurrenceDto {
      * Time zone information that describes how to convert the meeting date and time on a recurring series to and from UTC.             
      */
     public appointmentTimeZoneDefinitionRecur: model.MapiCalendarTimeZoneDto;
-    
     /**
      * Date of the last instance.             
      */
     public clipEnd: Date;
-    
     /**
      * Date of the first instance.             
      */
     public clipStart: Date;
-    
     /**
      * Value indicating whether the object represents an exception.             
      */
     public isException: boolean;
-    
     /**
      * Recurrence pattern.             
      */
     public recurrencePattern: model.MapiCalendarRecurrencePatternDto;
-    
     /**
      * Time zone information for a recurring meeting.             
      */
     public timeZoneStruct: model.MapiCalendarTimeZoneDto;
-    
 
     /**
      * Recurrence properties of calendar object.             

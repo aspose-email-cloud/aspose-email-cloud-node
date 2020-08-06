@@ -52,7 +52,6 @@ export class MapiBinaryPropertyDto extends model.MapiPropertyDto {
      * Property value converted to Base64             
      */
     public valueBase64: string;
-    
 
     /**
      * Mapi property with Binary value represented as a Base64 string             

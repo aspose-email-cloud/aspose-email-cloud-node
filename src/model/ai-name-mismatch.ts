@@ -62,17 +62,14 @@ export class AiNameMismatch {
      * Mismatch type. Enum, available values: Unknown, FirstName, MiddleName, MiddleLastName, MiddleNickname, Gender, Context
      */
     public category: string;
-    
     /**
      * Similarity score             
      */
     public similarity: number;
-    
     /**
      * Explanation or mismatch subtype             
      */
     public explanation: string;
-    
 
     /**
      * Names mismatch detailed description             

@@ -54,9 +54,7 @@ export class EnumWithCustomOfAssociatedPersonCategory {
      * Associated person's category. Enum, available values: Spouse, Child, Mother, Father, Parent, Brother, Sister, Friend, Relative, Manager, Assistant, ReferredBy, Partner, DomesticPartner, Custom
      */
     public value: string;
-    
     public description: string;
-    
 
     /**
      * 

@@ -64,22 +64,18 @@ export class EmailConfigDiscoverOauthRequest extends model.DiscoverEmailConfigRe
      * OAuth client id.             
      */
     public clientId: string;
-    
     /**
      * OAuth client secret.             
      */
     public clientSecret: string;
-    
     /**
      * OAuth refresh token.             
      */
     public refreshToken: string;
-    
     /**
      * The url to obtain access token. If not specified, will be discovered from email configuration.             
      */
     public requestUrl: string;
-    
 
     /**
      * 

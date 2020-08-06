@@ -57,9 +57,16 @@ export class EmailClientAccountCredentials {
      * Email client account login             
      */
     public login: string;
-    
-    public discriminator: string;
-    
+    /**
+     * Model type discriminator. Used for serialization purposes. Field is set automatically by SDK.
+     */
+    public get discriminator(): string {
+        return this.constructor.name;
+    }
+    public set discriminator(_newType: string) {
+        /* do nothing */
+    };
+
 
     /**
      * Represents email client account credentials             

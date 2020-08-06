@@ -54,9 +54,7 @@ export class EnumWithCustomOfUrlCategory {
      * Url category. Enum, available values: Profile, HomePage, Home, Work, Blog, Ftp, Custom
      */
     public value: string;
-    
     public description: string;
-    
 
     /**
      * 

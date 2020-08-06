@@ -67,22 +67,18 @@ export class ModelError {
      * Code             
      */
     public code: string;
-    
     /**
      * Message             
      */
     public message: string;
-    
     /**
      * Description             
      */
     public description: string;
-    
     /**
      * Inner Error             
      */
     public innerError: model.ErrorDetails;
-    
 
     /**
      * Error

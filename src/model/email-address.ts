@@ -77,32 +77,26 @@ export class EmailAddress {
      * Address category.             
      */
     public category: model.EnumWithCustomOfEmailAddressCategory;
-    
     /**
      * Display name.             
      */
     public displayName: string;
-    
     /**
      * Defines whether email address is preferred.             
      */
     public preferred: boolean;
-    
     /**
      * A routing type for an email.             
      */
     public routingType: string;
-    
     /**
      * Email address.             
      */
     public address: string;
-    
     /**
      * The original e-mail address string             
      */
     public originalAddressString: string;
-    
 
     /**
      * Email address.             

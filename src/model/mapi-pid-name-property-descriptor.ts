@@ -52,7 +52,6 @@ export class MapiPidNamePropertyDescriptor extends model.MapiPidPropertyDescript
      * A GUID that identifies a group of properties with a similar purpose.             
      */
     public propertySet: string;
-    
 
     /**
      * Property identified by a string name along with a property set             

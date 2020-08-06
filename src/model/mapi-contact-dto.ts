@@ -92,47 +92,38 @@ export class MapiContactDto extends model.MapiMessageItemBaseDto {
      * Specify properties for up to three different e-mail addresses and three different fax addresses.             
      */
     public electronicAddresses: model.MapiContactElectronicAddressPropertySetDto;
-    
     /**
      * Specify events associated with a contact.             
      */
     public events: model.MapiContactEventPropertySetDto;
-    
     /**
      * The properties are used to specify the name of the person represented by the contact.             
      */
     public nameInfo: model.MapiContactNamePropertySetDto;
-    
     /**
      * Specify other fields of contact.             
      */
     public otherFields: model.MapiContactOtherPropertySetDto;
-    
     /**
      * Specify other additional contact information.             
      */
     public personalInfo: model.MapiContactPersonalInfoPropertySetDto;
-    
     /**
      * Contact photo.             
      */
     public photo: model.MapiContactPhotoDto;
-    
     /**
      * Specify three physical addresses: Home Address, Work Address, and Other Address. One of the addresses can be marked as the Mailing Address.             
      */
     public physicalAddresses: model.MapiContactPhysicalAddressPropertySetDto;
-    
     /**
      * Properties are used to store professional details for the person represented by the contact.             
      */
     public professionalInfo: model.MapiContactProfessionalPropertySetDto;
-    
     /**
      * Specify telephone numbers for the contact.             
      */
     public telephones: model.MapiContactTelephonePropertySetDto;
-    
 
     /**
      * Represents outlook contact information.             

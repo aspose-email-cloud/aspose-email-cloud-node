@@ -87,42 +87,34 @@ export class CalendarReminder {
      * Defines the action to be invoked when an alarm is triggered. Enum, available values: Audio, Display, Email, Procedure, None
      */
     public action: string;
-    
     /**
      * Collection of Reminder Attachments. Could be an absolute URI or Base64 string representation of attachment content             
      */
     public attachments: Array<string>;
-    
     /**
      * Contains collection of ReminderAttendee objects.             
      */
     public attendees: Array< model.ReminderAttendee >;
-    
     /**
      * Provides a more complete description of the alarm.
      */
     public description: string;
-    
     /**
      * Specifies the delay period in ticks, after which the alarm will repeat.             
      */
     public duration: number;
-    
     /**
      * Defines the number of time the alarm should be repeated, after the initial trigger.             
      */
     public repeat: number;
-    
     /**
      * Defines a short summary or subject for the alarm.
      */
     public summary: string;
-    
     /**
      * Specifies when an alarm will trigger.
      */
     public trigger: model.ReminderTrigger;
-    
 
     /**
      * Provides a grouping of component properties that define an alarm.             

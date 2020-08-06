@@ -52,7 +52,6 @@ export class MapiCalendarSaveRequest extends model.StorageModelOfMapiCalendarDto
      * Calendar file format Enum, available values: Ics, Msg
      */
     public format: string;
-    
 
     /**
      * Save MapiCalendar to storage request.             

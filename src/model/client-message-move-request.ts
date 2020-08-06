@@ -57,12 +57,10 @@ export class ClientMessageMoveRequest extends model.ClientMessageBaseRequest {
      * Folder to move message from.             
      */
     public sourceFolder: string;
-    
     /**
      * Folder to move message to.             
      */
     public destinationFolder: string;
-    
 
     /**
      * Email client move message request.             

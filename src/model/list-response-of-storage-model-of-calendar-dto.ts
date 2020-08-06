@@ -46,7 +46,6 @@ export class ListResponseOfStorageModelOfCalendarDto {
     }
 
     public value: Array< model.StorageModelOfCalendarDto >;
-    
 
     /**
      * 

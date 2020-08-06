@@ -46,7 +46,6 @@ export class ListResponseOfContactDto {
     }
 
     public value: Array< model.ContactDto >;
-    
 
     /**
      * 

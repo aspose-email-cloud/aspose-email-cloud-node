@@ -52,7 +52,6 @@ export class ClientMessageDeleteRequest extends model.ClientMessageBaseRequest {
      * Folder to delete message from.             
      */
     public folder: string;
-    
 
     /**
      * Email client delete message request.             

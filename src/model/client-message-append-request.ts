@@ -62,17 +62,14 @@ export class ClientMessageAppendRequest extends model.ClientAccountBaseRequest {
      * Path to folder on email server to append message to.             
      */
     public folder: string;
-    
     /**
      * Message to append.             
      */
     public message: model.MailMessageBase;
-    
     /**
      * Determines that appended message should be market as sent or not.             
      */
     public markAsSent: boolean;
-    
 
     /**
      * Email client append message request.             

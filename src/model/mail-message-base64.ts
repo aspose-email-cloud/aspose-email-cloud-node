@@ -57,12 +57,10 @@ export class MailMessageBase64 extends model.MailMessageBase {
      * Email message file data encoded to Base64 string.             
      */
     public valueBase64: string;
-    
     /**
      * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
-    
 
     /**
      * Email message represented as file, encoded to Base64 format.             

@@ -97,52 +97,42 @@ export class MapiContactNamePropertySetDto {
      * Full name of the contact             
      */
     public displayName: string;
-    
     /**
      * Title of the contact             
      */
     public displayNamePrefix: string;
-    
     /**
      * Name under which to file this contact when displaying a list of contacts             
      */
     public fileUnder: string;
-    
     /**
      * Value specifying how to generate and recompute the property when other properties are changed             
      */
     public fileUnderId: number;
-    
     /**
      * Generation suffix of the contact             
      */
     public generation: string;
-    
     /**
      * Given name (first name) of the contact             
      */
     public givenName: string;
-    
     /**
      * Initials of the contact             
      */
     public initials: string;
-    
     /**
      * Middle name of the contact             
      */
     public middleName: string;
-    
     /**
      * Nickname of the contact             
      */
     public nickname: string;
-    
     /**
      * Surname (family name) of the contact             
      */
     public surname: string;
-    
 
     /**
      * The properties are used to specify the name of the person represented by the contact             

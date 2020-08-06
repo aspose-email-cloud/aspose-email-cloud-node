@@ -67,22 +67,18 @@ export class MailAddress {
      * Display name             
      */
     public displayName: string;
-    
     /**
      * Address             
      */
     public address: string;
-    
     /**
      * Identifies the participation status for the calendar user. Enum, available values: NeedsAction, Accepted, Declined, Tentative, Delegated
      */
     public participationStatus: string;
-    
     /**
      * The original e-mail address string             
      */
     public originalAddressString: string;
-    
 
     /**
      * Represents the address of a message.

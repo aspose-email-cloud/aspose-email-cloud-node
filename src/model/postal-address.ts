@@ -102,57 +102,46 @@ export class PostalAddress {
      * Address.             
      */
     public address: string;
-    
     /**
      * Address category.             
      */
     public category: model.EnumWithCustomOfPostalAddressCategory;
-    
     /**
      * Address's city.             
      */
     public city: string;
-    
     /**
      * Address's country.             
      */
     public country: string;
-    
     /**
      * Country code.             
      */
     public countryCode: string;
-    
     /**
      * Defines whether address may be used for mailing.             
      */
     public isMailingAddress: boolean;
-    
     /**
      * Postal code.             
      */
     public postalCode: string;
-    
     /**
      * Post Office box.             
      */
     public postOfficeBox: string;
-    
     /**
      * Defines whether postal address is preferred.             
      */
     public preferred: boolean;
-    
     /**
      * Address's region.             
      */
     public stateOrProvince: string;
-    
     /**
      * Address's street.             
      */
     public street: string;
-    
 
     /**
      * A postal address             

@@ -67,22 +67,18 @@ export class AttachmentBase {
      * Attachment file content as Base64 string.             
      */
     public base64Data: string;
-    
     /**
      * Attachment content id             
      */
     public contentId: string;
-    
     /**
      * Content type             
      */
     public contentType: model.ContentType;
-    
     /**
      * Attachment headers.             
      */
     public headers: { [key: string]: string; };
-    
 
     /**
      * AttachmentBase class             

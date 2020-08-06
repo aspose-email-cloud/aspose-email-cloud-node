@@ -57,12 +57,10 @@ export class ObjectExist {
      * Indicates that the file or folder exists.
      */
     public exists: boolean;
-    
     /**
      * True if it is a folder, false if it is a file.
      */
     public isFolder: boolean;
-    
 
     /**
      * Object exists

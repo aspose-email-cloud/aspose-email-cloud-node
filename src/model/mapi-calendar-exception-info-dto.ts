@@ -117,72 +117,58 @@ export class MapiCalendarExceptionInfoDto {
      * Attachments in the recurrence exception.             
      */
     public attachments: Array< model.MapiAttachmentDto >;
-    
     /**
      * Body.             
      */
     public body: string;
-    
     /**
      * Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
      */
     public busyStatus: string;
-    
     /**
      * End date.             
      */
     public endDateTime: Date;
-    
     /**
      * Value of this field specifies whether the Exception Embedded Message object contains attachments.             
      */
     public hasAttachment: boolean;
-    
     /**
      * Location.             
      */
     public location: string;
-    
     /**
      * Enumerates the appointment state Enum, available values: Meeting, Received, Canceled
      */
     public meetingType: string;
-    
     /**
      * Original start date.             
      */
     public originalStartDate: Date;
-    
     /**
      * Override flags.              Items: Specifies what data in the MapiCalendarOverride structure has a value different from the recurring series. Enum, available values: Subject, MeetingType, ReminderDelta, Reminder, Location, BusyStatus, Attachment, Subtype, AppointmentColor, ExceptionalBody
      */
     public overrideFlags: Array<string>;
-    
     /**
      * Reminder delta.             
      */
     public reminderDelta: number;
-    
     /**
      * Value for the PidLidReminderSet property.             
      */
     public reminderSet: boolean;
-    
     /**
      * Start date.             
      */
     public startDateTime: Date;
-    
     /**
      * Subject.             
      */
     public subject: string;
-    
     /**
      * SubType.             
      */
     public subType: number;
-    
 
     /**
      * An exception specifies changes to an instance of a recurring series.             

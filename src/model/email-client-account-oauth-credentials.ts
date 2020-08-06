@@ -67,22 +67,18 @@ export class EmailClientAccountOauthCredentials extends model.EmailClientAccount
      * The client ID obtained from the Google Cloud Console during application registration.             
      */
     public clientId: string;
-    
     /**
      * The client secret obtained during application registration.             
      */
     public clientSecret: string;
-    
     /**
      * OAuth 2.0 refresh token             
      */
     public refreshToken: string;
-    
     /**
      * The url to obtain access token. If not specified, will try to discover from email client account host.             
      */
     public requestUrl: string;
-    
 
     /**
      * Represents email client account OAuth 2.0 credentials             

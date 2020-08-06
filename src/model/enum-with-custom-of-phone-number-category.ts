@@ -54,9 +54,7 @@ export class EnumWithCustomOfPhoneNumberCategory {
      * Phone number category. Enum, available values: Custom, Home, Work, Office, Mobile, Fax, HomeFax, WorkFax, Pager, Car, Isdn, Telex, Callback, Radio, Company, TtyTdd, Assistant, Primary
      */
     public value: string;
-    
     public description: string;
-    
 
     /**
      * 

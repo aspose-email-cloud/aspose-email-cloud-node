@@ -52,7 +52,6 @@ export class LinkedResource extends model.AttachmentBase {
      * URI that the resource must match.             
      */
     public contentLink: string;
-    
 
     /**
      * Represents an embedded resource in a message.             

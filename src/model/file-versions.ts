@@ -52,7 +52,6 @@ export class FileVersions {
      * File versions FileVersion.
      */
     public value: Array< model.FileVersion >;
-    
 
     /**
      * File versions FileVersion.

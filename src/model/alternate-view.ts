@@ -57,12 +57,10 @@ export class AlternateView extends model.AttachmentBase {
      * Base URI.             
      */
     public baseUri: string;
-    
     /**
      * Embedded resources referred to by this alternate view.             
      */
     public linkedResources: Array< model.LinkedResource >;
-    
 
     /**
      * Represents the format to view a message.             

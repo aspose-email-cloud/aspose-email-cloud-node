@@ -62,17 +62,14 @@ export class PhoneNumber {
      * Phone number category.             
      */
     public category: model.EnumWithCustomOfPhoneNumberCategory;
-    
     /**
      * Phone number.             
      */
     public number: string;
-    
     /**
      * Defines whether phone number is preferred.             
      */
     public preferred: boolean;
-    
 
     /**
      * A phone number.             

@@ -52,7 +52,6 @@ export class ClientAccountBaseRequest {
      * Email client account configuration location on storage.             
      */
     public accountLocation: model.StorageFileLocation;
-    
 
     /**
      * Base request for Email client. Stores information about email account location.             

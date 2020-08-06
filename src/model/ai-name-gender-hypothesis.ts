@@ -57,12 +57,10 @@ export class AiNameGenderHypothesis {
      * Recognized name gender. Enum, available values: Male, Female, Unknown
      */
     public gender: string;
-    
     /**
      * Hypothesis score             
      */
     public score: number;
-    
 
     /**
      * Name gender hypothesis             

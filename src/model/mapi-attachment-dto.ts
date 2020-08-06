@@ -57,12 +57,10 @@ export class MapiAttachmentDto {
      * Attachment's name             
      */
     public name: string;
-    
     /**
      * Attachment data represented as Base64 string.             
      */
     public dataBase64: string;
-    
 
     /**
      * Mapi attachment             

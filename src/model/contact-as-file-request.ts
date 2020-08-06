@@ -57,12 +57,10 @@ export class ContactAsFileRequest {
      * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
      */
     public format: string;
-    
     /**
      * Contact model.             
      */
     public value: model.ContactDto;
-    
 
     /**
      * Convert contact model to file request.             

@@ -51,9 +51,7 @@ export class StorageModelOfContactDto {
     }
 
     public storageFile: model.StorageFileLocation;
-    
     public value: model.ContactDto;
-    
 
     /**
      * 

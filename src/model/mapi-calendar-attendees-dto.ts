@@ -67,22 +67,18 @@ export class MapiCalendarAttendeesDto {
      * List of attendees.             
      */
     public appointmentRecipients: Array< model.MapiRecipientDto >;
-    
     /**
      * List of unsendable attendees.             
      */
     public appointmentUnsendableRecipients: Array< model.MapiRecipientDto >;
-    
     /**
      * Value indicating whether attendees are not allowed to propose a new date and/or time for the meeting.             
      */
     public notAllowPropose: boolean;
-    
     /**
      * Value indicating whether a response is requested to a Message object.             
      */
     public responseRequested: boolean;
-    
 
     /**
      * Mapi calendar attendees.             

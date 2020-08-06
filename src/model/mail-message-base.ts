@@ -48,8 +48,16 @@ export class MailMessageBase {
         return MailMessageBase.attributeTypeMap;
     }
 
-    public discriminator: string;
-    
+    /**
+     * Model type discriminator. Used for serialization purposes. Field is set automatically by SDK.
+     */
+    public get discriminator(): string {
+        return this.constructor.name;
+    }
+    public set discriminator(_newType: string) {
+        /* do nothing */
+    };
+
 
     /**
      * Universal object that stores email messages in different formats.             

@@ -57,12 +57,10 @@ export class EmailAsFileRequest {
      * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
-    
     /**
      * Email model.             
      */
     public value: model.EmailDto;
-    
 
     /**
      * Convert email model to file request.             

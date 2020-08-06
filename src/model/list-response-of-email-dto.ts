@@ -46,7 +46,6 @@ export class ListResponseOfEmailDto {
     }
 
     public value: Array< model.EmailDto >;
-    
 
     /**
      * 

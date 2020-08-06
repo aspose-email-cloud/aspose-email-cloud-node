@@ -57,12 +57,10 @@ export class MapiCalendarAsFileRequest {
      * Calendar file format Enum, available values: Ics, Msg
      */
     public format: string;
-    
     /**
      * MAPI calendar model.             
      */
     public value: model.MapiCalendarDto;
-    
 
     /**
      * Convert MapiCalendar to file request.             

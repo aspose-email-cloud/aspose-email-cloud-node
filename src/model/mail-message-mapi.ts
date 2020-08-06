@@ -52,7 +52,6 @@ export class MailMessageMapi extends model.MailMessageBase {
      * Email message object.             
      */
     public value: model.MapiMessageDto;
-    
 
     /**
      * Email message represented as MAPI object.             

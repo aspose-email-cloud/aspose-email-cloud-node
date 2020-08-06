@@ -52,7 +52,6 @@ export class ClientMessageSetIsReadRequest extends model.ClientMessageBaseReques
      * Message is read flag.             
      */
     public isRead: boolean;
-    
 
     /**
      * Email client mark message is read/unread request.             

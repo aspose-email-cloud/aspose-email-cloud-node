@@ -52,7 +52,6 @@ export class MapiImportancePropertyDto extends model.MapiPropertyDto {
      * Levels of importance for an item. Enum, available values: Low, Normal, High
      */
     public value: string;
-    
 
     /**
      * Mapi property with ImportanceChoicesType value             

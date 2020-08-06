@@ -57,12 +57,10 @@ export class MapiCalendarTimeZoneDto {
      * Human-readable description of the time zone.             
      */
     public keyName: string;
-    
     /**
      * Time zone rules             
      */
     public timeZoneRules: Array< model.MapiCalendarTimeZoneInfoDto >;
-    
 
     /**
      * Represents the mapi calendar time zone information.             

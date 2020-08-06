@@ -57,12 +57,10 @@ export class CalendarAsFileRequest {
      * Calendar file format Enum, available values: Ics, Msg
      */
     public format: string;
-    
     /**
      * iCalendar model             
      */
     public value: model.CalendarDto;
-    
 
     /**
      * iCalendar model to file request.             

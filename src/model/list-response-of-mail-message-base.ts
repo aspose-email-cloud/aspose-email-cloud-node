@@ -46,7 +46,6 @@ export class ListResponseOfMailMessageBase {
     }
 
     public value: Array< model.MailMessageBase >;
-    
 
     /**
      * 

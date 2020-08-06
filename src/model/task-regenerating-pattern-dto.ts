@@ -52,7 +52,6 @@ export class TaskRegeneratingPatternDto extends model.RecurrencePatternDto {
      * Enumerates the types of regenerating pattern. Enum, available values: Daily, Weekly, Monthly, Yearly
      */
     public regeneratingType: string;
-    
 
     /**
      * Represents the regenerating recurrence pattern that specifies how many days, weeks, months or years after the completion of the current task the next occurrence will be due.             

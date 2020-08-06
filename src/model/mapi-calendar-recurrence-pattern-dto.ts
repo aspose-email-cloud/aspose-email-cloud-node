@@ -117,69 +117,64 @@ export class MapiCalendarRecurrencePatternDto {
      * Enumerated the calendar type of the mapi recurrence Enum, available values: Default, CalGregorian, CalGregorianUs, CalJapan, CalTaiwan, CalKorea, CalHijri, CalThai, CalHebrew, CalGregorianMeFrench, CalGregorianArabic, CalGregorianXLitEnglish, CalGregorianXLitFrench, CalLunarJapanese, CalChineseLunar, CalSaka, CalLunarEtoChn, CalLunarEtoKor, CalLunarRokuyou, CalLunarKorean, CalUmAlQura
      */
     public calendarType: string;
-    
     /**
      * An array of dates, each of which is the original instance date of either a deleted instance or a modified instance for this recurrence.             
      */
     public deletedInstanceDates: Array<Date>;
-    
     /**
      * End date of an item recurrence pattern.             
      */
     public endDate: Date;
-    
     /**
      * Enumerates the ending type for the recurrence. Enum, available values: None, EndAfterDate, EndAfterNOccurrences, NeverEnd
      */
     public endType: string;
-    
     /**
      * An exception specifies changes to an instance of a recurring series.             
      */
     public exceptions: Array< model.MapiCalendarExceptionInfoDto >;
-    
     /**
      * Enumerates mapi calendar recurrence frequency Enum, available values: None, Daily, Weekly, Monthly, Yearly
      */
     public frequency: string;
-    
     /**
      * An array of dates, each of which is the date of a modified instance.             
      */
     public modifiedInstanceDates: Array<Date>;
-    
     /**
      * Number of occurrences in a recurrence.             
      */
     public occurrenceCount: number;
-    
     /**
      * Enumerates the mapi calendar recurrence pattern types Enum, available values: Day, Week, Month, MonthEnd, MonthNth, HjMonth, HjMonthNth, HjMonthEnd
      */
     public patternType: string;
-    
     /**
      * Interval at which the meeting pattern repeats.             
      */
     public period: number;
-    
     /**
      * Defines whether pattern is sliding or not.             
      */
     public slidingFlag: boolean;
-    
     /**
      * Start date of an item recurrence pattern.             
      */
     public startDate: Date;
-    
     /**
      * Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      */
     public weekStartDay: string;
-    
-    public discriminator: string;
-    
+    /**
+     * Model type discriminator. Used for serialization purposes. Field is set automatically by SDK.
+     */
+    public get discriminator(): string {
+        return this.constructor.name;
+    }
+    public set discriminator(_newType: string) {
+        /* do nothing */
+    };
+
 
     /**
      * Mapi recurrence pattern.             

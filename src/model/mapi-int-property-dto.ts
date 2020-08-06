@@ -52,7 +52,6 @@ export class MapiIntPropertyDto extends model.MapiPropertyDto {
      * Property value             
      */
     public value: number;
-    
 
     /**
      * Mapi property with Integer value             

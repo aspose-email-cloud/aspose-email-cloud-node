@@ -54,9 +54,7 @@ export class EnumWithCustomOfEmailAddressCategory {
      * Represents category for an email address. Enum, available values: Home, Work, Custom, Email1, Email2, Email3
      */
     public value: string;
-    
     public description: string;
-    
 
     /**
      * 

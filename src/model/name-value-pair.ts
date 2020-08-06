@@ -57,12 +57,10 @@ export class NameValuePair {
      * Property name             
      */
     public name: string;
-    
     /**
      * Property value             
      */
     public value: string;
-    
 
     /**
      * Name-Value property             

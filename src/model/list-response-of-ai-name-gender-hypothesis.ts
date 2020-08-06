@@ -46,7 +46,6 @@ export class ListResponseOfAiNameGenderHypothesis {
     }
 
     public value: Array< model.AiNameGenderHypothesis >;
-    
 
     /**
      * 

@@ -52,7 +52,6 @@ export class StorageFileLocation extends model.StorageFolderLocation {
      * A file name in storage             
      */
     public fileName: string;
-    
 
     /**
      * A storage file location information             

@@ -52,7 +52,6 @@ export class ReminderAttendee {
      * Contains the email address.
      */
     public address: string;
-    
 
     /**
      * Defines an \"Attendee\" within a alarm.

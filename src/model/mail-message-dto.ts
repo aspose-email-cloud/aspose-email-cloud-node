@@ -52,7 +52,6 @@ export class MailMessageDto extends model.MailMessageBase {
      * Message document object.             
      */
     public value: model.EmailDto;
-    
 
     /**
      * Represents email message, stored as an EmailDto object.             

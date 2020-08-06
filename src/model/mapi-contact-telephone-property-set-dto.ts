@@ -142,97 +142,78 @@ export class MapiContactTelephonePropertySetDto {
      * Shows if MapiContactTelephonePropertySet is empty             
      */
     public isEmpty: boolean;
-    
     /**
      * Default value of electronic address Uses when user does not set any electronic address if UseAutocomplete property is set 'true'             
      */
     public defaultTelephoneNumber: string;
-    
     /**
      * Indicates that one electronic address is completed automatically in case if user does not set any electronic address             
      */
     public useAutocomplete: boolean;
-    
     /**
      * Gets or sets the callback telephone number             
      */
     public callbackTelephoneNumber: string;
-    
     /**
      * Gets or sets the business telephone number             
      */
     public businessTelephoneNumber: string;
-    
     /**
      * Gets or sets the home telephone number             
      */
     public homeTelephoneNumber: string;
-    
     /**
      * Gets or sets the primary telephone number             
      */
     public primaryTelephoneNumber: string;
-    
     /**
      * Gets or sets the second business telephone number             
      */
     public business2TelephoneNumber: string;
-    
     /**
      * Gets or sets the mobile telephone number             
      */
     public mobileTelephoneNumber: string;
-    
     /**
      * Gets or sets the radio telephone number             
      */
     public radioTelephoneNumber: string;
-    
     /**
      * Gets or sets the car telephone number             
      */
     public carTelephoneNumber: string;
-    
     /**
      * Gets or sets an alternate telephone number             
      */
     public otherTelephoneNumber: string;
-    
     /**
      * Gets or sets the telephone number of the contact's assistant             
      */
     public assistantTelephoneNumber: string;
-    
     /**
      * Gets or sets a second home telephone number             
      */
     public home2TelephoneNumber: string;
-    
     /**
      * Gets or sets the telephone number for the contact's text telephone (TTY) or telecommunication device for the deaf (TDD)             
      */
     public ttyTddPhoneNumber: string;
-    
     /**
      * Gets or sets the company phone number             
      */
     public companyMainTelephoneNumber: string;
-    
     /**
      * Gets or sets the telex number             
      */
     public telexNumber: string;
-    
     /**
      * Gets or sets the integrated services digital network (ISDN) number             
      */
     public isdnNumber: string;
-    
     /**
      * Gets or sets a pager telephone number             
      */
     public pagerTelephoneNumber: string;
-    
 
     /**
      * Specify optional telephone numbers for the contact.             

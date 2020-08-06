@@ -57,12 +57,10 @@ export class EmailClientMultiAccount {
      * Email client receive accounts             
      */
     public receiveAccounts: Array< model.EmailClientAccount >;
-    
     /**
      * Email client send account             
      */
     public sendAccount: model.EmailClientAccount;
-    
 
     /**
      * Email client virtual account, which contains several accounts             

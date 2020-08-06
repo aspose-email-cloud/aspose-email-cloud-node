@@ -157,112 +157,90 @@ export class CalendarDto {
      * Document attachments.
      */
     public attachments: Array< model.Attachment >;
-    
     /**
      * Event attendees.
      */
     public attendees: Array< model.MailAddress >;
-    
     /**
      * Description.
      */
     public description: string;
-    
     /**
      * End date.
      */
     public endDate: Date;
-    
     /**
      * End time zone.
      */
     public endTimeZone: string;
-    
     /**
      * Appointment flags. Items: Enumerates iCalendar flags. Enum, available values: None, AllDayEvent
      */
     public flags: Array<string>;
-    
     /**
      * Indicates if description is in HTML format.
      */
     public isDescriptionHtml: boolean;
-    
     /**
      * Location.
      */
     public location: string;
-    
     /**
      * Defines the iCalendar object method type associated with the calendar document. Enum, available values: None, Publish, Request, Reply, Add, Cancel, Refresh, Counter, DeclineCounter
      */
     public method: string;
-    
     /**
      * Specifies the BUSY status. Enum, available values: NotDefined, Free, Tentative, Busy, Oof
      */
     public microsoftBusyStatus: string;
-    
     /**
      * Specifies the INTENDED status. Enum, available values: NotDefined, Free, Tentative, Busy, Oof
      */
     public microsoftIntendedStatus: string;
-    
     /**
      * Optional attendees.             
      */
     public optionalAttendees: Array< model.MailAddress >;
-    
     /**
      * Event organizer.             
      */
     public organizer: model.MailAddress;
-    
     /**
      * Deprecated, use 'Recurrence' property. String representation of recurrence pattern (See iCalendar RFC, \"Recurrence rule\" section). For example:               For daily recurrence:         \"FREQ=DAILY;COUNT=10;WKST=MO\"                   For monthly recurrence:         \"BYSETPOS=1;BYDAY=MO,TU,WE,TH,FR;FREQ=MONTHLY;INTERVAL=10;WKST=MO\"                   For yearly recurrence:         \"BYMONTHDAY=30;BYMONTH=1;FREQ=YEARLY;WKST=MO\"                   
      */
     public recurrenceString: string;
-    
     /**
      * Recurrence pattern             
      */
     public recurrence: model.RecurrencePatternDto;
-    
     /**
      * Reminders.
      */
     public reminders: Array< model.CalendarReminder >;
-    
     /**
      * The sequence id. Read only.
      */
     public sequenceId: string;
-    
     /**
      * Start date.
      */
     public startDate: Date;
-    
     /**
      * Start time zone.
      */
     public startTimeZone: string;
-    
     /**
      * Defines the overall status or confirmation for the calendar document. Enum, available values: NotDefined, Cancelled, Tentative, Confirmed
      */
     public status: string;
-    
     /**
      * Summary.
      */
     public summary: string;
-    
     /**
      * Specifies whether or not this appointment is intended to be visible in availability searches. Enum, available values: NotDefined, Transparent, Opaque
      */
     public transparency: string;
-    
 
     /**
      * iCalendar document representation.             

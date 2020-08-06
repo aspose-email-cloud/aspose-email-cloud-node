@@ -67,22 +67,18 @@ export class EmailThread {
      * Thread identifier             
      */
     public id: string;
-    
     /**
      * Thread subject             
      */
     public subject: string;
-    
     /**
      * List of messages in thread             
      */
     public messages: Array< model.EmailDto >;
-    
     /**
      * Thread folder location             
      */
     public folder: string;
-    
 
     /**
      * Email messages thread             

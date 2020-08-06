@@ -52,7 +52,6 @@ export class ClientThreadMoveRequest extends model.ClientThreadBaseRequest {
      * Email account folder to move thread to.             
      */
     public destinationFolder: string;
-    
 
     /**
      * Email client move thread request.             

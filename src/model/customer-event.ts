@@ -57,12 +57,10 @@ export class CustomerEvent {
      * Event category.             
      */
     public category: model.EnumWithCustomOfEventCategory;
-    
     /**
      * Event date.             
      */
     public date: Date;
-    
 
     /**
      * Event.             

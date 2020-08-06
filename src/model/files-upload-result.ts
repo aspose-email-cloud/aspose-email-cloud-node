@@ -57,12 +57,10 @@ export class FilesUploadResult {
      * List of uploaded file names
      */
     public uploaded: Array<string>;
-    
     /**
      * List of errors.
      */
     public errors: Array<Error>;
-    
 
     /**
      * File upload result

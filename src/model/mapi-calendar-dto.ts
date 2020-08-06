@@ -137,92 +137,74 @@ export class MapiCalendarDto extends model.MapiMessageItemBaseDto {
      * Value indicating whether a Meeting Response object is a counter proposal.             
      */
     public appointmentCounterProposal: boolean;
-    
     /**
      * Attendees             
      */
     public attendees: model.MapiCalendarAttendeesDto;
-    
     /**
      * Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
      */
     public busyStatus: string;
-    
     /**
      * Actions the user has taken on this Meeting object.              Items: Enumerates the actions the user can taken on the Meeting object Enum, available values: Manager, Delegate, DeletedWithNoResponse, DeletedExceptionWithNoResponse, RespondedTentative, RespondedAccept, RespondedDecline, ModifiedStartTime, ModifiedEndTime, ModifiedLocation, RespondedExceptionDecline, Canceled, ExceptionCanceled
      */
     public clientIntent: Array<string>;
-    
     /**
      * End date and time of the event. If the date is not set, default value for DateTime is returned.             
      */
     public endDate: Date;
-    
     /**
      * Time zone information that indicates the time zone of the EndDate property.             
      */
     public endDateTimeZone: model.MapiCalendarTimeZoneDto;
-    
     /**
      * Value indicating whether the event is an all-day event.             
      */
     public isAllDay: boolean;
-    
     /**
      * Categories of the calendar object.             
      */
     public keyWords: string;
-    
     /**
      * Location of the event.             
      */
     public location: string;
-    
     /**
      * Recurrence properties.             
      */
     public recurrence: model.MapiCalendarEventRecurrenceDto;
-    
     /**
      * Interval, in minutes, between the time at which the reminder first becomes overdue and the start time of the Calendar object.             
      */
     public reminderDelta: number;
-    
     /**
      * Full path of the sound that a client SHOULD play when the reminder becomes overdue.             
      */
     public reminderFileParameter: string;
-    
     /**
      * Value indicating whether a reminder is set on the object.             
      */
     public reminderSet: boolean;
-    
     /**
      * Sequence number.             
      */
     public sequence: number;
-    
     /**
      * Start date and time of the event. If the date is not set, default value for DateTime is returned.             
      */
     public startDate: Date;
-    
     /**
      * Time zone information that indicates the time zone of the StartDate property.             
      */
     public startDateTimeZone: model.MapiCalendarTimeZoneDto;
-    
     /**
      * Unique identifier.             
      */
     public uid: string;
-    
     /**
      * Organizer             
      */
     public organizer: model.MapiElectronicAddressDto;
-    
 
     /**
      * Represents the mapi calendar object             

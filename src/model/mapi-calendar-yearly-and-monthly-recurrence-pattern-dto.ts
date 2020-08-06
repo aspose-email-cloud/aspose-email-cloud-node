@@ -62,17 +62,14 @@ export class MapiCalendarYearlyAndMonthlyRecurrencePatternDto extends model.Mapi
      * Day of the month on which the recurrence falls.             
      */
     public day: number;
-    
     /**
      * Days of week at which the event occurs.              Items: Enumerates the days of week of the mapi calendar recurrence pattern Enum, available values: Saturday, Friday, Thursday, Wednesday, Tuesday, Monday, Sunday
      */
     public dayOfWeek: Array<string>;
-    
     /**
      * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
      */
     public position: string;
-    
 
     /**
      * Represents the yearly and monthly recurrence pattern of the mapi calendar             

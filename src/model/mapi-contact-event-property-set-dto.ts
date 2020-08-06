@@ -57,12 +57,10 @@ export class MapiContactEventPropertySetDto {
      * Specifies the birthday of the contact.
      */
     public birthday: Date;
-    
     /**
      * Specifies the wedding anniversary of the contact.             
      */
     public weddingAnniversary: Date;
-    
 
     /**
      * Specify events associated with a contact.             

@@ -52,7 +52,6 @@ export class ClientMessageBaseRequest extends model.ClientAccountBaseRequest {
      * Message identifier.             
      */
     public messageId: string;
-    
 
     /**
      * Email client message request.             

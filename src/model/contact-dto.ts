@@ -227,182 +227,146 @@ export class ContactDto {
      * Associated persons.             
      */
     public associatedPersons: Array< model.AssociatedPerson >;
-    
     /**
      * Document attachments.             
      */
     public attachments: Array< model.Attachment >;
-    
     /**
      * Company name.             
      */
     public companyName: string;
-    
     /**
      * Computer network.             
      */
     public computerNetworkName: string;
-    
     /**
      * Customer id.             
      */
     public customerId: string;
-    
     /**
      * Department name.             
      */
     public departmentName: string;
-    
     /**
      * Display name.             
      */
     public displayName: string;
-    
     /**
      * Person's email addresses.             
      */
     public emailAddresses: Array< model.EmailAddress >;
-    
     /**
      * Person's events.             
      */
     public events: Array< model.CustomerEvent >;
-    
     /**
      * A name used for sorting.             
      */
     public fileAs: string;
-    
     /**
      * Specifies how to generate and recompute the value of the dispidFileAs property when other contact name properties change. Coincides MS-OXPROPS revision 16.2 from 7/31/2014. Enum, available values: Empty, DisplayName, FirstName, LastName, Organization, LastFirstMiddle, OrgLastFirstMiddle, LastFirstMiddleOrg, LastFirstMiddle2, LastFirstMiddle3, OrgLastFirstMiddle2, OrgLastFirstMiddle3, LastFirstMiddleOrg2, LastFirstMiddleOrg3, LastFirstMiddleGen, FirstMiddleLastGen, LastFirstMiddleGen2, BestMatch, AccordingToLocale, None
      */
     public fileAsMapping: string;
-    
     /**
      * URL path from which a client can retrieve free/busy information for the contact as an iCal file.             
      */
     public freeBusyLocation: string;
-    
     /**
      * Enum defines gender of a person. Enum, available values: Unspecified, Female, Male
      */
     public gender: string;
-    
     /**
      * Person's given name.             
      */
     public givenName: string;
-    
     /**
      * Government id number.             
      */
     public governmentIdNumber: string;
-    
     /**
      * Person's hobbies.             
      */
     public hobbies: string;
-    
     /**
      * Person's initials.             
      */
     public initials: string;
-    
     /**
      * Person's instant messenger addresses.             
      */
     public instantMessengers: Array< model.InstantMessengerAddress >;
-    
     /**
      * Person's job title.             
      */
     public jobTitle: string;
-    
     /**
      * Language.             
      */
     public language: string;
-    
     /**
      * Person's location.             
      */
     public location: string;
-    
     /**
      * Person's middle name.             
      */
     public middleName: string;
-    
     /**
      * Person's nickname.             
      */
     public nickname: string;
-    
     /**
      * Notes.             
      */
     public notes: string;
-    
     /**
      * Defines format of a text. Enum, available values: Text, Html
      */
     public notesFormat: string;
-    
     /**
      * Office location.             
      */
     public officeLocation: string;
-    
     /**
      * Contains an identifier for the mail user used within the mail user's organization.             
      */
     public organizationalIdNumber: string;
-    
     /**
      * Person's phone numbers.             
      */
     public phoneNumbers: Array< model.PhoneNumber >;
-    
     /**
      * Person's photo.             
      */
     public photo: model.ContactPhoto;
-    
     /**
      * Person's physical addresses.             
      */
     public physicalAddresses: Array< model.PostalAddress >;
-    
     /**
      * Encoding for all text properties.             
      */
     public preferredTextEncoding: string;
-    
     /**
      * A prefix of a full name such like Mr.(mister), Dr.(doctor) and so on.             
      */
     public prefix: string;
-    
     /**
      * A job position of a person in a company.             
      */
     public profession: string;
-    
     /**
      * A suffix of a full name such like Jr.(junior), Sr.(senior) and so on.             
      */
     public suffix: string;
-    
     /**
      * Person's surname.             
      */
     public surname: string;
-    
     /**
      * Person's urls.             
      */
     public urls: Array< model.Url >;
-    
 
     /**
      * VCard document representation.             

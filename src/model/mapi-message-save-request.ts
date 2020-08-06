@@ -52,7 +52,6 @@ export class MapiMessageSaveRequest extends model.StorageModelOfMapiMessageDto {
      * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
     public format: string;
-    
 
     /**
      * MapiMessage save to storage request.             

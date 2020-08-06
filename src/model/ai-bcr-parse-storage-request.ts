@@ -62,17 +62,14 @@ export class AiBcrParseStorageRequest {
      * Parse output folder location on storage             
      */
     public outFolder: model.StorageFolderLocation;
-    
     /**
      * Images to parse.             
      */
     public images: Array< model.AiBcrImageStorageFile >;
-    
     /**
      * Recognition options.             
      */
     public options: model.AiBcrOptions;
-    
 
     /**
      * Parse business card images from Storage request             

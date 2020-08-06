@@ -62,17 +62,14 @@ export class ReminderTrigger {
      * A trigger set to an absolute date/time.
      */
     public dateTime: Date;
-    
     /**
      * Specifies a relative time in ticks for the trigger of the alarm.             
      */
     public duration: number;
-    
     /**
      * Specify the relationship of the alarm trigger with respect to the start or end of the event. Enum, available values: Start, End
      */
     public related: string;
-    
 
     /**
      * Specifies when an alarm will trigger.

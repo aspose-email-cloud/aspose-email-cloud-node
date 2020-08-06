@@ -46,7 +46,6 @@ export class ListResponseOfAiNameComponent {
     }
 
     public value: Array< model.AiNameComponent >;
-    
 
     /**
      * 

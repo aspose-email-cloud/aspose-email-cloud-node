@@ -77,32 +77,26 @@ export class EmailClientAccount {
      * Mail server host name or IP address             
      */
     public host: string;
-    
     /**
      * Mail server port             
      */
     public port: number;
-    
     /**
      * Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      */
     public securityOptions: string;
-    
     /**
      * Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
      */
     public protocolType: string;
-    
     /**
      * Email client account credentials             
      */
     public credentials: model.EmailClientAccountCredentials;
-    
     /**
      * File with messages cache. Used to provide extra functions, which are not supported by account             
      */
     public cacheFile: model.StorageFileLocation;
-    
 
     /**
      * A universal email client account             

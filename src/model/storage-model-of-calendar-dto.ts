@@ -51,9 +51,7 @@ export class StorageModelOfCalendarDto {
     }
 
     public storageFile: model.StorageFileLocation;
-    
     public value: model.CalendarDto;
-    
 
     /**
      * 

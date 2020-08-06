@@ -46,7 +46,6 @@ export class ListResponseOfStorageModelOfContactDto {
     }
 
     public value: Array< model.StorageModelOfContactDto >;
-    
 
     /**
      * 

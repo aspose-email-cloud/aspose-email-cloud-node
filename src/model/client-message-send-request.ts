@@ -52,7 +52,6 @@ export class ClientMessageSendRequest extends model.ClientAccountBaseRequest {
      * Message to send             
      */
     public message: model.MailMessageBase;
-    
 
     /**
      * Email client send message request.             

@@ -172,127 +172,102 @@ export class MapiMessageDto extends model.MapiMessageItemBaseDto {
      * Message text             
      */
     public messageBody: string;
-    
     /**
      * Date and time the message sender submitted a message.             
      */
     public clientSubmitTime: Date;
-    
     /**
      * Topic of the first message in a conversation thread.             
      */
     public conversationTopic: string;
-    
     /**
      * Date and time a message was delivered.             
      */
     public deliveryTime: Date;
-    
     /**
      * List of the display names of any blind carbon copy (BCC) message recipients, separated by semicolons (;).             
      */
     public displayBcc: string;
-    
     /**
      * List of the display names of any carbon copy (CC) message recipients, separated by semicolons (;).             
      */
     public displayCc: string;
-    
     /**
      * Display name for the message.             
      */
     public displayName: string;
-    
     /**
      * Prefix of the display name.             
      */
     public displayNamePrefix: string;
-    
     /**
      * List of the display names of the primary (To) message recipients, separated by semicolons (;).             
      */
     public displayTo: string;
-    
     /**
      * Message flags.              Items: Mapi message flags. Enum, available values: MsgFlagZero, MsgFlagRead, MsgFlagUnmodified, MsgFlagSubmit, MsgFlagUnsent, MsgFlagHasAttach, MsgFlagFromMe, MsgFlagAssociated, MsgFlagResend, MsgFlagNotifyRead, MsgFlagNotifyUnread, MsgFlagEverRead, MsgFlagOriginX400, MsgFlagOriginInternet, MsgFlagOriginMiscExt
      */
     public flags: Array<string>;
-    
     /**
      * Transport message headers             
      */
     public headers: { [key: string]: string; };
-    
     /**
      * Internet message id of the message.             
      */
     public internetMessageId: string;
-    
     /**
      * Represents outlook message format. Enum, available values: Ascii, Unicode
      */
     public messageFormat: string;
-    
     /**
      * Normalized subject of the message.             
      */
     public normalizedSubject: string;
-    
     /**
      * Value indicating whether the read receipt is requested.
      */
     public readReceiptRequested: boolean;
-    
     /**
      * Reply to names.
      */
     public replyTo: string;
-    
     /**
      * Message sender's e-mail address type.
      */
     public senderAddressType: string;
-    
     /**
      * Message sender's e-mail address.
      */
     public senderEmailAddress: string;
-    
     /**
      * Message sender's display name.
      */
     public senderName: string;
-    
     /**
      * Message sender's e-mail address.
      */
     public senderSmtpAddress: string;
-    
     /**
      * Address type for the messaging user represented by the sender.
      */
     public sentRepresentingAddressType: string;
-    
     /**
      * E-mail address for the messaging user represented by the sender.
      */
     public sentRepresentingEmailAddress: string;
-    
     /**
      * Display name for the messaging user represented by the sender.
      */
     public sentRepresentingName: string;
-    
     /**
      * E-mail address for the messaging user represented by the sender.
      */
     public sentRepresentingSmtpAddress: string;
-    
     /**
      * Transport-specific message envelope information.
      */
     public transportMessageHeaders: string;
-    
 
     /**
      * Represents an Outlook Message format document.             

@@ -87,42 +87,34 @@ export class EmailAccountConfig {
      * Email account display name             
      */
     public displayName: string;
-    
     /**
      * Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
      */
     public protocolType: string;
-    
     /**
      * Email account host.             
      */
     public host: string;
-    
     /**
      * Port.             
      */
     public port: number;
-    
     /**
      * Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      */
     public socketType: string;
-    
     /**
      * Supported authentication types.              Items: Email account authentication types. Enum, available values: NoAuth, OAuth2, PasswordCleartext, PasswordEncrypted, SmtpAfterPop, ClientIpAddress
      */
     public authenticationTypes: Array<string>;
-    
     /**
      * Extra account information.             
      */
     public extraInfo: Array< model.NameValuePair >;
-    
     /**
      * Determines that configuration validated. Set to false if validation skipped.             
      */
     public isValidated: boolean;
-    
 
     /**
      * Email account configuration.             

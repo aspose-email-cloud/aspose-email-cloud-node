@@ -46,7 +46,6 @@ export class ListResponseOfStorageFileLocation {
     }
 
     public value: Array< model.StorageFileLocation >;
-    
 
     /**
      * 

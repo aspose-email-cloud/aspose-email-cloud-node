@@ -49,7 +49,6 @@ export class EmailConfigDiscoverPasswordRequest extends model.DiscoverEmailConfi
      * Email account password.             
      */
     public password: string;
-    
 
     /**
      * 

@@ -57,12 +57,10 @@ export class MapiPidLidPropertyDescriptor extends model.MapiPidPropertyDescripto
      * An unsigned 32-bit quantity that, along with the property set, identifies a named property.             
      */
     public longId: number;
-    
     /**
      * A GUID that identifies a group of properties with a similar purpose.             
      */
     public propertySet: string;
-    
 
     /**
      * Property identified by an unsigned 32-bit quantity along with a property set             

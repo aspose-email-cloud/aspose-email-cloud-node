@@ -51,9 +51,7 @@ export class StorageModelOfMapiCalendarDto {
     }
 
     public storageFile: model.StorageFileLocation;
-    
     public value: model.MapiCalendarDto;
-    
 
     /**
      * 

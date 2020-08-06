@@ -52,7 +52,6 @@ export class ClientFolderDeleteRequest extends model.ClientAccountBaseRequest {
      * Path to folder to delete.             
      */
     public folder: string;
-    
 
     /**
      * Email client delete folder request.             

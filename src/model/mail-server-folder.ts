@@ -57,12 +57,10 @@ export class MailServerFolder {
      * Gets or sets mail folder name             
      */
     public name: string;
-    
     /**
      * Gets or sets mail folder id             
      */
     public id: string;
-    
 
     /**
      * Email account folder             

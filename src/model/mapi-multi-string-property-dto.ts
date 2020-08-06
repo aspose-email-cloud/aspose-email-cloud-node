@@ -52,7 +52,6 @@ export class MapiMultiStringPropertyDto extends model.MapiPropertyDto {
      * Property values             
      */
     public values: Array<string>;
-    
 
     /**
      * Mapi property with Multiple String values             

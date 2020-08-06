@@ -57,12 +57,10 @@ export class AiNameMatchResult {
      * Similarity score             
      */
     public similarity: number;
-    
     /**
      * Detailed description of mismatches             
      */
     public mismatches: Array< model.AiNameMismatch >;
-    
 
     /**
      * Two names match result             

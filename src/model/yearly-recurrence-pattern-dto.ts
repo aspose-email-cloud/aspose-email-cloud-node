@@ -67,22 +67,18 @@ export class YearlyRecurrencePatternDto extends model.RecurrencePatternDto {
      * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
      */
     public startDay: string;
-    
     /**
      * Represents a calendar month. Enum, available values: None, January, February, March, April, May, June, July, August, September, October, November, December
      */
     public startMonth: string;
-    
     /**
      * Start offset.             
      */
     public startOffset: number;
-    
     /**
      * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
      */
     public startPosition: string;
-    
 
     /**
      * Yearly recurrence pattern.             

@@ -51,9 +51,7 @@ export class StorageModelOfEmailClientAccount {
     }
 
     public storageFile: model.StorageFileLocation;
-    
     public value: model.EmailClientAccount;
-    
 
     /**
      * 

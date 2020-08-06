@@ -207,162 +207,130 @@ export class EmailDto {
      * Collection of alternate views of message.             
      */
     public alternateViews: Array< model.AlternateView >;
-    
     /**
      * Email message attachments.             
      */
     public attachments: Array< model.Attachment >;
-    
     /**
      * BCC recipients.             
      */
     public bcc: Array< model.MailAddress >;
-    
     /**
      * Email message body as plain text.             
      */
     public body: string;
-    
     /**
      * Body encoding.             
      */
     public bodyEncoding: string;
-    
     /**
      * The content type of message body. Enum, available values: PlainText, Html, Rtf
      */
     public bodyType: string;
-    
     /**
      * CC recipients.             
      */
     public cc: Array< model.MailAddress >;
-    
     /**
      * Message date.             
      */
     public date: Date;
-    
     /**
      * Delivery notifications. Items: Email delivery notification options. Enum, available values: Delay, Never, None, OnFailure, OnSuccess
      */
     public deliveryNotificationOptions: Array<string>;
-    
     /**
      * From address.             
      */
     public from: model.MailAddress;
-    
     /**
      * Document headers.             
      */
     public headers: { [key: string]: string; };
-    
     /**
      * HTML body.             
      */
     public htmlBody: string;
-    
     /**
      * Html body as plain text. Read only.             
      */
     public htmlBodyText: string;
-    
     /**
      * Indicates whether the message body is in Html.             
      */
     public isBodyHtml: boolean;
-    
     /**
      * Indicates whether or not a message has been sent.             
      */
     public isDraft: boolean;
-    
     /**
      * Indicates whether the message is encrypted. Read only.             
      */
     public isEncrypted: boolean;
-    
     /**
      * Indicates whether the message is signed. Read only.             
      */
     public isSigned: boolean;
-    
     /**
      * Linked resources of message.             
      */
     public linkedResources: Array< model.LinkedResource >;
-    
     /**
      * Message id.             
      */
     public messageId: string;
-    
     /**
      * Indicates whether original EML message is in TNEF format. Read only.             
      */
     public originalIsTnef: boolean;
-    
     /**
      * Preferred encoding.             
      */
     public preferredTextEncoding: string;
-    
     /**
      * Email priority status. Enum, available values: High, Low, Normal
      */
     public priority: string;
-    
     /**
      * Read receipt addresses.             
      */
     public readReceiptTo: Array< model.MailAddress >;
-    
     /**
      * The list of addresses to reply to for the mail message.             
      */
     public replyToList: Array< model.MailAddress >;
-    
     /**
      * ReversePath address.             
      */
     public reversePath: model.MailAddress;
-    
     /**
      * Sender address.             
      */
     public sender: model.MailAddress;
-    
     /**
      * Specifies the sensitivity of a MailMessage. Enum, available values: None, Normal, Personal, Private, CompanyConfidential
      */
     public sensitivity: string;
-    
     /**
      * Message subject.             
      */
     public subject: string;
-    
     /**
      * Subject encoding.             
      */
     public subjectEncoding: string;
-    
     /**
      * Coordinated Universal Time (UTC) offset for the message dates. This property defines the time zone difference, between the local time and UTC represented as count of ticks (10 000 per millisecond).             
      */
     public timeZoneOffset: number;
-    
     /**
      * The address collection that contains the recipients of message.             
      */
     public to: Array< model.MailAddress >;
-    
     /**
      * The X-Mailer the software that created the e-mail message.             
      */
     public xMailer: string;
-    
 
     /**
      * Email message representation.             

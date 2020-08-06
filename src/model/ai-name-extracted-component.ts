@@ -57,12 +57,10 @@ export class AiNameExtractedComponent {
      * Extracted from email address name component category. Enum, available values: Unknown, GivenName, Surname, SomeName, NoName, Initial
      */
     public category: string;
-    
     /**
      * Extracted value             
      */
     public value: string;
-    
 
     /**
      * Extracted name component             

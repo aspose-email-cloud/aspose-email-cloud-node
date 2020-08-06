@@ -52,7 +52,6 @@ export class ContactSaveRequest extends model.StorageModelOfContactDto {
      * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
      */
     public format: string;
-    
 
     /**
      * Contact save to storage request             

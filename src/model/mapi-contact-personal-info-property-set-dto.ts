@@ -142,97 +142,78 @@ export class MapiContactPersonalInfoPropertySetDto {
      * Specifies the name of the contact's spouse/partner             
      */
     public spouseName: string;
-    
     /**
      * Specifies the contact's personal web page URL             
      */
     public personalHomePage: string;
-    
     /**
      * Specifies the language that the contact uses             
      */
     public language: string;
-    
     /**
      * Specifies the additional notes             
      */
     public notes: string;
-    
     /**
      * Specifies the hobbies of the contact             
      */
     public hobbies: string;
-    
     /**
      * Specifies the location of the contact             
      */
     public location: string;
-    
     /**
      * Specifies the contact's instant messaging address             
      */
     public instantMessagingAddress: string;
-    
     /**
      * Specifies an organizational ID number for the contact             
      */
     public organizationalIdNumber: string;
-    
     /**
      * Specifies the contact's customer ID number             
      */
     public customerId: string;
-    
     /**
      * Specifies the contact's government ID number             
      */
     public governmentIdNumber: string;
-    
     /**
      * Specifies a URL path from which a client can retrieve free/busy information for the contact as an iCal file             
      */
     public freeBusyLocation: string;
-    
     /**
      * Specifies the account name of the contact             
      */
     public account: string;
-    
     /**
      * Specifies the contact's business web page URL             
      */
     public html: string;
-    
     /**
      * Specifies the contact's business web page URL             
      */
     public businessHomePage: string;
-    
     /**
      * Specifies the contact's File Transfer Protocol (FTP) URL             
      */
     public ftpSite: string;
-    
     /**
      * Specifies the name of the network to which the contact's computer is connected             
      */
     public computerNetworkName: string;
-    
     /**
      * Gender of the contact Enum, available values: Unspecified, Female, Male
      */
     public gender: string;
-    
     /**
      * Specifies the name of the person who referred this contact to the user             
      */
     public referredByName: string;
-    
     /**
      * Contains a list of names of children.             
      */
     public children: Array<string>;
-    
 
     /**
      * Specify other additional contact information.             

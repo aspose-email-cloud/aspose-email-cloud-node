@@ -57,12 +57,10 @@ export class AiNameWeighted {
      * Name             
      */
     public name: string;
-    
     /**
      * Score of name             
      */
     public score: number;
-    
 
     /**
      * Name with score             

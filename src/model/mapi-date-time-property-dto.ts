@@ -52,7 +52,6 @@ export class MapiDateTimePropertyDto extends model.MapiPropertyDto {
      * Property value             
      */
     public value: Date;
-    
 
     /**
      * Mapi property with DateTime value             

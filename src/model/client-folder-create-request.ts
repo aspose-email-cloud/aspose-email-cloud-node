@@ -57,12 +57,10 @@ export class ClientFolderCreateRequest extends model.ClientAccountBaseRequest {
      * Path to parent folder.             
      */
     public parentFolder: string;
-    
     /**
      * Folder name.             
      */
     public folderName: string;
-    
 
     /**
      * Email Client create folder request.             

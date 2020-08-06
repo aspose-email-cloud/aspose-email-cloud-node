@@ -67,22 +67,18 @@ export class MapiRecipientDto {
      * Email address of the message recipient or sender.             
      */
     public emailAddress: string;
-    
     /**
      * Type of the address of the message recipient or sender.             
      */
     public addressType: string;
-    
     /**
      * Display name of the message recipient or sender.             
      */
     public displayName: string;
-    
     /**
      * Represent the PR_RECIPIENT_TYPE property which contains the recipient type for a message recipient. Enum, available values: Unknown, MapiBcc, MapiCc, MapiP1, MapiSubmitted, MapiTo
      */
     public recipientType: string;
-    
 
     /**
      * Represents the recipient information in the Microsoft Outlook Message.             

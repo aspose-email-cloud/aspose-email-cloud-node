@@ -57,12 +57,10 @@ export class AiBcrOptions {
      * Comma-separated ISO-639 codes of languages (either 639-1 or 639-3; i.e. \"it\" or \"ita\" for Italian); it's \"\" by default.             
      */
     public languages: string;
-    
     /**
      * Comma-separated codes of countries.             
      */
     public countries: string;
-    
 
     /**
      * Recognition options.             

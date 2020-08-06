@@ -52,7 +52,6 @@ export class MapiBooleanPropertyDto extends model.MapiPropertyDto {
      * Property value             
      */
     public value: boolean;
-    
 
     /**
      * Mapi property with Boolean value             

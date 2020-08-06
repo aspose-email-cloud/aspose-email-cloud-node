@@ -72,24 +72,28 @@ export class RecurrencePatternDto {
      * Number of recurrence units.             
      */
     public interval: number;
-    
     /**
      * Number of occurrences of the recurrence pattern.             
      */
     public occurs: number;
-    
     /**
      * End date.             
      */
     public endDate: Date;
-    
     /**
      * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
      */
     public weekStart: string;
-    
-    public discriminator: string;
-    
+    /**
+     * Model type discriminator. Used for serialization purposes. Field is set automatically by SDK.
+     */
+    public get discriminator(): string {
+        return this.constructor.name;
+    }
+    public set discriminator(_newType: string) {
+        /* do nothing */
+    };
+
 
     /**
      * iCalendar recurrence pattern.             

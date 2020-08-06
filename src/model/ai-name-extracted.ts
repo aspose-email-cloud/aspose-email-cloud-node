@@ -57,12 +57,10 @@ export class AiNameExtracted {
      * Extracted name components             
      */
     public name: Array< model.AiNameExtractedComponent >;
-    
     /**
      * Extracted name score             
      */
     public score: number;
-    
 
     /**
      * Extracted name             

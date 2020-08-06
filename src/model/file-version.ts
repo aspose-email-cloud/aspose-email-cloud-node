@@ -57,12 +57,10 @@ export class FileVersion extends model.StorageFile {
      * File Version ID.
      */
     public versionId: string;
-    
     /**
      * Specifies whether the file is (true) or is not (false) the latest version of an file.
      */
     public isLatest: boolean;
-    
 
     /**
      * File Version

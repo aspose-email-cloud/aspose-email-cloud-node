@@ -72,27 +72,22 @@ export class ContentType {
      * The boundary parameter included in the Content-Type header.             
      */
     public boundary: string;
-    
     /**
      * CharSet parameter.             
      */
     public charSet: string;
-    
     /**
      * The internet media type.             
      */
     public mediaType: string;
-    
     /**
      * Name parameter.             
      */
     public name: string;
-    
     /**
      * Full list of parameters             
      */
     public parameters: Array< model.ContentTypeParameter >;
-    
 
     /**
      * Represents a Content-Type header.             

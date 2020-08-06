@@ -52,7 +52,6 @@ export class ClientThreadDeleteRequest extends model.ClientThreadBaseRequest {
      * Folder on email server, where thread is stored.             
      */
     public folder: string;
-    
 
     /**
      * Delete email client thread request.             

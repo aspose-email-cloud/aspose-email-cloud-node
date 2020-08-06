@@ -52,7 +52,6 @@ export class ClientThreadBaseRequest extends model.ClientAccountBaseRequest {
      * Thread identifier.             
      */
     public threadId: string;
-    
 
     /**
      * Email client thread request.             

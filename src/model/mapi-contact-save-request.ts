@@ -52,7 +52,6 @@ export class MapiContactSaveRequest extends model.StorageModelOfMapiContactDto {
      * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
      */
     public format: string;
-    
 
     /**
      * MapiContact save to storage request.             

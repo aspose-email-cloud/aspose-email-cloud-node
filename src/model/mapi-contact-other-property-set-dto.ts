@@ -87,42 +87,34 @@ export class MapiContactOtherPropertySetDto {
      * Indicates whether the end-user wants this message object hidden from other users who have access to the message object.             
      */
     public _private: boolean;
-    
     /**
      * Specifies whether to create a journal for each action associated with this contact.             
      */
     public journal: boolean;
-    
     /**
      * Specifies the initial signal time for a reminder.             
      */
     public reminderTime: Date;
-    
     /**
      * Represents the status of a meeting request.             
      */
     public reminderTopic: string;
-    
     /**
      * Specifies the first field on the contact that is intended for miscellaneous use for the contact.             
      */
     public userField1: string;
-    
     /**
      * Specifies the second field on the contact that is intended for miscellaneous use for the contact.             
      */
     public userField2: string;
-    
     /**
      * Specifies the third field on the contact that is intended for miscellaneous use for the contact.             
      */
     public userField3: string;
-    
     /**
      * Specifies the forth field on the contact that is intended for miscellaneous use for the contact.             
      */
     public userField4: string;
-    
 
     /**
      * The properties are used to specify additional properties of contact.             

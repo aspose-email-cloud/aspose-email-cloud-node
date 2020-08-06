@@ -82,37 +82,30 @@ export class MapiCalendarTimeZoneInfoDto {
      * Time zone's offset in minutes from UTC.             
      */
     public bias: number;
-    
     /**
      * Offset in minutes from lBias during daylight saving time.             
      */
     public daylightBias: number;
-    
     /**
      * Date and local time that indicate when to begin using the DaylightBias.             
      */
     public daylightDate: model.MapiCalendarTimeZoneRuleDto;
-    
     /**
      * Offset in minutes from lBias during standard time.             
      */
     public standardBias: number;
-    
     /**
      * Date and local time that indicate when to begin using the StandardBias.             
      */
     public standardDate: model.MapiCalendarTimeZoneRuleDto;
-    
     /**
      * Individual bit flags that specify information about this TimeZoneRule.              Items: Enumerates the individual bit flags that specify information about TimeZoneRule Enum, available values: TzRuleFlagRecurCurrentTzReg, TzRuleFlagEffectiveTzReg
      */
     public timeZoneFlags: Array<string>;
-    
     /**
      * Year in which this rule is scheduled to take effect.             
      */
     public year: number;
-    
 
     /**
      * Represents the mapi calendar time zone rule.             

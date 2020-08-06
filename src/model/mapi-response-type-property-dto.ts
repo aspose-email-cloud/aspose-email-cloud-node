@@ -52,7 +52,6 @@ export class MapiResponseTypePropertyDto extends model.MapiPropertyDto {
      * Represents the types of recipient responses that are received for a meeting. Enum, available values: Unknown, Organizer, Tentative, Accept, Decline, NoResponseReceived
      */
     public value: string;
-    
 
     /**
      * Mapi property with response type value             

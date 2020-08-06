@@ -52,7 +52,6 @@ export class MapiStringPropertyDto extends model.MapiPropertyDto {
      * Property value             
      */
     public value: string;
-    
 
     /**
      * Mapi property with string value             

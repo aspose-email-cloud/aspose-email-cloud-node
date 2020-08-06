@@ -52,7 +52,6 @@ export class MapiCalendarWeeklyRecurrencePatternDto extends model.MapiCalendarRe
      * Days of week at which the event occurs.              Items: Enumerates the days of week of the mapi calendar recurrence pattern Enum, available values: Saturday, Friday, Thursday, Wednesday, Tuesday, Monday, Sunday
      */
     public dayOfWeek: Array<string>;
-    
 
     /**
      * Represents the weekly recurrence pattern of the mapi calendar             

@@ -92,47 +92,38 @@ export class MapiContactPhysicalAddressDto {
      * Gets or sets a value indicating whether this address is mailing address             
      */
     public isMailingAddress: boolean;
-    
     /**
      * Specifies the street portion of the contact's address             
      */
     public street: string;
-    
     /**
      * Specifies the city or locality portion of the contact's address             
      */
     public city: string;
-    
     /**
      * Specifies the state or province portion of the contact's address             
      */
     public stateOrProvince: string;
-    
     /**
      * Specifies the postal code (ZIP code) portion of the contact's address             
      */
     public postalCode: string;
-    
     /**
      * Specifies the country or region portion of the contact's address             
      */
     public country: string;
-    
     /**
      * Specifies the country code portion of the contact's address             
      */
     public countryCode: string;
-    
     /**
      * Specifies the complete address of the contact's address             
      */
     public address: string;
-    
     /**
      * Gets or sets the post office box             
      */
     public postOfficeBox: string;
-    
 
     /**
      * Refers to the group of properties that define physical address for a contact.             

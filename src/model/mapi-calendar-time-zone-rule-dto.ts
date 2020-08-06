@@ -92,47 +92,38 @@ export class MapiCalendarTimeZoneRuleDto {
      * Date and time that indicate when to begin using the Standard/Daylight time.             
      */
     public date: Date;
-    
     /**
      * Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      */
     public dayOfWeek: string;
-    
     /**
      * Hour.             
      */
     public hour: number;
-    
     /**
      * Milliseconds.             
      */
     public milliseconds: number;
-    
     /**
      * Minute.             
      */
     public minute: number;
-    
     /**
      * Month.             
      */
     public month: number;
-    
     /**
      * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
      */
     public position: string;
-    
     /**
      * Seconds.             
      */
     public seconds: number;
-    
     /**
      * Year.             
      */
     public year: number;
-    
 
     /**
      * Represents time zone rule that indicate when to begin using the Standard/Daylight time.             

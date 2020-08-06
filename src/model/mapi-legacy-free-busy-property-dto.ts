@@ -52,7 +52,6 @@ export class MapiLegacyFreeBusyPropertyDto extends model.MapiPropertyDto {
      * Represents the free/busy status for a calendar event. Enum, available values: Free, Tentative, Busy, Oof, WorkingElsewhere, NoData
      */
     public value: string;
-    
 
     /**
      * Mapi property with LegacyFreeBusyType value             

@@ -57,12 +57,10 @@ export class DiscUsage {
      * Application used disc space.
      */
     public usedSize: number;
-    
     /**
      * Total disc space.
      */
     public totalSize: number;
-    
 
     /**
      * Class for disc space information.
