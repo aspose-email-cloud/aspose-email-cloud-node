@@ -1,4 +1,3 @@
-
 # StorageModelOfContactDto
 
 ## Properties

@@ -1,4 +1,3 @@
-
 # AiNameCulturalContext
 
 ## Properties

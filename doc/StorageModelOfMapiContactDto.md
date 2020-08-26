@@ -1,4 +1,3 @@
-
 # StorageModelOfMapiContactDto
 
 ## Properties

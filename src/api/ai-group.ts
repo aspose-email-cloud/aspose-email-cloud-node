@@ -32,7 +32,7 @@ import { AiNameApi } from "./ai-name-api";
     
     
 /**
- * AI powered operations.             
+ * AI powered operations.
  */
 export class AiGroup {
     
@@ -43,14 +43,14 @@ export class AiGroup {
 
     
     /**
-     *  AI Business card recognition operations.             
+     *  AI Business card recognition operations.
      */
     public get bcr(): AiBcrApi {
         return this._bcr;
     }
     
     /**
-     *  AI Name operations.             
+     *  AI Name operations.
      */
     public get name(): AiNameApi {
         return this._name;

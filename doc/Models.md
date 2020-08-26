@@ -1,4 +1,3 @@
-
 ## Documentation for Models
 
 - [AiBcrImage](AiBcrImage.md)

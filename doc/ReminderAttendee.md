@@ -1,4 +1,3 @@
-
 # ReminderAttendee
 
 ## Properties

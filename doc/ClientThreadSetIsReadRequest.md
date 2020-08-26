@@ -1,4 +1,3 @@
-
 # ClientThreadSetIsReadRequest
 
 ## Properties

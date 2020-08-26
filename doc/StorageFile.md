@@ -1,4 +1,3 @@
-
 # StorageFile
 
 ## Properties

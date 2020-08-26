@@ -75,35 +75,35 @@ export class EmailCloud {
 
     
     /**
-     *  iCalendar document operations.             
+     *  iCalendar document operations.
      */
     public get calendar(): CalendarApi {
         return this._calendar;
     }
     
     /**
-     *  Contact document operations. Supported formats: VCard, MSG, WebDav             
+     *  Contact document operations. Supported formats: VCard, MSG, WebDav
      */
     public get contact(): ContactApi {
         return this._contact;
     }
     
     /**
-     *  Email document (*.eml) operations.             
+     *  Email document (*.eml) operations.
      */
     public get email(): EmailApi {
         return this._email;
     }
     
     /**
-     *  Check email address is disposable operations             
+     *  Check email address is disposable operations
      */
     public get disposableEmail(): DisposableEmailApi {
         return this._disposableEmail;
     }
     
     /**
-     *  Email server configuration discovery.             
+     *  Email server configuration discovery.
      */
     public get emailConfig(): EmailConfigApi {
         return this._emailConfig;
@@ -111,28 +111,28 @@ export class EmailCloud {
     
     
     /**
-     *  MAPI operations.             
+     *  MAPI operations.
      */
     public get mapi(): MapiGroup {
         return this._mapi;
     }
     
     /**
-     *  Builtin Email client operations.             
+     *  Builtin Email client operations.
      */
     public get client(): ClientGroup {
         return this._client;
     }
     
     /**
-     *  AI powered operations.             
+     *  AI powered operations.
      */
     public get ai(): AiGroup {
         return this._ai;
     }
     
     /**
-     *  Cloud file storage operations.             
+     *  Cloud file storage operations.
      */
     public get cloudStorage(): CloudStorageGroup {
         return this._cloudStorage;

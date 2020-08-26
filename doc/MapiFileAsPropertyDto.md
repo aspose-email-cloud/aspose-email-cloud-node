@@ -1,4 +1,3 @@
-
 # MapiFileAsPropertyDto
 
 ## Properties

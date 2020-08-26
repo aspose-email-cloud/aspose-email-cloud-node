@@ -1,4 +1,3 @@
-
 # ListResponseOfMailServerFolder
 
 ## Properties

@@ -1,4 +1,3 @@
-
 # FilesUploadResult
 
 ## Properties

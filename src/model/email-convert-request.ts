@@ -1,4 +1,3 @@
-
 // @ts-ignore
 import * as model from "./index";
 /**
@@ -6,9 +5,14 @@ import * as model from "./index";
  */
 export class EmailConvertRequest {
     /**
-     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * File format to convert to Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      */
-    public format: string;
+    public fromFormat: string;
+
+    /**
+     * File format to convert from Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     */
+    public toFormat: string;
 
     /**
      * File to convert
@@ -17,14 +21,17 @@ export class EmailConvertRequest {
 
     /**
      * Request model for emailConvert operation.
-     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * @param fromFormat File format to convert to Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * @param toFormat File format to convert from Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
      * @param file File to convert
      */
     public constructor(
-        format?: string, 
+        fromFormat?: string, 
+        toFormat?: string, 
         file?: Buffer) {
         
-        this.format = format;
+        this.fromFormat = fromFormat;
+        this.toFormat = toFormat;
         this.file = file;
     }
 }

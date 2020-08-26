@@ -1,4 +1,3 @@
-
 # StorageModelOfEmailClientMultiAccount
 
 ## Properties

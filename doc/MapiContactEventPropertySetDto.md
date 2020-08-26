@@ -1,4 +1,3 @@
-
 # MapiContactEventPropertySetDto
 
 ## Properties

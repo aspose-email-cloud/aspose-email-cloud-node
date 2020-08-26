@@ -1,4 +1,3 @@
-
 # ClientMessageSendRequest
 
 ## Properties

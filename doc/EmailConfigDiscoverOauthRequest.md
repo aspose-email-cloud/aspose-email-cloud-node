@@ -1,4 +1,3 @@
-
 # EmailConfigDiscoverOauthRequest
 
 ## Properties

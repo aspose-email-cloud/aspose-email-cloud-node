@@ -34,7 +34,7 @@ import { StorageApi } from "./storage-api";
     
     
 /**
- * Cloud file storage operations.             
+ * Cloud file storage operations.
  */
 export class CloudStorageGroup {
     

@@ -1,4 +1,3 @@
-
 # EmailThread
 
 ## Properties

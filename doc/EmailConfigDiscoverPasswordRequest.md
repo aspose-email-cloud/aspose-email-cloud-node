@@ -1,4 +1,3 @@
-
 # EmailConfigDiscoverPasswordRequest
 
 ## Properties

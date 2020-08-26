@@ -1,4 +1,3 @@
-
 # ListResponseOfEmailDto
 
 ## Properties

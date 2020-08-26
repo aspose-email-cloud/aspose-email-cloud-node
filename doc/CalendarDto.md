@@ -1,4 +1,3 @@
-
 # CalendarDto
 
 ## Properties

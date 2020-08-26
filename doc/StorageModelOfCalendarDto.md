@@ -1,4 +1,3 @@
-
 # StorageModelOfCalendarDto
 
 ## Properties

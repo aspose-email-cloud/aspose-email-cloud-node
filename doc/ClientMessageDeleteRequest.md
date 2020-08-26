@@ -1,4 +1,3 @@
-
 # ClientMessageDeleteRequest
 
 ## Properties

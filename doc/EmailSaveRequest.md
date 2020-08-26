@@ -1,4 +1,3 @@
-
 # EmailSaveRequest
 
 ## Properties

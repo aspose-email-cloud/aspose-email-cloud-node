@@ -1,4 +1,3 @@
-
 # MapiDateTimePropertyDto
 
 ## Properties

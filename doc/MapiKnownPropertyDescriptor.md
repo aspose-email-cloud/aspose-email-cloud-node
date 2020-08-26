@@ -1,4 +1,3 @@
-
 # MapiKnownPropertyDescriptor
 
 ## Properties

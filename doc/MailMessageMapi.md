@@ -1,4 +1,3 @@
-
 # MailMessageMapi
 
 ## Properties

@@ -1,4 +1,3 @@
-
 # MapiContactSaveRequest
 
 ## Properties

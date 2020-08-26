@@ -1,4 +1,3 @@
-
 # MapiCalendarYearlyAndMonthlyRecurrencePatternDto
 
 ## Properties

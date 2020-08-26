@@ -1,4 +1,3 @@
-
 # MapiCalendarWeeklyRecurrencePatternDto
 
 ## Properties

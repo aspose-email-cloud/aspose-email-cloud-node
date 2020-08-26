@@ -1,4 +1,3 @@
-
 # MapiMessageSaveRequest
 
 ## Properties

@@ -1,4 +1,3 @@
-
 # MapiContactElectronicAddressDto
 
 ## Properties

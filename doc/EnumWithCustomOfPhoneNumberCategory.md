@@ -1,4 +1,3 @@
-
 # EnumWithCustomOfPhoneNumberCategory
 
 ## Properties

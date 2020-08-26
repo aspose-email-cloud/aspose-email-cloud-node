@@ -1,4 +1,3 @@
-
 # ContactList
 
 ## Properties

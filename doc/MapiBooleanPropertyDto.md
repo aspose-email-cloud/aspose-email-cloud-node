@@ -1,4 +1,3 @@
-
 # MapiBooleanPropertyDto
 
 ## Properties

@@ -1,4 +1,3 @@
-
 # MapiContactPhysicalAddressDto
 
 ## Properties

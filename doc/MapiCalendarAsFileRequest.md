@@ -1,4 +1,3 @@
-
 # MapiCalendarAsFileRequest
 
 ## Properties

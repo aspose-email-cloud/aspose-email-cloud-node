@@ -1,4 +1,3 @@
-
 # MapiMessageItemBaseDto
 
 ## Properties

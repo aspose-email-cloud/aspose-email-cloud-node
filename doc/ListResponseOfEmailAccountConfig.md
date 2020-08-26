@@ -1,4 +1,3 @@
-
 # ListResponseOfEmailAccountConfig
 
 ## Properties

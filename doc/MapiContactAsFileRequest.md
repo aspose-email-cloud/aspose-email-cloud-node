@@ -1,4 +1,3 @@
-
 # MapiContactAsFileRequest
 
 ## Properties

@@ -1,4 +1,3 @@
-
 # EmailApi
 
                     
@@ -51,13 +50,15 @@ Converts email document to specified format and returns as file
 ### Request Parameters
 ```typescript
 new EmailConvert(
-    format,
+    fromFormat,
+    toFormat,
     file)
 ```
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **format** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef |
+ **fromFormat** | **string**| File format to convert to Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef |
+ **toFormat** | **string**| File format to convert from Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef |
  **file** | **byte[]**| File to convert |
 
 ### Return type

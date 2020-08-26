@@ -1,4 +1,3 @@
-
 # CalendarSaveRequest
 
 ## Properties

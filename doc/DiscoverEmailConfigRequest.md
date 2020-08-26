@@ -1,4 +1,3 @@
-
 # DiscoverEmailConfigRequest
 
 ## Properties

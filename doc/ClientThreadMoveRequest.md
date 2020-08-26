@@ -1,4 +1,3 @@
-
 # ClientThreadMoveRequest
 
 ## Properties

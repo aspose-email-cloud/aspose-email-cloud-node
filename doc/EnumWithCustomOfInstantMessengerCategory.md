@@ -1,4 +1,3 @@
-
 # EnumWithCustomOfInstantMessengerCategory
 
 ## Properties

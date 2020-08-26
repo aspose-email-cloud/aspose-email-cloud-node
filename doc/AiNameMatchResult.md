@@ -1,4 +1,3 @@
-
 # AiNameMatchResult
 
 ## Properties

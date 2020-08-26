@@ -1,4 +1,3 @@
-
 # AiNameFormatted
 
 ## Properties

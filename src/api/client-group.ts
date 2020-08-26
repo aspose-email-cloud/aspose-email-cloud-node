@@ -36,7 +36,7 @@ import { ClientThreadApi } from "./client-thread-api";
     
     
 /**
- * Builtin Email client operations.             
+ * Builtin Email client operations.
  */
 export class ClientGroup {
     
@@ -51,28 +51,28 @@ export class ClientGroup {
 
     
     /**
-     *  Email server account for built-in client operations.             
+     *  Email server account for built-in client operations.
      */
     public get account(): ClientAccountApi {
         return this._account;
     }
     
     /**
-     *  Email client folder operations.             
+     *  Email client folder operations.
      */
     public get folder(): ClientFolderApi {
         return this._folder;
     }
     
     /**
-     *  Email client message operations.             
+     *  Email client message operations.
      */
     public get message(): ClientMessageApi {
         return this._message;
     }
     
     /**
-     *  Email client thread operations.             
+     *  Email client thread operations.
      */
     public get thread(): ClientThreadApi {
         return this._thread;

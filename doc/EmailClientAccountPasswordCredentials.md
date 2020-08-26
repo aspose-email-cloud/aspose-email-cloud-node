@@ -1,4 +1,3 @@
-
 # EmailClientAccountPasswordCredentials
 
 ## Properties

@@ -1,4 +1,3 @@
-
 # MapiPidTagPropertyDescriptor
 
 ## Properties

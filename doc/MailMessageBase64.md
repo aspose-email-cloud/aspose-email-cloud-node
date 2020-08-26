@@ -1,4 +1,3 @@
-
 # MailMessageBase64
 
 ## Properties

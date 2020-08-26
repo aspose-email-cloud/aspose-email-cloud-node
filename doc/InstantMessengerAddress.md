@@ -1,4 +1,3 @@
-
 # InstantMessengerAddress
 
 ## Properties

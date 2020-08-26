@@ -1,4 +1,3 @@
-
 # MailAddress
 
 ## Properties

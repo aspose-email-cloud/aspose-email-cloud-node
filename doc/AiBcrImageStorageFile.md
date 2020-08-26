@@ -1,4 +1,3 @@
-
 # AiBcrImageStorageFile
 
 ## Properties

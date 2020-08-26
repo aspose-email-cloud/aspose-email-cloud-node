@@ -1,4 +1,3 @@
-
 # ClientMessageAppendRequest
 
 ## Properties

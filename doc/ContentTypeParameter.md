@@ -1,4 +1,3 @@
-
 # ContentTypeParameter
 
 ## Properties

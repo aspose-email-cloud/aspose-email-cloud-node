@@ -1,4 +1,3 @@
-
 # ListResponseOfStorageFileLocation
 
 ## Properties

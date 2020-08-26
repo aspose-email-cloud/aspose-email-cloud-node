@@ -1,4 +1,3 @@
-
 # MailMessageBaseList
 
 ## Properties

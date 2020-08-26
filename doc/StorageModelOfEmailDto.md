@@ -1,4 +1,3 @@
-
 # StorageModelOfEmailDto
 
 ## Properties

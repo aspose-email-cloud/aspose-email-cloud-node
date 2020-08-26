@@ -1,4 +1,3 @@
-
 # AiBcrImage
 
 ## Properties

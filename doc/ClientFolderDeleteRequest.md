@@ -1,4 +1,3 @@
-
 # ClientFolderDeleteRequest
 
 ## Properties

@@ -1,4 +1,3 @@
-
 # AiNameExtractedComponent
 
 ## Properties

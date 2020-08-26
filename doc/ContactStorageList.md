@@ -1,4 +1,3 @@
-
 # ContactStorageList
 
 ## Properties

@@ -1,4 +1,3 @@
-
 /*
 * MIT License
 
@@ -107,9 +106,14 @@ export class EmailApi {
         const headerParams: any = {};
         const formParams: any = {};
     
-        // verify required parameter 'request.format' is not null or undefined
-        if (request.format === null || request.format === undefined) {
-            throw new Error('Required parameter "request.format" was null or undefined when calling convert.');
+        // verify required parameter 'request.fromFormat' is not null or undefined
+        if (request.fromFormat === null || request.fromFormat === undefined) {
+            throw new Error('Required parameter "request.fromFormat" was null or undefined when calling convert.');
+        }
+    
+        // verify required parameter 'request.toFormat' is not null or undefined
+        if (request.toFormat === null || request.toFormat === undefined) {
+            throw new Error('Required parameter "request.toFormat" was null or undefined when calling convert.');
         }
     
         // verify required parameter 'request.file' is not null or undefined
@@ -117,8 +121,12 @@ export class EmailApi {
             throw new Error('Required parameter "request.file" was null or undefined when calling convert.');
         }
     
-        if (request.format !== undefined) {
-            queryParameters.format = ObjectSerializer.serialize(request.format, "string");
+        if (request.fromFormat !== undefined) {
+            queryParameters.fromFormat = ObjectSerializer.serialize(request.fromFormat, "string");
+        }
+
+        if (request.toFormat !== undefined) {
+            queryParameters.toFormat = ObjectSerializer.serialize(request.toFormat, "string");
         }
 
         // tslint:disable-next-line:prefer-const

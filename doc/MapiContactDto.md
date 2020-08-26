@@ -1,4 +1,3 @@
-
 # MapiContactDto
 
 ## Properties

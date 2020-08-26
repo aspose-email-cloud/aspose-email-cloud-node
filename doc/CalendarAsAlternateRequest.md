@@ -1,4 +1,3 @@
-
 # CalendarAsAlternateRequest
 
 ## Properties

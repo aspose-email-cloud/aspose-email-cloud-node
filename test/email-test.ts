@@ -11,7 +11,7 @@ describe('Email tests', function () {
     it('Check email converter #pipeline', async () => {
         let emailDto = getEmailDto();
         let mapi = await td.api().email.asFile(new EmailAsFileRequest('Msg', emailDto));
-        let eml = await td.api().email.convert(new EmailConvertRequest('Eml', mapi));
+        let eml = await td.api().email.convert(new EmailConvertRequest('Msg', 'Eml', mapi));
         let emlString = eml.toString();
         expect(emlString).to.include(from);
         let dto = await td.api().email.fromFile(new EmailFromFileRequest('Eml', eml));

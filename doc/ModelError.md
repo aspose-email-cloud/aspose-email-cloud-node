@@ -1,4 +1,3 @@
-
 # ModelError
 
 ## Properties

@@ -1,4 +1,3 @@
-
 # ContactPhoto
 
 ## Properties

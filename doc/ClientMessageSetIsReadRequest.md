@@ -1,4 +1,3 @@
-
 # ClientMessageSetIsReadRequest
 
 ## Properties

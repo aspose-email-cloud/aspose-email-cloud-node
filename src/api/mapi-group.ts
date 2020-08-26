@@ -34,7 +34,7 @@ import { MapiMessageApi } from "./mapi-message-api";
     
     
 /**
- * MAPI operations.             
+ * MAPI operations.
  */
 export class MapiGroup {
     
@@ -47,21 +47,21 @@ export class MapiGroup {
 
     
     /**
-     *  MAPI calendar operations.             
+     *  MAPI calendar operations.
      */
     public get calendar(): MapiCalendarApi {
         return this._calendar;
     }
     
     /**
-     *  MAPI contact operations             
+     *  MAPI contact operations
      */
     public get contact(): MapiContactApi {
         return this._contact;
     }
     
     /**
-     *  MAPI message operations             
+     *  MAPI message operations
      */
     public get message(): MapiMessageApi {
         return this._message;

@@ -1,4 +1,3 @@
-
 # ValueTOfBoolean
 
 ## Properties

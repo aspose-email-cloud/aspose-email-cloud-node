@@ -1,4 +1,3 @@
-
 import { AiBcrImage } from "./ai-bcr-image";
 import { AiBcrOptions } from "./ai-bcr-options";
 import { AiBcrParseStorageRequest } from "./ai-bcr-parse-storage-request";

@@ -1,4 +1,3 @@
-
 # AiNameExtractedList
 
 ## Properties
