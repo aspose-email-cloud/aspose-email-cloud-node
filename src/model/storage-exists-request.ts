@@ -5,13 +5,13 @@ import * as model from "./index";
  */
 export class StorageExistsRequest {
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for storageExists operation.
-     * @param storageName Storage name
+     * @param storageName 
      */
     public constructor(
         storageName?: string) {

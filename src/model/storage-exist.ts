@@ -25,9 +25,6 @@
 // @ts-ignore
 import * as model from "./index";
 
-/**
- * Storage exists
- */
 export class StorageExist {
 
     /**
@@ -47,14 +44,11 @@ export class StorageExist {
         return StorageExist.attributeTypeMap;
     }
 
-    /**
-     * Shows that the storage exists.             
-     */
     public exists: boolean;
 
     /**
-     * Storage exists
-     * @param exists Shows that the storage exists.             
+     * 
+     * @param exists 
      */
     public constructor(
         

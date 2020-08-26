@@ -5,19 +5,19 @@ import * as model from "./index";
  */
 export class CreateFolderRequest {
     /**
-     * Folder path to create e.g. 'folder_1/folder_2/'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for createFolder operation.
-     * @param path Folder path to create e.g. 'folder_1/folder_2/'
-     * @param storageName Storage name
+     * @param path 
+     * @param storageName 
      */
     public constructor(
         path?: string, 

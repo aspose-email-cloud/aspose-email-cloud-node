@@ -25,9 +25,6 @@
 // @ts-ignore
 import * as model from "./index";
 
-/**
- * The error details
- */
 export class ErrorDetails {
 
     /**
@@ -52,19 +49,13 @@ export class ErrorDetails {
         return ErrorDetails.attributeTypeMap;
     }
 
-    /**
-     * The request id
-     */
     public requestId: string;
-    /**
-     * Date
-     */
     public date: Date;
 
     /**
-     * The error details
-     * @param requestId The request id
-     * @param date Date
+     * 
+     * @param requestId 
+     * @param date 
      */
     public constructor(
         

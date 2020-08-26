@@ -25,9 +25,6 @@
 // @ts-ignore
 import * as model from "./index";
 
-/**
- * Object exists
- */
 export class ObjectExist {
 
     /**
@@ -52,19 +49,13 @@ export class ObjectExist {
         return ObjectExist.attributeTypeMap;
     }
 
-    /**
-     * Indicates that the file or folder exists.
-     */
     public exists: boolean;
-    /**
-     * True if it is a folder, false if it is a file.
-     */
     public isFolder: boolean;
 
     /**
-     * Object exists
-     * @param exists Indicates that the file or folder exists.
-     * @param isFolder True if it is a folder, false if it is a file.
+     * 
+     * @param exists 
+     * @param isFolder 
      */
     public constructor(
         

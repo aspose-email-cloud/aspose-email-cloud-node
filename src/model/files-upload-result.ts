@@ -25,9 +25,6 @@
 // @ts-ignore
 import * as model from "./index";
 
-/**
- * File upload result
- */
 export class FilesUploadResult {
 
     /**
@@ -52,19 +49,13 @@ export class FilesUploadResult {
         return FilesUploadResult.attributeTypeMap;
     }
 
-    /**
-     * List of uploaded file names
-     */
     public uploaded: Array<string>;
-    /**
-     * List of errors.
-     */
     public errors: Array<Error>;
 
     /**
-     * File upload result
-     * @param uploaded List of uploaded file names
-     * @param errors List of errors.
+     * 
+     * @param uploaded 
+     * @param errors 
      */
     public constructor(
         

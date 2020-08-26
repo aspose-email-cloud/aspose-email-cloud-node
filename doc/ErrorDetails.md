@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**requestId** | **string** | The request id | [optional] [default to undefined]
-**date** | **Date** | Date | [default to undefined]
+**requestId** | **string** |  | [optional] [default to undefined]
+**date** | **Date** |  | [default to undefined]
 
 
 

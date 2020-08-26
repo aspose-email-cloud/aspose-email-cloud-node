@@ -5,25 +5,25 @@ import * as model from "./index";
  */
 export class DeleteFileRequest {
     /**
-     * File path e.g. '/folder/file.ext'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
-     * File version ID to delete
+     * Gets or sets versionId
      */
     public versionId: string;
 
     /**
      * Request model for deleteFile operation.
-     * @param path File path e.g. '/folder/file.ext'
-     * @param storageName Storage name
-     * @param versionId File version ID to delete
+     * @param path 
+     * @param storageName 
+     * @param versionId 
      */
     public constructor(
         path?: string, 

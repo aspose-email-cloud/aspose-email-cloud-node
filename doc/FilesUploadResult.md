@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uploaded** | **Array&lt;string&gt;** | List of uploaded file names | [optional] [default to undefined]
-**errors** | **Array&lt;Error&gt;** | List of errors. | [optional] [default to undefined]
+**uploaded** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
+**errors** | **Array&lt;Error&gt;** |  | [optional] [default to undefined]
 
 
 

@@ -5,31 +5,31 @@ import * as model from "./index";
  */
 export class MoveFolderRequest {
     /**
-     * Folder path to move e.g. '/folder'
+     * Gets or sets srcPath
      */
     public srcPath: string;
 
     /**
-     * Destination folder path to move to e.g '/dst'
+     * Gets or sets destPath
      */
     public destPath: string;
 
     /**
-     * Source storage name
+     * Gets or sets srcStorageName
      */
     public srcStorageName: string;
 
     /**
-     * Destination storage name
+     * Gets or sets destStorageName
      */
     public destStorageName: string;
 
     /**
      * Request model for moveFolder operation.
-     * @param srcPath Folder path to move e.g. '/folder'
-     * @param destPath Destination folder path to move to e.g '/dst'
-     * @param srcStorageName Source storage name
-     * @param destStorageName Destination storage name
+     * @param srcPath 
+     * @param destPath 
+     * @param srcStorageName 
+     * @param destStorageName 
      */
     public constructor(
         srcPath?: string, 

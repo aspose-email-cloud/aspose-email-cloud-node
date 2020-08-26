@@ -5,25 +5,25 @@ import * as model from "./index";
  */
 export class DeleteFolderRequest {
     /**
-     * Folder path e.g. '/folder'
+     * Gets or sets path
      */
     public path: string;
 
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
-     * Enable to delete folders, subfolders and files
+     * Gets or sets recursive
      */
     public recursive: boolean;
 
     /**
      * Request model for deleteFolder operation.
-     * @param path Folder path e.g. '/folder'
-     * @param storageName Storage name
-     * @param recursive Enable to delete folders, subfolders and files
+     * @param path 
+     * @param storageName 
+     * @param recursive 
      */
     public constructor(
         path?: string, 

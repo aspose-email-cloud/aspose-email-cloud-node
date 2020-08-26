@@ -25,9 +25,6 @@
 // @ts-ignore
 import * as model from "./index";
 
-/**
- * File Version
- */
 export class FileVersion extends model.StorageFile {
 
     /**
@@ -52,24 +49,18 @@ export class FileVersion extends model.StorageFile {
         return super.getAttributeTypeMap().concat(FileVersion.attributeTypeMap);
     }
 
-    /**
-     * File Version ID.
-     */
     public versionId: string;
-    /**
-     * Specifies whether the file is (true) or is not (false) the latest version of an file.
-     */
     public isLatest: boolean;
 
     /**
-     * File Version
-     * @param name File or folder name.
-     * @param isFolder True if it is a folder.
-     * @param modifiedDate File or folder last modified DateTime.
-     * @param size File or folder size.
-     * @param path File or folder path.
-     * @param versionId File Version ID.
-     * @param isLatest Specifies whether the file is (true) or is not (false) the latest version of an file.
+     * 
+     * @param name 
+     * @param isFolder 
+     * @param modifiedDate 
+     * @param size 
+     * @param path 
+     * @param versionId 
+     * @param isLatest 
      */
     public constructor(
         

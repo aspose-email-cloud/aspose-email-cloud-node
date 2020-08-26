@@ -5,13 +5,13 @@ import * as model from "./index";
  */
 export class GetDiscUsageRequest {
     /**
-     * Storage name
+     * Gets or sets storageName
      */
     public storageName: string;
 
     /**
      * Request model for getDiscUsage operation.
-     * @param storageName Storage name
+     * @param storageName 
      */
     public constructor(
         storageName?: string) {

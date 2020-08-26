@@ -44,7 +44,7 @@ export class StorageApi {
 
         
     /**
-     * Get disc usage
+     * 
      * @param request contains request parameters
      */
     public async getDiscUsage(request: model.GetDiscUsageRequest): Promise< model.DiscUsage > {
@@ -83,7 +83,7 @@ export class StorageApi {
 
         
     /**
-     * Get file versions
+     * 
      * @param request contains request parameters
      */
     public async getFileVersions(request: model.GetFileVersionsRequest): Promise< model.FileVersions > {
@@ -128,7 +128,7 @@ export class StorageApi {
 
         
     /**
-     * Check if file or folder exists
+     * 
      * @param request contains request parameters
      */
     public async objectExists(request: model.ObjectExistsRequest): Promise< model.ObjectExist > {
@@ -177,7 +177,7 @@ export class StorageApi {
 
         
     /**
-     * Check if storage exists
+     * 
      * @param request contains request parameters
      */
     public async exists(request: model.StorageExistsRequest): Promise< model.StorageExist > {

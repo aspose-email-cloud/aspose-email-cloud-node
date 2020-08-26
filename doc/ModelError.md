@@ -3,10 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **string** | Code              | [optional] [default to undefined]
-**message** | **string** | Message              | [optional] [default to undefined]
-**description** | **string** | Description              | [optional] [default to undefined]
-**innerError** | [**ErrorDetails**](ErrorDetails.md) | Inner Error              | [optional] [default to undefined]
+**code** | **string** |  | [optional] [default to undefined]
+**message** | **string** |  | [optional] [default to undefined]
+**description** | **string** |  | [optional] [default to undefined]
+**innerError** | [**ErrorDetails**](ErrorDetails.md) |  | [optional] [default to undefined]
 
 
 

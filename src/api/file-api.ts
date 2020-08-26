@@ -44,7 +44,7 @@ export class FileApi {
 
         
     /**
-     * Copy file
+     * 
      * @param request contains request parameters
      */
     public async copyFile(request: model.CopyFileRequest): Promise< any > {
@@ -105,7 +105,7 @@ export class FileApi {
 
         
     /**
-     * Delete file
+     * 
      * @param request contains request parameters
      */
     public async deleteFile(request: model.DeleteFileRequest): Promise< any > {
@@ -153,7 +153,7 @@ export class FileApi {
 
         
     /**
-     * Download file
+     * 
      * @param request contains request parameters
      */
     public async downloadFile(request: model.DownloadFileRequest): Promise< Buffer > {
@@ -203,7 +203,7 @@ export class FileApi {
 
         
     /**
-     * Move file
+     * 
      * @param request contains request parameters
      */
     public async moveFile(request: model.MoveFileRequest): Promise< any > {
@@ -264,7 +264,7 @@ export class FileApi {
 
         
     /**
-     * Upload file
+     * 
      * @param request contains request parameters
      */
     public async uploadFile(request: model.UploadFileRequest): Promise< model.FilesUploadResult > {

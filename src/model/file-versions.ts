@@ -25,9 +25,6 @@
 // @ts-ignore
 import * as model from "./index";
 
-/**
- * File versions FileVersion.
- */
 export class FileVersions {
 
     /**
@@ -47,14 +44,11 @@ export class FileVersions {
         return FileVersions.attributeTypeMap;
     }
 
-    /**
-     * File versions FileVersion.
-     */
     public value: Array< model.FileVersion >;
 
     /**
-     * File versions FileVersion.
-     * @param value File versions FileVersion.
+     * 
+     * @param value 
      */
     public constructor(
         
