@@ -5,19 +5,19 @@ import * as model from "./index";
  */
 export class GetFilesListRequest {
     /**
-     * Gets or sets path
+     * Folder path e.g. '/folder'
      */
     public path: string;
 
     /**
-     * Gets or sets storageName
+     * Storage name
      */
     public storageName: string;
 
     /**
      * Request model for getFilesList operation.
-     * @param path 
-     * @param storageName 
+     * @param path Folder path e.g. '/folder'
+     * @param storageName Storage name
      */
     public constructor(
         path?: string, 

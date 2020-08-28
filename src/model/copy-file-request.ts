@@ -5,37 +5,37 @@ import * as model from "./index";
  */
 export class CopyFileRequest {
     /**
-     * Gets or sets srcPath
+     * Source file path e.g. '/folder/file.ext'
      */
     public srcPath: string;
 
     /**
-     * Gets or sets destPath
+     * Destination file path
      */
     public destPath: string;
 
     /**
-     * Gets or sets srcStorageName
+     * Source storage name
      */
     public srcStorageName: string;
 
     /**
-     * Gets or sets destStorageName
+     * Destination storage name
      */
     public destStorageName: string;
 
     /**
-     * Gets or sets versionId
+     * File version ID to copy
      */
     public versionId: string;
 
     /**
      * Request model for copyFile operation.
-     * @param srcPath 
-     * @param destPath 
-     * @param srcStorageName 
-     * @param destStorageName 
-     * @param versionId 
+     * @param srcPath Source file path e.g. '/folder/file.ext'
+     * @param destPath Destination file path
+     * @param srcStorageName Source storage name
+     * @param destStorageName Destination storage name
+     * @param versionId File version ID to copy
      */
     public constructor(
         srcPath?: string, 

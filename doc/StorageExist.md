@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**exists** | **boolean** |  | [default to undefined]
+**exists** | **boolean** | Shows that the storage exists.              | [default to undefined]
 
 
 

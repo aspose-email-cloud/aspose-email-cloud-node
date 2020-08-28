@@ -5,31 +5,31 @@ import * as model from "./index";
  */
 export class CopyFolderRequest {
     /**
-     * Gets or sets srcPath
+     * Source folder path e.g. '/src'
      */
     public srcPath: string;
 
     /**
-     * Gets or sets destPath
+     * Destination folder path e.g. '/dst'
      */
     public destPath: string;
 
     /**
-     * Gets or sets srcStorageName
+     * Source storage name
      */
     public srcStorageName: string;
 
     /**
-     * Gets or sets destStorageName
+     * Destination storage name
      */
     public destStorageName: string;
 
     /**
      * Request model for copyFolder operation.
-     * @param srcPath 
-     * @param destPath 
-     * @param srcStorageName 
-     * @param destStorageName 
+     * @param srcPath Source folder path e.g. '/src'
+     * @param destPath Destination folder path e.g. '/dst'
+     * @param srcStorageName Source storage name
+     * @param destStorageName Destination storage name
      */
     public constructor(
         srcPath?: string, 

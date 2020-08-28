@@ -5,25 +5,25 @@ import * as model from "./index";
  */
 export class ObjectExistsRequest {
     /**
-     * Gets or sets path
+     * File or folder path e.g. '/file.ext' or '/folder'
      */
     public path: string;
 
     /**
-     * Gets or sets storageName
+     * Storage name
      */
     public storageName: string;
 
     /**
-     * Gets or sets versionId
+     * File version ID
      */
     public versionId: string;
 
     /**
      * Request model for objectExists operation.
-     * @param path 
-     * @param storageName 
-     * @param versionId 
+     * @param path File or folder path e.g. '/file.ext' or '/folder'
+     * @param storageName Storage name
+     * @param versionId File version ID
      */
     public constructor(
         path?: string, 

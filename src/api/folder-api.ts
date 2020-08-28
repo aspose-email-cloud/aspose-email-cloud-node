@@ -44,7 +44,7 @@ export class FolderApi {
 
         
     /**
-     * 
+     * Copy folder
      * @param request contains request parameters
      */
     public async copyFolder(request: model.CopyFolderRequest): Promise< any > {
@@ -101,7 +101,7 @@ export class FolderApi {
 
         
     /**
-     * 
+     * Create the folder
      * @param request contains request parameters
      */
     public async createFolder(request: model.CreateFolderRequest): Promise< any > {
@@ -145,7 +145,7 @@ export class FolderApi {
 
         
     /**
-     * 
+     * Delete folder
      * @param request contains request parameters
      */
     public async deleteFolder(request: model.DeleteFolderRequest): Promise< any > {
@@ -193,7 +193,7 @@ export class FolderApi {
 
         
     /**
-     * 
+     * Get all files and folders within a folder
      * @param request contains request parameters
      */
     public async getFilesList(request: model.GetFilesListRequest): Promise< model.FilesList > {
@@ -238,7 +238,7 @@ export class FolderApi {
 
         
     /**
-     * 
+     * Move folder
      * @param request contains request parameters
      */
     public async moveFolder(request: model.MoveFolderRequest): Promise< any > {

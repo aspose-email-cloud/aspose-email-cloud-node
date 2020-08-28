@@ -25,6 +25,9 @@
 // @ts-ignore
 import * as model from "./index";
 
+/**
+ * Files list
+ */
 export class FilesList {
 
     /**
@@ -44,11 +47,14 @@ export class FilesList {
         return FilesList.attributeTypeMap;
     }
 
+    /**
+     * Files and folders contained by folder StorageFile.
+     */
     public value: Array< model.StorageFile >;
 
     /**
-     * 
-     * @param value 
+     * Files list
+     * @param value Files and folders contained by folder StorageFile.
      */
     public constructor(
         

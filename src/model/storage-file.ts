@@ -25,6 +25,9 @@
 // @ts-ignore
 import * as model from "./index";
 
+/**
+ * File or folder information
+ */
 export class StorageFile {
 
     /**
@@ -64,19 +67,34 @@ export class StorageFile {
         return StorageFile.attributeTypeMap;
     }
 
+    /**
+     * File or folder name.
+     */
     public name: string;
+    /**
+     * True if it is a folder.
+     */
     public isFolder: boolean;
+    /**
+     * File or folder last modified DateTime.
+     */
     public modifiedDate: Date;
+    /**
+     * File or folder size.
+     */
     public size: number;
+    /**
+     * File or folder path.
+     */
     public path: string;
 
     /**
-     * 
-     * @param name 
-     * @param isFolder 
-     * @param modifiedDate 
-     * @param size 
-     * @param path 
+     * File or folder information
+     * @param name File or folder name.
+     * @param isFolder True if it is a folder.
+     * @param modifiedDate File or folder last modified DateTime.
+     * @param size File or folder size.
+     * @param path File or folder path.
      */
     public constructor(
         

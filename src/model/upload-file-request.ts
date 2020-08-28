@@ -5,7 +5,7 @@ import * as model from "./index";
  */
 export class UploadFileRequest {
     /**
-     * Gets or sets path
+     * Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.             
      */
     public path: string;
 
@@ -15,15 +15,15 @@ export class UploadFileRequest {
     public file: Buffer;
 
     /**
-     * Gets or sets storageName
+     * Storage name
      */
     public storageName: string;
 
     /**
      * Request model for uploadFile operation.
-     * @param path 
+     * @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.             
      * @param file File to upload
-     * @param storageName 
+     * @param storageName Storage name
      */
     public constructor(
         path?: string, 

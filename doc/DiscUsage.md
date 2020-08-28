@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**usedSize** | **number** |  | [default to undefined]
-**totalSize** | **number** |  | [default to undefined]
+**usedSize** | **number** | Application used disc space. | [default to undefined]
+**totalSize** | **number** | Total disc space. | [default to undefined]
 
 
 

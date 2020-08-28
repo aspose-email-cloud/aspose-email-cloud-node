@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | [**Array&lt;FileVersion&gt;**](FileVersion.md) |  | [optional] [default to undefined]
+**value** | [**Array&lt;FileVersion&gt;**](FileVersion.md) | File versions FileVersion. | [optional] [default to undefined]
 
 
 

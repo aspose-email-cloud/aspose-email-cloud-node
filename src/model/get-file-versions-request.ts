@@ -5,19 +5,19 @@ import * as model from "./index";
  */
 export class GetFileVersionsRequest {
     /**
-     * Gets or sets path
+     * File path e.g. '/file.ext'
      */
     public path: string;
 
     /**
-     * Gets or sets storageName
+     * Storage name
      */
     public storageName: string;
 
     /**
      * Request model for getFileVersions operation.
-     * @param path 
-     * @param storageName 
+     * @param path File path e.g. '/file.ext'
+     * @param storageName Storage name
      */
     public constructor(
         path?: string, 

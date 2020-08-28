@@ -5,25 +5,25 @@ import * as model from "./index";
  */
 export class DownloadFileRequest {
     /**
-     * Gets or sets path
+     * File path e.g. '/folder/file.ext'
      */
     public path: string;
 
     /**
-     * Gets or sets storageName
+     * Storage name
      */
     public storageName: string;
 
     /**
-     * Gets or sets versionId
+     * File version ID to download
      */
     public versionId: string;
 
     /**
      * Request model for downloadFile operation.
-     * @param path 
-     * @param storageName 
-     * @param versionId 
+     * @param path File path e.g. '/folder/file.ext'
+     * @param storageName Storage name
+     * @param versionId File version ID to download
      */
     public constructor(
         path?: string, 

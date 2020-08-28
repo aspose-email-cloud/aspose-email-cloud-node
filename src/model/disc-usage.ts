@@ -25,6 +25,9 @@
 // @ts-ignore
 import * as model from "./index";
 
+/**
+ * Class for disc space information.
+ */
 export class DiscUsage {
 
     /**
@@ -49,13 +52,19 @@ export class DiscUsage {
         return DiscUsage.attributeTypeMap;
     }
 
+    /**
+     * Application used disc space.
+     */
     public usedSize: number;
+    /**
+     * Total disc space.
+     */
     public totalSize: number;
 
     /**
-     * 
-     * @param usedSize 
-     * @param totalSize 
+     * Class for disc space information.
+     * @param usedSize Application used disc space.
+     * @param totalSize Total disc space.
      */
     public constructor(
         

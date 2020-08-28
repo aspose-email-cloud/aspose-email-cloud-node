@@ -5,37 +5,37 @@ import * as model from "./index";
  */
 export class MoveFileRequest {
     /**
-     * Gets or sets srcPath
+     * Source file path e.g. '/src.ext'
      */
     public srcPath: string;
 
     /**
-     * Gets or sets destPath
+     * Destination file path e.g. '/dest.ext'
      */
     public destPath: string;
 
     /**
-     * Gets or sets srcStorageName
+     * Source storage name
      */
     public srcStorageName: string;
 
     /**
-     * Gets or sets destStorageName
+     * Destination storage name
      */
     public destStorageName: string;
 
     /**
-     * Gets or sets versionId
+     * File version ID to move
      */
     public versionId: string;
 
     /**
      * Request model for moveFile operation.
-     * @param srcPath 
-     * @param destPath 
-     * @param srcStorageName 
-     * @param destStorageName 
-     * @param versionId 
+     * @param srcPath Source file path e.g. '/src.ext'
+     * @param destPath Destination file path e.g. '/dest.ext'
+     * @param srcStorageName Source storage name
+     * @param destStorageName Destination storage name
+     * @param versionId File version ID to move
      */
     public constructor(
         srcPath?: string, 

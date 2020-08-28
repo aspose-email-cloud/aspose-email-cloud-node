@@ -25,6 +25,9 @@
 // @ts-ignore
 import * as model from "./index";
 
+/**
+ * Error
+ */
 export class ModelError {
 
     /**
@@ -59,17 +62,29 @@ export class ModelError {
         return ModelError.attributeTypeMap;
     }
 
+    /**
+     * Code             
+     */
     public code: string;
+    /**
+     * Message             
+     */
     public message: string;
+    /**
+     * Description             
+     */
     public description: string;
+    /**
+     * Inner Error             
+     */
     public innerError: model.ErrorDetails;
 
     /**
-     * 
-     * @param code 
-     * @param message 
-     * @param description 
-     * @param innerError 
+     * Error
+     * @param code Code             
+     * @param message Message             
+     * @param description Description             
+     * @param innerError Inner Error             
      */
     public constructor(
         

@@ -47,21 +47,21 @@ export class CloudStorageGroup {
 
     
     /**
-     *  
+     *  File operations controller
      */
     public get file(): FileApi {
         return this._file;
     }
     
     /**
-     *  
+     *  Folder operations controller
      */
     public get folder(): FolderApi {
         return this._folder;
     }
     
     /**
-     *  
+     *  Storage operations controller
      */
     public get storage(): StorageApi {
         return this._storage;

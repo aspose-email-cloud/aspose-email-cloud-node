@@ -7,7 +7,7 @@
 public async copyFolder(request: CopyFolderRequest): Promise< any >
 ```
 
-
+Copy folder
 
 ### Request Parameters
 ```typescript
@@ -20,10 +20,10 @@ new CopyFolder(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **srcPath** | **string**|  |
- **destPath** | **string**|  |
- **srcStorageName** | **string**|  | [optional]
- **destStorageName** | **string**|  | [optional]
+ **srcPath** | **string**| Source folder path e.g. &#39;/src&#39; |
+ **destPath** | **string**| Destination folder path e.g. &#39;/dst&#39; |
+ **srcStorageName** | **string**| Source storage name | [optional]
+ **destStorageName** | **string**| Destination storage name | [optional]
 
 ### Return type
 
@@ -37,7 +37,7 @@ Promise< any >
 public async createFolder(request: CreateFolderRequest): Promise< any >
 ```
 
-
+Create the folder
 
 ### Request Parameters
 ```typescript
@@ -48,8 +48,8 @@ new CreateFolder(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **path** | **string**|  |
- **storageName** | **string**|  | [optional]
+ **path** | **string**| Folder path to create e.g. &#39;folder_1/folder_2/&#39; |
+ **storageName** | **string**| Storage name | [optional]
 
 ### Return type
 
@@ -63,7 +63,7 @@ Promise< any >
 public async deleteFolder(request: DeleteFolderRequest): Promise< any >
 ```
 
-
+Delete folder
 
 ### Request Parameters
 ```typescript
@@ -75,9 +75,9 @@ new DeleteFolder(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **path** | **string**|  |
- **storageName** | **string**|  | [optional]
- **recursive** | **boolean**|  | [optional] [default to false]
+ **path** | **string**| Folder path e.g. &#39;/folder&#39; |
+ **storageName** | **string**| Storage name | [optional]
+ **recursive** | **boolean**| Enable to delete folders, subfolders and files | [optional] [default to false]
 
 ### Return type
 
@@ -91,7 +91,7 @@ Promise< any >
 public async getFilesList(request: GetFilesListRequest): Promise< FilesList >
 ```
 
-
+Get all files and folders within a folder
 
 ### Request Parameters
 ```typescript
@@ -102,8 +102,8 @@ new GetFilesList(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **path** | **string**|  |
- **storageName** | **string**|  | [optional]
+ **path** | **string**| Folder path e.g. &#39;/folder&#39; |
+ **storageName** | **string**| Storage name | [optional]
 
 ### Return type
 
@@ -117,7 +117,7 @@ Promise< [FilesList](FilesList.md) >
 public async moveFolder(request: MoveFolderRequest): Promise< any >
 ```
 
-
+Move folder
 
 ### Request Parameters
 ```typescript
@@ -130,10 +130,10 @@ new MoveFolder(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **srcPath** | **string**|  |
- **destPath** | **string**|  |
- **srcStorageName** | **string**|  | [optional]
- **destStorageName** | **string**|  | [optional]
+ **srcPath** | **string**| Folder path to move e.g. &#39;/folder&#39; |
+ **destPath** | **string**| Destination folder path to move to e.g &#39;/dst&#39; |
+ **srcStorageName** | **string**| Source storage name | [optional]
+ **destStorageName** | **string**| Destination storage name | [optional]
 
 ### Return type
 

@@ -7,7 +7,7 @@
 public async getDiscUsage(request: GetDiscUsageRequest): Promise< DiscUsage >
 ```
 
-
+Get disc usage
 
 ### Request Parameters
 ```typescript
@@ -17,7 +17,7 @@ new GetDiscUsage(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **storageName** | **string**|  | [optional]
+ **storageName** | **string**| Storage name | [optional]
 
 ### Return type
 
@@ -31,7 +31,7 @@ Promise< [DiscUsage](DiscUsage.md) >
 public async getFileVersions(request: GetFileVersionsRequest): Promise< FileVersions >
 ```
 
-
+Get file versions
 
 ### Request Parameters
 ```typescript
@@ -42,8 +42,8 @@ new GetFileVersions(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **path** | **string**|  |
- **storageName** | **string**|  | [optional]
+ **path** | **string**| File path e.g. &#39;/file.ext&#39; |
+ **storageName** | **string**| Storage name | [optional]
 
 ### Return type
 
@@ -57,7 +57,7 @@ Promise< [FileVersions](FileVersions.md) >
 public async objectExists(request: ObjectExistsRequest): Promise< ObjectExist >
 ```
 
-
+Check if file or folder exists
 
 ### Request Parameters
 ```typescript
@@ -69,9 +69,9 @@ new ObjectExists(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **path** | **string**|  |
- **storageName** | **string**|  | [optional]
- **versionId** | **string**|  | [optional]
+ **path** | **string**| File or folder path e.g. &#39;/file.ext&#39; or &#39;/folder&#39; |
+ **storageName** | **string**| Storage name | [optional]
+ **versionId** | **string**| File version ID | [optional]
 
 ### Return type
 
@@ -85,7 +85,7 @@ Promise< [ObjectExist](ObjectExist.md) >
 public async exists(request: StorageExistsRequest): Promise< StorageExist >
 ```
 
-
+Check if storage exists
 
 ### Request Parameters
 ```typescript
@@ -95,7 +95,7 @@ new StorageExists(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **storageName** | **string**|  |
+ **storageName** | **string**| Storage name |
 
 ### Return type
 
