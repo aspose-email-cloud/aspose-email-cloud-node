@@ -25,7 +25,7 @@ export class ClientMessageSendFileRequest {
     public accountStorageFolder: string;
 
     /**
-     * Email file format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * Email file format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
 
@@ -35,7 +35,7 @@ export class ClientMessageSendFileRequest {
      * @param file File to send
      * @param storage Storage name where account file located.
      * @param accountStorageFolder Folder in storage where account file located.
-     * @param format Email file format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * @param format Email file format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public constructor(
         account?: string, 

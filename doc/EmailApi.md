@@ -57,8 +57,8 @@ new EmailConvert(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **fromFormat** | **string**| File format to convert to Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef |
- **toFormat** | **string**| File format to convert from Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef |
+ **fromFormat** | **string**| File format to convert to Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft |
+ **toFormat** | **string**| File format to convert from Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft |
  **file** | **byte[]**| File to convert |
 
 ### Return type
@@ -84,7 +84,7 @@ new EmailFromFile(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **format** | **string**|  Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef |
+ **format** | **string**|  Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft |
  **file** | **byte[]**| File to convert |
 
 ### Return type
@@ -112,7 +112,7 @@ new EmailGet(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **format** | **string**| Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef |
+ **format** | **string**| Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft |
  **fileName** | **string**| Email document file name. |
  **folder** | **string**| Path to folder in storage. | [optional]
  **storage** | **string**| Storage name. | [optional]
@@ -143,7 +143,7 @@ new EmailGetAsFile(
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
  **fileName** | **string**| Email document file name |
- **format** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef |
+ **format** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft |
  **storage** | **string**| Storage name | [optional]
  **folder** | **string**| Path to folder in storage | [optional]
 
@@ -173,7 +173,7 @@ new EmailGetList(
 
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
- **format** | **string**| Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef |
+ **format** | **string**| Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft |
  **folder** | **string**| Path to folder in storage. | [optional]
  **storage** | **string**| Storage name. | [optional]
  **itemsPerPage** | **number**| Count of items on page. | [optional] [default to 10]
