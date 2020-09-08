@@ -1,11 +1,10 @@
-
 # StorageModelOfEmailDto
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**storageFile** | [**StorageFileLocation**](StorageFileLocation.md) |  | [optional] [default to undefined]
-**value** | [**EmailDto**](EmailDto.md) |  | [optional] [default to undefined]
+**storageFile** | [**StorageFileLocation**](StorageFileLocation.md) |  | [default to undefined]
+**value** | [**EmailDto**](EmailDto.md) |  | [default to undefined]
 
 
 

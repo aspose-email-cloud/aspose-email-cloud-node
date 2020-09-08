@@ -1,4 +1,3 @@
-
 # MapiContactProfessionalPropertySetDto
 
 ## Properties

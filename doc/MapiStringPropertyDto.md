@@ -1,4 +1,3 @@
-
 # MapiStringPropertyDto
 
 ## Properties

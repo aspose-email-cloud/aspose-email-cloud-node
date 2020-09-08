@@ -1,4 +1,3 @@
-
 # EnumWithCustomOfEventCategory
 
 ## Properties

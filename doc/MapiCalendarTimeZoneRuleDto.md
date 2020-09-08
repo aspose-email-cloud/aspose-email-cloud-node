@@ -1,4 +1,3 @@
-
 # MapiCalendarTimeZoneRuleDto
 
 ## Properties

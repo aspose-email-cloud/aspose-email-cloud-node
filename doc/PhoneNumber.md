@@ -1,4 +1,3 @@
-
 # PhoneNumber
 
 ## Properties

@@ -1,4 +1,3 @@
-
 # EmailClientAccountOauthCredentials
 
 ## Properties

@@ -1,11 +1,10 @@
-
 # ObjectExist
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**exists** | **boolean** |  | [default to undefined]
-**isFolder** | **boolean** |  | [default to undefined]
+**exists** | **boolean** | Indicates that the file or folder exists. | [default to undefined]
+**isFolder** | **boolean** | True if it is a folder, false if it is a file. | [default to undefined]
 
 
 

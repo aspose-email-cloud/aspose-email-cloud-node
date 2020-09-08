@@ -1,10 +1,9 @@
-
 # ReminderAttendee
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | **string** | Contains the email address. | [optional] [default to undefined]
+**address** | **string** | Contains the email address. | [default to undefined]
 
 
 

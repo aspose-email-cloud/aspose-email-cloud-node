@@ -1,4 +1,3 @@
-
 # MapiCalendarExceptionInfoDto
 
 ## Properties

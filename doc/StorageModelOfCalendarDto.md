@@ -1,11 +1,10 @@
-
 # StorageModelOfCalendarDto
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**storageFile** | [**StorageFileLocation**](StorageFileLocation.md) |  | [optional] [default to undefined]
-**value** | [**CalendarDto**](CalendarDto.md) |  | [optional] [default to undefined]
+**storageFile** | [**StorageFileLocation**](StorageFileLocation.md) |  | [default to undefined]
+**value** | [**CalendarDto**](CalendarDto.md) |  | [default to undefined]
 
 
 

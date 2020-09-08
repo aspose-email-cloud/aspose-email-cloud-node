@@ -1,4 +1,3 @@
-
 # WeeklyRecurrencePatternDto
 
 ## Properties

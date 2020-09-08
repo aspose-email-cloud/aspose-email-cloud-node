@@ -1,4 +1,3 @@
-
 # MapiCalendarDailyRecurrencePatternDto
 
 ## Properties

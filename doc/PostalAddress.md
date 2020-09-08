@@ -1,4 +1,3 @@
-
 # PostalAddress
 
 ## Properties

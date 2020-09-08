@@ -1,4 +1,3 @@
-
 # ListResponseOfStorageModelOfCalendarDto
 
 ## Properties

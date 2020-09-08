@@ -1,10 +1,9 @@
-
 # AiBcrImage
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**isSingle** | **boolean** | Determines that image contains single VCard or more. Ignored in current version. Multiple cards on image support will be added soon              | [default to undefined]
+**isSingle** | **boolean** | Determines that image contains single VCard or more.              | [default to undefined]
 
 
 

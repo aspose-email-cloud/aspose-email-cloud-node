@@ -1,4 +1,3 @@
-
 # AssociatedPerson
 
 ## Properties

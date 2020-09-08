@@ -1,4 +1,3 @@
-
 # MapiRecipientDto
 
 ## Properties

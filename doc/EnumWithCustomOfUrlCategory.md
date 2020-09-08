@@ -1,4 +1,3 @@
-
 # EnumWithCustomOfUrlCategory
 
 ## Properties

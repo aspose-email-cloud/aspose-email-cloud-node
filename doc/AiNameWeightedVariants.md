@@ -1,4 +1,3 @@
-
 # AiNameWeightedVariants
 
 ## Properties

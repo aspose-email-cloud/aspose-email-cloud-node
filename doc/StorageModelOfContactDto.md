@@ -1,11 +1,10 @@
-
 # StorageModelOfContactDto
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**storageFile** | [**StorageFileLocation**](StorageFileLocation.md) |  | [optional] [default to undefined]
-**value** | [**ContactDto**](ContactDto.md) |  | [optional] [default to undefined]
+**storageFile** | [**StorageFileLocation**](StorageFileLocation.md) |  | [default to undefined]
+**value** | [**ContactDto**](ContactDto.md) |  | [default to undefined]
 
 
 

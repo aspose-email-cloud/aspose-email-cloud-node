@@ -1,4 +1,3 @@
-
 # StorageFolderLocation
 
 ## Properties

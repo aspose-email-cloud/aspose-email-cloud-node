@@ -1,4 +1,3 @@
-
 # ListResponseOfContactDto
 
 ## Properties

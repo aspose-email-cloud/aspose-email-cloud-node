@@ -1,4 +1,3 @@
-
 # MapiPidLidPropertyDescriptor
 
 ## Properties

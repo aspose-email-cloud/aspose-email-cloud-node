@@ -1,4 +1,3 @@
-
 # ListResponseOfAiNameExtracted
 
 ## Properties

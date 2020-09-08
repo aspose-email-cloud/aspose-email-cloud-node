@@ -1,6 +1,6 @@
 {
   "name": "@asposecloud/aspose-email-cloud",
-  "version": "20.7.0",
+  "version": "20.9.0",
   "description": "Aspose.Email Cloud Node.js SDK",
   "homepage": "https://products.aspose.cloud/email",
   "author": {
@@ -28,8 +28,8 @@
     "MHT"
   ],
   "readmeFilename": "README.md",
-  "main": "dist/lib/api.js",
-  "types": "dist/lib/api.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/src"
   ],

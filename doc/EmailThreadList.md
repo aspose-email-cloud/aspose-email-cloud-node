@@ -1,4 +1,3 @@
-
 # EmailThreadList
 
 ## Properties

@@ -1,4 +1,3 @@
-
 # EmailAccountConfig
 
 ## Properties

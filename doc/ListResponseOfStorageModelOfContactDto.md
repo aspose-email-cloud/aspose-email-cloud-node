@@ -1,4 +1,3 @@
-
 # ListResponseOfStorageModelOfContactDto
 
 ## Properties

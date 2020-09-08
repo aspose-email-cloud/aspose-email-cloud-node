@@ -1,4 +1,3 @@
-
 # MonthlyRecurrencePatternDto
 
 ## Properties

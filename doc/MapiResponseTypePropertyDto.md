@@ -1,4 +1,3 @@
-
 # MapiResponseTypePropertyDto
 
 ## Properties

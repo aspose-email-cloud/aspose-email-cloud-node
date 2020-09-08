@@ -1,4 +1,3 @@
-
 # ListResponseOfAiNameGenderHypothesis
 
 ## Properties

@@ -1,4 +1,3 @@
-
 # EnumWithCustomOfAssociatedPersonCategory
 
 ## Properties

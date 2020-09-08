@@ -1,4 +1,3 @@
-
 # DailyRecurrencePatternDto
 
 ## Properties
