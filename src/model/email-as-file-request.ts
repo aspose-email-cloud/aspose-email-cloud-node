@@ -53,7 +53,7 @@ export class EmailAsFileRequest {
     }
 
     /**
-     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
     /**
@@ -63,7 +63,7 @@ export class EmailAsFileRequest {
 
     /**
      * Convert email model to file request.             
-     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      * @param value Email model.             
      */
     public constructor(

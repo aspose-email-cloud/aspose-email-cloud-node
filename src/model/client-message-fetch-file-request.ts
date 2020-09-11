@@ -30,7 +30,7 @@ export class ClientMessageFetchFileRequest {
     public accountStorageFolder: string;
 
     /**
-     * Fetched message file format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * Fetched message file format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
 
@@ -41,7 +41,7 @@ export class ClientMessageFetchFileRequest {
      * @param folder Account folder to fetch from (should be specified for some protocols such as IMAP)             
      * @param storage Storage name where account file located.
      * @param accountStorageFolder Folder in storage where account file located.
-     * @param format Fetched message file format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * @param format Fetched message file format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public constructor(
         messageId?: string, 

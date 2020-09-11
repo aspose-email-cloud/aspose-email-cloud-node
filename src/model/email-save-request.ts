@@ -48,7 +48,7 @@ export class EmailSaveRequest extends model.StorageModelOfEmailDto {
     }
 
     /**
-     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
 
@@ -56,7 +56,7 @@ export class EmailSaveRequest extends model.StorageModelOfEmailDto {
      * Email save to storage request             
      * @param storageFile 
      * @param value 
-     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public constructor(
         

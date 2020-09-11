@@ -5,7 +5,7 @@ import * as model from "./index";
  */
 export class EmailFromFileRequest {
     /**
-     *  Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     *  Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
 
@@ -16,7 +16,7 @@ export class EmailFromFileRequest {
 
     /**
      * Request model for emailFromFile operation.
-     * @param format  Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * @param format  Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      * @param file File to convert
      */
     public constructor(

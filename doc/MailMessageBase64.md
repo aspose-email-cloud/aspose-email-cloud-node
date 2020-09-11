@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **valueBase64** | **string** | Email message file data encoded to Base64 string.              | [default to undefined]
-**format** | **string** | Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef | [default to undefined]
+**format** | **string** | Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft | [default to undefined]
 
  Parent class: [MailMessageBase](MailMessageBase.md)
 

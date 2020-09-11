@@ -5,7 +5,7 @@ import * as model from "./index";
  */
 export class MapiMessageFromFileRequest {
     /**
-     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
 
@@ -16,7 +16,7 @@ export class MapiMessageFromFileRequest {
 
     /**
      * Request model for mapiMessageFromFile operation.
-     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef
+     * @param format File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      * @param file File to convert
      */
     public constructor(
