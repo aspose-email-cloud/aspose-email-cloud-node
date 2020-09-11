@@ -31,7 +31,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist/src"
+    "dist/src",
+    "dist/index.*"
   ],
   "scripts": {
     "compile": "tsc --build tsconfig.json",
