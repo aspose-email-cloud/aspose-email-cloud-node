@@ -1,4 +1,3 @@
-import { Models } from "./models"; 
 import { AiBcrImage } from "./ai-bcr-image";
 import { AiBcrOptions } from "./ai-bcr-options";
 import { AiBcrParseStorageRequest } from "./ai-bcr-parse-storage-request";
@@ -249,7 +248,6 @@ import { StorageExistsRequest } from "./storage-exists-request"
 
 
 export {
-    Models,
     AiBcrImage,
     AiBcrOptions,
     AiBcrParseStorageRequest,

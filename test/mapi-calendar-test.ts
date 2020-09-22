@@ -75,7 +75,7 @@ describe('MAPI calendar tests', function () {
             .endDate(new Date())
             .location('Some location')
             .recurrence(Models.mapiCalendarEventRecurrenceDto()
-                .recurrencePattern(Models.mapiCalendarRecurrencePatternDto()
+                .recurrencePattern(Models.mapiCalendarDailyRecurrencePatternDto()
                     .frequency('Daily')
                     .occurrenceCount(10)
                     .weekStartDay('Monday')
