@@ -5,13 +5,8 @@ import uuidv4 from "uuid/v4";
 import {
     Models,
     MapiCalendarAsFileRequest,
-    MapiCalendarAttendeesDto,
-    MapiCalendarDailyRecurrencePatternDto,
     MapiCalendarDto,
-    MapiCalendarEventRecurrenceDto,
     MapiCalendarFromFileRequest,
-    MapiElectronicAddressDto,
-    MapiRecipientDto
 } from "..";
 
 
