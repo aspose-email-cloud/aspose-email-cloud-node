@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for uploadFile operation.
+ * Request model for FileApi.uploadFile operation.
  */
 export class UploadFileRequest {
     /**

@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for mapiCalendarGet operation.
+ * Request model for MapiCalendarApi.get operation.
  */
 export class MapiCalendarGetRequest {
     /**

@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for createFolder operation.
+ * Request model for FolderApi.createFolder operation.
  */
 export class CreateFolderRequest {
     /**

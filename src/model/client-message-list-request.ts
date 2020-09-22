@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for clientMessageList operation.
+ * Request model for ClientMessageApi.list operation.
  */
 export class ClientMessageListRequest {
     /**

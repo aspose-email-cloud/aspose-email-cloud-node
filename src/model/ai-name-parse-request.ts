@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for aiNameParse operation.
+ * Request model for AiNameApi.parse operation.
  */
 export class AiNameParseRequest {
     /**

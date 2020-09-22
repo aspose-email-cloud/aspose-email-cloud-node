@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for clientAccountGet operation.
+ * Request model for ClientAccountApi.get operation.
  */
 export class ClientAccountGetRequest {
     /**

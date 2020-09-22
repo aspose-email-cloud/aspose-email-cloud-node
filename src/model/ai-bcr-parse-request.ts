@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for aiBcrParse operation.
+ * Request model for AiBcrApi.parse operation.
  */
 export class AiBcrParseRequest {
     /**

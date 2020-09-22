@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for clientMessageAppendFile operation.
+ * Request model for ClientMessageApi.appendFile operation.
  */
 export class ClientMessageAppendFileRequest {
     /**

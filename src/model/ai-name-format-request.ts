@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for aiNameFormat operation.
+ * Request model for AiNameApi.format operation.
  */
 export class AiNameFormatRequest {
     /**

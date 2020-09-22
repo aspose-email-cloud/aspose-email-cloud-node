@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for aiNameMatch operation.
+ * Request model for AiNameApi.match operation.
  */
 export class AiNameMatchRequest {
     /**

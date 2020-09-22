@@ -247,224 +247,224 @@ import { StorageExistsRequest, StorageExistsRequestBuilder } from "./storage-exi
 
 export class Models {
     /**
-    * Image for recognition             
-    */
+     * Image for recognition             
+     */
     public static aiBcrImage(): AiBcrImageBuilder {
         return new AiBcrImageBuilder(new AiBcrImage());
     }
     /**
-    * Recognition options.             
-    */
+     * Recognition options.             
+     */
     public static aiBcrOptions(): AiBcrOptionsBuilder {
         return new AiBcrOptionsBuilder(new AiBcrOptions());
     }
     /**
-    * Parse business card images from Storage request             
-    */
+     * Parse business card images from Storage request             
+     */
     public static aiBcrParseStorageRequest(): AiBcrParseStorageRequestBuilder {
         return new AiBcrParseStorageRequestBuilder(new AiBcrParseStorageRequest());
     }
     /**
-    * Parsed name component             
-    */
+     * Parsed name component             
+     */
     public static aiNameComponent(): AiNameComponentBuilder {
         return new AiNameComponentBuilder(new AiNameComponent());
     }
     /**
-    * AiName cultural context             
-    */
+     * AiName cultural context             
+     */
     public static aiNameCulturalContext(): AiNameCulturalContextBuilder {
         return new AiNameCulturalContextBuilder(new AiNameCulturalContext());
     }
     /**
-    * Extracted name             
-    */
+     * Extracted name             
+     */
     public static aiNameExtracted(): AiNameExtractedBuilder {
         return new AiNameExtractedBuilder(new AiNameExtracted());
     }
     /**
-    * Extracted name component             
-    */
+     * Extracted name component             
+     */
     public static aiNameExtractedComponent(): AiNameExtractedComponentBuilder {
         return new AiNameExtractedComponentBuilder(new AiNameExtractedComponent());
     }
     /**
-    * Formatted name             
-    */
+     * Formatted name             
+     */
     public static aiNameFormatted(): AiNameFormattedBuilder {
         return new AiNameFormattedBuilder(new AiNameFormatted());
     }
     /**
-    * Name gender hypothesis             
-    */
+     * Name gender hypothesis             
+     */
     public static aiNameGenderHypothesis(): AiNameGenderHypothesisBuilder {
         return new AiNameGenderHypothesisBuilder(new AiNameGenderHypothesis());
     }
     /**
-    * Two names match result             
-    */
+     * Two names match result             
+     */
     public static aiNameMatchResult(): AiNameMatchResultBuilder {
         return new AiNameMatchResultBuilder(new AiNameMatchResult());
     }
     /**
-    * Names mismatch detailed description             
-    */
+     * Names mismatch detailed description             
+     */
     public static aiNameMismatch(): AiNameMismatchBuilder {
         return new AiNameMismatchBuilder(new AiNameMismatch());
     }
     /**
-    * Parsed name request model             
-    */
+     * Parsed name request model             
+     */
     public static aiNameParsedRequest(): AiNameParsedRequestBuilder {
         return new AiNameParsedRequestBuilder(new AiNameParsedRequest());
     }
     /**
-    * Name with score             
-    */
+     * Name with score             
+     */
     public static aiNameWeighted(): AiNameWeightedBuilder {
         return new AiNameWeightedBuilder(new AiNameWeighted());
     }
     /**
-    * Name variants             
-    */
+     * Name variants             
+     */
     public static aiNameWeightedVariants(): AiNameWeightedVariantsBuilder {
         return new AiNameWeightedVariantsBuilder(new AiNameWeightedVariants());
     }
     /**
-    * Describes associated person.             
-    */
+     * Describes associated person.             
+     */
     public static associatedPerson(): AssociatedPersonBuilder {
         return new AssociatedPersonBuilder(new AssociatedPerson());
     }
     /**
-    * AttachmentBase class             
-    */
+     * AttachmentBase class             
+     */
     public static attachmentBase(): AttachmentBaseBuilder {
         return new AttachmentBaseBuilder(new AttachmentBase());
     }
     /**
-    * Convert iCalendar to AlternateView request             
-    */
+     * Convert iCalendar to AlternateView request             
+     */
     public static calendarAsAlternateRequest(): CalendarAsAlternateRequestBuilder {
         return new CalendarAsAlternateRequestBuilder(new CalendarAsAlternateRequest());
     }
     /**
-    * iCalendar model to file request.             
-    */
+     * iCalendar model to file request.             
+     */
     public static calendarAsFileRequest(): CalendarAsFileRequestBuilder {
         return new CalendarAsFileRequestBuilder(new CalendarAsFileRequest());
     }
     /**
-    * iCalendar document representation.             
-    */
+     * iCalendar document representation.             
+     */
     public static calendarDto(): CalendarDtoBuilder {
         return new CalendarDtoBuilder(new CalendarDto());
     }
     /**
-    * Provides a grouping of component properties that define an alarm.             
-    */
+     * Provides a grouping of component properties that define an alarm.             
+     */
     public static calendarReminder(): CalendarReminderBuilder {
         return new CalendarReminderBuilder(new CalendarReminder());
     }
     /**
-    * Base request for Email client. Stores information about email account location.             
-    */
+     * Base request for Email client. Stores information about email account location.             
+     */
     public static clientAccountBaseRequest(): ClientAccountBaseRequestBuilder {
         return new ClientAccountBaseRequestBuilder(new ClientAccountBaseRequest());
     }
     /**
-    * Convert contact model to file request.             
-    */
+     * Convert contact model to file request.             
+     */
     public static contactAsFileRequest(): ContactAsFileRequestBuilder {
         return new ContactAsFileRequestBuilder(new ContactAsFileRequest());
     }
     /**
-    * VCard document representation.             
-    */
+     * VCard document representation.             
+     */
     public static contactDto(): ContactDtoBuilder {
         return new ContactDtoBuilder(new ContactDto());
     }
     /**
-    * Person's photo.             
-    */
+     * Person's photo.             
+     */
     public static contactPhoto(): ContactPhotoBuilder {
         return new ContactPhotoBuilder(new ContactPhoto());
     }
     /**
-    * Represents a Content-Type header.             
-    */
+     * Represents a Content-Type header.             
+     */
     public static contentType(): ContentTypeBuilder {
         return new ContentTypeBuilder(new ContentType());
     }
     /**
-    * Content-Type header parameter             
-    */
+     * Content-Type header parameter             
+     */
     public static contentTypeParameter(): ContentTypeParameterBuilder {
         return new ContentTypeParameterBuilder(new ContentTypeParameter());
     }
     /**
-    * Event.             
-    */
+     * Event.             
+     */
     public static customerEvent(): CustomerEventBuilder {
         return new CustomerEventBuilder(new CustomerEvent());
     }
     /**
-    * Class for disc space information.
-    */
+     * Class for disc space information.
+     */
     public static discUsage(): DiscUsageBuilder {
         return new DiscUsageBuilder(new DiscUsage());
     }
     /**
-    * Discover email configuration request.             
-    */
+     * Discover email configuration request.             
+     */
     public static discoverEmailConfigRequest(): DiscoverEmailConfigRequestBuilder {
         return new DiscoverEmailConfigRequestBuilder(new DiscoverEmailConfigRequest());
     }
     /**
-    * Email account configuration.             
-    */
+     * Email account configuration.             
+     */
     public static emailAccountConfig(): EmailAccountConfigBuilder {
         return new EmailAccountConfigBuilder(new EmailAccountConfig());
     }
     /**
-    * Email address.             
-    */
+     * Email address.             
+     */
     public static emailAddress(): EmailAddressBuilder {
         return new EmailAddressBuilder(new EmailAddress());
     }
     /**
-    * Convert email model to file request.             
-    */
+     * Convert email model to file request.             
+     */
     public static emailAsFileRequest(): EmailAsFileRequestBuilder {
         return new EmailAsFileRequestBuilder(new EmailAsFileRequest());
     }
     /**
-    * A universal email client account             
-    */
+     * A universal email client account             
+     */
     public static emailClientAccount(): EmailClientAccountBuilder {
         return new EmailClientAccountBuilder(new EmailClientAccount());
     }
     /**
-    * Represents email client account credentials             
-    */
+     * Represents email client account credentials             
+     */
     public static emailClientAccountCredentials(): EmailClientAccountCredentialsBuilder {
         return new EmailClientAccountCredentialsBuilder(new EmailClientAccountCredentials());
     }
     /**
-    * Email client virtual account, which contains several accounts             
-    */
+     * Email client virtual account, which contains several accounts             
+     */
     public static emailClientMultiAccount(): EmailClientMultiAccountBuilder {
         return new EmailClientMultiAccountBuilder(new EmailClientMultiAccount());
     }
     /**
-    * Email message representation.             
-    */
+     * Email message representation.             
+     */
     public static emailDto(): EmailDtoBuilder {
         return new EmailDtoBuilder(new EmailDto());
     }
     /**
-    * Email messages thread             
-    */
+     * Email messages thread             
+     */
     public static emailThread(): EmailThreadBuilder {
         return new EmailThreadBuilder(new EmailThread());
     }
@@ -490,32 +490,32 @@ export class Models {
         return new EnumWithCustomOfUrlCategoryBuilder(new EnumWithCustomOfUrlCategory());
     }
     /**
-    * The error details
-    */
+     * The error details
+     */
     public static errorDetails(): ErrorDetailsBuilder {
         return new ErrorDetailsBuilder(new ErrorDetails());
     }
     /**
-    * File versions FileVersion.
-    */
+     * File versions FileVersion.
+     */
     public static fileVersions(): FileVersionsBuilder {
         return new FileVersionsBuilder(new FileVersions());
     }
     /**
-    * Files list
-    */
+     * Files list
+     */
     public static filesList(): FilesListBuilder {
         return new FilesListBuilder(new FilesList());
     }
     /**
-    * File upload result
-    */
+     * File upload result
+     */
     public static filesUploadResult(): FilesUploadResultBuilder {
         return new FilesUploadResultBuilder(new FilesUploadResult());
     }
     /**
-    * Instant messenger address.             
-    */
+     * Instant messenger address.             
+     */
     public static instantMessengerAddress(): InstantMessengerAddressBuilder {
         return new InstantMessengerAddressBuilder(new InstantMessengerAddress());
     }
@@ -559,242 +559,242 @@ export class Models {
         return new ListResponseOfStorageModelOfEmailDtoBuilder(new ListResponseOfStorageModelOfEmailDto());
     }
     /**
-    * Represents the address of a message.
-    */
+     * Represents the address of a message.
+     */
     public static mailAddress(): MailAddressBuilder {
         return new MailAddressBuilder(new MailAddress());
     }
     /**
-    * Universal object that stores email messages in different formats.             
-    */
+     * Universal object that stores email messages in different formats.             
+     */
     public static mailMessageBase(): MailMessageBaseBuilder {
         return new MailMessageBaseBuilder(new MailMessageBase());
     }
     /**
-    * Email account folder             
-    */
+     * Email account folder             
+     */
     public static mailServerFolder(): MailServerFolderBuilder {
         return new MailServerFolderBuilder(new MailServerFolder());
     }
     /**
-    * Mapi attachment             
-    */
+     * Mapi attachment             
+     */
     public static mapiAttachmentDto(): MapiAttachmentDtoBuilder {
         return new MapiAttachmentDtoBuilder(new MapiAttachmentDto());
     }
     /**
-    * Convert MapiCalendar to file request.             
-    */
+     * Convert MapiCalendar to file request.             
+     */
     public static mapiCalendarAsFileRequest(): MapiCalendarAsFileRequestBuilder {
         return new MapiCalendarAsFileRequestBuilder(new MapiCalendarAsFileRequest());
     }
     /**
-    * Mapi calendar attendees.             
-    */
+     * Mapi calendar attendees.             
+     */
     public static mapiCalendarAttendeesDto(): MapiCalendarAttendeesDtoBuilder {
         return new MapiCalendarAttendeesDtoBuilder(new MapiCalendarAttendeesDto());
     }
     /**
-    * Recurrence properties of calendar object.             
-    */
+     * Recurrence properties of calendar object.             
+     */
     public static mapiCalendarEventRecurrenceDto(): MapiCalendarEventRecurrenceDtoBuilder {
         return new MapiCalendarEventRecurrenceDtoBuilder(new MapiCalendarEventRecurrenceDto());
     }
     /**
-    * An exception specifies changes to an instance of a recurring series.             
-    */
+     * An exception specifies changes to an instance of a recurring series.             
+     */
     public static mapiCalendarExceptionInfoDto(): MapiCalendarExceptionInfoDtoBuilder {
         return new MapiCalendarExceptionInfoDtoBuilder(new MapiCalendarExceptionInfoDto());
     }
     /**
-    * Mapi recurrence pattern.             
-    */
+     * Mapi recurrence pattern.             
+     */
     public static mapiCalendarRecurrencePatternDto(): MapiCalendarRecurrencePatternDtoBuilder {
         return new MapiCalendarRecurrencePatternDtoBuilder(new MapiCalendarRecurrencePatternDto());
     }
     /**
-    * Represents the mapi calendar time zone information.             
-    */
+     * Represents the mapi calendar time zone information.             
+     */
     public static mapiCalendarTimeZoneDto(): MapiCalendarTimeZoneDtoBuilder {
         return new MapiCalendarTimeZoneDtoBuilder(new MapiCalendarTimeZoneDto());
     }
     /**
-    * Represents the mapi calendar time zone rule.             
-    */
+     * Represents the mapi calendar time zone rule.             
+     */
     public static mapiCalendarTimeZoneInfoDto(): MapiCalendarTimeZoneInfoDtoBuilder {
         return new MapiCalendarTimeZoneInfoDtoBuilder(new MapiCalendarTimeZoneInfoDto());
     }
     /**
-    * Represents time zone rule that indicate when to begin using the Standard/Daylight time.             
-    */
+     * Represents time zone rule that indicate when to begin using the Standard/Daylight time.             
+     */
     public static mapiCalendarTimeZoneRuleDto(): MapiCalendarTimeZoneRuleDtoBuilder {
         return new MapiCalendarTimeZoneRuleDtoBuilder(new MapiCalendarTimeZoneRuleDto());
     }
     /**
-    * Convert MapiContact to file request.             
-    */
+     * Convert MapiContact to file request.             
+     */
     public static mapiContactAsFileRequest(): MapiContactAsFileRequestBuilder {
         return new MapiContactAsFileRequestBuilder(new MapiContactAsFileRequest());
     }
     /**
-    * Refers to the group of properties that define the e-mail address or fax address for a contact.             
-    */
+     * Refers to the group of properties that define the e-mail address or fax address for a contact.             
+     */
     public static mapiContactElectronicAddressDto(): MapiContactElectronicAddressDtoBuilder {
         return new MapiContactElectronicAddressDtoBuilder(new MapiContactElectronicAddressDto());
     }
     /**
-    * Specify properties for up to three different e-mail addresses (Email1, Email2, and Email3) and three different fax addresses (Primary Fax, Business Fax, and Home Fax)             
-    */
+     * Specify properties for up to three different e-mail addresses (Email1, Email2, and Email3) and three different fax addresses (Primary Fax, Business Fax, and Home Fax)             
+     */
     public static mapiContactElectronicAddressPropertySetDto(): MapiContactElectronicAddressPropertySetDtoBuilder {
         return new MapiContactElectronicAddressPropertySetDtoBuilder(new MapiContactElectronicAddressPropertySetDto());
     }
     /**
-    * Specify events associated with a contact.             
-    */
+     * Specify events associated with a contact.             
+     */
     public static mapiContactEventPropertySetDto(): MapiContactEventPropertySetDtoBuilder {
         return new MapiContactEventPropertySetDtoBuilder(new MapiContactEventPropertySetDto());
     }
     /**
-    * The properties are used to specify the name of the person represented by the contact             
-    */
+     * The properties are used to specify the name of the person represented by the contact             
+     */
     public static mapiContactNamePropertySetDto(): MapiContactNamePropertySetDtoBuilder {
         return new MapiContactNamePropertySetDtoBuilder(new MapiContactNamePropertySetDto());
     }
     /**
-    * The properties are used to specify additional properties of contact.             
-    */
+     * The properties are used to specify additional properties of contact.             
+     */
     public static mapiContactOtherPropertySetDto(): MapiContactOtherPropertySetDtoBuilder {
         return new MapiContactOtherPropertySetDtoBuilder(new MapiContactOtherPropertySetDto());
     }
     /**
-    * Specify other additional contact information.             
-    */
+     * Specify other additional contact information.             
+     */
     public static mapiContactPersonalInfoPropertySetDto(): MapiContactPersonalInfoPropertySetDtoBuilder {
         return new MapiContactPersonalInfoPropertySetDtoBuilder(new MapiContactPersonalInfoPropertySetDto());
     }
     /**
-    * Refers to the group of properties that define physical address for a contact.             
-    */
+     * Refers to the group of properties that define physical address for a contact.             
+     */
     public static mapiContactPhysicalAddressDto(): MapiContactPhysicalAddressDtoBuilder {
         return new MapiContactPhysicalAddressDtoBuilder(new MapiContactPhysicalAddressDto());
     }
     /**
-    * Specify three physical addresses: Home Address, Work Address, and Other Address. One of the addresses can be marked as the Mailing Address             
-    */
+     * Specify three physical addresses: Home Address, Work Address, and Other Address. One of the addresses can be marked as the Mailing Address             
+     */
     public static mapiContactPhysicalAddressPropertySetDto(): MapiContactPhysicalAddressPropertySetDtoBuilder {
         return new MapiContactPhysicalAddressPropertySetDtoBuilder(new MapiContactPhysicalAddressPropertySetDto());
     }
     /**
-    * Properties are used to store professional details for the person represented by the contact             
-    */
+     * Properties are used to store professional details for the person represented by the contact             
+     */
     public static mapiContactProfessionalPropertySetDto(): MapiContactProfessionalPropertySetDtoBuilder {
         return new MapiContactProfessionalPropertySetDtoBuilder(new MapiContactProfessionalPropertySetDto());
     }
     /**
-    * Specify optional telephone numbers for the contact.             
-    */
+     * Specify optional telephone numbers for the contact.             
+     */
     public static mapiContactTelephonePropertySetDto(): MapiContactTelephonePropertySetDtoBuilder {
         return new MapiContactTelephonePropertySetDtoBuilder(new MapiContactTelephonePropertySetDto());
     }
     /**
-    * Refers to the group of properties that define the e-mail address or fax address.             
-    */
+     * Refers to the group of properties that define the e-mail address or fax address.             
+     */
     public static mapiElectronicAddressDto(): MapiElectronicAddressDtoBuilder {
         return new MapiElectronicAddressDtoBuilder(new MapiElectronicAddressDto());
     }
     /**
-    * Convert MapiMessage to file request.             
-    */
+     * Convert MapiMessage to file request.             
+     */
     public static mapiMessageAsFileRequest(): MapiMessageAsFileRequestBuilder {
         return new MapiMessageAsFileRequestBuilder(new MapiMessageAsFileRequest());
     }
     /**
-    * Base Dto for MapiMessage, MapiCalendar or MapiContact             
-    */
+     * Base Dto for MapiMessage, MapiCalendar or MapiContact             
+     */
     public static mapiMessageItemBaseDto(): MapiMessageItemBaseDtoBuilder {
         return new MapiMessageItemBaseDtoBuilder(new MapiMessageItemBaseDto());
     }
     /**
-    * Mapi property descriptor             
-    */
+     * Mapi property descriptor             
+     */
     public static mapiPropertyDescriptor(): MapiPropertyDescriptorBuilder {
         return new MapiPropertyDescriptorBuilder(new MapiPropertyDescriptor());
     }
     /**
-    * Mapi property             
-    */
+     * Mapi property             
+     */
     public static mapiPropertyDto(): MapiPropertyDtoBuilder {
         return new MapiPropertyDtoBuilder(new MapiPropertyDto());
     }
     /**
-    * Represents the recipient information in the Microsoft Outlook Message.             
-    */
+     * Represents the recipient information in the Microsoft Outlook Message.             
+     */
     public static mapiRecipientDto(): MapiRecipientDtoBuilder {
         return new MapiRecipientDtoBuilder(new MapiRecipientDto());
     }
     /**
-    * Error
-    */
+     * Error
+     */
     public static modelError(): ModelErrorBuilder {
         return new ModelErrorBuilder(new ModelError());
     }
     /**
-    * Name-Value property             
-    */
+     * Name-Value property             
+     */
     public static nameValuePair(): NameValuePairBuilder {
         return new NameValuePairBuilder(new NameValuePair());
     }
     /**
-    * Object exists
-    */
+     * Object exists
+     */
     public static objectExist(): ObjectExistBuilder {
         return new ObjectExistBuilder(new ObjectExist());
     }
     /**
-    * A phone number.             
-    */
+     * A phone number.             
+     */
     public static phoneNumber(): PhoneNumberBuilder {
         return new PhoneNumberBuilder(new PhoneNumber());
     }
     /**
-    * A postal address             
-    */
+     * A postal address             
+     */
     public static postalAddress(): PostalAddressBuilder {
         return new PostalAddressBuilder(new PostalAddress());
     }
     /**
-    * iCalendar recurrence pattern.             
-    */
+     * iCalendar recurrence pattern.             
+     */
     public static recurrencePatternDto(): RecurrencePatternDtoBuilder {
         return new RecurrencePatternDtoBuilder(new RecurrencePatternDto());
     }
     /**
-    * Defines an \"Attendee\" within a alarm.
-    */
+     * Defines an \"Attendee\" within a alarm.
+     */
     public static reminderAttendee(): ReminderAttendeeBuilder {
         return new ReminderAttendeeBuilder(new ReminderAttendee());
     }
     /**
-    * Specifies when an alarm will trigger.
-    */
+     * Specifies when an alarm will trigger.
+     */
     public static reminderTrigger(): ReminderTriggerBuilder {
         return new ReminderTriggerBuilder(new ReminderTrigger());
     }
     /**
-    * Storage exists
-    */
+     * Storage exists
+     */
     public static storageExist(): StorageExistBuilder {
         return new StorageExistBuilder(new StorageExist());
     }
     /**
-    * File or folder information
-    */
+     * File or folder information
+     */
     public static storageFile(): StorageFileBuilder {
         return new StorageFileBuilder(new StorageFile());
     }
     /**
-    * A storage folder location information             
-    */
+     * A storage folder location information             
+     */
     public static storageFolderLocation(): StorageFolderLocationBuilder {
         return new StorageFolderLocationBuilder(new StorageFolderLocation());
     }
@@ -823,8 +823,8 @@ export class Models {
         return new StorageModelOfMapiMessageDtoBuilder(new StorageModelOfMapiMessageDto());
     }
     /**
-    * Url and its category.             
-    */
+     * Url and its category.             
+     */
     public static url(): UrlBuilder {
         return new UrlBuilder(new Url());
     }
@@ -835,146 +835,146 @@ export class Models {
         return new ValueTOfStringBuilder(new ValueTOfString());
     }
     /**
-    * Image from storage for recognition             
-    */
+     * Image from storage for recognition             
+     */
     public static aiBcrImageStorageFile(): AiBcrImageStorageFileBuilder {
         return new AiBcrImageStorageFileBuilder(new AiBcrImageStorageFile());
     }
     /**
-    * List of name components             
-    */
+     * List of name components             
+     */
     public static aiNameComponentList(): AiNameComponentListBuilder {
         return new AiNameComponentListBuilder(new AiNameComponentList());
     }
     /**
-    * Extracted name list.             
-    */
+     * Extracted name list.             
+     */
     public static aiNameExtractedList(): AiNameExtractedListBuilder {
         return new AiNameExtractedListBuilder(new AiNameExtractedList());
     }
     /**
-    * Hypotheses about person's gender             
-    */
+     * Hypotheses about person's gender             
+     */
     public static aiNameGenderHypothesisList(): AiNameGenderHypothesisListBuilder {
         return new AiNameGenderHypothesisListBuilder(new AiNameGenderHypothesisList());
     }
     /**
-    * Two parsed names to match request             
-    */
+     * Two parsed names to match request             
+     */
     public static aiNameMatchParsedRequest(): AiNameMatchParsedRequestBuilder {
         return new AiNameMatchParsedRequestBuilder(new AiNameMatchParsedRequest());
     }
     /**
-    * Represents the format to view a message.             
-    */
+     * Represents the format to view a message.             
+     */
     public static alternateView(): AlternateViewBuilder {
         return new AlternateViewBuilder(new AlternateView());
     }
     /**
-    * Document attachment.             
-    */
+     * Document attachment.             
+     */
     public static attachment(): AttachmentBuilder {
         return new AttachmentBuilder(new Attachment());
     }
     /**
-    * Save iCalendar to storage request.             
-    */
+     * Save iCalendar to storage request.             
+     */
     public static calendarSaveRequest(): CalendarSaveRequestBuilder {
         return new CalendarSaveRequestBuilder(new CalendarSaveRequest());
     }
     /**
-    * iCalendar models list with corresponding storage locations.             
-    */
+     * iCalendar models list with corresponding storage locations.             
+     */
     public static calendarStorageList(): CalendarStorageListBuilder {
         return new CalendarStorageListBuilder(new CalendarStorageList());
     }
     /**
-    * Email client multi account save request.             
-    */
+     * Email client multi account save request.             
+     */
     public static clientAccountSaveMultiRequest(): ClientAccountSaveMultiRequestBuilder {
         return new ClientAccountSaveMultiRequestBuilder(new ClientAccountSaveMultiRequest());
     }
     /**
-    * Email client account save request             
-    */
+     * Email client account save request             
+     */
     public static clientAccountSaveRequest(): ClientAccountSaveRequestBuilder {
         return new ClientAccountSaveRequestBuilder(new ClientAccountSaveRequest());
     }
     /**
-    * Email Client create folder request.             
-    */
+     * Email Client create folder request.             
+     */
     public static clientFolderCreateRequest(): ClientFolderCreateRequestBuilder {
         return new ClientFolderCreateRequestBuilder(new ClientFolderCreateRequest());
     }
     /**
-    * Email client delete folder request.             
-    */
+     * Email client delete folder request.             
+     */
     public static clientFolderDeleteRequest(): ClientFolderDeleteRequestBuilder {
         return new ClientFolderDeleteRequestBuilder(new ClientFolderDeleteRequest());
     }
     /**
-    * Email client append message request.             
-    */
+     * Email client append message request.             
+     */
     public static clientMessageAppendRequest(): ClientMessageAppendRequestBuilder {
         return new ClientMessageAppendRequestBuilder(new ClientMessageAppendRequest());
     }
     /**
-    * Email client message request.             
-    */
+     * Email client message request.             
+     */
     public static clientMessageBaseRequest(): ClientMessageBaseRequestBuilder {
         return new ClientMessageBaseRequestBuilder(new ClientMessageBaseRequest());
     }
     /**
-    * Email client send message request.             
-    */
+     * Email client send message request.             
+     */
     public static clientMessageSendRequest(): ClientMessageSendRequestBuilder {
         return new ClientMessageSendRequestBuilder(new ClientMessageSendRequest());
     }
     /**
-    * Email client thread request.             
-    */
+     * Email client thread request.             
+     */
     public static clientThreadBaseRequest(): ClientThreadBaseRequestBuilder {
         return new ClientThreadBaseRequestBuilder(new ClientThreadBaseRequest());
     }
     /**
-    * List of VCard documents             
-    */
+     * List of VCard documents             
+     */
     public static contactList(): ContactListBuilder {
         return new ContactListBuilder(new ContactList());
     }
     /**
-    * Contact save to storage request             
-    */
+     * Contact save to storage request             
+     */
     public static contactSaveRequest(): ContactSaveRequestBuilder {
         return new ContactSaveRequestBuilder(new ContactSaveRequest());
     }
     /**
-    * Contact models list with corresponding storage locations.             
-    */
+     * Contact models list with corresponding storage locations.             
+     */
     public static contactStorageList(): ContactStorageListBuilder {
         return new ContactStorageListBuilder(new ContactStorageList());
     }
     /**
-    * Daily recurrence.             
-    */
+     * Daily recurrence.             
+     */
     public static dailyRecurrencePatternDto(): DailyRecurrencePatternDtoBuilder {
         return new DailyRecurrencePatternDtoBuilder(new DailyRecurrencePatternDto());
     }
     /**
-    * List of email accounts             
-    */
+     * List of email accounts             
+     */
     public static emailAccountConfigList(): EmailAccountConfigListBuilder {
         return new EmailAccountConfigListBuilder(new EmailAccountConfigList());
     }
     /**
-    * Represents email client account OAuth 2.0 credentials             
-    */
+     * Represents email client account OAuth 2.0 credentials             
+     */
     public static emailClientAccountOauthCredentials(): EmailClientAccountOauthCredentialsBuilder {
         return new EmailClientAccountOauthCredentialsBuilder(new EmailClientAccountOauthCredentials());
     }
     /**
-    * Represents email client account password credentials             
-    */
+     * Represents email client account password credentials             
+     */
     public static emailClientAccountPasswordCredentials(): EmailClientAccountPasswordCredentialsBuilder {
         return new EmailClientAccountPasswordCredentialsBuilder(new EmailClientAccountPasswordCredentials());
     }
@@ -985,470 +985,638 @@ export class Models {
         return new EmailConfigDiscoverPasswordRequestBuilder(new EmailConfigDiscoverPasswordRequest());
     }
     /**
-    * Email document list.             
-    */
+     * Email document list.             
+     */
     public static emailList(): EmailListBuilder {
         return new EmailListBuilder(new EmailList());
     }
     /**
-    * Email save to storage request             
-    */
+     * Email save to storage request             
+     */
     public static emailSaveRequest(): EmailSaveRequestBuilder {
         return new EmailSaveRequestBuilder(new EmailSaveRequest());
     }
     /**
-    * Email models list with corresponding storage locations.             
-    */
+     * Email models list with corresponding storage locations.             
+     */
     public static emailStorageList(): EmailStorageListBuilder {
         return new EmailStorageListBuilder(new EmailStorageList());
     }
     /**
-    * List of email threads             
-    */
+     * List of email threads             
+     */
     public static emailThreadList(): EmailThreadListBuilder {
         return new EmailThreadListBuilder(new EmailThreadList());
     }
     /**
-    * File Version
-    */
+     * File Version
+     */
     public static fileVersion(): FileVersionBuilder {
         return new FileVersionBuilder(new FileVersion());
     }
     /**
-    * Represents an embedded resource in a message.             
-    */
+     * Represents an embedded resource in a message.             
+     */
     public static linkedResource(): LinkedResourceBuilder {
         return new LinkedResourceBuilder(new LinkedResource());
     }
     /**
-    * Email message represented as file, encoded to Base64 format.             
-    */
+     * Email message represented as file, encoded to Base64 format.             
+     */
     public static mailMessageBase64(): MailMessageBase64Builder {
         return new MailMessageBase64Builder(new MailMessageBase64());
     }
     /**
-    * List of messages.             
-    */
+     * List of messages.             
+     */
     public static mailMessageBaseList(): MailMessageBaseListBuilder {
         return new MailMessageBaseListBuilder(new MailMessageBaseList());
     }
     /**
-    * Represents email message, stored as an EmailDto object.             
-    */
+     * Represents email message, stored as an EmailDto object.             
+     */
     public static mailMessageDto(): MailMessageDtoBuilder {
         return new MailMessageDtoBuilder(new MailMessageDto());
     }
     /**
-    * Email message represented as MAPI object.             
-    */
+     * Email message represented as MAPI object.             
+     */
     public static mailMessageMapi(): MailMessageMapiBuilder {
         return new MailMessageMapiBuilder(new MailMessageMapi());
     }
     /**
-    * List of email client folders.             
-    */
+     * List of email client folders.             
+     */
     public static mailServerFolderList(): MailServerFolderListBuilder {
         return new MailServerFolderListBuilder(new MailServerFolderList());
     }
     /**
-    * Mapi property with Binary value represented as a Base64 string             
-    */
+     * Mapi property with Binary value represented as a Base64 string             
+     */
     public static mapiBinaryPropertyDto(): MapiBinaryPropertyDtoBuilder {
         return new MapiBinaryPropertyDtoBuilder(new MapiBinaryPropertyDto());
     }
     /**
-    * Mapi property with Boolean value             
-    */
+     * Mapi property with Boolean value             
+     */
     public static mapiBooleanPropertyDto(): MapiBooleanPropertyDtoBuilder {
         return new MapiBooleanPropertyDtoBuilder(new MapiBooleanPropertyDto());
     }
     /**
-    * Represents the daily recurrence pattern of the mapi calendar.             
-    */
+     * Represents the daily recurrence pattern of the mapi calendar.             
+     */
     public static mapiCalendarDailyRecurrencePatternDto(): MapiCalendarDailyRecurrencePatternDtoBuilder {
         return new MapiCalendarDailyRecurrencePatternDtoBuilder(new MapiCalendarDailyRecurrencePatternDto());
     }
     /**
-    * Represents the mapi calendar object             
-    */
+     * Represents the mapi calendar object             
+     */
     public static mapiCalendarDto(): MapiCalendarDtoBuilder {
         return new MapiCalendarDtoBuilder(new MapiCalendarDto());
     }
     /**
-    * Save MapiCalendar to storage request.             
-    */
+     * Save MapiCalendar to storage request.             
+     */
     public static mapiCalendarSaveRequest(): MapiCalendarSaveRequestBuilder {
         return new MapiCalendarSaveRequestBuilder(new MapiCalendarSaveRequest());
     }
     /**
-    * Represents the weekly recurrence pattern of the mapi calendar             
-    */
+     * Represents the weekly recurrence pattern of the mapi calendar             
+     */
     public static mapiCalendarWeeklyRecurrencePatternDto(): MapiCalendarWeeklyRecurrencePatternDtoBuilder {
         return new MapiCalendarWeeklyRecurrencePatternDtoBuilder(new MapiCalendarWeeklyRecurrencePatternDto());
     }
     /**
-    * Represents the yearly and monthly recurrence pattern of the mapi calendar             
-    */
+     * Represents the yearly and monthly recurrence pattern of the mapi calendar             
+     */
     public static mapiCalendarYearlyAndMonthlyRecurrencePatternDto(): MapiCalendarYearlyAndMonthlyRecurrencePatternDtoBuilder {
         return new MapiCalendarYearlyAndMonthlyRecurrencePatternDtoBuilder(new MapiCalendarYearlyAndMonthlyRecurrencePatternDto());
     }
     /**
-    * Represents outlook contact information.             
-    */
+     * Represents outlook contact information.             
+     */
     public static mapiContactDto(): MapiContactDtoBuilder {
         return new MapiContactDtoBuilder(new MapiContactDto());
     }
     /**
-    * Contains data and type of contact's photo.             
-    */
+     * Contains data and type of contact's photo.             
+     */
     public static mapiContactPhotoDto(): MapiContactPhotoDtoBuilder {
         return new MapiContactPhotoDtoBuilder(new MapiContactPhotoDto());
     }
     /**
-    * MapiContact save to storage request.             
-    */
+     * MapiContact save to storage request.             
+     */
     public static mapiContactSaveRequest(): MapiContactSaveRequestBuilder {
         return new MapiContactSaveRequestBuilder(new MapiContactSaveRequest());
     }
     /**
-    * Mapi property with DateTime value             
-    */
+     * Mapi property with DateTime value             
+     */
     public static mapiDateTimePropertyDto(): MapiDateTimePropertyDtoBuilder {
         return new MapiDateTimePropertyDtoBuilder(new MapiDateTimePropertyDto());
     }
     /**
-    * Mapi property with FileAsMapping value             
-    */
+     * Mapi property with FileAsMapping value             
+     */
     public static mapiFileAsPropertyDto(): MapiFileAsPropertyDtoBuilder {
         return new MapiFileAsPropertyDtoBuilder(new MapiFileAsPropertyDto());
     }
     /**
-    * Mapi property with ImportanceChoicesType value             
-    */
+     * Mapi property with ImportanceChoicesType value             
+     */
     public static mapiImportancePropertyDto(): MapiImportancePropertyDtoBuilder {
         return new MapiImportancePropertyDtoBuilder(new MapiImportancePropertyDto());
     }
     /**
-    * Mapi property with Integer value             
-    */
+     * Mapi property with Integer value             
+     */
     public static mapiIntPropertyDto(): MapiIntPropertyDtoBuilder {
         return new MapiIntPropertyDtoBuilder(new MapiIntPropertyDto());
     }
     /**
-    * Known Mapi Property descriptor             
-    */
+     * Known Mapi Property descriptor             
+     */
     public static mapiKnownPropertyDescriptor(): MapiKnownPropertyDescriptorBuilder {
         return new MapiKnownPropertyDescriptorBuilder(new MapiKnownPropertyDescriptor());
     }
     /**
-    * Mapi property with LegacyFreeBusyType value             
-    */
+     * Mapi property with LegacyFreeBusyType value             
+     */
     public static mapiLegacyFreeBusyPropertyDto(): MapiLegacyFreeBusyPropertyDtoBuilder {
         return new MapiLegacyFreeBusyPropertyDtoBuilder(new MapiLegacyFreeBusyPropertyDto());
     }
     /**
-    * Represents an Outlook Message format document.             
-    */
+     * Represents an Outlook Message format document.             
+     */
     public static mapiMessageDto(): MapiMessageDtoBuilder {
         return new MapiMessageDtoBuilder(new MapiMessageDto());
     }
     /**
-    * MapiMessage save to storage request.             
-    */
+     * MapiMessage save to storage request.             
+     */
     public static mapiMessageSaveRequest(): MapiMessageSaveRequestBuilder {
         return new MapiMessageSaveRequestBuilder(new MapiMessageSaveRequest());
     }
     /**
-    * Mapi property with Multiple Integer values             
-    */
+     * Mapi property with Multiple Integer values             
+     */
     public static mapiMultiIntPropertyDto(): MapiMultiIntPropertyDtoBuilder {
         return new MapiMultiIntPropertyDtoBuilder(new MapiMultiIntPropertyDto());
     }
     /**
-    * Mapi property with Multiple String values             
-    */
+     * Mapi property with Multiple String values             
+     */
     public static mapiMultiStringPropertyDto(): MapiMultiStringPropertyDtoBuilder {
         return new MapiMultiStringPropertyDtoBuilder(new MapiMultiStringPropertyDto());
     }
     /**
-    * Mapi property with PhysicalAddressIndexType value             
-    */
+     * Mapi property with PhysicalAddressIndexType value             
+     */
     public static mapiPhysicalAddressIndexPropertyDto(): MapiPhysicalAddressIndexPropertyDtoBuilder {
         return new MapiPhysicalAddressIndexPropertyDtoBuilder(new MapiPhysicalAddressIndexPropertyDto());
     }
     /**
-    * Mapi pid property descriptor base class             
-    */
+     * Mapi pid property descriptor base class             
+     */
     public static mapiPidPropertyDescriptor(): MapiPidPropertyDescriptorBuilder {
         return new MapiPidPropertyDescriptorBuilder(new MapiPidPropertyDescriptor());
     }
     /**
-    * Mapi property with response type value             
-    */
+     * Mapi property with response type value             
+     */
     public static mapiResponseTypePropertyDto(): MapiResponseTypePropertyDtoBuilder {
         return new MapiResponseTypePropertyDtoBuilder(new MapiResponseTypePropertyDto());
     }
     /**
-    * Mapi property with string value             
-    */
+     * Mapi property with string value             
+     */
     public static mapiStringPropertyDto(): MapiStringPropertyDtoBuilder {
         return new MapiStringPropertyDtoBuilder(new MapiStringPropertyDto());
     }
     /**
-    * Monthly recurrence pattern.             
-    */
+     * Monthly recurrence pattern.             
+     */
     public static monthlyRecurrencePatternDto(): MonthlyRecurrencePatternDtoBuilder {
         return new MonthlyRecurrencePatternDtoBuilder(new MonthlyRecurrencePatternDto());
     }
     /**
-    * A storage file location information             
-    */
+     * A storage file location information             
+     */
     public static storageFileLocation(): StorageFileLocationBuilder {
         return new StorageFileLocationBuilder(new StorageFileLocation());
     }
     /**
-    * List of files located on storage.             
-    */
+     * List of files located on storage.             
+     */
     public static storageFileLocationList(): StorageFileLocationListBuilder {
         return new StorageFileLocationListBuilder(new StorageFileLocationList());
     }
     /**
-    * Represents the regenerating recurrence pattern that specifies how many days, weeks, months or years after the completion of the current task the next occurrence will be due.             
-    */
+     * Represents the regenerating recurrence pattern that specifies how many days, weeks, months or years after the completion of the current task the next occurrence will be due.             
+     */
     public static taskRegeneratingPatternDto(): TaskRegeneratingPatternDtoBuilder {
         return new TaskRegeneratingPatternDtoBuilder(new TaskRegeneratingPatternDto());
     }
     /**
-    * Weekly recurrence pattern.             
-    */
+     * Weekly recurrence pattern.             
+     */
     public static weeklyRecurrencePatternDto(): WeeklyRecurrencePatternDtoBuilder {
         return new WeeklyRecurrencePatternDtoBuilder(new WeeklyRecurrencePatternDto());
     }
     /**
-    * Yearly recurrence pattern.             
-    */
+     * Yearly recurrence pattern.             
+     */
     public static yearlyRecurrencePatternDto(): YearlyRecurrencePatternDtoBuilder {
         return new YearlyRecurrencePatternDtoBuilder(new YearlyRecurrencePatternDto());
     }
     /**
-    * Email client delete message request.             
-    */
+     * Email client delete message request.             
+     */
     public static clientMessageDeleteRequest(): ClientMessageDeleteRequestBuilder {
         return new ClientMessageDeleteRequestBuilder(new ClientMessageDeleteRequest());
     }
     /**
-    * Email client move message request.             
-    */
+     * Email client move message request.             
+     */
     public static clientMessageMoveRequest(): ClientMessageMoveRequestBuilder {
         return new ClientMessageMoveRequestBuilder(new ClientMessageMoveRequest());
     }
     /**
-    * Email client mark message is read/unread request.             
-    */
+     * Email client mark message is read/unread request.             
+     */
     public static clientMessageSetIsReadRequest(): ClientMessageSetIsReadRequestBuilder {
         return new ClientMessageSetIsReadRequestBuilder(new ClientMessageSetIsReadRequest());
     }
     /**
-    * Delete email client thread request.             
-    */
+     * Delete email client thread request.             
+     */
     public static clientThreadDeleteRequest(): ClientThreadDeleteRequestBuilder {
         return new ClientThreadDeleteRequestBuilder(new ClientThreadDeleteRequest());
     }
     /**
-    * Email client move thread request.             
-    */
+     * Email client move thread request.             
+     */
     public static clientThreadMoveRequest(): ClientThreadMoveRequestBuilder {
         return new ClientThreadMoveRequestBuilder(new ClientThreadMoveRequest());
     }
     /**
-    * Mark thread messages as read or unread request.             
-    */
+     * Mark thread messages as read or unread request.             
+     */
     public static clientThreadSetIsReadRequest(): ClientThreadSetIsReadRequestBuilder {
         return new ClientThreadSetIsReadRequestBuilder(new ClientThreadSetIsReadRequest());
     }
     /**
-    * Property identified by an unsigned 32-bit quantity along with a property set             
-    */
+     * Property identified by an unsigned 32-bit quantity along with a property set             
+     */
     public static mapiPidLidPropertyDescriptor(): MapiPidLidPropertyDescriptorBuilder {
         return new MapiPidLidPropertyDescriptorBuilder(new MapiPidLidPropertyDescriptor());
     }
     /**
-    * Property identified by a string name along with a property set             
-    */
+     * Property identified by a string name along with a property set             
+     */
     public static mapiPidNamePropertyDescriptor(): MapiPidNamePropertyDescriptorBuilder {
         return new MapiPidNamePropertyDescriptorBuilder(new MapiPidNamePropertyDescriptor());
     }
     /**
-    * A property that is defined by a 16-bit property ID and a 16-bit property type. The property ID for a tagged property is in the range 0x001 - 0x7FFF. Property IDs in the range 0x8000 - 0x8FFF are reserved for assignment to named properties             
-    */
+     * A property that is defined by a 16-bit property ID and a 16-bit property type. The property ID for a tagged property is in the range 0x001 - 0x7FFF. Property IDs in the range 0x8000 - 0x8FFF are reserved for assignment to named properties             
+     */
     public static mapiPidTagPropertyDescriptor(): MapiPidTagPropertyDescriptorBuilder {
         return new MapiPidTagPropertyDescriptorBuilder(new MapiPidTagPropertyDescriptor());
     }
+    /**
+     * Request model for AiBcrApi.parse operation.
+     */
     public static aiBcrParseRequest(): AiBcrParseRequestBuilder {
         return new AiBcrParseRequestBuilder(new AiBcrParseRequest());
     }
+    /**
+     * Request model for AiNameApi.complete operation.
+     */
     public static aiNameCompleteRequest(): AiNameCompleteRequestBuilder {
         return new AiNameCompleteRequestBuilder(new AiNameCompleteRequest());
     }
+    /**
+     * Request model for AiNameApi.expand operation.
+     */
     public static aiNameExpandRequest(): AiNameExpandRequestBuilder {
         return new AiNameExpandRequestBuilder(new AiNameExpandRequest());
     }
+    /**
+     * Request model for AiNameApi.format operation.
+     */
     public static aiNameFormatRequest(): AiNameFormatRequestBuilder {
         return new AiNameFormatRequestBuilder(new AiNameFormatRequest());
     }
+    /**
+     * Request model for AiNameApi.genderize operation.
+     */
     public static aiNameGenderizeRequest(): AiNameGenderizeRequestBuilder {
         return new AiNameGenderizeRequestBuilder(new AiNameGenderizeRequest());
     }
+    /**
+     * Request model for AiNameApi.match operation.
+     */
     public static aiNameMatchRequest(): AiNameMatchRequestBuilder {
         return new AiNameMatchRequestBuilder(new AiNameMatchRequest());
     }
+    /**
+     * Request model for AiNameApi.parse operation.
+     */
     public static aiNameParseRequest(): AiNameParseRequestBuilder {
         return new AiNameParseRequestBuilder(new AiNameParseRequest());
     }
+    /**
+     * Request model for AiNameApi.parseEmailAddress operation.
+     */
     public static aiNameParseEmailAddressRequest(): AiNameParseEmailAddressRequestBuilder {
         return new AiNameParseEmailAddressRequestBuilder(new AiNameParseEmailAddressRequest());
     }
+    /**
+     * Request model for CalendarApi.convert operation.
+     */
     public static calendarConvertRequest(): CalendarConvertRequestBuilder {
         return new CalendarConvertRequestBuilder(new CalendarConvertRequest());
     }
+    /**
+     * Request model for CalendarApi.fromFile operation.
+     */
     public static calendarFromFileRequest(): CalendarFromFileRequestBuilder {
         return new CalendarFromFileRequestBuilder(new CalendarFromFileRequest());
     }
+    /**
+     * Request model for CalendarApi.get operation.
+     */
     public static calendarGetRequest(): CalendarGetRequestBuilder {
         return new CalendarGetRequestBuilder(new CalendarGetRequest());
     }
+    /**
+     * Request model for CalendarApi.getAsAlternate operation.
+     */
     public static calendarGetAsAlternateRequest(): CalendarGetAsAlternateRequestBuilder {
         return new CalendarGetAsAlternateRequestBuilder(new CalendarGetAsAlternateRequest());
     }
+    /**
+     * Request model for CalendarApi.getAsFile operation.
+     */
     public static calendarGetAsFileRequest(): CalendarGetAsFileRequestBuilder {
         return new CalendarGetAsFileRequestBuilder(new CalendarGetAsFileRequest());
     }
+    /**
+     * Request model for CalendarApi.getList operation.
+     */
     public static calendarGetListRequest(): CalendarGetListRequestBuilder {
         return new CalendarGetListRequestBuilder(new CalendarGetListRequest());
     }
+    /**
+     * Request model for ClientAccountApi.get operation.
+     */
     public static clientAccountGetRequest(): ClientAccountGetRequestBuilder {
         return new ClientAccountGetRequestBuilder(new ClientAccountGetRequest());
     }
+    /**
+     * Request model for ClientAccountApi.getMulti operation.
+     */
     public static clientAccountGetMultiRequest(): ClientAccountGetMultiRequestBuilder {
         return new ClientAccountGetMultiRequestBuilder(new ClientAccountGetMultiRequest());
     }
+    /**
+     * Request model for ClientFolderApi.getList operation.
+     */
     public static clientFolderGetListRequest(): ClientFolderGetListRequestBuilder {
         return new ClientFolderGetListRequestBuilder(new ClientFolderGetListRequest());
     }
+    /**
+     * Request model for ClientMessageApi.appendFile operation.
+     */
     public static clientMessageAppendFileRequest(): ClientMessageAppendFileRequestBuilder {
         return new ClientMessageAppendFileRequestBuilder(new ClientMessageAppendFileRequest());
     }
+    /**
+     * Request model for ClientMessageApi.fetch operation.
+     */
     public static clientMessageFetchRequest(): ClientMessageFetchRequestBuilder {
         return new ClientMessageFetchRequestBuilder(new ClientMessageFetchRequest());
     }
+    /**
+     * Request model for ClientMessageApi.fetchFile operation.
+     */
     public static clientMessageFetchFileRequest(): ClientMessageFetchFileRequestBuilder {
         return new ClientMessageFetchFileRequestBuilder(new ClientMessageFetchFileRequest());
     }
+    /**
+     * Request model for ClientMessageApi.list operation.
+     */
     public static clientMessageListRequest(): ClientMessageListRequestBuilder {
         return new ClientMessageListRequestBuilder(new ClientMessageListRequest());
     }
+    /**
+     * Request model for ClientMessageApi.sendFile operation.
+     */
     public static clientMessageSendFileRequest(): ClientMessageSendFileRequestBuilder {
         return new ClientMessageSendFileRequestBuilder(new ClientMessageSendFileRequest());
     }
+    /**
+     * Request model for ClientThreadApi.getList operation.
+     */
     public static clientThreadGetListRequest(): ClientThreadGetListRequestBuilder {
         return new ClientThreadGetListRequestBuilder(new ClientThreadGetListRequest());
     }
+    /**
+     * Request model for ClientThreadApi.getMessages operation.
+     */
     public static clientThreadGetMessagesRequest(): ClientThreadGetMessagesRequestBuilder {
         return new ClientThreadGetMessagesRequestBuilder(new ClientThreadGetMessagesRequest());
     }
+    /**
+     * Request model for ContactApi.convert operation.
+     */
     public static contactConvertRequest(): ContactConvertRequestBuilder {
         return new ContactConvertRequestBuilder(new ContactConvertRequest());
     }
+    /**
+     * Request model for ContactApi.fromFile operation.
+     */
     public static contactFromFileRequest(): ContactFromFileRequestBuilder {
         return new ContactFromFileRequestBuilder(new ContactFromFileRequest());
     }
+    /**
+     * Request model for ContactApi.get operation.
+     */
     public static contactGetRequest(): ContactGetRequestBuilder {
         return new ContactGetRequestBuilder(new ContactGetRequest());
     }
+    /**
+     * Request model for ContactApi.getAsFile operation.
+     */
     public static contactGetAsFileRequest(): ContactGetAsFileRequestBuilder {
         return new ContactGetAsFileRequestBuilder(new ContactGetAsFileRequest());
     }
+    /**
+     * Request model for ContactApi.getList operation.
+     */
     public static contactGetListRequest(): ContactGetListRequestBuilder {
         return new ContactGetListRequestBuilder(new ContactGetListRequest());
     }
+    /**
+     * Request model for DisposableEmailApi.isDisposable operation.
+     */
     public static disposableEmailIsDisposableRequest(): DisposableEmailIsDisposableRequestBuilder {
         return new DisposableEmailIsDisposableRequestBuilder(new DisposableEmailIsDisposableRequest());
     }
+    /**
+     * Request model for EmailApi.convert operation.
+     */
     public static emailConvertRequest(): EmailConvertRequestBuilder {
         return new EmailConvertRequestBuilder(new EmailConvertRequest());
     }
+    /**
+     * Request model for EmailApi.fromFile operation.
+     */
     public static emailFromFileRequest(): EmailFromFileRequestBuilder {
         return new EmailFromFileRequestBuilder(new EmailFromFileRequest());
     }
+    /**
+     * Request model for EmailApi.get operation.
+     */
     public static emailGetRequest(): EmailGetRequestBuilder {
         return new EmailGetRequestBuilder(new EmailGetRequest());
     }
+    /**
+     * Request model for EmailApi.getAsFile operation.
+     */
     public static emailGetAsFileRequest(): EmailGetAsFileRequestBuilder {
         return new EmailGetAsFileRequestBuilder(new EmailGetAsFileRequest());
     }
+    /**
+     * Request model for EmailApi.getList operation.
+     */
     public static emailGetListRequest(): EmailGetListRequestBuilder {
         return new EmailGetListRequestBuilder(new EmailGetListRequest());
     }
+    /**
+     * Request model for EmailConfigApi.discover operation.
+     */
     public static emailConfigDiscoverRequest(): EmailConfigDiscoverRequestBuilder {
         return new EmailConfigDiscoverRequestBuilder(new EmailConfigDiscoverRequest());
     }
+    /**
+     * Request model for FileApi.copyFile operation.
+     */
     public static copyFileRequest(): CopyFileRequestBuilder {
         return new CopyFileRequestBuilder(new CopyFileRequest());
     }
+    /**
+     * Request model for FileApi.deleteFile operation.
+     */
     public static deleteFileRequest(): DeleteFileRequestBuilder {
         return new DeleteFileRequestBuilder(new DeleteFileRequest());
     }
+    /**
+     * Request model for FileApi.downloadFile operation.
+     */
     public static downloadFileRequest(): DownloadFileRequestBuilder {
         return new DownloadFileRequestBuilder(new DownloadFileRequest());
     }
+    /**
+     * Request model for FileApi.moveFile operation.
+     */
     public static moveFileRequest(): MoveFileRequestBuilder {
         return new MoveFileRequestBuilder(new MoveFileRequest());
     }
+    /**
+     * Request model for FileApi.uploadFile operation.
+     */
     public static uploadFileRequest(): UploadFileRequestBuilder {
         return new UploadFileRequestBuilder(new UploadFileRequest());
     }
+    /**
+     * Request model for FolderApi.copyFolder operation.
+     */
     public static copyFolderRequest(): CopyFolderRequestBuilder {
         return new CopyFolderRequestBuilder(new CopyFolderRequest());
     }
+    /**
+     * Request model for FolderApi.createFolder operation.
+     */
     public static createFolderRequest(): CreateFolderRequestBuilder {
         return new CreateFolderRequestBuilder(new CreateFolderRequest());
     }
+    /**
+     * Request model for FolderApi.deleteFolder operation.
+     */
     public static deleteFolderRequest(): DeleteFolderRequestBuilder {
         return new DeleteFolderRequestBuilder(new DeleteFolderRequest());
     }
+    /**
+     * Request model for FolderApi.getFilesList operation.
+     */
     public static getFilesListRequest(): GetFilesListRequestBuilder {
         return new GetFilesListRequestBuilder(new GetFilesListRequest());
     }
+    /**
+     * Request model for FolderApi.moveFolder operation.
+     */
     public static moveFolderRequest(): MoveFolderRequestBuilder {
         return new MoveFolderRequestBuilder(new MoveFolderRequest());
     }
+    /**
+     * Request model for MapiCalendarApi.fromFile operation.
+     */
     public static mapiCalendarFromFileRequest(): MapiCalendarFromFileRequestBuilder {
         return new MapiCalendarFromFileRequestBuilder(new MapiCalendarFromFileRequest());
     }
+    /**
+     * Request model for MapiCalendarApi.get operation.
+     */
     public static mapiCalendarGetRequest(): MapiCalendarGetRequestBuilder {
         return new MapiCalendarGetRequestBuilder(new MapiCalendarGetRequest());
     }
+    /**
+     * Request model for MapiContactApi.fromFile operation.
+     */
     public static mapiContactFromFileRequest(): MapiContactFromFileRequestBuilder {
         return new MapiContactFromFileRequestBuilder(new MapiContactFromFileRequest());
     }
+    /**
+     * Request model for MapiContactApi.get operation.
+     */
     public static mapiContactGetRequest(): MapiContactGetRequestBuilder {
         return new MapiContactGetRequestBuilder(new MapiContactGetRequest());
     }
+    /**
+     * Request model for MapiMessageApi.fromFile operation.
+     */
     public static mapiMessageFromFileRequest(): MapiMessageFromFileRequestBuilder {
         return new MapiMessageFromFileRequestBuilder(new MapiMessageFromFileRequest());
     }
+    /**
+     * Request model for MapiMessageApi.get operation.
+     */
     public static mapiMessageGetRequest(): MapiMessageGetRequestBuilder {
         return new MapiMessageGetRequestBuilder(new MapiMessageGetRequest());
     }
+    /**
+     * Request model for StorageApi.getDiscUsage operation.
+     */
     public static getDiscUsageRequest(): GetDiscUsageRequestBuilder {
         return new GetDiscUsageRequestBuilder(new GetDiscUsageRequest());
     }
+    /**
+     * Request model for StorageApi.getFileVersions operation.
+     */
     public static getFileVersionsRequest(): GetFileVersionsRequestBuilder {
         return new GetFileVersionsRequestBuilder(new GetFileVersionsRequest());
     }
+    /**
+     * Request model for StorageApi.objectExists operation.
+     */
     public static objectExistsRequest(): ObjectExistsRequestBuilder {
         return new ObjectExistsRequestBuilder(new ObjectExistsRequest());
     }
+    /**
+     * Request model for StorageApi.exists operation.
+     */
     public static storageExistsRequest(): StorageExistsRequestBuilder {
         return new StorageExistsRequestBuilder(new StorageExistsRequest());
     }

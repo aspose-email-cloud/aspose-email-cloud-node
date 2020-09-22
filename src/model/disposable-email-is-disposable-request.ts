@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for disposableEmailIsDisposable operation.
+ * Request model for DisposableEmailApi.isDisposable operation.
  */
 export class DisposableEmailIsDisposableRequest {
     /**

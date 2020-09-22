@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for aiNameComplete operation.
+ * Request model for AiNameApi.complete operation.
  */
 export class AiNameCompleteRequest {
     /**

@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for storageExists operation.
+ * Request model for StorageApi.exists operation.
  */
 export class StorageExistsRequest {
     /**

@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for emailFromFile operation.
+ * Request model for EmailApi.fromFile operation.
  */
 export class EmailFromFileRequest {
     /**

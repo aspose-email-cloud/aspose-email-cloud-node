@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for emailConfigDiscover operation.
+ * Request model for EmailConfigApi.discover operation.
  */
 export class EmailConfigDiscoverRequest {
     /**

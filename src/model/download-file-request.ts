@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for downloadFile operation.
+ * Request model for FileApi.downloadFile operation.
  */
 export class DownloadFileRequest {
     /**

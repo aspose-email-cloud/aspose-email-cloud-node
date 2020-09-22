@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for copyFolder operation.
+ * Request model for FolderApi.copyFolder operation.
  */
 export class CopyFolderRequest {
     /**

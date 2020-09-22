@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for deleteFile operation.
+ * Request model for FileApi.deleteFile operation.
  */
 export class DeleteFileRequest {
     /**

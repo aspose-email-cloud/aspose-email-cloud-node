@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for contactGet operation.
+ * Request model for ContactApi.get operation.
  */
 export class ContactGetRequest {
     /**

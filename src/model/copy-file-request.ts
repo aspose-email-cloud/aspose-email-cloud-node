@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for copyFile operation.
+ * Request model for FileApi.copyFile operation.
  */
 export class CopyFileRequest {
     /**

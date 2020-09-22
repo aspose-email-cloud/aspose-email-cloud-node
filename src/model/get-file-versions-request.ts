@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for getFileVersions operation.
+ * Request model for StorageApi.getFileVersions operation.
  */
 export class GetFileVersionsRequest {
     /**

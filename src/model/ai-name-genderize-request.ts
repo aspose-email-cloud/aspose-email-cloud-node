@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for aiNameGenderize operation.
+ * Request model for AiNameApi.genderize operation.
  */
 export class AiNameGenderizeRequest {
     /**

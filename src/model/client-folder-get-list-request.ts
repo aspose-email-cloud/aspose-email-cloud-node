@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for clientFolderGetList operation.
+ * Request model for ClientFolderApi.getList operation.
  */
 export class ClientFolderGetListRequest {
     /**

@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for deleteFolder operation.
+ * Request model for FolderApi.deleteFolder operation.
  */
 export class DeleteFolderRequest {
     /**

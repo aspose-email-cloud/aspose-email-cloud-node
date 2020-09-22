@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for emailConvert operation.
+ * Request model for EmailApi.convert operation.
  */
 export class EmailConvertRequest {
     /**

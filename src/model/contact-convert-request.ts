@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for contactConvert operation.
+ * Request model for ContactApi.convert operation.
  */
 export class ContactConvertRequest {
     /**

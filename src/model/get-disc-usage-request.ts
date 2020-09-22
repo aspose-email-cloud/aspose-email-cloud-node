@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for getDiscUsage operation.
+ * Request model for StorageApi.getDiscUsage operation.
  */
 export class GetDiscUsageRequest {
     /**

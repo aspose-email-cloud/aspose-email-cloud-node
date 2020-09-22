@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for clientThreadGetList operation.
+ * Request model for ClientThreadApi.getList operation.
  */
 export class ClientThreadGetListRequest {
     /**

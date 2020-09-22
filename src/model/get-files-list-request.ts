@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for getFilesList operation.
+ * Request model for FolderApi.getFilesList operation.
  */
 export class GetFilesListRequest {
     /**

@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for calendarGetList operation.
+ * Request model for CalendarApi.getList operation.
  */
 export class CalendarGetListRequest {
     /**

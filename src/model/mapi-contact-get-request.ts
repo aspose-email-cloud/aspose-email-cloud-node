@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for mapiContactGet operation.
+ * Request model for MapiContactApi.get operation.
  */
 export class MapiContactGetRequest {
     /**
