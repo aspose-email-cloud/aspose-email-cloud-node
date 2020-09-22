@@ -43,3 +43,29 @@ export class AiBcrParseRequest {
         this.isSingle = isSingle;
     }
 }
+
+export class AiBcrParseRequestBuilder {
+    private model: AiBcrParseRequest
+    public constructor(model: AiBcrParseRequest) {
+        this.model = model;
+    }
+    public build(): AiBcrParseRequest {
+        return this.model;
+    }
+        public file(file: Buffer): AiBcrParseRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
+        public countries(countries: string): AiBcrParseRequestBuilder {
+            this.model.countries = countries;
+            return this;
+        }
+        public languages(languages: string): AiBcrParseRequestBuilder {
+            this.model.languages = languages;
+            return this;
+        }
+        public isSingle(isSingle: boolean): AiBcrParseRequestBuilder {
+            this.model.isSingle = isSingle;
+            return this;
+        }
+}

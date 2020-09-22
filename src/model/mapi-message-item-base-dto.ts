@@ -262,5 +262,133 @@ export class MapiMessageItemBaseDto {
     }
 }
 
+/**
+ *  MapiMessageItemBaseDto model builder
+ */
+export class MapiMessageItemBaseDtoBuilder {
+    private readonly model: MapiMessageItemBaseDto;
+    public constructor(model: MapiMessageItemBaseDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiMessageItemBaseDto {
+        return this.model;
+    }
+
+    /**
+    * Message item attachments.             
+    */
+    public attachments(attachments: Array< model.MapiAttachmentDto >): MapiMessageItemBaseDtoBuilder {
+        this.model.attachments = attachments;
+        return this;
+    }
+    /**
+    * Billing information associated with an item.             
+    */
+    public billing(billing: string): MapiMessageItemBaseDtoBuilder {
+        this.model.billing = billing;
+        return this;
+    }
+    /**
+    * Message text.             
+    */
+    public body(body: string): MapiMessageItemBaseDtoBuilder {
+        this.model.body = body;
+        return this;
+    }
+    /**
+    * Gets the BodyRtf of the message converted to HTML, if present, otherwise an empty string.             
+    */
+    public bodyHtml(bodyHtml: string): MapiMessageItemBaseDtoBuilder {
+        this.model.bodyHtml = bodyHtml;
+        return this;
+    }
+    /**
+    * RTF formatted message text.             
+    */
+    public bodyRtf(bodyRtf: string): MapiMessageItemBaseDtoBuilder {
+        this.model.bodyRtf = bodyRtf;
+        return this;
+    }
+    /**
+    * The content type of message body. Enum, available values: PlainText, Html, Rtf
+    */
+    public bodyType(bodyType: string): MapiMessageItemBaseDtoBuilder {
+        this.model.bodyType = bodyType;
+        return this;
+    }
+    /**
+    * Contains keywords or categories for the message object.             
+    */
+    public categories(categories: Array<string>): MapiMessageItemBaseDtoBuilder {
+        this.model.categories = categories;
+        return this;
+    }
+    /**
+    * Contains the names of the companies that are associated with an item.             
+    */
+    public companies(companies: Array<string>): MapiMessageItemBaseDtoBuilder {
+        this.model.companies = companies;
+        return this;
+    }
+    /**
+    * The item id, uses with a server.             
+    */
+    public itemId(itemId: string): MapiMessageItemBaseDtoBuilder {
+        this.model.itemId = itemId;
+        return this;
+    }
+    /**
+    * Case-sensitive string that identifies the sender-defined message class, such as IPM.Note. The message class specifies the type, purpose, or content of the message.             
+    */
+    public messageClass(messageClass: string): MapiMessageItemBaseDtoBuilder {
+        this.model.messageClass = messageClass;
+        return this;
+    }
+    /**
+    * Contains the mileage information that is associated with an item.             
+    */
+    public mileage(mileage: string): MapiMessageItemBaseDtoBuilder {
+        this.model.mileage = mileage;
+        return this;
+    }
+    /**
+    * Recipients of the message.             
+    */
+    public recipients(recipients: Array< model.MapiRecipientDto >): MapiMessageItemBaseDtoBuilder {
+        this.model.recipients = recipients;
+        return this;
+    }
+    /**
+    * Contains values that indicate the message sensitivity. Enum, available values: None, Personal, Private, CompanyConfidential
+    */
+    public sensitivity(sensitivity: string): MapiMessageItemBaseDtoBuilder {
+        this.model.sensitivity = sensitivity;
+        return this;
+    }
+    /**
+    * Subject of the message.             
+    */
+    public subject(subject: string): MapiMessageItemBaseDtoBuilder {
+        this.model.subject = subject;
+        return this;
+    }
+    /**
+    * Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
+    */
+    public subjectPrefix(subjectPrefix: string): MapiMessageItemBaseDtoBuilder {
+        this.model.subjectPrefix = subjectPrefix;
+        return this;
+    }
+    /**
+    * List of MAPI properties             
+    */
+    public properties(properties: Array< model.MapiPropertyDto >): MapiMessageItemBaseDtoBuilder {
+        this.model.properties = properties;
+        return this;
+    }
+}
 

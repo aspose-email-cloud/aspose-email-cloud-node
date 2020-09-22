@@ -59,3 +59,37 @@ export class AiNameCompleteRequest {
         this.style = style;
     }
 }
+
+export class AiNameCompleteRequestBuilder {
+    private model: AiNameCompleteRequest
+    public constructor(model: AiNameCompleteRequest) {
+        this.model = model;
+    }
+    public build(): AiNameCompleteRequest {
+        return this.model;
+    }
+        public name(name: string): AiNameCompleteRequestBuilder {
+            this.model.name = name;
+            return this;
+        }
+        public language(language: string): AiNameCompleteRequestBuilder {
+            this.model.language = language;
+            return this;
+        }
+        public location(location: string): AiNameCompleteRequestBuilder {
+            this.model.location = location;
+            return this;
+        }
+        public encoding(encoding: string): AiNameCompleteRequestBuilder {
+            this.model.encoding = encoding;
+            return this;
+        }
+        public script(script: string): AiNameCompleteRequestBuilder {
+            this.model.script = script;
+            return this;
+        }
+        public style(style: string): AiNameCompleteRequestBuilder {
+            this.model.style = style;
+            return this;
+        }
+}

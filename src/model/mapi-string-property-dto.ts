@@ -70,5 +70,35 @@ export class MapiStringPropertyDto extends model.MapiPropertyDto {
     }
 }
 
+/**
+ *  MapiStringPropertyDto model builder
+ */
+export class MapiStringPropertyDtoBuilder {
+    private readonly model: MapiStringPropertyDto;
+    public constructor(model: MapiStringPropertyDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiStringPropertyDto {
+        return this.model;
+    }
+
+    /**
+    * Property descriptor             
+    */
+    public descriptor(descriptor: model.MapiPropertyDescriptor): MapiStringPropertyDtoBuilder {
+        this.model.descriptor = descriptor;
+        return this;
+    }
+    /**
+    * Property value             
+    */
+    public value(value: string): MapiStringPropertyDtoBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

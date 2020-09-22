@@ -72,5 +72,42 @@ export class ClientMessageDeleteRequest extends model.ClientMessageBaseRequest {
     }
 }
 
+/**
+ *  ClientMessageDeleteRequest model builder
+ */
+export class ClientMessageDeleteRequestBuilder {
+    private readonly model: ClientMessageDeleteRequest;
+    public constructor(model: ClientMessageDeleteRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ClientMessageDeleteRequest {
+        return this.model;
+    }
+
+    /**
+    * Email client account configuration location on storage.             
+    */
+    public accountLocation(accountLocation: model.StorageFileLocation): ClientMessageDeleteRequestBuilder {
+        this.model.accountLocation = accountLocation;
+        return this;
+    }
+    /**
+    * Message identifier.             
+    */
+    public messageId(messageId: string): ClientMessageDeleteRequestBuilder {
+        this.model.messageId = messageId;
+        return this;
+    }
+    /**
+    * Folder to delete message from.             
+    */
+    public folder(folder: string): ClientMessageDeleteRequestBuilder {
+        this.model.folder = folder;
+        return this;
+    }
+}
 

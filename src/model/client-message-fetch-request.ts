@@ -67,3 +67,41 @@ export class ClientMessageFetchRequest {
         this.format = format;
     }
 }
+
+export class ClientMessageFetchRequestBuilder {
+    private model: ClientMessageFetchRequest
+    public constructor(model: ClientMessageFetchRequest) {
+        this.model = model;
+    }
+    public build(): ClientMessageFetchRequest {
+        return this.model;
+    }
+        public messageId(messageId: string): ClientMessageFetchRequestBuilder {
+            this.model.messageId = messageId;
+            return this;
+        }
+        public account(account: string): ClientMessageFetchRequestBuilder {
+            this.model.account = account;
+            return this;
+        }
+        public folder(folder: string): ClientMessageFetchRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public storage(storage: string): ClientMessageFetchRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+        public accountStorageFolder(accountStorageFolder: string): ClientMessageFetchRequestBuilder {
+            this.model.accountStorageFolder = accountStorageFolder;
+            return this;
+        }
+        public type(type: string): ClientMessageFetchRequestBuilder {
+            this.model.type = type;
+            return this;
+        }
+        public format(format: string): ClientMessageFetchRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+}

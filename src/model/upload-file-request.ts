@@ -35,3 +35,25 @@ export class UploadFileRequest {
         this.storageName = storageName;
     }
 }
+
+export class UploadFileRequestBuilder {
+    private model: UploadFileRequest
+    public constructor(model: UploadFileRequest) {
+        this.model = model;
+    }
+    public build(): UploadFileRequest {
+        return this.model;
+    }
+        public path(path: string): UploadFileRequestBuilder {
+            this.model.path = path;
+            return this;
+        }
+        public file(file: Buffer): UploadFileRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
+        public storageName(storageName: string): UploadFileRequestBuilder {
+            this.model.storageName = storageName;
+            return this;
+        }
+}

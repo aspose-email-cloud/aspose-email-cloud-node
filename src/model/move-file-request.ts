@@ -51,3 +51,33 @@ export class MoveFileRequest {
         this.versionId = versionId;
     }
 }
+
+export class MoveFileRequestBuilder {
+    private model: MoveFileRequest
+    public constructor(model: MoveFileRequest) {
+        this.model = model;
+    }
+    public build(): MoveFileRequest {
+        return this.model;
+    }
+        public srcPath(srcPath: string): MoveFileRequestBuilder {
+            this.model.srcPath = srcPath;
+            return this;
+        }
+        public destPath(destPath: string): MoveFileRequestBuilder {
+            this.model.destPath = destPath;
+            return this;
+        }
+        public srcStorageName(srcStorageName: string): MoveFileRequestBuilder {
+            this.model.srcStorageName = srcStorageName;
+            return this;
+        }
+        public destStorageName(destStorageName: string): MoveFileRequestBuilder {
+            this.model.destStorageName = destStorageName;
+            return this;
+        }
+        public versionId(versionId: string): MoveFileRequestBuilder {
+            this.model.versionId = versionId;
+            return this;
+        }
+}

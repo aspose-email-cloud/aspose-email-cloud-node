@@ -27,3 +27,21 @@ export class EmailFromFileRequest {
         this.file = file;
     }
 }
+
+export class EmailFromFileRequestBuilder {
+    private model: EmailFromFileRequest
+    public constructor(model: EmailFromFileRequest) {
+        this.model = model;
+    }
+    public build(): EmailFromFileRequest {
+        return this.model;
+    }
+        public format(format: string): EmailFromFileRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public file(file: Buffer): EmailFromFileRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
+}

@@ -43,3 +43,29 @@ export class EmailGetRequest {
         this.storage = storage;
     }
 }
+
+export class EmailGetRequestBuilder {
+    private model: EmailGetRequest
+    public constructor(model: EmailGetRequest) {
+        this.model = model;
+    }
+    public build(): EmailGetRequest {
+        return this.model;
+    }
+        public format(format: string): EmailGetRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public fileName(fileName: string): EmailGetRequestBuilder {
+            this.model.fileName = fileName;
+            return this;
+        }
+        public folder(folder: string): EmailGetRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public storage(storage: string): EmailGetRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+}

@@ -43,3 +43,29 @@ export class MapiContactGetRequest {
         this.storage = storage;
     }
 }
+
+export class MapiContactGetRequestBuilder {
+    private model: MapiContactGetRequest
+    public constructor(model: MapiContactGetRequest) {
+        this.model = model;
+    }
+    public build(): MapiContactGetRequest {
+        return this.model;
+    }
+        public format(format: string): MapiContactGetRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public fileName(fileName: string): MapiContactGetRequestBuilder {
+            this.model.fileName = fileName;
+            return this;
+        }
+        public folder(folder: string): MapiContactGetRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public storage(storage: string): MapiContactGetRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+}

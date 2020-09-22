@@ -70,5 +70,35 @@ export class MapiResponseTypePropertyDto extends model.MapiPropertyDto {
     }
 }
 
+/**
+ *  MapiResponseTypePropertyDto model builder
+ */
+export class MapiResponseTypePropertyDtoBuilder {
+    private readonly model: MapiResponseTypePropertyDto;
+    public constructor(model: MapiResponseTypePropertyDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiResponseTypePropertyDto {
+        return this.model;
+    }
+
+    /**
+    * Property descriptor             
+    */
+    public descriptor(descriptor: model.MapiPropertyDescriptor): MapiResponseTypePropertyDtoBuilder {
+        this.model.descriptor = descriptor;
+        return this;
+    }
+    /**
+    * Represents the types of recipient responses that are received for a meeting. Enum, available values: Unknown, Organizer, Tentative, Accept, Decline, NoResponseReceived
+    */
+    public value(value: string): MapiResponseTypePropertyDtoBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

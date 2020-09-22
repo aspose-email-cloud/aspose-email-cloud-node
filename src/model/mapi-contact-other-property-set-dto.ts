@@ -150,5 +150,77 @@ export class MapiContactOtherPropertySetDto {
     }
 }
 
+/**
+ *  MapiContactOtherPropertySetDto model builder
+ */
+export class MapiContactOtherPropertySetDtoBuilder {
+    private readonly model: MapiContactOtherPropertySetDto;
+    public constructor(model: MapiContactOtherPropertySetDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiContactOtherPropertySetDto {
+        return this.model;
+    }
+
+    /**
+    * Indicates whether the end-user wants this message object hidden from other users who have access to the message object.             
+    */
+    public _private(_private: boolean): MapiContactOtherPropertySetDtoBuilder {
+        this.model._private = _private;
+        return this;
+    }
+    /**
+    * Specifies whether to create a journal for each action associated with this contact.             
+    */
+    public journal(journal: boolean): MapiContactOtherPropertySetDtoBuilder {
+        this.model.journal = journal;
+        return this;
+    }
+    /**
+    * Specifies the initial signal time for a reminder.             
+    */
+    public reminderTime(reminderTime: Date): MapiContactOtherPropertySetDtoBuilder {
+        this.model.reminderTime = reminderTime;
+        return this;
+    }
+    /**
+    * Represents the status of a meeting request.             
+    */
+    public reminderTopic(reminderTopic: string): MapiContactOtherPropertySetDtoBuilder {
+        this.model.reminderTopic = reminderTopic;
+        return this;
+    }
+    /**
+    * Specifies the first field on the contact that is intended for miscellaneous use for the contact.             
+    */
+    public userField1(userField1: string): MapiContactOtherPropertySetDtoBuilder {
+        this.model.userField1 = userField1;
+        return this;
+    }
+    /**
+    * Specifies the second field on the contact that is intended for miscellaneous use for the contact.             
+    */
+    public userField2(userField2: string): MapiContactOtherPropertySetDtoBuilder {
+        this.model.userField2 = userField2;
+        return this;
+    }
+    /**
+    * Specifies the third field on the contact that is intended for miscellaneous use for the contact.             
+    */
+    public userField3(userField3: string): MapiContactOtherPropertySetDtoBuilder {
+        this.model.userField3 = userField3;
+        return this;
+    }
+    /**
+    * Specifies the forth field on the contact that is intended for miscellaneous use for the contact.             
+    */
+    public userField4(userField4: string): MapiContactOtherPropertySetDtoBuilder {
+        this.model.userField4 = userField4;
+        return this;
+    }
+}
 

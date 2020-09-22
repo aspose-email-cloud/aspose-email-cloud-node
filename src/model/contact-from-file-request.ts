@@ -27,3 +27,21 @@ export class ContactFromFileRequest {
         this.file = file;
     }
 }
+
+export class ContactFromFileRequestBuilder {
+    private model: ContactFromFileRequest
+    public constructor(model: ContactFromFileRequest) {
+        this.model = model;
+    }
+    public build(): ContactFromFileRequest {
+        return this.model;
+    }
+        public format(format: string): ContactFromFileRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public file(file: Buffer): ContactFromFileRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
+}

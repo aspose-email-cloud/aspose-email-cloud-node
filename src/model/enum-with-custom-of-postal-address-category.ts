@@ -72,5 +72,32 @@ export class EnumWithCustomOfPostalAddressCategory {
     }
 }
 
+/**
+ *  EnumWithCustomOfPostalAddressCategory model builder
+ */
+export class EnumWithCustomOfPostalAddressCategoryBuilder {
+    private readonly model: EnumWithCustomOfPostalAddressCategory;
+    public constructor(model: EnumWithCustomOfPostalAddressCategory) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): EnumWithCustomOfPostalAddressCategory {
+        return this.model;
+    }
+
+    /**
+    * Address category. Enum, available values: Home, Work, Custom
+    */
+    public value(value: string): EnumWithCustomOfPostalAddressCategoryBuilder {
+        this.model.value = value;
+        return this;
+    }
+    public description(description: string): EnumWithCustomOfPostalAddressCategoryBuilder {
+        this.model.description = description;
+        return this;
+    }
+}
 

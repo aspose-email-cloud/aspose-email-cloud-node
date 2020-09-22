@@ -66,5 +66,28 @@ export class ReminderAttendee {
     }
 }
 
+/**
+ *  ReminderAttendee model builder
+ */
+export class ReminderAttendeeBuilder {
+    private readonly model: ReminderAttendee;
+    public constructor(model: ReminderAttendee) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ReminderAttendee {
+        return this.model;
+    }
+
+    /**
+    * Contains the email address.
+    */
+    public address(address: string): ReminderAttendeeBuilder {
+        this.model.address = address;
+        return this;
+    }
+}
 

@@ -43,3 +43,29 @@ export class MoveFolderRequest {
         this.destStorageName = destStorageName;
     }
 }
+
+export class MoveFolderRequestBuilder {
+    private model: MoveFolderRequest
+    public constructor(model: MoveFolderRequest) {
+        this.model = model;
+    }
+    public build(): MoveFolderRequest {
+        return this.model;
+    }
+        public srcPath(srcPath: string): MoveFolderRequestBuilder {
+            this.model.srcPath = srcPath;
+            return this;
+        }
+        public destPath(destPath: string): MoveFolderRequestBuilder {
+            this.model.destPath = destPath;
+            return this;
+        }
+        public srcStorageName(srcStorageName: string): MoveFolderRequestBuilder {
+            this.model.srcStorageName = srcStorageName;
+            return this;
+        }
+        public destStorageName(destStorageName: string): MoveFolderRequestBuilder {
+            this.model.destStorageName = destStorageName;
+            return this;
+        }
+}

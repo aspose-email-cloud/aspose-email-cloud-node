@@ -19,3 +19,17 @@ export class DisposableEmailIsDisposableRequest {
         this.address = address;
     }
 }
+
+export class DisposableEmailIsDisposableRequestBuilder {
+    private model: DisposableEmailIsDisposableRequest
+    public constructor(model: DisposableEmailIsDisposableRequest) {
+        this.model = model;
+    }
+    public build(): DisposableEmailIsDisposableRequest {
+        return this.model;
+    }
+        public address(address: string): DisposableEmailIsDisposableRequestBuilder {
+            this.model.address = address;
+            return this;
+        }
+}

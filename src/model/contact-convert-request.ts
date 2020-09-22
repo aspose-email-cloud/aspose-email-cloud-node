@@ -35,3 +35,25 @@ export class ContactConvertRequest {
         this.file = file;
     }
 }
+
+export class ContactConvertRequestBuilder {
+    private model: ContactConvertRequest
+    public constructor(model: ContactConvertRequest) {
+        this.model = model;
+    }
+    public build(): ContactConvertRequest {
+        return this.model;
+    }
+        public toFormat(toFormat: string): ContactConvertRequestBuilder {
+            this.model.toFormat = toFormat;
+            return this;
+        }
+        public fromFormat(fromFormat: string): ContactConvertRequestBuilder {
+            this.model.fromFormat = fromFormat;
+            return this;
+        }
+        public file(file: Buffer): ContactConvertRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
+}

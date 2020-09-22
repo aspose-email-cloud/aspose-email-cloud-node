@@ -43,3 +43,29 @@ export class ClientFolderGetListRequest {
         this.parentFolder = parentFolder;
     }
 }
+
+export class ClientFolderGetListRequestBuilder {
+    private model: ClientFolderGetListRequest
+    public constructor(model: ClientFolderGetListRequest) {
+        this.model = model;
+    }
+    public build(): ClientFolderGetListRequest {
+        return this.model;
+    }
+        public account(account: string): ClientFolderGetListRequestBuilder {
+            this.model.account = account;
+            return this;
+        }
+        public storage(storage: string): ClientFolderGetListRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+        public accountStorageFolder(accountStorageFolder: string): ClientFolderGetListRequestBuilder {
+            this.model.accountStorageFolder = accountStorageFolder;
+            return this;
+        }
+        public parentFolder(parentFolder: string): ClientFolderGetListRequestBuilder {
+            this.model.parentFolder = parentFolder;
+            return this;
+        }
+}

@@ -51,3 +51,33 @@ export class ClientMessageSendFileRequest {
         this.format = format;
     }
 }
+
+export class ClientMessageSendFileRequestBuilder {
+    private model: ClientMessageSendFileRequest
+    public constructor(model: ClientMessageSendFileRequest) {
+        this.model = model;
+    }
+    public build(): ClientMessageSendFileRequest {
+        return this.model;
+    }
+        public account(account: string): ClientMessageSendFileRequestBuilder {
+            this.model.account = account;
+            return this;
+        }
+        public file(file: Buffer): ClientMessageSendFileRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
+        public storage(storage: string): ClientMessageSendFileRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+        public accountStorageFolder(accountStorageFolder: string): ClientMessageSendFileRequestBuilder {
+            this.model.accountStorageFolder = accountStorageFolder;
+            return this;
+        }
+        public format(format: string): ClientMessageSendFileRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+}

@@ -51,3 +51,33 @@ export class ContactGetListRequest {
         this.pageNumber = pageNumber;
     }
 }
+
+export class ContactGetListRequestBuilder {
+    private model: ContactGetListRequest
+    public constructor(model: ContactGetListRequest) {
+        this.model = model;
+    }
+    public build(): ContactGetListRequest {
+        return this.model;
+    }
+        public format(format: string): ContactGetListRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public folder(folder: string): ContactGetListRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public storage(storage: string): ContactGetListRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+        public itemsPerPage(itemsPerPage: number): ContactGetListRequestBuilder {
+            this.model.itemsPerPage = itemsPerPage;
+            return this;
+        }
+        public pageNumber(pageNumber: number): ContactGetListRequestBuilder {
+            this.model.pageNumber = pageNumber;
+            return this;
+        }
+}

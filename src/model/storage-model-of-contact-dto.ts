@@ -69,5 +69,29 @@ export class StorageModelOfContactDto {
     }
 }
 
+/**
+ *  StorageModelOfContactDto model builder
+ */
+export class StorageModelOfContactDtoBuilder {
+    private readonly model: StorageModelOfContactDto;
+    public constructor(model: StorageModelOfContactDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): StorageModelOfContactDto {
+        return this.model;
+    }
+
+    public storageFile(storageFile: model.StorageFileLocation): StorageModelOfContactDtoBuilder {
+        this.model.storageFile = storageFile;
+        return this;
+    }
+    public value(value: model.ContactDto): StorageModelOfContactDtoBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

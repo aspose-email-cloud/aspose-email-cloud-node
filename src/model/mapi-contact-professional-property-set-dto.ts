@@ -138,5 +138,70 @@ export class MapiContactProfessionalPropertySetDto {
     }
 }
 
+/**
+ *  MapiContactProfessionalPropertySetDto model builder
+ */
+export class MapiContactProfessionalPropertySetDtoBuilder {
+    private readonly model: MapiContactProfessionalPropertySetDto;
+    public constructor(model: MapiContactProfessionalPropertySetDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiContactProfessionalPropertySetDto {
+        return this.model;
+    }
+
+    /**
+    * Gets or sets the job title of the contact             
+    */
+    public title(title: string): MapiContactProfessionalPropertySetDtoBuilder {
+        this.model.title = title;
+        return this;
+    }
+    /**
+    * Gets or sets the company that employs the contact             
+    */
+    public companyName(companyName: string): MapiContactProfessionalPropertySetDtoBuilder {
+        this.model.companyName = companyName;
+        return this;
+    }
+    /**
+    * Gets or sets the name of the department to which the contact belongs             
+    */
+    public departmentName(departmentName: string): MapiContactProfessionalPropertySetDtoBuilder {
+        this.model.departmentName = departmentName;
+        return this;
+    }
+    /**
+    * Gets or sets the location of the office that the contact works in             
+    */
+    public officeLocation(officeLocation: string): MapiContactProfessionalPropertySetDtoBuilder {
+        this.model.officeLocation = officeLocation;
+        return this;
+    }
+    /**
+    * Gets or sets the name of the contact's manager             
+    */
+    public managerName(managerName: string): MapiContactProfessionalPropertySetDtoBuilder {
+        this.model.managerName = managerName;
+        return this;
+    }
+    /**
+    * Gets or sets the name of the contact's assistant             
+    */
+    public assistant(assistant: string): MapiContactProfessionalPropertySetDtoBuilder {
+        this.model.assistant = assistant;
+        return this;
+    }
+    /**
+    * Gets or sets the profession of the contact             
+    */
+    public profession(profession: string): MapiContactProfessionalPropertySetDtoBuilder {
+        this.model.profession = profession;
+        return this;
+    }
+}
 

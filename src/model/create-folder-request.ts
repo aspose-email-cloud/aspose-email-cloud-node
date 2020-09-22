@@ -27,3 +27,21 @@ export class CreateFolderRequest {
         this.storageName = storageName;
     }
 }
+
+export class CreateFolderRequestBuilder {
+    private model: CreateFolderRequest
+    public constructor(model: CreateFolderRequest) {
+        this.model = model;
+    }
+    public build(): CreateFolderRequest {
+        return this.model;
+    }
+        public path(path: string): CreateFolderRequestBuilder {
+            this.model.path = path;
+            return this;
+        }
+        public storageName(storageName: string): CreateFolderRequestBuilder {
+            this.model.storageName = storageName;
+            return this;
+        }
+}

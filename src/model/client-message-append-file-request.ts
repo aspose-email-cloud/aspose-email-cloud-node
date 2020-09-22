@@ -67,3 +67,41 @@ export class ClientMessageAppendFileRequest {
         this.markAsSent = markAsSent;
     }
 }
+
+export class ClientMessageAppendFileRequestBuilder {
+    private model: ClientMessageAppendFileRequest
+    public constructor(model: ClientMessageAppendFileRequest) {
+        this.model = model;
+    }
+    public build(): ClientMessageAppendFileRequest {
+        return this.model;
+    }
+        public account(account: string): ClientMessageAppendFileRequestBuilder {
+            this.model.account = account;
+            return this;
+        }
+        public file(file: Buffer): ClientMessageAppendFileRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
+        public storage(storage: string): ClientMessageAppendFileRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+        public accountStorageFolder(accountStorageFolder: string): ClientMessageAppendFileRequestBuilder {
+            this.model.accountStorageFolder = accountStorageFolder;
+            return this;
+        }
+        public format(format: string): ClientMessageAppendFileRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public folder(folder: string): ClientMessageAppendFileRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public markAsSent(markAsSent: boolean): ClientMessageAppendFileRequestBuilder {
+            this.model.markAsSent = markAsSent;
+            return this;
+        }
+}

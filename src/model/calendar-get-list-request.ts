@@ -43,3 +43,29 @@ export class CalendarGetListRequest {
         this.storage = storage;
     }
 }
+
+export class CalendarGetListRequestBuilder {
+    private model: CalendarGetListRequest
+    public constructor(model: CalendarGetListRequest) {
+        this.model = model;
+    }
+    public build(): CalendarGetListRequest {
+        return this.model;
+    }
+        public folder(folder: string): CalendarGetListRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public itemsPerPage(itemsPerPage: number): CalendarGetListRequestBuilder {
+            this.model.itemsPerPage = itemsPerPage;
+            return this;
+        }
+        public pageNumber(pageNumber: number): CalendarGetListRequestBuilder {
+            this.model.pageNumber = pageNumber;
+            return this;
+        }
+        public storage(storage: string): CalendarGetListRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+}

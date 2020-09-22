@@ -126,5 +126,63 @@ export class EmailClientAccount {
     }
 }
 
+/**
+ *  EmailClientAccount model builder
+ */
+export class EmailClientAccountBuilder {
+    private readonly model: EmailClientAccount;
+    public constructor(model: EmailClientAccount) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): EmailClientAccount {
+        return this.model;
+    }
+
+    /**
+    * Mail server host name or IP address             
+    */
+    public host(host: string): EmailClientAccountBuilder {
+        this.model.host = host;
+        return this;
+    }
+    /**
+    * Mail server port             
+    */
+    public port(port: number): EmailClientAccountBuilder {
+        this.model.port = port;
+        return this;
+    }
+    /**
+    * Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+    */
+    public securityOptions(securityOptions: string): EmailClientAccountBuilder {
+        this.model.securityOptions = securityOptions;
+        return this;
+    }
+    /**
+    * Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
+    */
+    public protocolType(protocolType: string): EmailClientAccountBuilder {
+        this.model.protocolType = protocolType;
+        return this;
+    }
+    /**
+    * Email client account credentials             
+    */
+    public credentials(credentials: model.EmailClientAccountCredentials): EmailClientAccountBuilder {
+        this.model.credentials = credentials;
+        return this;
+    }
+    /**
+    * File with messages cache. Used to provide extra functions, which are not supported by account             
+    */
+    public cacheFile(cacheFile: model.StorageFileLocation): EmailClientAccountBuilder {
+        this.model.cacheFile = cacheFile;
+        return this;
+    }
+}
 

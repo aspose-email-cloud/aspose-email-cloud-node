@@ -78,5 +78,35 @@ export class CalendarAsFileRequest {
     }
 }
 
+/**
+ *  CalendarAsFileRequest model builder
+ */
+export class CalendarAsFileRequestBuilder {
+    private readonly model: CalendarAsFileRequest;
+    public constructor(model: CalendarAsFileRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): CalendarAsFileRequest {
+        return this.model;
+    }
+
+    /**
+    * Calendar file format Enum, available values: Ics, Msg
+    */
+    public format(format: string): CalendarAsFileRequestBuilder {
+        this.model.format = format;
+        return this;
+    }
+    /**
+    * iCalendar model             
+    */
+    public value(value: model.CalendarDto): CalendarAsFileRequestBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

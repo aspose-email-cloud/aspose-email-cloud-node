@@ -319,5 +319,259 @@ export class MapiCalendarDto extends model.MapiMessageItemBaseDto {
     }
 }
 
+/**
+ *  MapiCalendarDto model builder
+ */
+export class MapiCalendarDtoBuilder {
+    private readonly model: MapiCalendarDto;
+    public constructor(model: MapiCalendarDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiCalendarDto {
+        return this.model;
+    }
+
+    /**
+    * Message item attachments.             
+    */
+    public attachments(attachments: Array< model.MapiAttachmentDto >): MapiCalendarDtoBuilder {
+        this.model.attachments = attachments;
+        return this;
+    }
+    /**
+    * Billing information associated with an item.             
+    */
+    public billing(billing: string): MapiCalendarDtoBuilder {
+        this.model.billing = billing;
+        return this;
+    }
+    /**
+    * Message text.             
+    */
+    public body(body: string): MapiCalendarDtoBuilder {
+        this.model.body = body;
+        return this;
+    }
+    /**
+    * Gets the BodyRtf of the message converted to HTML, if present, otherwise an empty string.             
+    */
+    public bodyHtml(bodyHtml: string): MapiCalendarDtoBuilder {
+        this.model.bodyHtml = bodyHtml;
+        return this;
+    }
+    /**
+    * RTF formatted message text.             
+    */
+    public bodyRtf(bodyRtf: string): MapiCalendarDtoBuilder {
+        this.model.bodyRtf = bodyRtf;
+        return this;
+    }
+    /**
+    * The content type of message body. Enum, available values: PlainText, Html, Rtf
+    */
+    public bodyType(bodyType: string): MapiCalendarDtoBuilder {
+        this.model.bodyType = bodyType;
+        return this;
+    }
+    /**
+    * Contains keywords or categories for the message object.             
+    */
+    public categories(categories: Array<string>): MapiCalendarDtoBuilder {
+        this.model.categories = categories;
+        return this;
+    }
+    /**
+    * Contains the names of the companies that are associated with an item.             
+    */
+    public companies(companies: Array<string>): MapiCalendarDtoBuilder {
+        this.model.companies = companies;
+        return this;
+    }
+    /**
+    * The item id, uses with a server.             
+    */
+    public itemId(itemId: string): MapiCalendarDtoBuilder {
+        this.model.itemId = itemId;
+        return this;
+    }
+    /**
+    * Case-sensitive string that identifies the sender-defined message class, such as IPM.Note. The message class specifies the type, purpose, or content of the message.             
+    */
+    public messageClass(messageClass: string): MapiCalendarDtoBuilder {
+        this.model.messageClass = messageClass;
+        return this;
+    }
+    /**
+    * Contains the mileage information that is associated with an item.             
+    */
+    public mileage(mileage: string): MapiCalendarDtoBuilder {
+        this.model.mileage = mileage;
+        return this;
+    }
+    /**
+    * Recipients of the message.             
+    */
+    public recipients(recipients: Array< model.MapiRecipientDto >): MapiCalendarDtoBuilder {
+        this.model.recipients = recipients;
+        return this;
+    }
+    /**
+    * Contains values that indicate the message sensitivity. Enum, available values: None, Personal, Private, CompanyConfidential
+    */
+    public sensitivity(sensitivity: string): MapiCalendarDtoBuilder {
+        this.model.sensitivity = sensitivity;
+        return this;
+    }
+    /**
+    * Subject of the message.             
+    */
+    public subject(subject: string): MapiCalendarDtoBuilder {
+        this.model.subject = subject;
+        return this;
+    }
+    /**
+    * Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
+    */
+    public subjectPrefix(subjectPrefix: string): MapiCalendarDtoBuilder {
+        this.model.subjectPrefix = subjectPrefix;
+        return this;
+    }
+    /**
+    * List of MAPI properties             
+    */
+    public properties(properties: Array< model.MapiPropertyDto >): MapiCalendarDtoBuilder {
+        this.model.properties = properties;
+        return this;
+    }
+    /**
+    * Value indicating whether a Meeting Response object is a counter proposal.             
+    */
+    public appointmentCounterProposal(appointmentCounterProposal: boolean): MapiCalendarDtoBuilder {
+        this.model.appointmentCounterProposal = appointmentCounterProposal;
+        return this;
+    }
+    /**
+    * Attendees             
+    */
+    public attendees(attendees: model.MapiCalendarAttendeesDto): MapiCalendarDtoBuilder {
+        this.model.attendees = attendees;
+        return this;
+    }
+    /**
+    * Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
+    */
+    public busyStatus(busyStatus: string): MapiCalendarDtoBuilder {
+        this.model.busyStatus = busyStatus;
+        return this;
+    }
+    /**
+    * Actions the user has taken on this Meeting object.              Items: Enumerates the actions the user can taken on the Meeting object Enum, available values: Manager, Delegate, DeletedWithNoResponse, DeletedExceptionWithNoResponse, RespondedTentative, RespondedAccept, RespondedDecline, ModifiedStartTime, ModifiedEndTime, ModifiedLocation, RespondedExceptionDecline, Canceled, ExceptionCanceled
+    */
+    public clientIntent(clientIntent: Array<string>): MapiCalendarDtoBuilder {
+        this.model.clientIntent = clientIntent;
+        return this;
+    }
+    /**
+    * End date and time of the event. If the date is not set, default value for DateTime is returned.             
+    */
+    public endDate(endDate: Date): MapiCalendarDtoBuilder {
+        this.model.endDate = endDate;
+        return this;
+    }
+    /**
+    * Time zone information that indicates the time zone of the EndDate property.             
+    */
+    public endDateTimeZone(endDateTimeZone: model.MapiCalendarTimeZoneDto): MapiCalendarDtoBuilder {
+        this.model.endDateTimeZone = endDateTimeZone;
+        return this;
+    }
+    /**
+    * Value indicating whether the event is an all-day event.             
+    */
+    public isAllDay(isAllDay: boolean): MapiCalendarDtoBuilder {
+        this.model.isAllDay = isAllDay;
+        return this;
+    }
+    /**
+    * Categories of the calendar object.             
+    */
+    public keyWords(keyWords: string): MapiCalendarDtoBuilder {
+        this.model.keyWords = keyWords;
+        return this;
+    }
+    /**
+    * Location of the event.             
+    */
+    public location(location: string): MapiCalendarDtoBuilder {
+        this.model.location = location;
+        return this;
+    }
+    /**
+    * Recurrence properties.             
+    */
+    public recurrence(recurrence: model.MapiCalendarEventRecurrenceDto): MapiCalendarDtoBuilder {
+        this.model.recurrence = recurrence;
+        return this;
+    }
+    /**
+    * Interval, in minutes, between the time at which the reminder first becomes overdue and the start time of the Calendar object.             
+    */
+    public reminderDelta(reminderDelta: number): MapiCalendarDtoBuilder {
+        this.model.reminderDelta = reminderDelta;
+        return this;
+    }
+    /**
+    * Full path of the sound that a client SHOULD play when the reminder becomes overdue.             
+    */
+    public reminderFileParameter(reminderFileParameter: string): MapiCalendarDtoBuilder {
+        this.model.reminderFileParameter = reminderFileParameter;
+        return this;
+    }
+    /**
+    * Value indicating whether a reminder is set on the object.             
+    */
+    public reminderSet(reminderSet: boolean): MapiCalendarDtoBuilder {
+        this.model.reminderSet = reminderSet;
+        return this;
+    }
+    /**
+    * Sequence number.             
+    */
+    public sequence(sequence: number): MapiCalendarDtoBuilder {
+        this.model.sequence = sequence;
+        return this;
+    }
+    /**
+    * Start date and time of the event. If the date is not set, default value for DateTime is returned.             
+    */
+    public startDate(startDate: Date): MapiCalendarDtoBuilder {
+        this.model.startDate = startDate;
+        return this;
+    }
+    /**
+    * Time zone information that indicates the time zone of the StartDate property.             
+    */
+    public startDateTimeZone(startDateTimeZone: model.MapiCalendarTimeZoneDto): MapiCalendarDtoBuilder {
+        this.model.startDateTimeZone = startDateTimeZone;
+        return this;
+    }
+    /**
+    * Unique identifier.             
+    */
+    public uid(uid: string): MapiCalendarDtoBuilder {
+        this.model.uid = uid;
+        return this;
+    }
+    /**
+    * Organizer             
+    */
+    public organizer(organizer: model.MapiElectronicAddressDto): MapiCalendarDtoBuilder {
+        this.model.organizer = organizer;
+        return this;
+    }
+}
 

@@ -222,5 +222,119 @@ export class MapiCalendarExceptionInfoDto {
     }
 }
 
+/**
+ *  MapiCalendarExceptionInfoDto model builder
+ */
+export class MapiCalendarExceptionInfoDtoBuilder {
+    private readonly model: MapiCalendarExceptionInfoDto;
+    public constructor(model: MapiCalendarExceptionInfoDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiCalendarExceptionInfoDto {
+        return this.model;
+    }
+
+    /**
+    * Attachments in the recurrence exception.             
+    */
+    public attachments(attachments: Array< model.MapiAttachmentDto >): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.attachments = attachments;
+        return this;
+    }
+    /**
+    * Body.             
+    */
+    public body(body: string): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.body = body;
+        return this;
+    }
+    /**
+    * Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
+    */
+    public busyStatus(busyStatus: string): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.busyStatus = busyStatus;
+        return this;
+    }
+    /**
+    * End date.             
+    */
+    public endDateTime(endDateTime: Date): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.endDateTime = endDateTime;
+        return this;
+    }
+    /**
+    * Value of this field specifies whether the Exception Embedded Message object contains attachments.             
+    */
+    public hasAttachment(hasAttachment: boolean): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.hasAttachment = hasAttachment;
+        return this;
+    }
+    /**
+    * Location.             
+    */
+    public location(location: string): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.location = location;
+        return this;
+    }
+    /**
+    * Enumerates the appointment state Enum, available values: Meeting, Received, Canceled
+    */
+    public meetingType(meetingType: string): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.meetingType = meetingType;
+        return this;
+    }
+    /**
+    * Original start date.             
+    */
+    public originalStartDate(originalStartDate: Date): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.originalStartDate = originalStartDate;
+        return this;
+    }
+    /**
+    * Override flags.              Items: Specifies what data in the MapiCalendarOverride structure has a value different from the recurring series. Enum, available values: Subject, MeetingType, ReminderDelta, Reminder, Location, BusyStatus, Attachment, Subtype, AppointmentColor, ExceptionalBody
+    */
+    public overrideFlags(overrideFlags: Array<string>): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.overrideFlags = overrideFlags;
+        return this;
+    }
+    /**
+    * Reminder delta.             
+    */
+    public reminderDelta(reminderDelta: number): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.reminderDelta = reminderDelta;
+        return this;
+    }
+    /**
+    * Value for the PidLidReminderSet property.             
+    */
+    public reminderSet(reminderSet: boolean): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.reminderSet = reminderSet;
+        return this;
+    }
+    /**
+    * Start date.             
+    */
+    public startDateTime(startDateTime: Date): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.startDateTime = startDateTime;
+        return this;
+    }
+    /**
+    * Subject.             
+    */
+    public subject(subject: string): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.subject = subject;
+        return this;
+    }
+    /**
+    * SubType.             
+    */
+    public subType(subType: number): MapiCalendarExceptionInfoDtoBuilder {
+        this.model.subType = subType;
+        return this;
+    }
+}
 

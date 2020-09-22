@@ -35,3 +35,25 @@ export class ClientAccountGetMultiRequest {
         this.storage = storage;
     }
 }
+
+export class ClientAccountGetMultiRequestBuilder {
+    private model: ClientAccountGetMultiRequest
+    public constructor(model: ClientAccountGetMultiRequest) {
+        this.model = model;
+    }
+    public build(): ClientAccountGetMultiRequest {
+        return this.model;
+    }
+        public fileName(fileName: string): ClientAccountGetMultiRequestBuilder {
+            this.model.fileName = fileName;
+            return this;
+        }
+        public folder(folder: string): ClientAccountGetMultiRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public storage(storage: string): ClientAccountGetMultiRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+}

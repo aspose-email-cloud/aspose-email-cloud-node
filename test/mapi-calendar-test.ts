@@ -3,17 +3,15 @@ import {expect} from 'chai';
 import {suiteBase} from "./suite-base";
 import uuidv4 from "uuid/v4";
 import {
+    Models,
     MapiCalendarAsFileRequest,
     MapiCalendarAttendeesDto,
     MapiCalendarDailyRecurrencePatternDto,
     MapiCalendarDto,
     MapiCalendarEventRecurrenceDto,
     MapiCalendarFromFileRequest,
-    MapiCalendarGetRequest,
-    MapiCalendarSaveRequest,
     MapiElectronicAddressDto,
-    MapiRecipientDto,
-    StorageFileLocation
+    MapiRecipientDto
 } from "..";
 
 
@@ -41,37 +39,60 @@ describe('MAPI calendar tests', function () {
         const mapiCalendarDto = getMapiCalendarDto();
         const fileName = uuidv4() + '.msg';
         await td.api().mapi.calendar.save(
-            new MapiCalendarSaveRequest(new StorageFileLocation(td.storage(), td.folder(), fileName), mapiCalendarDto,
-                'Msg'));
+            Models.mapiCalendarSaveRequest()
+                .storageFile(Models.storageFileLocation()
+                    .storage(td.storage())
+                    .folderPath(td.folder())
+                    .fileName(fileName)
+                    .build())
+                .format('Msg')
+                .value(mapiCalendarDto)
+                .build());
         const mapiCalendarFromStorage = await td.api().mapi.calendar.get(
-            new MapiCalendarGetRequest(fileName, td.folder(), td.storage()));
+            Models.mapiCalendarGetRequest()
+                .fileName(fileName)
+                .folder(td.folder())
+                .storage(td.storage())
+                .build());
         expect(mapiCalendarDto.location).to.be.eq(mapiCalendarFromStorage.location);
     });
 
     function getMapiCalendarDto(): MapiCalendarDto {
-        const mapiCalendarDto = new MapiCalendarDto();
-        const mapiRecipientDto = new MapiRecipientDto();
-        mapiRecipientDto.addressType = "SMTP";
-        mapiRecipientDto.displayName = "Attendee Name";
-        mapiRecipientDto.emailAddress = "attendee@aspose.com";
-        mapiRecipientDto.recipientType = "MapiTo";
-        mapiCalendarDto.attendees = new MapiCalendarAttendeesDto([mapiRecipientDto]);
-        mapiCalendarDto.clientIntent = ["Manager"];
-        const recurrence = new MapiCalendarEventRecurrenceDto();
-        const recurrencePatternDto = new MapiCalendarDailyRecurrencePatternDto();
-        recurrencePatternDto.occurrenceCount = 10;
-        recurrencePatternDto.weekStartDay = "Monday";
-        recurrence.recurrencePattern = recurrencePatternDto;
-        mapiCalendarDto.recurrence = recurrence;
-        mapiCalendarDto.organizer = new MapiElectronicAddressDto(undefined, "organizer@aspose.com");
-        mapiCalendarDto.busyStatus = "Tentative";
-        mapiCalendarDto.startDate = td.getDate(undefined, 1);
-        mapiCalendarDto.endDate = td.getDate(mapiCalendarDto.startDate, 1);
-        mapiCalendarDto.location = "Some location";
-        mapiCalendarDto.body = "Some description";
-        mapiCalendarDto.bodyType = "PlainText";
-        mapiCalendarDto.subject = "Some summary";
-        return mapiCalendarDto;
+        return Models.mapiCalendarDto()
+            .attendees(Models.mapiCalendarAttendeesDto()
+                .appointmentRecipients([
+                    Models.mapiRecipientDto()
+                        .emailAddress('organizer@aspose.com')
+                        .addressType('SMTP')
+                        .displayName('Organizer Name')
+                        .recipientType('MapiTo')
+                        .build(),
+                    Models.mapiRecipientDto()
+                        .emailAddress('attendee@aspose.com')
+                        .addressType('SMTP')
+                        .displayName('Attendee Name')
+                        .recipientType('MapiTo')
+                        .build()])
+                .build())
+            .busyStatus('Tentative')
+            .clientIntent([
+                'Manager'])
+            .endDate(new Date())
+            .location('Some location')
+            .recurrence(Models.mapiCalendarEventRecurrenceDto()
+                .recurrencePattern(Models.mapiCalendarRecurrencePatternDto()
+                    .frequency('Daily')
+                    .occurrenceCount(10)
+                    .weekStartDay('Monday')
+                    .build())
+                .build())
+            .startDate(new Date())
+            .organizer(Models.mapiElectronicAddressDto()
+                .emailAddress('organizer@aspose.com')
+                .build())
+            .body('Some description')
+            .subject('Some summary')
+            .build();
     }
 })
 ;

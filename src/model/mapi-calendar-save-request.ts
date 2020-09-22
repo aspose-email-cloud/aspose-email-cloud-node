@@ -72,5 +72,36 @@ export class MapiCalendarSaveRequest extends model.StorageModelOfMapiCalendarDto
     }
 }
 
+/**
+ *  MapiCalendarSaveRequest model builder
+ */
+export class MapiCalendarSaveRequestBuilder {
+    private readonly model: MapiCalendarSaveRequest;
+    public constructor(model: MapiCalendarSaveRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiCalendarSaveRequest {
+        return this.model;
+    }
+
+    public storageFile(storageFile: model.StorageFileLocation): MapiCalendarSaveRequestBuilder {
+        this.model.storageFile = storageFile;
+        return this;
+    }
+    public value(value: model.MapiCalendarDto): MapiCalendarSaveRequestBuilder {
+        this.model.value = value;
+        return this;
+    }
+    /**
+    * Calendar file format Enum, available values: Ics, Msg
+    */
+    public format(format: string): MapiCalendarSaveRequestBuilder {
+        this.model.format = format;
+        return this;
+    }
+}
 

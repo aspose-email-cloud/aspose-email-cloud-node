@@ -35,3 +35,25 @@ export class DeleteFileRequest {
         this.versionId = versionId;
     }
 }
+
+export class DeleteFileRequestBuilder {
+    private model: DeleteFileRequest
+    public constructor(model: DeleteFileRequest) {
+        this.model = model;
+    }
+    public build(): DeleteFileRequest {
+        return this.model;
+    }
+        public path(path: string): DeleteFileRequestBuilder {
+            this.model.path = path;
+            return this;
+        }
+        public storageName(storageName: string): DeleteFileRequestBuilder {
+            this.model.storageName = storageName;
+            return this;
+        }
+        public versionId(versionId: string): DeleteFileRequestBuilder {
+            this.model.versionId = versionId;
+            return this;
+        }
+}

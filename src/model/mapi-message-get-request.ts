@@ -43,3 +43,29 @@ export class MapiMessageGetRequest {
         this.storage = storage;
     }
 }
+
+export class MapiMessageGetRequestBuilder {
+    private model: MapiMessageGetRequest
+    public constructor(model: MapiMessageGetRequest) {
+        this.model = model;
+    }
+    public build(): MapiMessageGetRequest {
+        return this.model;
+    }
+        public format(format: string): MapiMessageGetRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public fileName(fileName: string): MapiMessageGetRequestBuilder {
+            this.model.fileName = fileName;
+            return this;
+        }
+        public folder(folder: string): MapiMessageGetRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public storage(storage: string): MapiMessageGetRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+}

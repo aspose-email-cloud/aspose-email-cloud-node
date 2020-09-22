@@ -35,3 +35,25 @@ export class MapiCalendarGetRequest {
         this.storage = storage;
     }
 }
+
+export class MapiCalendarGetRequestBuilder {
+    private model: MapiCalendarGetRequest
+    public constructor(model: MapiCalendarGetRequest) {
+        this.model = model;
+    }
+    public build(): MapiCalendarGetRequest {
+        return this.model;
+    }
+        public fileName(fileName: string): MapiCalendarGetRequestBuilder {
+            this.model.fileName = fileName;
+            return this;
+        }
+        public folder(folder: string): MapiCalendarGetRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public storage(storage: string): MapiCalendarGetRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+}

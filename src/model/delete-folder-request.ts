@@ -35,3 +35,25 @@ export class DeleteFolderRequest {
         this.recursive = recursive;
     }
 }
+
+export class DeleteFolderRequestBuilder {
+    private model: DeleteFolderRequest
+    public constructor(model: DeleteFolderRequest) {
+        this.model = model;
+    }
+    public build(): DeleteFolderRequest {
+        return this.model;
+    }
+        public path(path: string): DeleteFolderRequestBuilder {
+            this.model.path = path;
+            return this;
+        }
+        public storageName(storageName: string): DeleteFolderRequestBuilder {
+            this.model.storageName = storageName;
+            return this;
+        }
+        public recursive(recursive: boolean): DeleteFolderRequestBuilder {
+            this.model.recursive = recursive;
+            return this;
+        }
+}

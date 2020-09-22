@@ -60,5 +60,25 @@ export class ListResponseOfEmailAccountConfig {
     }
 }
 
+/**
+ *  ListResponseOfEmailAccountConfig model builder
+ */
+export class ListResponseOfEmailAccountConfigBuilder {
+    private readonly model: ListResponseOfEmailAccountConfig;
+    public constructor(model: ListResponseOfEmailAccountConfig) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ListResponseOfEmailAccountConfig {
+        return this.model;
+    }
+
+    public value(value: Array< model.EmailAccountConfig >): ListResponseOfEmailAccountConfigBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

@@ -51,3 +51,33 @@ export class ContactGetAsFileRequest {
         this.folder = folder;
     }
 }
+
+export class ContactGetAsFileRequestBuilder {
+    private model: ContactGetAsFileRequest
+    public constructor(model: ContactGetAsFileRequest) {
+        this.model = model;
+    }
+    public build(): ContactGetAsFileRequest {
+        return this.model;
+    }
+        public fileName(fileName: string): ContactGetAsFileRequestBuilder {
+            this.model.fileName = fileName;
+            return this;
+        }
+        public toFormat(toFormat: string): ContactGetAsFileRequestBuilder {
+            this.model.toFormat = toFormat;
+            return this;
+        }
+        public fromFormat(fromFormat: string): ContactGetAsFileRequestBuilder {
+            this.model.fromFormat = fromFormat;
+            return this;
+        }
+        public storage(storage: string): ContactGetAsFileRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+        public folder(folder: string): ContactGetAsFileRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+}

@@ -72,5 +72,42 @@ export class ClientThreadMoveRequest extends model.ClientThreadBaseRequest {
     }
 }
 
+/**
+ *  ClientThreadMoveRequest model builder
+ */
+export class ClientThreadMoveRequestBuilder {
+    private readonly model: ClientThreadMoveRequest;
+    public constructor(model: ClientThreadMoveRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ClientThreadMoveRequest {
+        return this.model;
+    }
+
+    /**
+    * Email client account configuration location on storage.             
+    */
+    public accountLocation(accountLocation: model.StorageFileLocation): ClientThreadMoveRequestBuilder {
+        this.model.accountLocation = accountLocation;
+        return this;
+    }
+    /**
+    * Thread identifier.             
+    */
+    public threadId(threadId: string): ClientThreadMoveRequestBuilder {
+        this.model.threadId = threadId;
+        return this;
+    }
+    /**
+    * Email account folder to move thread to.             
+    */
+    public destinationFolder(destinationFolder: string): ClientThreadMoveRequestBuilder {
+        this.model.destinationFolder = destinationFolder;
+        return this;
+    }
+}
 

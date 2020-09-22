@@ -67,3 +67,41 @@ export class AiNameFormatRequest {
         this.style = style;
     }
 }
+
+export class AiNameFormatRequestBuilder {
+    private model: AiNameFormatRequest
+    public constructor(model: AiNameFormatRequest) {
+        this.model = model;
+    }
+    public build(): AiNameFormatRequest {
+        return this.model;
+    }
+        public name(name: string): AiNameFormatRequestBuilder {
+            this.model.name = name;
+            return this;
+        }
+        public language(language: string): AiNameFormatRequestBuilder {
+            this.model.language = language;
+            return this;
+        }
+        public location(location: string): AiNameFormatRequestBuilder {
+            this.model.location = location;
+            return this;
+        }
+        public encoding(encoding: string): AiNameFormatRequestBuilder {
+            this.model.encoding = encoding;
+            return this;
+        }
+        public script(script: string): AiNameFormatRequestBuilder {
+            this.model.script = script;
+            return this;
+        }
+        public format(format: string): AiNameFormatRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public style(style: string): AiNameFormatRequestBuilder {
+            this.model.style = style;
+            return this;
+        }
+}

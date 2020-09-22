@@ -60,5 +60,25 @@ export class ListResponseOfEmailThread {
     }
 }
 
+/**
+ *  ListResponseOfEmailThread model builder
+ */
+export class ListResponseOfEmailThreadBuilder {
+    private readonly model: ListResponseOfEmailThread;
+    public constructor(model: ListResponseOfEmailThread) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ListResponseOfEmailThread {
+        return this.model;
+    }
+
+    public value(value: Array< model.EmailThread >): ListResponseOfEmailThreadBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

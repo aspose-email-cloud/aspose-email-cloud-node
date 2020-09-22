@@ -35,3 +35,25 @@ export class DownloadFileRequest {
         this.versionId = versionId;
     }
 }
+
+export class DownloadFileRequestBuilder {
+    private model: DownloadFileRequest
+    public constructor(model: DownloadFileRequest) {
+        this.model = model;
+    }
+    public build(): DownloadFileRequest {
+        return this.model;
+    }
+        public path(path: string): DownloadFileRequestBuilder {
+            this.model.path = path;
+            return this;
+        }
+        public storageName(storageName: string): DownloadFileRequestBuilder {
+            this.model.storageName = storageName;
+            return this;
+        }
+        public versionId(versionId: string): DownloadFileRequestBuilder {
+            this.model.versionId = versionId;
+            return this;
+        }
+}

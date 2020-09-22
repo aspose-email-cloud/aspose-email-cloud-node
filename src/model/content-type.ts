@@ -114,5 +114,56 @@ export class ContentType {
     }
 }
 
+/**
+ *  ContentType model builder
+ */
+export class ContentTypeBuilder {
+    private readonly model: ContentType;
+    public constructor(model: ContentType) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ContentType {
+        return this.model;
+    }
+
+    /**
+    * The boundary parameter included in the Content-Type header.             
+    */
+    public boundary(boundary: string): ContentTypeBuilder {
+        this.model.boundary = boundary;
+        return this;
+    }
+    /**
+    * CharSet parameter.             
+    */
+    public charSet(charSet: string): ContentTypeBuilder {
+        this.model.charSet = charSet;
+        return this;
+    }
+    /**
+    * The internet media type.             
+    */
+    public mediaType(mediaType: string): ContentTypeBuilder {
+        this.model.mediaType = mediaType;
+        return this;
+    }
+    /**
+    * Name parameter.             
+    */
+    public name(name: string): ContentTypeBuilder {
+        this.model.name = name;
+        return this;
+    }
+    /**
+    * Full list of parameters             
+    */
+    public parameters(parameters: Array< model.ContentTypeParameter >): ContentTypeBuilder {
+        this.model.parameters = parameters;
+        return this;
+    }
+}
 

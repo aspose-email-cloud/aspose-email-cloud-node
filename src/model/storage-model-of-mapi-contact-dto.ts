@@ -69,5 +69,29 @@ export class StorageModelOfMapiContactDto {
     }
 }
 
+/**
+ *  StorageModelOfMapiContactDto model builder
+ */
+export class StorageModelOfMapiContactDtoBuilder {
+    private readonly model: StorageModelOfMapiContactDto;
+    public constructor(model: StorageModelOfMapiContactDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): StorageModelOfMapiContactDto {
+        return this.model;
+    }
+
+    public storageFile(storageFile: model.StorageFileLocation): StorageModelOfMapiContactDtoBuilder {
+        this.model.storageFile = storageFile;
+        return this;
+    }
+    public value(value: model.MapiContactDto): StorageModelOfMapiContactDtoBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

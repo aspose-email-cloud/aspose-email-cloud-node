@@ -27,3 +27,21 @@ export class MapiContactFromFileRequest {
         this.file = file;
     }
 }
+
+export class MapiContactFromFileRequestBuilder {
+    private model: MapiContactFromFileRequest
+    public constructor(model: MapiContactFromFileRequest) {
+        this.model = model;
+    }
+    public build(): MapiContactFromFileRequest {
+        return this.model;
+    }
+        public format(format: string): MapiContactFromFileRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public file(file: Buffer): MapiContactFromFileRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
+}

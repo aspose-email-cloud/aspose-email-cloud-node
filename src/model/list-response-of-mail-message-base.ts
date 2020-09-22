@@ -60,5 +60,25 @@ export class ListResponseOfMailMessageBase {
     }
 }
 
+/**
+ *  ListResponseOfMailMessageBase model builder
+ */
+export class ListResponseOfMailMessageBaseBuilder {
+    private readonly model: ListResponseOfMailMessageBase;
+    public constructor(model: ListResponseOfMailMessageBase) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ListResponseOfMailMessageBase {
+        return this.model;
+    }
+
+    public value(value: Array< model.MailMessageBase >): ListResponseOfMailMessageBaseBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

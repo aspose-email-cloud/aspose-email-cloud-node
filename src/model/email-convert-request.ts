@@ -35,3 +35,25 @@ export class EmailConvertRequest {
         this.file = file;
     }
 }
+
+export class EmailConvertRequestBuilder {
+    private model: EmailConvertRequest
+    public constructor(model: EmailConvertRequest) {
+        this.model = model;
+    }
+    public build(): EmailConvertRequest {
+        return this.model;
+    }
+        public fromFormat(fromFormat: string): EmailConvertRequestBuilder {
+            this.model.fromFormat = fromFormat;
+            return this;
+        }
+        public toFormat(toFormat: string): EmailConvertRequestBuilder {
+            this.model.toFormat = toFormat;
+            return this;
+        }
+        public file(file: Buffer): EmailConvertRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
+}

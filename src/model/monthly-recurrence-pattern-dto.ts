@@ -103,5 +103,70 @@ export class MonthlyRecurrencePatternDto extends model.RecurrencePatternDto {
     }
 }
 
+/**
+ *  MonthlyRecurrencePatternDto model builder
+ */
+export class MonthlyRecurrencePatternDtoBuilder {
+    private readonly model: MonthlyRecurrencePatternDto;
+    public constructor(model: MonthlyRecurrencePatternDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MonthlyRecurrencePatternDto {
+        return this.model;
+    }
+
+    /**
+    * Number of recurrence units.             
+    */
+    public interval(interval: number): MonthlyRecurrencePatternDtoBuilder {
+        this.model.interval = interval;
+        return this;
+    }
+    /**
+    * Number of occurrences of the recurrence pattern.             
+    */
+    public occurs(occurs: number): MonthlyRecurrencePatternDtoBuilder {
+        this.model.occurs = occurs;
+        return this;
+    }
+    /**
+    * End date.             
+    */
+    public endDate(endDate: Date): MonthlyRecurrencePatternDtoBuilder {
+        this.model.endDate = endDate;
+        return this;
+    }
+    /**
+    * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+    */
+    public weekStart(weekStart: string): MonthlyRecurrencePatternDtoBuilder {
+        this.model.weekStart = weekStart;
+        return this;
+    }
+    /**
+    * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+    */
+    public startDay(startDay: string): MonthlyRecurrencePatternDtoBuilder {
+        this.model.startDay = startDay;
+        return this;
+    }
+    /**
+    * Start offset.             
+    */
+    public startOffset(startOffset: number): MonthlyRecurrencePatternDtoBuilder {
+        this.model.startOffset = startOffset;
+        return this;
+    }
+    /**
+    * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+    */
+    public startPosition(startPosition: string): MonthlyRecurrencePatternDtoBuilder {
+        this.model.startPosition = startPosition;
+        return this;
+    }
+}
 

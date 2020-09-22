@@ -20,3 +20,17 @@ export class StorageExistsRequest {
     }
 }
 
+export class StorageExistsRequestBuilder {
+    private model: StorageExistsRequest
+    public constructor(model: StorageExistsRequest) {
+        this.model = model;
+    }
+    public build(): StorageExistsRequest {
+        return this.model;
+    }
+        public storageName(storageName: string): StorageExistsRequestBuilder {
+            this.model.storageName = storageName;
+            return this;
+        }
+}
+
