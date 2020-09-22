@@ -5,15 +5,10 @@ import uuidv4 from "uuid/v4";
 import {
     MapiContactAsFileRequest,
     MapiContactDto,
-    MapiContactElectronicAddressDto,
-    MapiContactElectronicAddressPropertySetDto,
     MapiContactFromFileRequest,
     MapiContactGetRequest,
-    MapiContactNamePropertySetDto,
-    MapiContactPersonalInfoPropertySetDto,
-    MapiContactProfessionalPropertySetDto,
     MapiContactSaveRequest,
-    MapiContactTelephonePropertySetDto,
+    Models,
     StorageFileLocation
 } from "..";
 
@@ -50,19 +45,25 @@ describe('MAPI contact tests', function () {
     });
 
     function getMapiContactDto(): MapiContactDto {
-        const mapiContactDto = new MapiContactDto();
-        mapiContactDto.electronicAddresses = new MapiContactElectronicAddressPropertySetDto();
-        mapiContactDto.electronicAddresses.defaultEmailAddress = new MapiContactElectronicAddressDto();
-        mapiContactDto.electronicAddresses.defaultEmailAddress.emailAddress = "email@aspose.com";
-        mapiContactDto.nameInfo = new MapiContactNamePropertySetDto();
-        mapiContactDto.nameInfo.givenName = "Alex";
-        mapiContactDto.nameInfo.surname = "Thomas";
-        mapiContactDto.personalInfo = new MapiContactPersonalInfoPropertySetDto();
-        mapiContactDto.personalInfo.businessHomePage = "www.aspose.com";
-        mapiContactDto.professionalInfo = new MapiContactProfessionalPropertySetDto();
-        mapiContactDto.professionalInfo.profession = "GENERAL DIRECTOR";
-        mapiContactDto.telephones = new MapiContactTelephonePropertySetDto();
-        mapiContactDto.telephones.primaryTelephoneNumber = "+49 211 4247 21";
-        return mapiContactDto;
+        return Models.mapiContactDto()
+            .electronicAddresses(Models.mapiContactElectronicAddressPropertySetDto()
+                .defaultEmailAddress(Models.mapiContactElectronicAddressDto()
+                    .emailAddress('email@aspose.com')
+                    .build())
+                .build())
+            .nameInfo(Models.mapiContactNamePropertySetDto()
+                .givenName('Alex')
+                .surname('Thomas')
+                .build())
+            .personalInfo(Models.mapiContactPersonalInfoPropertySetDto()
+                .businessHomePage('www.aspose.com')
+                .build())
+            .professionalInfo(Models.mapiContactProfessionalPropertySetDto()
+                .profession('GENERAL DIRECTOR')
+                .build())
+            .telephones(Models.mapiContactTelephonePropertySetDto()
+                .primaryTelephoneNumber('+49 211 4247 21')
+                .build())
+            .build();
     }
 });
