@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for ClientMessageApi.fetchFile operation.
+ * Request model for clientMessageFetchFile operation.
  */
 export class ClientMessageFetchFileRequest {
     /**
@@ -58,38 +58,4 @@ export class ClientMessageFetchFileRequest {
         this.accountStorageFolder = accountStorageFolder;
         this.format = format;
     }
-}
-
-export class ClientMessageFetchFileRequestBuilder {
-    private model: ClientMessageFetchFileRequest
-    public constructor(model: ClientMessageFetchFileRequest) {
-        this.model = model;
-    }
-    public build(): ClientMessageFetchFileRequest {
-        return this.model;
-    }
-        public messageId(messageId: string): ClientMessageFetchFileRequestBuilder {
-            this.model.messageId = messageId;
-            return this;
-        }
-        public account(account: string): ClientMessageFetchFileRequestBuilder {
-            this.model.account = account;
-            return this;
-        }
-        public folder(folder: string): ClientMessageFetchFileRequestBuilder {
-            this.model.folder = folder;
-            return this;
-        }
-        public storage(storage: string): ClientMessageFetchFileRequestBuilder {
-            this.model.storage = storage;
-            return this;
-        }
-        public accountStorageFolder(accountStorageFolder: string): ClientMessageFetchFileRequestBuilder {
-            this.model.accountStorageFolder = accountStorageFolder;
-            return this;
-        }
-        public format(format: string): ClientMessageFetchFileRequestBuilder {
-            this.model.format = format;
-            return this;
-        }
 }

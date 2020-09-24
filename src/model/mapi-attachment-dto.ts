@@ -78,35 +78,5 @@ export class MapiAttachmentDto {
     }
 }
 
-/**
- *  MapiAttachmentDto model builder
- */
-export class MapiAttachmentDtoBuilder {
-    private readonly model: MapiAttachmentDto;
-    public constructor(model: MapiAttachmentDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiAttachmentDto {
-        return this.model;
-    }
-
-    /**
-    * Attachment's name             
-    */
-    public name(name: string): MapiAttachmentDtoBuilder {
-        this.model.name = name;
-        return this;
-    }
-    /**
-    * Attachment data represented as Base64 string.             
-    */
-    public dataBase64(dataBase64: string): MapiAttachmentDtoBuilder {
-        this.model.dataBase64 = dataBase64;
-        return this;
-    }
-}
 

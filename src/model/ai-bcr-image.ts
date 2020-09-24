@@ -66,28 +66,5 @@ export class AiBcrImage {
     }
 }
 
-/**
- *  AiBcrImage model builder
- */
-export class AiBcrImageBuilder {
-    private readonly model: AiBcrImage;
-    public constructor(model: AiBcrImage) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AiBcrImage {
-        return this.model;
-    }
-
-    /**
-    * Determines that image contains single VCard or more.             
-    */
-    public isSingle(isSingle: boolean): AiBcrImageBuilder {
-        this.model.isSingle = isSingle;
-        return this;
-    }
-}
 

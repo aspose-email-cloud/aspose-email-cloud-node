@@ -102,49 +102,5 @@ export class EmailThread {
     }
 }
 
-/**
- *  EmailThread model builder
- */
-export class EmailThreadBuilder {
-    private readonly model: EmailThread;
-    public constructor(model: EmailThread) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): EmailThread {
-        return this.model;
-    }
-
-    /**
-    * Thread identifier             
-    */
-    public id(id: string): EmailThreadBuilder {
-        this.model.id = id;
-        return this;
-    }
-    /**
-    * Thread subject             
-    */
-    public subject(subject: string): EmailThreadBuilder {
-        this.model.subject = subject;
-        return this;
-    }
-    /**
-    * List of messages in thread             
-    */
-    public messages(messages: Array< model.EmailDto >): EmailThreadBuilder {
-        this.model.messages = messages;
-        return this;
-    }
-    /**
-    * Thread folder location             
-    */
-    public folder(folder: string): EmailThreadBuilder {
-        this.model.folder = folder;
-        return this;
-    }
-}
 

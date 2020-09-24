@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for EmailApi.getList operation.
+ * Request model for emailGetList operation.
  */
 export class EmailGetListRequest {
     /**
@@ -50,34 +50,4 @@ export class EmailGetListRequest {
         this.itemsPerPage = itemsPerPage;
         this.pageNumber = pageNumber;
     }
-}
-
-export class EmailGetListRequestBuilder {
-    private model: EmailGetListRequest
-    public constructor(model: EmailGetListRequest) {
-        this.model = model;
-    }
-    public build(): EmailGetListRequest {
-        return this.model;
-    }
-        public format(format: string): EmailGetListRequestBuilder {
-            this.model.format = format;
-            return this;
-        }
-        public folder(folder: string): EmailGetListRequestBuilder {
-            this.model.folder = folder;
-            return this;
-        }
-        public storage(storage: string): EmailGetListRequestBuilder {
-            this.model.storage = storage;
-            return this;
-        }
-        public itemsPerPage(itemsPerPage: number): EmailGetListRequestBuilder {
-            this.model.itemsPerPage = itemsPerPage;
-            return this;
-        }
-        public pageNumber(pageNumber: number): EmailGetListRequestBuilder {
-            this.model.pageNumber = pageNumber;
-            return this;
-        }
 }

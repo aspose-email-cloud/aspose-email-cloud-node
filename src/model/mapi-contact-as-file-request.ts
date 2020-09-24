@@ -78,35 +78,5 @@ export class MapiContactAsFileRequest {
     }
 }
 
-/**
- *  MapiContactAsFileRequest model builder
- */
-export class MapiContactAsFileRequestBuilder {
-    private readonly model: MapiContactAsFileRequest;
-    public constructor(model: MapiContactAsFileRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiContactAsFileRequest {
-        return this.model;
-    }
-
-    /**
-    * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
-    */
-    public format(format: string): MapiContactAsFileRequestBuilder {
-        this.model.format = format;
-        return this;
-    }
-    /**
-    * MAPI contact model.             
-    */
-    public value(value: model.MapiContactDto): MapiContactAsFileRequestBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

@@ -72,32 +72,5 @@ export class EnumWithCustomOfInstantMessengerCategory {
     }
 }
 
-/**
- *  EnumWithCustomOfInstantMessengerCategory model builder
- */
-export class EnumWithCustomOfInstantMessengerCategoryBuilder {
-    private readonly model: EnumWithCustomOfInstantMessengerCategory;
-    public constructor(model: EnumWithCustomOfInstantMessengerCategory) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): EnumWithCustomOfInstantMessengerCategory {
-        return this.model;
-    }
-
-    /**
-    * Instant messenger address category. Enum, available values: GoogleTalk, Aim, Yahoo, Skype, Qq, Msn, Icq, Jabber, Custom, ImAddress1, ImAddress2, ImAddress3
-    */
-    public value(value: string): EnumWithCustomOfInstantMessengerCategoryBuilder {
-        this.model.value = value;
-        return this;
-    }
-    public description(description: string): EnumWithCustomOfInstantMessengerCategoryBuilder {
-        this.model.description = description;
-        return this;
-    }
-}
 

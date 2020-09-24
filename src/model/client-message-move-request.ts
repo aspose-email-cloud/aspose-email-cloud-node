@@ -84,49 +84,5 @@ export class ClientMessageMoveRequest extends model.ClientMessageBaseRequest {
     }
 }
 
-/**
- *  ClientMessageMoveRequest model builder
- */
-export class ClientMessageMoveRequestBuilder {
-    private readonly model: ClientMessageMoveRequest;
-    public constructor(model: ClientMessageMoveRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ClientMessageMoveRequest {
-        return this.model;
-    }
-
-    /**
-    * Email client account configuration location on storage.             
-    */
-    public accountLocation(accountLocation: model.StorageFileLocation): ClientMessageMoveRequestBuilder {
-        this.model.accountLocation = accountLocation;
-        return this;
-    }
-    /**
-    * Message identifier.             
-    */
-    public messageId(messageId: string): ClientMessageMoveRequestBuilder {
-        this.model.messageId = messageId;
-        return this;
-    }
-    /**
-    * Folder to move message from.             
-    */
-    public sourceFolder(sourceFolder: string): ClientMessageMoveRequestBuilder {
-        this.model.sourceFolder = sourceFolder;
-        return this;
-    }
-    /**
-    * Folder to move message to.             
-    */
-    public destinationFolder(destinationFolder: string): ClientMessageMoveRequestBuilder {
-        this.model.destinationFolder = destinationFolder;
-        return this;
-    }
-}
 

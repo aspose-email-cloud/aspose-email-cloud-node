@@ -78,35 +78,5 @@ export class MailServerFolder {
     }
 }
 
-/**
- *  MailServerFolder model builder
- */
-export class MailServerFolderBuilder {
-    private readonly model: MailServerFolder;
-    public constructor(model: MailServerFolder) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MailServerFolder {
-        return this.model;
-    }
-
-    /**
-    * Gets or sets mail folder name             
-    */
-    public name(name: string): MailServerFolderBuilder {
-        this.model.name = name;
-        return this;
-    }
-    /**
-    * Gets or sets mail folder id             
-    */
-    public id(id: string): MailServerFolderBuilder {
-        this.model.id = id;
-        return this;
-    }
-}
 

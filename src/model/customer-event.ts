@@ -78,35 +78,5 @@ export class CustomerEvent {
     }
 }
 
-/**
- *  CustomerEvent model builder
- */
-export class CustomerEventBuilder {
-    private readonly model: CustomerEvent;
-    public constructor(model: CustomerEvent) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): CustomerEvent {
-        return this.model;
-    }
-
-    /**
-    * Event category.             
-    */
-    public category(category: model.EnumWithCustomOfEventCategory): CustomerEventBuilder {
-        this.model.category = category;
-        return this;
-    }
-    /**
-    * Event date.             
-    */
-    public date(date: Date): CustomerEventBuilder {
-        this.model.date = date;
-        return this;
-    }
-}
 

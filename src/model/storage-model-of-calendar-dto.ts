@@ -69,29 +69,5 @@ export class StorageModelOfCalendarDto {
     }
 }
 
-/**
- *  StorageModelOfCalendarDto model builder
- */
-export class StorageModelOfCalendarDtoBuilder {
-    private readonly model: StorageModelOfCalendarDto;
-    public constructor(model: StorageModelOfCalendarDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): StorageModelOfCalendarDto {
-        return this.model;
-    }
-
-    public storageFile(storageFile: model.StorageFileLocation): StorageModelOfCalendarDtoBuilder {
-        this.model.storageFile = storageFile;
-        return this;
-    }
-    public value(value: model.CalendarDto): StorageModelOfCalendarDtoBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

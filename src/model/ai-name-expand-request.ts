@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for AiNameApi.expand operation.
+ * Request model for aiNameExpand operation.
  */
 export class AiNameExpandRequest {
     /**
@@ -58,38 +58,4 @@ export class AiNameExpandRequest {
         this.script = script;
         this.style = style;
     }
-}
-
-export class AiNameExpandRequestBuilder {
-    private model: AiNameExpandRequest
-    public constructor(model: AiNameExpandRequest) {
-        this.model = model;
-    }
-    public build(): AiNameExpandRequest {
-        return this.model;
-    }
-        public name(name: string): AiNameExpandRequestBuilder {
-            this.model.name = name;
-            return this;
-        }
-        public language(language: string): AiNameExpandRequestBuilder {
-            this.model.language = language;
-            return this;
-        }
-        public location(location: string): AiNameExpandRequestBuilder {
-            this.model.location = location;
-            return this;
-        }
-        public encoding(encoding: string): AiNameExpandRequestBuilder {
-            this.model.encoding = encoding;
-            return this;
-        }
-        public script(script: string): AiNameExpandRequestBuilder {
-            this.model.script = script;
-            return this;
-        }
-        public style(style: string): AiNameExpandRequestBuilder {
-            this.model.style = style;
-            return this;
-        }
 }

@@ -82,28 +82,5 @@ export class MapiPropertyDto {
     }
 }
 
-/**
- *  MapiPropertyDto model builder
- */
-export class MapiPropertyDtoBuilder {
-    private readonly model: MapiPropertyDto;
-    public constructor(model: MapiPropertyDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiPropertyDto {
-        return this.model;
-    }
-
-    /**
-    * Property descriptor             
-    */
-    public descriptor(descriptor: model.MapiPropertyDescriptor): MapiPropertyDtoBuilder {
-        this.model.descriptor = descriptor;
-        return this;
-    }
-}
 

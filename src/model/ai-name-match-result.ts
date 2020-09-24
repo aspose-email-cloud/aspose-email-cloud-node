@@ -78,35 +78,5 @@ export class AiNameMatchResult {
     }
 }
 
-/**
- *  AiNameMatchResult model builder
- */
-export class AiNameMatchResultBuilder {
-    private readonly model: AiNameMatchResult;
-    public constructor(model: AiNameMatchResult) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AiNameMatchResult {
-        return this.model;
-    }
-
-    /**
-    * Similarity score             
-    */
-    public similarity(similarity: number): AiNameMatchResultBuilder {
-        this.model.similarity = similarity;
-        return this;
-    }
-    /**
-    * Detailed description of mismatches             
-    */
-    public mismatches(mismatches: Array< model.AiNameMismatch >): AiNameMatchResultBuilder {
-        this.model.mismatches = mismatches;
-        return this;
-    }
-}
 

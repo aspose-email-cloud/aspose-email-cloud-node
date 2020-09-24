@@ -102,49 +102,5 @@ export class AttachmentBase {
     }
 }
 
-/**
- *  AttachmentBase model builder
- */
-export class AttachmentBaseBuilder {
-    private readonly model: AttachmentBase;
-    public constructor(model: AttachmentBase) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AttachmentBase {
-        return this.model;
-    }
-
-    /**
-    * Attachment file content as Base64 string.             
-    */
-    public base64Data(base64Data: string): AttachmentBaseBuilder {
-        this.model.base64Data = base64Data;
-        return this;
-    }
-    /**
-    * Attachment content id             
-    */
-    public contentId(contentId: string): AttachmentBaseBuilder {
-        this.model.contentId = contentId;
-        return this;
-    }
-    /**
-    * Content type             
-    */
-    public contentType(contentType: model.ContentType): AttachmentBaseBuilder {
-        this.model.contentType = contentType;
-        return this;
-    }
-    /**
-    * Attachment headers.             
-    */
-    public headers(headers: { [key: string]: string; }): AttachmentBaseBuilder {
-        this.model.headers = headers;
-        return this;
-    }
-}
 

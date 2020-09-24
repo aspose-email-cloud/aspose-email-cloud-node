@@ -78,35 +78,5 @@ export class ContentTypeParameter {
     }
 }
 
-/**
- *  ContentTypeParameter model builder
- */
-export class ContentTypeParameterBuilder {
-    private readonly model: ContentTypeParameter;
-    public constructor(model: ContentTypeParameter) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ContentTypeParameter {
-        return this.model;
-    }
-
-    /**
-    * Parameter name             
-    */
-    public name(name: string): ContentTypeParameterBuilder {
-        this.model.name = name;
-        return this;
-    }
-    /**
-    * Parameter value             
-    */
-    public value(value: string): ContentTypeParameterBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

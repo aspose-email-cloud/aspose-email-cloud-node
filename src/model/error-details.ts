@@ -78,35 +78,5 @@ export class ErrorDetails {
     }
 }
 
-/**
- *  ErrorDetails model builder
- */
-export class ErrorDetailsBuilder {
-    private readonly model: ErrorDetails;
-    public constructor(model: ErrorDetails) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ErrorDetails {
-        return this.model;
-    }
-
-    /**
-    * The request id
-    */
-    public requestId(requestId: string): ErrorDetailsBuilder {
-        this.model.requestId = requestId;
-        return this;
-    }
-    /**
-    * Date
-    */
-    public date(date: Date): ErrorDetailsBuilder {
-        this.model.date = date;
-        return this;
-    }
-}
 

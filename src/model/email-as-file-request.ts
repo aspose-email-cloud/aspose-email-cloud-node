@@ -78,35 +78,5 @@ export class EmailAsFileRequest {
     }
 }
 
-/**
- *  EmailAsFileRequest model builder
- */
-export class EmailAsFileRequestBuilder {
-    private readonly model: EmailAsFileRequest;
-    public constructor(model: EmailAsFileRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): EmailAsFileRequest {
-        return this.model;
-    }
-
-    /**
-    * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
-    */
-    public format(format: string): EmailAsFileRequestBuilder {
-        this.model.format = format;
-        return this;
-    }
-    /**
-    * Email model.             
-    */
-    public value(value: model.EmailDto): EmailAsFileRequestBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

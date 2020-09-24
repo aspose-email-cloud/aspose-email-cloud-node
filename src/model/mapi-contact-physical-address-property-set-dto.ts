@@ -90,42 +90,5 @@ export class MapiContactPhysicalAddressPropertySetDto {
     }
 }
 
-/**
- *  MapiContactPhysicalAddressPropertySetDto model builder
- */
-export class MapiContactPhysicalAddressPropertySetDtoBuilder {
-    private readonly model: MapiContactPhysicalAddressPropertySetDto;
-    public constructor(model: MapiContactPhysicalAddressPropertySetDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiContactPhysicalAddressPropertySetDto {
-        return this.model;
-    }
-
-    /**
-    * Specifies the address of the contact's work             
-    */
-    public workAddress(workAddress: model.MapiContactPhysicalAddressDto): MapiContactPhysicalAddressPropertySetDtoBuilder {
-        this.model.workAddress = workAddress;
-        return this;
-    }
-    /**
-    * Specifies the address of the contact's home             
-    */
-    public homeAddress(homeAddress: model.MapiContactPhysicalAddressDto): MapiContactPhysicalAddressPropertySetDtoBuilder {
-        this.model.homeAddress = homeAddress;
-        return this;
-    }
-    /**
-    * Specifies the other contact's address             
-    */
-    public otherAddress(otherAddress: model.MapiContactPhysicalAddressDto): MapiContactPhysicalAddressPropertySetDtoBuilder {
-        this.model.otherAddress = otherAddress;
-        return this;
-    }
-}
 

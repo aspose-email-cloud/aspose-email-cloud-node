@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for EmailConfigApi.discover operation.
+ * Request model for emailConfigDiscover operation.
  */
 export class EmailConfigDiscoverRequest {
     /**
@@ -26,22 +26,4 @@ export class EmailConfigDiscoverRequest {
         this.address = address;
         this.fastProcessing = fastProcessing;
     }
-}
-
-export class EmailConfigDiscoverRequestBuilder {
-    private model: EmailConfigDiscoverRequest
-    public constructor(model: EmailConfigDiscoverRequest) {
-        this.model = model;
-    }
-    public build(): EmailConfigDiscoverRequest {
-        return this.model;
-    }
-        public address(address: string): EmailConfigDiscoverRequestBuilder {
-            this.model.address = address;
-            return this;
-        }
-        public fastProcessing(fastProcessing: boolean): EmailConfigDiscoverRequestBuilder {
-            this.model.fastProcessing = fastProcessing;
-            return this;
-        }
 }

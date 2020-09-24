@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for EmailApi.convert operation.
+ * Request model for emailConvert operation.
  */
 export class EmailConvertRequest {
     /**
@@ -34,26 +34,4 @@ export class EmailConvertRequest {
         this.toFormat = toFormat;
         this.file = file;
     }
-}
-
-export class EmailConvertRequestBuilder {
-    private model: EmailConvertRequest
-    public constructor(model: EmailConvertRequest) {
-        this.model = model;
-    }
-    public build(): EmailConvertRequest {
-        return this.model;
-    }
-        public fromFormat(fromFormat: string): EmailConvertRequestBuilder {
-            this.model.fromFormat = fromFormat;
-            return this;
-        }
-        public toFormat(toFormat: string): EmailConvertRequestBuilder {
-            this.model.toFormat = toFormat;
-            return this;
-        }
-        public file(file: Buffer): EmailConvertRequestBuilder {
-            this.model.file = file;
-            return this;
-        }
 }

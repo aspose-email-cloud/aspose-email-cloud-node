@@ -72,36 +72,5 @@ export class MapiMessageSaveRequest extends model.StorageModelOfMapiMessageDto {
     }
 }
 
-/**
- *  MapiMessageSaveRequest model builder
- */
-export class MapiMessageSaveRequestBuilder {
-    private readonly model: MapiMessageSaveRequest;
-    public constructor(model: MapiMessageSaveRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiMessageSaveRequest {
-        return this.model;
-    }
-
-    public storageFile(storageFile: model.StorageFileLocation): MapiMessageSaveRequestBuilder {
-        this.model.storageFile = storageFile;
-        return this;
-    }
-    public value(value: model.MapiMessageDto): MapiMessageSaveRequestBuilder {
-        this.model.value = value;
-        return this;
-    }
-    /**
-    * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
-    */
-    public format(format: string): MapiMessageSaveRequestBuilder {
-        this.model.format = format;
-        return this;
-    }
-}
 

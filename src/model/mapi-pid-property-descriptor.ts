@@ -103,49 +103,5 @@ export class MapiPidPropertyDescriptor extends model.MapiPropertyDescriptor {
     }
 }
 
-/**
- *  MapiPidPropertyDescriptor model builder
- */
-export class MapiPidPropertyDescriptorBuilder {
-    private readonly model: MapiPidPropertyDescriptor;
-    public constructor(model: MapiPidPropertyDescriptor) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiPidPropertyDescriptor {
-        return this.model;
-    }
-
-    /**
-    * The name used to refer to the property in the documentation. The prefix of the canonical name identifies the basic characteristics of a property to the implementer. The canonical naming structure uses three categories that are denoted by the following prefixes to the canonical property name: * PidLid prefix: Properties identified by an unsigned 32-bit quantity along with a property set. * PidName prefix: Properties identified by a string name along with a property set. * PidTag prefix: Properties identified by an unsigned 16-bit quantity.             
-    */
-    public canonicalName(canonicalName: string): MapiPidPropertyDescriptorBuilder {
-        this.model.canonicalName = canonicalName;
-        return this;
-    }
-    /**
-    * [MS-OXCDATA]: Data Structures Enum, available values: Unspecified, Null, Integer16, Integer32, Floating32, Floating64, Currency, FloatingTime, ErrorCode, Boolean, Integer64, String, String8, Time, Guid, ServerId, Restriction, RuleAction, Binary, MultipleInteger16, MultipleInteger32, MultipleFloating32, MultipleFloating64, MultipleCurrency, MultipleFloatingTime, MultipleBoolean, MultipleInteger64, MultipleString, MultipleString8, MultipleTime, MultipleGuid, MultipleBinary, Object
-    */
-    public dataType(dataType: string): MapiPidPropertyDescriptorBuilder {
-        this.model.dataType = dataType;
-        return this;
-    }
-    /**
-    * Indicates if data type contains of multiple values             
-    */
-    public multipleValuesDataType(multipleValuesDataType: boolean): MapiPidPropertyDescriptorBuilder {
-        this.model.multipleValuesDataType = multipleValuesDataType;
-        return this;
-    }
-    /**
-    * A string that identifies the property             
-    */
-    public name(name: string): MapiPidPropertyDescriptorBuilder {
-        this.model.name = name;
-        return this;
-    }
-}
 

@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for AiNameApi.parse operation.
+ * Request model for aiNameParse operation.
  */
 export class AiNameParseRequest {
     /**
@@ -58,38 +58,4 @@ export class AiNameParseRequest {
         this.script = script;
         this.style = style;
     }
-}
-
-export class AiNameParseRequestBuilder {
-    private model: AiNameParseRequest
-    public constructor(model: AiNameParseRequest) {
-        this.model = model;
-    }
-    public build(): AiNameParseRequest {
-        return this.model;
-    }
-        public name(name: string): AiNameParseRequestBuilder {
-            this.model.name = name;
-            return this;
-        }
-        public language(language: string): AiNameParseRequestBuilder {
-            this.model.language = language;
-            return this;
-        }
-        public location(location: string): AiNameParseRequestBuilder {
-            this.model.location = location;
-            return this;
-        }
-        public encoding(encoding: string): AiNameParseRequestBuilder {
-            this.model.encoding = encoding;
-            return this;
-        }
-        public script(script: string): AiNameParseRequestBuilder {
-            this.model.script = script;
-            return this;
-        }
-        public style(style: string): AiNameParseRequestBuilder {
-            this.model.style = style;
-            return this;
-        }
 }

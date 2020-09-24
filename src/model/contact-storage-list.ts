@@ -58,25 +58,5 @@ export class ContactStorageList extends model.ListResponseOfStorageModelOfContac
     }
 }
 
-/**
- *  ContactStorageList model builder
- */
-export class ContactStorageListBuilder {
-    private readonly model: ContactStorageList;
-    public constructor(model: ContactStorageList) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ContactStorageList {
-        return this.model;
-    }
-
-    public value(value: Array< model.StorageModelOfContactDto >): ContactStorageListBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

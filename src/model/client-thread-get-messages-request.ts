@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for ClientThreadApi.getMessages operation.
+ * Request model for clientThreadGetMessages operation.
  */
 export class ClientThreadGetMessagesRequest {
     /**
@@ -50,34 +50,4 @@ export class ClientThreadGetMessagesRequest {
         this.storage = storage;
         this.accountStorageFolder = accountStorageFolder;
     }
-}
-
-export class ClientThreadGetMessagesRequestBuilder {
-    private model: ClientThreadGetMessagesRequest
-    public constructor(model: ClientThreadGetMessagesRequest) {
-        this.model = model;
-    }
-    public build(): ClientThreadGetMessagesRequest {
-        return this.model;
-    }
-        public threadId(threadId: string): ClientThreadGetMessagesRequestBuilder {
-            this.model.threadId = threadId;
-            return this;
-        }
-        public account(account: string): ClientThreadGetMessagesRequestBuilder {
-            this.model.account = account;
-            return this;
-        }
-        public folder(folder: string): ClientThreadGetMessagesRequestBuilder {
-            this.model.folder = folder;
-            return this;
-        }
-        public storage(storage: string): ClientThreadGetMessagesRequestBuilder {
-            this.model.storage = storage;
-            return this;
-        }
-        public accountStorageFolder(accountStorageFolder: string): ClientThreadGetMessagesRequestBuilder {
-            this.model.accountStorageFolder = accountStorageFolder;
-            return this;
-        }
 }

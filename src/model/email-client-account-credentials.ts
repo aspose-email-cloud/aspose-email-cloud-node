@@ -82,28 +82,5 @@ export class EmailClientAccountCredentials {
     }
 }
 
-/**
- *  EmailClientAccountCredentials model builder
- */
-export class EmailClientAccountCredentialsBuilder {
-    private readonly model: EmailClientAccountCredentials;
-    public constructor(model: EmailClientAccountCredentials) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): EmailClientAccountCredentials {
-        return this.model;
-    }
-
-    /**
-    * Email client account login             
-    */
-    public login(login: string): EmailClientAccountCredentialsBuilder {
-        this.model.login = login;
-        return this;
-    }
-}
 

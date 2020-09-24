@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for CalendarApi.fromFile operation.
+ * Request model for calendarFromFile operation.
  */
 export class CalendarFromFileRequest {
     /**
@@ -18,18 +18,4 @@ export class CalendarFromFileRequest {
         
         this.file = file;
     }
-}
-
-export class CalendarFromFileRequestBuilder {
-    private model: CalendarFromFileRequest
-    public constructor(model: CalendarFromFileRequest) {
-        this.model = model;
-    }
-    public build(): CalendarFromFileRequest {
-        return this.model;
-    }
-        public file(file: Buffer): CalendarFromFileRequestBuilder {
-            this.model.file = file;
-            return this;
-        }
 }

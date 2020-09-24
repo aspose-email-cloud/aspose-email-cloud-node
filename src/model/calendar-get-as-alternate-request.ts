@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for CalendarApi.getAsAlternate operation.
+ * Request model for calendarGetAsAlternate operation.
  */
 export class CalendarGetAsAlternateRequest {
     /**
@@ -50,34 +50,4 @@ export class CalendarGetAsAlternateRequest {
         this.folder = folder;
         this.storage = storage;
     }
-}
-
-export class CalendarGetAsAlternateRequestBuilder {
-    private model: CalendarGetAsAlternateRequest
-    public constructor(model: CalendarGetAsAlternateRequest) {
-        this.model = model;
-    }
-    public build(): CalendarGetAsAlternateRequest {
-        return this.model;
-    }
-        public fileName(fileName: string): CalendarGetAsAlternateRequestBuilder {
-            this.model.fileName = fileName;
-            return this;
-        }
-        public calendarAction(calendarAction: string): CalendarGetAsAlternateRequestBuilder {
-            this.model.calendarAction = calendarAction;
-            return this;
-        }
-        public sequenceId(sequenceId: string): CalendarGetAsAlternateRequestBuilder {
-            this.model.sequenceId = sequenceId;
-            return this;
-        }
-        public folder(folder: string): CalendarGetAsAlternateRequestBuilder {
-            this.model.folder = folder;
-            return this;
-        }
-        public storage(storage: string): CalendarGetAsAlternateRequestBuilder {
-            this.model.storage = storage;
-            return this;
-        }
 }

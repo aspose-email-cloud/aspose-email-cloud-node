@@ -60,25 +60,5 @@ export class ValueTOfBoolean {
     }
 }
 
-/**
- *  ValueTOfBoolean model builder
- */
-export class ValueTOfBooleanBuilder {
-    private readonly model: ValueTOfBoolean;
-    public constructor(model: ValueTOfBoolean) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ValueTOfBoolean {
-        return this.model;
-    }
-
-    public value(value: boolean): ValueTOfBooleanBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

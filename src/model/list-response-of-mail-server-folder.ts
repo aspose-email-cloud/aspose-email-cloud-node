@@ -60,25 +60,5 @@ export class ListResponseOfMailServerFolder {
     }
 }
 
-/**
- *  ListResponseOfMailServerFolder model builder
- */
-export class ListResponseOfMailServerFolderBuilder {
-    private readonly model: ListResponseOfMailServerFolder;
-    public constructor(model: ListResponseOfMailServerFolder) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ListResponseOfMailServerFolder {
-        return this.model;
-    }
-
-    public value(value: Array< model.MailServerFolder >): ListResponseOfMailServerFolderBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

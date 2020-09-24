@@ -72,42 +72,5 @@ export class ClientThreadDeleteRequest extends model.ClientThreadBaseRequest {
     }
 }
 
-/**
- *  ClientThreadDeleteRequest model builder
- */
-export class ClientThreadDeleteRequestBuilder {
-    private readonly model: ClientThreadDeleteRequest;
-    public constructor(model: ClientThreadDeleteRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ClientThreadDeleteRequest {
-        return this.model;
-    }
-
-    /**
-    * Email client account configuration location on storage.             
-    */
-    public accountLocation(accountLocation: model.StorageFileLocation): ClientThreadDeleteRequestBuilder {
-        this.model.accountLocation = accountLocation;
-        return this;
-    }
-    /**
-    * Thread identifier.             
-    */
-    public threadId(threadId: string): ClientThreadDeleteRequestBuilder {
-        this.model.threadId = threadId;
-        return this;
-    }
-    /**
-    * Folder on email server, where thread is stored.             
-    */
-    public folder(folder: string): ClientThreadDeleteRequestBuilder {
-        this.model.folder = folder;
-        return this;
-    }
-}
 

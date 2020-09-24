@@ -90,42 +90,5 @@ export class AiBcrParseStorageRequest {
     }
 }
 
-/**
- *  AiBcrParseStorageRequest model builder
- */
-export class AiBcrParseStorageRequestBuilder {
-    private readonly model: AiBcrParseStorageRequest;
-    public constructor(model: AiBcrParseStorageRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AiBcrParseStorageRequest {
-        return this.model;
-    }
-
-    /**
-    * Parse output folder location on storage             
-    */
-    public outFolder(outFolder: model.StorageFolderLocation): AiBcrParseStorageRequestBuilder {
-        this.model.outFolder = outFolder;
-        return this;
-    }
-    /**
-    * Images to parse.             
-    */
-    public images(images: Array< model.AiBcrImageStorageFile >): AiBcrParseStorageRequestBuilder {
-        this.model.images = images;
-        return this;
-    }
-    /**
-    * Recognition options.             
-    */
-    public options(options: model.AiBcrOptions): AiBcrParseStorageRequestBuilder {
-        this.model.options = options;
-        return this;
-    }
-}
 

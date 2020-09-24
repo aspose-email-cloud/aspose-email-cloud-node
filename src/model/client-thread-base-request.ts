@@ -69,35 +69,5 @@ export class ClientThreadBaseRequest extends model.ClientAccountBaseRequest {
     }
 }
 
-/**
- *  ClientThreadBaseRequest model builder
- */
-export class ClientThreadBaseRequestBuilder {
-    private readonly model: ClientThreadBaseRequest;
-    public constructor(model: ClientThreadBaseRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ClientThreadBaseRequest {
-        return this.model;
-    }
-
-    /**
-    * Email client account configuration location on storage.             
-    */
-    public accountLocation(accountLocation: model.StorageFileLocation): ClientThreadBaseRequestBuilder {
-        this.model.accountLocation = accountLocation;
-        return this;
-    }
-    /**
-    * Thread identifier.             
-    */
-    public threadId(threadId: string): ClientThreadBaseRequestBuilder {
-        this.model.threadId = threadId;
-        return this;
-    }
-}
 

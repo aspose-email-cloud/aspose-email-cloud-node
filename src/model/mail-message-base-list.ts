@@ -58,25 +58,5 @@ export class MailMessageBaseList extends model.ListResponseOfMailMessageBase {
     }
 }
 
-/**
- *  MailMessageBaseList model builder
- */
-export class MailMessageBaseListBuilder {
-    private readonly model: MailMessageBaseList;
-    public constructor(model: MailMessageBaseList) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MailMessageBaseList {
-        return this.model;
-    }
-
-    public value(value: Array< model.MailMessageBase >): MailMessageBaseListBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

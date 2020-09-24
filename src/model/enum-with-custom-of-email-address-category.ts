@@ -72,32 +72,5 @@ export class EnumWithCustomOfEmailAddressCategory {
     }
 }
 
-/**
- *  EnumWithCustomOfEmailAddressCategory model builder
- */
-export class EnumWithCustomOfEmailAddressCategoryBuilder {
-    private readonly model: EnumWithCustomOfEmailAddressCategory;
-    public constructor(model: EnumWithCustomOfEmailAddressCategory) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): EnumWithCustomOfEmailAddressCategory {
-        return this.model;
-    }
-
-    /**
-    * Represents category for an email address. Enum, available values: Home, Work, Custom, Email1, Email2, Email3
-    */
-    public value(value: string): EnumWithCustomOfEmailAddressCategoryBuilder {
-        this.model.value = value;
-        return this;
-    }
-    public description(description: string): EnumWithCustomOfEmailAddressCategoryBuilder {
-        this.model.description = description;
-        return this;
-    }
-}
 

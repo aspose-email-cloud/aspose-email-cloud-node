@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for StorageApi.getFileVersions operation.
+ * Request model for getFileVersions operation.
  */
 export class GetFileVersionsRequest {
     /**
@@ -26,22 +26,4 @@ export class GetFileVersionsRequest {
         this.path = path;
         this.storageName = storageName;
     }
-}
-
-export class GetFileVersionsRequestBuilder {
-    private model: GetFileVersionsRequest
-    public constructor(model: GetFileVersionsRequest) {
-        this.model = model;
-    }
-    public build(): GetFileVersionsRequest {
-        return this.model;
-    }
-        public path(path: string): GetFileVersionsRequestBuilder {
-            this.model.path = path;
-            return this;
-        }
-        public storageName(storageName: string): GetFileVersionsRequestBuilder {
-            this.model.storageName = storageName;
-            return this;
-        }
 }

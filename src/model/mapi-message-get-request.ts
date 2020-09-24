@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for MapiMessageApi.get operation.
+ * Request model for mapiMessageGet operation.
  */
 export class MapiMessageGetRequest {
     /**
@@ -42,30 +42,4 @@ export class MapiMessageGetRequest {
         this.folder = folder;
         this.storage = storage;
     }
-}
-
-export class MapiMessageGetRequestBuilder {
-    private model: MapiMessageGetRequest
-    public constructor(model: MapiMessageGetRequest) {
-        this.model = model;
-    }
-    public build(): MapiMessageGetRequest {
-        return this.model;
-    }
-        public format(format: string): MapiMessageGetRequestBuilder {
-            this.model.format = format;
-            return this;
-        }
-        public fileName(fileName: string): MapiMessageGetRequestBuilder {
-            this.model.fileName = fileName;
-            return this;
-        }
-        public folder(folder: string): MapiMessageGetRequestBuilder {
-            this.model.folder = folder;
-            return this;
-        }
-        public storage(storage: string): MapiMessageGetRequestBuilder {
-            this.model.storage = storage;
-            return this;
-        }
 }

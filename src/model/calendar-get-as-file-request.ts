@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for CalendarApi.getAsFile operation.
+ * Request model for calendarGetAsFile operation.
  */
 export class CalendarGetAsFileRequest {
     /**
@@ -42,30 +42,4 @@ export class CalendarGetAsFileRequest {
         this.storage = storage;
         this.folder = folder;
     }
-}
-
-export class CalendarGetAsFileRequestBuilder {
-    private model: CalendarGetAsFileRequest
-    public constructor(model: CalendarGetAsFileRequest) {
-        this.model = model;
-    }
-    public build(): CalendarGetAsFileRequest {
-        return this.model;
-    }
-        public fileName(fileName: string): CalendarGetAsFileRequestBuilder {
-            this.model.fileName = fileName;
-            return this;
-        }
-        public format(format: string): CalendarGetAsFileRequestBuilder {
-            this.model.format = format;
-            return this;
-        }
-        public storage(storage: string): CalendarGetAsFileRequestBuilder {
-            this.model.storage = storage;
-            return this;
-        }
-        public folder(folder: string): CalendarGetAsFileRequestBuilder {
-            this.model.folder = folder;
-            return this;
-        }
 }

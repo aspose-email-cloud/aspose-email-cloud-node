@@ -93,49 +93,5 @@ export class ClientMessageAppendRequest extends model.ClientAccountBaseRequest {
     }
 }
 
-/**
- *  ClientMessageAppendRequest model builder
- */
-export class ClientMessageAppendRequestBuilder {
-    private readonly model: ClientMessageAppendRequest;
-    public constructor(model: ClientMessageAppendRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ClientMessageAppendRequest {
-        return this.model;
-    }
-
-    /**
-    * Email client account configuration location on storage.             
-    */
-    public accountLocation(accountLocation: model.StorageFileLocation): ClientMessageAppendRequestBuilder {
-        this.model.accountLocation = accountLocation;
-        return this;
-    }
-    /**
-    * Path to folder on email server to append message to.             
-    */
-    public folder(folder: string): ClientMessageAppendRequestBuilder {
-        this.model.folder = folder;
-        return this;
-    }
-    /**
-    * Message to append.             
-    */
-    public message(message: model.MailMessageBase): ClientMessageAppendRequestBuilder {
-        this.model.message = message;
-        return this;
-    }
-    /**
-    * Determines that appended message should be market as sent or not.             
-    */
-    public markAsSent(markAsSent: boolean): ClientMessageAppendRequestBuilder {
-        this.model.markAsSent = markAsSent;
-        return this;
-    }
-}
 

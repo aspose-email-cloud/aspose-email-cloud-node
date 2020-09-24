@@ -78,35 +78,5 @@ export class MapiContactEventPropertySetDto {
     }
 }
 
-/**
- *  MapiContactEventPropertySetDto model builder
- */
-export class MapiContactEventPropertySetDtoBuilder {
-    private readonly model: MapiContactEventPropertySetDto;
-    public constructor(model: MapiContactEventPropertySetDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiContactEventPropertySetDto {
-        return this.model;
-    }
-
-    /**
-    * Specifies the birthday of the contact.
-    */
-    public birthday(birthday: Date): MapiContactEventPropertySetDtoBuilder {
-        this.model.birthday = birthday;
-        return this;
-    }
-    /**
-    * Specifies the wedding anniversary of the contact.             
-    */
-    public weddingAnniversary(weddingAnniversary: Date): MapiContactEventPropertySetDtoBuilder {
-        this.model.weddingAnniversary = weddingAnniversary;
-        return this;
-    }
-}
 

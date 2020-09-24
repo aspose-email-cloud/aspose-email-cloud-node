@@ -78,35 +78,5 @@ export class AiBcrOptions {
     }
 }
 
-/**
- *  AiBcrOptions model builder
- */
-export class AiBcrOptionsBuilder {
-    private readonly model: AiBcrOptions;
-    public constructor(model: AiBcrOptions) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AiBcrOptions {
-        return this.model;
-    }
-
-    /**
-    * Comma-separated ISO-639 codes of languages (either 639-1 or 639-3; i.e. \"it\" or \"ita\" for Italian); it's \"\" by default.             
-    */
-    public languages(languages: string): AiBcrOptionsBuilder {
-        this.model.languages = languages;
-        return this;
-    }
-    /**
-    * Comma-separated codes of countries.             
-    */
-    public countries(countries: string): AiBcrOptionsBuilder {
-        this.model.countries = countries;
-        return this;
-    }
-}
 

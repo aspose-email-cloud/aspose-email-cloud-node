@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for CalendarApi.getList operation.
+ * Request model for calendarGetList operation.
  */
 export class CalendarGetListRequest {
     /**
@@ -42,30 +42,4 @@ export class CalendarGetListRequest {
         this.pageNumber = pageNumber;
         this.storage = storage;
     }
-}
-
-export class CalendarGetListRequestBuilder {
-    private model: CalendarGetListRequest
-    public constructor(model: CalendarGetListRequest) {
-        this.model = model;
-    }
-    public build(): CalendarGetListRequest {
-        return this.model;
-    }
-        public folder(folder: string): CalendarGetListRequestBuilder {
-            this.model.folder = folder;
-            return this;
-        }
-        public itemsPerPage(itemsPerPage: number): CalendarGetListRequestBuilder {
-            this.model.itemsPerPage = itemsPerPage;
-            return this;
-        }
-        public pageNumber(pageNumber: number): CalendarGetListRequestBuilder {
-            this.model.pageNumber = pageNumber;
-            return this;
-        }
-        public storage(storage: string): CalendarGetListRequestBuilder {
-            this.model.storage = storage;
-            return this;
-        }
 }

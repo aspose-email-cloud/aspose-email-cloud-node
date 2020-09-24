@@ -78,35 +78,5 @@ export class ContactAsFileRequest {
     }
 }
 
-/**
- *  ContactAsFileRequest model builder
- */
-export class ContactAsFileRequestBuilder {
-    private readonly model: ContactAsFileRequest;
-    public constructor(model: ContactAsFileRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ContactAsFileRequest {
-        return this.model;
-    }
-
-    /**
-    * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
-    */
-    public format(format: string): ContactAsFileRequestBuilder {
-        this.model.format = format;
-        return this;
-    }
-    /**
-    * Contact model.             
-    */
-    public value(value: model.ContactDto): ContactAsFileRequestBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

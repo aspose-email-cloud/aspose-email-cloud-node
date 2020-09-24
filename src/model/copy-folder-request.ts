@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for FolderApi.copyFolder operation.
+ * Request model for copyFolder operation.
  */
 export class CopyFolderRequest {
     /**
@@ -42,30 +42,4 @@ export class CopyFolderRequest {
         this.srcStorageName = srcStorageName;
         this.destStorageName = destStorageName;
     }
-}
-
-export class CopyFolderRequestBuilder {
-    private model: CopyFolderRequest
-    public constructor(model: CopyFolderRequest) {
-        this.model = model;
-    }
-    public build(): CopyFolderRequest {
-        return this.model;
-    }
-        public srcPath(srcPath: string): CopyFolderRequestBuilder {
-            this.model.srcPath = srcPath;
-            return this;
-        }
-        public destPath(destPath: string): CopyFolderRequestBuilder {
-            this.model.destPath = destPath;
-            return this;
-        }
-        public srcStorageName(srcStorageName: string): CopyFolderRequestBuilder {
-            this.model.srcStorageName = srcStorageName;
-            return this;
-        }
-        public destStorageName(destStorageName: string): CopyFolderRequestBuilder {
-            this.model.destStorageName = destStorageName;
-            return this;
-        }
 }

@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for FolderApi.createFolder operation.
+ * Request model for createFolder operation.
  */
 export class CreateFolderRequest {
     /**
@@ -26,22 +26,4 @@ export class CreateFolderRequest {
         this.path = path;
         this.storageName = storageName;
     }
-}
-
-export class CreateFolderRequestBuilder {
-    private model: CreateFolderRequest
-    public constructor(model: CreateFolderRequest) {
-        this.model = model;
-    }
-    public build(): CreateFolderRequest {
-        return this.model;
-    }
-        public path(path: string): CreateFolderRequestBuilder {
-            this.model.path = path;
-            return this;
-        }
-        public storageName(storageName: string): CreateFolderRequestBuilder {
-            this.model.storageName = storageName;
-            return this;
-        }
 }

@@ -58,25 +58,5 @@ export class MailServerFolderList extends model.ListResponseOfMailServerFolder {
     }
 }
 
-/**
- *  MailServerFolderList model builder
- */
-export class MailServerFolderListBuilder {
-    private readonly model: MailServerFolderList;
-    public constructor(model: MailServerFolderList) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MailServerFolderList {
-        return this.model;
-    }
-
-    public value(value: Array< model.MailServerFolder >): MailServerFolderListBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

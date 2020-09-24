@@ -70,35 +70,5 @@ export class MapiFileAsPropertyDto extends model.MapiPropertyDto {
     }
 }
 
-/**
- *  MapiFileAsPropertyDto model builder
- */
-export class MapiFileAsPropertyDtoBuilder {
-    private readonly model: MapiFileAsPropertyDto;
-    public constructor(model: MapiFileAsPropertyDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiFileAsPropertyDto {
-        return this.model;
-    }
-
-    /**
-    * Property descriptor             
-    */
-    public descriptor(descriptor: model.MapiPropertyDescriptor): MapiFileAsPropertyDtoBuilder {
-        this.model.descriptor = descriptor;
-        return this;
-    }
-    /**
-    * Defines how to construct what is displayed for a contact in the FileAs property. Enum, available values: None, LastCommaFirst, FirstSpaceLast, Company, LastCommaFirstCompany, CompanyLastFirst, LastFirst, LastFirstCompany, CompanyLastCommaFirst, LastFirstSuffix, LastSpaceFirstCompany, CompanyLastSpaceFirst, LastSpaceFirst, DisplayName, FirstName, LastFirstMiddleSuffix, LastName, Empty
-    */
-    public value(value: string): MapiFileAsPropertyDtoBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

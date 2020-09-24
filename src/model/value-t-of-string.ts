@@ -60,25 +60,5 @@ export class ValueTOfString {
     }
 }
 
-/**
- *  ValueTOfString model builder
- */
-export class ValueTOfStringBuilder {
-    private readonly model: ValueTOfString;
-    public constructor(model: ValueTOfString) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ValueTOfString {
-        return this.model;
-    }
-
-    public value(value: string): ValueTOfStringBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

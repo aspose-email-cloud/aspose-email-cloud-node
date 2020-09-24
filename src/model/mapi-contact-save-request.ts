@@ -72,36 +72,5 @@ export class MapiContactSaveRequest extends model.StorageModelOfMapiContactDto {
     }
 }
 
-/**
- *  MapiContactSaveRequest model builder
- */
-export class MapiContactSaveRequestBuilder {
-    private readonly model: MapiContactSaveRequest;
-    public constructor(model: MapiContactSaveRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiContactSaveRequest {
-        return this.model;
-    }
-
-    public storageFile(storageFile: model.StorageFileLocation): MapiContactSaveRequestBuilder {
-        this.model.storageFile = storageFile;
-        return this;
-    }
-    public value(value: model.MapiContactDto): MapiContactSaveRequestBuilder {
-        this.model.value = value;
-        return this;
-    }
-    /**
-    * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
-    */
-    public format(format: string): MapiContactSaveRequestBuilder {
-        this.model.format = format;
-        return this;
-    }
-}
 

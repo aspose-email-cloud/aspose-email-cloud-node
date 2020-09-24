@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for CalendarApi.convert operation.
+ * Request model for calendarConvert operation.
  */
 export class CalendarConvertRequest {
     /**
@@ -26,22 +26,4 @@ export class CalendarConvertRequest {
         this.format = format;
         this.file = file;
     }
-}
-
-export class CalendarConvertRequestBuilder {
-    private model: CalendarConvertRequest
-    public constructor(model: CalendarConvertRequest) {
-        this.model = model;
-    }
-    public build(): CalendarConvertRequest {
-        return this.model;
-    }
-        public format(format: string): CalendarConvertRequestBuilder {
-            this.model.format = format;
-            return this;
-        }
-        public file(file: Buffer): CalendarConvertRequestBuilder {
-            this.model.file = file;
-            return this;
-        }
 }

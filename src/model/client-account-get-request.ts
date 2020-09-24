@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for ClientAccountApi.get operation.
+ * Request model for clientAccountGet operation.
  */
 export class ClientAccountGetRequest {
     /**
@@ -34,26 +34,4 @@ export class ClientAccountGetRequest {
         this.folder = folder;
         this.storage = storage;
     }
-}
-
-export class ClientAccountGetRequestBuilder {
-    private model: ClientAccountGetRequest
-    public constructor(model: ClientAccountGetRequest) {
-        this.model = model;
-    }
-    public build(): ClientAccountGetRequest {
-        return this.model;
-    }
-        public fileName(fileName: string): ClientAccountGetRequestBuilder {
-            this.model.fileName = fileName;
-            return this;
-        }
-        public folder(folder: string): ClientAccountGetRequestBuilder {
-            this.model.folder = folder;
-            return this;
-        }
-        public storage(storage: string): ClientAccountGetRequestBuilder {
-            this.model.storage = storage;
-            return this;
-        }
 }

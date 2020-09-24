@@ -58,25 +58,5 @@ export class EmailList extends model.ListResponseOfEmailDto {
     }
 }
 
-/**
- *  EmailList model builder
- */
-export class EmailListBuilder {
-    private readonly model: EmailList;
-    public constructor(model: EmailList) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): EmailList {
-        return this.model;
-    }
-
-    public value(value: Array< model.EmailDto >): EmailListBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

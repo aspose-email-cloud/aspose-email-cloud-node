@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for MapiContactApi.fromFile operation.
+ * Request model for mapiContactFromFile operation.
  */
 export class MapiContactFromFileRequest {
     /**
@@ -26,22 +26,4 @@ export class MapiContactFromFileRequest {
         this.format = format;
         this.file = file;
     }
-}
-
-export class MapiContactFromFileRequestBuilder {
-    private model: MapiContactFromFileRequest
-    public constructor(model: MapiContactFromFileRequest) {
-        this.model = model;
-    }
-    public build(): MapiContactFromFileRequest {
-        return this.model;
-    }
-        public format(format: string): MapiContactFromFileRequestBuilder {
-            this.model.format = format;
-            return this;
-        }
-        public file(file: Buffer): MapiContactFromFileRequestBuilder {
-            this.model.file = file;
-            return this;
-        }
 }

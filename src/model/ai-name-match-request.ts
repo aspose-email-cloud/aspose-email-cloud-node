@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for AiNameApi.match operation.
+ * Request model for aiNameMatch operation.
  */
 export class AiNameMatchRequest {
     /**
@@ -66,42 +66,4 @@ export class AiNameMatchRequest {
         this.script = script;
         this.style = style;
     }
-}
-
-export class AiNameMatchRequestBuilder {
-    private model: AiNameMatchRequest
-    public constructor(model: AiNameMatchRequest) {
-        this.model = model;
-    }
-    public build(): AiNameMatchRequest {
-        return this.model;
-    }
-        public name(name: string): AiNameMatchRequestBuilder {
-            this.model.name = name;
-            return this;
-        }
-        public otherName(otherName: string): AiNameMatchRequestBuilder {
-            this.model.otherName = otherName;
-            return this;
-        }
-        public language(language: string): AiNameMatchRequestBuilder {
-            this.model.language = language;
-            return this;
-        }
-        public location(location: string): AiNameMatchRequestBuilder {
-            this.model.location = location;
-            return this;
-        }
-        public encoding(encoding: string): AiNameMatchRequestBuilder {
-            this.model.encoding = encoding;
-            return this;
-        }
-        public script(script: string): AiNameMatchRequestBuilder {
-            this.model.script = script;
-            return this;
-        }
-        public style(style: string): AiNameMatchRequestBuilder {
-            this.model.style = style;
-            return this;
-        }
 }

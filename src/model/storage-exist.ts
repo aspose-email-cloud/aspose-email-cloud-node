@@ -66,28 +66,5 @@ export class StorageExist {
     }
 }
 
-/**
- *  StorageExist model builder
- */
-export class StorageExistBuilder {
-    private readonly model: StorageExist;
-    public constructor(model: StorageExist) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): StorageExist {
-        return this.model;
-    }
-
-    /**
-    * Shows that the storage exists.             
-    */
-    public exists(exists: boolean): StorageExistBuilder {
-        this.model.exists = exists;
-        return this;
-    }
-}
 

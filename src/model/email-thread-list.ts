@@ -58,25 +58,5 @@ export class EmailThreadList extends model.ListResponseOfEmailThread {
     }
 }
 
-/**
- *  EmailThreadList model builder
- */
-export class EmailThreadListBuilder {
-    private readonly model: EmailThreadList;
-    public constructor(model: EmailThreadList) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): EmailThreadList {
-        return this.model;
-    }
-
-    public value(value: Array< model.EmailThread >): EmailThreadListBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

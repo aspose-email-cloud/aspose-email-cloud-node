@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for StorageApi.objectExists operation.
+ * Request model for objectExists operation.
  */
 export class ObjectExistsRequest {
     /**
@@ -34,26 +34,4 @@ export class ObjectExistsRequest {
         this.storageName = storageName;
         this.versionId = versionId;
     }
-}
-
-export class ObjectExistsRequestBuilder {
-    private model: ObjectExistsRequest
-    public constructor(model: ObjectExistsRequest) {
-        this.model = model;
-    }
-    public build(): ObjectExistsRequest {
-        return this.model;
-    }
-        public path(path: string): ObjectExistsRequestBuilder {
-            this.model.path = path;
-            return this;
-        }
-        public storageName(storageName: string): ObjectExistsRequestBuilder {
-            this.model.storageName = storageName;
-            return this;
-        }
-        public versionId(versionId: string): ObjectExistsRequestBuilder {
-            this.model.versionId = versionId;
-            return this;
-        }
 }

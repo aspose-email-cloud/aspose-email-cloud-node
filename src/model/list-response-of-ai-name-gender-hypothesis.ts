@@ -60,25 +60,5 @@ export class ListResponseOfAiNameGenderHypothesis {
     }
 }
 
-/**
- *  ListResponseOfAiNameGenderHypothesis model builder
- */
-export class ListResponseOfAiNameGenderHypothesisBuilder {
-    private readonly model: ListResponseOfAiNameGenderHypothesis;
-    public constructor(model: ListResponseOfAiNameGenderHypothesis) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ListResponseOfAiNameGenderHypothesis {
-        return this.model;
-    }
-
-    public value(value: Array< model.AiNameGenderHypothesis >): ListResponseOfAiNameGenderHypothesisBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 
