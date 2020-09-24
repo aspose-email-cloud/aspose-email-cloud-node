@@ -78,5 +78,35 @@ export class EmailClientMultiAccount {
     }
 }
 
+/**
+ *  EmailClientMultiAccount model builder
+ */
+export class EmailClientMultiAccountBuilder {
+    private readonly model: EmailClientMultiAccount;
+    public constructor(model: EmailClientMultiAccount) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): EmailClientMultiAccount {
+        return this.model;
+    }
+
+    /**
+    * Email client receive accounts             
+    */
+    public receiveAccounts(receiveAccounts: Array< model.EmailClientAccount >): EmailClientMultiAccountBuilder {
+        this.model.receiveAccounts = receiveAccounts;
+        return this;
+    }
+    /**
+    * Email client send account             
+    */
+    public sendAccount(sendAccount: model.EmailClientAccount): EmailClientMultiAccountBuilder {
+        this.model.sendAccount = sendAccount;
+        return this;
+    }
+}
 

@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for disposableEmailIsDisposable operation.
+ * Request model for DisposableEmailApi.isDisposable operation.
  */
 export class DisposableEmailIsDisposableRequest {
     /**
@@ -18,4 +18,20 @@ export class DisposableEmailIsDisposableRequest {
         
         this.address = address;
     }
+}
+
+export class DisposableEmailIsDisposableRequestBuilder {
+    private model: DisposableEmailIsDisposableRequest
+    public constructor(model: DisposableEmailIsDisposableRequest) {
+        this.model = model;
+    }
+    public build(): DisposableEmailIsDisposableRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public address(address: string): DisposableEmailIsDisposableRequestBuilder {
+            this.model.address = address;
+            return this;
+        }
 }

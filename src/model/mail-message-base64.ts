@@ -79,5 +79,35 @@ export class MailMessageBase64 extends model.MailMessageBase {
     }
 }
 
+/**
+ *  MailMessageBase64 model builder
+ */
+export class MailMessageBase64Builder {
+    private readonly model: MailMessageBase64;
+    public constructor(model: MailMessageBase64) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MailMessageBase64 {
+        return this.model;
+    }
+
+    /**
+    * Email message file data encoded to Base64 string.             
+    */
+    public valueBase64(valueBase64: string): MailMessageBase64Builder {
+        this.model.valueBase64 = valueBase64;
+        return this;
+    }
+    /**
+    * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+    */
+    public format(format: string): MailMessageBase64Builder {
+        this.model.format = format;
+        return this;
+    }
+}
 

@@ -69,5 +69,29 @@ export class StorageModelOfMapiCalendarDto {
     }
 }
 
+/**
+ *  StorageModelOfMapiCalendarDto model builder
+ */
+export class StorageModelOfMapiCalendarDtoBuilder {
+    private readonly model: StorageModelOfMapiCalendarDto;
+    public constructor(model: StorageModelOfMapiCalendarDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): StorageModelOfMapiCalendarDto {
+        return this.model;
+    }
+
+    public storageFile(storageFile: model.StorageFileLocation): StorageModelOfMapiCalendarDtoBuilder {
+        this.model.storageFile = storageFile;
+        return this;
+    }
+    public value(value: model.MapiCalendarDto): StorageModelOfMapiCalendarDtoBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

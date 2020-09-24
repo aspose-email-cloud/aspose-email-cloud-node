@@ -60,5 +60,25 @@ export class ListResponseOfStorageModelOfCalendarDto {
     }
 }
 
+/**
+ *  ListResponseOfStorageModelOfCalendarDto model builder
+ */
+export class ListResponseOfStorageModelOfCalendarDtoBuilder {
+    private readonly model: ListResponseOfStorageModelOfCalendarDto;
+    public constructor(model: ListResponseOfStorageModelOfCalendarDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ListResponseOfStorageModelOfCalendarDto {
+        return this.model;
+    }
+
+    public value(value: Array< model.StorageModelOfCalendarDto >): ListResponseOfStorageModelOfCalendarDtoBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

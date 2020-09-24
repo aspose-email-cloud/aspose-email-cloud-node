@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for deleteFile operation.
+ * Request model for FileApi.deleteFile operation.
  */
 export class DeleteFileRequest {
     /**
@@ -34,4 +34,28 @@ export class DeleteFileRequest {
         this.storageName = storageName;
         this.versionId = versionId;
     }
+}
+
+export class DeleteFileRequestBuilder {
+    private model: DeleteFileRequest
+    public constructor(model: DeleteFileRequest) {
+        this.model = model;
+    }
+    public build(): DeleteFileRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public path(path: string): DeleteFileRequestBuilder {
+            this.model.path = path;
+            return this;
+        }
+        public storageName(storageName: string): DeleteFileRequestBuilder {
+            this.model.storageName = storageName;
+            return this;
+        }
+        public versionId(versionId: string): DeleteFileRequestBuilder {
+            this.model.versionId = versionId;
+            return this;
+        }
 }

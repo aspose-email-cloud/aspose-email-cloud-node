@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for emailFromFile operation.
+ * Request model for EmailApi.fromFile operation.
  */
 export class EmailFromFileRequest {
     /**
@@ -26,4 +26,24 @@ export class EmailFromFileRequest {
         this.format = format;
         this.file = file;
     }
+}
+
+export class EmailFromFileRequestBuilder {
+    private model: EmailFromFileRequest
+    public constructor(model: EmailFromFileRequest) {
+        this.model = model;
+    }
+    public build(): EmailFromFileRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public format(format: string): EmailFromFileRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public file(file: Buffer): EmailFromFileRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
 }

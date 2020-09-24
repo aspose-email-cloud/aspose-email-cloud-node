@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for moveFile operation.
+ * Request model for FileApi.moveFile operation.
  */
 export class MoveFileRequest {
     /**
@@ -50,4 +50,36 @@ export class MoveFileRequest {
         this.destStorageName = destStorageName;
         this.versionId = versionId;
     }
+}
+
+export class MoveFileRequestBuilder {
+    private model: MoveFileRequest
+    public constructor(model: MoveFileRequest) {
+        this.model = model;
+    }
+    public build(): MoveFileRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public srcPath(srcPath: string): MoveFileRequestBuilder {
+            this.model.srcPath = srcPath;
+            return this;
+        }
+        public destPath(destPath: string): MoveFileRequestBuilder {
+            this.model.destPath = destPath;
+            return this;
+        }
+        public srcStorageName(srcStorageName: string): MoveFileRequestBuilder {
+            this.model.srcStorageName = srcStorageName;
+            return this;
+        }
+        public destStorageName(destStorageName: string): MoveFileRequestBuilder {
+            this.model.destStorageName = destStorageName;
+            return this;
+        }
+        public versionId(versionId: string): MoveFileRequestBuilder {
+            this.model.versionId = versionId;
+            return this;
+        }
 }

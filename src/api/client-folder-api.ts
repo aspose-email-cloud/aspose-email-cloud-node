@@ -42,7 +42,7 @@ export class ClientFolderApi {
         this.configuration = configuration;
     }
 
-        
+                    
     /**
      * Create new folder in email account             
      * @param request Create folder request
@@ -67,7 +67,7 @@ export class ClientFolderApi {
         return Promise.resolve(null);
     }
 
-        
+                    
     /**
      * Delete a folder in email account             
      * @param request Delete folder request
@@ -92,7 +92,7 @@ export class ClientFolderApi {
         return Promise.resolve(null);
     }
 
-        
+                    
     /**
      * Get folders list in email account             
      * @param request contains request parameters

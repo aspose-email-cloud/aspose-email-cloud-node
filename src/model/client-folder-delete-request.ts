@@ -69,5 +69,35 @@ export class ClientFolderDeleteRequest extends model.ClientAccountBaseRequest {
     }
 }
 
+/**
+ *  ClientFolderDeleteRequest model builder
+ */
+export class ClientFolderDeleteRequestBuilder {
+    private readonly model: ClientFolderDeleteRequest;
+    public constructor(model: ClientFolderDeleteRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ClientFolderDeleteRequest {
+        return this.model;
+    }
+
+    /**
+    * Email client account configuration location on storage.             
+    */
+    public accountLocation(accountLocation: model.StorageFileLocation): ClientFolderDeleteRequestBuilder {
+        this.model.accountLocation = accountLocation;
+        return this;
+    }
+    /**
+    * Path to folder to delete.             
+    */
+    public folder(folder: string): ClientFolderDeleteRequestBuilder {
+        this.model.folder = folder;
+        return this;
+    }
+}
 

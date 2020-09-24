@@ -70,5 +70,35 @@ export class MapiDateTimePropertyDto extends model.MapiPropertyDto {
     }
 }
 
+/**
+ *  MapiDateTimePropertyDto model builder
+ */
+export class MapiDateTimePropertyDtoBuilder {
+    private readonly model: MapiDateTimePropertyDto;
+    public constructor(model: MapiDateTimePropertyDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiDateTimePropertyDto {
+        return this.model;
+    }
+
+    /**
+    * Property descriptor             
+    */
+    public descriptor(descriptor: model.MapiPropertyDescriptor): MapiDateTimePropertyDtoBuilder {
+        this.model.descriptor = descriptor;
+        return this;
+    }
+    /**
+    * Property value             
+    */
+    public value(value: Date): MapiDateTimePropertyDtoBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

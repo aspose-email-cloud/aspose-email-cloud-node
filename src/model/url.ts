@@ -90,5 +90,42 @@ export class Url {
     }
 }
 
+/**
+ *  Url model builder
+ */
+export class UrlBuilder {
+    private readonly model: Url;
+    public constructor(model: Url) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): Url {
+        return this.model;
+    }
+
+    /**
+    * Url category.             
+    */
+    public category(category: model.EnumWithCustomOfUrlCategory): UrlBuilder {
+        this.model.category = category;
+        return this;
+    }
+    /**
+    * Defines whether url is preferred.             
+    */
+    public preferred(preferred: boolean): UrlBuilder {
+        this.model.preferred = preferred;
+        return this;
+    }
+    /**
+    * URL.             
+    */
+    public href(href: string): UrlBuilder {
+        this.model.href = href;
+        return this;
+    }
+}
 

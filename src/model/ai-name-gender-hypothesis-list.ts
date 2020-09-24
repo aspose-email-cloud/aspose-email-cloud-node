@@ -58,5 +58,25 @@ export class AiNameGenderHypothesisList extends model.ListResponseOfAiNameGender
     }
 }
 
+/**
+ *  AiNameGenderHypothesisList model builder
+ */
+export class AiNameGenderHypothesisListBuilder {
+    private readonly model: AiNameGenderHypothesisList;
+    public constructor(model: AiNameGenderHypothesisList) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): AiNameGenderHypothesisList {
+        return this.model;
+    }
+
+    public value(value: Array< model.AiNameGenderHypothesis >): AiNameGenderHypothesisListBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

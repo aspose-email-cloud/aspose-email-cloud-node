@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for contactFromFile operation.
+ * Request model for ContactApi.fromFile operation.
  */
 export class ContactFromFileRequest {
     /**
@@ -26,4 +26,24 @@ export class ContactFromFileRequest {
         this.format = format;
         this.file = file;
     }
+}
+
+export class ContactFromFileRequestBuilder {
+    private model: ContactFromFileRequest
+    public constructor(model: ContactFromFileRequest) {
+        this.model = model;
+    }
+    public build(): ContactFromFileRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public format(format: string): ContactFromFileRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public file(file: Buffer): ContactFromFileRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
 }

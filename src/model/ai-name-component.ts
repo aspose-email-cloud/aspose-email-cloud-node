@@ -102,5 +102,49 @@ export class AiNameComponent {
     }
 }
 
+/**
+ *  AiNameComponent model builder
+ */
+export class AiNameComponentBuilder {
+    private readonly model: AiNameComponent;
+    public constructor(model: AiNameComponent) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): AiNameComponent {
+        return this.model;
+    }
+
+    /**
+    * Component value             
+    */
+    public value(value: string): AiNameComponentBuilder {
+        this.model.value = value;
+        return this;
+    }
+    /**
+    * Name component category. Enum, available values: Unknown, Mononym, Score, Format, FirstInitial, FirstName, MiddleInitial, MiddleName, MiddleNickname, MiddleSobriquet, MiddleMaidenName, MiddlePatronym, MiddleMatronym, LastInitial, LastName, LastNobiliaryParticle, LastNominalConjunction, LastPaternalSurname, LastMaternalSurname, PrefixTitle, PostfixGenerationalTitle, PostfixPostnominalLetters, ArabicIsm, ArabicKunya, ArabicNasab, ArabicSlaqab, ArabicNisbah
+    */
+    public category(category: string): AiNameComponentBuilder {
+        this.model.category = category;
+        return this;
+    }
+    /**
+    * Score from 0.0 to 1.0             
+    */
+    public score(score: number): AiNameComponentBuilder {
+        this.model.score = score;
+        return this;
+    }
+    /**
+    * Component position from 0             
+    */
+    public position(position: number): AiNameComponentBuilder {
+        this.model.position = position;
+        return this;
+    }
+}
 

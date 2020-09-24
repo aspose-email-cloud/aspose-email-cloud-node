@@ -60,5 +60,25 @@ export class ListResponseOfEmailDto {
     }
 }
 
+/**
+ *  ListResponseOfEmailDto model builder
+ */
+export class ListResponseOfEmailDtoBuilder {
+    private readonly model: ListResponseOfEmailDto;
+    public constructor(model: ListResponseOfEmailDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ListResponseOfEmailDto {
+        return this.model;
+    }
+
+    public value(value: Array< model.EmailDto >): ListResponseOfEmailDtoBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

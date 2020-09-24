@@ -72,5 +72,32 @@ export class EnumWithCustomOfEventCategory {
     }
 }
 
+/**
+ *  EnumWithCustomOfEventCategory model builder
+ */
+export class EnumWithCustomOfEventCategoryBuilder {
+    private readonly model: EnumWithCustomOfEventCategory;
+    public constructor(model: EnumWithCustomOfEventCategory) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): EnumWithCustomOfEventCategory {
+        return this.model;
+    }
+
+    /**
+    * Event category. Enum, available values: Custom, Birthday, Anniversary
+    */
+    public value(value: string): EnumWithCustomOfEventCategoryBuilder {
+        this.model.value = value;
+        return this;
+    }
+    public description(description: string): EnumWithCustomOfEventCategoryBuilder {
+        this.model.description = description;
+        return this;
+    }
+}
 

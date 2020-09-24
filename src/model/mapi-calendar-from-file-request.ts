@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for mapiCalendarFromFile operation.
+ * Request model for MapiCalendarApi.fromFile operation.
  */
 export class MapiCalendarFromFileRequest {
     /**
@@ -18,4 +18,20 @@ export class MapiCalendarFromFileRequest {
         
         this.file = file;
     }
+}
+
+export class MapiCalendarFromFileRequestBuilder {
+    private model: MapiCalendarFromFileRequest
+    public constructor(model: MapiCalendarFromFileRequest) {
+        this.model = model;
+    }
+    public build(): MapiCalendarFromFileRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public file(file: Buffer): MapiCalendarFromFileRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
 }

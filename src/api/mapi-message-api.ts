@@ -42,7 +42,7 @@ export class MapiMessageApi {
         this.configuration = configuration;
     }
 
-        
+                    
     /**
      * Converts MAPI message model to EmailDto model             
      * @param mapiMessage MAPI message model to convert
@@ -68,7 +68,7 @@ export class MapiMessageApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Converts MAPI message model to specified format and returns as file.             
      * @param request MAPI message model to convert.
@@ -95,7 +95,7 @@ export class MapiMessageApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Converts email file to a MAPI model representation             
      * @param request contains request parameters
@@ -154,7 +154,7 @@ export class MapiMessageApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Get MAPI message document.             
      * @param request contains request parameters
@@ -215,7 +215,7 @@ export class MapiMessageApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Save MAPI message to storage.             
      * @param request Message create/update request.

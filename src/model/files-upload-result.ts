@@ -78,5 +78,35 @@ export class FilesUploadResult {
     }
 }
 
+/**
+ *  FilesUploadResult model builder
+ */
+export class FilesUploadResultBuilder {
+    private readonly model: FilesUploadResult;
+    public constructor(model: FilesUploadResult) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): FilesUploadResult {
+        return this.model;
+    }
+
+    /**
+    * List of uploaded file names
+    */
+    public uploaded(uploaded: Array<string>): FilesUploadResultBuilder {
+        this.model.uploaded = uploaded;
+        return this;
+    }
+    /**
+    * List of errors.
+    */
+    public errors(errors: Array<Error>): FilesUploadResultBuilder {
+        this.model.errors = errors;
+        return this;
+    }
+}
 

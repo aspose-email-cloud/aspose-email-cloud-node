@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for clientThreadGetList operation.
+ * Request model for ClientThreadApi.getList operation.
  */
 export class ClientThreadGetListRequest {
     /**
@@ -58,4 +58,40 @@ export class ClientThreadGetListRequest {
         this.updateFolderCache = updateFolderCache;
         this.messagesCacheLimit = messagesCacheLimit;
     }
+}
+
+export class ClientThreadGetListRequestBuilder {
+    private model: ClientThreadGetListRequest
+    public constructor(model: ClientThreadGetListRequest) {
+        this.model = model;
+    }
+    public build(): ClientThreadGetListRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public folder(folder: string): ClientThreadGetListRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public account(account: string): ClientThreadGetListRequestBuilder {
+            this.model.account = account;
+            return this;
+        }
+        public storage(storage: string): ClientThreadGetListRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+        public accountStorageFolder(accountStorageFolder: string): ClientThreadGetListRequestBuilder {
+            this.model.accountStorageFolder = accountStorageFolder;
+            return this;
+        }
+        public updateFolderCache(updateFolderCache: boolean): ClientThreadGetListRequestBuilder {
+            this.model.updateFolderCache = updateFolderCache;
+            return this;
+        }
+        public messagesCacheLimit(messagesCacheLimit: number): ClientThreadGetListRequestBuilder {
+            this.model.messagesCacheLimit = messagesCacheLimit;
+            return this;
+        }
 }

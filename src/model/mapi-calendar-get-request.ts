@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for mapiCalendarGet operation.
+ * Request model for MapiCalendarApi.get operation.
  */
 export class MapiCalendarGetRequest {
     /**
@@ -34,4 +34,28 @@ export class MapiCalendarGetRequest {
         this.folder = folder;
         this.storage = storage;
     }
+}
+
+export class MapiCalendarGetRequestBuilder {
+    private model: MapiCalendarGetRequest
+    public constructor(model: MapiCalendarGetRequest) {
+        this.model = model;
+    }
+    public build(): MapiCalendarGetRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public fileName(fileName: string): MapiCalendarGetRequestBuilder {
+            this.model.fileName = fileName;
+            return this;
+        }
+        public folder(folder: string): MapiCalendarGetRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public storage(storage: string): MapiCalendarGetRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
 }

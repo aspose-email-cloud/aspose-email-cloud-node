@@ -84,5 +84,49 @@ export class ClientThreadSetIsReadRequest extends model.ClientThreadBaseRequest 
     }
 }
 
+/**
+ *  ClientThreadSetIsReadRequest model builder
+ */
+export class ClientThreadSetIsReadRequestBuilder {
+    private readonly model: ClientThreadSetIsReadRequest;
+    public constructor(model: ClientThreadSetIsReadRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ClientThreadSetIsReadRequest {
+        return this.model;
+    }
+
+    /**
+    * Email client account configuration location on storage.             
+    */
+    public accountLocation(accountLocation: model.StorageFileLocation): ClientThreadSetIsReadRequestBuilder {
+        this.model.accountLocation = accountLocation;
+        return this;
+    }
+    /**
+    * Thread identifier.             
+    */
+    public threadId(threadId: string): ClientThreadSetIsReadRequestBuilder {
+        this.model.threadId = threadId;
+        return this;
+    }
+    /**
+    * Message is read flag.             
+    */
+    public isRead(isRead: boolean): ClientThreadSetIsReadRequestBuilder {
+        this.model.isRead = isRead;
+        return this;
+    }
+    /**
+    * Folder on email server, where thread is stored.             
+    */
+    public folder(folder: string): ClientThreadSetIsReadRequestBuilder {
+        this.model.folder = folder;
+        return this;
+    }
+}
 

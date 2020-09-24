@@ -58,5 +58,25 @@ export class EmailStorageList extends model.ListResponseOfStorageModelOfEmailDto
     }
 }
 
+/**
+ *  EmailStorageList model builder
+ */
+export class EmailStorageListBuilder {
+    private readonly model: EmailStorageList;
+    public constructor(model: EmailStorageList) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): EmailStorageList {
+        return this.model;
+    }
+
+    public value(value: Array< model.StorageModelOfEmailDto >): EmailStorageListBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

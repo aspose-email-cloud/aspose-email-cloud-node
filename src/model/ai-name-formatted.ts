@@ -78,5 +78,35 @@ export class AiNameFormatted {
     }
 }
 
+/**
+ *  AiNameFormatted model builder
+ */
+export class AiNameFormattedBuilder {
+    private readonly model: AiNameFormatted;
+    public constructor(model: AiNameFormatted) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): AiNameFormatted {
+        return this.model;
+    }
+
+    /**
+    * Formatted name value             
+    */
+    public name(name: string): AiNameFormattedBuilder {
+        this.model.name = name;
+        return this;
+    }
+    /**
+    * Usually empty; can contain extra message describing some issue occurred during the formatting             
+    */
+    public comments(comments: string): AiNameFormattedBuilder {
+        this.model.comments = comments;
+        return this;
+    }
+}
 

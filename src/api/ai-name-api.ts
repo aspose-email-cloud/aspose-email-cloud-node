@@ -42,7 +42,7 @@ export class AiNameApi {
         this.configuration = configuration;
     }
 
-        
+                    
     /**
      * The call proposes k most probable names for given starting characters.             
      * @param request contains request parameters
@@ -106,7 +106,7 @@ export class AiNameApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Expands a person's name into a list of possible alternatives using options for expanding instructions.             
      * @param request contains request parameters
@@ -170,7 +170,7 @@ export class AiNameApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Expands a person's parsed name into a list of possible alternatives using options for expanding instructions.             
      * @param request Parsed name with options.
@@ -196,7 +196,7 @@ export class AiNameApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Formats a person's name in correct case and name order using options for formatting instructions.             
      * @param request contains request parameters
@@ -264,7 +264,7 @@ export class AiNameApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Formats a person's parsed name in correct case and name order using options for formatting instructions.             
      * @param request Parsed name with options.
@@ -290,7 +290,7 @@ export class AiNameApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Detect person's gender from name string.             
      * @param request contains request parameters
@@ -354,7 +354,7 @@ export class AiNameApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Detect person's gender from parsed name.             
      * @param request Gender detection request data.
@@ -380,7 +380,7 @@ export class AiNameApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Compare people's names. Uses options for comparing instructions.             
      * @param request contains request parameters
@@ -453,7 +453,7 @@ export class AiNameApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Compare people's parsed names and attributes. Uses options for comparing instructions.             
      * @param request Parsed names to match.
@@ -479,7 +479,7 @@ export class AiNameApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Parse name to components.             
      * @param request contains request parameters
@@ -543,7 +543,7 @@ export class AiNameApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Parse person's name out of an email address.             
      * @param request contains request parameters

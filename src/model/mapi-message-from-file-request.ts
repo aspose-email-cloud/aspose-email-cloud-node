@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for mapiMessageFromFile operation.
+ * Request model for MapiMessageApi.fromFile operation.
  */
 export class MapiMessageFromFileRequest {
     /**
@@ -26,4 +26,24 @@ export class MapiMessageFromFileRequest {
         this.format = format;
         this.file = file;
     }
+}
+
+export class MapiMessageFromFileRequestBuilder {
+    private model: MapiMessageFromFileRequest
+    public constructor(model: MapiMessageFromFileRequest) {
+        this.model = model;
+    }
+    public build(): MapiMessageFromFileRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public format(format: string): MapiMessageFromFileRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public file(file: Buffer): MapiMessageFromFileRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
 }

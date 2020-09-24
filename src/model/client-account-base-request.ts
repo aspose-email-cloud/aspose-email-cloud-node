@@ -66,5 +66,28 @@ export class ClientAccountBaseRequest {
     }
 }
 
+/**
+ *  ClientAccountBaseRequest model builder
+ */
+export class ClientAccountBaseRequestBuilder {
+    private readonly model: ClientAccountBaseRequest;
+    public constructor(model: ClientAccountBaseRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ClientAccountBaseRequest {
+        return this.model;
+    }
+
+    /**
+    * Email client account configuration location on storage.             
+    */
+    public accountLocation(accountLocation: model.StorageFileLocation): ClientAccountBaseRequestBuilder {
+        this.model.accountLocation = accountLocation;
+        return this;
+    }
+}
 

@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for calendarGet operation.
+ * Request model for CalendarApi.get operation.
  */
 export class CalendarGetRequest {
     /**
@@ -34,4 +34,28 @@ export class CalendarGetRequest {
         this.folder = folder;
         this.storage = storage;
     }
+}
+
+export class CalendarGetRequestBuilder {
+    private model: CalendarGetRequest
+    public constructor(model: CalendarGetRequest) {
+        this.model = model;
+    }
+    public build(): CalendarGetRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public fileName(fileName: string): CalendarGetRequestBuilder {
+            this.model.fileName = fileName;
+            return this;
+        }
+        public folder(folder: string): CalendarGetRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public storage(storage: string): CalendarGetRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
 }

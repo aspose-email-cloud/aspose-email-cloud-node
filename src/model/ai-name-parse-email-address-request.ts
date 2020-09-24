@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for aiNameParseEmailAddress operation.
+ * Request model for AiNameApi.parseEmailAddress operation.
  */
 export class AiNameParseEmailAddressRequest {
     /**
@@ -58,4 +58,40 @@ export class AiNameParseEmailAddressRequest {
         this.script = script;
         this.style = style;
     }
+}
+
+export class AiNameParseEmailAddressRequestBuilder {
+    private model: AiNameParseEmailAddressRequest
+    public constructor(model: AiNameParseEmailAddressRequest) {
+        this.model = model;
+    }
+    public build(): AiNameParseEmailAddressRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public emailAddress(emailAddress: string): AiNameParseEmailAddressRequestBuilder {
+            this.model.emailAddress = emailAddress;
+            return this;
+        }
+        public language(language: string): AiNameParseEmailAddressRequestBuilder {
+            this.model.language = language;
+            return this;
+        }
+        public location(location: string): AiNameParseEmailAddressRequestBuilder {
+            this.model.location = location;
+            return this;
+        }
+        public encoding(encoding: string): AiNameParseEmailAddressRequestBuilder {
+            this.model.encoding = encoding;
+            return this;
+        }
+        public script(script: string): AiNameParseEmailAddressRequestBuilder {
+            this.model.script = script;
+            return this;
+        }
+        public style(style: string): AiNameParseEmailAddressRequestBuilder {
+            this.model.style = style;
+            return this;
+        }
 }

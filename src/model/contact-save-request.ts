@@ -72,5 +72,36 @@ export class ContactSaveRequest extends model.StorageModelOfContactDto {
     }
 }
 
+/**
+ *  ContactSaveRequest model builder
+ */
+export class ContactSaveRequestBuilder {
+    private readonly model: ContactSaveRequest;
+    public constructor(model: ContactSaveRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ContactSaveRequest {
+        return this.model;
+    }
+
+    public storageFile(storageFile: model.StorageFileLocation): ContactSaveRequestBuilder {
+        this.model.storageFile = storageFile;
+        return this;
+    }
+    public value(value: model.ContactDto): ContactSaveRequestBuilder {
+        this.model.value = value;
+        return this;
+    }
+    /**
+    * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
+    */
+    public format(format: string): ContactSaveRequestBuilder {
+        this.model.format = format;
+        return this;
+    }
+}
 

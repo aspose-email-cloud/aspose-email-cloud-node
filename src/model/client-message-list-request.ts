@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for clientMessageList operation.
+ * Request model for ClientMessageApi.list operation.
  */
 export class ClientMessageListRequest {
     /**
@@ -74,4 +74,48 @@ export class ClientMessageListRequest {
         this.type = type;
         this.format = format;
     }
+}
+
+export class ClientMessageListRequestBuilder {
+    private model: ClientMessageListRequest
+    public constructor(model: ClientMessageListRequest) {
+        this.model = model;
+    }
+    public build(): ClientMessageListRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public folder(folder: string): ClientMessageListRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public account(account: string): ClientMessageListRequestBuilder {
+            this.model.account = account;
+            return this;
+        }
+        public queryString(queryString: string): ClientMessageListRequestBuilder {
+            this.model.queryString = queryString;
+            return this;
+        }
+        public storage(storage: string): ClientMessageListRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
+        public accountStorageFolder(accountStorageFolder: string): ClientMessageListRequestBuilder {
+            this.model.accountStorageFolder = accountStorageFolder;
+            return this;
+        }
+        public recursive(recursive: boolean): ClientMessageListRequestBuilder {
+            this.model.recursive = recursive;
+            return this;
+        }
+        public type(type: string): ClientMessageListRequestBuilder {
+            this.model.type = type;
+            return this;
+        }
+        public format(format: string): ClientMessageListRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
 }

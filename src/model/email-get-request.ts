@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for emailGet operation.
+ * Request model for EmailApi.get operation.
  */
 export class EmailGetRequest {
     /**
@@ -42,4 +42,32 @@ export class EmailGetRequest {
         this.folder = folder;
         this.storage = storage;
     }
+}
+
+export class EmailGetRequestBuilder {
+    private model: EmailGetRequest
+    public constructor(model: EmailGetRequest) {
+        this.model = model;
+    }
+    public build(): EmailGetRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public format(format: string): EmailGetRequestBuilder {
+            this.model.format = format;
+            return this;
+        }
+        public fileName(fileName: string): EmailGetRequestBuilder {
+            this.model.fileName = fileName;
+            return this;
+        }
+        public folder(folder: string): EmailGetRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public storage(storage: string): EmailGetRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
 }

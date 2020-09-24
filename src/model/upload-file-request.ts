@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for uploadFile operation.
+ * Request model for FileApi.uploadFile operation.
  */
 export class UploadFileRequest {
     /**
@@ -34,4 +34,28 @@ export class UploadFileRequest {
         this.file = file;
         this.storageName = storageName;
     }
+}
+
+export class UploadFileRequestBuilder {
+    private model: UploadFileRequest
+    public constructor(model: UploadFileRequest) {
+        this.model = model;
+    }
+    public build(): UploadFileRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public path(path: string): UploadFileRequestBuilder {
+            this.model.path = path;
+            return this;
+        }
+        public file(file: Buffer): UploadFileRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
+        public storageName(storageName: string): UploadFileRequestBuilder {
+            this.model.storageName = storageName;
+            return this;
+        }
 }

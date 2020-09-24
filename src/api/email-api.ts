@@ -42,7 +42,7 @@ export class EmailApi {
         this.configuration = configuration;
     }
 
-        
+                    
     /**
      * Converts Email model to specified format and returns as file.             
      * @param request Email model and format to convert.
@@ -69,7 +69,7 @@ export class EmailApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Converts EmailDto to MapiMessageDto.             
      * @param emailDto Email model to convert
@@ -95,7 +95,7 @@ export class EmailApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Converts email document to specified format and returns as file             
      * @param request contains request parameters
@@ -164,7 +164,7 @@ export class EmailApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Converts email document to a model representation             
      * @param request contains request parameters
@@ -223,7 +223,7 @@ export class EmailApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Get email document from storage.             
      * @param request contains request parameters
@@ -284,7 +284,7 @@ export class EmailApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Converts email document from storage to specified format and returns as file             
      * @param request contains request parameters
@@ -346,7 +346,7 @@ export class EmailApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Get email list from storage folder.             
      * @param request contains request parameters
@@ -406,7 +406,7 @@ export class EmailApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Save email document to storage.             
      * @param request Email document create/update request.

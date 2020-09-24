@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for clientAccountGetMulti operation.
+ * Request model for ClientAccountApi.getMulti operation.
  */
 export class ClientAccountGetMultiRequest {
     /**
@@ -34,4 +34,28 @@ export class ClientAccountGetMultiRequest {
         this.folder = folder;
         this.storage = storage;
     }
+}
+
+export class ClientAccountGetMultiRequestBuilder {
+    private model: ClientAccountGetMultiRequest
+    public constructor(model: ClientAccountGetMultiRequest) {
+        this.model = model;
+    }
+    public build(): ClientAccountGetMultiRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public fileName(fileName: string): ClientAccountGetMultiRequestBuilder {
+            this.model.fileName = fileName;
+            return this;
+        }
+        public folder(folder: string): ClientAccountGetMultiRequestBuilder {
+            this.model.folder = folder;
+            return this;
+        }
+        public storage(storage: string): ClientAccountGetMultiRequestBuilder {
+            this.model.storage = storage;
+            return this;
+        }
 }

@@ -247,7 +247,7 @@ import { StorageExistsRequest } from "./storage-exists-request"
 
 
 
-export { 
+export {
     AiBcrImage,
     AiBcrOptions,
     AiBcrParseStorageRequest,

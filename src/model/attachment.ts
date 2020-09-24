@@ -126,5 +126,84 @@ export class Attachment extends model.AttachmentBase {
     }
 }
 
+/**
+ *  Attachment model builder
+ */
+export class AttachmentBuilder {
+    private readonly model: Attachment;
+    public constructor(model: Attachment) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): Attachment {
+        return this.model;
+    }
+
+    /**
+    * Attachment file content as Base64 string.             
+    */
+    public base64Data(base64Data: string): AttachmentBuilder {
+        this.model.base64Data = base64Data;
+        return this;
+    }
+    /**
+    * Attachment content id             
+    */
+    public contentId(contentId: string): AttachmentBuilder {
+        this.model.contentId = contentId;
+        return this;
+    }
+    /**
+    * Content type             
+    */
+    public contentType(contentType: model.ContentType): AttachmentBuilder {
+        this.model.contentType = contentType;
+        return this;
+    }
+    /**
+    * Attachment headers.             
+    */
+    public headers(headers: { [key: string]: string; }): AttachmentBuilder {
+        this.model.headers = headers;
+        return this;
+    }
+    /**
+    * Content-Disposition header. Read only.             
+    */
+    public contentDisposition(contentDisposition: string): AttachmentBuilder {
+        this.model.contentDisposition = contentDisposition;
+        return this;
+    }
+    /**
+    * Determines if attachment is an embedded message. Read only.             
+    */
+    public isEmbeddedMessage(isEmbeddedMessage: boolean): AttachmentBuilder {
+        this.model.isEmbeddedMessage = isEmbeddedMessage;
+        return this;
+    }
+    /**
+    * Attachment name.             
+    */
+    public name(name: string): AttachmentBuilder {
+        this.model.name = name;
+        return this;
+    }
+    /**
+    * Encoding of attachment name.             
+    */
+    public nameEncoding(nameEncoding: string): AttachmentBuilder {
+        this.model.nameEncoding = nameEncoding;
+        return this;
+    }
+    /**
+    * Preferred text encoding.             
+    */
+    public preferredTextEncoding(preferredTextEncoding: string): AttachmentBuilder {
+        this.model.preferredTextEncoding = preferredTextEncoding;
+        return this;
+    }
+}
 

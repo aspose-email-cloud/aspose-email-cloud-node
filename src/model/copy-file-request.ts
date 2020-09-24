@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for copyFile operation.
+ * Request model for FileApi.copyFile operation.
  */
 export class CopyFileRequest {
     /**
@@ -50,4 +50,36 @@ export class CopyFileRequest {
         this.destStorageName = destStorageName;
         this.versionId = versionId;
     }
+}
+
+export class CopyFileRequestBuilder {
+    private model: CopyFileRequest
+    public constructor(model: CopyFileRequest) {
+        this.model = model;
+    }
+    public build(): CopyFileRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public srcPath(srcPath: string): CopyFileRequestBuilder {
+            this.model.srcPath = srcPath;
+            return this;
+        }
+        public destPath(destPath: string): CopyFileRequestBuilder {
+            this.model.destPath = destPath;
+            return this;
+        }
+        public srcStorageName(srcStorageName: string): CopyFileRequestBuilder {
+            this.model.srcStorageName = srcStorageName;
+            return this;
+        }
+        public destStorageName(destStorageName: string): CopyFileRequestBuilder {
+            this.model.destStorageName = destStorageName;
+            return this;
+        }
+        public versionId(versionId: string): CopyFileRequestBuilder {
+            this.model.versionId = versionId;
+            return this;
+        }
 }

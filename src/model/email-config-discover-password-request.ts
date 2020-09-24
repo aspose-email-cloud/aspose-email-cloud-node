@@ -72,5 +72,49 @@ export class EmailConfigDiscoverPasswordRequest extends model.DiscoverEmailConfi
     }
 }
 
+/**
+ *  EmailConfigDiscoverPasswordRequest model builder
+ */
+export class EmailConfigDiscoverPasswordRequestBuilder {
+    private readonly model: EmailConfigDiscoverPasswordRequest;
+    public constructor(model: EmailConfigDiscoverPasswordRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): EmailConfigDiscoverPasswordRequest {
+        return this.model;
+    }
+
+    /**
+    * Email address to discover.             
+    */
+    public address(address: string): EmailConfigDiscoverPasswordRequestBuilder {
+        this.model.address = address;
+        return this;
+    }
+    /**
+    * Turns on fast processing. All discover systems will run in parallel. First discovered result will be returned.             
+    */
+    public fastProcessing(fastProcessing: boolean): EmailConfigDiscoverPasswordRequestBuilder {
+        this.model.fastProcessing = fastProcessing;
+        return this;
+    }
+    /**
+    * Email account login. If not specified, address used as a login.             
+    */
+    public login(login: string): EmailConfigDiscoverPasswordRequestBuilder {
+        this.model.login = login;
+        return this;
+    }
+    /**
+    * Email account password.             
+    */
+    public password(password: string): EmailConfigDiscoverPasswordRequestBuilder {
+        this.model.password = password;
+        return this;
+    }
+}
 

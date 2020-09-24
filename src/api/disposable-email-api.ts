@@ -42,7 +42,7 @@ export class DisposableEmailApi {
         this.configuration = configuration;
     }
 
-        
+                    
     /**
      * Check email address is disposable             
      * @param request contains request parameters

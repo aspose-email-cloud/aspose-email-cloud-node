@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for getFilesList operation.
+ * Request model for FolderApi.getFilesList operation.
  */
 export class GetFilesListRequest {
     /**
@@ -26,4 +26,24 @@ export class GetFilesListRequest {
         this.path = path;
         this.storageName = storageName;
     }
+}
+
+export class GetFilesListRequestBuilder {
+    private model: GetFilesListRequest
+    public constructor(model: GetFilesListRequest) {
+        this.model = model;
+    }
+    public build(): GetFilesListRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public path(path: string): GetFilesListRequestBuilder {
+            this.model.path = path;
+            return this;
+        }
+        public storageName(storageName: string): GetFilesListRequestBuilder {
+            this.model.storageName = storageName;
+            return this;
+        }
 }

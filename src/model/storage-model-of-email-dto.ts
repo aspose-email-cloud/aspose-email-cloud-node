@@ -69,5 +69,29 @@ export class StorageModelOfEmailDto {
     }
 }
 
+/**
+ *  StorageModelOfEmailDto model builder
+ */
+export class StorageModelOfEmailDtoBuilder {
+    private readonly model: StorageModelOfEmailDto;
+    public constructor(model: StorageModelOfEmailDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): StorageModelOfEmailDto {
+        return this.model;
+    }
+
+    public storageFile(storageFile: model.StorageFileLocation): StorageModelOfEmailDtoBuilder {
+        this.model.storageFile = storageFile;
+        return this;
+    }
+    public value(value: model.EmailDto): StorageModelOfEmailDtoBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

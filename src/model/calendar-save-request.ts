@@ -72,5 +72,36 @@ export class CalendarSaveRequest extends model.StorageModelOfCalendarDto {
     }
 }
 
+/**
+ *  CalendarSaveRequest model builder
+ */
+export class CalendarSaveRequestBuilder {
+    private readonly model: CalendarSaveRequest;
+    public constructor(model: CalendarSaveRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): CalendarSaveRequest {
+        return this.model;
+    }
+
+    public storageFile(storageFile: model.StorageFileLocation): CalendarSaveRequestBuilder {
+        this.model.storageFile = storageFile;
+        return this;
+    }
+    public value(value: model.CalendarDto): CalendarSaveRequestBuilder {
+        this.model.value = value;
+        return this;
+    }
+    /**
+    * Calendar file format Enum, available values: Ics, Msg
+    */
+    public format(format: string): CalendarSaveRequestBuilder {
+        this.model.format = format;
+        return this;
+    }
+}
 

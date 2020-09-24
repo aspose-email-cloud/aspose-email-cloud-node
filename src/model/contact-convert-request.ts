@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for contactConvert operation.
+ * Request model for ContactApi.convert operation.
  */
 export class ContactConvertRequest {
     /**
@@ -34,4 +34,28 @@ export class ContactConvertRequest {
         this.fromFormat = fromFormat;
         this.file = file;
     }
+}
+
+export class ContactConvertRequestBuilder {
+    private model: ContactConvertRequest
+    public constructor(model: ContactConvertRequest) {
+        this.model = model;
+    }
+    public build(): ContactConvertRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public toFormat(toFormat: string): ContactConvertRequestBuilder {
+            this.model.toFormat = toFormat;
+            return this;
+        }
+        public fromFormat(fromFormat: string): ContactConvertRequestBuilder {
+            this.model.fromFormat = fromFormat;
+            return this;
+        }
+        public file(file: Buffer): ContactConvertRequestBuilder {
+            this.model.file = file;
+            return this;
+        }
 }

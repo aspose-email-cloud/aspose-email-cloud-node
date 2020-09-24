@@ -69,5 +69,29 @@ export class StorageModelOfEmailClientAccount {
     }
 }
 
+/**
+ *  StorageModelOfEmailClientAccount model builder
+ */
+export class StorageModelOfEmailClientAccountBuilder {
+    private readonly model: StorageModelOfEmailClientAccount;
+    public constructor(model: StorageModelOfEmailClientAccount) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): StorageModelOfEmailClientAccount {
+        return this.model;
+    }
+
+    public storageFile(storageFile: model.StorageFileLocation): StorageModelOfEmailClientAccountBuilder {
+        this.model.storageFile = storageFile;
+        return this;
+    }
+    public value(value: model.EmailClientAccount): StorageModelOfEmailClientAccountBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

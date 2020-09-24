@@ -78,5 +78,35 @@ export class AiNameGenderHypothesis {
     }
 }
 
+/**
+ *  AiNameGenderHypothesis model builder
+ */
+export class AiNameGenderHypothesisBuilder {
+    private readonly model: AiNameGenderHypothesis;
+    public constructor(model: AiNameGenderHypothesis) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): AiNameGenderHypothesis {
+        return this.model;
+    }
+
+    /**
+    * Recognized name gender. Enum, available values: Male, Female, Unknown
+    */
+    public gender(gender: string): AiNameGenderHypothesisBuilder {
+        this.model.gender = gender;
+        return this;
+    }
+    /**
+    * Hypothesis score             
+    */
+    public score(score: number): AiNameGenderHypothesisBuilder {
+        this.model.score = score;
+        return this;
+    }
+}
 

@@ -60,5 +60,25 @@ export class ListResponseOfStorageModelOfContactDto {
     }
 }
 
+/**
+ *  ListResponseOfStorageModelOfContactDto model builder
+ */
+export class ListResponseOfStorageModelOfContactDtoBuilder {
+    private readonly model: ListResponseOfStorageModelOfContactDto;
+    public constructor(model: ListResponseOfStorageModelOfContactDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ListResponseOfStorageModelOfContactDto {
+        return this.model;
+    }
+
+    public value(value: Array< model.StorageModelOfContactDto >): ListResponseOfStorageModelOfContactDtoBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

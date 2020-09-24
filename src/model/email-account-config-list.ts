@@ -58,5 +58,25 @@ export class EmailAccountConfigList extends model.ListResponseOfEmailAccountConf
     }
 }
 
+/**
+ *  EmailAccountConfigList model builder
+ */
+export class EmailAccountConfigListBuilder {
+    private readonly model: EmailAccountConfigList;
+    public constructor(model: EmailAccountConfigList) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): EmailAccountConfigList {
+        return this.model;
+    }
+
+    public value(value: Array< model.EmailAccountConfig >): EmailAccountConfigListBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

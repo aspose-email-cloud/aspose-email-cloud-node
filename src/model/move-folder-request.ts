@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for moveFolder operation.
+ * Request model for FolderApi.moveFolder operation.
  */
 export class MoveFolderRequest {
     /**
@@ -42,4 +42,32 @@ export class MoveFolderRequest {
         this.srcStorageName = srcStorageName;
         this.destStorageName = destStorageName;
     }
+}
+
+export class MoveFolderRequestBuilder {
+    private model: MoveFolderRequest
+    public constructor(model: MoveFolderRequest) {
+        this.model = model;
+    }
+    public build(): MoveFolderRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public srcPath(srcPath: string): MoveFolderRequestBuilder {
+            this.model.srcPath = srcPath;
+            return this;
+        }
+        public destPath(destPath: string): MoveFolderRequestBuilder {
+            this.model.destPath = destPath;
+            return this;
+        }
+        public srcStorageName(srcStorageName: string): MoveFolderRequestBuilder {
+            this.model.srcStorageName = srcStorageName;
+            return this;
+        }
+        public destStorageName(destStorageName: string): MoveFolderRequestBuilder {
+            this.model.destStorageName = destStorageName;
+            return this;
+        }
 }

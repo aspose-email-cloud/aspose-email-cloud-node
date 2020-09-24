@@ -66,5 +66,28 @@ export class FilesList {
     }
 }
 
+/**
+ *  FilesList model builder
+ */
+export class FilesListBuilder {
+    private readonly model: FilesList;
+    public constructor(model: FilesList) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): FilesList {
+        return this.model;
+    }
+
+    /**
+    * Files and folders contained by folder StorageFile.
+    */
+    public value(value: Array< model.StorageFile >): FilesListBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

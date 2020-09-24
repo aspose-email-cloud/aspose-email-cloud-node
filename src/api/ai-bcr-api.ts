@@ -42,7 +42,7 @@ export class AiBcrApi {
         this.configuration = configuration;
     }
 
-        
+                    
     /**
      * Parse images to vCard document models             
      * @param request contains request parameters
@@ -104,7 +104,7 @@ export class AiBcrApi {
         return Promise.resolve(result);
     }
 
-        
+                    
     /**
      * Parse images from storage to vCard files             
      * @param request Request with images located on storage

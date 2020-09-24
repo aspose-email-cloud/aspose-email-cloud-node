@@ -1,7 +1,7 @@
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for aiNameGenderize operation.
+ * Request model for AiNameApi.genderize operation.
  */
 export class AiNameGenderizeRequest {
     /**
@@ -58,4 +58,40 @@ export class AiNameGenderizeRequest {
         this.script = script;
         this.style = style;
     }
+}
+
+export class AiNameGenderizeRequestBuilder {
+    private model: AiNameGenderizeRequest
+    public constructor(model: AiNameGenderizeRequest) {
+        this.model = model;
+    }
+    public build(): AiNameGenderizeRequest {
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
+    }
+        public name(name: string): AiNameGenderizeRequestBuilder {
+            this.model.name = name;
+            return this;
+        }
+        public language(language: string): AiNameGenderizeRequestBuilder {
+            this.model.language = language;
+            return this;
+        }
+        public location(location: string): AiNameGenderizeRequestBuilder {
+            this.model.location = location;
+            return this;
+        }
+        public encoding(encoding: string): AiNameGenderizeRequestBuilder {
+            this.model.encoding = encoding;
+            return this;
+        }
+        public script(script: string): AiNameGenderizeRequestBuilder {
+            this.model.script = script;
+            return this;
+        }
+        public style(style: string): AiNameGenderizeRequestBuilder {
+            this.model.style = style;
+            return this;
+        }
 }
