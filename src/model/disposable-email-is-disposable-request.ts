@@ -26,7 +26,9 @@ export class DisposableEmailIsDisposableRequestBuilder {
         this.model = model;
     }
     public build(): DisposableEmailIsDisposableRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public address(address: string): DisposableEmailIsDisposableRequestBuilder {
             this.model.address = address;

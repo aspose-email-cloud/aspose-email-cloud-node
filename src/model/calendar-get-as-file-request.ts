@@ -50,7 +50,9 @@ export class CalendarGetAsFileRequestBuilder {
         this.model = model;
     }
     public build(): CalendarGetAsFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public fileName(fileName: string): CalendarGetAsFileRequestBuilder {
             this.model.fileName = fileName;

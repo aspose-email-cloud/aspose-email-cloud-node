@@ -74,7 +74,9 @@ export class AiNameMatchRequestBuilder {
         this.model = model;
     }
     public build(): AiNameMatchRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public name(name: string): AiNameMatchRequestBuilder {
             this.model.name = name;

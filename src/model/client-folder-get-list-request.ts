@@ -50,7 +50,9 @@ export class ClientFolderGetListRequestBuilder {
         this.model = model;
     }
     public build(): ClientFolderGetListRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public account(account: string): ClientFolderGetListRequestBuilder {
             this.model.account = account;

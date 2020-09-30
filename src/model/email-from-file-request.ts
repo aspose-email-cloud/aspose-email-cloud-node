@@ -34,7 +34,9 @@ export class EmailFromFileRequestBuilder {
         this.model = model;
     }
     public build(): EmailFromFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public format(format: string): EmailFromFileRequestBuilder {
             this.model.format = format;

@@ -58,7 +58,9 @@ export class ContactGetAsFileRequestBuilder {
         this.model = model;
     }
     public build(): ContactGetAsFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public fileName(fileName: string): ContactGetAsFileRequestBuilder {
             this.model.fileName = fileName;

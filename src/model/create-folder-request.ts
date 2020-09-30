@@ -34,7 +34,9 @@ export class CreateFolderRequestBuilder {
         this.model = model;
     }
     public build(): CreateFolderRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public path(path: string): CreateFolderRequestBuilder {
             this.model.path = path;

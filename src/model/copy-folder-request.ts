@@ -50,7 +50,9 @@ export class CopyFolderRequestBuilder {
         this.model = model;
     }
     public build(): CopyFolderRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public srcPath(srcPath: string): CopyFolderRequestBuilder {
             this.model.srcPath = srcPath;

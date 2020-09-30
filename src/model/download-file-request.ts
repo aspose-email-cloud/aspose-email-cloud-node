@@ -42,7 +42,9 @@ export class DownloadFileRequestBuilder {
         this.model = model;
     }
     public build(): DownloadFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public path(path: string): DownloadFileRequestBuilder {
             this.model.path = path;

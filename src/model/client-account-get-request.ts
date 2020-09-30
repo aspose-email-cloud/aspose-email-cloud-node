@@ -42,7 +42,9 @@ export class ClientAccountGetRequestBuilder {
         this.model = model;
     }
     public build(): ClientAccountGetRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public fileName(fileName: string): ClientAccountGetRequestBuilder {
             this.model.fileName = fileName;

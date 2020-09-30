@@ -1,8 +1,10 @@
 # MapiMessageItemBaseDto
 
+Base Dto for MapiMessage, MapiCalendar or MapiContact             
+
 ## Properties
 Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+---- | ---- | ----------- | -----
 **attachments** | [**Array&lt;MapiAttachmentDto&gt;**](MapiAttachmentDto.md) | Message item attachments.              | [optional] [default to undefined]
 **billing** | **string** | Billing information associated with an item.              | [optional] [default to undefined]
 **body** | **string** | Message text.              | [optional] [default to undefined]
@@ -20,7 +22,6 @@ Name | Type | Description | Notes
 **subjectPrefix** | **string** | Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.              | [optional] [default to undefined]
 **properties** | [**Array&lt;MapiPropertyDto&gt;**](MapiPropertyDto.md) | List of MAPI properties              | [optional] [default to undefined]
 **discriminator** | **string** |  | [default to undefined]
-
 
 
 [[Back to Model list]](README.md#documentation-for-models) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to README]](README.md)

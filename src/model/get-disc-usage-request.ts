@@ -26,7 +26,9 @@ export class GetDiscUsageRequestBuilder {
         this.model = model;
     }
     public build(): GetDiscUsageRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public storageName(storageName: string): GetDiscUsageRequestBuilder {
             this.model.storageName = storageName;

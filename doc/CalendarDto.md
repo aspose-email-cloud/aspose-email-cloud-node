@@ -1,8 +1,10 @@
 # CalendarDto
 
+iCalendar document representation.             
+
 ## Properties
 Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+---- | ---- | ----------- | -----
 **attachments** | [**Array&lt;Attachment&gt;**](Attachment.md) | Document attachments. | [optional] [default to undefined]
 **attendees** | [**Array&lt;MailAddress&gt;**](MailAddress.md) | Event attendees. | [default to undefined]
 **description** | **string** | Description. | [optional] [default to undefined]
@@ -26,6 +28,32 @@ Name | Type | Description | Notes
 **summary** | **string** | Summary. | [optional] [default to undefined]
 **transparency** | **string** | Specifies whether or not this appointment is intended to be visible in availability searches. Enum, available values: NotDefined, Transparent, Opaque | [default to undefined]
 
+
+## Example
+```typescript
+let calendarDto = Models.calendarDto()
+    .attendees([
+        Models.mailAddress()
+            .displayName('Attendee Name')
+            .address('attendee@aspose.com')
+            .participationStatus('Accepted')
+            .build()])
+    .description('Some description')
+    .endDate(new Date())
+    .location('Some location')
+    .organizer(Models.mailAddress()
+        .displayName('Organizer Name')
+        .address('organizer@aspose.com')
+        .build())
+    .recurrence(Models.dailyRecurrencePatternDto()
+        .interval(-1)
+        .occurs(10)
+        .weekStart('Monday')
+        .build())
+    .startDate(new Date())
+    .summary('Some summary')
+    .build();
+```
 
 
 [[Back to Model list]](README.md#documentation-for-models) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to README]](README.md)

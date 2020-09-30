@@ -58,7 +58,9 @@ export class ClientThreadGetMessagesRequestBuilder {
         this.model = model;
     }
     public build(): ClientThreadGetMessagesRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public threadId(threadId: string): ClientThreadGetMessagesRequestBuilder {
             this.model.threadId = threadId;

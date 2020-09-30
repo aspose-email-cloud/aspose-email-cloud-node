@@ -74,7 +74,9 @@ export class AiNameFormatRequestBuilder {
         this.model = model;
     }
     public build(): AiNameFormatRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public name(name: string): AiNameFormatRequestBuilder {
             this.model.name = name;

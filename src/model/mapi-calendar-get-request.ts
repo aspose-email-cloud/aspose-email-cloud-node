@@ -42,7 +42,9 @@ export class MapiCalendarGetRequestBuilder {
         this.model = model;
     }
     public build(): MapiCalendarGetRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public fileName(fileName: string): MapiCalendarGetRequestBuilder {
             this.model.fileName = fileName;

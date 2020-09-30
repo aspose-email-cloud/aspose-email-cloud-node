@@ -42,7 +42,9 @@ export class CalendarGetRequestBuilder {
         this.model = model;
     }
     public build(): CalendarGetRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public fileName(fileName: string): CalendarGetRequestBuilder {
             this.model.fileName = fileName;

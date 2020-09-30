@@ -42,7 +42,9 @@ export class ClientAccountGetMultiRequestBuilder {
         this.model = model;
     }
     public build(): ClientAccountGetMultiRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public fileName(fileName: string): ClientAccountGetMultiRequestBuilder {
             this.model.fileName = fileName;

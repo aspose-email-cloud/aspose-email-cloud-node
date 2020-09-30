@@ -34,7 +34,9 @@ export class GetFilesListRequestBuilder {
         this.model = model;
     }
     public build(): GetFilesListRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public path(path: string): GetFilesListRequestBuilder {
             this.model.path = path;

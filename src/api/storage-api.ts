@@ -42,7 +42,6 @@ export class StorageApi {
         this.configuration = configuration;
     }
 
-        
     /**
      * Get disc usage
      * @param request contains request parameters
@@ -81,7 +80,6 @@ export class StorageApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Get file versions
      * @param request contains request parameters
@@ -126,7 +124,6 @@ export class StorageApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Check if file or folder exists
      * @param request contains request parameters
@@ -175,7 +172,6 @@ export class StorageApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Check if storage exists
      * @param request contains request parameters
@@ -215,6 +211,5 @@ export class StorageApi {
         const result =  ObjectSerializer.deserialize(response.body, "StorageExist");
         return Promise.resolve(result);
     }
-
 }
 

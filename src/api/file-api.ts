@@ -42,7 +42,6 @@ export class FileApi {
         this.configuration = configuration;
     }
 
-        
     /**
      * Copy file
      * @param request contains request parameters
@@ -103,7 +102,6 @@ export class FileApi {
         return Promise.resolve(null);
     }
 
-        
     /**
      * Delete file
      * @param request contains request parameters
@@ -151,7 +149,6 @@ export class FileApi {
         return Promise.resolve(null);
     }
 
-        
     /**
      * Download file
      * @param request contains request parameters
@@ -201,7 +198,6 @@ export class FileApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Move file
      * @param request contains request parameters
@@ -262,7 +258,6 @@ export class FileApi {
         return Promise.resolve(null);
     }
 
-        
     /**
      * Upload file
      * @param request contains request parameters
@@ -321,5 +316,4 @@ export class FileApi {
         const result =  ObjectSerializer.deserialize(response.body, "FilesUploadResult");
         return Promise.resolve(result);
     }
-
 }

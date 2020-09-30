@@ -42,7 +42,9 @@ export class ObjectExistsRequestBuilder {
         this.model = model;
     }
     public build(): ObjectExistsRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public path(path: string): ObjectExistsRequestBuilder {
             this.model.path = path;

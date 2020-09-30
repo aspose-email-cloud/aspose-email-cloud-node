@@ -50,7 +50,9 @@ export class MoveFolderRequestBuilder {
         this.model = model;
     }
     public build(): MoveFolderRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public srcPath(srcPath: string): MoveFolderRequestBuilder {
             this.model.srcPath = srcPath;

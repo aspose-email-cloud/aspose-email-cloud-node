@@ -58,7 +58,9 @@ export class ContactGetListRequestBuilder {
         this.model = model;
     }
     public build(): ContactGetListRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public format(format: string): ContactGetListRequestBuilder {
             this.model.format = format;

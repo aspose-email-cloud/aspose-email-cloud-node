@@ -66,7 +66,9 @@ export class AiNameParseEmailAddressRequestBuilder {
         this.model = model;
     }
     public build(): AiNameParseEmailAddressRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public emailAddress(emailAddress: string): AiNameParseEmailAddressRequestBuilder {
             this.model.emailAddress = emailAddress;

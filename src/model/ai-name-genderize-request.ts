@@ -66,7 +66,9 @@ export class AiNameGenderizeRequestBuilder {
         this.model = model;
     }
     public build(): AiNameGenderizeRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public name(name: string): AiNameGenderizeRequestBuilder {
             this.model.name = name;

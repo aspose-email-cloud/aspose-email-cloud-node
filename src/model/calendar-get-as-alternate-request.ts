@@ -58,7 +58,9 @@ export class CalendarGetAsAlternateRequestBuilder {
         this.model = model;
     }
     public build(): CalendarGetAsAlternateRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public fileName(fileName: string): CalendarGetAsAlternateRequestBuilder {
             this.model.fileName = fileName;

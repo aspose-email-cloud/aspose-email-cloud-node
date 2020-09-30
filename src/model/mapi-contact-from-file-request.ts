@@ -34,7 +34,9 @@ export class MapiContactFromFileRequestBuilder {
         this.model = model;
     }
     public build(): MapiContactFromFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public format(format: string): MapiContactFromFileRequestBuilder {
             this.model.format = format;

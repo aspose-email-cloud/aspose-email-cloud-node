@@ -66,7 +66,9 @@ export class ClientMessageFetchFileRequestBuilder {
         this.model = model;
     }
     public build(): ClientMessageFetchFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public messageId(messageId: string): ClientMessageFetchFileRequestBuilder {
             this.model.messageId = messageId;

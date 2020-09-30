@@ -50,7 +50,9 @@ export class EmailGetAsFileRequestBuilder {
         this.model = model;
     }
     public build(): EmailGetAsFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public fileName(fileName: string): EmailGetAsFileRequestBuilder {
             this.model.fileName = fileName;

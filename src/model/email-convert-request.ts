@@ -42,7 +42,9 @@ export class EmailConvertRequestBuilder {
         this.model = model;
     }
     public build(): EmailConvertRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public fromFormat(fromFormat: string): EmailConvertRequestBuilder {
             this.model.fromFormat = fromFormat;

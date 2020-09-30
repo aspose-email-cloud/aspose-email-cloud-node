@@ -34,7 +34,9 @@ export class CalendarConvertRequestBuilder {
         this.model = model;
     }
     public build(): CalendarConvertRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public format(format: string): CalendarConvertRequestBuilder {
             this.model.format = format;

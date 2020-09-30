@@ -1,205 +1,902 @@
-# EmailApi
+# EmailApi (EmailCloud.email)
 
-                    
+Email document (*.eml) operations.
+
 <a name="asFile"></a>
-# **asFile**
+## **asFile**
+
+Description: Converts Email model to specified format and returns as file.             
+
+Returns: File stream in specified format.
+
+Method call example:
 ```typescript
-public async asFile(request: model.EmailAsFileRequest): Promise< Buffer >
+let result = api.email.asFile(request);
 ```
 
-Converts Email model to specified format and returns as file.             
+### Parameter: request
 
-### request Parameter
+Description: Email model and format to convert.
 
 See parameter model documentation at [EmailAsFileRequest](EmailAsFileRequest.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let request = Models.emailAsFileRequest()
+    .value(Models.emailDto()
+        .attachments([
+            Models.attachment()
+                .name('some-file.txt')
+                .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
+                .build()])
+        .body('Some body')
+        .bodyType('Html')
+        .deliveryNotificationOptions([
+            'OnSuccess',
+            'Delay'])
+        .from(Models.mailAddress()
+            .displayName('From Address')
+            .address('from@aspose.com')
+            .build())
+        .htmlBody('<b>Some body</b>')
+        .isBodyHtml(true)
+        .isDraft(true)
+        .subject('Re: Some subject')
+        .to([
+            Models.mailAddress()
+                .displayName('To Address')
+                .address('to@aspose.com')
+                .build()])
+        .build())
+    .build();
+```
 
-Promise< Buffer >
+</details>
+
+### Result
+
+Description: File stream in specified format.
+
+Return type: Promise< Buffer >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.emailAsFileRequest()
+    .value(Models.emailDto()
+        .attachments([
+            Models.attachment()
+                .name('some-file.txt')
+                .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
+                .build()])
+        .body('Some body')
+        .bodyType('Html')
+        .deliveryNotificationOptions([
+            'OnSuccess',
+            'Delay'])
+        .from(Models.mailAddress()
+            .displayName('From Address')
+            .address('from@aspose.com')
+            .build())
+        .htmlBody('<b>Some body</b>')
+        .isBodyHtml(true)
+        .isDraft(true)
+        .subject('Re: Some subject')
+        .to([
+            Models.mailAddress()
+                .displayName('To Address')
+                .address('to@aspose.com')
+                .build()])
+        .build())
+    .build();
+
+// Call method:
+let result = api.email.asFile(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
-                    
 <a name="asMapi"></a>
-# **asMapi**
+## **asMapi**
+
+Description: Converts EmailDto to MapiMessageDto.             
+
+Returns: MAPI model message representation
+
+Method call example:
 ```typescript
-public async asMapi(emailDto: model.EmailDto): Promise< MapiMessageDto >
+let result = api.email.asMapi(emailDto);
 ```
 
-Converts EmailDto to MapiMessageDto.             
+### Parameter: emailDto
 
-### emailDto Parameter
+Description: Email model to convert
 
 See parameter model documentation at [EmailDto](EmailDto.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let emailDto = Models.emailDto()
+    .attachments([
+        Models.attachment()
+            .name('some-file.txt')
+            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
+            .build()])
+    .body('Some body')
+    .bodyType('Html')
+    .deliveryNotificationOptions([
+        'OnSuccess',
+        'Delay'])
+    .from(Models.mailAddress()
+        .displayName('From Address')
+        .address('from@aspose.com')
+        .build())
+    .htmlBody('<b>Some body</b>')
+    .isBodyHtml(true)
+    .isDraft(true)
+    .subject('Re: Some subject')
+    .to([
+        Models.mailAddress()
+            .displayName('To Address')
+            .address('to@aspose.com')
+            .build()])
+    .build();
+```
 
-Promise< [MapiMessageDto](MapiMessageDto.md) >
+</details>
+
+### Result
+
+Description: MAPI model message representation
+
+Return type: Promise< [MapiMessageDto](MapiMessageDto.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.mapiMessageDto()
+    .messageBody('Some body')
+    .clientSubmitTime(new Date())
+    .deliveryTime(new Date())
+    .displayTo('To Address')
+    .flags([
+        'MsgFlagRead',
+        'MsgFlagUnsent',
+        'MsgFlagHasAttach'])
+    .normalizedSubject('Some subject')
+    .senderAddressType('SMTP')
+    .senderEmailAddress('from@aspose.com')
+    .senderName('From Address')
+    .senderSmtpAddress('from@aspose.com')
+    .attachments([
+        Models.mapiAttachmentDto()
+            .name('some-file.txt')
+            .dataBase64('U29tZSBmaWxlIHRleHQ=')
+            .build()])
+    .body('Some body')
+    .messageClass('IPM.Note')
+    .recipients([
+        Models.mapiRecipientDto()
+            .emailAddress('to@aspose.com')
+            .addressType('SMTP')
+            .displayName('To Address')
+            .recipientType('MapiTo')
+            .build()])
+    .subject('Re: Some subject')
+    .subjectPrefix('Re: ')
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let emailDto = Models.emailDto()
+    .attachments([
+        Models.attachment()
+            .name('some-file.txt')
+            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
+            .build()])
+    .body('Some body')
+    .bodyType('Html')
+    .deliveryNotificationOptions([
+        'OnSuccess',
+        'Delay'])
+    .from(Models.mailAddress()
+        .displayName('From Address')
+        .address('from@aspose.com')
+        .build())
+    .htmlBody('<b>Some body</b>')
+    .isBodyHtml(true)
+    .isDraft(true)
+    .subject('Re: Some subject')
+    .to([
+        Models.mailAddress()
+            .displayName('To Address')
+            .address('to@aspose.com')
+            .build()])
+    .build();
+
+// Call method:
+let result = api.email.asMapi(emailDto);
+
+// Result example:
+result = Models.mapiMessageDto()
+    .messageBody('Some body')
+    .clientSubmitTime(new Date())
+    .deliveryTime(new Date())
+    .displayTo('To Address')
+    .flags([
+        'MsgFlagRead',
+        'MsgFlagUnsent',
+        'MsgFlagHasAttach'])
+    .normalizedSubject('Some subject')
+    .senderAddressType('SMTP')
+    .senderEmailAddress('from@aspose.com')
+    .senderName('From Address')
+    .senderSmtpAddress('from@aspose.com')
+    .attachments([
+        Models.mapiAttachmentDto()
+            .name('some-file.txt')
+            .dataBase64('U29tZSBmaWxlIHRleHQ=')
+            .build()])
+    .body('Some body')
+    .messageClass('IPM.Note')
+    .recipients([
+        Models.mapiRecipientDto()
+            .emailAddress('to@aspose.com')
+            .addressType('SMTP')
+            .displayName('To Address')
+            .recipientType('MapiTo')
+            .build()])
+    .subject('Re: Some subject')
+    .subjectPrefix('Re: ')
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
-                    
 <a name="convert"></a>
-# **convert**
+## **convert**
+
+Description: Converts email document to specified format and returns as file             
+
+Returns: File stream in specified format
+
+Method call example:
 ```typescript
-public async convert(request: EmailConvertRequest): Promise< Buffer >
+let result = api.email.convert(request);
 ```
 
-Converts email document to specified format and returns as file             
+### Parameter: request
 
-### Request Parameters
+Description: convert method request.
+
+See parameter model documentation at [EmailConvertRequest](EmailConvertRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new EmailConvert(
-    fromFormat,
-    toFormat,
-    file)
+let request = Models.EmailConvertRequest()
+    .fromFormat('Msg')
+    .toFormat('Mhtml')
+    .file(fs.readFileSync('/path/to/message.msg'))
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **fromFormat** | **string**| File format to convert to Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft |
- **toFormat** | **string**| File format to convert from Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft |
- **file** | **byte[]**| File to convert |
+</details>
 
-### Return type
+### Result
 
-Promise< Buffer >
+Description: File stream in specified format
+
+Return type: Promise< Buffer >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.EmailConvertRequest()
+    .fromFormat('Msg')
+    .toFormat('Mhtml')
+    .file(fs.readFileSync('/path/to/message.msg'))
+    .build();
+
+// Call method:
+let result = api.email.convert(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="fromFile"></a>
-# **fromFile**
+## **fromFile**
+
+Description: Converts email document to a model representation             
+
+Returns: Email document model
+
+Method call example:
 ```typescript
-public async fromFile(request: EmailFromFileRequest): Promise< EmailDto >
+let result = api.email.fromFile(request);
 ```
 
-Converts email document to a model representation             
+### Parameter: request
 
-### Request Parameters
+Description: fromFile method request.
+
+See parameter model documentation at [EmailFromFileRequest](EmailFromFileRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new EmailFromFile(
-    format,
-    file)
+let request = Models.EmailFromFileRequest()
+    .format('Eml')
+    .file(fs.readFileSync('/path/to/message.eml'))
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **format** | **string**|  Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft |
- **file** | **byte[]**| File to convert |
+</details>
 
-### Return type
+### Result
 
-Promise< [EmailDto](EmailDto.md) >
+Description: Email document model
+
+Return type: Promise< [EmailDto](EmailDto.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.emailDto()
+    .attachments([
+        Models.attachment()
+            .name('some-file.txt')
+            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
+            .build()])
+    .body('Some body')
+    .bodyType('Html')
+    .deliveryNotificationOptions([
+        'OnSuccess',
+        'Delay'])
+    .from(Models.mailAddress()
+        .displayName('From Address')
+        .address('from@aspose.com')
+        .build())
+    .htmlBody('<b>Some body</b>')
+    .isBodyHtml(true)
+    .isDraft(true)
+    .subject('Re: Some subject')
+    .to([
+        Models.mailAddress()
+            .displayName('To Address')
+            .address('to@aspose.com')
+            .build()])
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.EmailFromFileRequest()
+    .format('Eml')
+    .file(fs.readFileSync('/path/to/message.eml'))
+    .build();
+
+// Call method:
+let result = api.email.fromFile(request);
+
+// Result example:
+result = Models.emailDto()
+    .attachments([
+        Models.attachment()
+            .name('some-file.txt')
+            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
+            .build()])
+    .body('Some body')
+    .bodyType('Html')
+    .deliveryNotificationOptions([
+        'OnSuccess',
+        'Delay'])
+    .from(Models.mailAddress()
+        .displayName('From Address')
+        .address('from@aspose.com')
+        .build())
+    .htmlBody('<b>Some body</b>')
+    .isBodyHtml(true)
+    .isDraft(true)
+    .subject('Re: Some subject')
+    .to([
+        Models.mailAddress()
+            .displayName('To Address')
+            .address('to@aspose.com')
+            .build()])
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="get"></a>
-# **get**
+## **get**
+
+Description: Get email document from storage.             
+
+Returns: Email document.
+
+Method call example:
 ```typescript
-public async get(request: EmailGetRequest): Promise< EmailDto >
+let result = api.email.get(request);
 ```
 
-Get email document from storage.             
+### Parameter: request
 
-### Request Parameters
+Description: get method request.
+
+See parameter model documentation at [EmailGetRequest](EmailGetRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new EmailGet(
-    format,
-    fileName,
-    folder=folder,
-    storage=storage)
+let request = Models.EmailGetRequest()
+    .format('Eml')
+    .fileName('email.eml')
+    .folder('folder/on/storage')
+    .storage('First Storage')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **format** | **string**| Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft |
- **fileName** | **string**| Email document file name. |
- **folder** | **string**| Path to folder in storage. | [optional]
- **storage** | **string**| Storage name. | [optional]
+</details>
 
-### Return type
+### Result
 
-Promise< [EmailDto](EmailDto.md) >
+Description: Email document.
+
+Return type: Promise< [EmailDto](EmailDto.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.emailDto()
+    .attachments([
+        Models.attachment()
+            .name('some-file.txt')
+            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
+            .build()])
+    .body('Some body')
+    .bodyType('Html')
+    .deliveryNotificationOptions([
+        'OnSuccess',
+        'Delay'])
+    .from(Models.mailAddress()
+        .displayName('From Address')
+        .address('from@aspose.com')
+        .build())
+    .htmlBody('<b>Some body</b>')
+    .isBodyHtml(true)
+    .isDraft(true)
+    .subject('Re: Some subject')
+    .to([
+        Models.mailAddress()
+            .displayName('To Address')
+            .address('to@aspose.com')
+            .build()])
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.EmailGetRequest()
+    .format('Eml')
+    .fileName('email.eml')
+    .folder('folder/on/storage')
+    .storage('First Storage')
+    .build();
+
+// Call method:
+let result = api.email.get(request);
+
+// Result example:
+result = Models.emailDto()
+    .attachments([
+        Models.attachment()
+            .name('some-file.txt')
+            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
+            .build()])
+    .body('Some body')
+    .bodyType('Html')
+    .deliveryNotificationOptions([
+        'OnSuccess',
+        'Delay'])
+    .from(Models.mailAddress()
+        .displayName('From Address')
+        .address('from@aspose.com')
+        .build())
+    .htmlBody('<b>Some body</b>')
+    .isBodyHtml(true)
+    .isDraft(true)
+    .subject('Re: Some subject')
+    .to([
+        Models.mailAddress()
+            .displayName('To Address')
+            .address('to@aspose.com')
+            .build()])
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="getAsFile"></a>
-# **getAsFile**
+## **getAsFile**
+
+Description: Converts email document from storage to specified format and returns as file             
+
+Returns: File stream in specified format
+
+Method call example:
 ```typescript
-public async getAsFile(request: EmailGetAsFileRequest): Promise< Buffer >
+let result = api.email.getAsFile(request);
 ```
 
-Converts email document from storage to specified format and returns as file             
+### Parameter: request
 
-### Request Parameters
+Description: getAsFile method request.
+
+See parameter model documentation at [EmailGetAsFileRequest](EmailGetAsFileRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new EmailGetAsFile(
-    fileName,
-    format,
-    storage=storage,
-    folder=folder)
+let request = Models.EmailGetAsFileRequest()
+    .fileName('email.eml')
+    .format('Mhtml')
+    .storage('First Storage')
+    .folder('folder/on/storage')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **fileName** | **string**| Email document file name |
- **format** | **string**| File format Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft |
- **storage** | **string**| Storage name | [optional]
- **folder** | **string**| Path to folder in storage | [optional]
+</details>
 
-### Return type
+### Result
 
-Promise< Buffer >
+Description: File stream in specified format
+
+Return type: Promise< Buffer >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.EmailGetAsFileRequest()
+    .fileName('email.eml')
+    .format('Mhtml')
+    .storage('First Storage')
+    .folder('folder/on/storage')
+    .build();
+
+// Call method:
+let result = api.email.getAsFile(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="getList"></a>
-# **getList**
+## **getList**
+
+Description: Get email list from storage folder.             
+
+Returns: Email document list.
+
+Method call example:
 ```typescript
-public async getList(request: EmailGetListRequest): Promise< EmailStorageList >
+let result = api.email.getList(request);
 ```
 
-Get email list from storage folder.             
+### Parameter: request
 
-### Request Parameters
+Description: getList method request.
+
+See parameter model documentation at [EmailGetListRequest](EmailGetListRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new EmailGetList(
-    format,
-    folder=folder,
-    storage=storage,
-    itemsPerPage=itemsPerPage,
-    pageNumber=pageNumber)
+let request = Models.EmailGetListRequest()
+    .format('Eml')
+    .folder('folder/on/storage')
+    .storage('First Storage')
+    .itemsPerPage(10)
+    .pageNumber(0)
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **format** | **string**| Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft |
- **folder** | **string**| Path to folder in storage. | [optional]
- **storage** | **string**| Storage name. | [optional]
- **itemsPerPage** | **number**| Count of items on page. | [optional] [default to 10]
- **pageNumber** | **number**| Page number. | [optional] [default to 0]
+</details>
 
-### Return type
+### Result
 
-Promise< [EmailStorageList](EmailStorageList.md) >
+Description: Email document list.
+
+Return type: Promise< [EmailStorageList](EmailStorageList.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.emailStorageList()
+    .value([
+        Models.emailSaveRequest()
+            .storageFile(Models.storageFileLocation()
+                .fileName('message.eml')
+                .storage('First Storage')
+                .folderPath('file/location/folder/on/storage')
+                .build())
+            .value(Models.emailDto()
+                .attachments([
+                    Models.attachment()
+                        .name('some-file.txt')
+                        .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
+                        .build()])
+                .body('Some body')
+                .bodyType('Html')
+                .deliveryNotificationOptions([
+                    'OnSuccess',
+                    'Delay'])
+                .from(Models.mailAddress()
+                    .displayName('From Address')
+                    .address('from@aspose.com')
+                    .build())
+                .htmlBody('<b>Some body</b>')
+                .isBodyHtml(true)
+                .isDraft(true)
+                .subject('Re: Some subject')
+                .to([
+                    Models.mailAddress()
+                        .displayName('To Address')
+                        .address('to@aspose.com')
+                        .build()])
+                .build())
+            .build()])
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.EmailGetListRequest()
+    .format('Eml')
+    .folder('folder/on/storage')
+    .storage('First Storage')
+    .itemsPerPage(10)
+    .pageNumber(0)
+    .build();
+
+// Call method:
+let result = api.email.getList(request);
+
+// Result example:
+result = Models.emailStorageList()
+    .value([
+        Models.emailSaveRequest()
+            .storageFile(Models.storageFileLocation()
+                .fileName('message.eml')
+                .storage('First Storage')
+                .folderPath('file/location/folder/on/storage')
+                .build())
+            .value(Models.emailDto()
+                .attachments([
+                    Models.attachment()
+                        .name('some-file.txt')
+                        .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
+                        .build()])
+                .body('Some body')
+                .bodyType('Html')
+                .deliveryNotificationOptions([
+                    'OnSuccess',
+                    'Delay'])
+                .from(Models.mailAddress()
+                    .displayName('From Address')
+                    .address('from@aspose.com')
+                    .build())
+                .htmlBody('<b>Some body</b>')
+                .isBodyHtml(true)
+                .isDraft(true)
+                .subject('Re: Some subject')
+                .to([
+                    Models.mailAddress()
+                        .displayName('To Address')
+                        .address('to@aspose.com')
+                        .build()])
+                .build())
+            .build()])
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="save"></a>
-# **save**
+## **save**
+
+Description: Save email document to storage.             
+
+Method call example:
 ```typescript
-public async save(request: model.EmailSaveRequest): Promise< any >
+api.email.save(request);
 ```
 
-Save email document to storage.             
+### Parameter: request
 
-### request Parameter
+Description: Email document create/update request.
 
 See parameter model documentation at [EmailSaveRequest](EmailSaveRequest.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let request = Models.emailSaveRequest()
+    .format('Msg')
+    .storageFile(Models.storageFileLocation()
+        .fileName('email.eml')
+        .storage('First Storage')
+        .folderPath('file/location/folder/on/storage')
+        .build())
+    .value(Models.emailDto()
+        .attachments([
+            Models.attachment()
+                .name('some-file.txt')
+                .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
+                .build()])
+        .body('Some body')
+        .bodyType('Html')
+        .deliveryNotificationOptions([
+            'OnSuccess',
+            'Delay'])
+        .from(Models.mailAddress()
+            .displayName('From Address')
+            .address('from@aspose.com')
+            .build())
+        .htmlBody('<b>Some body</b>')
+        .isBodyHtml(true)
+        .isDraft(true)
+        .subject('Re: Some subject')
+        .to([
+            Models.mailAddress()
+                .displayName('To Address')
+                .address('to@aspose.com')
+                .build()])
+        .build())
+    .build();
+```
 
-Promise< any >
+</details>
+
+### Result
+
+Return type: Promise< any >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.emailSaveRequest()
+    .format('Msg')
+    .storageFile(Models.storageFileLocation()
+        .fileName('email.eml')
+        .storage('First Storage')
+        .folderPath('file/location/folder/on/storage')
+        .build())
+    .value(Models.emailDto()
+        .attachments([
+            Models.attachment()
+                .name('some-file.txt')
+                .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
+                .build()])
+        .body('Some body')
+        .bodyType('Html')
+        .deliveryNotificationOptions([
+            'OnSuccess',
+            'Delay'])
+        .from(Models.mailAddress()
+            .displayName('From Address')
+            .address('from@aspose.com')
+            .build())
+        .htmlBody('<b>Some body</b>')
+        .isBodyHtml(true)
+        .isDraft(true)
+        .subject('Re: Some subject')
+        .to([
+            Models.mailAddress()
+                .displayName('To Address')
+                .address('to@aspose.com')
+                .build()])
+        .build())
+    .build();
+
+// Call method:
+api.email.save(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 

@@ -58,7 +58,9 @@ export class ClientMessageSendFileRequestBuilder {
         this.model = model;
     }
     public build(): ClientMessageSendFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public account(account: string): ClientMessageSendFileRequestBuilder {
             this.model.account = account;

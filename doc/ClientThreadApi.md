@@ -1,125 +1,412 @@
-# ClientThreadApi
+# ClientThreadApi (EmailCloud.client.thread)
 
-                    
+Email client thread operations.
+
 <a name="delete"></a>
-# **delete**
+## **delete**
+
+Description: Delete thread by id. All messages from thread will also be deleted.             
+
+Method call example:
 ```typescript
-public async delete(request: model.ClientThreadDeleteRequest): Promise< any >
+api.client.thread.delete(request);
 ```
 
-Delete thread by id. All messages from thread will also be deleted.             
+### Parameter: request
 
-### request Parameter
+Description: Delete email thread request.
 
 See parameter model documentation at [ClientThreadDeleteRequest](ClientThreadDeleteRequest.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let request = Models.clientThreadDeleteRequest()
+    .folder('INBOX/SubFolder')
+    .threadId('5')
+    .accountLocation(Models.storageFileLocation()
+        .fileName('email.account')
+        .storage('First Storage')
+        .folderPath('file/location/folder/on/storage')
+        .build())
+    .build();
+```
 
-Promise< any >
+</details>
+
+### Result
+
+Return type: Promise< any >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.clientThreadDeleteRequest()
+    .folder('INBOX/SubFolder')
+    .threadId('5')
+    .accountLocation(Models.storageFileLocation()
+        .fileName('email.account')
+        .storage('First Storage')
+        .folderPath('file/location/folder/on/storage')
+        .build())
+    .build();
+
+// Call method:
+api.client.thread.delete(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
-                    
 <a name="getList"></a>
-# **getList**
+## **getList**
+
+Description: Get message threads from folder. All messages are partly fetched (without email body and some other fields).             
+
+Returns: List of threads
+
+Method call example:
 ```typescript
-public async getList(request: ClientThreadGetListRequest): Promise< EmailThreadList >
+let result = api.client.thread.getList(request);
 ```
 
-Get message threads from folder. All messages are partly fetched (without email body and some other fields).             
+### Parameter: request
 
-### Request Parameters
+Description: getList method request.
+
+See parameter model documentation at [ClientThreadGetListRequest](ClientThreadGetListRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new ClientThreadGetList(
-    folder,
-    account,
-    storage=storage,
-    accountStorageFolder=accountStorageFolder,
-    updateFolderCache=updateFolderCache,
-    messagesCacheLimit=messagesCacheLimit)
+let request = Models.ClientThreadGetListRequest()
+    .folder('INBOX/SubFolder')
+    .account('email.account')
+    .storage('First Storage')
+    .accountStorageFolder('email/account/location/on/storage')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **folder** | **string**| A folder in email account.              |
- **account** | **string**| Email account |
- **storage** | **string**| Storage name where account file located | [optional]
- **accountStorageFolder** | **string**| Folder in storage where account file located | [optional]
- **updateFolderCache** | **boolean**| This parameter is only used in accounts with CacheFile. If true - get new messages and update threads cache for given folder. If false, get only threads from cache without any calls to an email account              | [optional] [default to true]
- **messagesCacheLimit** | **number**| Limit messages cache size if CacheFile is used. Ignored in accounts without limits support              | [optional] [default to 200]
+</details>
 
-### Return type
+### Result
 
-Promise< [EmailThreadList](EmailThreadList.md) >
+Description: List of threads
+
+Return type: Promise< [EmailThreadList](EmailThreadList.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.emailThreadList()
+    .value([
+        Models.emailThread()
+            .id('123')
+            .subject('Some email subject')
+            .messages([
+                Models.emailDto()
+                    .date(new Date())
+                    .from(Models.mailAddress()
+                        .address('from@aspose.com')
+                        .build())
+                    .messageId('1')
+                    .subject('Some email subject')
+                    .to([
+                        Models.mailAddress()
+                            .address('to@aspose.com')
+                            .build()])
+                    .build(),
+                Models.emailDto()
+                    .date(new Date())
+                    .from(Models.mailAddress()
+                        .address('from@aspose.com')
+                        .build())
+                    .messageId('3')
+                    .subject('Re: Some email subject')
+                    .to([
+                        Models.mailAddress()
+                            .address('to@aspose.com')
+                            .build()])
+                    .build()])
+            .build()])
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.ClientThreadGetListRequest()
+    .folder('INBOX/SubFolder')
+    .account('email.account')
+    .storage('First Storage')
+    .accountStorageFolder('email/account/location/on/storage')
+    .build();
+
+// Call method:
+let result = api.client.thread.getList(request);
+
+// Result example:
+result = Models.emailThreadList()
+    .value([
+        Models.emailThread()
+            .id('123')
+            .subject('Some email subject')
+            .messages([
+                Models.emailDto()
+                    .date(new Date())
+                    .from(Models.mailAddress()
+                        .address('from@aspose.com')
+                        .build())
+                    .messageId('1')
+                    .subject('Some email subject')
+                    .to([
+                        Models.mailAddress()
+                            .address('to@aspose.com')
+                            .build()])
+                    .build(),
+                Models.emailDto()
+                    .date(new Date())
+                    .from(Models.mailAddress()
+                        .address('from@aspose.com')
+                        .build())
+                    .messageId('3')
+                    .subject('Re: Some email subject')
+                    .to([
+                        Models.mailAddress()
+                            .address('to@aspose.com')
+                            .build()])
+                    .build()])
+            .build()])
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="getMessages"></a>
-# **getMessages**
+## **getMessages**
+
+Description: Get messages from thread by id. All messages are fully fetched. For accounts with CacheFile only cached messages will be returned.             
+
+Returns: Requested thread with fully fetched messages
+
+Method call example:
 ```typescript
-public async getMessages(request: ClientThreadGetMessagesRequest): Promise< EmailList >
+let result = api.client.thread.getMessages(request);
 ```
 
-Get messages from thread by id. All messages are fully fetched. For accounts with CacheFile only cached messages will be returned.             
+### Parameter: request
 
-### Request Parameters
+Description: getMessages method request.
+
+See parameter model documentation at [ClientThreadGetMessagesRequest](ClientThreadGetMessagesRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new ClientThreadGetMessages(
-    threadId,
-    account,
-    folder=folder,
-    storage=storage,
-    accountStorageFolder=accountStorageFolder)
+let request = Models.ClientThreadGetMessagesRequest()
+    .threadId('5')
+    .account('email.account')
+    .folder('INBOX')
+    .storage('First Storage')
+    .accountStorageFolder('email/account/location/on/storage')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **threadId** | **string**| Thread identifier |
- **account** | **string**| Email account |
- **folder** | **string**| Specifies account folder to get thread from              | [optional]
- **storage** | **string**| Storage name where account file located | [optional]
- **accountStorageFolder** | **string**| Folder in storage where account file located | [optional]
+</details>
 
-### Return type
+### Result
 
-Promise< [EmailList](EmailList.md) >
+Description: Requested thread with fully fetched messages
+
+Return type: Promise< [EmailList](EmailList.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = ;
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.ClientThreadGetMessagesRequest()
+    .threadId('5')
+    .account('email.account')
+    .folder('INBOX')
+    .storage('First Storage')
+    .accountStorageFolder('email/account/location/on/storage')
+    .build();
+
+// Call method:
+let result = api.client.thread.getMessages(request);
+
+// Result example:
+result = ;
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="move"></a>
-# **move**
+## **move**
+
+Description: Move thread to another folder.             
+
+Method call example:
 ```typescript
-public async move(request: model.ClientThreadMoveRequest): Promise< any >
+api.client.thread.move(request);
 ```
 
-Move thread to another folder.             
+### Parameter: request
 
-### request Parameter
+Description: Move thread request.
 
 See parameter model documentation at [ClientThreadMoveRequest](ClientThreadMoveRequest.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let request = Models.clientThreadMoveRequest()
+    .destinationFolder('INBOX/SubFolder')
+    .threadId('5')
+    .accountLocation(Models.storageFileLocation()
+        .fileName('email.account')
+        .storage('First Storage')
+        .folderPath('file/location/folder/on/storage')
+        .build())
+    .build();
+```
 
-Promise< any >
+</details>
+
+### Result
+
+Return type: Promise< any >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.clientThreadMoveRequest()
+    .destinationFolder('INBOX/SubFolder')
+    .threadId('5')
+    .accountLocation(Models.storageFileLocation()
+        .fileName('email.account')
+        .storage('First Storage')
+        .folderPath('file/location/folder/on/storage')
+        .build())
+    .build();
+
+// Call method:
+api.client.thread.move(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
-                    
 <a name="setIsRead"></a>
-# **setIsRead**
+## **setIsRead**
+
+Description: Mark all messages in thread as read or unread.             
+
+Method call example:
 ```typescript
-public async setIsRead(request: model.ClientThreadSetIsReadRequest): Promise< any >
+api.client.thread.setIsRead(request);
 ```
 
-Mark all messages in thread as read or unread.             
+### Parameter: request
 
-### request Parameter
+Description: Email account specifier and IsRead flag.
 
 See parameter model documentation at [ClientThreadSetIsReadRequest](ClientThreadSetIsReadRequest.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let request = Models.clientThreadSetIsReadRequest()
+    .isRead(true)
+    .folder('INBOX')
+    .threadId('5')
+    .accountLocation(Models.storageFileLocation()
+        .fileName('email.account')
+        .storage('First Storage')
+        .folderPath('file/location/folder/on/storage')
+        .build())
+    .build();
+```
 
-Promise< any >
+</details>
+
+### Result
+
+Return type: Promise< any >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.clientThreadSetIsReadRequest()
+    .isRead(true)
+    .folder('INBOX')
+    .threadId('5')
+    .accountLocation(Models.storageFileLocation()
+        .fileName('email.account')
+        .storage('First Storage')
+        .folderPath('file/location/folder/on/storage')
+        .build())
+    .build();
+
+// Call method:
+api.client.thread.setIsRead(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 

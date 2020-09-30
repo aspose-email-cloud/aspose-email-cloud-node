@@ -66,7 +66,9 @@ export class AiNameExpandRequestBuilder {
         this.model = model;
     }
     public build(): AiNameExpandRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public name(name: string): AiNameExpandRequestBuilder {
             this.model.name = name;

@@ -42,7 +42,6 @@ export class ClientAccountApi {
         this.configuration = configuration;
     }
 
-        
     /**
      * Get email client account from storage.             
      * @param request contains request parameters
@@ -94,7 +93,6 @@ export class ClientAccountApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Get email client multi account file (*.multi.account). Will respond error if file extension is not \".multi.account\".             
      * @param request contains request parameters
@@ -146,7 +144,6 @@ export class ClientAccountApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Create/update email client account file (*.account) with credentials             
      * @param request Email account information
@@ -171,7 +168,6 @@ export class ClientAccountApi {
         return Promise.resolve(null);
     }
 
-        
     /**
      * Create email client multi account file (*.multi.account). Will respond error if file extension is not \".multi.account\".             
      * @param request Email accounts information.
@@ -195,5 +191,4 @@ export class ClientAccountApi {
         await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
-
 }

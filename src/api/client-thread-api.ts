@@ -42,7 +42,6 @@ export class ClientThreadApi {
         this.configuration = configuration;
     }
 
-        
     /**
      * Delete thread by id. All messages from thread will also be deleted.             
      * @param request Delete email thread request.
@@ -67,7 +66,6 @@ export class ClientThreadApi {
         return Promise.resolve(null);
     }
 
-        
     /**
      * Get message threads from folder. All messages are partly fetched (without email body and some other fields).             
      * @param request contains request parameters
@@ -136,7 +134,6 @@ export class ClientThreadApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Get messages from thread by id. All messages are fully fetched. For accounts with CacheFile only cached messages will be returned.             
      * @param request contains request parameters
@@ -201,7 +198,6 @@ export class ClientThreadApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Move thread to another folder.             
      * @param request Move thread request.
@@ -226,7 +222,6 @@ export class ClientThreadApi {
         return Promise.resolve(null);
     }
 
-        
     /**
      * Mark all messages in thread as read or unread.             
      * @param request Email account specifier and IsRead flag.
@@ -250,5 +245,4 @@ export class ClientThreadApi {
         await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
-
 }

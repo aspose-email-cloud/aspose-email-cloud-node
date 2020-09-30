@@ -34,7 +34,9 @@ export class EmailConfigDiscoverRequestBuilder {
         this.model = model;
     }
     public build(): EmailConfigDiscoverRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public address(address: string): EmailConfigDiscoverRequestBuilder {
             this.model.address = address;

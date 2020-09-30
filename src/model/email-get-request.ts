@@ -50,7 +50,9 @@ export class EmailGetRequestBuilder {
         this.model = model;
     }
     public build(): EmailGetRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public format(format: string): EmailGetRequestBuilder {
             this.model.format = format;

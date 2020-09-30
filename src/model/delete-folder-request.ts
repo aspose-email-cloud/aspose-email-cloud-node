@@ -42,7 +42,9 @@ export class DeleteFolderRequestBuilder {
         this.model = model;
     }
     public build(): DeleteFolderRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public path(path: string): DeleteFolderRequestBuilder {
             this.model.path = path;

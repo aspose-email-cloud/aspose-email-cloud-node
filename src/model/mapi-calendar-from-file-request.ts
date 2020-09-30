@@ -26,7 +26,9 @@ export class MapiCalendarFromFileRequestBuilder {
         this.model = model;
     }
     public build(): MapiCalendarFromFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public file(file: Buffer): MapiCalendarFromFileRequestBuilder {
             this.model.file = file;

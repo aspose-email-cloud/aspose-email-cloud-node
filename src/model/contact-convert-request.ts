@@ -42,7 +42,9 @@ export class ContactConvertRequestBuilder {
         this.model = model;
     }
     public build(): ContactConvertRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public toFormat(toFormat: string): ContactConvertRequestBuilder {
             this.model.toFormat = toFormat;

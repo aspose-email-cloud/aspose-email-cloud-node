@@ -66,7 +66,9 @@ export class ClientThreadGetListRequestBuilder {
         this.model = model;
     }
     public build(): ClientThreadGetListRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public folder(folder: string): ClientThreadGetListRequestBuilder {
             this.model.folder = folder;

@@ -42,7 +42,9 @@ export class DeleteFileRequestBuilder {
         this.model = model;
     }
     public build(): DeleteFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public path(path: string): DeleteFileRequestBuilder {
             this.model.path = path;

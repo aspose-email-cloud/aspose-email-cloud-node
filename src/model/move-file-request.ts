@@ -58,7 +58,9 @@ export class MoveFileRequestBuilder {
         this.model = model;
     }
     public build(): MoveFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public srcPath(srcPath: string): MoveFileRequestBuilder {
             this.model.srcPath = srcPath;

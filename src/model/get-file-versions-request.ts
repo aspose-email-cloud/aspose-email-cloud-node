@@ -34,7 +34,9 @@ export class GetFileVersionsRequestBuilder {
         this.model = model;
     }
     public build(): GetFileVersionsRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public path(path: string): GetFileVersionsRequestBuilder {
             this.model.path = path;

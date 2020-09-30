@@ -50,7 +50,9 @@ export class MapiContactGetRequestBuilder {
         this.model = model;
     }
     public build(): MapiContactGetRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public format(format: string): MapiContactGetRequestBuilder {
             this.model.format = format;

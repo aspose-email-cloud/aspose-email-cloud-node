@@ -34,7 +34,9 @@ export class MapiMessageFromFileRequestBuilder {
         this.model = model;
     }
     public build(): MapiMessageFromFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public format(format: string): MapiMessageFromFileRequestBuilder {
             this.model.format = format;

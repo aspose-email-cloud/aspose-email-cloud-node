@@ -50,7 +50,9 @@ export class AiBcrParseRequestBuilder {
         this.model = model;
     }
     public build(): AiBcrParseRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public file(file: Buffer): AiBcrParseRequestBuilder {
             this.model.file = file;

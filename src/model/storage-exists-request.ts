@@ -26,7 +26,9 @@ export class StorageExistsRequestBuilder {
         this.model = model;
     }
     public build(): StorageExistsRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public storageName(storageName: string): StorageExistsRequestBuilder {
             this.model.storageName = storageName;

@@ -66,7 +66,9 @@ export class AiNameCompleteRequestBuilder {
         this.model = model;
     }
     public build(): AiNameCompleteRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public name(name: string): AiNameCompleteRequestBuilder {
             this.model.name = name;

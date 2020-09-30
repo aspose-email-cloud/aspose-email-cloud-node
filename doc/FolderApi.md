@@ -1,142 +1,317 @@
-# FolderApi
+# FolderApi (EmailCloud.cloudStorage.folder)
 
-                    
+Folder operations controller
+
 <a name="copyFolder"></a>
-# **copyFolder**
+## **copyFolder**
+
+Description: Copy folder
+
+Method call example:
 ```typescript
-public async copyFolder(request: CopyFolderRequest): Promise< any >
+api.cloudStorage.folder.copyFolder(request);
 ```
 
-Copy folder
+### Parameter: request
 
-### Request Parameters
+Description: copyFolder method request.
+
+See parameter model documentation at [CopyFolderRequest](CopyFolderRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new CopyFolder(
-    srcPath,
-    destPath,
-    srcStorageName=srcStorageName,
-    destStorageName=destStorageName)
+let request = Models.CopyFolderRequest()
+    .srcPath('/storage/path/to/source/folder')
+    .destPath('/storage/path/to/destination/folder')
+    .srcStorageName('First Storage')
+    .destStorageName('Other Storage')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **srcPath** | **string**| Source folder path e.g. &#39;/src&#39; |
- **destPath** | **string**| Destination folder path e.g. &#39;/dst&#39; |
- **srcStorageName** | **string**| Source storage name | [optional]
- **destStorageName** | **string**| Destination storage name | [optional]
+</details>
 
-### Return type
+### Result
 
-Promise< any >
+Return type: Promise< any >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.CopyFolderRequest()
+    .srcPath('/storage/path/to/source/folder')
+    .destPath('/storage/path/to/destination/folder')
+    .srcStorageName('First Storage')
+    .destStorageName('Other Storage')
+    .build();
+
+// Call method:
+api.cloudStorage.folder.copyFolder(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="createFolder"></a>
-# **createFolder**
+## **createFolder**
+
+Description: Create the folder
+
+Method call example:
 ```typescript
-public async createFolder(request: CreateFolderRequest): Promise< any >
+api.cloudStorage.folder.createFolder(request);
 ```
 
-Create the folder
+### Parameter: request
 
-### Request Parameters
+Description: createFolder method request.
+
+See parameter model documentation at [CreateFolderRequest](CreateFolderRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new CreateFolder(
-    path,
-    storageName=storageName)
+let request = Models.CreateFolderRequest()
+    .path('/storage/path/to/new/folder')
+    .storageName('First Storage')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **path** | **string**| Folder path to create e.g. &#39;folder_1/folder_2/&#39; |
- **storageName** | **string**| Storage name | [optional]
+</details>
 
-### Return type
+### Result
 
-Promise< any >
+Return type: Promise< any >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.CreateFolderRequest()
+    .path('/storage/path/to/new/folder')
+    .storageName('First Storage')
+    .build();
+
+// Call method:
+api.cloudStorage.folder.createFolder(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="deleteFolder"></a>
-# **deleteFolder**
+## **deleteFolder**
+
+Description: Delete folder
+
+Method call example:
 ```typescript
-public async deleteFolder(request: DeleteFolderRequest): Promise< any >
+api.cloudStorage.folder.deleteFolder(request);
 ```
 
-Delete folder
+### Parameter: request
 
-### Request Parameters
+Description: deleteFolder method request.
+
+See parameter model documentation at [DeleteFolderRequest](DeleteFolderRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new DeleteFolder(
-    path,
-    storageName=storageName,
-    recursive=recursive)
+let request = Models.DeleteFolderRequest()
+    .path('/storage/path/to/folder')
+    .storageName('First Storage')
+    .recursive(true)
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **path** | **string**| Folder path e.g. &#39;/folder&#39; |
- **storageName** | **string**| Storage name | [optional]
- **recursive** | **boolean**| Enable to delete folders, subfolders and files | [optional] [default to false]
+</details>
 
-### Return type
+### Result
 
-Promise< any >
+Return type: Promise< any >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.DeleteFolderRequest()
+    .path('/storage/path/to/folder')
+    .storageName('First Storage')
+    .recursive(true)
+    .build();
+
+// Call method:
+api.cloudStorage.folder.deleteFolder(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="getFilesList"></a>
-# **getFilesList**
+## **getFilesList**
+
+Description: Get all files and folders within a folder
+
+Returns: Returns all files and folders contained by the folder.
+
+Method call example:
 ```typescript
-public async getFilesList(request: GetFilesListRequest): Promise< FilesList >
+let result = api.cloudStorage.folder.getFilesList(request);
 ```
 
-Get all files and folders within a folder
+### Parameter: request
 
-### Request Parameters
+Description: getFilesList method request.
+
+See parameter model documentation at [GetFilesListRequest](GetFilesListRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new GetFilesList(
-    path,
-    storageName=storageName)
+let request = Models.GetFilesListRequest()
+    .path('/storage/path/to/folder')
+    .storageName('First Storage')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **path** | **string**| Folder path e.g. &#39;/folder&#39; |
- **storageName** | **string**| Storage name | [optional]
+</details>
 
-### Return type
+### Result
 
-Promise< [FilesList](FilesList.md) >
+Description: Returns all files and folders contained by the folder.
+
+Return type: Promise< [FilesList](FilesList.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.filesList()
+    .value([
+        Models.storageFile()
+            .name('file.ext')
+            .modifiedDate(new Date())
+            .size(1024)
+            .path('/path/to/file/on/storage')
+            .build()])
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.GetFilesListRequest()
+    .path('/storage/path/to/folder')
+    .storageName('First Storage')
+    .build();
+
+// Call method:
+let result = api.cloudStorage.folder.getFilesList(request);
+
+// Result example:
+result = Models.filesList()
+    .value([
+        Models.storageFile()
+            .name('file.ext')
+            .modifiedDate(new Date())
+            .size(1024)
+            .path('/path/to/file/on/storage')
+            .build()])
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="moveFolder"></a>
-# **moveFolder**
+## **moveFolder**
+
+Description: Move folder
+
+Method call example:
 ```typescript
-public async moveFolder(request: MoveFolderRequest): Promise< any >
+api.cloudStorage.folder.moveFolder(request);
 ```
 
-Move folder
+### Parameter: request
 
-### Request Parameters
+Description: moveFolder method request.
+
+See parameter model documentation at [MoveFolderRequest](MoveFolderRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new MoveFolder(
-    srcPath,
-    destPath,
-    srcStorageName=srcStorageName,
-    destStorageName=destStorageName)
+let request = Models.MoveFolderRequest()
+    .srcPath('/storage/path/to/source/folder')
+    .destPath('/storage/path/to/destination/folder')
+    .srcStorageName('First Storage')
+    .destStorageName('Other Storage')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **srcPath** | **string**| Folder path to move e.g. &#39;/folder&#39; |
- **destPath** | **string**| Destination folder path to move to e.g &#39;/dst&#39; |
- **srcStorageName** | **string**| Source storage name | [optional]
- **destStorageName** | **string**| Destination storage name | [optional]
+</details>
 
-### Return type
+### Result
 
-Promise< any >
+Return type: Promise< any >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.MoveFolderRequest()
+    .srcPath('/storage/path/to/source/folder')
+    .destPath('/storage/path/to/destination/folder')
+    .srcStorageName('First Storage')
+    .destStorageName('Other Storage')
+    .build();
+
+// Call method:
+api.cloudStorage.folder.moveFolder(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
+

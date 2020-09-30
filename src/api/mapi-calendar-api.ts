@@ -42,7 +42,6 @@ export class MapiCalendarApi {
         this.configuration = configuration;
     }
 
-        
     /**
      * Converts MAPI calendar model to CalendarDto model.             
      * @param mapiCalendarDto MAPI calendar model to convert.
@@ -68,7 +67,6 @@ export class MapiCalendarApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Converts MAPI calendar model to specified format and returns as file.             
      * @param request MAPI calendar model to convert.
@@ -95,7 +93,6 @@ export class MapiCalendarApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Converts calendar file to a MAPI model representation.             
      * @param request contains request parameters
@@ -145,7 +142,6 @@ export class MapiCalendarApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Get MAPI calendar document.             
      * @param request contains request parameters
@@ -197,7 +193,6 @@ export class MapiCalendarApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Save MAPI Calendar to storage.             
      * @param request Calendar create/update request.
@@ -221,5 +216,4 @@ export class MapiCalendarApi {
         await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
-
 }

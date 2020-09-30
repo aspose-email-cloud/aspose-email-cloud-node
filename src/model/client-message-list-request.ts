@@ -82,7 +82,9 @@ export class ClientMessageListRequestBuilder {
         this.model = model;
     }
     public build(): ClientMessageListRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public folder(folder: string): ClientMessageListRequestBuilder {
             this.model.folder = folder;

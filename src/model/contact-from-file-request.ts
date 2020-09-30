@@ -34,7 +34,9 @@ export class ContactFromFileRequestBuilder {
         this.model = model;
     }
     public build(): ContactFromFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public format(format: string): ContactFromFileRequestBuilder {
             this.model.format = format;

@@ -74,7 +74,9 @@ export class ClientMessageAppendFileRequestBuilder {
         this.model = model;
     }
     public build(): ClientMessageAppendFileRequest {
-        return this.model;
+        const tempModel = this.model;
+        this.model = null;
+        return tempModel;
     }
         public account(account: string): ClientMessageAppendFileRequestBuilder {
             this.model.account = account;
