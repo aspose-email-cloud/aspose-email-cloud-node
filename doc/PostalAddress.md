@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ```typescript
 let postalAddress = Models.postalAddress()
     .address('221b')
-    .category(Models.enumWithCustom<PostalAddressCategory>()
+    .category(Models.enumWithCustomOfPostalAddressCategory()
         
         .build())
     .city('London')

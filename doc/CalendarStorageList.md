@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ```typescript
 let calendarStorageList = Models.calendarStorageList()
     .value([
-        Models.storageModel<CalendarDto>()
+        Models.storageModelOfCalendarDto()
             .storageFile(Models.storageFileLocation()
                 .fileName('calendar.ics')
                 .storage('First Storage')

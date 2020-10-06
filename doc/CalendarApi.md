@@ -937,7 +937,7 @@ Return type: Promise< [CalendarStorageList](CalendarStorageList.md) >
 ```typescript
 let result = Models.calendarStorageList()
     .value([
-        Models.storageModel<CalendarDto>()
+        Models.storageModelOfCalendarDto()
             .storageFile(Models.storageFileLocation()
                 .fileName('calendar.ics')
                 .storage('First Storage')
@@ -994,7 +994,7 @@ let result = api.calendar.getList(request);
 // Result example:
 result = Models.calendarStorageList()
     .value([
-        Models.storageModel<CalendarDto>()
+        Models.storageModelOfCalendarDto()
             .storageFile(Models.storageFileLocation()
                 .fileName('calendar.ics')
                 .storage('First Storage')

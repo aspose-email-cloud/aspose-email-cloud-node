@@ -202,7 +202,35 @@ See parameter model documentation at [AiNameParsedRequest](AiNameParsedRequest.m
     <summary>Parameter initialization example:</summary>
     
 ```typescript
-let request = ;
+let request = Models.aiNameParsedRequest()
+    .culturalContext(Models.aiNameCulturalContext()
+        .language('')
+        .location('')
+        .script('')
+        .encoding('')
+        .build())
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
 ```
 
 </details>
@@ -242,7 +270,35 @@ let result = Models.aiNameWeightedVariants()
 const api = new EmailCloud(app_key, app_sid);
 
 // Prepare parameters:
-let request = ;
+let request = Models.aiNameParsedRequest()
+    .culturalContext(Models.aiNameCulturalContext()
+        .language('')
+        .location('')
+        .script('')
+        .encoding('')
+        .build())
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
 
 // Call method:
 let result = api.ai.name.expandParsed(request);
@@ -364,7 +420,35 @@ See parameter model documentation at [AiNameParsedRequest](AiNameParsedRequest.m
     <summary>Parameter initialization example:</summary>
     
 ```typescript
-let request = ;
+let request = Models.aiNameParsedRequest()
+    .culturalContext(Models.aiNameCulturalContext()
+        .language('')
+        .location('')
+        .script('')
+        .encoding('')
+        .build())
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
 ```
 
 </details>
@@ -397,7 +481,35 @@ let result = Models.aiNameFormatted()
 const api = new EmailCloud(app_key, app_sid);
 
 // Prepare parameters:
-let request = ;
+let request = Models.aiNameParsedRequest()
+    .culturalContext(Models.aiNameCulturalContext()
+        .language('')
+        .location('')
+        .script('')
+        .encoding('')
+        .build())
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
 
 // Call method:
 let result = api.ai.name.formatParsed(request);
@@ -504,7 +616,35 @@ See parameter model documentation at [AiNameParsedRequest](AiNameParsedRequest.m
     <summary>Parameter initialization example:</summary>
     
 ```typescript
-let request = ;
+let request = Models.aiNameParsedRequest()
+    .culturalContext(Models.aiNameCulturalContext()
+        .language('')
+        .location('')
+        .script('')
+        .encoding('')
+        .build())
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
 ```
 
 </details>
@@ -534,7 +674,35 @@ let result = ;
 const api = new EmailCloud(app_key, app_sid);
 
 // Prepare parameters:
-let request = ;
+let request = Models.aiNameParsedRequest()
+    .culturalContext(Models.aiNameCulturalContext()
+        .language('')
+        .location('')
+        .script('')
+        .encoding('')
+        .build())
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
 
 // Call method:
 let result = api.ai.name.genderizeParsed(request);
@@ -752,7 +920,29 @@ Return type: Promise< [AiNameComponentList](AiNameComponentList.md) >
     <summary>Result example</summary>
 
 ```typescript
-let result = ;
+let result = Models.aiNameComponentList()
+    .value([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
 ```
 
 </details>
@@ -777,7 +967,29 @@ let request = Models.AiNameParseRequest()
 let result = api.ai.name.parse(request);
 
 // Result example:
-result = ;
+result = Models.aiNameComponentList()
+    .value([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
 ```
 
 </details>
