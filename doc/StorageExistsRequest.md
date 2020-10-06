@@ -14,3 +14,4 @@ let request = Models.StorageExistsRequest()
     .storageName('First Storage')
     .build();
 ```
+
