@@ -11,7 +11,7 @@ Returns: File stream in specified format
 
 Method call example:
 ```typescript
-let result = api.contact.asFile(request);
+let result = await api.contact.asFile(request);
 ```
 
 ### Parameter: request
@@ -125,7 +125,7 @@ let request = Models.contactAsFileRequest()
     .build();
 
 // Call method:
-let result = api.contact.asFile(request);
+let result = await api.contact.asFile(request);
 ```
 
 </details>
@@ -141,7 +141,7 @@ Returns: MAPI model contact representation
 
 Method call example:
 ```typescript
-let result = api.contact.asMapi(contactDto);
+let result = await api.contact.asMapi(contactDto);
 ```
 
 ### Parameter: contactDto
@@ -280,7 +280,7 @@ let contactDto = Models.contactDto()
     .build();
 
 // Call method:
-let result = api.contact.asMapi(contactDto);
+let result = await api.contact.asMapi(contactDto);
 
 // Result example:
 result = Models.mapiContactDto()
@@ -318,7 +318,7 @@ Returns: File stream in specified destination format
 
 Method call example:
 ```typescript
-let result = api.contact.convert(request);
+let result = await api.contact.convert(request);
 ```
 
 ### Parameter: request
@@ -362,7 +362,7 @@ let request = Models.ContactConvertRequest()
     .build();
 
 // Call method:
-let result = api.contact.convert(request);
+let result = await api.contact.convert(request);
 ```
 
 </details>
@@ -378,7 +378,7 @@ Returns: Contact model
 
 Method call example:
 ```typescript
-let result = api.contact.fromFile(request);
+let result = await api.contact.fromFile(request);
 ```
 
 ### Parameter: request
@@ -467,7 +467,7 @@ let request = Models.ContactFromFileRequest()
     .build();
 
 // Call method:
-let result = api.contact.fromFile(request);
+let result = await api.contact.fromFile(request);
 
 // Result example:
 result = Models.contactDto()
@@ -523,7 +523,7 @@ Returns: Contact document.
 
 Method call example:
 ```typescript
-let result = api.contact.get(request);
+let result = await api.contact.get(request);
 ```
 
 ### Parameter: request
@@ -616,7 +616,7 @@ let request = Models.ContactGetRequest()
     .build();
 
 // Call method:
-let result = api.contact.get(request);
+let result = await api.contact.get(request);
 
 // Result example:
 result = Models.contactDto()
@@ -672,7 +672,7 @@ Returns: File stream in specified format
 
 Method call example:
 ```typescript
-let result = api.contact.getAsFile(request);
+let result = await api.contact.getAsFile(request);
 ```
 
 ### Parameter: request
@@ -720,7 +720,7 @@ let request = Models.ContactGetAsFileRequest()
     .build();
 
 // Call method:
-let result = api.contact.getAsFile(request);
+let result = await api.contact.getAsFile(request);
 ```
 
 </details>
@@ -736,7 +736,7 @@ Returns: Contact list.
 
 Method call example:
 ```typescript
-let result = api.contact.getList(request);
+let result = await api.contact.getList(request);
 ```
 
 ### Parameter: request
@@ -841,7 +841,7 @@ let request = Models.ContactGetListRequest()
     .build();
 
 // Call method:
-let result = api.contact.getList(request);
+let result = await api.contact.getList(request);
 
 // Result example:
 result = Models.contactStorageList()
@@ -905,7 +905,7 @@ Description: Save contact to storage.
 
 Method call example:
 ```typescript
-api.contact.save(request);
+await api.contact.save(request);
 ```
 
 ### Parameter: request
@@ -1027,7 +1027,7 @@ let request = Models.contactSaveRequest()
     .build();
 
 // Call method:
-api.contact.save(request);
+await api.contact.save(request);
 ```
 
 </details>

@@ -11,7 +11,7 @@ Returns: List of name variations.
 
 Method call example:
 ```typescript
-let result = api.ai.name.complete(request);
+let result = await api.ai.name.complete(request);
 ```
 
 ### Parameter: request
@@ -71,7 +71,7 @@ let request = Models.AiNameCompleteRequest()
     .build();
 
 // Call method:
-let result = api.ai.name.complete(request);
+let result = await api.ai.name.complete(request);
 
 // Result example:
 result = Models.aiNameWeightedVariants()
@@ -100,7 +100,7 @@ Returns: List of name variations.
 
 Method call example:
 ```typescript
-let result = api.ai.name.expand(request);
+let result = await api.ai.name.expand(request);
 ```
 
 ### Parameter: request
@@ -160,7 +160,7 @@ let request = Models.AiNameExpandRequest()
     .build();
 
 // Call method:
-let result = api.ai.name.expand(request);
+let result = await api.ai.name.expand(request);
 
 // Result example:
 result = Models.aiNameWeightedVariants()
@@ -189,7 +189,7 @@ Returns: List of name variations.
 
 Method call example:
 ```typescript
-let result = api.ai.name.expandParsed(request);
+let result = await api.ai.name.expandParsed(request);
 ```
 
 ### Parameter: request
@@ -203,12 +203,6 @@ See parameter model documentation at [AiNameParsedRequest](AiNameParsedRequest.m
     
 ```typescript
 let request = Models.aiNameParsedRequest()
-    .culturalContext(Models.aiNameCulturalContext()
-        .language('')
-        .location('')
-        .script('')
-        .encoding('')
-        .build())
     .parsedName([
         Models.aiNameComponent()
             .value('John')
@@ -271,12 +265,6 @@ const api = new EmailCloud(app_key, app_sid);
 
 // Prepare parameters:
 let request = Models.aiNameParsedRequest()
-    .culturalContext(Models.aiNameCulturalContext()
-        .language('')
-        .location('')
-        .script('')
-        .encoding('')
-        .build())
     .parsedName([
         Models.aiNameComponent()
             .value('John')
@@ -301,7 +289,7 @@ let request = Models.aiNameParsedRequest()
     .build();
 
 // Call method:
-let result = api.ai.name.expandParsed(request);
+let result = await api.ai.name.expandParsed(request);
 
 // Result example:
 result = Models.aiNameWeightedVariants()
@@ -330,7 +318,7 @@ Returns: Formatted name.
 
 Method call example:
 ```typescript
-let result = api.ai.name.format(request);
+let result = await api.ai.name.format(request);
 ```
 
 ### Parameter: request
@@ -385,7 +373,7 @@ let request = Models.AiNameFormatRequest()
     .build();
 
 // Call method:
-let result = api.ai.name.format(request);
+let result = await api.ai.name.format(request);
 
 // Result example:
 result = Models.aiNameFormatted()
@@ -407,7 +395,7 @@ Returns: Formatted name.
 
 Method call example:
 ```typescript
-let result = api.ai.name.formatParsed(request);
+let result = await api.ai.name.formatParsed(request);
 ```
 
 ### Parameter: request
@@ -421,12 +409,6 @@ See parameter model documentation at [AiNameParsedRequest](AiNameParsedRequest.m
     
 ```typescript
 let request = Models.aiNameParsedRequest()
-    .culturalContext(Models.aiNameCulturalContext()
-        .language('')
-        .location('')
-        .script('')
-        .encoding('')
-        .build())
     .parsedName([
         Models.aiNameComponent()
             .value('John')
@@ -482,12 +464,6 @@ const api = new EmailCloud(app_key, app_sid);
 
 // Prepare parameters:
 let request = Models.aiNameParsedRequest()
-    .culturalContext(Models.aiNameCulturalContext()
-        .language('')
-        .location('')
-        .script('')
-        .encoding('')
-        .build())
     .parsedName([
         Models.aiNameComponent()
             .value('John')
@@ -512,7 +488,7 @@ let request = Models.aiNameParsedRequest()
     .build();
 
 // Call method:
-let result = api.ai.name.formatParsed(request);
+let result = await api.ai.name.formatParsed(request);
 
 // Result example:
 result = Models.aiNameFormatted()
@@ -534,7 +510,7 @@ Returns: Hypotheses about person's gender.
 
 Method call example:
 ```typescript
-let result = api.ai.name.genderize(request);
+let result = await api.ai.name.genderize(request);
 ```
 
 ### Parameter: request
@@ -584,7 +560,7 @@ let request = Models.AiNameGenderizeRequest()
     .build();
 
 // Call method:
-let result = api.ai.name.genderize(request);
+let result = await api.ai.name.genderize(request);
 
 // Result example:
 result = ;
@@ -603,7 +579,7 @@ Returns: Hypotheses about person's gender.
 
 Method call example:
 ```typescript
-let result = api.ai.name.genderizeParsed(request);
+let result = await api.ai.name.genderizeParsed(request);
 ```
 
 ### Parameter: request
@@ -617,12 +593,6 @@ See parameter model documentation at [AiNameParsedRequest](AiNameParsedRequest.m
     
 ```typescript
 let request = Models.aiNameParsedRequest()
-    .culturalContext(Models.aiNameCulturalContext()
-        .language('')
-        .location('')
-        .script('')
-        .encoding('')
-        .build())
     .parsedName([
         Models.aiNameComponent()
             .value('John')
@@ -675,12 +645,6 @@ const api = new EmailCloud(app_key, app_sid);
 
 // Prepare parameters:
 let request = Models.aiNameParsedRequest()
-    .culturalContext(Models.aiNameCulturalContext()
-        .language('')
-        .location('')
-        .script('')
-        .encoding('')
-        .build())
     .parsedName([
         Models.aiNameComponent()
             .value('John')
@@ -705,7 +669,7 @@ let request = Models.aiNameParsedRequest()
     .build();
 
 // Call method:
-let result = api.ai.name.genderizeParsed(request);
+let result = await api.ai.name.genderizeParsed(request);
 
 // Result example:
 result = ;
@@ -724,7 +688,7 @@ Returns: Match result.
 
 Method call example:
 ```typescript
-let result = api.ai.name.match(request);
+let result = await api.ai.name.match(request);
 ```
 
 ### Parameter: request
@@ -783,7 +747,7 @@ let request = Models.AiNameMatchRequest()
     .build();
 
 // Call method:
-let result = api.ai.name.match(request);
+let result = await api.ai.name.match(request);
 
 // Result example:
 result = Models.aiNameMatchResult()
@@ -809,7 +773,7 @@ Returns: Match result.
 
 Method call example:
 ```typescript
-let result = api.ai.name.matchParsed(request);
+let result = await api.ai.name.matchParsed(request);
 ```
 
 ### Parameter: request
@@ -822,7 +786,50 @@ See parameter model documentation at [AiNameMatchParsedRequest](AiNameMatchParse
     <summary>Parameter initialization example:</summary>
     
 ```typescript
-let request = ;
+let request = Models.aiNameMatchParsedRequest()
+    .otherParsedName([
+        Models.aiNameComponent()
+            .value('J')
+            .category('FirstInitial')
+            .score(1)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(3)
+            .build(),
+        Models.aiNameComponent()
+            .value('%f%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
 ```
 
 </details>
@@ -859,10 +866,53 @@ let result = Models.aiNameMatchResult()
 const api = new EmailCloud(app_key, app_sid);
 
 // Prepare parameters:
-let request = ;
+let request = Models.aiNameMatchParsedRequest()
+    .otherParsedName([
+        Models.aiNameComponent()
+            .value('J')
+            .category('FirstInitial')
+            .score(1)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(3)
+            .build(),
+        Models.aiNameComponent()
+            .value('%f%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
 
 // Call method:
-let result = api.ai.name.matchParsed(request);
+let result = await api.ai.name.matchParsed(request);
 
 // Result example:
 result = Models.aiNameMatchResult()
@@ -888,7 +938,7 @@ Returns: List of name components.
 
 Method call example:
 ```typescript
-let result = api.ai.name.parse(request);
+let result = await api.ai.name.parse(request);
 ```
 
 ### Parameter: request
@@ -964,7 +1014,7 @@ let request = Models.AiNameParseRequest()
     .build();
 
 // Call method:
-let result = api.ai.name.parse(request);
+let result = await api.ai.name.parse(request);
 
 // Result example:
 result = Models.aiNameComponentList()
@@ -1005,7 +1055,7 @@ Returns: Match result.
 
 Method call example:
 ```typescript
-let result = api.ai.name.parseEmailAddress(request);
+let result = await api.ai.name.parseEmailAddress(request);
 ```
 
 ### Parameter: request
@@ -1055,7 +1105,7 @@ let request = Models.AiNameParseEmailAddressRequest()
     .build();
 
 // Call method:
-let result = api.ai.name.parseEmailAddress(request);
+let result = await api.ai.name.parseEmailAddress(request);
 
 // Result example:
 result = ;

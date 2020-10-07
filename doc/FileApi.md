@@ -9,7 +9,7 @@ Description: Copy file
 
 Method call example:
 ```typescript
-api.cloudStorage.file.copyFile(request);
+await api.cloudStorage.file.copyFile(request);
 ```
 
 ### Parameter: request
@@ -53,7 +53,7 @@ let request = Models.CopyFileRequest()
     .build();
 
 // Call method:
-api.cloudStorage.file.copyFile(request);
+await api.cloudStorage.file.copyFile(request);
 ```
 
 </details>
@@ -67,7 +67,7 @@ Description: Delete file
 
 Method call example:
 ```typescript
-api.cloudStorage.file.deleteFile(request);
+await api.cloudStorage.file.deleteFile(request);
 ```
 
 ### Parameter: request
@@ -107,7 +107,7 @@ let request = Models.DeleteFileRequest()
     .build();
 
 // Call method:
-api.cloudStorage.file.deleteFile(request);
+await api.cloudStorage.file.deleteFile(request);
 ```
 
 </details>
@@ -123,7 +123,7 @@ Returns: The raw data of the file.
 
 Method call example:
 ```typescript
-let result = api.cloudStorage.file.downloadFile(request);
+let result = await api.cloudStorage.file.downloadFile(request);
 ```
 
 ### Parameter: request
@@ -165,7 +165,7 @@ let request = Models.DownloadFileRequest()
     .build();
 
 // Call method:
-let result = api.cloudStorage.file.downloadFile(request);
+let result = await api.cloudStorage.file.downloadFile(request);
 ```
 
 </details>
@@ -179,7 +179,7 @@ Description: Move file
 
 Method call example:
 ```typescript
-api.cloudStorage.file.moveFile(request);
+await api.cloudStorage.file.moveFile(request);
 ```
 
 ### Parameter: request
@@ -223,7 +223,7 @@ let request = Models.MoveFileRequest()
     .build();
 
 // Call method:
-api.cloudStorage.file.moveFile(request);
+await api.cloudStorage.file.moveFile(request);
 ```
 
 </details>
@@ -239,7 +239,7 @@ Returns: Empty error list if the upload is successful.
 
 Method call example:
 ```typescript
-let result = api.cloudStorage.file.uploadFile(request);
+let result = await api.cloudStorage.file.uploadFile(request);
 ```
 
 ### Parameter: request
@@ -293,7 +293,7 @@ let request = Models.UploadFileRequest()
     .build();
 
 // Call method:
-let result = api.cloudStorage.file.uploadFile(request);
+let result = await api.cloudStorage.file.uploadFile(request);
 
 // Result example:
 result = ;

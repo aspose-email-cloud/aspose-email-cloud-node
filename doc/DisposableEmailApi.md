@@ -11,7 +11,7 @@ Returns: true if address is disposable
 
 Method call example:
 ```typescript
-let result = api.disposableEmail.isDisposable(request);
+let result = await api.disposableEmail.isDisposable(request);
 ```
 
 ### Parameter: request
@@ -61,7 +61,7 @@ let request = Models.DisposableEmailIsDisposableRequest()
     .build();
 
 // Call method:
-let result = api.disposableEmail.isDisposable(request);
+let result = await api.disposableEmail.isDisposable(request);
 
 // Result example:
 result = ;

@@ -9,7 +9,7 @@ Description: Copy folder
 
 Method call example:
 ```typescript
-api.cloudStorage.folder.copyFolder(request);
+await api.cloudStorage.folder.copyFolder(request);
 ```
 
 ### Parameter: request
@@ -53,7 +53,7 @@ let request = Models.CopyFolderRequest()
     .build();
 
 // Call method:
-api.cloudStorage.folder.copyFolder(request);
+await api.cloudStorage.folder.copyFolder(request);
 ```
 
 </details>
@@ -67,7 +67,7 @@ Description: Create the folder
 
 Method call example:
 ```typescript
-api.cloudStorage.folder.createFolder(request);
+await api.cloudStorage.folder.createFolder(request);
 ```
 
 ### Parameter: request
@@ -107,7 +107,7 @@ let request = Models.CreateFolderRequest()
     .build();
 
 // Call method:
-api.cloudStorage.folder.createFolder(request);
+await api.cloudStorage.folder.createFolder(request);
 ```
 
 </details>
@@ -121,7 +121,7 @@ Description: Delete folder
 
 Method call example:
 ```typescript
-api.cloudStorage.folder.deleteFolder(request);
+await api.cloudStorage.folder.deleteFolder(request);
 ```
 
 ### Parameter: request
@@ -163,7 +163,7 @@ let request = Models.DeleteFolderRequest()
     .build();
 
 // Call method:
-api.cloudStorage.folder.deleteFolder(request);
+await api.cloudStorage.folder.deleteFolder(request);
 ```
 
 </details>
@@ -179,7 +179,7 @@ Returns: Returns all files and folders contained by the folder.
 
 Method call example:
 ```typescript
-let result = api.cloudStorage.folder.getFilesList(request);
+let result = await api.cloudStorage.folder.getFilesList(request);
 ```
 
 ### Parameter: request
@@ -239,7 +239,7 @@ let request = Models.GetFilesListRequest()
     .build();
 
 // Call method:
-let result = api.cloudStorage.folder.getFilesList(request);
+let result = await api.cloudStorage.folder.getFilesList(request);
 
 // Result example:
 result = Models.filesList()
@@ -264,7 +264,7 @@ Description: Move folder
 
 Method call example:
 ```typescript
-api.cloudStorage.folder.moveFolder(request);
+await api.cloudStorage.folder.moveFolder(request);
 ```
 
 ### Parameter: request
@@ -308,7 +308,7 @@ let request = Models.MoveFolderRequest()
     .build();
 
 // Call method:
-api.cloudStorage.folder.moveFolder(request);
+await api.cloudStorage.folder.moveFolder(request);
 ```
 
 </details>

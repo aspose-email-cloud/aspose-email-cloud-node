@@ -11,7 +11,7 @@ Returns: Disc usage.
 
 Method call example:
 ```typescript
-let result = api.cloudStorage.storage.getDiscUsage(request);
+let result = await api.cloudStorage.storage.getDiscUsage(request);
 ```
 
 ### Parameter: request
@@ -64,7 +64,7 @@ let request = Models.GetDiscUsageRequest()
     .build();
 
 // Call method:
-let result = api.cloudStorage.storage.getDiscUsage(request);
+let result = await api.cloudStorage.storage.getDiscUsage(request);
 
 // Result example:
 result = Models.discUsage()
@@ -86,7 +86,7 @@ Returns: File versions.
 
 Method call example:
 ```typescript
-let result = api.cloudStorage.storage.getFileVersions(request);
+let result = await api.cloudStorage.storage.getFileVersions(request);
 ```
 
 ### Parameter: request
@@ -148,7 +148,7 @@ let request = Models.GetFileVersionsRequest()
     .build();
 
 // Call method:
-let result = api.cloudStorage.storage.getFileVersions(request);
+let result = await api.cloudStorage.storage.getFileVersions(request);
 
 // Result example:
 result = Models.fileVersions()
@@ -177,7 +177,7 @@ Returns: Object exist result.
 
 Method call example:
 ```typescript
-let result = api.cloudStorage.storage.objectExists(request);
+let result = await api.cloudStorage.storage.objectExists(request);
 ```
 
 ### Parameter: request
@@ -231,7 +231,7 @@ let request = Models.ObjectExistsRequest()
     .build();
 
 // Call method:
-let result = api.cloudStorage.storage.objectExists(request);
+let result = await api.cloudStorage.storage.objectExists(request);
 
 // Result example:
 result = Models.objectExist()
@@ -252,7 +252,7 @@ Returns: Storage exist result.
 
 Method call example:
 ```typescript
-let result = api.cloudStorage.storage.exists(request);
+let result = await api.cloudStorage.storage.exists(request);
 ```
 
 ### Parameter: request
@@ -304,7 +304,7 @@ let request = Models.StorageExistsRequest()
     .build();
 
 // Call method:
-let result = api.cloudStorage.storage.exists(request);
+let result = await api.cloudStorage.storage.exists(request);
 
 // Result example:
 result = Models.storageExist()

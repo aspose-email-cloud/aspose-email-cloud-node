@@ -11,7 +11,7 @@ Returns: Contact model.
 
 Method call example:
 ```typescript
-let result = api.mapi.contact.asContactDto(mapiContactDto);
+let result = await api.mapi.contact.asContactDto(mapiContactDto);
 ```
 
 ### Parameter: mapiContactDto
@@ -132,7 +132,7 @@ let mapiContactDto = Models.mapiContactDto()
     .build();
 
 // Call method:
-let result = api.mapi.contact.asContactDto(mapiContactDto);
+let result = await api.mapi.contact.asContactDto(mapiContactDto);
 
 // Result example:
 result = Models.contactDto()
@@ -188,7 +188,7 @@ Returns: File stream in specified format.
 
 Method call example:
 ```typescript
-let result = api.mapi.contact.asFile(request);
+let result = await api.mapi.contact.asFile(request);
 ```
 
 ### Parameter: request
@@ -268,7 +268,7 @@ let request = Models.mapiContactAsFileRequest()
     .build();
 
 // Call method:
-let result = api.mapi.contact.asFile(request);
+let result = await api.mapi.contact.asFile(request);
 ```
 
 </details>
@@ -284,7 +284,7 @@ Returns: MAPI model
 
 Method call example:
 ```typescript
-let result = api.mapi.contact.fromFile(request);
+let result = await api.mapi.contact.fromFile(request);
 ```
 
 ### Parameter: request
@@ -355,7 +355,7 @@ let request = Models.MapiContactFromFileRequest()
     .build();
 
 // Call method:
-let result = api.mapi.contact.fromFile(request);
+let result = await api.mapi.contact.fromFile(request);
 
 // Result example:
 result = Models.mapiContactDto()
@@ -393,7 +393,7 @@ Returns: Contact model.
 
 Method call example:
 ```typescript
-let result = api.mapi.contact.get(request);
+let result = await api.mapi.contact.get(request);
 ```
 
 ### Parameter: request
@@ -468,7 +468,7 @@ let request = Models.MapiContactGetRequest()
     .build();
 
 // Call method:
-let result = api.mapi.contact.get(request);
+let result = await api.mapi.contact.get(request);
 
 // Result example:
 result = Models.mapiContactDto()
@@ -504,7 +504,7 @@ Description: Save MAPI Contact to storage.
 
 Method call example:
 ```typescript
-api.mapi.contact.save(request);
+await api.mapi.contact.save(request);
 ```
 
 ### Parameter: request
@@ -592,7 +592,7 @@ let request = Models.mapiContactSaveRequest()
     .build();
 
 // Call method:
-api.mapi.contact.save(request);
+await api.mapi.contact.save(request);
 ```
 
 </details>

@@ -11,7 +11,7 @@ Returns: Message id.
 
 Method call example:
 ```typescript
-let result = api.client.message.append(request);
+let result = await api.client.message.append(request);
 ```
 
 ### Parameter: request
@@ -127,7 +127,7 @@ let request = Models.clientMessageAppendRequest()
     .build();
 
 // Call method:
-let result = api.client.message.append(request);
+let result = await api.client.message.append(request);
 
 // Result example:
 result = ;
@@ -146,7 +146,7 @@ Returns: Message id.
 
 Method call example:
 ```typescript
-let result = api.client.message.appendFile(request);
+let result = await api.client.message.appendFile(request);
 ```
 
 ### Parameter: request
@@ -206,7 +206,7 @@ let request = Models.ClientMessageAppendFileRequest()
     .build();
 
 // Call method:
-let result = api.client.message.appendFile(request);
+let result = await api.client.message.appendFile(request);
 
 // Result example:
 result = ;
@@ -223,7 +223,7 @@ Description: Delete message.
 
 Method call example:
 ```typescript
-api.client.message.delete(request);
+await api.client.message.delete(request);
 ```
 
 ### Parameter: request
@@ -273,7 +273,7 @@ let request = Models.clientMessageDeleteRequest()
     .build();
 
 // Call method:
-api.client.message.delete(request);
+await api.client.message.delete(request);
 ```
 
 </details>
@@ -289,7 +289,7 @@ Returns: MailMessageBase object that represents fetched message in requested for
 
 Method call example:
 ```typescript
-let result = api.client.message.fetch(request);
+let result = await api.client.message.fetch(request);
 ```
 
 ### Parameter: request
@@ -353,7 +353,7 @@ let request = Models.ClientMessageFetchRequest()
     .build();
 
 // Call method:
-let result = api.client.message.fetch(request);
+let result = await api.client.message.fetch(request);
 
 // Result example:
 result = Models.mailMessageBase()
@@ -374,7 +374,7 @@ Returns: Email message file in requested format.
 
 Method call example:
 ```typescript
-let result = api.client.message.fetchFile(request);
+let result = await api.client.message.fetchFile(request);
 ```
 
 ### Parameter: request
@@ -424,7 +424,7 @@ let request = Models.ClientMessageFetchFileRequest()
     .build();
 
 // Call method:
-let result = api.client.message.fetchFile(request);
+let result = await api.client.message.fetchFile(request);
 ```
 
 </details>
@@ -442,7 +442,7 @@ Returns: List of MailMessageBase objects that represent fetched message in reque
 
 Method call example:
 ```typescript
-let result = api.client.message.list(request);
+let result = await api.client.message.list(request);
 ```
 
 ### Parameter: request
@@ -506,7 +506,7 @@ let request = Models.ClientMessageListRequest()
     .build();
 
 // Call method:
-let result = api.client.message.list(request);
+let result = await api.client.message.list(request);
 
 // Result example:
 result = ;
@@ -523,7 +523,7 @@ Description: Move message to another folder.
 
 Method call example:
 ```typescript
-api.client.message.move(request);
+await api.client.message.move(request);
 ```
 
 ### Parameter: request
@@ -575,7 +575,7 @@ let request = Models.clientMessageMoveRequest()
     .build();
 
 // Call method:
-api.client.message.move(request);
+await api.client.message.move(request);
 ```
 
 </details>
@@ -589,7 +589,7 @@ Description: Send an email specified by model in request.
 
 Method call example:
 ```typescript
-api.client.message.send(request);
+await api.client.message.send(request);
 ```
 
 ### Parameter: request
@@ -689,7 +689,7 @@ let request = Models.clientMessageSendRequest()
     .build();
 
 // Call method:
-api.client.message.send(request);
+await api.client.message.send(request);
 ```
 
 </details>
@@ -703,7 +703,7 @@ Description: Send an email file.
 
 Method call example:
 ```typescript
-api.client.message.sendFile(request);
+await api.client.message.sendFile(request);
 ```
 
 ### Parameter: request
@@ -749,7 +749,7 @@ let request = Models.ClientMessageSendFileRequest()
     .build();
 
 // Call method:
-api.client.message.sendFile(request);
+await api.client.message.sendFile(request);
 ```
 
 </details>
@@ -763,7 +763,7 @@ Description: Mark message as read or unread.
 
 Method call example:
 ```typescript
-api.client.message.setIsRead(request);
+await api.client.message.setIsRead(request);
 ```
 
 ### Parameter: request
@@ -813,7 +813,7 @@ let request = Models.clientMessageSetIsReadRequest()
     .build();
 
 // Call method:
-api.client.message.setIsRead(request);
+await api.client.message.setIsRead(request);
 ```
 
 </details>

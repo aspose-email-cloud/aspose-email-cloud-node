@@ -11,7 +11,7 @@ Returns: iCalendar document represented as AlternateView
 
 Method call example:
 ```typescript
-let result = api.calendar.asAlternate(request);
+let result = await api.calendar.asAlternate(request);
 ```
 
 ### Parameter: request
@@ -126,7 +126,7 @@ let request = Models.calendarAsAlternateRequest()
     .build();
 
 // Call method:
-let result = api.calendar.asAlternate(request);
+let result = await api.calendar.asAlternate(request);
 
 // Result example:
 result = Models.alternateView()
@@ -166,7 +166,7 @@ Returns: File stream in specified format.
 
 Method call example:
 ```typescript
-let result = api.calendar.asFile(request);
+let result = await api.calendar.asFile(request);
 ```
 
 ### Parameter: request
@@ -248,7 +248,7 @@ let request = Models.calendarAsFileRequest()
     .build();
 
 // Call method:
-let result = api.calendar.asFile(request);
+let result = await api.calendar.asFile(request);
 ```
 
 </details>
@@ -264,7 +264,7 @@ Returns: MAPI model calendar representation.
 
 Method call example:
 ```typescript
-let result = api.calendar.asMapi(calendarDto);
+let result = await api.calendar.asMapi(calendarDto);
 ```
 
 ### Parameter: calendarDto
@@ -386,7 +386,7 @@ let calendarDto = Models.calendarDto()
     .build();
 
 // Call method:
-let result = api.calendar.asMapi(calendarDto);
+let result = await api.calendar.asMapi(calendarDto);
 
 // Result example:
 result = Models.mapiCalendarDto()
@@ -439,7 +439,7 @@ Returns: File stream in specified format.
 
 Method call example:
 ```typescript
-let result = api.calendar.convert(request);
+let result = await api.calendar.convert(request);
 ```
 
 ### Parameter: request
@@ -481,7 +481,7 @@ let request = Models.CalendarConvertRequest()
     .build();
 
 // Call method:
-let result = api.calendar.convert(request);
+let result = await api.calendar.convert(request);
 ```
 
 </details>
@@ -497,7 +497,7 @@ Returns: iCalendar model.
 
 Method call example:
 ```typescript
-let result = api.calendar.fromFile(request);
+let result = await api.calendar.fromFile(request);
 ```
 
 ### Parameter: request
@@ -568,7 +568,7 @@ let request = Models.CalendarFromFileRequest()
     .build();
 
 // Call method:
-let result = api.calendar.fromFile(request);
+let result = await api.calendar.fromFile(request);
 
 // Result example:
 result = Models.calendarDto()
@@ -608,7 +608,7 @@ Returns: iCalendar model.
 
 Method call example:
 ```typescript
-let result = api.calendar.get(request);
+let result = await api.calendar.get(request);
 ```
 
 ### Parameter: request
@@ -683,7 +683,7 @@ let request = Models.CalendarGetRequest()
     .build();
 
 // Call method:
-let result = api.calendar.get(request);
+let result = await api.calendar.get(request);
 
 // Result example:
 result = Models.calendarDto()
@@ -723,7 +723,7 @@ Returns: iCalendar document represented as AlternateView
 
 Method call example:
 ```typescript
-let result = api.calendar.getAsAlternate(request);
+let result = await api.calendar.getAsAlternate(request);
 ```
 
 ### Parameter: request
@@ -800,7 +800,7 @@ let request = Models.CalendarGetAsAlternateRequest()
     .build();
 
 // Call method:
-let result = api.calendar.getAsAlternate(request);
+let result = await api.calendar.getAsAlternate(request);
 
 // Result example:
 result = Models.alternateView()
@@ -840,7 +840,7 @@ Returns: File stream in specified format.
 
 Method call example:
 ```typescript
-let result = api.calendar.getAsFile(request);
+let result = await api.calendar.getAsFile(request);
 ```
 
 ### Parameter: request
@@ -886,7 +886,7 @@ let request = Models.CalendarGetAsFileRequest()
     .build();
 
 // Call method:
-let result = api.calendar.getAsFile(request);
+let result = await api.calendar.getAsFile(request);
 ```
 
 </details>
@@ -902,7 +902,7 @@ Returns: iCalendar document list.
 
 Method call example:
 ```typescript
-let result = api.calendar.getList(request);
+let result = await api.calendar.getList(request);
 ```
 
 ### Parameter: request
@@ -989,7 +989,7 @@ let request = Models.CalendarGetListRequest()
     .build();
 
 // Call method:
-let result = api.calendar.getList(request);
+let result = await api.calendar.getList(request);
 
 // Result example:
 result = Models.calendarStorageList()
@@ -1037,7 +1037,7 @@ Description: Save iCalendar
 
 Method call example:
 ```typescript
-api.calendar.save(request);
+await api.calendar.save(request);
 ```
 
 ### Parameter: request
@@ -1127,7 +1127,7 @@ let request = Models.calendarSaveRequest()
     .build();
 
 // Call method:
-api.calendar.save(request);
+await api.calendar.save(request);
 ```
 
 </details>

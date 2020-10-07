@@ -11,7 +11,7 @@ Returns: List of vCards
 
 Method call example:
 ```typescript
-let result = api.ai.bcr.parse(request);
+let result = await api.ai.bcr.parse(request);
 ```
 
 ### Parameter: request
@@ -107,7 +107,7 @@ let request = Models.AiBcrParseRequest()
     .build();
 
 // Call method:
-let result = api.ai.bcr.parse(request);
+let result = await api.ai.bcr.parse(request);
 
 // Result example:
 result = Models.contactList()
@@ -166,7 +166,7 @@ Returns: List of vCard files located on storage
 
 Method call example:
 ```typescript
-let result = api.ai.bcr.parseStorage(request);
+let result = await api.ai.bcr.parseStorage(request);
 ```
 
 ### Parameter: request
@@ -247,7 +247,7 @@ let request = Models.aiBcrParseStorageRequest()
     .build();
 
 // Call method:
-let result = api.ai.bcr.parseStorage(request);
+let result = await api.ai.bcr.parseStorage(request);
 
 // Result example:
 result = Models.storageFileLocationList()

@@ -13,12 +13,6 @@ Name | Type | Description | Notes
 ## Example
 ```typescript
 let aiNameParsedRequest = Models.aiNameParsedRequest()
-    .culturalContext(Models.aiNameCulturalContext()
-        .language('')
-        .location('')
-        .script('')
-        .encoding('')
-        .build())
     .parsedName([
         Models.aiNameComponent()
             .value('John')

@@ -11,7 +11,7 @@ Returns: CalendarDto model.
 
 Method call example:
 ```typescript
-let result = api.mapi.calendar.asCalendarDto(mapiCalendarDto);
+let result = await api.mapi.calendar.asCalendarDto(mapiCalendarDto);
 ```
 
 ### Parameter: mapiCalendarDto
@@ -146,7 +146,7 @@ let mapiCalendarDto = Models.mapiCalendarDto()
     .build();
 
 // Call method:
-let result = api.mapi.calendar.asCalendarDto(mapiCalendarDto);
+let result = await api.mapi.calendar.asCalendarDto(mapiCalendarDto);
 
 // Result example:
 result = Models.calendarDto()
@@ -186,7 +186,7 @@ Returns: File stream in specified format.
 
 Method call example:
 ```typescript
-let result = api.mapi.calendar.asFile(request);
+let result = await api.mapi.calendar.asFile(request);
 ```
 
 ### Parameter: request
@@ -296,7 +296,7 @@ let request = Models.mapiCalendarAsFileRequest()
     .build();
 
 // Call method:
-let result = api.mapi.calendar.asFile(request);
+let result = await api.mapi.calendar.asFile(request);
 ```
 
 </details>
@@ -312,7 +312,7 @@ Returns: MAPI model.
 
 Method call example:
 ```typescript
-let result = api.mapi.calendar.fromFile(request);
+let result = await api.mapi.calendar.fromFile(request);
 ```
 
 ### Parameter: request
@@ -396,7 +396,7 @@ let request = Models.MapiCalendarFromFileRequest()
     .build();
 
 // Call method:
-let result = api.mapi.calendar.fromFile(request);
+let result = await api.mapi.calendar.fromFile(request);
 
 // Result example:
 result = Models.mapiCalendarDto()
@@ -449,7 +449,7 @@ Returns: MAPI Calendar model.
 
 Method call example:
 ```typescript
-let result = api.mapi.calendar.get(request);
+let result = await api.mapi.calendar.get(request);
 ```
 
 ### Parameter: request
@@ -537,7 +537,7 @@ let request = Models.MapiCalendarGetRequest()
     .build();
 
 // Call method:
-let result = api.mapi.calendar.get(request);
+let result = await api.mapi.calendar.get(request);
 
 // Result example:
 result = Models.mapiCalendarDto()
@@ -588,7 +588,7 @@ Description: Save MAPI Calendar to storage.
 
 Method call example:
 ```typescript
-api.mapi.calendar.save(request);
+await api.mapi.calendar.save(request);
 ```
 
 ### Parameter: request
@@ -706,7 +706,7 @@ let request = Models.mapiCalendarSaveRequest()
     .build();
 
 // Call method:
-api.mapi.calendar.save(request);
+await api.mapi.calendar.save(request);
 ```
 
 </details>

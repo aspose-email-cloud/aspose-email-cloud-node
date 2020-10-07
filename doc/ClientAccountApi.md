@@ -11,7 +11,7 @@ Returns: Email client account from storage.
 
 Method call example:
 ```typescript
-let result = api.client.account.get(request);
+let result = await api.client.account.get(request);
 ```
 
 ### Parameter: request
@@ -76,7 +76,7 @@ let request = Models.ClientAccountGetRequest()
     .build();
 
 // Call method:
-let result = api.client.account.get(request);
+let result = await api.client.account.get(request);
 
 // Result example:
 result = Models.emailClientAccount()
@@ -106,7 +106,7 @@ Returns: Email client multi account from storage
 
 Method call example:
 ```typescript
-let result = api.client.account.getMulti(request);
+let result = await api.client.account.getMulti(request);
 ```
 
 ### Parameter: request
@@ -192,7 +192,7 @@ let request = Models.ClientAccountGetMultiRequest()
     .build();
 
 // Call method:
-let result = api.client.account.getMulti(request);
+let result = await api.client.account.getMulti(request);
 
 // Result example:
 result = Models.emailClientMultiAccount()
@@ -241,7 +241,7 @@ Description: Create/update email client account file (*.account) with credential
 
 Method call example:
 ```typescript
-api.client.account.save(request);
+await api.client.account.save(request);
 ```
 
 ### Parameter: request
@@ -311,7 +311,7 @@ let request = Models.clientAccountSaveRequest()
     .build();
 
 // Call method:
-api.client.account.save(request);
+await api.client.account.save(request);
 ```
 
 </details>
@@ -325,7 +325,7 @@ Description: Create email client multi account file (*.multi.account). Will resp
 
 Method call example:
 ```typescript
-api.client.account.saveMulti(request);
+await api.client.account.saveMulti(request);
 ```
 
 ### Parameter: request
@@ -437,7 +437,7 @@ let request = Models.clientAccountSaveMultiRequest()
     .build();
 
 // Call method:
-api.client.account.saveMulti(request);
+await api.client.account.saveMulti(request);
 ```
 
 </details>

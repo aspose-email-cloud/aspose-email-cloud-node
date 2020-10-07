@@ -11,7 +11,7 @@ Returns: EmailDto model
 
 Method call example:
 ```typescript
-let result = api.mapi.message.asEmailDto(mapiMessage);
+let result = await api.mapi.message.asEmailDto(mapiMessage);
 ```
 
 ### Parameter: mapiMessage
@@ -141,7 +141,7 @@ let mapiMessage = Models.mapiMessageDto()
     .build();
 
 // Call method:
-let result = api.mapi.message.asEmailDto(mapiMessage);
+let result = await api.mapi.message.asEmailDto(mapiMessage);
 
 // Result example:
 result = Models.emailDto()
@@ -184,7 +184,7 @@ Returns: File stream in specified format.
 
 Method call example:
 ```typescript
-let result = api.mapi.message.asFile(request);
+let result = await api.mapi.message.asFile(request);
 ```
 
 ### Parameter: request
@@ -286,7 +286,7 @@ let request = Models.mapiMessageAsFileRequest()
     .build();
 
 // Call method:
-let result = api.mapi.message.asFile(request);
+let result = await api.mapi.message.asFile(request);
 ```
 
 </details>
@@ -302,7 +302,7 @@ Returns: MAPI model
 
 Method call example:
 ```typescript
-let result = api.mapi.message.fromFile(request);
+let result = await api.mapi.message.fromFile(request);
 ```
 
 ### Parameter: request
@@ -384,7 +384,7 @@ let request = Models.MapiMessageFromFileRequest()
     .build();
 
 // Call method:
-let result = api.mapi.message.fromFile(request);
+let result = await api.mapi.message.fromFile(request);
 
 // Result example:
 result = Models.mapiMessageDto()
@@ -433,7 +433,7 @@ Returns: MAPI message document.
 
 Method call example:
 ```typescript
-let result = api.mapi.message.get(request);
+let result = await api.mapi.message.get(request);
 ```
 
 ### Parameter: request
@@ -519,7 +519,7 @@ let request = Models.MapiMessageGetRequest()
     .build();
 
 // Call method:
-let result = api.mapi.message.get(request);
+let result = await api.mapi.message.get(request);
 
 // Result example:
 result = Models.mapiMessageDto()
@@ -566,7 +566,7 @@ Description: Save MAPI message to storage.
 
 Method call example:
 ```typescript
-api.mapi.message.save(request);
+await api.mapi.message.save(request);
 ```
 
 ### Parameter: request
@@ -676,7 +676,7 @@ let request = Models.mapiMessageSaveRequest()
     .build();
 
 // Call method:
-api.mapi.message.save(request);
+await api.mapi.message.save(request);
 ```
 
 </details>

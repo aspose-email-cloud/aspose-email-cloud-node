@@ -11,7 +11,7 @@ Returns: Discovered account configurations.
 
 Method call example:
 ```typescript
-let result = api.emailConfig.discover(request);
+let result = await api.emailConfig.discover(request);
 ```
 
 ### Parameter: request
@@ -105,7 +105,7 @@ let request = Models.EmailConfigDiscoverRequest()
     .build();
 
 // Call method:
-let result = api.emailConfig.discover(request);
+let result = await api.emailConfig.discover(request);
 
 // Result example:
 result = Models.emailAccountConfigList()
@@ -170,7 +170,7 @@ Returns: Discovered account configurations.
 
 Method call example:
 ```typescript
-let result = api.emailConfig.discoverOauth(request);
+let result = await api.emailConfig.discoverOauth(request);
 ```
 
 ### Parameter: request
@@ -274,7 +274,7 @@ let request = Models.emailConfigDiscoverOauthRequest()
     .build();
 
 // Call method:
-let result = api.emailConfig.discoverOauth(request);
+let result = await api.emailConfig.discoverOauth(request);
 
 // Result example:
 result = Models.emailAccountConfigList()
@@ -339,7 +339,7 @@ Returns: Discovered account configurations.
 
 Method call example:
 ```typescript
-let result = api.emailConfig.discoverPassword(request);
+let result = await api.emailConfig.discoverPassword(request);
 ```
 
 ### Parameter: request
@@ -439,7 +439,7 @@ let request = Models.emailConfigDiscoverPasswordRequest()
     .build();
 
 // Call method:
-let result = api.emailConfig.discoverPassword(request);
+let result = await api.emailConfig.discoverPassword(request);
 
 // Result example:
 result = Models.emailAccountConfigList()

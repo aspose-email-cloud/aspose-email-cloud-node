@@ -9,7 +9,7 @@ Description: Create new folder in email account
 
 Method call example:
 ```typescript
-api.client.folder.create(request);
+await api.client.folder.create(request);
 ```
 
 ### Parameter: request
@@ -59,7 +59,7 @@ let request = Models.clientFolderCreateRequest()
     .build();
 
 // Call method:
-api.client.folder.create(request);
+await api.client.folder.create(request);
 ```
 
 </details>
@@ -73,7 +73,7 @@ Description: Delete a folder in email account
 
 Method call example:
 ```typescript
-api.client.folder.delete(request);
+await api.client.folder.delete(request);
 ```
 
 ### Parameter: request
@@ -121,7 +121,7 @@ let request = Models.clientFolderDeleteRequest()
     .build();
 
 // Call method:
-api.client.folder.delete(request);
+await api.client.folder.delete(request);
 ```
 
 </details>
@@ -137,7 +137,7 @@ Returns: Folders list
 
 Method call example:
 ```typescript
-let result = api.client.folder.getList(request);
+let result = await api.client.folder.getList(request);
 ```
 
 ### Parameter: request
@@ -193,7 +193,7 @@ let request = Models.ClientFolderGetListRequest()
     .build();
 
 // Call method:
-let result = api.client.folder.getList(request);
+let result = await api.client.folder.getList(request);
 
 // Result example:
 result = ;

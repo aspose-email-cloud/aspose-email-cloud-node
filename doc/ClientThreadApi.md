@@ -9,7 +9,7 @@ Description: Delete thread by id. All messages from thread will also be deleted.
 
 Method call example:
 ```typescript
-api.client.thread.delete(request);
+await api.client.thread.delete(request);
 ```
 
 ### Parameter: request
@@ -59,7 +59,7 @@ let request = Models.clientThreadDeleteRequest()
     .build();
 
 // Call method:
-api.client.thread.delete(request);
+await api.client.thread.delete(request);
 ```
 
 </details>
@@ -75,7 +75,7 @@ Returns: List of threads
 
 Method call example:
 ```typescript
-let result = api.client.thread.getList(request);
+let result = await api.client.thread.getList(request);
 ```
 
 ### Parameter: request
@@ -162,7 +162,7 @@ let request = Models.ClientThreadGetListRequest()
     .build();
 
 // Call method:
-let result = api.client.thread.getList(request);
+let result = await api.client.thread.getList(request);
 
 // Result example:
 result = Models.emailThreadList()
@@ -212,7 +212,7 @@ Returns: Requested thread with fully fetched messages
 
 Method call example:
 ```typescript
-let result = api.client.thread.getMessages(request);
+let result = await api.client.thread.getMessages(request);
 ```
 
 ### Parameter: request
@@ -270,7 +270,7 @@ let request = Models.ClientThreadGetMessagesRequest()
     .build();
 
 // Call method:
-let result = api.client.thread.getMessages(request);
+let result = await api.client.thread.getMessages(request);
 
 // Result example:
 result = ;
@@ -287,7 +287,7 @@ Description: Move thread to another folder.
 
 Method call example:
 ```typescript
-api.client.thread.move(request);
+await api.client.thread.move(request);
 ```
 
 ### Parameter: request
@@ -337,7 +337,7 @@ let request = Models.clientThreadMoveRequest()
     .build();
 
 // Call method:
-api.client.thread.move(request);
+await api.client.thread.move(request);
 ```
 
 </details>
@@ -351,7 +351,7 @@ Description: Mark all messages in thread as read or unread.
 
 Method call example:
 ```typescript
-api.client.thread.setIsRead(request);
+await api.client.thread.setIsRead(request);
 ```
 
 ### Parameter: request
@@ -403,7 +403,7 @@ let request = Models.clientThreadSetIsReadRequest()
     .build();
 
 // Call method:
-api.client.thread.setIsRead(request);
+await api.client.thread.setIsRead(request);
 ```
 
 </details>

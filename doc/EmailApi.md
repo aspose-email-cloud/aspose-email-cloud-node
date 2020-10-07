@@ -11,7 +11,7 @@ Returns: File stream in specified format.
 
 Method call example:
 ```typescript
-let result = api.email.asFile(request);
+let result = await api.email.asFile(request);
 ```
 
 ### Parameter: request
@@ -99,7 +99,7 @@ let request = Models.emailAsFileRequest()
     .build();
 
 // Call method:
-let result = api.email.asFile(request);
+let result = await api.email.asFile(request);
 ```
 
 </details>
@@ -115,7 +115,7 @@ Returns: MAPI model message representation
 
 Method call example:
 ```typescript
-let result = api.email.asMapi(emailDto);
+let result = await api.email.asMapi(emailDto);
 ```
 
 ### Parameter: emailDto
@@ -239,7 +239,7 @@ let emailDto = Models.emailDto()
     .build();
 
 // Call method:
-let result = api.email.asMapi(emailDto);
+let result = await api.email.asMapi(emailDto);
 
 // Result example:
 result = Models.mapiMessageDto()
@@ -288,7 +288,7 @@ Returns: File stream in specified format
 
 Method call example:
 ```typescript
-let result = api.email.convert(request);
+let result = await api.email.convert(request);
 ```
 
 ### Parameter: request
@@ -332,7 +332,7 @@ let request = Models.EmailConvertRequest()
     .build();
 
 // Call method:
-let result = api.email.convert(request);
+let result = await api.email.convert(request);
 ```
 
 </details>
@@ -348,7 +348,7 @@ Returns: Email document model
 
 Method call example:
 ```typescript
-let result = api.email.fromFile(request);
+let result = await api.email.fromFile(request);
 ```
 
 ### Parameter: request
@@ -424,7 +424,7 @@ let request = Models.EmailFromFileRequest()
     .build();
 
 // Call method:
-let result = api.email.fromFile(request);
+let result = await api.email.fromFile(request);
 
 // Result example:
 result = Models.emailDto()
@@ -467,7 +467,7 @@ Returns: Email document.
 
 Method call example:
 ```typescript
-let result = api.email.get(request);
+let result = await api.email.get(request);
 ```
 
 ### Parameter: request
@@ -547,7 +547,7 @@ let request = Models.EmailGetRequest()
     .build();
 
 // Call method:
-let result = api.email.get(request);
+let result = await api.email.get(request);
 
 // Result example:
 result = Models.emailDto()
@@ -590,7 +590,7 @@ Returns: File stream in specified format
 
 Method call example:
 ```typescript
-let result = api.email.getAsFile(request);
+let result = await api.email.getAsFile(request);
 ```
 
 ### Parameter: request
@@ -636,7 +636,7 @@ let request = Models.EmailGetAsFileRequest()
     .build();
 
 // Call method:
-let result = api.email.getAsFile(request);
+let result = await api.email.getAsFile(request);
 ```
 
 </details>
@@ -652,7 +652,7 @@ Returns: Email document list.
 
 Method call example:
 ```typescript
-let result = api.email.getList(request);
+let result = await api.email.getList(request);
 ```
 
 ### Parameter: request
@@ -744,7 +744,7 @@ let request = Models.EmailGetListRequest()
     .build();
 
 // Call method:
-let result = api.email.getList(request);
+let result = await api.email.getList(request);
 
 // Result example:
 result = Models.emailStorageList()
@@ -795,7 +795,7 @@ Description: Save email document to storage.
 
 Method call example:
 ```typescript
-api.email.save(request);
+await api.email.save(request);
 ```
 
 ### Parameter: request
@@ -893,7 +893,7 @@ let request = Models.emailSaveRequest()
     .build();
 
 // Call method:
-api.email.save(request);
+await api.email.save(request);
 ```
 
 </details>
