@@ -78,35 +78,5 @@ export class MapiCalendarTimeZoneDto {
     }
 }
 
-/**
- *  MapiCalendarTimeZoneDto model builder
- */
-export class MapiCalendarTimeZoneDtoBuilder {
-    private readonly model: MapiCalendarTimeZoneDto;
-    public constructor(model: MapiCalendarTimeZoneDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiCalendarTimeZoneDto {
-        return this.model;
-    }
-
-    /**
-    * Human-readable description of the time zone.             
-    */
-    public keyName(keyName: string): MapiCalendarTimeZoneDtoBuilder {
-        this.model.keyName = keyName;
-        return this;
-    }
-    /**
-    * Time zone rules             
-    */
-    public timeZoneRules(timeZoneRules: Array< model.MapiCalendarTimeZoneInfoDto >): MapiCalendarTimeZoneDtoBuilder {
-        this.model.timeZoneRules = timeZoneRules;
-        return this;
-    }
-}
 

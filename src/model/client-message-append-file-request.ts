@@ -1,31 +1,7 @@
-/*
-* MIT License
-
-* Copyright (c) 2018-2020 Aspose Pty Ltd
-
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-
-* The above copyright notice and this permission notice shall be included in all
-* copies or substantial portions of the Software.
-
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-* SOFTWARE.
-*/
-
 // @ts-ignore
 import * as model from "./index";
 /**
- * Request model for ClientMessageApi.appendFile operation.
+ * Request model for clientMessageAppendFile operation.
  */
 export class ClientMessageAppendFileRequest {
     /**
@@ -90,44 +66,4 @@ export class ClientMessageAppendFileRequest {
         this.folder = folder;
         this.markAsSent = markAsSent;
     }
-}
-
-export class ClientMessageAppendFileRequestBuilder {
-    private model: ClientMessageAppendFileRequest
-    public constructor(model: ClientMessageAppendFileRequest) {
-        this.model = model;
-    }
-    public build(): ClientMessageAppendFileRequest {
-        const tempModel = this.model;
-        this.model = null;
-        return tempModel;
-    }
-        public account(account: string): ClientMessageAppendFileRequestBuilder {
-            this.model.account = account;
-            return this;
-        }
-        public file(file: Buffer): ClientMessageAppendFileRequestBuilder {
-            this.model.file = file;
-            return this;
-        }
-        public storage(storage: string): ClientMessageAppendFileRequestBuilder {
-            this.model.storage = storage;
-            return this;
-        }
-        public accountStorageFolder(accountStorageFolder: string): ClientMessageAppendFileRequestBuilder {
-            this.model.accountStorageFolder = accountStorageFolder;
-            return this;
-        }
-        public format(format: string): ClientMessageAppendFileRequestBuilder {
-            this.model.format = format;
-            return this;
-        }
-        public folder(folder: string): ClientMessageAppendFileRequestBuilder {
-            this.model.folder = folder;
-            return this;
-        }
-        public markAsSent(markAsSent: boolean): ClientMessageAppendFileRequestBuilder {
-            this.model.markAsSent = markAsSent;
-            return this;
-        }
 }

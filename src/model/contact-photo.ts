@@ -94,35 +94,5 @@ export class ContactPhoto {
     }
 }
 
-/**
- *  ContactPhoto model builder
- */
-export class ContactPhotoBuilder {
-    private readonly model: ContactPhoto;
-    public constructor(model: ContactPhoto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ContactPhoto {
-        return this.model;
-    }
-
-    /**
-    * MapiContact photo image format. Enum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
-    */
-    public photoImageFormat(photoImageFormat: string): ContactPhotoBuilder {
-        this.model.photoImageFormat = photoImageFormat;
-        return this;
-    }
-    /**
-    * Photo serialized as base64 string.             
-    */
-    public base64Data(base64Data: string): ContactPhotoBuilder {
-        this.model.base64Data = base64Data;
-        return this;
-    }
-}
 

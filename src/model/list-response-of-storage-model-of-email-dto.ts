@@ -60,25 +60,5 @@ export class ListResponseOfStorageModelOfEmailDto {
     }
 }
 
-/**
- *  ListResponseOfStorageModelOfEmailDto model builder
- */
-export class ListResponseOfStorageModelOfEmailDtoBuilder {
-    private readonly model: ListResponseOfStorageModelOfEmailDto;
-    public constructor(model: ListResponseOfStorageModelOfEmailDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ListResponseOfStorageModelOfEmailDto {
-        return this.model;
-    }
-
-    public value(value: Array< model.StorageModelOfEmailDto >): ListResponseOfStorageModelOfEmailDtoBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

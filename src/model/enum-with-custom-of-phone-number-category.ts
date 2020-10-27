@@ -72,32 +72,5 @@ export class EnumWithCustomOfPhoneNumberCategory {
     }
 }
 
-/**
- *  EnumWithCustomOfPhoneNumberCategory model builder
- */
-export class EnumWithCustomOfPhoneNumberCategoryBuilder {
-    private readonly model: EnumWithCustomOfPhoneNumberCategory;
-    public constructor(model: EnumWithCustomOfPhoneNumberCategory) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): EnumWithCustomOfPhoneNumberCategory {
-        return this.model;
-    }
-
-    /**
-    * Phone number category. Enum, available values: Custom, Home, Work, Office, Mobile, Fax, HomeFax, WorkFax, Pager, Car, Isdn, Telex, Callback, Radio, Company, TtyTdd, Assistant, Primary
-    */
-    public value(value: string): EnumWithCustomOfPhoneNumberCategoryBuilder {
-        this.model.value = value;
-        return this;
-    }
-    public description(description: string): EnumWithCustomOfPhoneNumberCategoryBuilder {
-        this.model.description = description;
-        return this;
-    }
-}
 

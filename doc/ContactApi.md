@@ -1,1036 +1,207 @@
-# ContactApi (EmailCloud.contact)
+# ContactApi
 
-Contact document operations. Supported formats: VCard, MSG, WebDav
-
+                    
 <a name="asFile"></a>
-## **asFile**
-
-Description: Converts contact model to specified format and returns as file             
-
-Returns: File stream in specified format
-
-Method call example:
+# **asFile**
 ```typescript
-let result = await api.contact.asFile(request);
+public async asFile(request: model.ContactAsFileRequest): Promise< Buffer >
 ```
 
-### Parameter: request
+Converts contact model to specified format and returns as file             
 
-Description: Contact model and format to convert
+### request Parameter
 
 See parameter model documentation at [ContactAsFileRequest](ContactAsFileRequest.md)
 
-<details>
-    <summary>Parameter initialization example:</summary>
-    
-```typescript
-let request = Models.contactAsFileRequest()
-    .value(Models.contactDto()
-        .attachments([
-            Models.attachment()
-                .name('attachment.txt')
-                .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-                .build()])
-        .displayName('Alex Thomas')
-        .emailAddresses([
-            Models.emailAddress()
-                .category(Models.enumWithCustomOfEmailAddressCategory()
-                    .value('Custom')
-                    .description('Partners')
-                    .build())
-                .displayName('Alex Thomas Partners')
-                .preferred(true)
-                .address('email@aspose.com')
-                .build()])
-        .gender('Male')
-        .givenName('Alex')
-        .phoneNumbers([
-            Models.phoneNumber()
-                .category(Models.enumWithCustomOfPhoneNumberCategory()
-                    .value('Office')
-                    .build())
-                .number('+49 211 4247 21')
-                .preferred(true)
-                .build()])
-        .profession('GENERAL DIRECTOR')
-        .surname('Thomas')
-        .urls([
-            Models.url()
-                .category(Models.enumWithCustomOfUrlCategory()
-                    .value('Work')
-                    .build())
-                .preferred(true)
-                .href('www.aspose.com')
-                .build()])
-        .build())
-    .build();
-```
+### Return type
 
-</details>
-
-### Result
-
-Description: File stream in specified format
-
-Return type: Promise< Buffer >
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.contactAsFileRequest()
-    .value(Models.contactDto()
-        .attachments([
-            Models.attachment()
-                .name('attachment.txt')
-                .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-                .build()])
-        .displayName('Alex Thomas')
-        .emailAddresses([
-            Models.emailAddress()
-                .category(Models.enumWithCustomOfEmailAddressCategory()
-                    .value('Custom')
-                    .description('Partners')
-                    .build())
-                .displayName('Alex Thomas Partners')
-                .preferred(true)
-                .address('email@aspose.com')
-                .build()])
-        .gender('Male')
-        .givenName('Alex')
-        .phoneNumbers([
-            Models.phoneNumber()
-                .category(Models.enumWithCustomOfPhoneNumberCategory()
-                    .value('Office')
-                    .build())
-                .number('+49 211 4247 21')
-                .preferred(true)
-                .build()])
-        .profession('GENERAL DIRECTOR')
-        .surname('Thomas')
-        .urls([
-            Models.url()
-                .category(Models.enumWithCustomOfUrlCategory()
-                    .value('Work')
-                    .build())
-                .preferred(true)
-                .href('www.aspose.com')
-                .build()])
-        .build())
-    .build();
-
-// Call method:
-let result = await api.contact.asFile(request);
-```
-
-</details>
+Promise< Buffer >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
+                    
 <a name="asMapi"></a>
-## **asMapi**
-
-Description: Converts ContactDto to MapiContactDto.             
-
-Returns: MAPI model contact representation
-
-Method call example:
+# **asMapi**
 ```typescript
-let result = await api.contact.asMapi(contactDto);
+public async asMapi(contactDto: model.ContactDto): Promise< MapiContactDto >
 ```
 
-### Parameter: contactDto
+Converts ContactDto to MapiContactDto.             
 
-Description: Contact model to convert
+### contactDto Parameter
 
 See parameter model documentation at [ContactDto](ContactDto.md)
 
-<details>
-    <summary>Parameter initialization example:</summary>
-    
-```typescript
-let contactDto = Models.contactDto()
-    .attachments([
-        Models.attachment()
-            .name('attachment.txt')
-            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-            .build()])
-    .displayName('Alex Thomas')
-    .emailAddresses([
-        Models.emailAddress()
-            .category(Models.enumWithCustomOfEmailAddressCategory()
-                .value('Custom')
-                .description('Partners')
-                .build())
-            .displayName('Alex Thomas Partners')
-            .preferred(true)
-            .address('email@aspose.com')
-            .build()])
-    .gender('Male')
-    .givenName('Alex')
-    .phoneNumbers([
-        Models.phoneNumber()
-            .category(Models.enumWithCustomOfPhoneNumberCategory()
-                .value('Office')
-                .build())
-            .number('+49 211 4247 21')
-            .preferred(true)
-            .build()])
-    .profession('GENERAL DIRECTOR')
-    .surname('Thomas')
-    .urls([
-        Models.url()
-            .category(Models.enumWithCustomOfUrlCategory()
-                .value('Work')
-                .build())
-            .preferred(true)
-            .href('www.aspose.com')
-            .build()])
-    .build();
-```
+### Return type
 
-</details>
-
-### Result
-
-Description: MAPI model contact representation
-
-Return type: Promise< [MapiContactDto](MapiContactDto.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = Models.mapiContactDto()
-    .electronicAddresses(Models.mapiContactElectronicAddressPropertySetDto()
-        .defaultEmailAddress(Models.mapiContactElectronicAddressDto()
-            .emailAddress('email@aspose.com')
-            .build())
-        .build())
-    .nameInfo(Models.mapiContactNamePropertySetDto()
-        .givenName('Alex')
-        .surname('Thomas')
-        .build())
-    .personalInfo(Models.mapiContactPersonalInfoPropertySetDto()
-        .businessHomePage('www.aspose.com')
-        .build())
-    .professionalInfo(Models.mapiContactProfessionalPropertySetDto()
-        .profession('GENERAL DIRECTOR')
-        .build())
-    .telephones(Models.mapiContactTelephonePropertySetDto()
-        .primaryTelephoneNumber('+49 211 4247 21')
-        .build())
-    .build();
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let contactDto = Models.contactDto()
-    .attachments([
-        Models.attachment()
-            .name('attachment.txt')
-            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-            .build()])
-    .displayName('Alex Thomas')
-    .emailAddresses([
-        Models.emailAddress()
-            .category(Models.enumWithCustomOfEmailAddressCategory()
-                .value('Custom')
-                .description('Partners')
-                .build())
-            .displayName('Alex Thomas Partners')
-            .preferred(true)
-            .address('email@aspose.com')
-            .build()])
-    .gender('Male')
-    .givenName('Alex')
-    .phoneNumbers([
-        Models.phoneNumber()
-            .category(Models.enumWithCustomOfPhoneNumberCategory()
-                .value('Office')
-                .build())
-            .number('+49 211 4247 21')
-            .preferred(true)
-            .build()])
-    .profession('GENERAL DIRECTOR')
-    .surname('Thomas')
-    .urls([
-        Models.url()
-            .category(Models.enumWithCustomOfUrlCategory()
-                .value('Work')
-                .build())
-            .preferred(true)
-            .href('www.aspose.com')
-            .build()])
-    .build();
-
-// Call method:
-let result = await api.contact.asMapi(contactDto);
-
-// Result example:
-result = Models.mapiContactDto()
-    .electronicAddresses(Models.mapiContactElectronicAddressPropertySetDto()
-        .defaultEmailAddress(Models.mapiContactElectronicAddressDto()
-            .emailAddress('email@aspose.com')
-            .build())
-        .build())
-    .nameInfo(Models.mapiContactNamePropertySetDto()
-        .givenName('Alex')
-        .surname('Thomas')
-        .build())
-    .personalInfo(Models.mapiContactPersonalInfoPropertySetDto()
-        .businessHomePage('www.aspose.com')
-        .build())
-    .professionalInfo(Models.mapiContactProfessionalPropertySetDto()
-        .profession('GENERAL DIRECTOR')
-        .build())
-    .telephones(Models.mapiContactTelephonePropertySetDto()
-        .primaryTelephoneNumber('+49 211 4247 21')
-        .build())
-    .build();
-```
-
-</details>
+Promise< [MapiContactDto](MapiContactDto.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
+                    
 <a name="convert"></a>
-## **convert**
-
-Description: Converts contact document to specified format and returns as file             
-
-Returns: File stream in specified destination format
-
-Method call example:
+# **convert**
 ```typescript
-let result = await api.contact.convert(request);
+public async convert(request: ContactConvertRequest): Promise< Buffer >
 ```
 
-### Parameter: request
+Converts contact document to specified format and returns as file             
 
-Description: convert method request.
-
-See parameter model documentation at [ContactConvertRequest](ContactConvertRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.ContactConvertRequest()
-    .toFormat('VCard')
-    .fromFormat('Msg')
-    .file(fs.readFileSync('/path/to/contact.msg'))
-    .build();
+new ContactConvert(
+    toFormat,
+    fromFormat,
+    file)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **toFormat** | **string**| File format to convert to Enum, available values: VCard, WebDav, Msg |
+ **fromFormat** | **string**| File format to convert from Enum, available values: VCard, WebDav, Msg |
+ **file** | **byte[]**| File to convert |
 
-### Result
+### Return type
 
-Description: File stream in specified destination format
-
-Return type: Promise< Buffer >
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.ContactConvertRequest()
-    .toFormat('VCard')
-    .fromFormat('Msg')
-    .file(fs.readFileSync('/path/to/contact.msg'))
-    .build();
-
-// Call method:
-let result = await api.contact.convert(request);
-```
-
-</details>
+Promise< Buffer >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="fromFile"></a>
-## **fromFile**
-
-Description: Converts contact document to a model representation             
-
-Returns: Contact model
-
-Method call example:
+# **fromFile**
 ```typescript
-let result = await api.contact.fromFile(request);
+public async fromFile(request: ContactFromFileRequest): Promise< ContactDto >
 ```
 
-### Parameter: request
+Converts contact document to a model representation             
 
-Description: fromFile method request.
-
-See parameter model documentation at [ContactFromFileRequest](ContactFromFileRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.ContactFromFileRequest()
-    .format('Msg')
-    .file(fs.readFileSync('/path/to/contact.msg'))
-    .build();
+new ContactFromFile(
+    format,
+    file)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **format** | **string**| File format Enum, available values: VCard, WebDav, Msg |
+ **file** | **byte[]**| File to convert |
 
-### Result
+### Return type
 
-Description: Contact model
-
-Return type: Promise< [ContactDto](ContactDto.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = Models.contactDto()
-    .attachments([
-        Models.attachment()
-            .name('attachment.txt')
-            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-            .build()])
-    .displayName('Alex Thomas')
-    .emailAddresses([
-        Models.emailAddress()
-            .category(Models.enumWithCustomOfEmailAddressCategory()
-                .value('Custom')
-                .description('Partners')
-                .build())
-            .displayName('Alex Thomas Partners')
-            .preferred(true)
-            .address('email@aspose.com')
-            .build()])
-    .gender('Male')
-    .givenName('Alex')
-    .phoneNumbers([
-        Models.phoneNumber()
-            .category(Models.enumWithCustomOfPhoneNumberCategory()
-                .value('Office')
-                .build())
-            .number('+49 211 4247 21')
-            .preferred(true)
-            .build()])
-    .profession('GENERAL DIRECTOR')
-    .surname('Thomas')
-    .urls([
-        Models.url()
-            .category(Models.enumWithCustomOfUrlCategory()
-                .value('Work')
-                .build())
-            .preferred(true)
-            .href('www.aspose.com')
-            .build()])
-    .build();
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.ContactFromFileRequest()
-    .format('Msg')
-    .file(fs.readFileSync('/path/to/contact.msg'))
-    .build();
-
-// Call method:
-let result = await api.contact.fromFile(request);
-
-// Result example:
-result = Models.contactDto()
-    .attachments([
-        Models.attachment()
-            .name('attachment.txt')
-            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-            .build()])
-    .displayName('Alex Thomas')
-    .emailAddresses([
-        Models.emailAddress()
-            .category(Models.enumWithCustomOfEmailAddressCategory()
-                .value('Custom')
-                .description('Partners')
-                .build())
-            .displayName('Alex Thomas Partners')
-            .preferred(true)
-            .address('email@aspose.com')
-            .build()])
-    .gender('Male')
-    .givenName('Alex')
-    .phoneNumbers([
-        Models.phoneNumber()
-            .category(Models.enumWithCustomOfPhoneNumberCategory()
-                .value('Office')
-                .build())
-            .number('+49 211 4247 21')
-            .preferred(true)
-            .build()])
-    .profession('GENERAL DIRECTOR')
-    .surname('Thomas')
-    .urls([
-        Models.url()
-            .category(Models.enumWithCustomOfUrlCategory()
-                .value('Work')
-                .build())
-            .preferred(true)
-            .href('www.aspose.com')
-            .build()])
-    .build();
-```
-
-</details>
+Promise< [ContactDto](ContactDto.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="get"></a>
-## **get**
-
-Description: Get contact document from storage.             
-
-Returns: Contact document.
-
-Method call example:
+# **get**
 ```typescript
-let result = await api.contact.get(request);
+public async get(request: ContactGetRequest): Promise< ContactDto >
 ```
 
-### Parameter: request
+Get contact document from storage.             
 
-Description: get method request.
-
-See parameter model documentation at [ContactGetRequest](ContactGetRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.ContactGetRequest()
-    .format('VCard')
-    .fileName('contact.vcf')
-    .folder('folder/on/storage')
-    .storage('First Storage')
-    .build();
+new ContactGet(
+    format,
+    fileName,
+    folder=folder,
+    storage=storage)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **format** | **string**| Contact document format. Enum, available values: VCard, WebDav, Msg |
+ **fileName** | **string**| Contact document file name. |
+ **folder** | **string**| Path to folder in storage. | [optional]
+ **storage** | **string**| Storage name. | [optional]
 
-### Result
+### Return type
 
-Description: Contact document.
-
-Return type: Promise< [ContactDto](ContactDto.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = Models.contactDto()
-    .attachments([
-        Models.attachment()
-            .name('attachment.txt')
-            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-            .build()])
-    .displayName('Alex Thomas')
-    .emailAddresses([
-        Models.emailAddress()
-            .category(Models.enumWithCustomOfEmailAddressCategory()
-                .value('Custom')
-                .description('Partners')
-                .build())
-            .displayName('Alex Thomas Partners')
-            .preferred(true)
-            .address('email@aspose.com')
-            .build()])
-    .gender('Male')
-    .givenName('Alex')
-    .phoneNumbers([
-        Models.phoneNumber()
-            .category(Models.enumWithCustomOfPhoneNumberCategory()
-                .value('Office')
-                .build())
-            .number('+49 211 4247 21')
-            .preferred(true)
-            .build()])
-    .profession('GENERAL DIRECTOR')
-    .surname('Thomas')
-    .urls([
-        Models.url()
-            .category(Models.enumWithCustomOfUrlCategory()
-                .value('Work')
-                .build())
-            .preferred(true)
-            .href('www.aspose.com')
-            .build()])
-    .build();
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.ContactGetRequest()
-    .format('VCard')
-    .fileName('contact.vcf')
-    .folder('folder/on/storage')
-    .storage('First Storage')
-    .build();
-
-// Call method:
-let result = await api.contact.get(request);
-
-// Result example:
-result = Models.contactDto()
-    .attachments([
-        Models.attachment()
-            .name('attachment.txt')
-            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-            .build()])
-    .displayName('Alex Thomas')
-    .emailAddresses([
-        Models.emailAddress()
-            .category(Models.enumWithCustomOfEmailAddressCategory()
-                .value('Custom')
-                .description('Partners')
-                .build())
-            .displayName('Alex Thomas Partners')
-            .preferred(true)
-            .address('email@aspose.com')
-            .build()])
-    .gender('Male')
-    .givenName('Alex')
-    .phoneNumbers([
-        Models.phoneNumber()
-            .category(Models.enumWithCustomOfPhoneNumberCategory()
-                .value('Office')
-                .build())
-            .number('+49 211 4247 21')
-            .preferred(true)
-            .build()])
-    .profession('GENERAL DIRECTOR')
-    .surname('Thomas')
-    .urls([
-        Models.url()
-            .category(Models.enumWithCustomOfUrlCategory()
-                .value('Work')
-                .build())
-            .preferred(true)
-            .href('www.aspose.com')
-            .build()])
-    .build();
-```
-
-</details>
+Promise< [ContactDto](ContactDto.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="getAsFile"></a>
-## **getAsFile**
-
-Description: Converts contact document from storage to specified format and returns as file             
-
-Returns: File stream in specified format
-
-Method call example:
+# **getAsFile**
 ```typescript
-let result = await api.contact.getAsFile(request);
+public async getAsFile(request: ContactGetAsFileRequest): Promise< Buffer >
 ```
 
-### Parameter: request
+Converts contact document from storage to specified format and returns as file             
 
-Description: getAsFile method request.
-
-See parameter model documentation at [ContactGetAsFileRequest](ContactGetAsFileRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.ContactGetAsFileRequest()
-    .fileName('contact.msg')
-    .toFormat('VCard')
-    .fromFormat('Msg')
-    .storage('First Storage')
-    .folder('folder/on/storage')
-    .build();
+new ContactGetAsFile(
+    fileName,
+    toFormat,
+    fromFormat,
+    storage=storage,
+    folder=folder)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **fileName** | **string**| Calendar document file name |
+ **toFormat** | **string**| File format Enum, available values: VCard, WebDav, Msg |
+ **fromFormat** | **string**| File format to convert from Enum, available values: VCard, WebDav, Msg |
+ **storage** | **string**| Storage name | [optional]
+ **folder** | **string**| Path to folder in storage | [optional]
 
-### Result
+### Return type
 
-Description: File stream in specified format
-
-Return type: Promise< Buffer >
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.ContactGetAsFileRequest()
-    .fileName('contact.msg')
-    .toFormat('VCard')
-    .fromFormat('Msg')
-    .storage('First Storage')
-    .folder('folder/on/storage')
-    .build();
-
-// Call method:
-let result = await api.contact.getAsFile(request);
-```
-
-</details>
+Promise< Buffer >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="getList"></a>
-## **getList**
-
-Description: Get contact list from storage folder.             
-
-Returns: Contact list.
-
-Method call example:
+# **getList**
 ```typescript
-let result = await api.contact.getList(request);
+public async getList(request: ContactGetListRequest): Promise< ContactStorageList >
 ```
 
-### Parameter: request
+Get contact list from storage folder.             
 
-Description: getList method request.
-
-See parameter model documentation at [ContactGetListRequest](ContactGetListRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.ContactGetListRequest()
-    .format('VCard')
-    .folder('folder/on/storage')
-    .storage('First Storage')
-    .itemsPerPage(10)
-    .pageNumber(0)
-    .build();
+new ContactGetList(
+    format,
+    folder=folder,
+    storage=storage,
+    itemsPerPage=itemsPerPage,
+    pageNumber=pageNumber)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **format** | **string**| Contact document format. Enum, available values: VCard, WebDav, Msg |
+ **folder** | **string**| Path to folder in storage. | [optional]
+ **storage** | **string**| Storage name. | [optional]
+ **itemsPerPage** | **number**| Count of items on page. | [optional] [default to 10]
+ **pageNumber** | **number**| Page number. | [optional] [default to 0]
 
-### Result
+### Return type
 
-Description: Contact list.
-
-Return type: Promise< [ContactStorageList](ContactStorageList.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = Models.contactStorageList()
-    .value([
-        Models.storageModelOfContactDto()
-            .storageFile(Models.storageFileLocation()
-                .fileName('contact.vcf')
-                .storage('First Storage')
-                .folderPath('file/location/folder/on/storage')
-                .build())
-            .value(Models.contactDto()
-                .attachments([
-                    Models.attachment()
-                        .name('attachment.txt')
-                        .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-                        .build()])
-                .displayName('Alex Thomas')
-                .emailAddresses([
-                    Models.emailAddress()
-                        .category(Models.enumWithCustomOfEmailAddressCategory()
-                            .value('Custom')
-                            .description('Partners')
-                            .build())
-                        .displayName('Alex Thomas Partners')
-                        .preferred(true)
-                        .address('email@aspose.com')
-                        .build()])
-                .gender('Male')
-                .givenName('Alex')
-                .phoneNumbers([
-                    Models.phoneNumber()
-                        .category(Models.enumWithCustomOfPhoneNumberCategory()
-                            .value('Office')
-                            .build())
-                        .number('+49 211 4247 21')
-                        .preferred(true)
-                        .build()])
-                .profession('GENERAL DIRECTOR')
-                .surname('Thomas')
-                .urls([
-                    Models.url()
-                        .category(Models.enumWithCustomOfUrlCategory()
-                            .value('Work')
-                            .build())
-                        .preferred(true)
-                        .href('www.aspose.com')
-                        .build()])
-                .build())
-            .build()])
-    .build();
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.ContactGetListRequest()
-    .format('VCard')
-    .folder('folder/on/storage')
-    .storage('First Storage')
-    .itemsPerPage(10)
-    .pageNumber(0)
-    .build();
-
-// Call method:
-let result = await api.contact.getList(request);
-
-// Result example:
-result = Models.contactStorageList()
-    .value([
-        Models.storageModelOfContactDto()
-            .storageFile(Models.storageFileLocation()
-                .fileName('contact.vcf')
-                .storage('First Storage')
-                .folderPath('file/location/folder/on/storage')
-                .build())
-            .value(Models.contactDto()
-                .attachments([
-                    Models.attachment()
-                        .name('attachment.txt')
-                        .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-                        .build()])
-                .displayName('Alex Thomas')
-                .emailAddresses([
-                    Models.emailAddress()
-                        .category(Models.enumWithCustomOfEmailAddressCategory()
-                            .value('Custom')
-                            .description('Partners')
-                            .build())
-                        .displayName('Alex Thomas Partners')
-                        .preferred(true)
-                        .address('email@aspose.com')
-                        .build()])
-                .gender('Male')
-                .givenName('Alex')
-                .phoneNumbers([
-                    Models.phoneNumber()
-                        .category(Models.enumWithCustomOfPhoneNumberCategory()
-                            .value('Office')
-                            .build())
-                        .number('+49 211 4247 21')
-                        .preferred(true)
-                        .build()])
-                .profession('GENERAL DIRECTOR')
-                .surname('Thomas')
-                .urls([
-                    Models.url()
-                        .category(Models.enumWithCustomOfUrlCategory()
-                            .value('Work')
-                            .build())
-                        .preferred(true)
-                        .href('www.aspose.com')
-                        .build()])
-                .build())
-            .build()])
-    .build();
-```
-
-</details>
+Promise< [ContactStorageList](ContactStorageList.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="save"></a>
-## **save**
-
-Description: Save contact to storage.             
-
-Method call example:
+# **save**
 ```typescript
-await api.contact.save(request);
+public async save(request: model.ContactSaveRequest): Promise< any >
 ```
 
-### Parameter: request
+Save contact to storage.             
 
-Description: Create/Update contact request.
+### request Parameter
 
 See parameter model documentation at [ContactSaveRequest](ContactSaveRequest.md)
 
-<details>
-    <summary>Parameter initialization example:</summary>
-    
-```typescript
-let request = Models.contactSaveRequest()
-    .storageFile(Models.storageFileLocation()
-        .fileName('contact.vcf')
-        .storage('First Storage')
-        .folderPath('file/location/folder/on/storage')
-        .build())
-    .value(Models.contactDto()
-        .attachments([
-            Models.attachment()
-                .name('attachment.txt')
-                .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-                .build()])
-        .displayName('Alex Thomas')
-        .emailAddresses([
-            Models.emailAddress()
-                .category(Models.enumWithCustomOfEmailAddressCategory()
-                    .value('Custom')
-                    .description('Partners')
-                    .build())
-                .displayName('Alex Thomas Partners')
-                .preferred(true)
-                .address('email@aspose.com')
-                .build()])
-        .gender('Male')
-        .givenName('Alex')
-        .phoneNumbers([
-            Models.phoneNumber()
-                .category(Models.enumWithCustomOfPhoneNumberCategory()
-                    .value('Office')
-                    .build())
-                .number('+49 211 4247 21')
-                .preferred(true)
-                .build()])
-        .profession('GENERAL DIRECTOR')
-        .surname('Thomas')
-        .urls([
-            Models.url()
-                .category(Models.enumWithCustomOfUrlCategory()
-                    .value('Work')
-                    .build())
-                .preferred(true)
-                .href('www.aspose.com')
-                .build()])
-        .build())
-    .build();
-```
+### Return type
 
-</details>
-
-### Result
-
-Return type: Promise< any >
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.contactSaveRequest()
-    .storageFile(Models.storageFileLocation()
-        .fileName('contact.vcf')
-        .storage('First Storage')
-        .folderPath('file/location/folder/on/storage')
-        .build())
-    .value(Models.contactDto()
-        .attachments([
-            Models.attachment()
-                .name('attachment.txt')
-                .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-                .build()])
-        .displayName('Alex Thomas')
-        .emailAddresses([
-            Models.emailAddress()
-                .category(Models.enumWithCustomOfEmailAddressCategory()
-                    .value('Custom')
-                    .description('Partners')
-                    .build())
-                .displayName('Alex Thomas Partners')
-                .preferred(true)
-                .address('email@aspose.com')
-                .build()])
-        .gender('Male')
-        .givenName('Alex')
-        .phoneNumbers([
-            Models.phoneNumber()
-                .category(Models.enumWithCustomOfPhoneNumberCategory()
-                    .value('Office')
-                    .build())
-                .number('+49 211 4247 21')
-                .preferred(true)
-                .build()])
-        .profession('GENERAL DIRECTOR')
-        .surname('Thomas')
-        .urls([
-            Models.url()
-                .category(Models.enumWithCustomOfUrlCategory()
-                    .value('Work')
-                    .build())
-                .preferred(true)
-                .href('www.aspose.com')
-                .build()])
-        .build())
-    .build();
-
-// Call method:
-await api.contact.save(request);
-```
-
-</details>
+Promise< any >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 

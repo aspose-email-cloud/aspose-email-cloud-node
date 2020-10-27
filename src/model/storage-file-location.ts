@@ -72,42 +72,5 @@ export class StorageFileLocation extends model.StorageFolderLocation {
     }
 }
 
-/**
- *  StorageFileLocation model builder
- */
-export class StorageFileLocationBuilder {
-    private readonly model: StorageFileLocation;
-    public constructor(model: StorageFileLocation) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): StorageFileLocation {
-        return this.model;
-    }
-
-    /**
-    * A storage name             
-    */
-    public storage(storage: string): StorageFileLocationBuilder {
-        this.model.storage = storage;
-        return this;
-    }
-    /**
-    * A path to a folder in specified storage             
-    */
-    public folderPath(folderPath: string): StorageFileLocationBuilder {
-        this.model.folderPath = folderPath;
-        return this;
-    }
-    /**
-    * A file name in storage             
-    */
-    public fileName(fileName: string): StorageFileLocationBuilder {
-        this.model.fileName = fileName;
-        return this;
-    }
-}
 

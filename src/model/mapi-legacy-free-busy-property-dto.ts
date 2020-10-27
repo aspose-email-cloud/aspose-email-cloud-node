@@ -70,35 +70,5 @@ export class MapiLegacyFreeBusyPropertyDto extends model.MapiPropertyDto {
     }
 }
 
-/**
- *  MapiLegacyFreeBusyPropertyDto model builder
- */
-export class MapiLegacyFreeBusyPropertyDtoBuilder {
-    private readonly model: MapiLegacyFreeBusyPropertyDto;
-    public constructor(model: MapiLegacyFreeBusyPropertyDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiLegacyFreeBusyPropertyDto {
-        return this.model;
-    }
-
-    /**
-    * Property descriptor             
-    */
-    public descriptor(descriptor: model.MapiPropertyDescriptor): MapiLegacyFreeBusyPropertyDtoBuilder {
-        this.model.descriptor = descriptor;
-        return this;
-    }
-    /**
-    * Represents the free/busy status for a calendar event. Enum, available values: Free, Tentative, Busy, Oof, WorkingElsewhere, NoData
-    */
-    public value(value: string): MapiLegacyFreeBusyPropertyDtoBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

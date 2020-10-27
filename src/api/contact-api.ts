@@ -42,6 +42,7 @@ export class ContactApi {
         this.configuration = configuration;
     }
 
+        
     /**
      * Converts contact model to specified format and returns as file             
      * @param request Contact model and format to convert
@@ -68,6 +69,7 @@ export class ContactApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Converts ContactDto to MapiContactDto.             
      * @param contactDto Contact model to convert
@@ -93,6 +95,7 @@ export class ContactApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Converts contact document to specified format and returns as file             
      * @param request contains request parameters
@@ -161,6 +164,7 @@ export class ContactApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Converts contact document to a model representation             
      * @param request contains request parameters
@@ -219,6 +223,7 @@ export class ContactApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Get contact document from storage.             
      * @param request contains request parameters
@@ -279,6 +284,7 @@ export class ContactApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Converts contact document from storage to specified format and returns as file             
      * @param request contains request parameters
@@ -349,6 +355,7 @@ export class ContactApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Get contact list from storage folder.             
      * @param request contains request parameters
@@ -408,6 +415,7 @@ export class ContactApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Save contact to storage.             
      * @param request Create/Update contact request.
@@ -431,4 +439,5 @@ export class ContactApi {
         await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
+
 }

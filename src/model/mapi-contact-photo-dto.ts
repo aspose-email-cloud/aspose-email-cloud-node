@@ -62,35 +62,5 @@ export class MapiContactPhotoDto extends model.ContactPhoto {
     }
 }
 
-/**
- *  MapiContactPhotoDto model builder
- */
-export class MapiContactPhotoDtoBuilder {
-    private readonly model: MapiContactPhotoDto;
-    public constructor(model: MapiContactPhotoDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiContactPhotoDto {
-        return this.model;
-    }
-
-    /**
-    * MapiContact photo image format. Enum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
-    */
-    public photoImageFormat(photoImageFormat: string): MapiContactPhotoDtoBuilder {
-        this.model.photoImageFormat = photoImageFormat;
-        return this;
-    }
-    /**
-    * Photo serialized as base64 string.             
-    */
-    public base64Data(base64Data: string): MapiContactPhotoDtoBuilder {
-        this.model.base64Data = base64Data;
-        return this;
-    }
-}
 

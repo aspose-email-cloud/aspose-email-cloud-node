@@ -90,42 +90,5 @@ export class PhoneNumber {
     }
 }
 
-/**
- *  PhoneNumber model builder
- */
-export class PhoneNumberBuilder {
-    private readonly model: PhoneNumber;
-    public constructor(model: PhoneNumber) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): PhoneNumber {
-        return this.model;
-    }
-
-    /**
-    * Phone number category.             
-    */
-    public category(category: model.EnumWithCustomOfPhoneNumberCategory): PhoneNumberBuilder {
-        this.model.category = category;
-        return this;
-    }
-    /**
-    * Phone number.             
-    */
-    public number(number: string): PhoneNumberBuilder {
-        this.model.number = number;
-        return this;
-    }
-    /**
-    * Defines whether phone number is preferred.             
-    */
-    public preferred(preferred: boolean): PhoneNumberBuilder {
-        this.model.preferred = preferred;
-        return this;
-    }
-}
 

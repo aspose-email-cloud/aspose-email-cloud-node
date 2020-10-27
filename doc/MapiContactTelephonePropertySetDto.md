@@ -1,10 +1,8 @@
 # MapiContactTelephonePropertySetDto
 
-Specify optional telephone numbers for the contact.             
-
 ## Properties
 Name | Type | Description | Notes
----- | ---- | ----------- | -----
+------------ | ------------- | ------------- | -------------
 **isEmpty** | **boolean** | Shows if MapiContactTelephonePropertySet is empty              | [default to undefined]
 **defaultTelephoneNumber** | **string** | Default value of electronic address Uses when user does not set any electronic address if UseAutocomplete property is set 'true'              | [optional] [default to undefined]
 **useAutocomplete** | **boolean** | Indicates that one electronic address is completed automatically in case if user does not set any electronic address              | [default to undefined]
@@ -24,6 +22,7 @@ Name | Type | Description | Notes
 **telexNumber** | **string** | Gets or sets the telex number              | [optional] [default to undefined]
 **isdnNumber** | **string** | Gets or sets the integrated services digital network (ISDN) number              | [optional] [default to undefined]
 **pagerTelephoneNumber** | **string** | Gets or sets a pager telephone number              | [optional] [default to undefined]
+
 
 
 [[Back to Model list]](README.md#documentation-for-models) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to README]](README.md)

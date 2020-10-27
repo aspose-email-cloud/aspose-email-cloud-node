@@ -78,35 +78,5 @@ export class DiscUsage {
     }
 }
 
-/**
- *  DiscUsage model builder
- */
-export class DiscUsageBuilder {
-    private readonly model: DiscUsage;
-    public constructor(model: DiscUsage) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): DiscUsage {
-        return this.model;
-    }
-
-    /**
-    * Application used disc space.
-    */
-    public usedSize(usedSize: number): DiscUsageBuilder {
-        this.model.usedSize = usedSize;
-        return this;
-    }
-    /**
-    * Total disc space.
-    */
-    public totalSize(totalSize: number): DiscUsageBuilder {
-        this.model.totalSize = totalSize;
-        return this;
-    }
-}
 

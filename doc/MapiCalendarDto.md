@@ -1,10 +1,8 @@
 # MapiCalendarDto
 
-Represents the mapi calendar object             
-
 ## Properties
 Name | Type | Description | Notes
----- | ---- | ----------- | -----
+------------ | ------------- | ------------- | -------------
 **appointmentCounterProposal** | **boolean** | Value indicating whether a Meeting Response object is a counter proposal.              | [default to undefined]
 **attendees** | [**MapiCalendarAttendeesDto**](MapiCalendarAttendeesDto.md) | Attendees              | [optional] [default to undefined]
 **busyStatus** | **string** | Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice | [default to undefined]
@@ -25,46 +23,5 @@ Name | Type | Description | Notes
 **organizer** | [**MapiElectronicAddressDto**](MapiElectronicAddressDto.md) | Organizer              | [optional] [default to undefined]
 
  Parent class: [MapiMessageItemBaseDto](MapiMessageItemBaseDto.md)
-
-
-## Example
-```typescript
-let mapiCalendarDto = Models.mapiCalendarDto()
-    .attendees(Models.mapiCalendarAttendeesDto()
-        .appointmentRecipients([
-            Models.mapiRecipientDto()
-                .emailAddress('organizer@aspose.com')
-                .addressType('SMTP')
-                .displayName('Organizer Name')
-                .recipientType('MapiTo')
-                .build(),
-            Models.mapiRecipientDto()
-                .emailAddress('attendee@aspose.com')
-                .addressType('SMTP')
-                .displayName('Attendee Name')
-                .recipientType('MapiTo')
-                .build()])
-        .build())
-    .busyStatus('Tentative')
-    .clientIntent([
-        'Manager'])
-    .endDate(new Date())
-    .location('Some location')
-    .recurrence(Models.mapiCalendarEventRecurrenceDto()
-        .recurrencePattern(Models.mapiCalendarDailyRecurrencePatternDto()
-            .frequency('Daily')
-            .occurrenceCount(10)
-            .weekStartDay('Monday')
-            .build())
-        .build())
-    .startDate(new Date())
-    .organizer(Models.mapiElectronicAddressDto()
-        .emailAddress('organizer@aspose.com')
-        .build())
-    .body('Some description')
-    .subject('Some summary')
-    .build();
-```
-
 
 [[Back to Model list]](README.md#documentation-for-models) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to README]](README.md)

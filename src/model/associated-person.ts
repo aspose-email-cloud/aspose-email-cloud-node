@@ -90,42 +90,5 @@ export class AssociatedPerson {
     }
 }
 
-/**
- *  AssociatedPerson model builder
- */
-export class AssociatedPersonBuilder {
-    private readonly model: AssociatedPerson;
-    public constructor(model: AssociatedPerson) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AssociatedPerson {
-        return this.model;
-    }
-
-    /**
-    * Associated person's name.             
-    */
-    public name(name: string): AssociatedPersonBuilder {
-        this.model.name = name;
-        return this;
-    }
-    /**
-    * Associated person's category.             
-    */
-    public category(category: model.EnumWithCustomOfAssociatedPersonCategory): AssociatedPersonBuilder {
-        this.model.category = category;
-        return this;
-    }
-    /**
-    * Defines whether associated person is preferred.             
-    */
-    public preferred(preferred: boolean): AssociatedPersonBuilder {
-        this.model.preferred = preferred;
-        return this;
-    }
-}
 

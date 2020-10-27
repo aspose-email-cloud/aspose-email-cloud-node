@@ -90,42 +90,5 @@ export class AiNameMismatch {
     }
 }
 
-/**
- *  AiNameMismatch model builder
- */
-export class AiNameMismatchBuilder {
-    private readonly model: AiNameMismatch;
-    public constructor(model: AiNameMismatch) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AiNameMismatch {
-        return this.model;
-    }
-
-    /**
-    * Mismatch type. Enum, available values: Unknown, FirstName, MiddleName, MiddleLastName, MiddleNickname, Gender, Context
-    */
-    public category(category: string): AiNameMismatchBuilder {
-        this.model.category = category;
-        return this;
-    }
-    /**
-    * Similarity score             
-    */
-    public similarity(similarity: number): AiNameMismatchBuilder {
-        this.model.similarity = similarity;
-        return this;
-    }
-    /**
-    * Explanation or mismatch subtype             
-    */
-    public explanation(explanation: string): AiNameMismatchBuilder {
-        this.model.explanation = explanation;
-        return this;
-    }
-}
 

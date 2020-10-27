@@ -58,25 +58,5 @@ export class ContactList extends model.ListResponseOfContactDto {
     }
 }
 
-/**
- *  ContactList model builder
- */
-export class ContactListBuilder {
-    private readonly model: ContactList;
-    public constructor(model: ContactList) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ContactList {
-        return this.model;
-    }
-
-    public value(value: Array< model.ContactDto >): ContactListBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

@@ -1,10 +1,8 @@
 # EmailDto
 
-Email message representation.             
-
 ## Properties
 Name | Type | Description | Notes
----- | ---- | ----------- | -----
+------------ | ------------- | ------------- | -------------
 **alternateViews** | [**Array&lt;AlternateView&gt;**](AlternateView.md) | Collection of alternate views of message.              | [optional] [default to undefined]
 **attachments** | [**Array&lt;Attachment&gt;**](Attachment.md) | Email message attachments.              | [optional] [default to undefined]
 **bcc** | [**Array&lt;MailAddress&gt;**](MailAddress.md) | BCC recipients.              | [optional] [default to undefined]
@@ -38,35 +36,6 @@ Name | Type | Description | Notes
 **to** | [**Array&lt;MailAddress&gt;**](MailAddress.md) | The address collection that contains the recipients of message.              | [optional] [default to undefined]
 **xMailer** | **string** | The X-Mailer the software that created the e-mail message.              | [optional] [default to undefined]
 
-
-## Example
-```typescript
-let emailDto = Models.emailDto()
-    .attachments([
-        Models.attachment()
-            .name('some-file.txt')
-            .base64Data('U29tZSBmaWxlIGNvbnRlbnQ=')
-            .build()])
-    .body('Some body')
-    .bodyType('Html')
-    .deliveryNotificationOptions([
-        'OnSuccess',
-        'Delay'])
-    .from(Models.mailAddress()
-        .displayName('From Address')
-        .address('from@aspose.com')
-        .build())
-    .htmlBody('<b>Some body</b>')
-    .isBodyHtml(true)
-    .isDraft(true)
-    .subject('Re: Some subject')
-    .to([
-        Models.mailAddress()
-            .displayName('To Address')
-            .address('to@aspose.com')
-            .build()])
-    .build();
-```
 
 
 [[Back to Model list]](README.md#documentation-for-models) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to README]](README.md)

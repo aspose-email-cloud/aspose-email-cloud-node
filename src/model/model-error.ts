@@ -102,49 +102,5 @@ export class ModelError {
     }
 }
 
-/**
- *  ModelError model builder
- */
-export class ModelErrorBuilder {
-    private readonly model: ModelError;
-    public constructor(model: ModelError) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ModelError {
-        return this.model;
-    }
-
-    /**
-    * Code             
-    */
-    public code(code: string): ModelErrorBuilder {
-        this.model.code = code;
-        return this;
-    }
-    /**
-    * Message             
-    */
-    public message(message: string): ModelErrorBuilder {
-        this.model.message = message;
-        return this;
-    }
-    /**
-    * Description             
-    */
-    public description(description: string): ModelErrorBuilder {
-        this.model.description = description;
-        return this;
-    }
-    /**
-    * Inner Error             
-    */
-    public innerError(innerError: model.ErrorDetails): ModelErrorBuilder {
-        this.model.innerError = innerError;
-        return this;
-    }
-}
 

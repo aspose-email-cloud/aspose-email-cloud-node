@@ -69,29 +69,5 @@ export class StorageModelOfMapiMessageDto {
     }
 }
 
-/**
- *  StorageModelOfMapiMessageDto model builder
- */
-export class StorageModelOfMapiMessageDtoBuilder {
-    private readonly model: StorageModelOfMapiMessageDto;
-    public constructor(model: StorageModelOfMapiMessageDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): StorageModelOfMapiMessageDto {
-        return this.model;
-    }
-
-    public storageFile(storageFile: model.StorageFileLocation): StorageModelOfMapiMessageDtoBuilder {
-        this.model.storageFile = storageFile;
-        return this;
-    }
-    public value(value: model.MapiMessageDto): StorageModelOfMapiMessageDtoBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

@@ -72,32 +72,5 @@ export class EnumWithCustomOfAssociatedPersonCategory {
     }
 }
 
-/**
- *  EnumWithCustomOfAssociatedPersonCategory model builder
- */
-export class EnumWithCustomOfAssociatedPersonCategoryBuilder {
-    private readonly model: EnumWithCustomOfAssociatedPersonCategory;
-    public constructor(model: EnumWithCustomOfAssociatedPersonCategory) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): EnumWithCustomOfAssociatedPersonCategory {
-        return this.model;
-    }
-
-    /**
-    * Associated person's category. Enum, available values: Spouse, Child, Mother, Father, Parent, Brother, Sister, Friend, Relative, Manager, Assistant, ReferredBy, Partner, DomesticPartner, Custom
-    */
-    public value(value: string): EnumWithCustomOfAssociatedPersonCategoryBuilder {
-        this.model.value = value;
-        return this;
-    }
-    public description(description: string): EnumWithCustomOfAssociatedPersonCategoryBuilder {
-        this.model.description = description;
-        return this;
-    }
-}
 

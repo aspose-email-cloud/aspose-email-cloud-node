@@ -90,42 +90,5 @@ export class ReminderTrigger {
     }
 }
 
-/**
- *  ReminderTrigger model builder
- */
-export class ReminderTriggerBuilder {
-    private readonly model: ReminderTrigger;
-    public constructor(model: ReminderTrigger) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ReminderTrigger {
-        return this.model;
-    }
-
-    /**
-    * A trigger set to an absolute date/time.
-    */
-    public dateTime(dateTime: Date): ReminderTriggerBuilder {
-        this.model.dateTime = dateTime;
-        return this;
-    }
-    /**
-    * Specifies a relative time in ticks for the trigger of the alarm.             
-    */
-    public duration(duration: number): ReminderTriggerBuilder {
-        this.model.duration = duration;
-        return this;
-    }
-    /**
-    * Specify the relationship of the alarm trigger with respect to the start or end of the event. Enum, available values: Start, End
-    */
-    public related(related: string): ReminderTriggerBuilder {
-        this.model.related = related;
-        return this;
-    }
-}
 

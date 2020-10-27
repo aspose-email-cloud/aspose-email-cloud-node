@@ -70,35 +70,5 @@ export class MapiPhysicalAddressIndexPropertyDto extends model.MapiPropertyDto {
     }
 }
 
-/**
- *  MapiPhysicalAddressIndexPropertyDto model builder
- */
-export class MapiPhysicalAddressIndexPropertyDtoBuilder {
-    private readonly model: MapiPhysicalAddressIndexPropertyDto;
-    public constructor(model: MapiPhysicalAddressIndexPropertyDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiPhysicalAddressIndexPropertyDto {
-        return this.model;
-    }
-
-    /**
-    * Property descriptor             
-    */
-    public descriptor(descriptor: model.MapiPropertyDescriptor): MapiPhysicalAddressIndexPropertyDtoBuilder {
-        this.model.descriptor = descriptor;
-        return this;
-    }
-    /**
-    * Identifies the display types for physical addresses. Enum, available values: None, Home, Business, Other
-    */
-    public value(value: string): MapiPhysicalAddressIndexPropertyDtoBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

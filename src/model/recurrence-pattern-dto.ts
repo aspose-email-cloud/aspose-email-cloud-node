@@ -118,49 +118,5 @@ export class RecurrencePatternDto {
     }
 }
 
-/**
- *  RecurrencePatternDto model builder
- */
-export class RecurrencePatternDtoBuilder {
-    private readonly model: RecurrencePatternDto;
-    public constructor(model: RecurrencePatternDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): RecurrencePatternDto {
-        return this.model;
-    }
-
-    /**
-    * Number of recurrence units.             
-    */
-    public interval(interval: number): RecurrencePatternDtoBuilder {
-        this.model.interval = interval;
-        return this;
-    }
-    /**
-    * Number of occurrences of the recurrence pattern.             
-    */
-    public occurs(occurs: number): RecurrencePatternDtoBuilder {
-        this.model.occurs = occurs;
-        return this;
-    }
-    /**
-    * End date.             
-    */
-    public endDate(endDate: Date): RecurrencePatternDtoBuilder {
-        this.model.endDate = endDate;
-        return this;
-    }
-    /**
-    * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
-    */
-    public weekStart(weekStart: string): RecurrencePatternDtoBuilder {
-        this.model.weekStart = weekStart;
-        return this;
-    }
-}
 

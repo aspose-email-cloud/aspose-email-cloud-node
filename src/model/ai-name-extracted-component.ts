@@ -78,35 +78,5 @@ export class AiNameExtractedComponent {
     }
 }
 
-/**
- *  AiNameExtractedComponent model builder
- */
-export class AiNameExtractedComponentBuilder {
-    private readonly model: AiNameExtractedComponent;
-    public constructor(model: AiNameExtractedComponent) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AiNameExtractedComponent {
-        return this.model;
-    }
-
-    /**
-    * Extracted from email address name component category. Enum, available values: Unknown, GivenName, Surname, SomeName, NoName, Initial
-    */
-    public category(category: string): AiNameExtractedComponentBuilder {
-        this.model.category = category;
-        return this;
-    }
-    /**
-    * Extracted value             
-    */
-    public value(value: string): AiNameExtractedComponentBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

@@ -90,42 +90,5 @@ export class CalendarAsAlternateRequest {
     }
 }
 
-/**
- *  CalendarAsAlternateRequest model builder
- */
-export class CalendarAsAlternateRequestBuilder {
-    private readonly model: CalendarAsAlternateRequest;
-    public constructor(model: CalendarAsAlternateRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): CalendarAsAlternateRequest {
-        return this.model;
-    }
-
-    /**
-    * iCalendar document model             
-    */
-    public value(value: model.CalendarDto): CalendarAsAlternateRequestBuilder {
-        this.model.value = value;
-        return this;
-    }
-    /**
-    * iCalendar actions. Enum, available values: Create, Update, Cancel
-    */
-    public action(action: string): CalendarAsAlternateRequestBuilder {
-        this.model.action = action;
-        return this;
-    }
-    /**
-    * iCalendar sequence id             
-    */
-    public sequenceId(sequenceId: string): CalendarAsAlternateRequestBuilder {
-        this.model.sequenceId = sequenceId;
-        return this;
-    }
-}
 

@@ -58,25 +58,5 @@ export class AiNameComponentList extends model.ListResponseOfAiNameComponent {
     }
 }
 
-/**
- *  AiNameComponentList model builder
- */
-export class AiNameComponentListBuilder {
-    private readonly model: AiNameComponentList;
-    public constructor(model: AiNameComponentList) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AiNameComponentList {
-        return this.model;
-    }
-
-    public value(value: Array< model.AiNameComponent >): AiNameComponentListBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

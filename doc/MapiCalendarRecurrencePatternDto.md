@@ -1,10 +1,8 @@
 # MapiCalendarRecurrencePatternDto
 
-Mapi recurrence pattern.             
-
 ## Properties
 Name | Type | Description | Notes
----- | ---- | ----------- | -----
+------------ | ------------- | ------------- | -------------
 **calendarType** | **string** | Enumerated the calendar type of the mapi recurrence Enum, available values: Default, CalGregorian, CalGregorianUs, CalJapan, CalTaiwan, CalKorea, CalHijri, CalThai, CalHebrew, CalGregorianMeFrench, CalGregorianArabic, CalGregorianXLitEnglish, CalGregorianXLitFrench, CalLunarJapanese, CalChineseLunar, CalSaka, CalLunarEtoChn, CalLunarEtoKor, CalLunarRokuyou, CalLunarKorean, CalUmAlQura | [default to undefined]
 **deletedInstanceDates** | **Array&lt;Date&gt;** | An array of dates, each of which is the original instance date of either a deleted instance or a modified instance for this recurrence.              | [optional] [default to undefined]
 **endDate** | **Date** | End date of an item recurrence pattern.              | [default to undefined]
@@ -19,6 +17,7 @@ Name | Type | Description | Notes
 **startDate** | **Date** | Start date of an item recurrence pattern.              | [default to undefined]
 **weekStartDay** | **string** | Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday | [default to undefined]
 **discriminator** | **string** |  | [default to undefined]
+
 
 
 [[Back to Model list]](README.md#documentation-for-models) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to README]](README.md)

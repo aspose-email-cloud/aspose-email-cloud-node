@@ -1,10 +1,8 @@
 # MapiContactDto
 
-Represents outlook contact information.             
-
 ## Properties
 Name | Type | Description | Notes
----- | ---- | ----------- | -----
+------------ | ------------- | ------------- | -------------
 **electronicAddresses** | [**MapiContactElectronicAddressPropertySetDto**](MapiContactElectronicAddressPropertySetDto.md) | Specify properties for up to three different e-mail addresses and three different fax addresses.              | [optional] [default to undefined]
 **events** | [**MapiContactEventPropertySetDto**](MapiContactEventPropertySetDto.md) | Specify events associated with a contact.              | [optional] [default to undefined]
 **nameInfo** | [**MapiContactNamePropertySetDto**](MapiContactNamePropertySetDto.md) | The properties are used to specify the name of the person represented by the contact.              | [optional] [default to undefined]
@@ -16,31 +14,5 @@ Name | Type | Description | Notes
 **telephones** | [**MapiContactTelephonePropertySetDto**](MapiContactTelephonePropertySetDto.md) | Specify telephone numbers for the contact.              | [optional] [default to undefined]
 
  Parent class: [MapiMessageItemBaseDto](MapiMessageItemBaseDto.md)
-
-
-## Example
-```typescript
-let mapiContactDto = Models.mapiContactDto()
-    .electronicAddresses(Models.mapiContactElectronicAddressPropertySetDto()
-        .defaultEmailAddress(Models.mapiContactElectronicAddressDto()
-            .emailAddress('email@aspose.com')
-            .build())
-        .build())
-    .nameInfo(Models.mapiContactNamePropertySetDto()
-        .givenName('Alex')
-        .surname('Thomas')
-        .build())
-    .personalInfo(Models.mapiContactPersonalInfoPropertySetDto()
-        .businessHomePage('www.aspose.com')
-        .build())
-    .professionalInfo(Models.mapiContactProfessionalPropertySetDto()
-        .profession('GENERAL DIRECTOR')
-        .build())
-    .telephones(Models.mapiContactTelephonePropertySetDto()
-        .primaryTelephoneNumber('+49 211 4247 21')
-        .build())
-    .build();
-```
-
 
 [[Back to Model list]](README.md#documentation-for-models) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to README]](README.md)

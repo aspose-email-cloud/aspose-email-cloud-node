@@ -114,56 +114,5 @@ export class AiNameCulturalContext {
     }
 }
 
-/**
- *  AiNameCulturalContext model builder
- */
-export class AiNameCulturalContextBuilder {
-    private readonly model: AiNameCulturalContext;
-    public constructor(model: AiNameCulturalContext) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AiNameCulturalContext {
-        return this.model;
-    }
-
-    /**
-    * An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \"it\" or \"ita\" for Italian)             
-    */
-    public language(language: string): AiNameCulturalContextBuilder {
-        this.model.language = language;
-        return this;
-    }
-    /**
-    * A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France             
-    */
-    public location(location: string): AiNameCulturalContextBuilder {
-        this.model.location = location;
-        return this;
-    }
-    /**
-    * A writing system code; starts with the ISO-15924 script name             
-    */
-    public script(script: string): AiNameCulturalContextBuilder {
-        this.model.script = script;
-        return this;
-    }
-    /**
-    * A character encoding name             
-    */
-    public encoding(encoding: string): AiNameCulturalContextBuilder {
-        this.model.encoding = encoding;
-        return this;
-    }
-    /**
-    * Name writing style. Enum, available values: Formal, Informal, Legal, Academic
-    */
-    public style(style: string): AiNameCulturalContextBuilder {
-        this.model.style = style;
-        return this;
-    }
-}
 

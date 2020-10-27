@@ -1,497 +1,66 @@
-# EmailConfigApi (EmailCloud.emailConfig)
+# EmailConfigApi
 
-Email server configuration discovery.
-
+                    
 <a name="discover"></a>
-## **discover**
-
-Description: Discover email accounts by email address. Does not validate discovered accounts.             
-
-Returns: Discovered account configurations.
-
-Method call example:
+# **discover**
 ```typescript
-let result = await api.emailConfig.discover(request);
+public async discover(request: EmailConfigDiscoverRequest): Promise< EmailAccountConfigList >
 ```
 
-### Parameter: request
+Discover email accounts by email address. Does not validate discovered accounts.             
 
-Description: discover method request.
-
-See parameter model documentation at [EmailConfigDiscoverRequest](EmailConfigDiscoverRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.EmailConfigDiscoverRequest()
-    .build();
+new EmailConfigDiscover(
+    address,
+    fastProcessing=fastProcessing)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **address** | **string**| Email address. |
+ **fastProcessing** | **boolean**| Turns on fast processing. All discover systems will run in parallel. First discovered result will be returned.              | [optional] [default to false]
 
-### Result
+### Return type
 
-Description: Discovered account configurations.
-
-Return type: Promise< [EmailAccountConfigList](EmailAccountConfigList.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = Models.emailAccountConfigList()
-    .value([
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .host('imap.gmail.com')
-            .port(993)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build(),
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .protocolType('SMTP')
-            .host('smtp.gmail.com')
-            .port(465)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build(),
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .protocolType('POP3')
-            .host('pop.gmail.com')
-            .port(995)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build()])
-    .build();
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.EmailConfigDiscoverRequest()
-    .build();
-
-// Call method:
-let result = await api.emailConfig.discover(request);
-
-// Result example:
-result = Models.emailAccountConfigList()
-    .value([
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .host('imap.gmail.com')
-            .port(993)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build(),
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .protocolType('SMTP')
-            .host('smtp.gmail.com')
-            .port(465)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build(),
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .protocolType('POP3')
-            .host('pop.gmail.com')
-            .port(995)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build()])
-    .build();
-```
-
-</details>
+Promise< [EmailAccountConfigList](EmailAccountConfigList.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="discoverOauth"></a>
-## **discoverOauth**
-
-Description: Discover email accounts by email address. Validates discovered accounts using OAuth 2.0.             
-
-Returns: Discovered account configurations.
-
-Method call example:
+# **discoverOauth**
 ```typescript
-let result = await api.emailConfig.discoverOauth(request);
+public async discoverOauth(request: model.EmailConfigDiscoverOauthRequest): Promise< EmailAccountConfigList >
 ```
 
-### Parameter: request
+Discover email accounts by email address. Validates discovered accounts using OAuth 2.0.             
 
-Description: Discover email configuration request.
+### request Parameter
 
 See parameter model documentation at [EmailConfigDiscoverOauthRequest](EmailConfigDiscoverOauthRequest.md)
 
-<details>
-    <summary>Parameter initialization example:</summary>
-    
-```typescript
-let request = Models.emailConfigDiscoverOauthRequest()
-    .clientId('ClientId')
-    .clientSecret('ClientSecret')
-    .refreshToken('RefreshToken')
-    .address('example@aspose.com')
-    .fastProcessing(true)
-    .build();
-```
+### Return type
 
-</details>
-
-### Result
-
-Description: Discovered account configurations.
-
-Return type: Promise< [EmailAccountConfigList](EmailAccountConfigList.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = Models.emailAccountConfigList()
-    .value([
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .host('imap.gmail.com')
-            .port(993)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build(),
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .protocolType('SMTP')
-            .host('smtp.gmail.com')
-            .port(465)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build(),
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .protocolType('POP3')
-            .host('pop.gmail.com')
-            .port(995)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build()])
-    .build();
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.emailConfigDiscoverOauthRequest()
-    .clientId('ClientId')
-    .clientSecret('ClientSecret')
-    .refreshToken('RefreshToken')
-    .address('example@aspose.com')
-    .fastProcessing(true)
-    .build();
-
-// Call method:
-let result = await api.emailConfig.discoverOauth(request);
-
-// Result example:
-result = Models.emailAccountConfigList()
-    .value([
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .host('imap.gmail.com')
-            .port(993)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build(),
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .protocolType('SMTP')
-            .host('smtp.gmail.com')
-            .port(465)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build(),
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .protocolType('POP3')
-            .host('pop.gmail.com')
-            .port(995)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build()])
-    .build();
-```
-
-</details>
+Promise< [EmailAccountConfigList](EmailAccountConfigList.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
+                    
 <a name="discoverPassword"></a>
-## **discoverPassword**
-
-Description: Discover email accounts by email address. Validates discovered accounts using login and password.             
-
-Returns: Discovered account configurations.
-
-Method call example:
+# **discoverPassword**
 ```typescript
-let result = await api.emailConfig.discoverPassword(request);
+public async discoverPassword(request: model.EmailConfigDiscoverPasswordRequest): Promise< EmailAccountConfigList >
 ```
 
-### Parameter: request
+Discover email accounts by email address. Validates discovered accounts using login and password.             
 
-Description: Discover email configuration request.
+### request Parameter
 
 See parameter model documentation at [EmailConfigDiscoverPasswordRequest](EmailConfigDiscoverPasswordRequest.md)
 
-<details>
-    <summary>Parameter initialization example:</summary>
-    
-```typescript
-let request = Models.emailConfigDiscoverPasswordRequest()
-    .password('password')
-    .address('example@aspose.com')
-    .fastProcessing(true)
-    .build();
-```
+### Return type
 
-</details>
-
-### Result
-
-Description: Discovered account configurations.
-
-Return type: Promise< [EmailAccountConfigList](EmailAccountConfigList.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = Models.emailAccountConfigList()
-    .value([
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .host('imap.gmail.com')
-            .port(993)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build(),
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .protocolType('SMTP')
-            .host('smtp.gmail.com')
-            .port(465)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build(),
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .protocolType('POP3')
-            .host('pop.gmail.com')
-            .port(995)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build()])
-    .build();
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.emailConfigDiscoverPasswordRequest()
-    .password('password')
-    .address('example@aspose.com')
-    .fastProcessing(true)
-    .build();
-
-// Call method:
-let result = await api.emailConfig.discoverPassword(request);
-
-// Result example:
-result = Models.emailAccountConfigList()
-    .value([
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .host('imap.gmail.com')
-            .port(993)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build(),
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .protocolType('SMTP')
-            .host('smtp.gmail.com')
-            .port(465)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build(),
-        Models.emailAccountConfig()
-            .displayName('Google Mail')
-            .protocolType('POP3')
-            .host('pop.gmail.com')
-            .port(995)
-            .socketType('SSLAuto')
-            .authenticationTypes([
-                'PasswordCleartext',
-                'OAuth2'])
-            .extraInfo([
-                Models.nameValuePair()
-                    .name('Enable: You need to enable IMAP access')
-                    .value('https://mail.google.com/mail/?ui=2&shva=1#settings/fwdandpop')
-                    .build()])
-            .build()])
-    .build();
-```
-
-</details>
+Promise< [EmailAccountConfigList](EmailAccountConfigList.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 

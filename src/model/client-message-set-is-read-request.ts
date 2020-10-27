@@ -72,42 +72,5 @@ export class ClientMessageSetIsReadRequest extends model.ClientMessageBaseReques
     }
 }
 
-/**
- *  ClientMessageSetIsReadRequest model builder
- */
-export class ClientMessageSetIsReadRequestBuilder {
-    private readonly model: ClientMessageSetIsReadRequest;
-    public constructor(model: ClientMessageSetIsReadRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ClientMessageSetIsReadRequest {
-        return this.model;
-    }
-
-    /**
-    * Email client account configuration location on storage.             
-    */
-    public accountLocation(accountLocation: model.StorageFileLocation): ClientMessageSetIsReadRequestBuilder {
-        this.model.accountLocation = accountLocation;
-        return this;
-    }
-    /**
-    * Message identifier.             
-    */
-    public messageId(messageId: string): ClientMessageSetIsReadRequestBuilder {
-        this.model.messageId = messageId;
-        return this;
-    }
-    /**
-    * Message is read flag.             
-    */
-    public isRead(isRead: boolean): ClientMessageSetIsReadRequestBuilder {
-        this.model.isRead = isRead;
-        return this;
-    }
-}
 

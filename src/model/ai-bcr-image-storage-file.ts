@@ -69,35 +69,5 @@ export class AiBcrImageStorageFile extends model.AiBcrImage {
     }
 }
 
-/**
- *  AiBcrImageStorageFile model builder
- */
-export class AiBcrImageStorageFileBuilder {
-    private readonly model: AiBcrImageStorageFile;
-    public constructor(model: AiBcrImageStorageFile) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AiBcrImageStorageFile {
-        return this.model;
-    }
-
-    /**
-    * Determines that image contains single VCard or more.             
-    */
-    public isSingle(isSingle: boolean): AiBcrImageStorageFileBuilder {
-        this.model.isSingle = isSingle;
-        return this;
-    }
-    /**
-    * Image location             
-    */
-    public file(file: model.StorageFileLocation): AiBcrImageStorageFileBuilder {
-        this.model.file = file;
-        return this;
-    }
-}
 

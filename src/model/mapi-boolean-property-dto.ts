@@ -70,35 +70,5 @@ export class MapiBooleanPropertyDto extends model.MapiPropertyDto {
     }
 }
 
-/**
- *  MapiBooleanPropertyDto model builder
- */
-export class MapiBooleanPropertyDtoBuilder {
-    private readonly model: MapiBooleanPropertyDto;
-    public constructor(model: MapiBooleanPropertyDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiBooleanPropertyDto {
-        return this.model;
-    }
-
-    /**
-    * Property descriptor             
-    */
-    public descriptor(descriptor: model.MapiPropertyDescriptor): MapiBooleanPropertyDtoBuilder {
-        this.model.descriptor = descriptor;
-        return this;
-    }
-    /**
-    * Property value             
-    */
-    public value(value: boolean): MapiBooleanPropertyDtoBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

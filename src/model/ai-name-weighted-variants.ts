@@ -78,35 +78,5 @@ export class AiNameWeightedVariants {
     }
 }
 
-/**
- *  AiNameWeightedVariants model builder
- */
-export class AiNameWeightedVariantsBuilder {
-    private readonly model: AiNameWeightedVariants;
-    public constructor(model: AiNameWeightedVariants) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AiNameWeightedVariants {
-        return this.model;
-    }
-
-    /**
-    * List of name variations             
-    */
-    public names(names: Array< model.AiNameWeighted >): AiNameWeightedVariantsBuilder {
-        this.model.names = names;
-        return this;
-    }
-    /**
-    * Usually empty; can contain extra message describing some issue occurred during processing             
-    */
-    public comments(comments: string): AiNameWeightedVariantsBuilder {
-        this.model.comments = comments;
-        return this;
-    }
-}
 

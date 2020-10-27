@@ -1,305 +1,150 @@
-# FileApi (EmailCloud.cloudStorage.file)
+# FileApi
 
-File operations controller
-
+                    
 <a name="copyFile"></a>
-## **copyFile**
-
-Description: Copy file
-
-Method call example:
+# **copyFile**
 ```typescript
-await api.cloudStorage.file.copyFile(request);
+public async copyFile(request: CopyFileRequest): Promise< any >
 ```
 
-### Parameter: request
+Copy file
 
-Description: copyFile method request.
-
-See parameter model documentation at [CopyFileRequest](CopyFileRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.CopyFileRequest()
-    .srcPath('/storage/path/to/source/file.ext')
-    .destPath('/storage/path/to/destination/file.ext')
-    .srcStorageName('First Storage')
-    .destStorageName('Other Storage')
-    .build();
+new CopyFile(
+    srcPath,
+    destPath,
+    srcStorageName=srcStorageName,
+    destStorageName=destStorageName,
+    versionId=versionId)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **srcPath** | **string**| Source file path e.g. &#39;/folder/file.ext&#39; |
+ **destPath** | **string**| Destination file path |
+ **srcStorageName** | **string**| Source storage name | [optional]
+ **destStorageName** | **string**| Destination storage name | [optional]
+ **versionId** | **string**| File version ID to copy | [optional]
 
-### Result
+### Return type
 
-Return type: Promise< any >
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.CopyFileRequest()
-    .srcPath('/storage/path/to/source/file.ext')
-    .destPath('/storage/path/to/destination/file.ext')
-    .srcStorageName('First Storage')
-    .destStorageName('Other Storage')
-    .build();
-
-// Call method:
-await api.cloudStorage.file.copyFile(request);
-```
-
-</details>
+Promise< any >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="deleteFile"></a>
-## **deleteFile**
-
-Description: Delete file
-
-Method call example:
+# **deleteFile**
 ```typescript
-await api.cloudStorage.file.deleteFile(request);
+public async deleteFile(request: DeleteFileRequest): Promise< any >
 ```
 
-### Parameter: request
+Delete file
 
-Description: deleteFile method request.
-
-See parameter model documentation at [DeleteFileRequest](DeleteFileRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.DeleteFileRequest()
-    .path('/storage/path/to/file.ext')
-    .storageName('First Storage')
-    .build();
+new DeleteFile(
+    path,
+    storageName=storageName,
+    versionId=versionId)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **path** | **string**| File path e.g. &#39;/folder/file.ext&#39; |
+ **storageName** | **string**| Storage name | [optional]
+ **versionId** | **string**| File version ID to delete | [optional]
 
-### Result
+### Return type
 
-Return type: Promise< any >
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.DeleteFileRequest()
-    .path('/storage/path/to/file.ext')
-    .storageName('First Storage')
-    .build();
-
-// Call method:
-await api.cloudStorage.file.deleteFile(request);
-```
-
-</details>
+Promise< any >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="downloadFile"></a>
-## **downloadFile**
-
-Description: Download file
-
-Returns: The raw data of the file.
-
-Method call example:
+# **downloadFile**
 ```typescript
-let result = await api.cloudStorage.file.downloadFile(request);
+public async downloadFile(request: DownloadFileRequest): Promise< Buffer >
 ```
 
-### Parameter: request
+Download file
 
-Description: downloadFile method request.
-
-See parameter model documentation at [DownloadFileRequest](DownloadFileRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.DownloadFileRequest()
-    .path('/storage/path/to/file.ext')
-    .storageName('First Storage')
-    .build();
+new DownloadFile(
+    path,
+    storageName=storageName,
+    versionId=versionId)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **path** | **string**| File path e.g. &#39;/folder/file.ext&#39; |
+ **storageName** | **string**| Storage name | [optional]
+ **versionId** | **string**| File version ID to download | [optional]
 
-### Result
+### Return type
 
-Description: The raw data of the file.
-
-Return type: Promise< Buffer >
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.DownloadFileRequest()
-    .path('/storage/path/to/file.ext')
-    .storageName('First Storage')
-    .build();
-
-// Call method:
-let result = await api.cloudStorage.file.downloadFile(request);
-```
-
-</details>
+Promise< Buffer >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="moveFile"></a>
-## **moveFile**
-
-Description: Move file
-
-Method call example:
+# **moveFile**
 ```typescript
-await api.cloudStorage.file.moveFile(request);
+public async moveFile(request: MoveFileRequest): Promise< any >
 ```
 
-### Parameter: request
+Move file
 
-Description: moveFile method request.
-
-See parameter model documentation at [MoveFileRequest](MoveFileRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.MoveFileRequest()
-    .srcPath('/storage/path/to/source/file.ext')
-    .destPath('/storage/path/to/destination/file.ext')
-    .srcStorageName('First Storage')
-    .destStorageName('Other Storage')
-    .build();
+new MoveFile(
+    srcPath,
+    destPath,
+    srcStorageName=srcStorageName,
+    destStorageName=destStorageName,
+    versionId=versionId)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **srcPath** | **string**| Source file path e.g. &#39;/src.ext&#39; |
+ **destPath** | **string**| Destination file path e.g. &#39;/dest.ext&#39; |
+ **srcStorageName** | **string**| Source storage name | [optional]
+ **destStorageName** | **string**| Destination storage name | [optional]
+ **versionId** | **string**| File version ID to move | [optional]
 
-### Result
+### Return type
 
-Return type: Promise< any >
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.MoveFileRequest()
-    .srcPath('/storage/path/to/source/file.ext')
-    .destPath('/storage/path/to/destination/file.ext')
-    .srcStorageName('First Storage')
-    .destStorageName('Other Storage')
-    .build();
-
-// Call method:
-await api.cloudStorage.file.moveFile(request);
-```
-
-</details>
+Promise< any >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="uploadFile"></a>
-## **uploadFile**
-
-Description: Upload file
-
-Returns: Empty error list if the upload is successful.
-
-Method call example:
+# **uploadFile**
 ```typescript
-let result = await api.cloudStorage.file.uploadFile(request);
+public async uploadFile(request: UploadFileRequest): Promise< FilesUploadResult >
 ```
 
-### Parameter: request
+Upload file
 
-Description: uploadFile method request.
-
-See parameter model documentation at [UploadFileRequest](UploadFileRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.UploadFileRequest()
-    .path('/storage/path/to/file.ext')
-    .file(fs.readFileSync('/local/file/system/path/to/file.ext'))
-    .storageName('First Storage')
-    .build();
+new UploadFile(
+    path,
+    file,
+    storageName=storageName)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **path** | **string**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.              |
+ **file** | **byte[]**| File to upload |
+ **storageName** | **string**| Storage name | [optional]
 
-### Result
+### Return type
 
-Description: Empty error list if the upload is successful.
-
-Return type: Promise< [FilesUploadResult](FilesUploadResult.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = ;
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.UploadFileRequest()
-    .path('/storage/path/to/file.ext')
-    .file(fs.readFileSync('/local/file/system/path/to/file.ext'))
-    .storageName('First Storage')
-    .build();
-
-// Call method:
-let result = await api.cloudStorage.file.uploadFile(request);
-
-// Result example:
-result = ;
-```
-
-</details>
+Promise< [FilesUploadResult](FilesUploadResult.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-

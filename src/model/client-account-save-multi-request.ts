@@ -61,29 +61,5 @@ export class ClientAccountSaveMultiRequest extends model.StorageModelOfEmailClie
     }
 }
 
-/**
- *  ClientAccountSaveMultiRequest model builder
- */
-export class ClientAccountSaveMultiRequestBuilder {
-    private readonly model: ClientAccountSaveMultiRequest;
-    public constructor(model: ClientAccountSaveMultiRequest) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): ClientAccountSaveMultiRequest {
-        return this.model;
-    }
-
-    public storageFile(storageFile: model.StorageFileLocation): ClientAccountSaveMultiRequestBuilder {
-        this.model.storageFile = storageFile;
-        return this;
-    }
-    public value(value: model.EmailClientMultiAccount): ClientAccountSaveMultiRequestBuilder {
-        this.model.value = value;
-        return this;
-    }
-}
 

@@ -42,6 +42,7 @@ export class CalendarApi {
         this.configuration = configuration;
     }
 
+        
     /**
      * Convert iCalendar to AlternateView             
      * @param request iCalendar to AlternateView request
@@ -67,6 +68,7 @@ export class CalendarApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Converts calendar model to specified format and returns as file.             
      * @param request Calendar model and format to convert.
@@ -93,6 +95,7 @@ export class CalendarApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Converts CalendarDto to MapiCalendarDto.             
      * @param calendarDto iCalendar model calendar representation.
@@ -118,6 +121,7 @@ export class CalendarApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Converts calendar document to specified format and returns as file.             
      * @param request contains request parameters
@@ -177,6 +181,7 @@ export class CalendarApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Converts calendar document to a model representation.             
      * @param request contains request parameters
@@ -226,6 +231,7 @@ export class CalendarApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Get calendar file from storage.             
      * @param request contains request parameters
@@ -277,6 +283,7 @@ export class CalendarApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Get iCalendar from storage as AlternateView             
      * @param request contains request parameters
@@ -341,6 +348,7 @@ export class CalendarApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Converts calendar document from storage to specified format and returns as file.             
      * @param request contains request parameters
@@ -402,6 +410,7 @@ export class CalendarApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Get iCalendar list from storage folder.             
      * @param request contains request parameters
@@ -457,6 +466,7 @@ export class CalendarApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Save iCalendar             
      * @param request iCalendar create/update request
@@ -480,4 +490,5 @@ export class CalendarApi {
         await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
+
 }

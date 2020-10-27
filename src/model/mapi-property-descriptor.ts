@@ -70,21 +70,5 @@ export class MapiPropertyDescriptor {
     }
 }
 
-/**
- *  MapiPropertyDescriptor model builder
- */
-export class MapiPropertyDescriptorBuilder {
-    private readonly model: MapiPropertyDescriptor;
-    public constructor(model: MapiPropertyDescriptor) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiPropertyDescriptor {
-        return this.model;
-    }
-
-}
 

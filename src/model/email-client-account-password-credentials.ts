@@ -70,35 +70,5 @@ export class EmailClientAccountPasswordCredentials extends model.EmailClientAcco
     }
 }
 
-/**
- *  EmailClientAccountPasswordCredentials model builder
- */
-export class EmailClientAccountPasswordCredentialsBuilder {
-    private readonly model: EmailClientAccountPasswordCredentials;
-    public constructor(model: EmailClientAccountPasswordCredentials) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): EmailClientAccountPasswordCredentials {
-        return this.model;
-    }
-
-    /**
-    * Email client account login             
-    */
-    public login(login: string): EmailClientAccountPasswordCredentialsBuilder {
-        this.model.login = login;
-        return this;
-    }
-    /**
-    * Email client account password             
-    */
-    public password(password: string): EmailClientAccountPasswordCredentialsBuilder {
-        this.model.password = password;
-        return this;
-    }
-}
 

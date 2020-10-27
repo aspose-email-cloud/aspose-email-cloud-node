@@ -102,49 +102,5 @@ export class MapiCalendarAttendeesDto {
     }
 }
 
-/**
- *  MapiCalendarAttendeesDto model builder
- */
-export class MapiCalendarAttendeesDtoBuilder {
-    private readonly model: MapiCalendarAttendeesDto;
-    public constructor(model: MapiCalendarAttendeesDto) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): MapiCalendarAttendeesDto {
-        return this.model;
-    }
-
-    /**
-    * List of attendees.             
-    */
-    public appointmentRecipients(appointmentRecipients: Array< model.MapiRecipientDto >): MapiCalendarAttendeesDtoBuilder {
-        this.model.appointmentRecipients = appointmentRecipients;
-        return this;
-    }
-    /**
-    * List of unsendable attendees.             
-    */
-    public appointmentUnsendableRecipients(appointmentUnsendableRecipients: Array< model.MapiRecipientDto >): MapiCalendarAttendeesDtoBuilder {
-        this.model.appointmentUnsendableRecipients = appointmentUnsendableRecipients;
-        return this;
-    }
-    /**
-    * Value indicating whether attendees are not allowed to propose a new date and/or time for the meeting.             
-    */
-    public notAllowPropose(notAllowPropose: boolean): MapiCalendarAttendeesDtoBuilder {
-        this.model.notAllowPropose = notAllowPropose;
-        return this;
-    }
-    /**
-    * Value indicating whether a response is requested to a Message object.             
-    */
-    public responseRequested(responseRequested: boolean): MapiCalendarAttendeesDtoBuilder {
-        this.model.responseRequested = responseRequested;
-        return this;
-    }
-}
 

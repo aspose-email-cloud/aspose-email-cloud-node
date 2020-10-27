@@ -1,205 +1,70 @@
-# ClientFolderApi (EmailCloud.client.folder)
+# ClientFolderApi
 
-Email client folder operations.
-
+                    
 <a name="create"></a>
-## **create**
-
-Description: Create new folder in email account             
-
-Method call example:
+# **create**
 ```typescript
-await api.client.folder.create(request);
+public async create(request: model.ClientFolderCreateRequest): Promise< any >
 ```
 
-### Parameter: request
+Create new folder in email account             
 
-Description: Create folder request
+### request Parameter
 
 See parameter model documentation at [ClientFolderCreateRequest](ClientFolderCreateRequest.md)
 
-<details>
-    <summary>Parameter initialization example:</summary>
-    
-```typescript
-let request = Models.clientFolderCreateRequest()
-    .parentFolder('INBOX/SubFolder/ParentFolder')
-    .folderName('NewFolder')
-    .accountLocation(Models.storageFileLocation()
-        .fileName('email.account')
-        .storage('First Storage')
-        .folderPath('file/location/folder/on/storage')
-        .build())
-    .build();
-```
+### Return type
 
-</details>
-
-### Result
-
-Return type: Promise< any >
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.clientFolderCreateRequest()
-    .parentFolder('INBOX/SubFolder/ParentFolder')
-    .folderName('NewFolder')
-    .accountLocation(Models.storageFileLocation()
-        .fileName('email.account')
-        .storage('First Storage')
-        .folderPath('file/location/folder/on/storage')
-        .build())
-    .build();
-
-// Call method:
-await api.client.folder.create(request);
-```
-
-</details>
+Promise< any >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
+                    
 <a name="delete"></a>
-## **delete**
-
-Description: Delete a folder in email account             
-
-Method call example:
+# **delete**
 ```typescript
-await api.client.folder.delete(request);
+public async delete(request: model.ClientFolderDeleteRequest): Promise< any >
 ```
 
-### Parameter: request
+Delete a folder in email account             
 
-Description: Delete folder request
+### request Parameter
 
 See parameter model documentation at [ClientFolderDeleteRequest](ClientFolderDeleteRequest.md)
 
-<details>
-    <summary>Parameter initialization example:</summary>
-    
-```typescript
-let request = Models.clientFolderDeleteRequest()
-    .folder('INBOX/SubFolder/FolderToDelete')
-    .accountLocation(Models.storageFileLocation()
-        .fileName('email.account')
-        .storage('First Storage')
-        .folderPath('file/location/folder/on/storage')
-        .build())
-    .build();
-```
+### Return type
 
-</details>
-
-### Result
-
-Return type: Promise< any >
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.clientFolderDeleteRequest()
-    .folder('INBOX/SubFolder/FolderToDelete')
-    .accountLocation(Models.storageFileLocation()
-        .fileName('email.account')
-        .storage('First Storage')
-        .folderPath('file/location/folder/on/storage')
-        .build())
-    .build();
-
-// Call method:
-await api.client.folder.delete(request);
-```
-
-</details>
+Promise< any >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
+                    
 <a name="getList"></a>
-## **getList**
-
-Description: Get folders list in email account             
-
-Returns: Folders list
-
-Method call example:
+# **getList**
 ```typescript
-let result = await api.client.folder.getList(request);
+public async getList(request: ClientFolderGetListRequest): Promise< MailServerFolderList >
 ```
 
-### Parameter: request
+Get folders list in email account             
 
-Description: getList method request.
-
-See parameter model documentation at [ClientFolderGetListRequest](ClientFolderGetListRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.ClientFolderGetListRequest()
-    .account('email.multi.account')
-    .storage('First Storage')
-    .accountStorageFolder('email/account/location/on/storage')
-    .parentFolder('INBOX')
-    .build();
+new ClientFolderGetList(
+    account,
+    storage=storage,
+    accountStorageFolder=accountStorageFolder,
+    parentFolder=parentFolder)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **account** | **string**| Email account |
+ **storage** | **string**| Storage name where account file located | [optional]
+ **accountStorageFolder** | **string**| Folder in storage where account file located | [optional]
+ **parentFolder** | **string**| Folder in which subfolders should be listed | [optional]
 
-### Result
+### Return type
 
-Description: Folders list
-
-Return type: Promise< [MailServerFolderList](MailServerFolderList.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = ;
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.ClientFolderGetListRequest()
-    .account('email.multi.account')
-    .storage('First Storage')
-    .accountStorageFolder('email/account/location/on/storage')
-    .parentFolder('INBOX')
-    .build();
-
-// Call method:
-let result = await api.client.folder.getList(request);
-
-// Result example:
-result = ;
-```
-
-</details>
+Promise< [MailServerFolderList](MailServerFolderList.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-

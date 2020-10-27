@@ -1,319 +1,105 @@
-# StorageApi (EmailCloud.cloudStorage.storage)
+# StorageApi
 
-Storage operations controller
-
+                    
 <a name="getDiscUsage"></a>
-## **getDiscUsage**
-
-Description: Get disc usage
-
-Returns: Disc usage.
-
-Method call example:
+# **getDiscUsage**
 ```typescript
-let result = await api.cloudStorage.storage.getDiscUsage(request);
+public async getDiscUsage(request: GetDiscUsageRequest): Promise< DiscUsage >
 ```
 
-### Parameter: request
+Get disc usage
 
-Description: getDiscUsage method request.
-
-See parameter model documentation at [GetDiscUsageRequest](GetDiscUsageRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.GetDiscUsageRequest()
-    .storageName('First Storage')
-    .build();
+new GetDiscUsage(
+    storageName=storageName)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **storageName** | **string**| Storage name | [optional]
 
-### Result
+### Return type
 
-Description: Disc usage.
-
-Return type: Promise< [DiscUsage](DiscUsage.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = Models.discUsage()
-    .usedSize(1048576)
-    .totalSize(3145728)
-    .build();
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.GetDiscUsageRequest()
-    .storageName('First Storage')
-    .build();
-
-// Call method:
-let result = await api.cloudStorage.storage.getDiscUsage(request);
-
-// Result example:
-result = Models.discUsage()
-    .usedSize(1048576)
-    .totalSize(3145728)
-    .build();
-```
-
-</details>
+Promise< [DiscUsage](DiscUsage.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="getFileVersions"></a>
-## **getFileVersions**
-
-Description: Get file versions
-
-Returns: File versions.
-
-Method call example:
+# **getFileVersions**
 ```typescript
-let result = await api.cloudStorage.storage.getFileVersions(request);
+public async getFileVersions(request: GetFileVersionsRequest): Promise< FileVersions >
 ```
 
-### Parameter: request
+Get file versions
 
-Description: getFileVersions method request.
-
-See parameter model documentation at [GetFileVersionsRequest](GetFileVersionsRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.GetFileVersionsRequest()
-    .path('/storage/path/to/file.ext')
-    .storageName('First Storage')
-    .build();
+new GetFileVersions(
+    path,
+    storageName=storageName)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **path** | **string**| File path e.g. &#39;/file.ext&#39; |
+ **storageName** | **string**| Storage name | [optional]
 
-### Result
+### Return type
 
-Description: File versions.
-
-Return type: Promise< [FileVersions](FileVersions.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = Models.fileVersions()
-    .value([
-        Models.fileVersion()
-            .versionId('d5afd857-8797-4ca0-b806-a03fdfc3831f')
-            .isLatest(true)
-            .name('file.ext')
-            .modifiedDate(new Date())
-            .size(4096)
-            .path('/storage/path/to')
-            .build()])
-    .build();
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.GetFileVersionsRequest()
-    .path('/storage/path/to/file.ext')
-    .storageName('First Storage')
-    .build();
-
-// Call method:
-let result = await api.cloudStorage.storage.getFileVersions(request);
-
-// Result example:
-result = Models.fileVersions()
-    .value([
-        Models.fileVersion()
-            .versionId('d5afd857-8797-4ca0-b806-a03fdfc3831f')
-            .isLatest(true)
-            .name('file.ext')
-            .modifiedDate(new Date())
-            .size(4096)
-            .path('/storage/path/to')
-            .build()])
-    .build();
-```
-
-</details>
+Promise< [FileVersions](FileVersions.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="objectExists"></a>
-## **objectExists**
-
-Description: Check if file or folder exists
-
-Returns: Object exist result.
-
-Method call example:
+# **objectExists**
 ```typescript
-let result = await api.cloudStorage.storage.objectExists(request);
+public async objectExists(request: ObjectExistsRequest): Promise< ObjectExist >
 ```
 
-### Parameter: request
+Check if file or folder exists
 
-Description: objectExists method request.
-
-See parameter model documentation at [ObjectExistsRequest](ObjectExistsRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.ObjectExistsRequest()
-    .path('/storage/path/to/folder/or/file.ext')
-    .storageName('First Storage')
-    .build();
+new ObjectExists(
+    path,
+    storageName=storageName,
+    versionId=versionId)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **path** | **string**| File or folder path e.g. &#39;/file.ext&#39; or &#39;/folder&#39; |
+ **storageName** | **string**| Storage name | [optional]
+ **versionId** | **string**| File version ID | [optional]
 
-### Result
+### Return type
 
-Description: Object exist result.
-
-Return type: Promise< [ObjectExist](ObjectExist.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = Models.objectExist()
-    .exists(true)
-    .build();
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.ObjectExistsRequest()
-    .path('/storage/path/to/folder/or/file.ext')
-    .storageName('First Storage')
-    .build();
-
-// Call method:
-let result = await api.cloudStorage.storage.objectExists(request);
-
-// Result example:
-result = Models.objectExist()
-    .exists(true)
-    .build();
-```
-
-</details>
+Promise< [ObjectExist](ObjectExist.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
+                    
 <a name="exists"></a>
-## **exists**
-
-Description: Check if storage exists
-
-Returns: Storage exist result.
-
-Method call example:
+# **exists**
 ```typescript
-let result = await api.cloudStorage.storage.exists(request);
+public async exists(request: StorageExistsRequest): Promise< StorageExist >
 ```
 
-### Parameter: request
+Check if storage exists
 
-Description: exists method request.
-
-See parameter model documentation at [StorageExistsRequest](StorageExistsRequest.md).
-
-<details>
-    <summary>Parameter initialization example:</summary>
-    
+### Request Parameters
 ```typescript
-let request = Models.StorageExistsRequest()
-    .storageName('First Storage')
-    .build();
+new StorageExists(
+    storageName)
 ```
 
-</details>
+Name | Type | Description | Notes
+---- | ---- | ----------- | -----
+ **storageName** | **string**| Storage name |
 
-### Result
+### Return type
 
-Description: Storage exist result.
-
-Return type: Promise< [StorageExist](StorageExist.md) >
-
-<details>
-    <summary>Result example</summary>
-
-```typescript
-let result = Models.storageExist()
-    .exists(true)
-    .build();
-```
-
-</details>
-
-
-### Complete example
-
-<details>
-    <summary>Method call example:</summary>
-
-```typescript
-const api = new EmailCloud(app_key, app_sid);
-
-// Prepare parameters:
-let request = Models.StorageExistsRequest()
-    .storageName('First Storage')
-    .build();
-
-// Call method:
-let result = await api.cloudStorage.storage.exists(request);
-
-// Result example:
-result = Models.storageExist()
-    .exists(true)
-    .build();
-```
-
-</details>
+Promise< [StorageExist](StorageExist.md) >
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-
 

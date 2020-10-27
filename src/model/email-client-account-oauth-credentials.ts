@@ -106,56 +106,5 @@ export class EmailClientAccountOauthCredentials extends model.EmailClientAccount
     }
 }
 
-/**
- *  EmailClientAccountOauthCredentials model builder
- */
-export class EmailClientAccountOauthCredentialsBuilder {
-    private readonly model: EmailClientAccountOauthCredentials;
-    public constructor(model: EmailClientAccountOauthCredentials) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): EmailClientAccountOauthCredentials {
-        return this.model;
-    }
-
-    /**
-    * Email client account login             
-    */
-    public login(login: string): EmailClientAccountOauthCredentialsBuilder {
-        this.model.login = login;
-        return this;
-    }
-    /**
-    * The client ID obtained from the Google Cloud Console during application registration.             
-    */
-    public clientId(clientId: string): EmailClientAccountOauthCredentialsBuilder {
-        this.model.clientId = clientId;
-        return this;
-    }
-    /**
-    * The client secret obtained during application registration.             
-    */
-    public clientSecret(clientSecret: string): EmailClientAccountOauthCredentialsBuilder {
-        this.model.clientSecret = clientSecret;
-        return this;
-    }
-    /**
-    * OAuth 2.0 refresh token             
-    */
-    public refreshToken(refreshToken: string): EmailClientAccountOauthCredentialsBuilder {
-        this.model.refreshToken = refreshToken;
-        return this;
-    }
-    /**
-    * The url to obtain access token. If not specified, will try to discover from email client account host.             
-    */
-    public requestUrl(requestUrl: string): EmailClientAccountOauthCredentialsBuilder {
-        this.model.requestUrl = requestUrl;
-        return this;
-    }
-}
 

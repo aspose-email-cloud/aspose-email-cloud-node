@@ -78,35 +78,5 @@ export class AiNameExtracted {
     }
 }
 
-/**
- *  AiNameExtracted model builder
- */
-export class AiNameExtractedBuilder {
-    private readonly model: AiNameExtracted;
-    public constructor(model: AiNameExtracted) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AiNameExtracted {
-        return this.model;
-    }
-
-    /**
-    * Extracted name components             
-    */
-    public name(name: Array< model.AiNameExtractedComponent >): AiNameExtractedBuilder {
-        this.model.name = name;
-        return this;
-    }
-    /**
-    * Extracted name score             
-    */
-    public score(score: number): AiNameExtractedBuilder {
-        this.model.score = score;
-        return this;
-    }
-}
 

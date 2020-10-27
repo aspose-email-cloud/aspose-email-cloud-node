@@ -1,10 +1,8 @@
 # MapiMessageDto
 
-Represents an Outlook Message format document.             
-
 ## Properties
 Name | Type | Description | Notes
----- | ---- | ----------- | -----
+------------ | ------------- | ------------- | -------------
 **messageBody** | **string** | Message text              | [optional] [default to undefined]
 **clientSubmitTime** | **Date** | Date and time the message sender submitted a message.              | [default to undefined]
 **conversationTopic** | **string** | Topic of the first message in a conversation thread.              | [optional] [default to undefined]
@@ -32,42 +30,5 @@ Name | Type | Description | Notes
 **transportMessageHeaders** | **string** | Transport-specific message envelope information. | [optional] [default to undefined]
 
  Parent class: [MapiMessageItemBaseDto](MapiMessageItemBaseDto.md)
-
-
-## Example
-```typescript
-let mapiMessageDto = Models.mapiMessageDto()
-    .messageBody('Some body')
-    .clientSubmitTime(new Date())
-    .deliveryTime(new Date())
-    .displayTo('To Address')
-    .flags([
-        'MsgFlagRead',
-        'MsgFlagUnsent',
-        'MsgFlagHasAttach'])
-    .normalizedSubject('Some subject')
-    .senderAddressType('SMTP')
-    .senderEmailAddress('from@aspose.com')
-    .senderName('From Address')
-    .senderSmtpAddress('from@aspose.com')
-    .attachments([
-        Models.mapiAttachmentDto()
-            .name('some-file.txt')
-            .dataBase64('U29tZSBmaWxlIHRleHQ=')
-            .build()])
-    .body('Some body')
-    .messageClass('IPM.Note')
-    .recipients([
-        Models.mapiRecipientDto()
-            .emailAddress('to@aspose.com')
-            .addressType('SMTP')
-            .displayName('To Address')
-            .recipientType('MapiTo')
-            .build()])
-    .subject('Re: Some subject')
-    .subjectPrefix('Re: ')
-    .build();
-```
-
 
 [[Back to Model list]](README.md#documentation-for-models) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to README]](README.md)

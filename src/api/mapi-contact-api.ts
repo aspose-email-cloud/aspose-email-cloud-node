@@ -42,6 +42,7 @@ export class MapiContactApi {
         this.configuration = configuration;
     }
 
+        
     /**
      * Converts MAPI contact model to ContactDto model.             
      * @param mapiContactDto MAPI contact model to convert.
@@ -67,6 +68,7 @@ export class MapiContactApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Converts MAPI contact model to specified format and returns as file.             
      * @param request MAPI contact model to convert.
@@ -93,6 +95,7 @@ export class MapiContactApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Converts contact file to a MAPI model representation.             
      * @param request contains request parameters
@@ -151,6 +154,7 @@ export class MapiContactApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Get MAPI contact document.             
      * @param request contains request parameters
@@ -211,6 +215,7 @@ export class MapiContactApi {
         return Promise.resolve(result);
     }
 
+        
     /**
      * Save MAPI Contact to storage.             
      * @param request Create/Update contact request.
@@ -234,4 +239,5 @@ export class MapiContactApi {
         await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
+
 }

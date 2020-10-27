@@ -78,35 +78,5 @@ export class AiNameWeighted {
     }
 }
 
-/**
- *  AiNameWeighted model builder
- */
-export class AiNameWeightedBuilder {
-    private readonly model: AiNameWeighted;
-    public constructor(model: AiNameWeighted) {
-        this.model = model;
-    }
 
-    /**
-     * Build model.
-     */
-    public build(): AiNameWeighted {
-        return this.model;
-    }
-
-    /**
-    * Name             
-    */
-    public name(name: string): AiNameWeightedBuilder {
-        this.model.name = name;
-        return this;
-    }
-    /**
-    * Score of name             
-    */
-    public score(score: number): AiNameWeightedBuilder {
-        this.model.score = score;
-        return this;
-    }
-}
 
