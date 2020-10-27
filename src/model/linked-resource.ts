@@ -78,5 +78,56 @@ export class LinkedResource extends model.AttachmentBase {
     }
 }
 
+/**
+ *  LinkedResource model builder
+ */
+export class LinkedResourceBuilder {
+    private readonly model: LinkedResource;
+    public constructor(model: LinkedResource) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): LinkedResource {
+        return this.model;
+    }
+
+    /**
+    * Attachment file content as Base64 string.             
+    */
+    public base64Data(base64Data: string): LinkedResourceBuilder {
+        this.model.base64Data = base64Data;
+        return this;
+    }
+    /**
+    * Attachment content id             
+    */
+    public contentId(contentId: string): LinkedResourceBuilder {
+        this.model.contentId = contentId;
+        return this;
+    }
+    /**
+    * Content type             
+    */
+    public contentType(contentType: model.ContentType): LinkedResourceBuilder {
+        this.model.contentType = contentType;
+        return this;
+    }
+    /**
+    * Attachment headers.             
+    */
+    public headers(headers: { [key: string]: string; }): LinkedResourceBuilder {
+        this.model.headers = headers;
+        return this;
+    }
+    /**
+    * URI that the resource must match.             
+    */
+    public contentLink(contentLink: string): LinkedResourceBuilder {
+        this.model.contentLink = contentLink;
+        return this;
+    }
+}
 

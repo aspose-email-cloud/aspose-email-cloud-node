@@ -78,5 +78,35 @@ export class ObjectExist {
     }
 }
 
+/**
+ *  ObjectExist model builder
+ */
+export class ObjectExistBuilder {
+    private readonly model: ObjectExist;
+    public constructor(model: ObjectExist) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ObjectExist {
+        return this.model;
+    }
+
+    /**
+    * Indicates that the file or folder exists.
+    */
+    public exists(exists: boolean): ObjectExistBuilder {
+        this.model.exists = exists;
+        return this;
+    }
+    /**
+    * True if it is a folder, false if it is a file.
+    */
+    public isFolder(isFolder: boolean): ObjectExistBuilder {
+        this.model.isFolder = isFolder;
+        return this;
+    }
+}
 

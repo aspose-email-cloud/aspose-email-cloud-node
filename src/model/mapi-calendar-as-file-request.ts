@@ -78,5 +78,35 @@ export class MapiCalendarAsFileRequest {
     }
 }
 
+/**
+ *  MapiCalendarAsFileRequest model builder
+ */
+export class MapiCalendarAsFileRequestBuilder {
+    private readonly model: MapiCalendarAsFileRequest;
+    public constructor(model: MapiCalendarAsFileRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiCalendarAsFileRequest {
+        return this.model;
+    }
+
+    /**
+    * Calendar file format Enum, available values: Ics, Msg
+    */
+    public format(format: string): MapiCalendarAsFileRequestBuilder {
+        this.model.format = format;
+        return this;
+    }
+    /**
+    * MAPI calendar model.             
+    */
+    public value(value: model.MapiCalendarDto): MapiCalendarAsFileRequestBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

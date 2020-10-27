@@ -126,5 +126,63 @@ export class MapiCalendarEventRecurrenceDto {
     }
 }
 
+/**
+ *  MapiCalendarEventRecurrenceDto model builder
+ */
+export class MapiCalendarEventRecurrenceDtoBuilder {
+    private readonly model: MapiCalendarEventRecurrenceDto;
+    public constructor(model: MapiCalendarEventRecurrenceDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiCalendarEventRecurrenceDto {
+        return this.model;
+    }
+
+    /**
+    * Time zone information that describes how to convert the meeting date and time on a recurring series to and from UTC.             
+    */
+    public appointmentTimeZoneDefinitionRecur(appointmentTimeZoneDefinitionRecur: model.MapiCalendarTimeZoneDto): MapiCalendarEventRecurrenceDtoBuilder {
+        this.model.appointmentTimeZoneDefinitionRecur = appointmentTimeZoneDefinitionRecur;
+        return this;
+    }
+    /**
+    * Date of the last instance.             
+    */
+    public clipEnd(clipEnd: Date): MapiCalendarEventRecurrenceDtoBuilder {
+        this.model.clipEnd = clipEnd;
+        return this;
+    }
+    /**
+    * Date of the first instance.             
+    */
+    public clipStart(clipStart: Date): MapiCalendarEventRecurrenceDtoBuilder {
+        this.model.clipStart = clipStart;
+        return this;
+    }
+    /**
+    * Value indicating whether the object represents an exception.             
+    */
+    public isException(isException: boolean): MapiCalendarEventRecurrenceDtoBuilder {
+        this.model.isException = isException;
+        return this;
+    }
+    /**
+    * Recurrence pattern.             
+    */
+    public recurrencePattern(recurrencePattern: model.MapiCalendarRecurrencePatternDto): MapiCalendarEventRecurrenceDtoBuilder {
+        this.model.recurrencePattern = recurrencePattern;
+        return this;
+    }
+    /**
+    * Time zone information for a recurring meeting.             
+    */
+    public timeZoneStruct(timeZoneStruct: model.MapiCalendarTimeZoneDto): MapiCalendarEventRecurrenceDtoBuilder {
+        this.model.timeZoneStruct = timeZoneStruct;
+        return this;
+    }
+}
 

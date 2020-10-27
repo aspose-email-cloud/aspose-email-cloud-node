@@ -58,5 +58,25 @@ export class CalendarStorageList extends model.ListResponseOfStorageModelOfCalen
     }
 }
 
+/**
+ *  CalendarStorageList model builder
+ */
+export class CalendarStorageListBuilder {
+    private readonly model: CalendarStorageList;
+    public constructor(model: CalendarStorageList) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): CalendarStorageList {
+        return this.model;
+    }
+
+    public value(value: Array< model.StorageModelOfCalendarDto >): CalendarStorageListBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

@@ -72,5 +72,36 @@ export class EmailSaveRequest extends model.StorageModelOfEmailDto {
     }
 }
 
+/**
+ *  EmailSaveRequest model builder
+ */
+export class EmailSaveRequestBuilder {
+    private readonly model: EmailSaveRequest;
+    public constructor(model: EmailSaveRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): EmailSaveRequest {
+        return this.model;
+    }
+
+    public storageFile(storageFile: model.StorageFileLocation): EmailSaveRequestBuilder {
+        this.model.storageFile = storageFile;
+        return this;
+    }
+    public value(value: model.EmailDto): EmailSaveRequestBuilder {
+        this.model.value = value;
+        return this;
+    }
+    /**
+    * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+    */
+    public format(format: string): EmailSaveRequestBuilder {
+        this.model.format = format;
+        return this;
+    }
+}
 

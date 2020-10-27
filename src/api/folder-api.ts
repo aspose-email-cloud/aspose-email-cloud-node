@@ -42,7 +42,6 @@ export class FolderApi {
         this.configuration = configuration;
     }
 
-        
     /**
      * Copy folder
      * @param request contains request parameters
@@ -99,7 +98,6 @@ export class FolderApi {
         return Promise.resolve(null);
     }
 
-        
     /**
      * Create the folder
      * @param request contains request parameters
@@ -143,7 +141,6 @@ export class FolderApi {
         return Promise.resolve(null);
     }
 
-        
     /**
      * Delete folder
      * @param request contains request parameters
@@ -191,7 +188,6 @@ export class FolderApi {
         return Promise.resolve(null);
     }
 
-        
     /**
      * Get all files and folders within a folder
      * @param request contains request parameters
@@ -236,7 +232,6 @@ export class FolderApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Move folder
      * @param request contains request parameters
@@ -292,5 +287,4 @@ export class FolderApi {
         await invokeApiMethod(requestOptions, this.configuration);
         return Promise.resolve(null);
     }
-
 }

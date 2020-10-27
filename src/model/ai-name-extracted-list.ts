@@ -58,5 +58,25 @@ export class AiNameExtractedList extends model.ListResponseOfAiNameExtracted {
     }
 }
 
+/**
+ *  AiNameExtractedList model builder
+ */
+export class AiNameExtractedListBuilder {
+    private readonly model: AiNameExtractedList;
+    public constructor(model: AiNameExtractedList) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): AiNameExtractedList {
+        return this.model;
+    }
+
+    public value(value: Array< model.AiNameExtracted >): AiNameExtractedListBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

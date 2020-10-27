@@ -102,5 +102,49 @@ export class MapiRecipientDto {
     }
 }
 
+/**
+ *  MapiRecipientDto model builder
+ */
+export class MapiRecipientDtoBuilder {
+    private readonly model: MapiRecipientDto;
+    public constructor(model: MapiRecipientDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiRecipientDto {
+        return this.model;
+    }
+
+    /**
+    * Email address of the message recipient or sender.             
+    */
+    public emailAddress(emailAddress: string): MapiRecipientDtoBuilder {
+        this.model.emailAddress = emailAddress;
+        return this;
+    }
+    /**
+    * Type of the address of the message recipient or sender.             
+    */
+    public addressType(addressType: string): MapiRecipientDtoBuilder {
+        this.model.addressType = addressType;
+        return this;
+    }
+    /**
+    * Display name of the message recipient or sender.             
+    */
+    public displayName(displayName: string): MapiRecipientDtoBuilder {
+        this.model.displayName = displayName;
+        return this;
+    }
+    /**
+    * Represent the PR_RECIPIENT_TYPE property which contains the recipient type for a message recipient. Enum, available values: Unknown, MapiBcc, MapiCc, MapiP1, MapiSubmitted, MapiTo
+    */
+    public recipientType(recipientType: string): MapiRecipientDtoBuilder {
+        this.model.recipientType = recipientType;
+        return this;
+    }
+}
 

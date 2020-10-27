@@ -69,5 +69,35 @@ export class ClientMessageBaseRequest extends model.ClientAccountBaseRequest {
     }
 }
 
+/**
+ *  ClientMessageBaseRequest model builder
+ */
+export class ClientMessageBaseRequestBuilder {
+    private readonly model: ClientMessageBaseRequest;
+    public constructor(model: ClientMessageBaseRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ClientMessageBaseRequest {
+        return this.model;
+    }
+
+    /**
+    * Email client account configuration location on storage.             
+    */
+    public accountLocation(accountLocation: model.StorageFileLocation): ClientMessageBaseRequestBuilder {
+        this.model.accountLocation = accountLocation;
+        return this;
+    }
+    /**
+    * Message identifier.             
+    */
+    public messageId(messageId: string): ClientMessageBaseRequestBuilder {
+        this.model.messageId = messageId;
+        return this;
+    }
+}
 

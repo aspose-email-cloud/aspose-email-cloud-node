@@ -102,5 +102,49 @@ export class MailAddress {
     }
 }
 
+/**
+ *  MailAddress model builder
+ */
+export class MailAddressBuilder {
+    private readonly model: MailAddress;
+    public constructor(model: MailAddress) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MailAddress {
+        return this.model;
+    }
+
+    /**
+    * Display name             
+    */
+    public displayName(displayName: string): MailAddressBuilder {
+        this.model.displayName = displayName;
+        return this;
+    }
+    /**
+    * Address             
+    */
+    public address(address: string): MailAddressBuilder {
+        this.model.address = address;
+        return this;
+    }
+    /**
+    * Identifies the participation status for the calendar user. Enum, available values: NeedsAction, Accepted, Declined, Tentative, Delegated
+    */
+    public participationStatus(participationStatus: string): MailAddressBuilder {
+        this.model.participationStatus = participationStatus;
+        return this;
+    }
+    /**
+    * The original e-mail address string             
+    */
+    public originalAddressString(originalAddressString: string): MailAddressBuilder {
+        this.model.originalAddressString = originalAddressString;
+        return this;
+    }
+}
 

@@ -78,5 +78,35 @@ export class NameValuePair {
     }
 }
 
+/**
+ *  NameValuePair model builder
+ */
+export class NameValuePairBuilder {
+    private readonly model: NameValuePair;
+    public constructor(model: NameValuePair) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): NameValuePair {
+        return this.model;
+    }
+
+    /**
+    * Property name             
+    */
+    public name(name: string): NameValuePairBuilder {
+        this.model.name = name;
+        return this;
+    }
+    /**
+    * Property value             
+    */
+    public value(value: string): NameValuePairBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

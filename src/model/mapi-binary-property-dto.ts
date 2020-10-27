@@ -70,5 +70,35 @@ export class MapiBinaryPropertyDto extends model.MapiPropertyDto {
     }
 }
 
+/**
+ *  MapiBinaryPropertyDto model builder
+ */
+export class MapiBinaryPropertyDtoBuilder {
+    private readonly model: MapiBinaryPropertyDto;
+    public constructor(model: MapiBinaryPropertyDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiBinaryPropertyDto {
+        return this.model;
+    }
+
+    /**
+    * Property descriptor             
+    */
+    public descriptor(descriptor: model.MapiPropertyDescriptor): MapiBinaryPropertyDtoBuilder {
+        this.model.descriptor = descriptor;
+        return this;
+    }
+    /**
+    * Property value converted to Base64             
+    */
+    public valueBase64(valueBase64: string): MapiBinaryPropertyDtoBuilder {
+        this.model.valueBase64 = valueBase64;
+        return this;
+    }
+}
 

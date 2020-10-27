@@ -108,5 +108,70 @@ export class EmailConfigDiscoverOauthRequest extends model.DiscoverEmailConfigRe
     }
 }
 
+/**
+ *  EmailConfigDiscoverOauthRequest model builder
+ */
+export class EmailConfigDiscoverOauthRequestBuilder {
+    private readonly model: EmailConfigDiscoverOauthRequest;
+    public constructor(model: EmailConfigDiscoverOauthRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): EmailConfigDiscoverOauthRequest {
+        return this.model;
+    }
+
+    /**
+    * Email address to discover.             
+    */
+    public address(address: string): EmailConfigDiscoverOauthRequestBuilder {
+        this.model.address = address;
+        return this;
+    }
+    /**
+    * Turns on fast processing. All discover systems will run in parallel. First discovered result will be returned.             
+    */
+    public fastProcessing(fastProcessing: boolean): EmailConfigDiscoverOauthRequestBuilder {
+        this.model.fastProcessing = fastProcessing;
+        return this;
+    }
+    /**
+    * Email account login. If not specified, address used as a login.             
+    */
+    public login(login: string): EmailConfigDiscoverOauthRequestBuilder {
+        this.model.login = login;
+        return this;
+    }
+    /**
+    * OAuth client id.             
+    */
+    public clientId(clientId: string): EmailConfigDiscoverOauthRequestBuilder {
+        this.model.clientId = clientId;
+        return this;
+    }
+    /**
+    * OAuth client secret.             
+    */
+    public clientSecret(clientSecret: string): EmailConfigDiscoverOauthRequestBuilder {
+        this.model.clientSecret = clientSecret;
+        return this;
+    }
+    /**
+    * OAuth refresh token.             
+    */
+    public refreshToken(refreshToken: string): EmailConfigDiscoverOauthRequestBuilder {
+        this.model.refreshToken = refreshToken;
+        return this;
+    }
+    /**
+    * The url to obtain access token. If not specified, will be discovered from email configuration.             
+    */
+    public requestUrl(requestUrl: string): EmailConfigDiscoverOauthRequestBuilder {
+        this.model.requestUrl = requestUrl;
+        return this;
+    }
+}
 

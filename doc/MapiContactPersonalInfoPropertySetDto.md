@@ -1,8 +1,10 @@
 # MapiContactPersonalInfoPropertySetDto
 
+Specify other additional contact information.             
+
 ## Properties
 Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+---- | ---- | ----------- | -----
 **spouseName** | **string** | Specifies the name of the contact's spouse/partner              | [optional] [default to undefined]
 **personalHomePage** | **string** | Specifies the contact's personal web page URL              | [optional] [default to undefined]
 **language** | **string** | Specifies the language that the contact uses              | [optional] [default to undefined]
@@ -22,7 +24,6 @@ Name | Type | Description | Notes
 **gender** | **string** | Gender of the contact Enum, available values: Unspecified, Female, Male | [default to undefined]
 **referredByName** | **string** | Specifies the name of the person who referred this contact to the user              | [optional] [default to undefined]
 **children** | **Array&lt;string&gt;** | Contains a list of names of children.              | [optional] [default to undefined]
-
 
 
 [[Back to Model list]](README.md#documentation-for-models) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to README]](README.md)

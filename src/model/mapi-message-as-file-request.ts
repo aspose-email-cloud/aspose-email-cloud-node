@@ -78,5 +78,35 @@ export class MapiMessageAsFileRequest {
     }
 }
 
+/**
+ *  MapiMessageAsFileRequest model builder
+ */
+export class MapiMessageAsFileRequestBuilder {
+    private readonly model: MapiMessageAsFileRequest;
+    public constructor(model: MapiMessageAsFileRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiMessageAsFileRequest {
+        return this.model;
+    }
+
+    /**
+    * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+    */
+    public format(format: string): MapiMessageAsFileRequestBuilder {
+        this.model.format = format;
+        return this;
+    }
+    /**
+    * MAPI message model.             
+    */
+    public value(value: model.MapiMessageDto): MapiMessageAsFileRequestBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 
