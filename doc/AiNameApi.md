@@ -1,320 +1,1117 @@
-# AiNameApi
+# AiNameApi (EmailCloud.ai.name)
 
-                    
+AI Name operations.
+
 <a name="complete"></a>
-# **complete**
+## **complete**
+
+Description: The call proposes k most probable names for given starting characters.             
+
+Returns: List of name variations.
+
+Method call example:
 ```typescript
-public async complete(request: AiNameCompleteRequest): Promise< AiNameWeightedVariants >
+let result = await api.ai.name.complete(request);
 ```
 
-The call proposes k most probable names for given starting characters.             
+### Parameter: request
 
-### Request Parameters
+Description: complete method request.
+
+See parameter model documentation at [AiNameCompleteRequest](AiNameCompleteRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new AiNameComplete(
-    name,
-    language=language,
-    location=location,
-    encoding=encoding,
-    script=script,
-    style=style)
+let request = Models.AiNameCompleteRequest()
+    .name('Dav')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **name** | **string**| A name to complete. |
- **language** | **string**| An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \&quot;it\&quot; or \&quot;ita\&quot; for Italian).              | [optional] [default to ]
- **location** | **string**| A geographic code such as an ISO-3166 two letter country code, for example \&quot;FR\&quot; for France.              | [optional] [default to ]
- **encoding** | **string**| A character encoding name. | [optional] [default to ]
- **script** | **string**| A writing system code; starts with the ISO-15924 script name. | [optional] [default to ]
- **style** | **string**| Name writing style. Enum, available values: Formal, Informal, Legal, Academic | [optional] [default to 0]
+</details>
 
-### Return type
+### Result
 
-Promise< [AiNameWeightedVariants](AiNameWeightedVariants.md) >
+Description: List of name variations.
+
+Return type: Promise< [AiNameWeightedVariants](AiNameWeightedVariants.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.aiNameWeightedVariants()
+    .names([
+        Models.aiNameWeighted()
+            .name('J. Cane')
+            .score(1)
+            .build(),
+        Models.aiNameWeighted()
+            .name('Mr. Cane')
+            .score(0.75)
+            .build()])
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.AiNameCompleteRequest()
+    .name('Dav')
+    .build();
+
+// Call method:
+let result = await api.ai.name.complete(request);
+
+// Result example:
+result = Models.aiNameWeightedVariants()
+    .names([
+        Models.aiNameWeighted()
+            .name('J. Cane')
+            .score(1)
+            .build(),
+        Models.aiNameWeighted()
+            .name('Mr. Cane')
+            .score(0.75)
+            .build()])
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="expand"></a>
-# **expand**
+## **expand**
+
+Description: Expands a person&#39;s name into a list of possible alternatives using options for expanding instructions.             
+
+Returns: List of name variations.
+
+Method call example:
 ```typescript
-public async expand(request: AiNameExpandRequest): Promise< AiNameWeightedVariants >
+let result = await api.ai.name.expand(request);
 ```
 
-Expands a person&#39;s name into a list of possible alternatives using options for expanding instructions.             
+### Parameter: request
 
-### Request Parameters
+Description: expand method request.
+
+See parameter model documentation at [AiNameExpandRequest](AiNameExpandRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new AiNameExpand(
-    name,
-    language=language,
-    location=location,
-    encoding=encoding,
-    script=script,
-    style=style)
+let request = Models.AiNameExpandRequest()
+    .name('John Cane')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **name** | **string**| A name to expand. |
- **language** | **string**| An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \&quot;it\&quot; or \&quot;ita\&quot; for Italian).              | [optional] [default to ]
- **location** | **string**| A geographic code such as an ISO-3166 two letter country code, for example \&quot;FR\&quot; for France.              | [optional] [default to ]
- **encoding** | **string**| A character encoding name. | [optional] [default to ]
- **script** | **string**| A writing system code; starts with the ISO-15924 script name. | [optional] [default to ]
- **style** | **string**| Name writing style. Enum, available values: Formal, Informal, Legal, Academic | [optional] [default to 0]
+</details>
 
-### Return type
+### Result
 
-Promise< [AiNameWeightedVariants](AiNameWeightedVariants.md) >
+Description: List of name variations.
+
+Return type: Promise< [AiNameWeightedVariants](AiNameWeightedVariants.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.aiNameWeightedVariants()
+    .names([
+        Models.aiNameWeighted()
+            .name('J. Cane')
+            .score(1)
+            .build(),
+        Models.aiNameWeighted()
+            .name('Mr. Cane')
+            .score(0.75)
+            .build()])
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.AiNameExpandRequest()
+    .name('John Cane')
+    .build();
+
+// Call method:
+let result = await api.ai.name.expand(request);
+
+// Result example:
+result = Models.aiNameWeightedVariants()
+    .names([
+        Models.aiNameWeighted()
+            .name('J. Cane')
+            .score(1)
+            .build(),
+        Models.aiNameWeighted()
+            .name('Mr. Cane')
+            .score(0.75)
+            .build()])
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="expandParsed"></a>
-# **expandParsed**
+## **expandParsed**
+
+Description: Expands a person&#39;s parsed name into a list of possible alternatives using options for expanding instructions.             
+
+Returns: List of name variations.
+
+Method call example:
 ```typescript
-public async expandParsed(request: model.AiNameParsedRequest): Promise< AiNameWeightedVariants >
+let result = await api.ai.name.expandParsed(request);
 ```
 
-Expands a person&#39;s parsed name into a list of possible alternatives using options for expanding instructions.             
+### Parameter: request
 
-### request Parameter
+Description: Parsed name with options.
 
 See parameter model documentation at [AiNameParsedRequest](AiNameParsedRequest.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let request = Models.aiNameParsedRequest()
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
+```
 
-Promise< [AiNameWeightedVariants](AiNameWeightedVariants.md) >
+</details>
+
+### Result
+
+Description: List of name variations.
+
+Return type: Promise< [AiNameWeightedVariants](AiNameWeightedVariants.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.aiNameWeightedVariants()
+    .names([
+        Models.aiNameWeighted()
+            .name('J. Cane')
+            .score(1)
+            .build(),
+        Models.aiNameWeighted()
+            .name('Mr. Cane')
+            .score(0.75)
+            .build()])
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.aiNameParsedRequest()
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
+
+// Call method:
+let result = await api.ai.name.expandParsed(request);
+
+// Result example:
+result = Models.aiNameWeightedVariants()
+    .names([
+        Models.aiNameWeighted()
+            .name('J. Cane')
+            .score(1)
+            .build(),
+        Models.aiNameWeighted()
+            .name('Mr. Cane')
+            .score(0.75)
+            .build()])
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
-                    
 <a name="format"></a>
-# **format**
+## **format**
+
+Description: Formats a person&#39;s name in correct case and name order using options for formatting instructions.             
+
+Returns: Formatted name.
+
+Method call example:
 ```typescript
-public async format(request: AiNameFormatRequest): Promise< AiNameFormatted >
+let result = await api.ai.name.format(request);
 ```
 
-Formats a person&#39;s name in correct case and name order using options for formatting instructions.             
+### Parameter: request
 
-### Request Parameters
+Description: format method request.
+
+See parameter model documentation at [AiNameFormatRequest](AiNameFormatRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new AiNameFormat(
-    name,
-    language=language,
-    location=location,
-    encoding=encoding,
-    script=script,
-    format=format,
-    style=style)
+let request = Models.AiNameFormatRequest()
+    .name('Mr. John Michael Cane')
+    .format('%t%L%f%m')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **name** | **string**| A name to format. |
- **language** | **string**| An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \&quot;it\&quot; or \&quot;ita\&quot; for Italian).              | [optional] [default to ]
- **location** | **string**| A geographic code such as an ISO-3166 two letter country code, for example \&quot;FR\&quot; for France.              | [optional] [default to ]
- **encoding** | **string**| A character encoding name. | [optional] [default to ]
- **script** | **string**| A writing system code; starts with the ISO-15924 script name. | [optional] [default to ]
- **format** | **string**| Format of the name. Predefined format can be used by ID, or custom format can be specified. Predefined formats:      /format/default/ (&#x3D; &#39;%t%F%m%N%L%p&#39;)     /format/FN+LN/ (&#x3D; &#39;%F%L&#39;)     /format/title+FN+LN/ (&#x3D; &#39;%t%F%L&#39;)     /format/FN+MN+LN/ (&#x3D; &#39;%F%M%N%L&#39;)     /format/title+FN+MN+LN/ (&#x3D; &#39;%t%F%M%N%L&#39;)     /format/FN+MI+LN/ (&#x3D; &#39;%F%m%N%L&#39;)     /format/title+FN+MI+LN/ (&#x3D; &#39;%t%F%m%N%L&#39;)     /format/LN/ (&#x3D; &#39;%L&#39;)     /format/title+LN/ (&#x3D; &#39;%t%L&#39;)     /format/LN+FN+MN/ (&#x3D; &#39;%L,%F%M%N&#39;)     /format/LN+title+FN+MN/ (&#x3D; &#39;%L,%t%F%M%N&#39;)     /format/LN+FN+MI/ (&#x3D; &#39;%L,%F%m%N&#39;)     /format/LN+title+FN+MI/ (&#x3D; &#39;%L,%t%F%m%N&#39;)  Custom format string - custom combination of characters and the next term placeholders:      &#39;%t&#39; - Title (prefix)     &#39;%F&#39; - First name     &#39;%f&#39; - First initial     &#39;%M&#39; - Middle name(s)     &#39;%m&#39; - Middle initial(s)     &#39;%N&#39; - Nickname     &#39;%L&#39; - Last name     &#39;%l&#39; - Last initial     &#39;%p&#39; - Postfix  If no value for format option was provided, its default value is &#39;%t%F%m%N%L%p&#39;              | [optional] [default to ]
- **style** | **string**| Name writing style. Enum, available values: Formal, Informal, Legal, Academic | [optional] [default to 0]
+</details>
 
-### Return type
+### Result
 
-Promise< [AiNameFormatted](AiNameFormatted.md) >
+Description: Formatted name.
+
+Return type: Promise< [AiNameFormatted](AiNameFormatted.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.aiNameFormatted()
+    .name('Mr. Cane J. M.')
+    .comments('format: %t%L%f%m; source: parsed format')
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.AiNameFormatRequest()
+    .name('Mr. John Michael Cane')
+    .format('%t%L%f%m')
+    .build();
+
+// Call method:
+let result = await api.ai.name.format(request);
+
+// Result example:
+result = Models.aiNameFormatted()
+    .name('Mr. Cane J. M.')
+    .comments('format: %t%L%f%m; source: parsed format')
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="formatParsed"></a>
-# **formatParsed**
+## **formatParsed**
+
+Description: Formats a person&#39;s parsed name in correct case and name order using options for formatting instructions.             
+
+Returns: Formatted name.
+
+Method call example:
 ```typescript
-public async formatParsed(request: model.AiNameParsedRequest): Promise< AiNameFormatted >
+let result = await api.ai.name.formatParsed(request);
 ```
 
-Formats a person&#39;s parsed name in correct case and name order using options for formatting instructions.             
+### Parameter: request
 
-### request Parameter
+Description: Parsed name with options.
 
 See parameter model documentation at [AiNameParsedRequest](AiNameParsedRequest.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let request = Models.aiNameParsedRequest()
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
+```
 
-Promise< [AiNameFormatted](AiNameFormatted.md) >
+</details>
+
+### Result
+
+Description: Formatted name.
+
+Return type: Promise< [AiNameFormatted](AiNameFormatted.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.aiNameFormatted()
+    .name('Mr. Cane J. M.')
+    .comments('format: %t%L%f%m; source: parsed format')
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.aiNameParsedRequest()
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
+
+// Call method:
+let result = await api.ai.name.formatParsed(request);
+
+// Result example:
+result = Models.aiNameFormatted()
+    .name('Mr. Cane J. M.')
+    .comments('format: %t%L%f%m; source: parsed format')
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
-                    
 <a name="genderize"></a>
-# **genderize**
+## **genderize**
+
+Description: Detect person&#39;s gender from name string.             
+
+Returns: Hypotheses about person's gender.
+
+Method call example:
 ```typescript
-public async genderize(request: AiNameGenderizeRequest): Promise< AiNameGenderHypothesisList >
+let result = await api.ai.name.genderize(request);
 ```
 
-Detect person&#39;s gender from name string.             
+### Parameter: request
 
-### Request Parameters
+Description: genderize method request.
+
+See parameter model documentation at [AiNameGenderizeRequest](AiNameGenderizeRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new AiNameGenderize(
-    name,
-    language=language,
-    location=location,
-    encoding=encoding,
-    script=script,
-    style=style)
+let request = Models.AiNameGenderizeRequest()
+    .name('John Cane')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **name** | **string**| A name to genderize. |
- **language** | **string**| An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \&quot;it\&quot; or \&quot;ita\&quot; for Italian).              | [optional] [default to ]
- **location** | **string**| A geographic code such as an ISO-3166 two letter country code, for example \&quot;FR\&quot; for France.              | [optional] [default to ]
- **encoding** | **string**| A character encoding name. | [optional] [default to ]
- **script** | **string**| A writing system code; starts with the ISO-15924 script name. | [optional] [default to ]
- **style** | **string**| Name writing style. Enum, available values: Formal, Informal, Legal, Academic | [optional] [default to 0]
+</details>
 
-### Return type
+### Result
 
-Promise< [AiNameGenderHypothesisList](AiNameGenderHypothesisList.md) >
+Description: Hypotheses about person's gender.
+
+Return type: Promise< [AiNameGenderHypothesisList](AiNameGenderHypothesisList.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = ;
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.AiNameGenderizeRequest()
+    .name('John Cane')
+    .build();
+
+// Call method:
+let result = await api.ai.name.genderize(request);
+
+// Result example:
+result = ;
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="genderizeParsed"></a>
-# **genderizeParsed**
+## **genderizeParsed**
+
+Description: Detect person&#39;s gender from parsed name.             
+
+Returns: Hypotheses about person's gender.
+
+Method call example:
 ```typescript
-public async genderizeParsed(request: model.AiNameParsedRequest): Promise< AiNameGenderHypothesisList >
+let result = await api.ai.name.genderizeParsed(request);
 ```
 
-Detect person&#39;s gender from parsed name.             
+### Parameter: request
 
-### request Parameter
+Description: Gender detection request data.
 
 See parameter model documentation at [AiNameParsedRequest](AiNameParsedRequest.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let request = Models.aiNameParsedRequest()
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
+```
 
-Promise< [AiNameGenderHypothesisList](AiNameGenderHypothesisList.md) >
+</details>
+
+### Result
+
+Description: Hypotheses about person's gender.
+
+Return type: Promise< [AiNameGenderHypothesisList](AiNameGenderHypothesisList.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = ;
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.aiNameParsedRequest()
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
+
+// Call method:
+let result = await api.ai.name.genderizeParsed(request);
+
+// Result example:
+result = ;
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
-                    
 <a name="match"></a>
-# **match**
+## **match**
+
+Description: Compare people&#39;s names. Uses options for comparing instructions.             
+
+Returns: Match result.
+
+Method call example:
 ```typescript
-public async match(request: AiNameMatchRequest): Promise< AiNameMatchResult >
+let result = await api.ai.name.match(request);
 ```
 
-Compare people&#39;s names. Uses options for comparing instructions.             
+### Parameter: request
 
-### Request Parameters
+Description: match method request.
+
+See parameter model documentation at [AiNameMatchRequest](AiNameMatchRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new AiNameMatch(
-    name,
-    otherName,
-    language=language,
-    location=location,
-    encoding=encoding,
-    script=script,
-    style=style)
+let request = Models.AiNameMatchRequest()
+    .name('John Michael Cane')
+    .otherName('Cane J.')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **name** | **string**| A name to match. |
- **otherName** | **string**| Another name to match. |
- **language** | **string**| An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \&quot;it\&quot; or \&quot;ita\&quot; for Italian).              | [optional] [default to ]
- **location** | **string**| A geographic code such as an ISO-3166 two letter country code, for example \&quot;FR\&quot; for France.              | [optional] [default to ]
- **encoding** | **string**| A character encoding name. | [optional] [default to ]
- **script** | **string**| A writing system code; starts with the ISO-15924 script name. | [optional] [default to ]
- **style** | **string**| Name writing style. Enum, available values: Formal, Informal, Legal, Academic | [optional] [default to 0]
+</details>
 
-### Return type
+### Result
 
-Promise< [AiNameMatchResult](AiNameMatchResult.md) >
+Description: Match result.
+
+Return type: Promise< [AiNameMatchResult](AiNameMatchResult.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.aiNameMatchResult()
+    .similarity(0.6)
+    .mismatches([
+        Models.aiNameMismatch()
+            .category('Gender')
+            .explanation('no_match')
+            .build()])
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.AiNameMatchRequest()
+    .name('John Michael Cane')
+    .otherName('Cane J.')
+    .build();
+
+// Call method:
+let result = await api.ai.name.match(request);
+
+// Result example:
+result = Models.aiNameMatchResult()
+    .similarity(0.6)
+    .mismatches([
+        Models.aiNameMismatch()
+            .category('Gender')
+            .explanation('no_match')
+            .build()])
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="matchParsed"></a>
-# **matchParsed**
+## **matchParsed**
+
+Description: Compare people&#39;s parsed names and attributes. Uses options for comparing instructions.             
+
+Returns: Match result.
+
+Method call example:
 ```typescript
-public async matchParsed(request: model.AiNameMatchParsedRequest): Promise< AiNameMatchResult >
+let result = await api.ai.name.matchParsed(request);
 ```
 
-Compare people&#39;s parsed names and attributes. Uses options for comparing instructions.             
+### Parameter: request
 
-### request Parameter
+Description: Parsed names to match.
 
 See parameter model documentation at [AiNameMatchParsedRequest](AiNameMatchParsedRequest.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let request = Models.aiNameMatchParsedRequest()
+    .otherParsedName([
+        Models.aiNameComponent()
+            .value('J')
+            .category('FirstInitial')
+            .score(1)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(3)
+            .build(),
+        Models.aiNameComponent()
+            .value('%f%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
+```
 
-Promise< [AiNameMatchResult](AiNameMatchResult.md) >
+</details>
+
+### Result
+
+Description: Match result.
+
+Return type: Promise< [AiNameMatchResult](AiNameMatchResult.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.aiNameMatchResult()
+    .similarity(0.6)
+    .mismatches([
+        Models.aiNameMismatch()
+            .category('Gender')
+            .explanation('no_match')
+            .build()])
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.aiNameMatchParsedRequest()
+    .otherParsedName([
+        Models.aiNameComponent()
+            .value('J')
+            .category('FirstInitial')
+            .score(1)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(3)
+            .build(),
+        Models.aiNameComponent()
+            .value('%f%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .parsedName([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
+
+// Call method:
+let result = await api.ai.name.matchParsed(request);
+
+// Result example:
+result = Models.aiNameMatchResult()
+    .similarity(0.6)
+    .mismatches([
+        Models.aiNameMismatch()
+            .category('Gender')
+            .explanation('no_match')
+            .build()])
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
-                    
 <a name="parse"></a>
-# **parse**
+## **parse**
+
+Description: Parse name to components.             
+
+Returns: List of name components.
+
+Method call example:
 ```typescript
-public async parse(request: AiNameParseRequest): Promise< AiNameComponentList >
+let result = await api.ai.name.parse(request);
 ```
 
-Parse name to components.             
+### Parameter: request
 
-### Request Parameters
+Description: parse method request.
+
+See parameter model documentation at [AiNameParseRequest](AiNameParseRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new AiNameParse(
-    name,
-    language=language,
-    location=location,
-    encoding=encoding,
-    script=script,
-    style=style)
+let request = Models.AiNameParseRequest()
+    .name('John Cane')
+    .language('eng')
+    .location('USA')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **name** | **string**| A name to parse. |
- **language** | **string**| An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \&quot;it\&quot; or \&quot;ita\&quot; for Italian).              | [optional] [default to ]
- **location** | **string**| A geographic code such as an ISO-3166 two letter country code, for example \&quot;FR\&quot; for France.              | [optional] [default to ]
- **encoding** | **string**| A character encoding name. | [optional] [default to ]
- **script** | **string**| A writing system code; starts with the ISO-15924 script name. | [optional] [default to ]
- **style** | **string**| Name writing style. Enum, available values: Formal, Informal, Legal, Academic | [optional] [default to 0]
+</details>
 
-### Return type
+### Result
 
-Promise< [AiNameComponentList](AiNameComponentList.md) >
+Description: List of name components.
+
+Return type: Promise< [AiNameComponentList](AiNameComponentList.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.aiNameComponentList()
+    .value([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.AiNameParseRequest()
+    .name('John Cane')
+    .language('eng')
+    .location('USA')
+    .build();
+
+// Call method:
+let result = await api.ai.name.parse(request);
+
+// Result example:
+result = Models.aiNameComponentList()
+    .value([
+        Models.aiNameComponent()
+            .value('John')
+            .category('FirstName')
+            .score(0.95)
+            .build(),
+        Models.aiNameComponent()
+            .value('Cane')
+            .category('LastName')
+            .score(0.5)
+            .position(5)
+            .build(),
+        Models.aiNameComponent()
+            .value('%F%L')
+            .category('Format')
+            .build(),
+        Models.aiNameComponent()
+            .value('0.5')
+            .category('Score')
+            .score(0.5)
+            .build()])
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="parseEmailAddress"></a>
-# **parseEmailAddress**
+## **parseEmailAddress**
+
+Description: Parse person&#39;s name out of an email address.             
+
+Returns: Match result.
+
+Method call example:
 ```typescript
-public async parseEmailAddress(request: AiNameParseEmailAddressRequest): Promise< AiNameExtractedList >
+let result = await api.ai.name.parseEmailAddress(request);
 ```
 
-Parse person&#39;s name out of an email address.             
+### Parameter: request
 
-### Request Parameters
+Description: parseEmailAddress method request.
+
+See parameter model documentation at [AiNameParseEmailAddressRequest](AiNameParseEmailAddressRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new AiNameParseEmailAddress(
-    emailAddress,
-    language=language,
-    location=location,
-    encoding=encoding,
-    script=script,
-    style=style)
+let request = Models.AiNameParseEmailAddressRequest()
+    .emailAddress('john-cane@gmail.com')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **emailAddress** | **string**| Email address to parse. |
- **language** | **string**| An ISO-639 code of the language; either 639-1 or 639-3 (e.g. \&quot;it\&quot; or \&quot;ita\&quot; for Italian).              | [optional] [default to ]
- **location** | **string**| A geographic code such as an ISO-3166 two letter country code, for example \&quot;FR\&quot; for France.              | [optional] [default to ]
- **encoding** | **string**| A character encoding name. | [optional] [default to ]
- **script** | **string**| A writing system code; starts with the ISO-15924 script name. | [optional] [default to ]
- **style** | **string**| Name writing style. Enum, available values: Formal, Informal, Legal, Academic | [optional] [default to 0]
+</details>
 
-### Return type
+### Result
 
-Promise< [AiNameExtractedList](AiNameExtractedList.md) >
+Description: Match result.
+
+Return type: Promise< [AiNameExtractedList](AiNameExtractedList.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = ;
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.AiNameParseEmailAddressRequest()
+    .emailAddress('john-cane@gmail.com')
+    .build();
+
+// Call method:
+let result = await api.ai.name.parseEmailAddress(request);
+
+// Result example:
+result = ;
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
+

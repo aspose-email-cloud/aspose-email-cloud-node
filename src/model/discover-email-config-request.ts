@@ -90,5 +90,42 @@ export class DiscoverEmailConfigRequest {
     }
 }
 
+/**
+ *  DiscoverEmailConfigRequest model builder
+ */
+export class DiscoverEmailConfigRequestBuilder {
+    private readonly model: DiscoverEmailConfigRequest;
+    public constructor(model: DiscoverEmailConfigRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): DiscoverEmailConfigRequest {
+        return this.model;
+    }
+
+    /**
+    * Email address to discover.             
+    */
+    public address(address: string): DiscoverEmailConfigRequestBuilder {
+        this.model.address = address;
+        return this;
+    }
+    /**
+    * Turns on fast processing. All discover systems will run in parallel. First discovered result will be returned.             
+    */
+    public fastProcessing(fastProcessing: boolean): DiscoverEmailConfigRequestBuilder {
+        this.model.fastProcessing = fastProcessing;
+        return this;
+    }
+    /**
+    * Email account login. If not specified, address used as a login.             
+    */
+    public login(login: string): DiscoverEmailConfigRequestBuilder {
+        this.model.login = login;
+        return this;
+    }
+}
 

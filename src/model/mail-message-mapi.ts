@@ -67,5 +67,28 @@ export class MailMessageMapi extends model.MailMessageBase {
     }
 }
 
+/**
+ *  MailMessageMapi model builder
+ */
+export class MailMessageMapiBuilder {
+    private readonly model: MailMessageMapi;
+    public constructor(model: MailMessageMapi) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MailMessageMapi {
+        return this.model;
+    }
+
+    /**
+    * Email message object.             
+    */
+    public value(value: model.MapiMessageDto): MailMessageMapiBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

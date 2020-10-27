@@ -60,5 +60,25 @@ export class ListResponseOfStorageFileLocation {
     }
 }
 
+/**
+ *  ListResponseOfStorageFileLocation model builder
+ */
+export class ListResponseOfStorageFileLocationBuilder {
+    private readonly model: ListResponseOfStorageFileLocation;
+    public constructor(model: ListResponseOfStorageFileLocation) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ListResponseOfStorageFileLocation {
+        return this.model;
+    }
+
+    public value(value: Array< model.StorageFileLocation >): ListResponseOfStorageFileLocationBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

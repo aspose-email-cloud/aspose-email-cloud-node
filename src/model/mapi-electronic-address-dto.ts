@@ -114,5 +114,56 @@ export class MapiElectronicAddressDto {
     }
 }
 
+/**
+ *  MapiElectronicAddressDto model builder
+ */
+export class MapiElectronicAddressDtoBuilder {
+    private readonly model: MapiElectronicAddressDto;
+    public constructor(model: MapiElectronicAddressDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiElectronicAddressDto {
+        return this.model;
+    }
+
+    /**
+    * Address type.             
+    */
+    public addressType(addressType: string): MapiElectronicAddressDtoBuilder {
+        this.model.addressType = addressType;
+        return this;
+    }
+    /**
+    * Email address.             
+    */
+    public emailAddress(emailAddress: string): MapiElectronicAddressDtoBuilder {
+        this.model.emailAddress = emailAddress;
+        return this;
+    }
+    /**
+    * User-readable display name for the e-mail address.             
+    */
+    public displayName(displayName: string): MapiElectronicAddressDtoBuilder {
+        this.model.displayName = displayName;
+        return this;
+    }
+    /**
+    * Telephone number of the mail user's primary fax machine.             
+    */
+    public faxNumber(faxNumber: string): MapiElectronicAddressDtoBuilder {
+        this.model.faxNumber = faxNumber;
+        return this;
+    }
+    /**
+    * SMTP e-mail address that  corresponds to the e-mail address.             
+    */
+    public originalDisplayName(originalDisplayName: string): MapiElectronicAddressDtoBuilder {
+        this.model.originalDisplayName = originalDisplayName;
+        return this;
+    }
+}
 

@@ -66,5 +66,28 @@ export class FileVersions {
     }
 }
 
+/**
+ *  FileVersions model builder
+ */
+export class FileVersionsBuilder {
+    private readonly model: FileVersions;
+    public constructor(model: FileVersions) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): FileVersions {
+        return this.model;
+    }
+
+    /**
+    * File versions FileVersion.
+    */
+    public value(value: Array< model.FileVersion >): FileVersionsBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

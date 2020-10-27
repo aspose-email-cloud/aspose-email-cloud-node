@@ -70,5 +70,21 @@ export class MailMessageBase {
     }
 }
 
+/**
+ *  MailMessageBase model builder
+ */
+export class MailMessageBaseBuilder {
+    private readonly model: MailMessageBase;
+    public constructor(model: MailMessageBase) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MailMessageBase {
+        return this.model;
+    }
+
+}
 

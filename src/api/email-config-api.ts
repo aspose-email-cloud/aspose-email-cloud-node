@@ -42,7 +42,6 @@ export class EmailConfigApi {
         this.configuration = configuration;
     }
 
-        
     /**
      * Discover email accounts by email address. Does not validate discovered accounts.             
      * @param request contains request parameters
@@ -90,7 +89,6 @@ export class EmailConfigApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Discover email accounts by email address. Validates discovered accounts using OAuth 2.0.             
      * @param request Discover email configuration request.
@@ -116,7 +114,6 @@ export class EmailConfigApi {
         return Promise.resolve(result);
     }
 
-        
     /**
      * Discover email accounts by email address. Validates discovered accounts using login and password.             
      * @param request Discover email configuration request.
@@ -141,5 +138,4 @@ export class EmailConfigApi {
         const result =  ObjectSerializer.deserialize(response.body, "EmailAccountConfigList");
         return Promise.resolve(result);
     }
-
 }

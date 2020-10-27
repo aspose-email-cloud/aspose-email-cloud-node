@@ -60,5 +60,25 @@ export class ListResponseOfAiNameComponent {
     }
 }
 
+/**
+ *  ListResponseOfAiNameComponent model builder
+ */
+export class ListResponseOfAiNameComponentBuilder {
+    private readonly model: ListResponseOfAiNameComponent;
+    public constructor(model: ListResponseOfAiNameComponent) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ListResponseOfAiNameComponent {
+        return this.model;
+    }
+
+    public value(value: Array< model.AiNameComponent >): ListResponseOfAiNameComponentBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

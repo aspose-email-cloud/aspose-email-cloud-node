@@ -106,5 +106,119 @@ export class MapiCalendarDailyRecurrencePatternDto extends model.MapiCalendarRec
     }
 }
 
+/**
+ *  MapiCalendarDailyRecurrencePatternDto model builder
+ */
+export class MapiCalendarDailyRecurrencePatternDtoBuilder {
+    private readonly model: MapiCalendarDailyRecurrencePatternDto;
+    public constructor(model: MapiCalendarDailyRecurrencePatternDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiCalendarDailyRecurrencePatternDto {
+        return this.model;
+    }
+
+    /**
+    * Enumerated the calendar type of the mapi recurrence Enum, available values: Default, CalGregorian, CalGregorianUs, CalJapan, CalTaiwan, CalKorea, CalHijri, CalThai, CalHebrew, CalGregorianMeFrench, CalGregorianArabic, CalGregorianXLitEnglish, CalGregorianXLitFrench, CalLunarJapanese, CalChineseLunar, CalSaka, CalLunarEtoChn, CalLunarEtoKor, CalLunarRokuyou, CalLunarKorean, CalUmAlQura
+    */
+    public calendarType(calendarType: string): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.calendarType = calendarType;
+        return this;
+    }
+    /**
+    * An array of dates, each of which is the original instance date of either a deleted instance or a modified instance for this recurrence.             
+    */
+    public deletedInstanceDates(deletedInstanceDates: Array<Date>): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.deletedInstanceDates = deletedInstanceDates;
+        return this;
+    }
+    /**
+    * End date of an item recurrence pattern.             
+    */
+    public endDate(endDate: Date): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.endDate = endDate;
+        return this;
+    }
+    /**
+    * Enumerates the ending type for the recurrence. Enum, available values: None, EndAfterDate, EndAfterNOccurrences, NeverEnd
+    */
+    public endType(endType: string): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.endType = endType;
+        return this;
+    }
+    /**
+    * An exception specifies changes to an instance of a recurring series.             
+    */
+    public exceptions(exceptions: Array< model.MapiCalendarExceptionInfoDto >): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.exceptions = exceptions;
+        return this;
+    }
+    /**
+    * Enumerates mapi calendar recurrence frequency Enum, available values: None, Daily, Weekly, Monthly, Yearly
+    */
+    public frequency(frequency: string): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.frequency = frequency;
+        return this;
+    }
+    /**
+    * An array of dates, each of which is the date of a modified instance.             
+    */
+    public modifiedInstanceDates(modifiedInstanceDates: Array<Date>): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.modifiedInstanceDates = modifiedInstanceDates;
+        return this;
+    }
+    /**
+    * Number of occurrences in a recurrence.             
+    */
+    public occurrenceCount(occurrenceCount: number): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.occurrenceCount = occurrenceCount;
+        return this;
+    }
+    /**
+    * Enumerates the mapi calendar recurrence pattern types Enum, available values: Day, Week, Month, MonthEnd, MonthNth, HjMonth, HjMonthNth, HjMonthEnd
+    */
+    public patternType(patternType: string): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.patternType = patternType;
+        return this;
+    }
+    /**
+    * Interval at which the meeting pattern repeats.             
+    */
+    public period(period: number): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.period = period;
+        return this;
+    }
+    /**
+    * Defines whether pattern is sliding or not.             
+    */
+    public slidingFlag(slidingFlag: boolean): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.slidingFlag = slidingFlag;
+        return this;
+    }
+    /**
+    * Start date of an item recurrence pattern.             
+    */
+    public startDate(startDate: Date): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.startDate = startDate;
+        return this;
+    }
+    /**
+    * Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+    */
+    public weekStartDay(weekStartDay: string): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.weekStartDay = weekStartDay;
+        return this;
+    }
+    /**
+    * Days of week at which the event occurs.              Items: Enumerates the days of week of the mapi calendar recurrence pattern Enum, available values: Saturday, Friday, Thursday, Wednesday, Tuesday, Monday, Sunday
+    */
+    public dayOfWeek(dayOfWeek: Array<string>): MapiCalendarDailyRecurrencePatternDtoBuilder {
+        this.model.dayOfWeek = dayOfWeek;
+        return this;
+    }
+}
 

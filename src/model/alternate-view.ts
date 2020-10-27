@@ -90,5 +90,63 @@ export class AlternateView extends model.AttachmentBase {
     }
 }
 
+/**
+ *  AlternateView model builder
+ */
+export class AlternateViewBuilder {
+    private readonly model: AlternateView;
+    public constructor(model: AlternateView) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): AlternateView {
+        return this.model;
+    }
+
+    /**
+    * Attachment file content as Base64 string.             
+    */
+    public base64Data(base64Data: string): AlternateViewBuilder {
+        this.model.base64Data = base64Data;
+        return this;
+    }
+    /**
+    * Attachment content id             
+    */
+    public contentId(contentId: string): AlternateViewBuilder {
+        this.model.contentId = contentId;
+        return this;
+    }
+    /**
+    * Content type             
+    */
+    public contentType(contentType: model.ContentType): AlternateViewBuilder {
+        this.model.contentType = contentType;
+        return this;
+    }
+    /**
+    * Attachment headers.             
+    */
+    public headers(headers: { [key: string]: string; }): AlternateViewBuilder {
+        this.model.headers = headers;
+        return this;
+    }
+    /**
+    * Base URI.             
+    */
+    public baseUri(baseUri: string): AlternateViewBuilder {
+        this.model.baseUri = baseUri;
+        return this;
+    }
+    /**
+    * Embedded resources referred to by this alternate view.             
+    */
+    public linkedResources(linkedResources: Array< model.LinkedResource >): AlternateViewBuilder {
+        this.model.linkedResources = linkedResources;
+        return this;
+    }
+}
 

@@ -58,5 +58,25 @@ export class StorageFileLocationList extends model.ListResponseOfStorageFileLoca
     }
 }
 
+/**
+ *  StorageFileLocationList model builder
+ */
+export class StorageFileLocationListBuilder {
+    private readonly model: StorageFileLocationList;
+    public constructor(model: StorageFileLocationList) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): StorageFileLocationList {
+        return this.model;
+    }
+
+    public value(value: Array< model.StorageFileLocation >): StorageFileLocationListBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

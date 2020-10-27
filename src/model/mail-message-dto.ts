@@ -67,5 +67,28 @@ export class MailMessageDto extends model.MailMessageBase {
     }
 }
 
+/**
+ *  MailMessageDto model builder
+ */
+export class MailMessageDtoBuilder {
+    private readonly model: MailMessageDto;
+    public constructor(model: MailMessageDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MailMessageDto {
+        return this.model;
+    }
+
+    /**
+    * Message document object.             
+    */
+    public value(value: model.EmailDto): MailMessageDtoBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

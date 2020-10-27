@@ -90,5 +90,42 @@ export class InstantMessengerAddress {
     }
 }
 
+/**
+ *  InstantMessengerAddress model builder
+ */
+export class InstantMessengerAddressBuilder {
+    private readonly model: InstantMessengerAddress;
+    public constructor(model: InstantMessengerAddress) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): InstantMessengerAddress {
+        return this.model;
+    }
+
+    /**
+    * Address category.             
+    */
+    public category(category: model.EnumWithCustomOfInstantMessengerCategory): InstantMessengerAddressBuilder {
+        this.model.category = category;
+        return this;
+    }
+    /**
+    * Address.             
+    */
+    public address(address: string): InstantMessengerAddressBuilder {
+        this.model.address = address;
+        return this;
+    }
+    /**
+    * Determines whether this address is preferred.             
+    */
+    public preferred(preferred: boolean): InstantMessengerAddressBuilder {
+        this.model.preferred = preferred;
+        return this;
+    }
+}
 

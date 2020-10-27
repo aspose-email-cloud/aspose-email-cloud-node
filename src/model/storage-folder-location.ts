@@ -78,5 +78,35 @@ export class StorageFolderLocation {
     }
 }
 
+/**
+ *  StorageFolderLocation model builder
+ */
+export class StorageFolderLocationBuilder {
+    private readonly model: StorageFolderLocation;
+    public constructor(model: StorageFolderLocation) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): StorageFolderLocation {
+        return this.model;
+    }
+
+    /**
+    * A storage name             
+    */
+    public storage(storage: string): StorageFolderLocationBuilder {
+        this.model.storage = storage;
+        return this;
+    }
+    /**
+    * A path to a folder in specified storage             
+    */
+    public folderPath(folderPath: string): StorageFolderLocationBuilder {
+        this.model.folderPath = folderPath;
+        return this;
+    }
+}
 

@@ -70,5 +70,35 @@ export class MapiMultiIntPropertyDto extends model.MapiPropertyDto {
     }
 }
 
+/**
+ *  MapiMultiIntPropertyDto model builder
+ */
+export class MapiMultiIntPropertyDtoBuilder {
+    private readonly model: MapiMultiIntPropertyDto;
+    public constructor(model: MapiMultiIntPropertyDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiMultiIntPropertyDto {
+        return this.model;
+    }
+
+    /**
+    * Property descriptor             
+    */
+    public descriptor(descriptor: model.MapiPropertyDescriptor): MapiMultiIntPropertyDtoBuilder {
+        this.model.descriptor = descriptor;
+        return this;
+    }
+    /**
+    * Property values             
+    */
+    public values(values: Array<number>): MapiMultiIntPropertyDtoBuilder {
+        this.model.values = values;
+        return this;
+    }
+}
 

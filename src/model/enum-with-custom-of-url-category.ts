@@ -72,5 +72,32 @@ export class EnumWithCustomOfUrlCategory {
     }
 }
 
+/**
+ *  EnumWithCustomOfUrlCategory model builder
+ */
+export class EnumWithCustomOfUrlCategoryBuilder {
+    private readonly model: EnumWithCustomOfUrlCategory;
+    public constructor(model: EnumWithCustomOfUrlCategory) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): EnumWithCustomOfUrlCategory {
+        return this.model;
+    }
+
+    /**
+    * Url category. Enum, available values: Profile, HomePage, Home, Work, Blog, Ftp, Custom
+    */
+    public value(value: string): EnumWithCustomOfUrlCategoryBuilder {
+        this.model.value = value;
+        return this;
+    }
+    public description(description: string): EnumWithCustomOfUrlCategoryBuilder {
+        this.model.description = description;
+        return this;
+    }
+}
 

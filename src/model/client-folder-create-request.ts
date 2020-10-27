@@ -81,5 +81,42 @@ export class ClientFolderCreateRequest extends model.ClientAccountBaseRequest {
     }
 }
 
+/**
+ *  ClientFolderCreateRequest model builder
+ */
+export class ClientFolderCreateRequestBuilder {
+    private readonly model: ClientFolderCreateRequest;
+    public constructor(model: ClientFolderCreateRequest) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): ClientFolderCreateRequest {
+        return this.model;
+    }
+
+    /**
+    * Email client account configuration location on storage.             
+    */
+    public accountLocation(accountLocation: model.StorageFileLocation): ClientFolderCreateRequestBuilder {
+        this.model.accountLocation = accountLocation;
+        return this;
+    }
+    /**
+    * Path to parent folder.             
+    */
+    public parentFolder(parentFolder: string): ClientFolderCreateRequestBuilder {
+        this.model.parentFolder = parentFolder;
+        return this;
+    }
+    /**
+    * Folder name.             
+    */
+    public folderName(folderName: string): ClientFolderCreateRequestBuilder {
+        this.model.folderName = folderName;
+        return this;
+    }
+}
 

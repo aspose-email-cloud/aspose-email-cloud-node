@@ -70,5 +70,35 @@ export class MapiImportancePropertyDto extends model.MapiPropertyDto {
     }
 }
 
+/**
+ *  MapiImportancePropertyDto model builder
+ */
+export class MapiImportancePropertyDtoBuilder {
+    private readonly model: MapiImportancePropertyDto;
+    public constructor(model: MapiImportancePropertyDto) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): MapiImportancePropertyDto {
+        return this.model;
+    }
+
+    /**
+    * Property descriptor             
+    */
+    public descriptor(descriptor: model.MapiPropertyDescriptor): MapiImportancePropertyDtoBuilder {
+        this.model.descriptor = descriptor;
+        return this;
+    }
+    /**
+    * Levels of importance for an item. Enum, available values: Low, Normal, High
+    */
+    public value(value: string): MapiImportancePropertyDtoBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

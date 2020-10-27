@@ -114,5 +114,56 @@ export class StorageFile {
     }
 }
 
+/**
+ *  StorageFile model builder
+ */
+export class StorageFileBuilder {
+    private readonly model: StorageFile;
+    public constructor(model: StorageFile) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): StorageFile {
+        return this.model;
+    }
+
+    /**
+    * File or folder name.
+    */
+    public name(name: string): StorageFileBuilder {
+        this.model.name = name;
+        return this;
+    }
+    /**
+    * True if it is a folder.
+    */
+    public isFolder(isFolder: boolean): StorageFileBuilder {
+        this.model.isFolder = isFolder;
+        return this;
+    }
+    /**
+    * File or folder last modified DateTime.
+    */
+    public modifiedDate(modifiedDate: Date): StorageFileBuilder {
+        this.model.modifiedDate = modifiedDate;
+        return this;
+    }
+    /**
+    * File or folder size.
+    */
+    public size(size: number): StorageFileBuilder {
+        this.model.size = size;
+        return this;
+    }
+    /**
+    * File or folder path.
+    */
+    public path(path: string): StorageFileBuilder {
+        this.model.path = path;
+        return this;
+    }
+}
 

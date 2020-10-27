@@ -69,5 +69,29 @@ export class StorageModelOfEmailClientMultiAccount {
     }
 }
 
+/**
+ *  StorageModelOfEmailClientMultiAccount model builder
+ */
+export class StorageModelOfEmailClientMultiAccountBuilder {
+    private readonly model: StorageModelOfEmailClientMultiAccount;
+    public constructor(model: StorageModelOfEmailClientMultiAccount) {
+        this.model = model;
+    }
 
+    /**
+     * Build model.
+     */
+    public build(): StorageModelOfEmailClientMultiAccount {
+        return this.model;
+    }
+
+    public storageFile(storageFile: model.StorageFileLocation): StorageModelOfEmailClientMultiAccountBuilder {
+        this.model.storageFile = storageFile;
+        return this;
+    }
+    public value(value: model.EmailClientMultiAccount): StorageModelOfEmailClientMultiAccountBuilder {
+        this.model.value = value;
+        return this;
+    }
+}
 

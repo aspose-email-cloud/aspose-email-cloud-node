@@ -1,248 +1,1136 @@
-# CalendarApi
+# CalendarApi (EmailCloud.calendar)
 
-                    
+iCalendar document operations.
+
 <a name="asAlternate"></a>
-# **asAlternate**
+## **asAlternate**
+
+Description: Convert iCalendar to AlternateView             
+
+Returns: iCalendar document represented as AlternateView
+
+Method call example:
 ```typescript
-public async asAlternate(request: model.CalendarAsAlternateRequest): Promise< AlternateView >
+let result = await api.calendar.asAlternate(request);
 ```
 
-Convert iCalendar to AlternateView             
+### Parameter: request
 
-### request Parameter
+Description: iCalendar to AlternateView request
 
 See parameter model documentation at [CalendarAsAlternateRequest](CalendarAsAlternateRequest.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let request = Models.calendarAsAlternateRequest()
+    .value(Models.calendarDto()
+        .attendees([
+            Models.mailAddress()
+                .displayName('Attendee Name')
+                .address('attendee@aspose.com')
+                .participationStatus('Accepted')
+                .build()])
+        .description('Some description')
+        .endDate(new Date())
+        .location('Some location')
+        .organizer(Models.mailAddress()
+            .displayName('Organizer Name')
+            .address('organizer@aspose.com')
+            .build())
+        .recurrence(Models.dailyRecurrencePatternDto()
+            .interval(-1)
+            .occurs(10)
+            .weekStart('Monday')
+            .build())
+        .startDate(new Date())
+        .summary('Some summary')
+        .build())
+    .sequenceId('cf4ffb6c-895d-4e58-bdb4-0a3918e96a43')
+    .build();
+```
 
-Promise< [AlternateView](AlternateView.md) >
+</details>
+
+### Result
+
+Description: iCalendar document represented as AlternateView
+
+Return type: Promise< [AlternateView](AlternateView.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.alternateView()
+    .base64Data('<File content represented as Base64 string>')
+    .contentId('fa7a8948-4af1-432a-b4d9-ee0c28542e75')
+    .contentType(Models.contentType()
+        .charSet('utf-8')
+        .mediaType('text/calendar')
+        .name('meeting.ics')
+        .parameters([
+            Models.contentTypeParameter()
+                .name('Method')
+                .value('REQUEST')
+                .build(),
+            Models.contentTypeParameter()
+                .name('Name')
+                .value('meeting.ics')
+                .build(),
+            Models.contentTypeParameter()
+                .name('charset')
+                .value('utf-8')
+                .build()])
+        .build())
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.calendarAsAlternateRequest()
+    .value(Models.calendarDto()
+        .attendees([
+            Models.mailAddress()
+                .displayName('Attendee Name')
+                .address('attendee@aspose.com')
+                .participationStatus('Accepted')
+                .build()])
+        .description('Some description')
+        .endDate(new Date())
+        .location('Some location')
+        .organizer(Models.mailAddress()
+            .displayName('Organizer Name')
+            .address('organizer@aspose.com')
+            .build())
+        .recurrence(Models.dailyRecurrencePatternDto()
+            .interval(-1)
+            .occurs(10)
+            .weekStart('Monday')
+            .build())
+        .startDate(new Date())
+        .summary('Some summary')
+        .build())
+    .sequenceId('cf4ffb6c-895d-4e58-bdb4-0a3918e96a43')
+    .build();
+
+// Call method:
+let result = await api.calendar.asAlternate(request);
+
+// Result example:
+result = Models.alternateView()
+    .base64Data('<File content represented as Base64 string>')
+    .contentId('fa7a8948-4af1-432a-b4d9-ee0c28542e75')
+    .contentType(Models.contentType()
+        .charSet('utf-8')
+        .mediaType('text/calendar')
+        .name('meeting.ics')
+        .parameters([
+            Models.contentTypeParameter()
+                .name('Method')
+                .value('REQUEST')
+                .build(),
+            Models.contentTypeParameter()
+                .name('Name')
+                .value('meeting.ics')
+                .build(),
+            Models.contentTypeParameter()
+                .name('charset')
+                .value('utf-8')
+                .build()])
+        .build())
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
-                    
 <a name="asFile"></a>
-# **asFile**
+## **asFile**
+
+Description: Converts calendar model to specified format and returns as file.             
+
+Returns: File stream in specified format.
+
+Method call example:
 ```typescript
-public async asFile(request: model.CalendarAsFileRequest): Promise< Buffer >
+let result = await api.calendar.asFile(request);
 ```
 
-Converts calendar model to specified format and returns as file.             
+### Parameter: request
 
-### request Parameter
+Description: Calendar model and format to convert.
 
 See parameter model documentation at [CalendarAsFileRequest](CalendarAsFileRequest.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let request = Models.calendarAsFileRequest()
+    .value(Models.calendarDto()
+        .attendees([
+            Models.mailAddress()
+                .displayName('Attendee Name')
+                .address('attendee@aspose.com')
+                .participationStatus('Accepted')
+                .build()])
+        .description('Some description')
+        .endDate(new Date())
+        .location('Some location')
+        .organizer(Models.mailAddress()
+            .displayName('Organizer Name')
+            .address('organizer@aspose.com')
+            .build())
+        .recurrence(Models.dailyRecurrencePatternDto()
+            .interval(-1)
+            .occurs(10)
+            .weekStart('Monday')
+            .build())
+        .startDate(new Date())
+        .summary('Some summary')
+        .build())
+    .build();
+```
 
-Promise< Buffer >
+</details>
+
+### Result
+
+Description: File stream in specified format.
+
+Return type: Promise< Buffer >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.calendarAsFileRequest()
+    .value(Models.calendarDto()
+        .attendees([
+            Models.mailAddress()
+                .displayName('Attendee Name')
+                .address('attendee@aspose.com')
+                .participationStatus('Accepted')
+                .build()])
+        .description('Some description')
+        .endDate(new Date())
+        .location('Some location')
+        .organizer(Models.mailAddress()
+            .displayName('Organizer Name')
+            .address('organizer@aspose.com')
+            .build())
+        .recurrence(Models.dailyRecurrencePatternDto()
+            .interval(-1)
+            .occurs(10)
+            .weekStart('Monday')
+            .build())
+        .startDate(new Date())
+        .summary('Some summary')
+        .build())
+    .build();
+
+// Call method:
+let result = await api.calendar.asFile(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
-                    
 <a name="asMapi"></a>
-# **asMapi**
+## **asMapi**
+
+Description: Converts CalendarDto to MapiCalendarDto.             
+
+Returns: MAPI model calendar representation.
+
+Method call example:
 ```typescript
-public async asMapi(calendarDto: model.CalendarDto): Promise< MapiCalendarDto >
+let result = await api.calendar.asMapi(calendarDto);
 ```
 
-Converts CalendarDto to MapiCalendarDto.             
+### Parameter: calendarDto
 
-### calendarDto Parameter
+Description: iCalendar model calendar representation.
 
 See parameter model documentation at [CalendarDto](CalendarDto.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let calendarDto = Models.calendarDto()
+    .attendees([
+        Models.mailAddress()
+            .displayName('Attendee Name')
+            .address('attendee@aspose.com')
+            .participationStatus('Accepted')
+            .build()])
+    .description('Some description')
+    .endDate(new Date())
+    .location('Some location')
+    .organizer(Models.mailAddress()
+        .displayName('Organizer Name')
+        .address('organizer@aspose.com')
+        .build())
+    .recurrence(Models.dailyRecurrencePatternDto()
+        .interval(-1)
+        .occurs(10)
+        .weekStart('Monday')
+        .build())
+    .startDate(new Date())
+    .summary('Some summary')
+    .build();
+```
 
-Promise< [MapiCalendarDto](MapiCalendarDto.md) >
+</details>
+
+### Result
+
+Description: MAPI model calendar representation.
+
+Return type: Promise< [MapiCalendarDto](MapiCalendarDto.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.mapiCalendarDto()
+    .attendees(Models.mapiCalendarAttendeesDto()
+        .appointmentRecipients([
+            Models.mapiRecipientDto()
+                .emailAddress('organizer@aspose.com')
+                .addressType('SMTP')
+                .displayName('Organizer Name')
+                .recipientType('MapiTo')
+                .build(),
+            Models.mapiRecipientDto()
+                .emailAddress('attendee@aspose.com')
+                .addressType('SMTP')
+                .displayName('Attendee Name')
+                .recipientType('MapiTo')
+                .build()])
+        .build())
+    .busyStatus('Tentative')
+    .clientIntent([
+        'Manager'])
+    .endDate(new Date())
+    .location('Some location')
+    .recurrence(Models.mapiCalendarEventRecurrenceDto()
+        .recurrencePattern(Models.mapiCalendarDailyRecurrencePatternDto()
+            .frequency('Daily')
+            .occurrenceCount(10)
+            .weekStartDay('Monday')
+            .build())
+        .build())
+    .startDate(new Date())
+    .organizer(Models.mapiElectronicAddressDto()
+        .emailAddress('organizer@aspose.com')
+        .build())
+    .body('Some description')
+    .subject('Some summary')
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let calendarDto = Models.calendarDto()
+    .attendees([
+        Models.mailAddress()
+            .displayName('Attendee Name')
+            .address('attendee@aspose.com')
+            .participationStatus('Accepted')
+            .build()])
+    .description('Some description')
+    .endDate(new Date())
+    .location('Some location')
+    .organizer(Models.mailAddress()
+        .displayName('Organizer Name')
+        .address('organizer@aspose.com')
+        .build())
+    .recurrence(Models.dailyRecurrencePatternDto()
+        .interval(-1)
+        .occurs(10)
+        .weekStart('Monday')
+        .build())
+    .startDate(new Date())
+    .summary('Some summary')
+    .build();
+
+// Call method:
+let result = await api.calendar.asMapi(calendarDto);
+
+// Result example:
+result = Models.mapiCalendarDto()
+    .attendees(Models.mapiCalendarAttendeesDto()
+        .appointmentRecipients([
+            Models.mapiRecipientDto()
+                .emailAddress('organizer@aspose.com')
+                .addressType('SMTP')
+                .displayName('Organizer Name')
+                .recipientType('MapiTo')
+                .build(),
+            Models.mapiRecipientDto()
+                .emailAddress('attendee@aspose.com')
+                .addressType('SMTP')
+                .displayName('Attendee Name')
+                .recipientType('MapiTo')
+                .build()])
+        .build())
+    .busyStatus('Tentative')
+    .clientIntent([
+        'Manager'])
+    .endDate(new Date())
+    .location('Some location')
+    .recurrence(Models.mapiCalendarEventRecurrenceDto()
+        .recurrencePattern(Models.mapiCalendarDailyRecurrencePatternDto()
+            .frequency('Daily')
+            .occurrenceCount(10)
+            .weekStartDay('Monday')
+            .build())
+        .build())
+    .startDate(new Date())
+    .organizer(Models.mapiElectronicAddressDto()
+        .emailAddress('organizer@aspose.com')
+        .build())
+    .body('Some description')
+    .subject('Some summary')
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
-                    
 <a name="convert"></a>
-# **convert**
+## **convert**
+
+Description: Converts calendar document to specified format and returns as file.             
+
+Returns: File stream in specified format.
+
+Method call example:
 ```typescript
-public async convert(request: CalendarConvertRequest): Promise< Buffer >
+let result = await api.calendar.convert(request);
 ```
 
-Converts calendar document to specified format and returns as file.             
+### Parameter: request
 
-### Request Parameters
+Description: convert method request.
+
+See parameter model documentation at [CalendarConvertRequest](CalendarConvertRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new CalendarConvert(
-    format,
-    file)
+let request = Models.CalendarConvertRequest()
+    .format('Ics')
+    .file(fs.readFileSync('/path/to/calendar.msg'))
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **format** | **string**| File format. Enum, available values: Ics, Msg |
- **file** | **byte[]**| File to convert |
+</details>
 
-### Return type
+### Result
 
-Promise< Buffer >
+Description: File stream in specified format.
+
+Return type: Promise< Buffer >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.CalendarConvertRequest()
+    .format('Ics')
+    .file(fs.readFileSync('/path/to/calendar.msg'))
+    .build();
+
+// Call method:
+let result = await api.calendar.convert(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="fromFile"></a>
-# **fromFile**
+## **fromFile**
+
+Description: Converts calendar document to a model representation.             
+
+Returns: iCalendar model.
+
+Method call example:
 ```typescript
-public async fromFile(request: CalendarFromFileRequest): Promise< CalendarDto >
+let result = await api.calendar.fromFile(request);
 ```
 
-Converts calendar document to a model representation.             
+### Parameter: request
 
-### Request Parameters
+Description: fromFile method request.
+
+See parameter model documentation at [CalendarFromFileRequest](CalendarFromFileRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new CalendarFromFile(
-    file)
+let request = Models.CalendarFromFileRequest()
+    .file(fs.readFileSync('/path/to/calendar.ics'))
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **file** | **byte[]**| File to convert |
+</details>
 
-### Return type
+### Result
 
-Promise< [CalendarDto](CalendarDto.md) >
+Description: iCalendar model.
+
+Return type: Promise< [CalendarDto](CalendarDto.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.calendarDto()
+    .attendees([
+        Models.mailAddress()
+            .displayName('Attendee Name')
+            .address('attendee@aspose.com')
+            .participationStatus('Accepted')
+            .build()])
+    .description('Some description')
+    .endDate(new Date())
+    .location('Some location')
+    .organizer(Models.mailAddress()
+        .displayName('Organizer Name')
+        .address('organizer@aspose.com')
+        .build())
+    .recurrence(Models.dailyRecurrencePatternDto()
+        .interval(-1)
+        .occurs(10)
+        .weekStart('Monday')
+        .build())
+    .startDate(new Date())
+    .summary('Some summary')
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.CalendarFromFileRequest()
+    .file(fs.readFileSync('/path/to/calendar.ics'))
+    .build();
+
+// Call method:
+let result = await api.calendar.fromFile(request);
+
+// Result example:
+result = Models.calendarDto()
+    .attendees([
+        Models.mailAddress()
+            .displayName('Attendee Name')
+            .address('attendee@aspose.com')
+            .participationStatus('Accepted')
+            .build()])
+    .description('Some description')
+    .endDate(new Date())
+    .location('Some location')
+    .organizer(Models.mailAddress()
+        .displayName('Organizer Name')
+        .address('organizer@aspose.com')
+        .build())
+    .recurrence(Models.dailyRecurrencePatternDto()
+        .interval(-1)
+        .occurs(10)
+        .weekStart('Monday')
+        .build())
+    .startDate(new Date())
+    .summary('Some summary')
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="get"></a>
-# **get**
+## **get**
+
+Description: Get calendar file from storage.             
+
+Returns: iCalendar model.
+
+Method call example:
 ```typescript
-public async get(request: CalendarGetRequest): Promise< CalendarDto >
+let result = await api.calendar.get(request);
 ```
 
-Get calendar file from storage.             
+### Parameter: request
 
-### Request Parameters
+Description: get method request.
+
+See parameter model documentation at [CalendarGetRequest](CalendarGetRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new CalendarGet(
-    fileName,
-    folder=folder,
-    storage=storage)
+let request = Models.CalendarGetRequest()
+    .fileName('calendar.ics')
+    .folder('calendar/location/on/storage')
+    .storage('First Storage')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **fileName** | **string**| iCalendar file name in storage. |
- **folder** | **string**| Path to folder in storage. | [optional]
- **storage** | **string**| Storage name. | [optional]
+</details>
 
-### Return type
+### Result
 
-Promise< [CalendarDto](CalendarDto.md) >
+Description: iCalendar model.
+
+Return type: Promise< [CalendarDto](CalendarDto.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.calendarDto()
+    .attendees([
+        Models.mailAddress()
+            .displayName('Attendee Name')
+            .address('attendee@aspose.com')
+            .participationStatus('Accepted')
+            .build()])
+    .description('Some description')
+    .endDate(new Date())
+    .location('Some location')
+    .organizer(Models.mailAddress()
+        .displayName('Organizer Name')
+        .address('organizer@aspose.com')
+        .build())
+    .recurrence(Models.dailyRecurrencePatternDto()
+        .interval(-1)
+        .occurs(10)
+        .weekStart('Monday')
+        .build())
+    .startDate(new Date())
+    .summary('Some summary')
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.CalendarGetRequest()
+    .fileName('calendar.ics')
+    .folder('calendar/location/on/storage')
+    .storage('First Storage')
+    .build();
+
+// Call method:
+let result = await api.calendar.get(request);
+
+// Result example:
+result = Models.calendarDto()
+    .attendees([
+        Models.mailAddress()
+            .displayName('Attendee Name')
+            .address('attendee@aspose.com')
+            .participationStatus('Accepted')
+            .build()])
+    .description('Some description')
+    .endDate(new Date())
+    .location('Some location')
+    .organizer(Models.mailAddress()
+        .displayName('Organizer Name')
+        .address('organizer@aspose.com')
+        .build())
+    .recurrence(Models.dailyRecurrencePatternDto()
+        .interval(-1)
+        .occurs(10)
+        .weekStart('Monday')
+        .build())
+    .startDate(new Date())
+    .summary('Some summary')
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="getAsAlternate"></a>
-# **getAsAlternate**
+## **getAsAlternate**
+
+Description: Get iCalendar from storage as AlternateView             
+
+Returns: iCalendar document represented as AlternateView
+
+Method call example:
 ```typescript
-public async getAsAlternate(request: CalendarGetAsAlternateRequest): Promise< AlternateView >
+let result = await api.calendar.getAsAlternate(request);
 ```
 
-Get iCalendar from storage as AlternateView             
+### Parameter: request
 
-### Request Parameters
+Description: getAsAlternate method request.
+
+See parameter model documentation at [CalendarGetAsAlternateRequest](CalendarGetAsAlternateRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new CalendarGetAsAlternate(
-    fileName,
-    calendarAction,
-    sequenceId=sequenceId,
-    folder=folder,
-    storage=storage)
+let request = Models.CalendarGetAsAlternateRequest()
+    .fileName('calendar.ics')
+    .calendarAction('Create')
+    .folder('calendar/location/on/storage')
+    .storage('First Storage')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **fileName** | **string**| iCalendar file name in storage |
- **calendarAction** | **string**| iCalendar method type Enum, available values: Create, Update, Cancel |
- **sequenceId** | **string**| The sequence id | [optional]
- **folder** | **string**| Path to folder in storage | [optional]
- **storage** | **string**| Storage name | [optional]
+</details>
 
-### Return type
+### Result
 
-Promise< [AlternateView](AlternateView.md) >
+Description: iCalendar document represented as AlternateView
+
+Return type: Promise< [AlternateView](AlternateView.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.alternateView()
+    .base64Data('<File content represented as Base64 string>')
+    .contentId('fa7a8948-4af1-432a-b4d9-ee0c28542e75')
+    .contentType(Models.contentType()
+        .charSet('utf-8')
+        .mediaType('text/calendar')
+        .name('meeting.ics')
+        .parameters([
+            Models.contentTypeParameter()
+                .name('Method')
+                .value('REQUEST')
+                .build(),
+            Models.contentTypeParameter()
+                .name('Name')
+                .value('meeting.ics')
+                .build(),
+            Models.contentTypeParameter()
+                .name('charset')
+                .value('utf-8')
+                .build()])
+        .build())
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.CalendarGetAsAlternateRequest()
+    .fileName('calendar.ics')
+    .calendarAction('Create')
+    .folder('calendar/location/on/storage')
+    .storage('First Storage')
+    .build();
+
+// Call method:
+let result = await api.calendar.getAsAlternate(request);
+
+// Result example:
+result = Models.alternateView()
+    .base64Data('<File content represented as Base64 string>')
+    .contentId('fa7a8948-4af1-432a-b4d9-ee0c28542e75')
+    .contentType(Models.contentType()
+        .charSet('utf-8')
+        .mediaType('text/calendar')
+        .name('meeting.ics')
+        .parameters([
+            Models.contentTypeParameter()
+                .name('Method')
+                .value('REQUEST')
+                .build(),
+            Models.contentTypeParameter()
+                .name('Name')
+                .value('meeting.ics')
+                .build(),
+            Models.contentTypeParameter()
+                .name('charset')
+                .value('utf-8')
+                .build()])
+        .build())
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="getAsFile"></a>
-# **getAsFile**
+## **getAsFile**
+
+Description: Converts calendar document from storage to specified format and returns as file.             
+
+Returns: File stream in specified format.
+
+Method call example:
 ```typescript
-public async getAsFile(request: CalendarGetAsFileRequest): Promise< Buffer >
+let result = await api.calendar.getAsFile(request);
 ```
 
-Converts calendar document from storage to specified format and returns as file.             
+### Parameter: request
 
-### Request Parameters
+Description: getAsFile method request.
+
+See parameter model documentation at [CalendarGetAsFileRequest](CalendarGetAsFileRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new CalendarGetAsFile(
-    fileName,
-    format,
-    storage=storage,
-    folder=folder)
+let request = Models.CalendarGetAsFileRequest()
+    .fileName('calendar.msg')
+    .format('Ics')
+    .storage('First Storage')
+    .folder('calendar/file/location/on/storage')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **fileName** | **string**| Calendar document file name. |
- **format** | **string**| File format. Enum, available values: Ics, Msg |
- **storage** | **string**| Storage name. | [optional]
- **folder** | **string**| Path to folder in storage. | [optional]
+</details>
 
-### Return type
+### Result
 
-Promise< Buffer >
+Description: File stream in specified format.
+
+Return type: Promise< Buffer >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.CalendarGetAsFileRequest()
+    .fileName('calendar.msg')
+    .format('Ics')
+    .storage('First Storage')
+    .folder('calendar/file/location/on/storage')
+    .build();
+
+// Call method:
+let result = await api.calendar.getAsFile(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="getList"></a>
-# **getList**
+## **getList**
+
+Description: Get iCalendar list from storage folder.             
+
+Returns: iCalendar document list.
+
+Method call example:
 ```typescript
-public async getList(request: CalendarGetListRequest): Promise< CalendarStorageList >
+let result = await api.calendar.getList(request);
 ```
 
-Get iCalendar list from storage folder.             
+### Parameter: request
 
-### Request Parameters
+Description: getList method request.
+
+See parameter model documentation at [CalendarGetListRequest](CalendarGetListRequest.md).
+
+<details>
+    <summary>Parameter initialization example:</summary>
+    
 ```typescript
-new CalendarGetList(
-    folder,
-    itemsPerPage=itemsPerPage,
-    pageNumber=pageNumber,
-    storage=storage)
+let request = Models.CalendarGetListRequest()
+    .folder('some/folder/on/storage')
+    .itemsPerPage(10)
+    .pageNumber(0)
+    .storage('First Storage')
+    .build();
 ```
 
-Name | Type | Description | Notes
----- | ---- | ----------- | -----
- **folder** | **string**| Path to folder in storage. |
- **itemsPerPage** | **number**| Count of items on page. | [optional] [default to 10]
- **pageNumber** | **number**| Page number. | [optional] [default to 0]
- **storage** | **string**| Storage name. | [optional]
+</details>
 
-### Return type
+### Result
 
-Promise< [CalendarStorageList](CalendarStorageList.md) >
+Description: iCalendar document list.
+
+Return type: Promise< [CalendarStorageList](CalendarStorageList.md) >
+
+<details>
+    <summary>Result example</summary>
+
+```typescript
+let result = Models.calendarStorageList()
+    .value([
+        Models.storageModelOfCalendarDto()
+            .storageFile(Models.storageFileLocation()
+                .fileName('calendar.ics')
+                .storage('First Storage')
+                .folderPath('file/location/folder/on/storage')
+                .build())
+            .value(Models.calendarDto()
+                .attendees([
+                    Models.mailAddress()
+                        .displayName('Attendee Name')
+                        .address('attendee@aspose.com')
+                        .participationStatus('Accepted')
+                        .build()])
+                .description('Some description')
+                .endDate(new Date())
+                .location('Some location')
+                .organizer(Models.mailAddress()
+                    .displayName('Organizer Name')
+                    .address('organizer@aspose.com')
+                    .build())
+                .recurrence(Models.dailyRecurrencePatternDto()
+                    .interval(-1)
+                    .occurs(10)
+                    .weekStart('Monday')
+                    .build())
+                .startDate(new Date())
+                .summary('Some summary')
+                .build())
+            .build()])
+    .build();
+```
+
+</details>
+
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.CalendarGetListRequest()
+    .folder('some/folder/on/storage')
+    .itemsPerPage(10)
+    .pageNumber(0)
+    .storage('First Storage')
+    .build();
+
+// Call method:
+let result = await api.calendar.getList(request);
+
+// Result example:
+result = Models.calendarStorageList()
+    .value([
+        Models.storageModelOfCalendarDto()
+            .storageFile(Models.storageFileLocation()
+                .fileName('calendar.ics')
+                .storage('First Storage')
+                .folderPath('file/location/folder/on/storage')
+                .build())
+            .value(Models.calendarDto()
+                .attendees([
+                    Models.mailAddress()
+                        .displayName('Attendee Name')
+                        .address('attendee@aspose.com')
+                        .participationStatus('Accepted')
+                        .build()])
+                .description('Some description')
+                .endDate(new Date())
+                .location('Some location')
+                .organizer(Models.mailAddress()
+                    .displayName('Organizer Name')
+                    .address('organizer@aspose.com')
+                    .build())
+                .recurrence(Models.dailyRecurrencePatternDto()
+                    .interval(-1)
+                    .occurs(10)
+                    .weekStart('Monday')
+                    .build())
+                .startDate(new Date())
+                .summary('Some summary')
+                .build())
+            .build()])
+    .build();
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
-                    
+
 <a name="save"></a>
-# **save**
+## **save**
+
+Description: Save iCalendar             
+
+Method call example:
 ```typescript
-public async save(request: model.CalendarSaveRequest): Promise< any >
+await api.calendar.save(request);
 ```
 
-Save iCalendar             
+### Parameter: request
 
-### request Parameter
+Description: iCalendar create/update request
 
 See parameter model documentation at [CalendarSaveRequest](CalendarSaveRequest.md)
 
-### Return type
+<details>
+    <summary>Parameter initialization example:</summary>
+    
+```typescript
+let request = Models.calendarSaveRequest()
+    .storageFile(Models.storageFileLocation()
+        .fileName('calendar.ics')
+        .storage('First Storage')
+        .folderPath('file/location/folder/on/storage')
+        .build())
+    .value(Models.calendarDto()
+        .attendees([
+            Models.mailAddress()
+                .displayName('Attendee Name')
+                .address('attendee@aspose.com')
+                .participationStatus('Accepted')
+                .build()])
+        .description('Some description')
+        .endDate(new Date())
+        .location('Some location')
+        .organizer(Models.mailAddress()
+            .displayName('Organizer Name')
+            .address('organizer@aspose.com')
+            .build())
+        .recurrence(Models.dailyRecurrencePatternDto()
+            .interval(-1)
+            .occurs(10)
+            .weekStart('Monday')
+            .build())
+        .startDate(new Date())
+        .summary('Some summary')
+        .build())
+    .build();
+```
 
-Promise< any >
+</details>
+
+### Result
+
+Return type: Promise< any >
+
+### Complete example
+
+<details>
+    <summary>Method call example:</summary>
+
+```typescript
+const api = new EmailCloud(app_key, app_sid);
+
+// Prepare parameters:
+let request = Models.calendarSaveRequest()
+    .storageFile(Models.storageFileLocation()
+        .fileName('calendar.ics')
+        .storage('First Storage')
+        .folderPath('file/location/folder/on/storage')
+        .build())
+    .value(Models.calendarDto()
+        .attendees([
+            Models.mailAddress()
+                .displayName('Attendee Name')
+                .address('attendee@aspose.com')
+                .participationStatus('Accepted')
+                .build()])
+        .description('Some description')
+        .endDate(new Date())
+        .location('Some location')
+        .organizer(Models.mailAddress()
+            .displayName('Organizer Name')
+            .address('organizer@aspose.com')
+            .build())
+        .recurrence(Models.dailyRecurrencePatternDto()
+            .interval(-1)
+            .occurs(10)
+            .weekStart('Monday')
+            .build())
+        .startDate(new Date())
+        .summary('Some summary')
+        .build())
+    .build();
+
+// Call method:
+await api.calendar.save(request);
+```
+
+</details>
 
 [[Back to top]](#) [[Back to Model list]](Models.md) [[Back to API README]](README.md)
 
