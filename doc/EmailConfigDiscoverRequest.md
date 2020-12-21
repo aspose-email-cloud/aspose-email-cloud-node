@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 ## Example
 ```typescript
 let request = Models.EmailConfigDiscoverRequest()
+    .address('address@gmail.com')
     .build();
 ```

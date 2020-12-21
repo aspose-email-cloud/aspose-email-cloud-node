@@ -25,6 +25,7 @@ See parameter model documentation at [EmailConfigDiscoverRequest](EmailConfigDis
     
 ```typescript
 let request = Models.EmailConfigDiscoverRequest()
+    .address('address@gmail.com')
     .build();
 ```
 
@@ -102,6 +103,7 @@ const api = new EmailCloud(app_key, app_sid);
 
 // Prepare parameters:
 let request = Models.EmailConfigDiscoverRequest()
+    .address('address@gmail.com')
     .build();
 
 // Call method:
