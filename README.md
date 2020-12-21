@@ -50,9 +50,10 @@ See more details about SDK installation in this tutorial: [SDK setup](https://do
 ### Usage examples
 To use the API, you should create an EmailCloud object:
 ```typescript
-var appKey = "Your App Key";
-var appSid = "Your App SID";
-var api = new EmailCloud(appSid, appKey);
+let clientSecret = "Your Client secret";
+let clientId = "Your Client id";
+
+let api = new EmailCloud(clientSecret, clientId);
 ```
 
 #### Business cards recognition API

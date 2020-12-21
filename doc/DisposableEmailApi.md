@@ -53,7 +53,7 @@ let result = ;
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.DisposableEmailIsDisposableRequest()
