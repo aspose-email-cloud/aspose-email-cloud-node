@@ -30,7 +30,7 @@ export function suiteBase(suite: Suite): SuiteBase {
     const storage = 'First Storage';
     suite.timeout(100000);
     suite.beforeAll(async () => {
-        api = new EmailCloud(process.env.appSid, process.env.appKey, process.env.apiBaseUrl);
+        api = new EmailCloud(process.env.clientId, process.env.clientSecret, process.env.apiBaseUrl);
         const authUrl = process.env.authUrl;
         if (authUrl != null) api.configuration.authUrl = authUrl;
         folder = uuidv4();
