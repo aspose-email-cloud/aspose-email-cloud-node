@@ -96,7 +96,7 @@ export class EmailCloud {
     }
     
     /**
-     *  Check email address is disposable operations
+     *  Checks if an email is a disposable one
      */
     public get disposableEmail(): DisposableEmailApi {
         return this._disposableEmail;

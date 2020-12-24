@@ -21,7 +21,7 @@ API | Description
 [EmailCloud.**calendar**](CalendarApi_list.md) | iCalendar document operations.
 [EmailCloud.**contact**](ContactApi_list.md) | Contact document operations. Supported formats: VCard, MSG, WebDav
 [EmailCloud.**email**](EmailApi_list.md) | Email document (*.eml) operations.
-[EmailCloud.**disposableEmail**](DisposableEmailApi_list.md) | Check email address is disposable operations
+[EmailCloud.**disposableEmail**](DisposableEmailApi_list.md) | Checks if an email is a disposable one
 [EmailCloud.**emailConfig**](EmailConfigApi_list.md) | Email server configuration discovery.
 
 
