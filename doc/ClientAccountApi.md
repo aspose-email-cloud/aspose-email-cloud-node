@@ -66,7 +66,7 @@ let result = Models.emailClientAccount()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.ClientAccountGetRequest()
@@ -182,7 +182,7 @@ let result = Models.emailClientMultiAccount()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.ClientAccountGetMultiRequest()
@@ -287,7 +287,7 @@ Return type: Promise< any >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.clientAccountSaveRequest()
@@ -392,7 +392,7 @@ Return type: Promise< any >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.clientAccountSaveMultiRequest()

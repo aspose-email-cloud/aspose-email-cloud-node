@@ -25,6 +25,7 @@ See parameter model documentation at [EmailConfigDiscoverRequest](EmailConfigDis
     
 ```typescript
 let request = Models.EmailConfigDiscoverRequest()
+    .address('address@gmail.com')
     .build();
 ```
 
@@ -98,10 +99,11 @@ let result = Models.emailAccountConfigList()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.EmailConfigDiscoverRequest()
+    .address('address@gmail.com')
     .build();
 
 // Call method:
@@ -262,7 +264,7 @@ let result = Models.emailAccountConfigList()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.emailConfigDiscoverOauthRequest()
@@ -429,7 +431,7 @@ let result = Models.emailAccountConfigList()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.emailConfigDiscoverPasswordRequest()

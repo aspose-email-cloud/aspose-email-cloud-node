@@ -18,7 +18,7 @@ jobs:
           npm run compile
       - name: Test
         env:
-          appSid: ${{secrets.appSid}}
-          appKey: ${{secrets.appKey}}
+          clientId: ${{secrets.appSid}}
+          clientSecret: ${{secrets.appKey}}
           apiBaseUrl: "https://api-qa.aspose.cloud"
         run: npm run test-pipeline

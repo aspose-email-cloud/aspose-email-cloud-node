@@ -105,7 +105,7 @@ let result = Models.emailDto()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let mapiMessage = Models.mapiMessageDto()
@@ -247,7 +247,7 @@ Return type: Promise< Buffer >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.mapiMessageAsFileRequest()
@@ -375,7 +375,7 @@ let result = Models.mapiMessageDto()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.MapiMessageFromFileRequest()
@@ -508,7 +508,7 @@ let result = Models.mapiMessageDto()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.MapiMessageGetRequest()
@@ -632,7 +632,7 @@ Return type: Promise< any >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.mapiMessageSaveRequest()

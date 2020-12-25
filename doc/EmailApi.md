@@ -5,7 +5,7 @@ Email document (*.eml) operations.
 <a name="asFile"></a>
 ## **asFile**
 
-Description: Converts Email model to specified format and returns as file.             
+Description: Converts Email model to a specified format and returns as a file.             
 
 Returns: File stream in specified format.
 
@@ -67,7 +67,7 @@ Return type: Promise< Buffer >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.emailAsFileRequest()
@@ -209,7 +209,7 @@ let result = Models.mapiMessageDto()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let emailDto = Models.emailDto()
@@ -322,7 +322,7 @@ Return type: Promise< Buffer >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.EmailConvertRequest()
@@ -415,7 +415,7 @@ let result = Models.emailDto()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.EmailFromFileRequest()
@@ -536,7 +536,7 @@ let result = Models.emailDto()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.EmailGetRequest()
@@ -625,7 +625,7 @@ Return type: Promise< Buffer >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.EmailGetAsFileRequest()
@@ -732,7 +732,7 @@ let result = Models.emailStorageList()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.EmailGetListRequest()
@@ -855,7 +855,7 @@ Return type: Promise< any >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.emailSaveRequest()

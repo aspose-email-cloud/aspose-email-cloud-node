@@ -19,8 +19,8 @@ jobs:
         npm run compile
     - run: npm run test-pipeline
       env:
-        appSid: ${{secrets.appSidProd}}
-        appKey: ${{secrets.appKeyProd}}
+        clientId: ${{secrets.appSidProd}}
+        clientSecret: ${{secrets.appKeyProd}}
         apiBaseUrl: "https://api.aspose.cloud"
     - run: npm publish
       env:

@@ -80,7 +80,7 @@ Return type: Promise< Buffer >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.contactAsFileRequest()
@@ -237,7 +237,7 @@ let result = Models.mapiContactDto()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let contactDto = Models.contactDto()
@@ -352,7 +352,7 @@ Return type: Promise< Buffer >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.ContactConvertRequest()
@@ -458,7 +458,7 @@ let result = Models.contactDto()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.ContactFromFileRequest()
@@ -605,7 +605,7 @@ let result = Models.contactDto()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.ContactGetRequest()
@@ -708,7 +708,7 @@ Return type: Promise< Buffer >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.ContactGetAsFileRequest()
@@ -829,7 +829,7 @@ let result = Models.contactStorageList()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.ContactGetListRequest()
@@ -977,7 +977,7 @@ Return type: Promise< any >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.contactSaveRequest()

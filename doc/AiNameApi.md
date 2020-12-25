@@ -63,7 +63,7 @@ let result = Models.aiNameWeightedVariants()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.AiNameCompleteRequest()
@@ -152,7 +152,7 @@ let result = Models.aiNameWeightedVariants()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.AiNameExpandRequest()
@@ -261,7 +261,7 @@ let result = Models.aiNameWeightedVariants()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.aiNameParsedRequest()
@@ -364,7 +364,7 @@ let result = Models.aiNameFormatted()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.AiNameFormatRequest()
@@ -460,7 +460,7 @@ let result = Models.aiNameFormatted()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.aiNameParsedRequest()
@@ -552,7 +552,7 @@ let result = ;
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.AiNameGenderizeRequest()
@@ -641,7 +641,7 @@ let result = ;
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.aiNameParsedRequest()
@@ -738,7 +738,7 @@ let result = Models.aiNameMatchResult()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.AiNameMatchRequest()
@@ -863,7 +863,7 @@ let result = Models.aiNameMatchResult()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.aiNameMatchParsedRequest()
@@ -1004,7 +1004,7 @@ let result = Models.aiNameComponentList()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.AiNameParseRequest()
@@ -1097,7 +1097,7 @@ let result = ;
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.AiNameParseEmailAddressRequest()

@@ -96,7 +96,7 @@ let result = Models.alternateView()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.calendarAsAlternateRequest()
@@ -219,7 +219,7 @@ Return type: Promise< Buffer >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.calendarAsFileRequest()
@@ -359,7 +359,7 @@ let result = Models.mapiCalendarDto()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let calendarDto = Models.calendarDto()
@@ -472,7 +472,7 @@ Return type: Promise< Buffer >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.CalendarConvertRequest()
@@ -560,7 +560,7 @@ let result = Models.calendarDto()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.CalendarFromFileRequest()
@@ -673,7 +673,7 @@ let result = Models.calendarDto()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.CalendarGetRequest()
@@ -789,7 +789,7 @@ let result = Models.alternateView()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.CalendarGetAsAlternateRequest()
@@ -875,7 +875,7 @@ Return type: Promise< Buffer >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.CalendarGetAsFileRequest()
@@ -978,7 +978,7 @@ let result = Models.calendarStorageList()
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.CalendarGetListRequest()
@@ -1093,7 +1093,7 @@ Return type: Promise< any >
     <summary>Method call example:</summary>
 
 ```typescript
-const api = new EmailCloud(app_key, app_sid);
+const api = new EmailCloud(clientSecret, clientId);
 
 // Prepare parameters:
 let request = Models.calendarSaveRequest()

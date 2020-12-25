@@ -37,12 +37,12 @@ export class Configuration {
     /**
      * App SID.
      */
-    public appSID: string;
+    public clientId: string;
 
     /**
      * App key.
      */
-    public appKey: string;
+    public clientSecret: string;
 
     /**
      * Base Url.
@@ -70,8 +70,8 @@ export class Configuration {
      */
     public onPremise: boolean = false;
 
-    constructor(appKey: string, appSID: string, baseUrl?: string, debugMode?: boolean, apiVersion?: string) {
-        if (appKey && appSID) {
+    constructor(clientSecret: string, clientId: string, baseUrl?: string, debugMode?: boolean, apiVersion?: string) {
+        if (clientSecret && clientId) {
             this.onPremise = false;
         } else if (baseUrl) {
             this.onPremise = true;
@@ -86,8 +86,8 @@ export class Configuration {
         }
         this.authUrl = this.baseUrl;
 
-        this.appSID = appSID;
-        this.appKey = appKey;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
         this.debugMode = debugMode;
 
         if (apiVersion) {
