@@ -38,6 +38,11 @@ export class ClientThreadMoveRequest extends model.ClientThreadBaseRequest {
             name: "destinationFolder",
             baseName: "destinationFolder",
             type: "string",
+        },
+        {
+            name: "sourceFolder",
+            baseName: "sourceFolder",
+            type: "string",
         }    ];
 
     /**
@@ -51,23 +56,30 @@ export class ClientThreadMoveRequest extends model.ClientThreadBaseRequest {
      * Email account folder to move thread to.             
      */
     public destinationFolder: string;
+    /**
+     * Email account folder to move thread from.             
+     */
+    public sourceFolder: string;
 
     /**
      * Email client move thread request.             
      * @param accountLocation Email client account configuration location on storage.             
      * @param threadId Thread identifier.             
      * @param destinationFolder Email account folder to move thread to.             
+     * @param sourceFolder Email account folder to move thread from.             
      */
     public constructor(
         
         accountLocation?: model.StorageFileLocation,
         threadId?: string,
-        destinationFolder?: string
+        destinationFolder?: string,
+        sourceFolder?: string
     ) {
         super();
         this.accountLocation = accountLocation;
         this.threadId = threadId;
         this.destinationFolder = destinationFolder;
+        this.sourceFolder = sourceFolder;
         
     }
 }
@@ -107,6 +119,13 @@ export class ClientThreadMoveRequestBuilder {
     */
     public destinationFolder(destinationFolder: string): ClientThreadMoveRequestBuilder {
         this.model.destinationFolder = destinationFolder;
+        return this;
+    }
+    /**
+    * Email account folder to move thread from.             
+    */
+    public sourceFolder(sourceFolder: string): ClientThreadMoveRequestBuilder {
+        this.model.sourceFolder = sourceFolder;
         return this;
     }
 }

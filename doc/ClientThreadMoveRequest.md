@@ -6,6 +6,7 @@ Email client move thread request.
 Name | Type | Description | Notes
 ---- | ---- | ----------- | -----
 **destinationFolder** | **string** | Email account folder to move thread to.              | [default to undefined]
+**sourceFolder** | **string** | Email account folder to move thread from.              | [optional] [default to undefined]
 
  Parent class: [ClientThreadBaseRequest](ClientThreadBaseRequest.md)
 
@@ -14,6 +15,7 @@ Name | Type | Description | Notes
 ```typescript
 let clientThreadMoveRequest = Models.clientThreadMoveRequest()
     .destinationFolder('INBOX/SubFolder')
+    .sourceFolder('INBOX')
     .threadId('5')
     .accountLocation(Models.storageFileLocation()
         .fileName('email.account')
