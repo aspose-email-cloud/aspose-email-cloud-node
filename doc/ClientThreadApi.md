@@ -302,6 +302,7 @@ See parameter model documentation at [ClientThreadMoveRequest](ClientThreadMoveR
 ```typescript
 let request = Models.clientThreadMoveRequest()
     .destinationFolder('INBOX/SubFolder')
+    .sourceFolder('INBOX')
     .threadId('5')
     .accountLocation(Models.storageFileLocation()
         .fileName('email.account')
@@ -328,6 +329,7 @@ const api = new EmailCloud(clientSecret, clientId);
 // Prepare parameters:
 let request = Models.clientThreadMoveRequest()
     .destinationFolder('INBOX/SubFolder')
+    .sourceFolder('INBOX')
     .threadId('5')
     .accountLocation(Models.storageFileLocation()
         .fileName('email.account')
