@@ -29,7 +29,7 @@ import * as model from "./index";
  */
 export class EmailGetListRequest {
     /**
-     * Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
 
@@ -55,7 +55,7 @@ export class EmailGetListRequest {
 
     /**
      * Request model for emailGetList operation.
-     * @param format Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      * @param folder Path to folder in storage.
      * @param storage Storage name.
      * @param itemsPerPage Count of items on page.

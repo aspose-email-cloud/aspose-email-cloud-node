@@ -48,7 +48,7 @@ export class WeeklyRecurrencePatternDto extends model.RecurrencePatternDto {
     }
 
     /**
-     * Start days              Items: Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * Start days              Items: Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
      */
     public startDays: Array<string>;
 
@@ -57,7 +57,7 @@ export class WeeklyRecurrencePatternDto extends model.RecurrencePatternDto {
      * @param interval Number of recurrence units.             
      * @param occurs Number of occurrences of the recurrence pattern.             
      * @param endDate End date.             
-     * @param weekStart Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
      * @param startDays Start days             
      */
     public constructor(
@@ -117,14 +117,14 @@ export class WeeklyRecurrencePatternDtoBuilder {
         return this;
     }
     /**
-    * Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+    * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
     */
     public weekStart(weekStart: string): WeeklyRecurrencePatternDtoBuilder {
         this.model.weekStart = weekStart;
         return this;
     }
     /**
-    * Start days              Items: Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+    * Start days              Items: Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
     */
     public startDays(startDays: Array<string>): WeeklyRecurrencePatternDtoBuilder {
         this.model.startDays = startDays;

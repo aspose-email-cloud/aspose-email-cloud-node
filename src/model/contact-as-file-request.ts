@@ -53,7 +53,7 @@ export class ContactAsFileRequest {
     }
 
     /**
-     * Enumerates contact formats./nEnum, available values: VCard, WebDav, Msg
+     * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
      */
     public format: string;
     /**
@@ -63,7 +63,7 @@ export class ContactAsFileRequest {
 
     /**
      * Convert contact model to file request.             
-     * @param format Enumerates contact formats./nEnum, available values: VCard, WebDav, Msg
+     * @param format Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
      * @param value Contact model.             
      */
     public constructor(
@@ -95,7 +95,7 @@ export class ContactAsFileRequestBuilder {
     }
 
     /**
-    * Enumerates contact formats./nEnum, available values: VCard, WebDav, Msg
+    * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
     */
     public format(format: string): ContactAsFileRequestBuilder {
         this.model.format = format;

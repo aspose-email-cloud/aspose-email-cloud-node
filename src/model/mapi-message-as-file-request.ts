@@ -53,7 +53,7 @@ export class MapiMessageAsFileRequest {
     }
 
     /**
-     * Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
     /**
@@ -63,7 +63,7 @@ export class MapiMessageAsFileRequest {
 
     /**
      * Convert MapiMessage to file request.             
-     * @param format Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      * @param value MAPI message model.             
      */
     public constructor(
@@ -95,7 +95,7 @@ export class MapiMessageAsFileRequestBuilder {
     }
 
     /**
-    * Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+    * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
     */
     public format(format: string): MapiMessageAsFileRequestBuilder {
         this.model.format = format;

@@ -49,7 +49,7 @@ export class ClientMessageAppendFileRequest {
     public accountStorageFolder: string;
 
     /**
-     * Email file format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * Email file format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
 
@@ -69,7 +69,7 @@ export class ClientMessageAppendFileRequest {
      * @param file Message file to append.
      * @param storage Storage name where account file located.
      * @param accountStorageFolder Folder in storage where account file located.
-     * @param format Email file format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * @param format Email file format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      * @param folder Path to folder on email server to append message to.
      * @param markAsSent Determines that appended message should be market as sent or not.
      */

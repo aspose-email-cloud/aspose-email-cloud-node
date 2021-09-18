@@ -29,7 +29,7 @@ import * as model from "./index";
  */
 export class MapiContactGetRequest {
     /**
-     * Contact document format./nEnum, available values: VCard, WebDav, Msg
+     * Contact document format. Enum, available values: VCard, WebDav, Msg
      */
     public format: string;
 
@@ -50,7 +50,7 @@ export class MapiContactGetRequest {
 
     /**
      * Request model for mapiContactGet operation.
-     * @param format Contact document format./nEnum, available values: VCard, WebDav, Msg
+     * @param format Contact document format. Enum, available values: VCard, WebDav, Msg
      * @param fileName Contact document file name.
      * @param folder Path to folder in storage.
      * @param storage Storage name.

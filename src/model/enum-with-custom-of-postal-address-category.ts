@@ -50,14 +50,14 @@ export class EnumWithCustomOfPostalAddressCategory {
     }
 
     /**
-     * Address category./nEnum, available values: Home, Work, Custom
+     * Address category. Enum, available values: Home, Work, Custom
      */
     public value: string;
     public description: string;
 
     /**
      * 
-     * @param value Address category./nEnum, available values: Home, Work, Custom
+     * @param value Address category. Enum, available values: Home, Work, Custom
      * @param description 
      */
     public constructor(
@@ -89,7 +89,7 @@ export class EnumWithCustomOfPostalAddressCategoryBuilder {
     }
 
     /**
-    * Address category./nEnum, available values: Home, Work, Custom
+    * Address category. Enum, available values: Home, Work, Custom
     */
     public value(value: string): EnumWithCustomOfPostalAddressCategoryBuilder {
         this.model.value = value;

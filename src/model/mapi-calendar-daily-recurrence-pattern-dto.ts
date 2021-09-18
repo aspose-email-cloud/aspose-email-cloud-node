@@ -48,25 +48,25 @@ export class MapiCalendarDailyRecurrencePatternDto extends model.MapiCalendarRec
     }
 
     /**
-     * Days of week at which the event occurs.              Items: Enumerates the days of week of the mapi calendar recurrence pattern./nEnum, available values: Saturday, Friday, Thursday, Wednesday, Tuesday, Monday, Sunday
+     * Days of week at which the event occurs.              Items: Enumerates the days of week of the mapi calendar recurrence pattern. Enum, available values: Saturday, Friday, Thursday, Wednesday, Tuesday, Monday, Sunday
      */
     public dayOfWeek: Array<string>;
 
     /**
      * Represents the daily recurrence pattern of the mapi calendar.             
-     * @param calendarType Enumerated the calendar type of the mapi recurrence./nEnum, available values: Default, CalGregorian, CalGregorianUs, CalJapan, CalTaiwan, CalKorea, CalHijri, CalThai, CalHebrew, CalGregorianMeFrench, CalGregorianArabic, CalGregorianXLitEnglish, CalGregorianXLitFrench, CalLunarJapanese, CalChineseLunar, CalSaka, CalLunarEtoChn, CalLunarEtoKor, CalLunarRokuyou, CalLunarKorean, CalUmAlQura
+     * @param calendarType Enumerated the calendar type of the mapi recurrence. Enum, available values: Default, CalGregorian, CalGregorianUs, CalJapan, CalTaiwan, CalKorea, CalHijri, CalThai, CalHebrew, CalGregorianMeFrench, CalGregorianArabic, CalGregorianXLitEnglish, CalGregorianXLitFrench, CalLunarJapanese, CalChineseLunar, CalSaka, CalLunarEtoChn, CalLunarEtoKor, CalLunarRokuyou, CalLunarKorean, CalUmAlQura
      * @param deletedInstanceDates An array of dates, each of which is the original instance date of either a deleted instance or a modified instance for this recurrence.             
      * @param endDate End date of an item recurrence pattern.             
-     * @param endType Enumerates the ending type for the recurrence./nEnum, available values: None, EndAfterDate, EndAfterNOccurrences, NeverEnd
+     * @param endType Enumerates the ending type for the recurrence. Enum, available values: None, EndAfterDate, EndAfterNOccurrences, NeverEnd
      * @param exceptions An exception specifies changes to an instance of a recurring series.             
-     * @param frequency Enumerates mapi calendar recurrence frequency./nEnum, available values: None, Daily, Weekly, Monthly, Yearly
+     * @param frequency Enumerates mapi calendar recurrence frequency. Enum, available values: None, Daily, Weekly, Monthly, Yearly
      * @param modifiedInstanceDates An array of dates, each of which is the date of a modified instance.             
      * @param occurrenceCount Number of occurrences in a recurrence.             
-     * @param patternType Enumerates the mapi calendar recurrence pattern types./nEnum, available values: Day, Week, Month, MonthEnd, MonthNth, HjMonth, HjMonthNth, HjMonthEnd
+     * @param patternType Enumerates the mapi calendar recurrence pattern types. Enum, available values: Day, Week, Month, MonthEnd, MonthNth, HjMonth, HjMonthNth, HjMonthEnd
      * @param period Interval at which the meeting pattern repeats.             
      * @param slidingFlag Defines whether pattern is sliding or not.             
      * @param startDate Start date of an item recurrence pattern.             
-     * @param weekStartDay Day of week./nEnum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * @param weekStartDay Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      * @param dayOfWeek Days of week at which the event occurs.             
      */
     public constructor(
@@ -123,7 +123,7 @@ export class MapiCalendarDailyRecurrencePatternDtoBuilder {
     }
 
     /**
-    * Enumerated the calendar type of the mapi recurrence./nEnum, available values: Default, CalGregorian, CalGregorianUs, CalJapan, CalTaiwan, CalKorea, CalHijri, CalThai, CalHebrew, CalGregorianMeFrench, CalGregorianArabic, CalGregorianXLitEnglish, CalGregorianXLitFrench, CalLunarJapanese, CalChineseLunar, CalSaka, CalLunarEtoChn, CalLunarEtoKor, CalLunarRokuyou, CalLunarKorean, CalUmAlQura
+    * Enumerated the calendar type of the mapi recurrence. Enum, available values: Default, CalGregorian, CalGregorianUs, CalJapan, CalTaiwan, CalKorea, CalHijri, CalThai, CalHebrew, CalGregorianMeFrench, CalGregorianArabic, CalGregorianXLitEnglish, CalGregorianXLitFrench, CalLunarJapanese, CalChineseLunar, CalSaka, CalLunarEtoChn, CalLunarEtoKor, CalLunarRokuyou, CalLunarKorean, CalUmAlQura
     */
     public calendarType(calendarType: string): MapiCalendarDailyRecurrencePatternDtoBuilder {
         this.model.calendarType = calendarType;
@@ -144,7 +144,7 @@ export class MapiCalendarDailyRecurrencePatternDtoBuilder {
         return this;
     }
     /**
-    * Enumerates the ending type for the recurrence./nEnum, available values: None, EndAfterDate, EndAfterNOccurrences, NeverEnd
+    * Enumerates the ending type for the recurrence. Enum, available values: None, EndAfterDate, EndAfterNOccurrences, NeverEnd
     */
     public endType(endType: string): MapiCalendarDailyRecurrencePatternDtoBuilder {
         this.model.endType = endType;
@@ -158,7 +158,7 @@ export class MapiCalendarDailyRecurrencePatternDtoBuilder {
         return this;
     }
     /**
-    * Enumerates mapi calendar recurrence frequency./nEnum, available values: None, Daily, Weekly, Monthly, Yearly
+    * Enumerates mapi calendar recurrence frequency. Enum, available values: None, Daily, Weekly, Monthly, Yearly
     */
     public frequency(frequency: string): MapiCalendarDailyRecurrencePatternDtoBuilder {
         this.model.frequency = frequency;
@@ -179,7 +179,7 @@ export class MapiCalendarDailyRecurrencePatternDtoBuilder {
         return this;
     }
     /**
-    * Enumerates the mapi calendar recurrence pattern types./nEnum, available values: Day, Week, Month, MonthEnd, MonthNth, HjMonth, HjMonthNth, HjMonthEnd
+    * Enumerates the mapi calendar recurrence pattern types. Enum, available values: Day, Week, Month, MonthEnd, MonthNth, HjMonth, HjMonthNth, HjMonthEnd
     */
     public patternType(patternType: string): MapiCalendarDailyRecurrencePatternDtoBuilder {
         this.model.patternType = patternType;
@@ -207,14 +207,14 @@ export class MapiCalendarDailyRecurrencePatternDtoBuilder {
         return this;
     }
     /**
-    * Day of week./nEnum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+    * Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
     */
     public weekStartDay(weekStartDay: string): MapiCalendarDailyRecurrencePatternDtoBuilder {
         this.model.weekStartDay = weekStartDay;
         return this;
     }
     /**
-    * Days of week at which the event occurs.              Items: Enumerates the days of week of the mapi calendar recurrence pattern./nEnum, available values: Saturday, Friday, Thursday, Wednesday, Tuesday, Monday, Sunday
+    * Days of week at which the event occurs.              Items: Enumerates the days of week of the mapi calendar recurrence pattern. Enum, available values: Saturday, Friday, Thursday, Wednesday, Tuesday, Monday, Sunday
     */
     public dayOfWeek(dayOfWeek: Array<string>): MapiCalendarDailyRecurrencePatternDtoBuilder {
         this.model.dayOfWeek = dayOfWeek;

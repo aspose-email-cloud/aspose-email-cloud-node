@@ -50,14 +50,14 @@ export class EnumWithCustomOfEventCategory {
     }
 
     /**
-     * Event category./nEnum, available values: Custom, Birthday, Anniversary
+     * Event category. Enum, available values: Custom, Birthday, Anniversary
      */
     public value: string;
     public description: string;
 
     /**
      * 
-     * @param value Event category./nEnum, available values: Custom, Birthday, Anniversary
+     * @param value Event category. Enum, available values: Custom, Birthday, Anniversary
      * @param description 
      */
     public constructor(
@@ -89,7 +89,7 @@ export class EnumWithCustomOfEventCategoryBuilder {
     }
 
     /**
-    * Event category./nEnum, available values: Custom, Birthday, Anniversary
+    * Event category. Enum, available values: Custom, Birthday, Anniversary
     */
     public value(value: string): EnumWithCustomOfEventCategoryBuilder {
         this.model.value = value;

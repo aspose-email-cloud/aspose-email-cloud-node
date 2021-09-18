@@ -29,7 +29,7 @@ import * as model from "./index";
  */
 export class CalendarConvertRequest {
     /**
-     * File format./nEnum, available values: Ics, Msg
+     * File format. Enum, available values: Ics, Msg
      */
     public format: string;
 
@@ -40,7 +40,7 @@ export class CalendarConvertRequest {
 
     /**
      * Request model for calendarConvert operation.
-     * @param format File format./nEnum, available values: Ics, Msg
+     * @param format File format. Enum, available values: Ics, Msg
      * @param file File to convert
      */
     public constructor(

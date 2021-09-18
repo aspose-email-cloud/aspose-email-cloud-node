@@ -92,7 +92,7 @@ export class MapiCalendarTimeZoneRuleDto {
      */
     public date: Date;
     /**
-     * Day of week./nEnum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      */
     public dayOfWeek: string;
     /**
@@ -112,7 +112,7 @@ export class MapiCalendarTimeZoneRuleDto {
      */
     public month: number;
     /**
-     * Day positions, typically found in a month./nEnum, available values: None, First, Second, Third, Fourth, Last
+     * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
      */
     public position: string;
     /**
@@ -127,12 +127,12 @@ export class MapiCalendarTimeZoneRuleDto {
     /**
      * Represents time zone rule that indicate when to begin using the Standard/Daylight time.             
      * @param date Date and time that indicate when to begin using the Standard/Daylight time.             
-     * @param dayOfWeek Day of week./nEnum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+     * @param dayOfWeek Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
      * @param hour Hour.             
      * @param milliseconds Milliseconds.             
      * @param minute Minute.             
      * @param month Month.             
-     * @param position Day positions, typically found in a month./nEnum, available values: None, First, Second, Third, Fourth, Last
+     * @param position Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
      * @param seconds Seconds.             
      * @param year Year.             
      */
@@ -186,7 +186,7 @@ export class MapiCalendarTimeZoneRuleDtoBuilder {
         return this;
     }
     /**
-    * Day of week./nEnum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+    * Day of week. Enum, available values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
     */
     public dayOfWeek(dayOfWeek: string): MapiCalendarTimeZoneRuleDtoBuilder {
         this.model.dayOfWeek = dayOfWeek;
@@ -221,7 +221,7 @@ export class MapiCalendarTimeZoneRuleDtoBuilder {
         return this;
     }
     /**
-    * Day positions, typically found in a month./nEnum, available values: None, First, Second, Third, Fourth, Last
+    * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
     */
     public position(position: string): MapiCalendarTimeZoneRuleDtoBuilder {
         this.model.position = position;

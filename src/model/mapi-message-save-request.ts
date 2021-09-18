@@ -48,7 +48,7 @@ export class MapiMessageSaveRequest extends model.StorageModelOfMapiMessageDto {
     }
 
     /**
-     * Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
 
@@ -56,7 +56,7 @@ export class MapiMessageSaveRequest extends model.StorageModelOfMapiMessageDto {
      * MapiMessage save to storage request.             
      * @param storageFile 
      * @param value 
-     * @param format Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public constructor(
         
@@ -97,7 +97,7 @@ export class MapiMessageSaveRequestBuilder {
         return this;
     }
     /**
-    * Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+    * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
     */
     public format(format: string): MapiMessageSaveRequestBuilder {
         this.model.format = format;

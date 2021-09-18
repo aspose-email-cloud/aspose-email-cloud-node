@@ -84,7 +84,7 @@ export class AiNameCulturalContext {
      */
     public encoding: string;
     /**
-     * Name writing style./nEnum, available values: Formal, Informal, Legal, Academic
+     * Name writing style. Enum, available values: Formal, Informal, Legal, Academic
      */
     public style: string;
 
@@ -94,7 +94,7 @@ export class AiNameCulturalContext {
      * @param location A geographic code such as an ISO-3166 two letter country code, for example \"FR\" for France             
      * @param script A writing system code; starts with the ISO-15924 script name             
      * @param encoding A character encoding name             
-     * @param style Name writing style./nEnum, available values: Formal, Informal, Legal, Academic
+     * @param style Name writing style. Enum, available values: Formal, Informal, Legal, Academic
      */
     public constructor(
         
@@ -159,7 +159,7 @@ export class AiNameCulturalContextBuilder {
         return this;
     }
     /**
-    * Name writing style./nEnum, available values: Formal, Informal, Legal, Academic
+    * Name writing style. Enum, available values: Formal, Informal, Legal, Academic
     */
     public style(style: string): AiNameCulturalContextBuilder {
         this.model.style = style;

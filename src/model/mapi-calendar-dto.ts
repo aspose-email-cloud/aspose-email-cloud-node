@@ -141,11 +141,11 @@ export class MapiCalendarDto extends model.MapiMessageItemBaseDto {
      */
     public attendees: model.MapiCalendarAttendeesDto;
     /**
-     * Enumerates the mapi calendar possible busy status./nEnum, available values: Free, Tentative, Busy, OutOfOffice
+     * Enumerates the mapi calendar possible busy status. Enum, available values: Free, Tentative, Busy, OutOfOffice
      */
     public busyStatus: string;
     /**
-     * Actions the user has taken on this Meeting object.              Items: Enumerates the actions the user can taken on the Meeting object./nEnum, available values: Manager, Delegate, DeletedWithNoResponse, DeletedExceptionWithNoResponse, RespondedTentative, RespondedAccept, RespondedDecline, ModifiedStartTime, ModifiedEndTime, ModifiedLocation, RespondedExceptionDecline, Canceled, ExceptionCanceled
+     * Actions the user has taken on this Meeting object.              Items: Enumerates the actions the user can taken on the Meeting object. Enum, available values: Manager, Delegate, DeletedWithNoResponse, DeletedExceptionWithNoResponse, RespondedTentative, RespondedAccept, RespondedDecline, ModifiedStartTime, ModifiedEndTime, ModifiedLocation, RespondedExceptionDecline, Canceled, ExceptionCanceled
      */
     public clientIntent: Array<string>;
     /**
@@ -212,20 +212,20 @@ export class MapiCalendarDto extends model.MapiMessageItemBaseDto {
      * @param body Message text.             
      * @param bodyHtml Gets the BodyRtf of the message converted to HTML, if present, otherwise an empty string.             
      * @param bodyRtf RTF formatted message text.             
-     * @param bodyType The content type of message body./nEnum, available values: PlainText, Html, Rtf
+     * @param bodyType The content type of message body. Enum, available values: PlainText, Html, Rtf
      * @param categories Contains keywords or categories for the message object.             
      * @param companies Contains the names of the companies that are associated with an item.             
      * @param itemId The item id, uses with a server.             
      * @param messageClass Case-sensitive string that identifies the sender-defined message class, such as IPM.Note. The message class specifies the type, purpose, or content of the message.             
      * @param mileage Contains the mileage information that is associated with an item.             
      * @param recipients Recipients of the message.             
-     * @param sensitivity Contains values that indicate the message sensitivity./nEnum, available values: None, Personal, Private, CompanyConfidential
+     * @param sensitivity Contains values that indicate the message sensitivity. Enum, available values: None, Personal, Private, CompanyConfidential
      * @param subject Subject of the message.             
      * @param subjectPrefix Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
      * @param properties List of MAPI properties             
      * @param appointmentCounterProposal Value indicating whether a Meeting Response object is a counter proposal.             
      * @param attendees Attendees             
-     * @param busyStatus Enumerates the mapi calendar possible busy status./nEnum, available values: Free, Tentative, Busy, OutOfOffice
+     * @param busyStatus Enumerates the mapi calendar possible busy status. Enum, available values: Free, Tentative, Busy, OutOfOffice
      * @param clientIntent Actions the user has taken on this Meeting object.             
      * @param endDate End date and time of the event. If the date is not set, default value for DateTime is returned.             
      * @param endDateTimeZone Time zone information that indicates the time zone of the EndDate property.             
@@ -371,7 +371,7 @@ export class MapiCalendarDtoBuilder {
         return this;
     }
     /**
-    * The content type of message body./nEnum, available values: PlainText, Html, Rtf
+    * The content type of message body. Enum, available values: PlainText, Html, Rtf
     */
     public bodyType(bodyType: string): MapiCalendarDtoBuilder {
         this.model.bodyType = bodyType;
@@ -420,7 +420,7 @@ export class MapiCalendarDtoBuilder {
         return this;
     }
     /**
-    * Contains values that indicate the message sensitivity./nEnum, available values: None, Personal, Private, CompanyConfidential
+    * Contains values that indicate the message sensitivity. Enum, available values: None, Personal, Private, CompanyConfidential
     */
     public sensitivity(sensitivity: string): MapiCalendarDtoBuilder {
         this.model.sensitivity = sensitivity;
@@ -462,14 +462,14 @@ export class MapiCalendarDtoBuilder {
         return this;
     }
     /**
-    * Enumerates the mapi calendar possible busy status./nEnum, available values: Free, Tentative, Busy, OutOfOffice
+    * Enumerates the mapi calendar possible busy status. Enum, available values: Free, Tentative, Busy, OutOfOffice
     */
     public busyStatus(busyStatus: string): MapiCalendarDtoBuilder {
         this.model.busyStatus = busyStatus;
         return this;
     }
     /**
-    * Actions the user has taken on this Meeting object.              Items: Enumerates the actions the user can taken on the Meeting object./nEnum, available values: Manager, Delegate, DeletedWithNoResponse, DeletedExceptionWithNoResponse, RespondedTentative, RespondedAccept, RespondedDecline, ModifiedStartTime, ModifiedEndTime, ModifiedLocation, RespondedExceptionDecline, Canceled, ExceptionCanceled
+    * Actions the user has taken on this Meeting object.              Items: Enumerates the actions the user can taken on the Meeting object. Enum, available values: Manager, Delegate, DeletedWithNoResponse, DeletedExceptionWithNoResponse, RespondedTentative, RespondedAccept, RespondedDecline, ModifiedStartTime, ModifiedEndTime, ModifiedLocation, RespondedExceptionDecline, Canceled, ExceptionCanceled
     */
     public clientIntent(clientIntent: Array<string>): MapiCalendarDtoBuilder {
         this.model.clientIntent = clientIntent;

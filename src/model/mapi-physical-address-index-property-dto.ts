@@ -48,14 +48,14 @@ export class MapiPhysicalAddressIndexPropertyDto extends model.MapiPropertyDto {
     }
 
     /**
-     * Identifies the display types for physical addresses./nEnum, available values: None, Home, Business, Other
+     * Identifies the display types for physical addresses. Enum, available values: None, Home, Business, Other
      */
     public value: string;
 
     /**
      * Mapi property with PhysicalAddressIndexType value             
      * @param descriptor Property descriptor             
-     * @param value Identifies the display types for physical addresses./nEnum, available values: None, Home, Business, Other
+     * @param value Identifies the display types for physical addresses. Enum, available values: None, Home, Business, Other
      */
     public constructor(
         
@@ -94,7 +94,7 @@ export class MapiPhysicalAddressIndexPropertyDtoBuilder {
         return this;
     }
     /**
-    * Identifies the display types for physical addresses./nEnum, available values: None, Home, Business, Other
+    * Identifies the display types for physical addresses. Enum, available values: None, Home, Business, Other
     */
     public value(value: string): MapiPhysicalAddressIndexPropertyDtoBuilder {
         this.model.value = value;

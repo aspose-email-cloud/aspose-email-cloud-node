@@ -48,7 +48,7 @@ export class MapiCalendarSaveRequest extends model.StorageModelOfMapiCalendarDto
     }
 
     /**
-     * Calendar file format./nEnum, available values: Ics, Msg
+     * Calendar file format. Enum, available values: Ics, Msg
      */
     public format: string;
 
@@ -56,7 +56,7 @@ export class MapiCalendarSaveRequest extends model.StorageModelOfMapiCalendarDto
      * Save MapiCalendar to storage request.             
      * @param storageFile 
      * @param value 
-     * @param format Calendar file format./nEnum, available values: Ics, Msg
+     * @param format Calendar file format. Enum, available values: Ics, Msg
      */
     public constructor(
         
@@ -97,7 +97,7 @@ export class MapiCalendarSaveRequestBuilder {
         return this;
     }
     /**
-    * Calendar file format./nEnum, available values: Ics, Msg
+    * Calendar file format. Enum, available values: Ics, Msg
     */
     public format(format: string): MapiCalendarSaveRequestBuilder {
         this.model.format = format;

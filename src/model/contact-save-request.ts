@@ -48,7 +48,7 @@ export class ContactSaveRequest extends model.StorageModelOfContactDto {
     }
 
     /**
-     * Enumerates contact formats./nEnum, available values: VCard, WebDav, Msg
+     * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
      */
     public format: string;
 
@@ -56,7 +56,7 @@ export class ContactSaveRequest extends model.StorageModelOfContactDto {
      * Contact save to storage request             
      * @param storageFile 
      * @param value 
-     * @param format Enumerates contact formats./nEnum, available values: VCard, WebDav, Msg
+     * @param format Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
      */
     public constructor(
         
@@ -97,7 +97,7 @@ export class ContactSaveRequestBuilder {
         return this;
     }
     /**
-    * Enumerates contact formats./nEnum, available values: VCard, WebDav, Msg
+    * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
     */
     public format(format: string): ContactSaveRequestBuilder {
         this.model.format = format;

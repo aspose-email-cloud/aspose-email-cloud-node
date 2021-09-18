@@ -48,14 +48,14 @@ export class MapiLegacyFreeBusyPropertyDto extends model.MapiPropertyDto {
     }
 
     /**
-     * Represents the free/busy status for a calendar event./nEnum, available values: Free, Tentative, Busy, Oof, WorkingElsewhere, NoData
+     * Represents the free/busy status for a calendar event. Enum, available values: Free, Tentative, Busy, Oof, WorkingElsewhere, NoData
      */
     public value: string;
 
     /**
      * Mapi property with LegacyFreeBusyType value             
      * @param descriptor Property descriptor             
-     * @param value Represents the free/busy status for a calendar event./nEnum, available values: Free, Tentative, Busy, Oof, WorkingElsewhere, NoData
+     * @param value Represents the free/busy status for a calendar event. Enum, available values: Free, Tentative, Busy, Oof, WorkingElsewhere, NoData
      */
     public constructor(
         
@@ -94,7 +94,7 @@ export class MapiLegacyFreeBusyPropertyDtoBuilder {
         return this;
     }
     /**
-    * Represents the free/busy status for a calendar event./nEnum, available values: Free, Tentative, Busy, Oof, WorkingElsewhere, NoData
+    * Represents the free/busy status for a calendar event. Enum, available values: Free, Tentative, Busy, Oof, WorkingElsewhere, NoData
     */
     public value(value: string): MapiLegacyFreeBusyPropertyDtoBuilder {
         this.model.value = value;

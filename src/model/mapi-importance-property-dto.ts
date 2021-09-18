@@ -48,14 +48,14 @@ export class MapiImportancePropertyDto extends model.MapiPropertyDto {
     }
 
     /**
-     * Levels of importance for an item./nEnum, available values: Low, Normal, High
+     * Levels of importance for an item. Enum, available values: Low, Normal, High
      */
     public value: string;
 
     /**
      * Mapi property with ImportanceChoicesType value             
      * @param descriptor Property descriptor             
-     * @param value Levels of importance for an item./nEnum, available values: Low, Normal, High
+     * @param value Levels of importance for an item. Enum, available values: Low, Normal, High
      */
     public constructor(
         
@@ -94,7 +94,7 @@ export class MapiImportancePropertyDtoBuilder {
         return this;
     }
     /**
-    * Levels of importance for an item./nEnum, available values: Low, Normal, High
+    * Levels of importance for an item. Enum, available values: Low, Normal, High
     */
     public value(value: string): MapiImportancePropertyDtoBuilder {
         this.model.value = value;

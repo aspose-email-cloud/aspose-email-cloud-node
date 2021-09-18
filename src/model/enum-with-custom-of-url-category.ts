@@ -50,14 +50,14 @@ export class EnumWithCustomOfUrlCategory {
     }
 
     /**
-     * Url category./nEnum, available values: Profile, HomePage, Home, Work, Blog, Ftp, Custom
+     * Url category. Enum, available values: Profile, HomePage, Home, Work, Blog, Ftp, Custom
      */
     public value: string;
     public description: string;
 
     /**
      * 
-     * @param value Url category./nEnum, available values: Profile, HomePage, Home, Work, Blog, Ftp, Custom
+     * @param value Url category. Enum, available values: Profile, HomePage, Home, Work, Blog, Ftp, Custom
      * @param description 
      */
     public constructor(
@@ -89,7 +89,7 @@ export class EnumWithCustomOfUrlCategoryBuilder {
     }
 
     /**
-    * Url category./nEnum, available values: Profile, HomePage, Home, Work, Blog, Ftp, Custom
+    * Url category. Enum, available values: Profile, HomePage, Home, Work, Blog, Ftp, Custom
     */
     public value(value: string): EnumWithCustomOfUrlCategoryBuilder {
         this.model.value = value;

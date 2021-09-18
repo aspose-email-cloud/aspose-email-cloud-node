@@ -62,7 +62,7 @@ export class CalendarAsAlternateRequest {
      */
     public value: model.CalendarDto;
     /**
-     * iCalendar actions./nEnum, available values: Create, Update, Cancel
+     * iCalendar actions. Enum, available values: Create, Update, Cancel
      */
     public action: string;
     /**
@@ -73,7 +73,7 @@ export class CalendarAsAlternateRequest {
     /**
      * Convert iCalendar to AlternateView request             
      * @param value iCalendar document model             
-     * @param action iCalendar actions./nEnum, available values: Create, Update, Cancel
+     * @param action iCalendar actions. Enum, available values: Create, Update, Cancel
      * @param sequenceId iCalendar sequence id             
      */
     public constructor(
@@ -114,7 +114,7 @@ export class CalendarAsAlternateRequestBuilder {
         return this;
     }
     /**
-    * iCalendar actions./nEnum, available values: Create, Update, Cancel
+    * iCalendar actions. Enum, available values: Create, Update, Cancel
     */
     public action(action: string): CalendarAsAlternateRequestBuilder {
         this.model.action = action;

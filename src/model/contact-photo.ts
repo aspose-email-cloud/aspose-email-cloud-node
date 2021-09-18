@@ -58,7 +58,7 @@ export class ContactPhoto {
     }
 
     /**
-     * MapiContact photo image format./nEnum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
+     * MapiContact photo image format. Enum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
      */
     public photoImageFormat: string;
     /**
@@ -78,7 +78,7 @@ export class ContactPhoto {
 
     /**
      * Person's photo.             
-     * @param photoImageFormat MapiContact photo image format./nEnum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
+     * @param photoImageFormat MapiContact photo image format. Enum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
      * @param base64Data Photo serialized as base64 string.             
      */
     public constructor(
@@ -111,7 +111,7 @@ export class ContactPhotoBuilder {
     }
 
     /**
-    * MapiContact photo image format./nEnum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
+    * MapiContact photo image format. Enum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
     */
     public photoImageFormat(photoImageFormat: string): ContactPhotoBuilder {
         this.model.photoImageFormat = photoImageFormat;

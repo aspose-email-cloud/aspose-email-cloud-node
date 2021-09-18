@@ -53,7 +53,7 @@ export class AiNameExtractedComponent {
     }
 
     /**
-     * Extracted from email address name component category./nEnum, available values: Unknown, GivenName, Surname, SomeName, NoName, Initial
+     * Extracted from email address name component category. Enum, available values: Unknown, GivenName, Surname, SomeName, NoName, Initial
      */
     public category: string;
     /**
@@ -63,7 +63,7 @@ export class AiNameExtractedComponent {
 
     /**
      * Extracted name component             
-     * @param category Extracted from email address name component category./nEnum, available values: Unknown, GivenName, Surname, SomeName, NoName, Initial
+     * @param category Extracted from email address name component category. Enum, available values: Unknown, GivenName, Surname, SomeName, NoName, Initial
      * @param value Extracted value             
      */
     public constructor(
@@ -95,7 +95,7 @@ export class AiNameExtractedComponentBuilder {
     }
 
     /**
-    * Extracted from email address name component category./nEnum, available values: Unknown, GivenName, Surname, SomeName, NoName, Initial
+    * Extracted from email address name component category. Enum, available values: Unknown, GivenName, Surname, SomeName, NoName, Initial
     */
     public category(category: string): AiNameExtractedComponentBuilder {
         this.model.category = category;

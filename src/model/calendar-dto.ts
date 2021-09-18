@@ -183,7 +183,7 @@ export class CalendarDto {
      */
     public endTimeZone: string;
     /**
-     * Appointment flags. Items: Enumerates iCalendar flags./nEnum, available values: None, AllDayEvent
+     * Appointment flags. Items: Enumerates iCalendar flags. Enum, available values: None, AllDayEvent
      */
     public flags: Array<string>;
     /**
@@ -195,15 +195,15 @@ export class CalendarDto {
      */
     public location: string;
     /**
-     * Defines the iCalendar object method type associated with the calendar document./nEnum, available values: None, Publish, Request, Reply, Add, Cancel, Refresh, Counter, DeclineCounter
+     * Defines the iCalendar object method type associated with the calendar document. Enum, available values: None, Publish, Request, Reply, Add, Cancel, Refresh, Counter, DeclineCounter
      */
     public method: string;
     /**
-     * Specifies the BUSY status./nEnum, available values: NotDefined, Free, Tentative, Busy, Oof
+     * Specifies the BUSY status. Enum, available values: NotDefined, Free, Tentative, Busy, Oof
      */
     public microsoftBusyStatus: string;
     /**
-     * Specifies the INTENDED status./nEnum, available values: NotDefined, Free, Tentative, Busy, Oof
+     * Specifies the INTENDED status. Enum, available values: NotDefined, Free, Tentative, Busy, Oof
      */
     public microsoftIntendedStatus: string;
     /**
@@ -239,7 +239,7 @@ export class CalendarDto {
      */
     public startTimeZone: string;
     /**
-     * Defines the overall status or confirmation for the calendar document./nEnum, available values: NotDefined, Cancelled, Tentative, Confirmed
+     * Defines the overall status or confirmation for the calendar document. Enum, available values: NotDefined, Cancelled, Tentative, Confirmed
      */
     public status: string;
     /**
@@ -247,15 +247,15 @@ export class CalendarDto {
      */
     public summary: string;
     /**
-     * Specifies whether or not this appointment is intended to be visible in availability searches./nEnum, available values: NotDefined, Transparent, Opaque
+     * Specifies whether or not this appointment is intended to be visible in availability searches. Enum, available values: NotDefined, Transparent, Opaque
      */
     public transparency: string;
     /**
-     * Defines the access classification for the calendar./nEnum, available values: Public, Private, Confidential, NotDefined
+     * Defines the access classification for the calendar. Enum, available values: Public, Private, Confidential, NotDefined
      */
     public _class: string;
     /**
-     * Specifies the importance of a calendar object./nEnum, available values: Low, Normal, High, NotDefined
+     * Specifies the importance of a calendar object. Enum, available values: Low, Normal, High, NotDefined
      */
     public microsoftImportance: string;
 
@@ -269,9 +269,9 @@ export class CalendarDto {
      * @param flags Appointment flags.
      * @param isDescriptionHtml Indicates if description is in HTML format.
      * @param location Location.
-     * @param method Defines the iCalendar object method type associated with the calendar document./nEnum, available values: None, Publish, Request, Reply, Add, Cancel, Refresh, Counter, DeclineCounter
-     * @param microsoftBusyStatus Specifies the BUSY status./nEnum, available values: NotDefined, Free, Tentative, Busy, Oof
-     * @param microsoftIntendedStatus Specifies the INTENDED status./nEnum, available values: NotDefined, Free, Tentative, Busy, Oof
+     * @param method Defines the iCalendar object method type associated with the calendar document. Enum, available values: None, Publish, Request, Reply, Add, Cancel, Refresh, Counter, DeclineCounter
+     * @param microsoftBusyStatus Specifies the BUSY status. Enum, available values: NotDefined, Free, Tentative, Busy, Oof
+     * @param microsoftIntendedStatus Specifies the INTENDED status. Enum, available values: NotDefined, Free, Tentative, Busy, Oof
      * @param optionalAttendees Optional attendees.             
      * @param organizer Event organizer.             
      * @param recurrenceString Deprecated, use 'Recurrence' property. String representation of recurrence pattern (See iCalendar RFC, \"Recurrence rule\" section). For example:               For daily recurrence:         \"FREQ=DAILY;COUNT=10;WKST=MO\"                   For monthly recurrence:         \"BYSETPOS=1;BYDAY=MO,TU,WE,TH,FR;FREQ=MONTHLY;INTERVAL=10;WKST=MO\"                   For yearly recurrence:         \"BYMONTHDAY=30;BYMONTH=1;FREQ=YEARLY;WKST=MO\"                   
@@ -280,11 +280,11 @@ export class CalendarDto {
      * @param sequenceId The sequence id. Read only.
      * @param startDate Start date.
      * @param startTimeZone Start time zone.
-     * @param status Defines the overall status or confirmation for the calendar document./nEnum, available values: NotDefined, Cancelled, Tentative, Confirmed
+     * @param status Defines the overall status or confirmation for the calendar document. Enum, available values: NotDefined, Cancelled, Tentative, Confirmed
      * @param summary Summary.
-     * @param transparency Specifies whether or not this appointment is intended to be visible in availability searches./nEnum, available values: NotDefined, Transparent, Opaque
-     * @param _class Defines the access classification for the calendar./nEnum, available values: Public, Private, Confidential, NotDefined
-     * @param microsoftImportance Specifies the importance of a calendar object./nEnum, available values: Low, Normal, High, NotDefined
+     * @param transparency Specifies whether or not this appointment is intended to be visible in availability searches. Enum, available values: NotDefined, Transparent, Opaque
+     * @param _class Defines the access classification for the calendar. Enum, available values: Public, Private, Confidential, NotDefined
+     * @param microsoftImportance Specifies the importance of a calendar object. Enum, available values: Low, Normal, High, NotDefined
      */
     public constructor(
         
@@ -394,7 +394,7 @@ export class CalendarDtoBuilder {
         return this;
     }
     /**
-    * Appointment flags. Items: Enumerates iCalendar flags./nEnum, available values: None, AllDayEvent
+    * Appointment flags. Items: Enumerates iCalendar flags. Enum, available values: None, AllDayEvent
     */
     public flags(flags: Array<string>): CalendarDtoBuilder {
         this.model.flags = flags;
@@ -415,21 +415,21 @@ export class CalendarDtoBuilder {
         return this;
     }
     /**
-    * Defines the iCalendar object method type associated with the calendar document./nEnum, available values: None, Publish, Request, Reply, Add, Cancel, Refresh, Counter, DeclineCounter
+    * Defines the iCalendar object method type associated with the calendar document. Enum, available values: None, Publish, Request, Reply, Add, Cancel, Refresh, Counter, DeclineCounter
     */
     public method(method: string): CalendarDtoBuilder {
         this.model.method = method;
         return this;
     }
     /**
-    * Specifies the BUSY status./nEnum, available values: NotDefined, Free, Tentative, Busy, Oof
+    * Specifies the BUSY status. Enum, available values: NotDefined, Free, Tentative, Busy, Oof
     */
     public microsoftBusyStatus(microsoftBusyStatus: string): CalendarDtoBuilder {
         this.model.microsoftBusyStatus = microsoftBusyStatus;
         return this;
     }
     /**
-    * Specifies the INTENDED status./nEnum, available values: NotDefined, Free, Tentative, Busy, Oof
+    * Specifies the INTENDED status. Enum, available values: NotDefined, Free, Tentative, Busy, Oof
     */
     public microsoftIntendedStatus(microsoftIntendedStatus: string): CalendarDtoBuilder {
         this.model.microsoftIntendedStatus = microsoftIntendedStatus;
@@ -492,7 +492,7 @@ export class CalendarDtoBuilder {
         return this;
     }
     /**
-    * Defines the overall status or confirmation for the calendar document./nEnum, available values: NotDefined, Cancelled, Tentative, Confirmed
+    * Defines the overall status or confirmation for the calendar document. Enum, available values: NotDefined, Cancelled, Tentative, Confirmed
     */
     public status(status: string): CalendarDtoBuilder {
         this.model.status = status;
@@ -506,21 +506,21 @@ export class CalendarDtoBuilder {
         return this;
     }
     /**
-    * Specifies whether or not this appointment is intended to be visible in availability searches./nEnum, available values: NotDefined, Transparent, Opaque
+    * Specifies whether or not this appointment is intended to be visible in availability searches. Enum, available values: NotDefined, Transparent, Opaque
     */
     public transparency(transparency: string): CalendarDtoBuilder {
         this.model.transparency = transparency;
         return this;
     }
     /**
-    * Defines the access classification for the calendar./nEnum, available values: Public, Private, Confidential, NotDefined
+    * Defines the access classification for the calendar. Enum, available values: Public, Private, Confidential, NotDefined
     */
     public _class(_class: string): CalendarDtoBuilder {
         this.model._class = _class;
         return this;
     }
     /**
-    * Specifies the importance of a calendar object./nEnum, available values: Low, Normal, High, NotDefined
+    * Specifies the importance of a calendar object. Enum, available values: Low, Normal, High, NotDefined
     */
     public microsoftImportance(microsoftImportance: string): CalendarDtoBuilder {
         this.model.microsoftImportance = microsoftImportance;

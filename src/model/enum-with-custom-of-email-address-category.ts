@@ -50,14 +50,14 @@ export class EnumWithCustomOfEmailAddressCategory {
     }
 
     /**
-     * Represents category for an email address./nEnum, available values: Home, Work, Custom, Email1, Email2, Email3
+     * Represents category for an email address. Enum, available values: Home, Work, Custom, Email1, Email2, Email3
      */
     public value: string;
     public description: string;
 
     /**
      * 
-     * @param value Represents category for an email address./nEnum, available values: Home, Work, Custom, Email1, Email2, Email3
+     * @param value Represents category for an email address. Enum, available values: Home, Work, Custom, Email1, Email2, Email3
      * @param description 
      */
     public constructor(
@@ -89,7 +89,7 @@ export class EnumWithCustomOfEmailAddressCategoryBuilder {
     }
 
     /**
-    * Represents category for an email address./nEnum, available values: Home, Work, Custom, Email1, Email2, Email3
+    * Represents category for an email address. Enum, available values: Home, Work, Custom, Email1, Email2, Email3
     */
     public value(value: string): EnumWithCustomOfEmailAddressCategoryBuilder {
         this.model.value = value;

@@ -34,7 +34,7 @@ export class EmailGetAsFileRequest {
     public fileName: string;
 
     /**
-     * File format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
 
@@ -51,7 +51,7 @@ export class EmailGetAsFileRequest {
     /**
      * Request model for emailGetAsFile operation.
      * @param fileName Email document file name
-     * @param format File format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * @param format File format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      * @param storage Storage name
      * @param folder Path to folder in storage
      */
