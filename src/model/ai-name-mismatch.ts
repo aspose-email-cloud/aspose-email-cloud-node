@@ -58,7 +58,7 @@ export class AiNameMismatch {
     }
 
     /**
-     * Mismatch type. Enum, available values: Unknown, FirstName, MiddleName, MiddleLastName, MiddleNickname, Gender, Context
+     * Mismatch type./nEnum, available values: Unknown, FirstName, MiddleName, MiddleLastName, MiddleNickname, Gender, Context
      */
     public category: string;
     /**
@@ -72,7 +72,7 @@ export class AiNameMismatch {
 
     /**
      * Names mismatch detailed description             
-     * @param category Mismatch type. Enum, available values: Unknown, FirstName, MiddleName, MiddleLastName, MiddleNickname, Gender, Context
+     * @param category Mismatch type./nEnum, available values: Unknown, FirstName, MiddleName, MiddleLastName, MiddleNickname, Gender, Context
      * @param similarity Similarity score             
      * @param explanation Explanation or mismatch subtype             
      */
@@ -107,7 +107,7 @@ export class AiNameMismatchBuilder {
     }
 
     /**
-    * Mismatch type. Enum, available values: Unknown, FirstName, MiddleName, MiddleLastName, MiddleNickname, Gender, Context
+    * Mismatch type./nEnum, available values: Unknown, FirstName, MiddleName, MiddleLastName, MiddleNickname, Gender, Context
     */
     public category(category: string): AiNameMismatchBuilder {
         this.model.category = category;

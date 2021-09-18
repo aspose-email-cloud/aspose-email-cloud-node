@@ -34,7 +34,7 @@ export class CalendarGetAsFileRequest {
     public fileName: string;
 
     /**
-     * File format. Enum, available values: Ics, Msg
+     * File format./nEnum, available values: Ics, Msg
      */
     public format: string;
 
@@ -51,7 +51,7 @@ export class CalendarGetAsFileRequest {
     /**
      * Request model for calendarGetAsFile operation.
      * @param fileName Calendar document file name.
-     * @param format File format. Enum, available values: Ics, Msg
+     * @param format File format./nEnum, available values: Ics, Msg
      * @param storage Storage name.
      * @param folder Path to folder in storage.
      */

@@ -63,11 +63,11 @@ export class YearlyRecurrencePatternDto extends model.RecurrencePatternDto {
     }
 
     /**
-     * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
      */
     public startDay: string;
     /**
-     * Represents a calendar month. Enum, available values: None, January, February, March, April, May, June, July, August, September, October, November, December
+     * Represents a calendar month./nEnum, available values: None, January, February, March, April, May, June, July, August, September, October, November, December
      */
     public startMonth: string;
     /**
@@ -75,7 +75,7 @@ export class YearlyRecurrencePatternDto extends model.RecurrencePatternDto {
      */
     public startOffset: number;
     /**
-     * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     * Day positions, typically found in a month./nEnum, available values: None, First, Second, Third, Fourth, Last
      */
     public startPosition: string;
 
@@ -84,11 +84,11 @@ export class YearlyRecurrencePatternDto extends model.RecurrencePatternDto {
      * @param interval Number of recurrence units.             
      * @param occurs Number of occurrences of the recurrence pattern.             
      * @param endDate End date.             
-     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
-     * @param startDay Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
-     * @param startMonth Represents a calendar month. Enum, available values: None, January, February, March, April, May, June, July, August, September, October, November, December
+     * @param weekStart Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param startDay Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param startMonth Represents a calendar month./nEnum, available values: None, January, February, March, April, May, June, July, August, September, October, November, December
      * @param startOffset Start offset.             
-     * @param startPosition Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     * @param startPosition Day positions, typically found in a month./nEnum, available values: None, First, Second, Third, Fourth, Last
      */
     public constructor(
         
@@ -153,21 +153,21 @@ export class YearlyRecurrencePatternDtoBuilder {
         return this;
     }
     /**
-    * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+    * Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
     */
     public weekStart(weekStart: string): YearlyRecurrencePatternDtoBuilder {
         this.model.weekStart = weekStart;
         return this;
     }
     /**
-    * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+    * Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
     */
     public startDay(startDay: string): YearlyRecurrencePatternDtoBuilder {
         this.model.startDay = startDay;
         return this;
     }
     /**
-    * Represents a calendar month. Enum, available values: None, January, February, March, April, May, June, July, August, September, October, November, December
+    * Represents a calendar month./nEnum, available values: None, January, February, March, April, May, June, July, August, September, October, November, December
     */
     public startMonth(startMonth: string): YearlyRecurrencePatternDtoBuilder {
         this.model.startMonth = startMonth;
@@ -181,7 +181,7 @@ export class YearlyRecurrencePatternDtoBuilder {
         return this;
     }
     /**
-    * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+    * Day positions, typically found in a month./nEnum, available values: None, First, Second, Third, Fourth, Last
     */
     public startPosition(startPosition: string): YearlyRecurrencePatternDtoBuilder {
         this.model.startPosition = startPosition;

@@ -98,7 +98,7 @@ export class MapiCalendarTimeZoneInfoDto {
      */
     public standardDate: model.MapiCalendarTimeZoneRuleDto;
     /**
-     * Individual bit flags that specify information about this TimeZoneRule.              Items: Enumerates the individual bit flags that specify information about TimeZoneRule Enum, available values: TzRuleFlagRecurCurrentTzReg, TzRuleFlagEffectiveTzReg
+     * Individual bit flags that specify information about this TimeZoneRule.              Items: Enumerates the individual bit flags that specify information about TimeZoneRule./nEnum, available values: TzRuleFlagRecurCurrentTzReg, TzRuleFlagEffectiveTzReg
      */
     public timeZoneFlags: Array<string>;
     /**
@@ -190,7 +190,7 @@ export class MapiCalendarTimeZoneInfoDtoBuilder {
         return this;
     }
     /**
-    * Individual bit flags that specify information about this TimeZoneRule.              Items: Enumerates the individual bit flags that specify information about TimeZoneRule Enum, available values: TzRuleFlagRecurCurrentTzReg, TzRuleFlagEffectiveTzReg
+    * Individual bit flags that specify information about this TimeZoneRule.              Items: Enumerates the individual bit flags that specify information about TimeZoneRule./nEnum, available values: TzRuleFlagRecurCurrentTzReg, TzRuleFlagEffectiveTzReg
     */
     public timeZoneFlags(timeZoneFlags: Array<string>): MapiCalendarTimeZoneInfoDtoBuilder {
         this.model.timeZoneFlags = timeZoneFlags;

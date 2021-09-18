@@ -29,7 +29,7 @@ import * as model from "./index";
  */
 export class MapiMessageGetRequest {
     /**
-     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
 
@@ -50,7 +50,7 @@ export class MapiMessageGetRequest {
 
     /**
      * Request model for mapiMessageGet operation.
-     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * @param format Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      * @param fileName Email document file name.
      * @param folder Path to folder in storage.
      * @param storage Storage name.

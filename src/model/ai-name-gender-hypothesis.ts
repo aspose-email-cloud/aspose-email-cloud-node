@@ -53,7 +53,7 @@ export class AiNameGenderHypothesis {
     }
 
     /**
-     * Recognized name gender. Enum, available values: Male, Female, Unknown
+     * Recognized name gender./nEnum, available values: Male, Female, Unknown
      */
     public gender: string;
     /**
@@ -63,7 +63,7 @@ export class AiNameGenderHypothesis {
 
     /**
      * Name gender hypothesis             
-     * @param gender Recognized name gender. Enum, available values: Male, Female, Unknown
+     * @param gender Recognized name gender./nEnum, available values: Male, Female, Unknown
      * @param score Hypothesis score             
      */
     public constructor(
@@ -95,7 +95,7 @@ export class AiNameGenderHypothesisBuilder {
     }
 
     /**
-    * Recognized name gender. Enum, available values: Male, Female, Unknown
+    * Recognized name gender./nEnum, available values: Male, Female, Unknown
     */
     public gender(gender: string): AiNameGenderHypothesisBuilder {
         this.model.gender = gender;

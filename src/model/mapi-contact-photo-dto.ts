@@ -46,7 +46,7 @@ export class MapiContactPhotoDto extends model.ContactPhoto {
 
     /**
      * Contains data and type of contact's photo.             
-     * @param photoImageFormat MapiContact photo image format. Enum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
+     * @param photoImageFormat MapiContact photo image format./nEnum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
      * @param base64Data Photo serialized as base64 string.             
      */
     public constructor(
@@ -79,7 +79,7 @@ export class MapiContactPhotoDtoBuilder {
     }
 
     /**
-    * MapiContact photo image format. Enum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
+    * MapiContact photo image format./nEnum, available values: Undefined, Jpeg, Gif, Wmf, Bmp, Tiff
     */
     public photoImageFormat(photoImageFormat: string): MapiContactPhotoDtoBuilder {
         this.model.photoImageFormat = photoImageFormat;

@@ -71,7 +71,7 @@ export class MailAddress {
      */
     public address: string;
     /**
-     * Identifies the participation status for the calendar user. Enum, available values: NeedsAction, Accepted, Declined, Tentative, Delegated
+     * Identifies the participation status for the calendar user./nEnum, available values: NeedsAction, Accepted, Declined, Tentative, Delegated
      */
     public participationStatus: string;
     /**
@@ -83,7 +83,7 @@ export class MailAddress {
      * Represents the address of a message.
      * @param displayName Display name             
      * @param address Address             
-     * @param participationStatus Identifies the participation status for the calendar user. Enum, available values: NeedsAction, Accepted, Declined, Tentative, Delegated
+     * @param participationStatus Identifies the participation status for the calendar user./nEnum, available values: NeedsAction, Accepted, Declined, Tentative, Delegated
      * @param originalAddressString The original e-mail address string             
      */
     public constructor(
@@ -133,7 +133,7 @@ export class MailAddressBuilder {
         return this;
     }
     /**
-    * Identifies the participation status for the calendar user. Enum, available values: NeedsAction, Accepted, Declined, Tentative, Delegated
+    * Identifies the participation status for the calendar user./nEnum, available values: NeedsAction, Accepted, Declined, Tentative, Delegated
     */
     public participationStatus(participationStatus: string): MailAddressBuilder {
         this.model.participationStatus = participationStatus;

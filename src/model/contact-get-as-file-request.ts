@@ -34,12 +34,12 @@ export class ContactGetAsFileRequest {
     public fileName: string;
 
     /**
-     * File format Enum, available values: VCard, WebDav, Msg
+     * File format./nEnum, available values: VCard, WebDav, Msg
      */
     public toFormat: string;
 
     /**
-     * File format to convert from Enum, available values: VCard, WebDav, Msg
+     * File format to convert from./nEnum, available values: VCard, WebDav, Msg
      */
     public fromFormat: string;
 
@@ -56,8 +56,8 @@ export class ContactGetAsFileRequest {
     /**
      * Request model for contactGetAsFile operation.
      * @param fileName Calendar document file name
-     * @param toFormat File format Enum, available values: VCard, WebDav, Msg
-     * @param fromFormat File format to convert from Enum, available values: VCard, WebDav, Msg
+     * @param toFormat File format./nEnum, available values: VCard, WebDav, Msg
+     * @param fromFormat File format to convert from./nEnum, available values: VCard, WebDav, Msg
      * @param storage Storage name
      * @param folder Path to folder in storage
      */

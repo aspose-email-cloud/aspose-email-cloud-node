@@ -48,7 +48,7 @@ export class TaskRegeneratingPatternDto extends model.RecurrencePatternDto {
     }
 
     /**
-     * Enumerates the types of regenerating pattern. Enum, available values: Daily, Weekly, Monthly, Yearly
+     * Enumerates the types of regenerating pattern./nEnum, available values: Daily, Weekly, Monthly, Yearly
      */
     public regeneratingType: string;
 
@@ -57,8 +57,8 @@ export class TaskRegeneratingPatternDto extends model.RecurrencePatternDto {
      * @param interval Number of recurrence units.             
      * @param occurs Number of occurrences of the recurrence pattern.             
      * @param endDate End date.             
-     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
-     * @param regeneratingType Enumerates the types of regenerating pattern. Enum, available values: Daily, Weekly, Monthly, Yearly
+     * @param weekStart Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param regeneratingType Enumerates the types of regenerating pattern./nEnum, available values: Daily, Weekly, Monthly, Yearly
      */
     public constructor(
         
@@ -117,14 +117,14 @@ export class TaskRegeneratingPatternDtoBuilder {
         return this;
     }
     /**
-    * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+    * Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
     */
     public weekStart(weekStart: string): TaskRegeneratingPatternDtoBuilder {
         this.model.weekStart = weekStart;
         return this;
     }
     /**
-    * Enumerates the types of regenerating pattern. Enum, available values: Daily, Weekly, Monthly, Yearly
+    * Enumerates the types of regenerating pattern./nEnum, available values: Daily, Weekly, Monthly, Yearly
     */
     public regeneratingType(regeneratingType: string): TaskRegeneratingPatternDtoBuilder {
         this.model.regeneratingType = regeneratingType;

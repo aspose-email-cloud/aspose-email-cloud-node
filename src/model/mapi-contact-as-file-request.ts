@@ -53,7 +53,7 @@ export class MapiContactAsFileRequest {
     }
 
     /**
-     * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
+     * Enumerates contact formats./nEnum, available values: VCard, WebDav, Msg
      */
     public format: string;
     /**
@@ -63,7 +63,7 @@ export class MapiContactAsFileRequest {
 
     /**
      * Convert MapiContact to file request.             
-     * @param format Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
+     * @param format Enumerates contact formats./nEnum, available values: VCard, WebDav, Msg
      * @param value MAPI contact model.             
      */
     public constructor(
@@ -95,7 +95,7 @@ export class MapiContactAsFileRequestBuilder {
     }
 
     /**
-    * Enumerates contact formats. Enum, available values: VCard, WebDav, Msg
+    * Enumerates contact formats./nEnum, available values: VCard, WebDav, Msg
     */
     public format(format: string): MapiContactAsFileRequestBuilder {
         this.model.format = format;

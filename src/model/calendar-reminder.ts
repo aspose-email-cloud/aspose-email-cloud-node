@@ -83,7 +83,7 @@ export class CalendarReminder {
     }
 
     /**
-     * Defines the action to be invoked when an alarm is triggered. Enum, available values: Audio, Display, Email, Procedure, None
+     * Defines the action to be invoked when an alarm is triggered./nEnum, available values: Audio, Display, Email, Procedure, None
      */
     public action: string;
     /**
@@ -117,7 +117,7 @@ export class CalendarReminder {
 
     /**
      * Provides a grouping of component properties that define an alarm.             
-     * @param action Defines the action to be invoked when an alarm is triggered. Enum, available values: Audio, Display, Email, Procedure, None
+     * @param action Defines the action to be invoked when an alarm is triggered./nEnum, available values: Audio, Display, Email, Procedure, None
      * @param attachments Collection of Reminder Attachments. Could be an absolute URI or Base64 string representation of attachment content             
      * @param attendees Contains collection of ReminderAttendee objects.             
      * @param description Provides a more complete description of the alarm.
@@ -167,7 +167,7 @@ export class CalendarReminderBuilder {
     }
 
     /**
-    * Defines the action to be invoked when an alarm is triggered. Enum, available values: Audio, Display, Email, Procedure, None
+    * Defines the action to be invoked when an alarm is triggered./nEnum, available values: Audio, Display, Email, Procedure, None
     */
     public action(action: string): CalendarReminderBuilder {
         this.model.action = action;

@@ -29,7 +29,7 @@ import * as model from "./index";
  */
 export class ContactGetListRequest {
     /**
-     * Contact document format. Enum, available values: VCard, WebDav, Msg
+     * Contact document format./nEnum, available values: VCard, WebDav, Msg
      */
     public format: string;
 
@@ -55,7 +55,7 @@ export class ContactGetListRequest {
 
     /**
      * Request model for contactGetList operation.
-     * @param format Contact document format. Enum, available values: VCard, WebDav, Msg
+     * @param format Contact document format./nEnum, available values: VCard, WebDav, Msg
      * @param folder Path to folder in storage.
      * @param storage Storage name.
      * @param itemsPerPage Count of items on page.

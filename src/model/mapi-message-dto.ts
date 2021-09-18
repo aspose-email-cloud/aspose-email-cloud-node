@@ -204,7 +204,7 @@ export class MapiMessageDto extends model.MapiMessageItemBaseDto {
      */
     public displayTo: string;
     /**
-     * Message flags.              Items: Mapi message flags. Enum, available values: MsgFlagZero, MsgFlagRead, MsgFlagUnmodified, MsgFlagSubmit, MsgFlagUnsent, MsgFlagHasAttach, MsgFlagFromMe, MsgFlagAssociated, MsgFlagResend, MsgFlagNotifyRead, MsgFlagNotifyUnread, MsgFlagEverRead, MsgFlagOriginX400, MsgFlagOriginInternet, MsgFlagOriginMiscExt
+     * Message flags.              Items: Mapi message flags./nEnum, available values: MsgFlagZero, MsgFlagRead, MsgFlagUnmodified, MsgFlagSubmit, MsgFlagUnsent, MsgFlagHasAttach, MsgFlagFromMe, MsgFlagAssociated, MsgFlagResend, MsgFlagNotifyRead, MsgFlagNotifyUnread, MsgFlagEverRead, MsgFlagOriginX400, MsgFlagOriginInternet, MsgFlagOriginMiscExt
      */
     public flags: Array<string>;
     /**
@@ -216,7 +216,7 @@ export class MapiMessageDto extends model.MapiMessageItemBaseDto {
      */
     public internetMessageId: string;
     /**
-     * Represents outlook message format. Enum, available values: Ascii, Unicode
+     * Represents outlook message format./nEnum, available values: Ascii, Unicode
      */
     public messageFormat: string;
     /**
@@ -275,14 +275,14 @@ export class MapiMessageDto extends model.MapiMessageItemBaseDto {
      * @param body Message text.             
      * @param bodyHtml Gets the BodyRtf of the message converted to HTML, if present, otherwise an empty string.             
      * @param bodyRtf RTF formatted message text.             
-     * @param bodyType The content type of message body. Enum, available values: PlainText, Html, Rtf
+     * @param bodyType The content type of message body./nEnum, available values: PlainText, Html, Rtf
      * @param categories Contains keywords or categories for the message object.             
      * @param companies Contains the names of the companies that are associated with an item.             
      * @param itemId The item id, uses with a server.             
      * @param messageClass Case-sensitive string that identifies the sender-defined message class, such as IPM.Note. The message class specifies the type, purpose, or content of the message.             
      * @param mileage Contains the mileage information that is associated with an item.             
      * @param recipients Recipients of the message.             
-     * @param sensitivity Contains values that indicate the message sensitivity. Enum, available values: None, Personal, Private, CompanyConfidential
+     * @param sensitivity Contains values that indicate the message sensitivity./nEnum, available values: None, Personal, Private, CompanyConfidential
      * @param subject Subject of the message.             
      * @param subjectPrefix Subject prefix that typically indicates some action on a message, such as \"FW: \" for forwarding.             
      * @param properties List of MAPI properties             
@@ -298,7 +298,7 @@ export class MapiMessageDto extends model.MapiMessageItemBaseDto {
      * @param flags Message flags.             
      * @param headers Transport message headers             
      * @param internetMessageId Internet message id of the message.             
-     * @param messageFormat Represents outlook message format. Enum, available values: Ascii, Unicode
+     * @param messageFormat Represents outlook message format./nEnum, available values: Ascii, Unicode
      * @param normalizedSubject Normalized subject of the message.             
      * @param readReceiptRequested Value indicating whether the read receipt is requested.
      * @param replyTo Reply to names.
@@ -455,7 +455,7 @@ export class MapiMessageDtoBuilder {
         return this;
     }
     /**
-    * The content type of message body. Enum, available values: PlainText, Html, Rtf
+    * The content type of message body./nEnum, available values: PlainText, Html, Rtf
     */
     public bodyType(bodyType: string): MapiMessageDtoBuilder {
         this.model.bodyType = bodyType;
@@ -504,7 +504,7 @@ export class MapiMessageDtoBuilder {
         return this;
     }
     /**
-    * Contains values that indicate the message sensitivity. Enum, available values: None, Personal, Private, CompanyConfidential
+    * Contains values that indicate the message sensitivity./nEnum, available values: None, Personal, Private, CompanyConfidential
     */
     public sensitivity(sensitivity: string): MapiMessageDtoBuilder {
         this.model.sensitivity = sensitivity;
@@ -595,7 +595,7 @@ export class MapiMessageDtoBuilder {
         return this;
     }
     /**
-    * Message flags.              Items: Mapi message flags. Enum, available values: MsgFlagZero, MsgFlagRead, MsgFlagUnmodified, MsgFlagSubmit, MsgFlagUnsent, MsgFlagHasAttach, MsgFlagFromMe, MsgFlagAssociated, MsgFlagResend, MsgFlagNotifyRead, MsgFlagNotifyUnread, MsgFlagEverRead, MsgFlagOriginX400, MsgFlagOriginInternet, MsgFlagOriginMiscExt
+    * Message flags.              Items: Mapi message flags./nEnum, available values: MsgFlagZero, MsgFlagRead, MsgFlagUnmodified, MsgFlagSubmit, MsgFlagUnsent, MsgFlagHasAttach, MsgFlagFromMe, MsgFlagAssociated, MsgFlagResend, MsgFlagNotifyRead, MsgFlagNotifyUnread, MsgFlagEverRead, MsgFlagOriginX400, MsgFlagOriginInternet, MsgFlagOriginMiscExt
     */
     public flags(flags: Array<string>): MapiMessageDtoBuilder {
         this.model.flags = flags;
@@ -616,7 +616,7 @@ export class MapiMessageDtoBuilder {
         return this;
     }
     /**
-    * Represents outlook message format. Enum, available values: Ascii, Unicode
+    * Represents outlook message format./nEnum, available values: Ascii, Unicode
     */
     public messageFormat(messageFormat: string): MapiMessageDtoBuilder {
         this.model.messageFormat = messageFormat;

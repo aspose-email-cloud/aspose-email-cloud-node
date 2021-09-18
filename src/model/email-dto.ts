@@ -193,6 +193,16 @@ export class EmailDto {
             name: "xMailer",
             baseName: "xMailer",
             type: "string",
+        },
+        {
+            name: "epilogue",
+            baseName: "epilogue",
+            type: "string",
+        },
+        {
+            name: "preamble",
+            baseName: "preamble",
+            type: "string",
         }    ];
 
     /**
@@ -223,7 +233,7 @@ export class EmailDto {
      */
     public bodyEncoding: string;
     /**
-     * The content type of message body. Enum, available values: PlainText, Html, Rtf
+     * The content type of message body./nEnum, available values: PlainText, Html, Rtf
      */
     public bodyType: string;
     /**
@@ -235,7 +245,7 @@ export class EmailDto {
      */
     public date: Date;
     /**
-     * Delivery notifications. Items: Email delivery notification options. Enum, available values: Delay, Never, None, OnFailure, OnSuccess
+     * Delivery notifications. Items: Email delivery notification options./nEnum, available values: Delay, Never, None, OnFailure, OnSuccess
      */
     public deliveryNotificationOptions: Array<string>;
     /**
@@ -287,7 +297,7 @@ export class EmailDto {
      */
     public preferredTextEncoding: string;
     /**
-     * Email priority status. Enum, available values: High, Low, Normal
+     * Email priority status./nEnum, available values: High, Low, Normal
      */
     public priority: string;
     /**
@@ -307,7 +317,7 @@ export class EmailDto {
      */
     public sender: model.MailAddress;
     /**
-     * Specifies the sensitivity of a MailMessage. Enum, available values: None, Normal, Personal, Private, CompanyConfidential
+     * Specifies the sensitivity of a MailMessage./nEnum, available values: None, Normal, Personal, Private, CompanyConfidential
      */
     public sensitivity: string;
     /**
@@ -330,6 +340,14 @@ export class EmailDto {
      * The X-Mailer the software that created the e-mail message.             
      */
     public xMailer: string;
+    /**
+     * Gets or sets an epilogue text. It is located after the last boundary.
+     */
+    public epilogue: string;
+    /**
+     * Gets or sets a preamble text. It is located before the first boundary and generally includes an explanatory note to non-MIME conformant readers.
+     */
+    public preamble: string;
 
     /**
      * Email message representation.             
@@ -338,7 +356,7 @@ export class EmailDto {
      * @param bcc BCC recipients.             
      * @param body Email message body as plain text.             
      * @param bodyEncoding Body encoding.             
-     * @param bodyType The content type of message body. Enum, available values: PlainText, Html, Rtf
+     * @param bodyType The content type of message body./nEnum, available values: PlainText, Html, Rtf
      * @param cc CC recipients.             
      * @param date Message date.             
      * @param deliveryNotificationOptions Delivery notifications.
@@ -354,17 +372,19 @@ export class EmailDto {
      * @param messageId Message id.             
      * @param originalIsTnef Indicates whether original EML message is in TNEF format. Read only.             
      * @param preferredTextEncoding Preferred encoding.             
-     * @param priority Email priority status. Enum, available values: High, Low, Normal
+     * @param priority Email priority status./nEnum, available values: High, Low, Normal
      * @param readReceiptTo Read receipt addresses.             
      * @param replyToList The list of addresses to reply to for the mail message.             
      * @param reversePath ReversePath address.             
      * @param sender Sender address.             
-     * @param sensitivity Specifies the sensitivity of a MailMessage. Enum, available values: None, Normal, Personal, Private, CompanyConfidential
+     * @param sensitivity Specifies the sensitivity of a MailMessage./nEnum, available values: None, Normal, Personal, Private, CompanyConfidential
      * @param subject Message subject.             
      * @param subjectEncoding Subject encoding.             
      * @param timeZoneOffset Coordinated Universal Time (UTC) offset for the message dates. This property defines the time zone difference, between the local time and UTC represented as count of ticks (10 000 per millisecond).             
      * @param to The address collection that contains the recipients of message.             
      * @param xMailer The X-Mailer the software that created the e-mail message.             
+     * @param epilogue Gets or sets an epilogue text. It is located after the last boundary.
+     * @param preamble Gets or sets a preamble text. It is located before the first boundary and generally includes an explanatory note to non-MIME conformant readers.
      */
     public constructor(
         
@@ -399,7 +419,9 @@ export class EmailDto {
         subjectEncoding?: string,
         timeZoneOffset?: number,
         to?: Array< model.MailAddress >,
-        xMailer?: string
+        xMailer?: string,
+        epilogue?: string,
+        preamble?: string
     ) {
         
         this.alternateViews = alternateViews;
@@ -434,6 +456,8 @@ export class EmailDto {
         this.timeZoneOffset = timeZoneOffset;
         this.to = to;
         this.xMailer = xMailer;
+        this.epilogue = epilogue;
+        this.preamble = preamble;
         
     }
 }
@@ -490,7 +514,7 @@ export class EmailDtoBuilder {
         return this;
     }
     /**
-    * The content type of message body. Enum, available values: PlainText, Html, Rtf
+    * The content type of message body./nEnum, available values: PlainText, Html, Rtf
     */
     public bodyType(bodyType: string): EmailDtoBuilder {
         this.model.bodyType = bodyType;
@@ -511,7 +535,7 @@ export class EmailDtoBuilder {
         return this;
     }
     /**
-    * Delivery notifications. Items: Email delivery notification options. Enum, available values: Delay, Never, None, OnFailure, OnSuccess
+    * Delivery notifications. Items: Email delivery notification options./nEnum, available values: Delay, Never, None, OnFailure, OnSuccess
     */
     public deliveryNotificationOptions(deliveryNotificationOptions: Array<string>): EmailDtoBuilder {
         this.model.deliveryNotificationOptions = deliveryNotificationOptions;
@@ -602,7 +626,7 @@ export class EmailDtoBuilder {
         return this;
     }
     /**
-    * Email priority status. Enum, available values: High, Low, Normal
+    * Email priority status./nEnum, available values: High, Low, Normal
     */
     public priority(priority: string): EmailDtoBuilder {
         this.model.priority = priority;
@@ -637,7 +661,7 @@ export class EmailDtoBuilder {
         return this;
     }
     /**
-    * Specifies the sensitivity of a MailMessage. Enum, available values: None, Normal, Personal, Private, CompanyConfidential
+    * Specifies the sensitivity of a MailMessage./nEnum, available values: None, Normal, Personal, Private, CompanyConfidential
     */
     public sensitivity(sensitivity: string): EmailDtoBuilder {
         this.model.sensitivity = sensitivity;
@@ -676,6 +700,20 @@ export class EmailDtoBuilder {
     */
     public xMailer(xMailer: string): EmailDtoBuilder {
         this.model.xMailer = xMailer;
+        return this;
+    }
+    /**
+    * Gets or sets an epilogue text. It is located after the last boundary.
+    */
+    public epilogue(epilogue: string): EmailDtoBuilder {
+        this.model.epilogue = epilogue;
+        return this;
+    }
+    /**
+    * Gets or sets a preamble text. It is located before the first boundary and generally includes an explanatory note to non-MIME conformant readers.
+    */
+    public preamble(preamble: string): EmailDtoBuilder {
+        this.model.preamble = preamble;
         return this;
     }
 }

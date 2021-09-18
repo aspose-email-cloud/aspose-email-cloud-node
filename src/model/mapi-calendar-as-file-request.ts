@@ -53,7 +53,7 @@ export class MapiCalendarAsFileRequest {
     }
 
     /**
-     * Calendar file format Enum, available values: Ics, Msg
+     * Calendar file format./nEnum, available values: Ics, Msg
      */
     public format: string;
     /**
@@ -63,7 +63,7 @@ export class MapiCalendarAsFileRequest {
 
     /**
      * Convert MapiCalendar to file request.             
-     * @param format Calendar file format Enum, available values: Ics, Msg
+     * @param format Calendar file format./nEnum, available values: Ics, Msg
      * @param value MAPI calendar model.             
      */
     public constructor(
@@ -95,7 +95,7 @@ export class MapiCalendarAsFileRequestBuilder {
     }
 
     /**
-    * Calendar file format Enum, available values: Ics, Msg
+    * Calendar file format./nEnum, available values: Ics, Msg
     */
     public format(format: string): MapiCalendarAsFileRequestBuilder {
         this.model.format = format;

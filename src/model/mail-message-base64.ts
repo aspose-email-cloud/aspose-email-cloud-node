@@ -57,14 +57,14 @@ export class MailMessageBase64 extends model.MailMessageBase {
      */
     public valueBase64: string;
     /**
-     * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public format: string;
 
     /**
      * Email message represented as file, encoded to Base64 format.             
      * @param valueBase64 Email message file data encoded to Base64 string.             
-     * @param format Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * @param format Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public constructor(
         
@@ -103,7 +103,7 @@ export class MailMessageBase64Builder {
         return this;
     }
     /**
-    * Email document format. Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+    * Email document format./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
     */
     public format(format: string): MailMessageBase64Builder {
         this.model.format = format;

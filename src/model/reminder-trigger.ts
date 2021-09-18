@@ -66,7 +66,7 @@ export class ReminderTrigger {
      */
     public duration: number;
     /**
-     * Specify the relationship of the alarm trigger with respect to the start or end of the event. Enum, available values: Start, End
+     * Specify the relationship of the alarm trigger with respect to the start or end of the event./nEnum, available values: Start, End
      */
     public related: string;
 
@@ -74,7 +74,7 @@ export class ReminderTrigger {
      * Specifies when an alarm will trigger.
      * @param dateTime A trigger set to an absolute date/time.
      * @param duration Specifies a relative time in ticks for the trigger of the alarm.             
-     * @param related Specify the relationship of the alarm trigger with respect to the start or end of the event. Enum, available values: Start, End
+     * @param related Specify the relationship of the alarm trigger with respect to the start or end of the event./nEnum, available values: Start, End
      */
     public constructor(
         
@@ -121,7 +121,7 @@ export class ReminderTriggerBuilder {
         return this;
     }
     /**
-    * Specify the relationship of the alarm trigger with respect to the start or end of the event. Enum, available values: Start, End
+    * Specify the relationship of the alarm trigger with respect to the start or end of the event./nEnum, available values: Start, End
     */
     public related(related: string): ReminderTriggerBuilder {
         this.model.related = related;

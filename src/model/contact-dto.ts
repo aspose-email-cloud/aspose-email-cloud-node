@@ -263,7 +263,7 @@ export class ContactDto {
      */
     public fileAs: string;
     /**
-     * Specifies how to generate and recompute the value of the dispidFileAs property when other contact name properties change. Coincides MS-OXPROPS revision 16.2 from 7/31/2014. Enum, available values: Empty, DisplayName, FirstName, LastName, Organization, LastFirstMiddle, OrgLastFirstMiddle, LastFirstMiddleOrg, LastFirstMiddle2, LastFirstMiddle3, OrgLastFirstMiddle2, OrgLastFirstMiddle3, LastFirstMiddleOrg2, LastFirstMiddleOrg3, LastFirstMiddleGen, FirstMiddleLastGen, LastFirstMiddleGen2, BestMatch, AccordingToLocale, None
+     * Specifies how to generate and recompute the value of the dispidFileAs property when other contact name properties change. Coincides MS-OXPROPS revision 16.2 from 7/31/2014./nEnum, available values: Empty, DisplayName, FirstName, LastName, Organization, LastFirstMiddle, OrgLastFirstMiddle, LastFirstMiddleOrg, LastFirstMiddle2, LastFirstMiddle3, OrgLastFirstMiddle2, OrgLastFirstMiddle3, LastFirstMiddleOrg2, LastFirstMiddleOrg3, LastFirstMiddleGen, FirstMiddleLastGen, LastFirstMiddleGen2, BestMatch, AccordingToLocale, None
      */
     public fileAsMapping: string;
     /**
@@ -271,7 +271,7 @@ export class ContactDto {
      */
     public freeBusyLocation: string;
     /**
-     * Enum defines gender of a person. Enum, available values: Unspecified, Female, Male
+     * Enum defines gender of a person./nEnum, available values: Unspecified, Female, Male
      */
     public gender: string;
     /**
@@ -319,7 +319,7 @@ export class ContactDto {
      */
     public notes: string;
     /**
-     * Defines format of a text. Enum, available values: Text, Html
+     * Defines format of a text./nEnum, available values: Text, Html
      */
     public notesFormat: string;
     /**
@@ -379,9 +379,9 @@ export class ContactDto {
      * @param emailAddresses Person's email addresses.             
      * @param events Person's events.             
      * @param fileAs A name used for sorting.             
-     * @param fileAsMapping Specifies how to generate and recompute the value of the dispidFileAs property when other contact name properties change. Coincides MS-OXPROPS revision 16.2 from 7/31/2014. Enum, available values: Empty, DisplayName, FirstName, LastName, Organization, LastFirstMiddle, OrgLastFirstMiddle, LastFirstMiddleOrg, LastFirstMiddle2, LastFirstMiddle3, OrgLastFirstMiddle2, OrgLastFirstMiddle3, LastFirstMiddleOrg2, LastFirstMiddleOrg3, LastFirstMiddleGen, FirstMiddleLastGen, LastFirstMiddleGen2, BestMatch, AccordingToLocale, None
+     * @param fileAsMapping Specifies how to generate and recompute the value of the dispidFileAs property when other contact name properties change. Coincides MS-OXPROPS revision 16.2 from 7/31/2014./nEnum, available values: Empty, DisplayName, FirstName, LastName, Organization, LastFirstMiddle, OrgLastFirstMiddle, LastFirstMiddleOrg, LastFirstMiddle2, LastFirstMiddle3, OrgLastFirstMiddle2, OrgLastFirstMiddle3, LastFirstMiddleOrg2, LastFirstMiddleOrg3, LastFirstMiddleGen, FirstMiddleLastGen, LastFirstMiddleGen2, BestMatch, AccordingToLocale, None
      * @param freeBusyLocation URL path from which a client can retrieve free/busy information for the contact as an iCal file.             
-     * @param gender Enum defines gender of a person. Enum, available values: Unspecified, Female, Male
+     * @param gender Enum defines gender of a person./nEnum, available values: Unspecified, Female, Male
      * @param givenName Person's given name.             
      * @param governmentIdNumber Government id number.             
      * @param hobbies Person's hobbies.             
@@ -393,7 +393,7 @@ export class ContactDto {
      * @param middleName Person's middle name.             
      * @param nickname Person's nickname.             
      * @param notes Notes.             
-     * @param notesFormat Defines format of a text. Enum, available values: Text, Html
+     * @param notesFormat Defines format of a text./nEnum, available values: Text, Html
      * @param officeLocation Office location.             
      * @param organizationalIdNumber Contains an identifier for the mail user used within the mail user's organization.             
      * @param phoneNumbers Person's phone numbers.             
@@ -573,7 +573,7 @@ export class ContactDtoBuilder {
         return this;
     }
     /**
-    * Specifies how to generate and recompute the value of the dispidFileAs property when other contact name properties change. Coincides MS-OXPROPS revision 16.2 from 7/31/2014. Enum, available values: Empty, DisplayName, FirstName, LastName, Organization, LastFirstMiddle, OrgLastFirstMiddle, LastFirstMiddleOrg, LastFirstMiddle2, LastFirstMiddle3, OrgLastFirstMiddle2, OrgLastFirstMiddle3, LastFirstMiddleOrg2, LastFirstMiddleOrg3, LastFirstMiddleGen, FirstMiddleLastGen, LastFirstMiddleGen2, BestMatch, AccordingToLocale, None
+    * Specifies how to generate and recompute the value of the dispidFileAs property when other contact name properties change. Coincides MS-OXPROPS revision 16.2 from 7/31/2014./nEnum, available values: Empty, DisplayName, FirstName, LastName, Organization, LastFirstMiddle, OrgLastFirstMiddle, LastFirstMiddleOrg, LastFirstMiddle2, LastFirstMiddle3, OrgLastFirstMiddle2, OrgLastFirstMiddle3, LastFirstMiddleOrg2, LastFirstMiddleOrg3, LastFirstMiddleGen, FirstMiddleLastGen, LastFirstMiddleGen2, BestMatch, AccordingToLocale, None
     */
     public fileAsMapping(fileAsMapping: string): ContactDtoBuilder {
         this.model.fileAsMapping = fileAsMapping;
@@ -587,7 +587,7 @@ export class ContactDtoBuilder {
         return this;
     }
     /**
-    * Enum defines gender of a person. Enum, available values: Unspecified, Female, Male
+    * Enum defines gender of a person./nEnum, available values: Unspecified, Female, Male
     */
     public gender(gender: string): ContactDtoBuilder {
         this.model.gender = gender;
@@ -671,7 +671,7 @@ export class ContactDtoBuilder {
         return this;
     }
     /**
-    * Defines format of a text. Enum, available values: Text, Html
+    * Defines format of a text./nEnum, available values: Text, Html
     */
     public notesFormat(notesFormat: string): ContactDtoBuilder {
         this.model.notesFormat = notesFormat;

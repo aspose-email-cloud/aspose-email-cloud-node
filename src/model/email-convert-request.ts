@@ -29,12 +29,12 @@ import * as model from "./index";
  */
 export class EmailConvertRequest {
     /**
-     * File format to convert to Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * File format to convert from./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public fromFormat: string;
 
     /**
-     * File format to convert from Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * File format to convert to./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      */
     public toFormat: string;
 
@@ -45,8 +45,8 @@ export class EmailConvertRequest {
 
     /**
      * Request model for emailConvert operation.
-     * @param fromFormat File format to convert to Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
-     * @param toFormat File format to convert from Enum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * @param fromFormat File format to convert from./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
+     * @param toFormat File format to convert to./nEnum, available values: Eml, Msg, MsgUnicode, Mhtml, Html, Tnef, Oft
      * @param file File to convert
      */
     public constructor(

@@ -58,7 +58,7 @@ export class MonthlyRecurrencePatternDto extends model.RecurrencePatternDto {
     }
 
     /**
-     * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
      */
     public startDay: string;
     /**
@@ -66,7 +66,7 @@ export class MonthlyRecurrencePatternDto extends model.RecurrencePatternDto {
      */
     public startOffset: number;
     /**
-     * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     * Day positions, typically found in a month./nEnum, available values: None, First, Second, Third, Fourth, Last
      */
     public startPosition: string;
 
@@ -75,10 +75,10 @@ export class MonthlyRecurrencePatternDto extends model.RecurrencePatternDto {
      * @param interval Number of recurrence units.             
      * @param occurs Number of occurrences of the recurrence pattern.             
      * @param endDate End date.             
-     * @param weekStart Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
-     * @param startDay Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param weekStart Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+     * @param startDay Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
      * @param startOffset Start offset.             
-     * @param startPosition Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+     * @param startPosition Day positions, typically found in a month./nEnum, available values: None, First, Second, Third, Fourth, Last
      */
     public constructor(
         
@@ -141,14 +141,14 @@ export class MonthlyRecurrencePatternDtoBuilder {
         return this;
     }
     /**
-    * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+    * Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
     */
     public weekStart(weekStart: string): MonthlyRecurrencePatternDtoBuilder {
         this.model.weekStart = weekStart;
         return this;
     }
     /**
-    * Represents the day of the week. Enum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
+    * Represents the day of the week./nEnum, available values: None, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, WeekDay, WeekendDay
     */
     public startDay(startDay: string): MonthlyRecurrencePatternDtoBuilder {
         this.model.startDay = startDay;
@@ -162,7 +162,7 @@ export class MonthlyRecurrencePatternDtoBuilder {
         return this;
     }
     /**
-    * Day positions, typically found in a month. Enum, available values: None, First, Second, Third, Fourth, Last
+    * Day positions, typically found in a month./nEnum, available values: None, First, Second, Third, Fourth, Last
     */
     public startPosition(startPosition: string): MonthlyRecurrencePatternDtoBuilder {
         this.model.startPosition = startPosition;
