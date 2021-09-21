@@ -141,11 +141,11 @@ export class MapiCalendarDto extends model.MapiMessageItemBaseDto {
      */
     public attendees: model.MapiCalendarAttendeesDto;
     /**
-     * Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
+     * Enumerates the mapi calendar possible busy status. Enum, available values: Free, Tentative, Busy, OutOfOffice
      */
     public busyStatus: string;
     /**
-     * Actions the user has taken on this Meeting object.              Items: Enumerates the actions the user can taken on the Meeting object Enum, available values: Manager, Delegate, DeletedWithNoResponse, DeletedExceptionWithNoResponse, RespondedTentative, RespondedAccept, RespondedDecline, ModifiedStartTime, ModifiedEndTime, ModifiedLocation, RespondedExceptionDecline, Canceled, ExceptionCanceled
+     * Actions the user has taken on this Meeting object.              Items: Enumerates the actions the user can taken on the Meeting object. Enum, available values: Manager, Delegate, DeletedWithNoResponse, DeletedExceptionWithNoResponse, RespondedTentative, RespondedAccept, RespondedDecline, ModifiedStartTime, ModifiedEndTime, ModifiedLocation, RespondedExceptionDecline, Canceled, ExceptionCanceled
      */
     public clientIntent: Array<string>;
     /**
@@ -225,7 +225,7 @@ export class MapiCalendarDto extends model.MapiMessageItemBaseDto {
      * @param properties List of MAPI properties             
      * @param appointmentCounterProposal Value indicating whether a Meeting Response object is a counter proposal.             
      * @param attendees Attendees             
-     * @param busyStatus Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
+     * @param busyStatus Enumerates the mapi calendar possible busy status. Enum, available values: Free, Tentative, Busy, OutOfOffice
      * @param clientIntent Actions the user has taken on this Meeting object.             
      * @param endDate End date and time of the event. If the date is not set, default value for DateTime is returned.             
      * @param endDateTimeZone Time zone information that indicates the time zone of the EndDate property.             
@@ -462,14 +462,14 @@ export class MapiCalendarDtoBuilder {
         return this;
     }
     /**
-    * Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
+    * Enumerates the mapi calendar possible busy status. Enum, available values: Free, Tentative, Busy, OutOfOffice
     */
     public busyStatus(busyStatus: string): MapiCalendarDtoBuilder {
         this.model.busyStatus = busyStatus;
         return this;
     }
     /**
-    * Actions the user has taken on this Meeting object.              Items: Enumerates the actions the user can taken on the Meeting object Enum, available values: Manager, Delegate, DeletedWithNoResponse, DeletedExceptionWithNoResponse, RespondedTentative, RespondedAccept, RespondedDecline, ModifiedStartTime, ModifiedEndTime, ModifiedLocation, RespondedExceptionDecline, Canceled, ExceptionCanceled
+    * Actions the user has taken on this Meeting object.              Items: Enumerates the actions the user can taken on the Meeting object. Enum, available values: Manager, Delegate, DeletedWithNoResponse, DeletedExceptionWithNoResponse, RespondedTentative, RespondedAccept, RespondedDecline, ModifiedStartTime, ModifiedEndTime, ModifiedLocation, RespondedExceptionDecline, Canceled, ExceptionCanceled
     */
     public clientIntent(clientIntent: Array<string>): MapiCalendarDtoBuilder {
         this.model.clientIntent = clientIntent;

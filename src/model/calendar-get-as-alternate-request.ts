@@ -34,7 +34,7 @@ export class CalendarGetAsAlternateRequest {
     public fileName: string;
 
     /**
-     * iCalendar method type Enum, available values: Create, Update, Cancel
+     * iCalendar method type. Enum, available values: Create, Update, Cancel
      */
     public calendarAction: string;
 
@@ -56,7 +56,7 @@ export class CalendarGetAsAlternateRequest {
     /**
      * Request model for calendarGetAsAlternate operation.
      * @param fileName iCalendar file name in storage
-     * @param calendarAction iCalendar method type Enum, available values: Create, Update, Cancel
+     * @param calendarAction iCalendar method type. Enum, available values: Create, Update, Cancel
      * @param sequenceId The sequence id
      * @param folder Path to folder in storage
      * @param storage Storage name

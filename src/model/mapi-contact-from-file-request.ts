@@ -29,7 +29,7 @@ import * as model from "./index";
  */
 export class MapiContactFromFileRequest {
     /**
-     * File format Enum, available values: VCard, WebDav, Msg
+     * File format. Enum, available values: VCard, WebDav, Msg
      */
     public format: string;
 
@@ -40,7 +40,7 @@ export class MapiContactFromFileRequest {
 
     /**
      * Request model for mapiContactFromFile operation.
-     * @param format File format Enum, available values: VCard, WebDav, Msg
+     * @param format File format. Enum, available values: VCard, WebDav, Msg
      * @param file File to convert
      */
     public constructor(

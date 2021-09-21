@@ -143,6 +143,16 @@ export class CalendarDto {
             name: "transparency",
             baseName: "transparency",
             type: "string",
+        },
+        {
+            name: "_class",
+            baseName: "class",
+            type: "string",
+        },
+        {
+            name: "microsoftImportance",
+            baseName: "microsoftImportance",
+            type: "string",
         }    ];
 
     /**
@@ -240,6 +250,14 @@ export class CalendarDto {
      * Specifies whether or not this appointment is intended to be visible in availability searches. Enum, available values: NotDefined, Transparent, Opaque
      */
     public transparency: string;
+    /**
+     * Defines the access classification for the calendar. Enum, available values: Public, Private, Confidential, NotDefined
+     */
+    public _class: string;
+    /**
+     * Specifies the importance of a calendar object. Enum, available values: Low, Normal, High, NotDefined
+     */
+    public microsoftImportance: string;
 
     /**
      * iCalendar document representation.             
@@ -265,6 +283,8 @@ export class CalendarDto {
      * @param status Defines the overall status or confirmation for the calendar document. Enum, available values: NotDefined, Cancelled, Tentative, Confirmed
      * @param summary Summary.
      * @param transparency Specifies whether or not this appointment is intended to be visible in availability searches. Enum, available values: NotDefined, Transparent, Opaque
+     * @param _class Defines the access classification for the calendar. Enum, available values: Public, Private, Confidential, NotDefined
+     * @param microsoftImportance Specifies the importance of a calendar object. Enum, available values: Low, Normal, High, NotDefined
      */
     public constructor(
         
@@ -289,7 +309,9 @@ export class CalendarDto {
         startTimeZone?: string,
         status?: string,
         summary?: string,
-        transparency?: string
+        transparency?: string,
+        _class?: string,
+        microsoftImportance?: string
     ) {
         
         this.attachments = attachments;
@@ -314,6 +336,8 @@ export class CalendarDto {
         this.status = status;
         this.summary = summary;
         this.transparency = transparency;
+        this._class = _class;
+        this.microsoftImportance = microsoftImportance;
         
     }
 }
@@ -486,6 +510,20 @@ export class CalendarDtoBuilder {
     */
     public transparency(transparency: string): CalendarDtoBuilder {
         this.model.transparency = transparency;
+        return this;
+    }
+    /**
+    * Defines the access classification for the calendar. Enum, available values: Public, Private, Confidential, NotDefined
+    */
+    public _class(_class: string): CalendarDtoBuilder {
+        this.model._class = _class;
+        return this;
+    }
+    /**
+    * Specifies the importance of a calendar object. Enum, available values: Low, Normal, High, NotDefined
+    */
+    public microsoftImportance(microsoftImportance: string): CalendarDtoBuilder {
+        this.model.microsoftImportance = microsoftImportance;
         return this;
     }
 }

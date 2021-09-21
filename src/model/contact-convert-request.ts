@@ -29,12 +29,12 @@ import * as model from "./index";
  */
 export class ContactConvertRequest {
     /**
-     * File format to convert to Enum, available values: VCard, WebDav, Msg
+     * File format to convert to. Enum, available values: VCard, WebDav, Msg
      */
     public toFormat: string;
 
     /**
-     * File format to convert from Enum, available values: VCard, WebDav, Msg
+     * File format to convert from. Enum, available values: VCard, WebDav, Msg
      */
     public fromFormat: string;
 
@@ -45,8 +45,8 @@ export class ContactConvertRequest {
 
     /**
      * Request model for contactConvert operation.
-     * @param toFormat File format to convert to Enum, available values: VCard, WebDav, Msg
-     * @param fromFormat File format to convert from Enum, available values: VCard, WebDav, Msg
+     * @param toFormat File format to convert to. Enum, available values: VCard, WebDav, Msg
+     * @param fromFormat File format to convert from. Enum, available values: VCard, WebDav, Msg
      * @param file File to convert
      */
     public constructor(

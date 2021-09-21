@@ -121,7 +121,7 @@ export class MapiCalendarExceptionInfoDto {
      */
     public body: string;
     /**
-     * Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
+     * Enumerates the mapi calendar possible busy status. Enum, available values: Free, Tentative, Busy, OutOfOffice
      */
     public busyStatus: string;
     /**
@@ -137,7 +137,7 @@ export class MapiCalendarExceptionInfoDto {
      */
     public location: string;
     /**
-     * Enumerates the appointment state Enum, available values: Meeting, Received, Canceled
+     * Enumerates the appointment state. Enum, available values: Meeting, Received, Canceled
      */
     public meetingType: string;
     /**
@@ -173,11 +173,11 @@ export class MapiCalendarExceptionInfoDto {
      * An exception specifies changes to an instance of a recurring series.             
      * @param attachments Attachments in the recurrence exception.             
      * @param body Body.             
-     * @param busyStatus Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
+     * @param busyStatus Enumerates the mapi calendar possible busy status. Enum, available values: Free, Tentative, Busy, OutOfOffice
      * @param endDateTime End date.             
      * @param hasAttachment Value of this field specifies whether the Exception Embedded Message object contains attachments.             
      * @param location Location.             
-     * @param meetingType Enumerates the appointment state Enum, available values: Meeting, Received, Canceled
+     * @param meetingType Enumerates the appointment state. Enum, available values: Meeting, Received, Canceled
      * @param originalStartDate Original start date.             
      * @param overrideFlags Override flags.             
      * @param reminderDelta Reminder delta.             
@@ -253,7 +253,7 @@ export class MapiCalendarExceptionInfoDtoBuilder {
         return this;
     }
     /**
-    * Enumerates the mapi calendar possible busy status Enum, available values: Free, Tentative, Busy, OutOfOffice
+    * Enumerates the mapi calendar possible busy status. Enum, available values: Free, Tentative, Busy, OutOfOffice
     */
     public busyStatus(busyStatus: string): MapiCalendarExceptionInfoDtoBuilder {
         this.model.busyStatus = busyStatus;
@@ -281,7 +281,7 @@ export class MapiCalendarExceptionInfoDtoBuilder {
         return this;
     }
     /**
-    * Enumerates the appointment state Enum, available values: Meeting, Received, Canceled
+    * Enumerates the appointment state. Enum, available values: Meeting, Received, Canceled
     */
     public meetingType(meetingType: string): MapiCalendarExceptionInfoDtoBuilder {
         this.model.meetingType = meetingType;

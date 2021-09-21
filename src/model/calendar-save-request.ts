@@ -48,7 +48,7 @@ export class CalendarSaveRequest extends model.StorageModelOfCalendarDto {
     }
 
     /**
-     * Calendar file format Enum, available values: Ics, Msg
+     * Calendar file format. Enum, available values: Ics, Msg
      */
     public format: string;
 
@@ -56,7 +56,7 @@ export class CalendarSaveRequest extends model.StorageModelOfCalendarDto {
      * Save iCalendar to storage request.             
      * @param storageFile 
      * @param value 
-     * @param format Calendar file format Enum, available values: Ics, Msg
+     * @param format Calendar file format. Enum, available values: Ics, Msg
      */
     public constructor(
         
@@ -97,7 +97,7 @@ export class CalendarSaveRequestBuilder {
         return this;
     }
     /**
-    * Calendar file format Enum, available values: Ics, Msg
+    * Calendar file format. Enum, available values: Ics, Msg
     */
     public format(format: string): CalendarSaveRequestBuilder {
         this.model.format = format;

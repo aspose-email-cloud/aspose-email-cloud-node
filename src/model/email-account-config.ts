@@ -99,7 +99,7 @@ export class EmailAccountConfig {
      */
     public port: number;
     /**
-     * Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * Email account security mode. Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      */
     public socketType: string;
     /**
@@ -121,7 +121,7 @@ export class EmailAccountConfig {
      * @param protocolType Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
      * @param host Email account host.             
      * @param port Port.             
-     * @param socketType Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * @param socketType Email account security mode. Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      * @param authenticationTypes Supported authentication types.             
      * @param extraInfo Extra account information.             
      * @param isValidated Determines that configuration validated. Set to false if validation skipped.             
@@ -195,7 +195,7 @@ export class EmailAccountConfigBuilder {
         return this;
     }
     /**
-    * Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+    * Email account security mode. Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
     */
     public socketType(socketType: string): EmailAccountConfigBuilder {
         this.model.socketType = socketType;

@@ -81,7 +81,7 @@ export class EmailClientAccount {
      */
     public port: number;
     /**
-     * Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * Email account security mode. Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      */
     public securityOptions: string;
     /**
@@ -101,7 +101,7 @@ export class EmailClientAccount {
      * A universal email client account             
      * @param host Mail server host name or IP address             
      * @param port Mail server port             
-     * @param securityOptions Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+     * @param securityOptions Email account security mode. Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
      * @param protocolType Type of connection protocol. Enum, available values: IMAP, POP3, SMTP, EWS, WebDav
      * @param credentials Email client account credentials             
      * @param cacheFile File with messages cache. Used to provide extra functions, which are not supported by account             
@@ -157,7 +157,7 @@ export class EmailClientAccountBuilder {
         return this;
     }
     /**
-    * Email account security mode Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
+    * Email account security mode. Enum, available values: None, SSLExplicit, SSLImplicit, SSLAuto, Auto
     */
     public securityOptions(securityOptions: string): EmailClientAccountBuilder {
         this.model.securityOptions = securityOptions;
