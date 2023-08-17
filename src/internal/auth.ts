@@ -34,7 +34,7 @@ export interface IAuthentication {
     /**
      * Apply authentication settings to header and query params.
      */
-    applyToRequest(requestOptions: request.Options, configuration: Configuration): void;
+    applyToRequest(requestOptions: request.Options, configuration: Configuration): Promise<void>;
 
     /**
      * Handle 401 response.

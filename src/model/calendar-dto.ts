@@ -153,6 +153,16 @@ export class CalendarDto {
             name: "microsoftImportance",
             baseName: "microsoftImportance",
             type: "string",
+        },
+        {
+            name: "htmlDescription",
+            baseName: "htmlDescription",
+            type: "string",
+        },
+        {
+            name: "dateTimeStamp",
+            baseName: "dateTimeStamp",
+            type: "Date",
         }    ];
 
     /**
@@ -258,6 +268,14 @@ export class CalendarDto {
      * Specifies the importance of a calendar object. Enum, available values: Low, Normal, High, NotDefined
      */
     public microsoftImportance: string;
+    /**
+     * HTML representation of description.             
+     */
+    public htmlDescription: string;
+    /**
+     * Date/time that the instance of the iCalendar object was created.             
+     */
+    public dateTimeStamp: Date;
 
     /**
      * iCalendar document representation.             
@@ -285,6 +303,8 @@ export class CalendarDto {
      * @param transparency Specifies whether or not this appointment is intended to be visible in availability searches. Enum, available values: NotDefined, Transparent, Opaque
      * @param _class Defines the access classification for the calendar. Enum, available values: Public, Private, Confidential, NotDefined
      * @param microsoftImportance Specifies the importance of a calendar object. Enum, available values: Low, Normal, High, NotDefined
+     * @param htmlDescription HTML representation of description.             
+     * @param dateTimeStamp Date/time that the instance of the iCalendar object was created.             
      */
     public constructor(
         
@@ -311,7 +331,9 @@ export class CalendarDto {
         summary?: string,
         transparency?: string,
         _class?: string,
-        microsoftImportance?: string
+        microsoftImportance?: string,
+        htmlDescription?: string,
+        dateTimeStamp?: Date
     ) {
         
         this.attachments = attachments;
@@ -338,6 +360,8 @@ export class CalendarDto {
         this.transparency = transparency;
         this._class = _class;
         this.microsoftImportance = microsoftImportance;
+        this.htmlDescription = htmlDescription;
+        this.dateTimeStamp = dateTimeStamp;
         
     }
 }
@@ -524,6 +548,20 @@ export class CalendarDtoBuilder {
     */
     public microsoftImportance(microsoftImportance: string): CalendarDtoBuilder {
         this.model.microsoftImportance = microsoftImportance;
+        return this;
+    }
+    /**
+    * HTML representation of description.             
+    */
+    public htmlDescription(htmlDescription: string): CalendarDtoBuilder {
+        this.model.htmlDescription = htmlDescription;
+        return this;
+    }
+    /**
+    * Date/time that the instance of the iCalendar object was created.             
+    */
+    public dateTimeStamp(dateTimeStamp: Date): CalendarDtoBuilder {
+        this.model.dateTimeStamp = dateTimeStamp;
         return this;
     }
 }
