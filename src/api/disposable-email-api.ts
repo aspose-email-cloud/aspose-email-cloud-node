@@ -24,6 +24,8 @@
 
 //@ts-ignore
 import { Buffer } from "buffer";
+//@ts-ignore
+import {GenericFormData, toFormData} from "axios";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
@@ -52,7 +54,6 @@ export class DisposableEmailApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/disposable/is-disposable";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.address' is not null or undefined
         if (request.address === null || request.address === undefined) {
@@ -69,12 +70,9 @@ export class DisposableEmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "ValueTOfBoolean");

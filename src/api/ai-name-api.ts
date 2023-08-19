@@ -24,6 +24,8 @@
 
 //@ts-ignore
 import { Buffer } from "buffer";
+//@ts-ignore
+import {GenericFormData, toFormData} from "axios";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
@@ -52,7 +54,6 @@ export class AiNameApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/complete";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.name' is not null or undefined
         if (request.name === null || request.name === undefined) {
@@ -89,12 +90,9 @@ export class AiNameApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "AiNameWeightedVariants");
@@ -109,7 +107,6 @@ export class AiNameApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/expand";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.name' is not null or undefined
         if (request.name === null || request.name === undefined) {
@@ -146,12 +143,9 @@ export class AiNameApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "AiNameWeightedVariants");
@@ -191,7 +185,6 @@ export class AiNameApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/format";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.name' is not null or undefined
         if (request.name === null || request.name === undefined) {
@@ -232,12 +225,9 @@ export class AiNameApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "AiNameFormatted");
@@ -277,7 +267,6 @@ export class AiNameApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/genderize";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.name' is not null or undefined
         if (request.name === null || request.name === undefined) {
@@ -314,12 +303,9 @@ export class AiNameApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "AiNameGenderHypothesisList");
@@ -359,7 +345,6 @@ export class AiNameApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/match";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.name' is not null or undefined
         if (request.name === null || request.name === undefined) {
@@ -405,12 +390,9 @@ export class AiNameApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "AiNameMatchResult");
@@ -450,7 +432,6 @@ export class AiNameApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/parse";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.name' is not null or undefined
         if (request.name === null || request.name === undefined) {
@@ -487,12 +468,9 @@ export class AiNameApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "AiNameComponentList");
@@ -507,7 +485,6 @@ export class AiNameApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/AiName/parse-email-address";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.emailAddress' is not null or undefined
         if (request.emailAddress === null || request.emailAddress === undefined) {
@@ -544,12 +521,9 @@ export class AiNameApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "AiNameExtractedList");

@@ -24,6 +24,8 @@
 
 //@ts-ignore
 import { Buffer } from "buffer";
+//@ts-ignore
+import {GenericFormData, toFormData} from "axios";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
@@ -75,7 +77,6 @@ export class ClientThreadApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/thread/list";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.folder' is not null or undefined
         if (request.folder === null || request.folder === undefined) {
@@ -117,12 +118,9 @@ export class ClientThreadApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailThreadList");
@@ -137,7 +135,6 @@ export class ClientThreadApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/thread/messages";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.threadId' is not null or undefined
         if (request.threadId === null || request.threadId === undefined) {
@@ -175,12 +172,9 @@ export class ClientThreadApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailList");

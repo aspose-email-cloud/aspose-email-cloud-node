@@ -24,6 +24,8 @@
 
 //@ts-ignore
 import { Buffer } from "buffer";
+//@ts-ignore
+import {GenericFormData, toFormData} from "axios";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
@@ -98,7 +100,6 @@ export class ClientFolderApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/folder/list";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.account' is not null or undefined
         if (request.account === null || request.account === undefined) {
@@ -127,12 +128,9 @@ export class ClientFolderApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "MailServerFolderList");

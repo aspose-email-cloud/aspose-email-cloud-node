@@ -24,6 +24,8 @@
 
 //@ts-ignore
 import { Buffer } from "buffer";
+//@ts-ignore
+import {GenericFormData, toFormData} from "axios";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
@@ -128,7 +130,6 @@ export class CalendarApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/Calendar/convert";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.format' is not null or undefined
         if (request.format === null || request.format === undefined) {
@@ -145,27 +146,22 @@ export class CalendarApi {
         }
 
 
-        if (request.file !== undefined) {
-            formParams.File = {
-                value: request.file,
-                options: {
-                    filename: 'File'
-                }
-            };
-        }
-
         const requestOptions: IRequestOptions = {
             method: "PUT",
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
             isResponseFile: true,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
+        const formParams: GenericFormData = toFormData({});
+        if (request.file !== undefined) {
+            formParams.append('File', request.file, {filename: 'File'});
         }
+
+
+        requestOptions.formData = formParams;
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
@@ -180,7 +176,6 @@ export class CalendarApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/Calendar/from-file";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.file' is not null or undefined
         if (request.file === null || request.file === undefined) {
@@ -188,26 +183,21 @@ export class CalendarApi {
         }
     
 
-        if (request.file !== undefined) {
-            formParams.File = {
-                value: request.file,
-                options: {
-                    filename: 'File'
-                }
-            };
-        }
-
         const requestOptions: IRequestOptions = {
             method: "PUT",
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
+        const formParams: GenericFormData = toFormData({});
+        if (request.file !== undefined) {
+            formParams.append('File', request.file, {filename: 'File'});
         }
+
+
+        requestOptions.formData = formParams;
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "CalendarDto");
@@ -222,7 +212,6 @@ export class CalendarApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/Calendar";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.fileName' is not null or undefined
         if (request.fileName === null || request.fileName === undefined) {
@@ -247,12 +236,9 @@ export class CalendarApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "CalendarDto");
@@ -267,7 +253,6 @@ export class CalendarApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/Calendar/as-alternate";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.fileName' is not null or undefined
         if (request.fileName === null || request.fileName === undefined) {
@@ -305,12 +290,9 @@ export class CalendarApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "AlternateView");
@@ -325,7 +307,6 @@ export class CalendarApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/Calendar/as-file";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.fileName' is not null or undefined
         if (request.fileName === null || request.fileName === undefined) {
@@ -359,13 +340,10 @@ export class CalendarApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
             isResponseFile: true,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
@@ -380,7 +358,6 @@ export class CalendarApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/Calendar/list";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.folder' is not null or undefined
         if (request.folder === null || request.folder === undefined) {
@@ -409,12 +386,9 @@ export class CalendarApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "CalendarStorageList");

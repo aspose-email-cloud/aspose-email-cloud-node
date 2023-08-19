@@ -24,6 +24,8 @@
 
 //@ts-ignore
 import { Buffer } from "buffer";
+//@ts-ignore
+import {GenericFormData, toFormData} from "axios";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
@@ -103,7 +105,6 @@ export class MapiCalendarApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiCalendar/from-file";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.file' is not null or undefined
         if (request.file === null || request.file === undefined) {
@@ -111,26 +112,21 @@ export class MapiCalendarApi {
         }
     
 
-        if (request.file !== undefined) {
-            formParams.File = {
-                value: request.file,
-                options: {
-                    filename: 'File'
-                }
-            };
-        }
-
         const requestOptions: IRequestOptions = {
             method: "PUT",
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
+        const formParams: GenericFormData = toFormData({});
+        if (request.file !== undefined) {
+            formParams.append('File', request.file, {filename: 'File'});
         }
+
+
+        requestOptions.formData = formParams;
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "MapiCalendarDto");
@@ -145,7 +141,6 @@ export class MapiCalendarApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiCalendar";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.fileName' is not null or undefined
         if (request.fileName === null || request.fileName === undefined) {
@@ -170,12 +165,9 @@ export class MapiCalendarApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "MapiCalendarDto");

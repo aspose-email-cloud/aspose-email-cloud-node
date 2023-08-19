@@ -24,6 +24,8 @@
 
 //@ts-ignore
 import { Buffer } from "buffer";
+//@ts-ignore
+import {GenericFormData, toFormData} from "axios";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
@@ -103,7 +105,6 @@ export class MapiMessageApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiMessage/from-file";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.format' is not null or undefined
         if (request.format === null || request.format === undefined) {
@@ -120,26 +121,21 @@ export class MapiMessageApi {
         }
 
 
-        if (request.file !== undefined) {
-            formParams.File = {
-                value: request.file,
-                options: {
-                    filename: 'File'
-                }
-            };
-        }
-
         const requestOptions: IRequestOptions = {
             method: "PUT",
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
+        const formParams: GenericFormData = toFormData({});
+        if (request.file !== undefined) {
+            formParams.append('File', request.file, {filename: 'File'});
         }
+
+
+        requestOptions.formData = formParams;
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "MapiMessageDto");
@@ -154,7 +150,6 @@ export class MapiMessageApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiMessage";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.format' is not null or undefined
         if (request.format === null || request.format === undefined) {
@@ -188,12 +183,9 @@ export class MapiMessageApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "MapiMessageDto");

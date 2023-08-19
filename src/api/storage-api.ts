@@ -24,6 +24,8 @@
 
 //@ts-ignore
 import { Buffer } from "buffer";
+//@ts-ignore
+import {GenericFormData, toFormData} from "axios";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
@@ -52,7 +54,6 @@ export class StorageApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/storage/disc";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         if (request.storageName !== undefined) {
             queryParameters.storageName = ObjectSerializer.serialize(request.storageName, "string");
@@ -64,12 +65,9 @@ export class StorageApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "DiscUsage");
@@ -85,7 +83,6 @@ export class StorageApi {
             .replace("{" + "path" + "}", String(request.path));
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.path' is not null or undefined
         if (request.path === null || request.path === undefined) {
@@ -102,12 +99,9 @@ export class StorageApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "FileVersions");
@@ -123,7 +117,6 @@ export class StorageApi {
             .replace("{" + "path" + "}", String(request.path));
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.path' is not null or undefined
         if (request.path === null || request.path === undefined) {
@@ -144,12 +137,9 @@ export class StorageApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "ObjectExist");
@@ -165,7 +155,6 @@ export class StorageApi {
             .replace("{" + "storageName" + "}", String(request.storageName));
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.storageName' is not null or undefined
         if (request.storageName === null || request.storageName === undefined) {
@@ -178,12 +167,9 @@ export class StorageApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "StorageExist");

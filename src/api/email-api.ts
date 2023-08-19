@@ -24,6 +24,8 @@
 
 //@ts-ignore
 import { Buffer } from "buffer";
+//@ts-ignore
+import {GenericFormData, toFormData} from "axios";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
@@ -103,7 +105,6 @@ export class EmailApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/convert";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.fromFormat' is not null or undefined
         if (request.fromFormat === null || request.fromFormat === undefined) {
@@ -129,27 +130,22 @@ export class EmailApi {
         }
 
 
-        if (request.file !== undefined) {
-            formParams.File = {
-                value: request.file,
-                options: {
-                    filename: 'File'
-                }
-            };
-        }
-
         const requestOptions: IRequestOptions = {
             method: "PUT",
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
             isResponseFile: true,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
+        const formParams: GenericFormData = toFormData({});
+        if (request.file !== undefined) {
+            formParams.append('File', request.file, {filename: 'File'});
         }
+
+
+        requestOptions.formData = formParams;
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
@@ -164,7 +160,6 @@ export class EmailApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/from-file";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.format' is not null or undefined
         if (request.format === null || request.format === undefined) {
@@ -181,26 +176,21 @@ export class EmailApi {
         }
 
 
-        if (request.file !== undefined) {
-            formParams.File = {
-                value: request.file,
-                options: {
-                    filename: 'File'
-                }
-            };
-        }
-
         const requestOptions: IRequestOptions = {
             method: "PUT",
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
+        const formParams: GenericFormData = toFormData({});
+        if (request.file !== undefined) {
+            formParams.append('File', request.file, {filename: 'File'});
         }
+
+
+        requestOptions.formData = formParams;
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailDto");
@@ -215,7 +205,6 @@ export class EmailApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.format' is not null or undefined
         if (request.format === null || request.format === undefined) {
@@ -249,12 +238,9 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailDto");
@@ -269,7 +255,6 @@ export class EmailApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/as-file";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.fileName' is not null or undefined
         if (request.fileName === null || request.fileName === undefined) {
@@ -303,13 +288,10 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
             isResponseFile: true,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
@@ -324,7 +306,6 @@ export class EmailApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/list";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.format' is not null or undefined
         if (request.format === null || request.format === undefined) {
@@ -357,12 +338,9 @@ export class EmailApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailStorageList");

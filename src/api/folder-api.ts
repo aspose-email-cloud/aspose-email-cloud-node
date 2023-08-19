@@ -24,6 +24,8 @@
 
 //@ts-ignore
 import { Buffer } from "buffer";
+//@ts-ignore
+import {GenericFormData, toFormData} from "axios";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
@@ -53,7 +55,6 @@ export class FolderApi {
             .replace("{" + "srcPath" + "}", String(request.srcPath));
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.srcPath' is not null or undefined
         if (request.srcPath === null || request.srcPath === undefined) {
@@ -83,12 +84,9 @@ export class FolderApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         await invokeApiMethod(requestOptions, this.configuration);
     }
@@ -102,7 +100,6 @@ export class FolderApi {
             .replace("{" + "path" + "}", String(request.path));
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.path' is not null or undefined
         if (request.path === null || request.path === undefined) {
@@ -119,12 +116,9 @@ export class FolderApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         await invokeApiMethod(requestOptions, this.configuration);
     }
@@ -138,7 +132,6 @@ export class FolderApi {
             .replace("{" + "path" + "}", String(request.path));
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.path' is not null or undefined
         if (request.path === null || request.path === undefined) {
@@ -159,12 +152,9 @@ export class FolderApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         await invokeApiMethod(requestOptions, this.configuration);
     }
@@ -178,7 +168,6 @@ export class FolderApi {
             .replace("{" + "path" + "}", String(request.path));
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.path' is not null or undefined
         if (request.path === null || request.path === undefined) {
@@ -195,12 +184,9 @@ export class FolderApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "FilesList");
@@ -216,7 +202,6 @@ export class FolderApi {
             .replace("{" + "srcPath" + "}", String(request.srcPath));
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.srcPath' is not null or undefined
         if (request.srcPath === null || request.srcPath === undefined) {
@@ -246,12 +231,9 @@ export class FolderApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         await invokeApiMethod(requestOptions, this.configuration);
     }

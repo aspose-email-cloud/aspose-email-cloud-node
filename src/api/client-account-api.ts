@@ -24,6 +24,8 @@
 
 //@ts-ignore
 import { Buffer } from "buffer";
+//@ts-ignore
+import {GenericFormData, toFormData} from "axios";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
@@ -52,7 +54,6 @@ export class ClientAccountApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/account";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.fileName' is not null or undefined
         if (request.fileName === null || request.fileName === undefined) {
@@ -77,12 +78,9 @@ export class ClientAccountApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailClientAccount");
@@ -97,7 +95,6 @@ export class ClientAccountApi {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/account/multi";
         const queryParameters: any = {};
         const headerParams: any = {};
-        const formParams: any = {};
     
         // verify required parameter 'request.fileName' is not null or undefined
         if (request.fileName === null || request.fileName === undefined) {
@@ -122,12 +119,9 @@ export class ClientAccountApi {
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
-            json: true,
+            json: false,
         };
 
-        if (Object.keys(formParams).length) {
-            requestOptions.formData = formParams;
-        }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailClientMultiAccount");

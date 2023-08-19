@@ -83,6 +83,7 @@ async function invokeApiMethodInternal(
             responseType: requestOptions.isResponseFile ? 'arraybuffer' : 'json',
             params: requestOptions.qs
         });
+        if (requestOptions.isResponseFile) return {body: Buffer.from(response.data)};
         return {body: response.data};
     } catch (error) {
         const response = error.response;
