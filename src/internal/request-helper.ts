@@ -73,17 +73,20 @@ async function invokeApiMethodInternal(
     }
     const contentType = getContentType(requestOptions);
     if (contentType) requestOptions.headers['Content-Type'] = contentType;
-    const response = await axios({
-        url: requestOptions.uri,
-        method: requestOptions.method,
-        headers: requestOptions.headers,
-        data: getBody(requestOptions),
-        timeout: requestOptions.timeout,
-        responseType: requestOptions.isResponseFile ? 'arraybuffer' : 'json'
-    });
-    if (response.status >= 200 && response.status <= 299) return { body: response.data };
-    if (response.status === 401 && !notApplyAuthToRequest) throw new ApiError("Authentication failed", response.status, null);
     try {
+        const response = await axios({
+            url: requestOptions.uri,
+            method: requestOptions.method,
+            headers: requestOptions.headers,
+            data: getBody(requestOptions),
+            timeout: requestOptions.timeout,
+            responseType: requestOptions.isResponseFile ? 'arraybuffer' : 'json',
+            params: requestOptions.qs
+        });
+        return {body: response.data};
+    } catch (error) {
+        const response = error.response;
+        if (response.status === 401 && !notApplyAuthToRequest) throw new ApiError("Authentication failed", response.status, null);
         let modelError: ModelError = null;
         const bodyContent = response.data;
         if (bodyContent) {
@@ -99,8 +102,6 @@ async function invokeApiMethodInternal(
             throw new ApiError(modelError.message, response.status, bodyContent);
         }
         throw new ApiError('Unknown API error', response.status, null);
-    } catch (error) {
-        throw new ApiError(`Failed to parse Aspose.Email Cloud API error message: ${response.data}`, response.status, null);
     }
 }
 
