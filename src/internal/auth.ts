@@ -22,10 +22,14 @@
 * SOFTWARE.
 */
 
-import request = require("request");
 import { ApiError } from "./api-error";
 import { Configuration } from "./configuration";
 import { invokeApiMethod } from "./request-helper";
+import { IRequestOptions } from "./request-options";
+
+interface IAccessToken {
+    access_token: string;
+}
 
 /**
  * Authentication logic for api calls
@@ -34,7 +38,7 @@ export interface IAuthentication {
     /**
      * Apply authentication settings to header and query params.
      */
-    applyToRequest(requestOptions: request.Options, configuration: Configuration): Promise<void>;
+    applyToRequest(requestOptions: IRequestOptions, configuration: Configuration): Promise<void>;
 
     /**
      * Handle 401 response.
@@ -51,7 +55,7 @@ export class JwtAuth implements IAuthentication {
      /**
       * Apply authentication settings to header and query params.
       */
-    public async applyToRequest(requestOptions: request.Options, configuration: Configuration): Promise<void> {
+    public async applyToRequest(requestOptions: IRequestOptions, configuration: Configuration): Promise<void> {
         if (this.accessTokenValue == null) {
             await this.requestToken(configuration);
         }
@@ -59,8 +63,6 @@ export class JwtAuth implements IAuthentication {
         if (requestOptions && requestOptions.headers) {
             requestOptions.headers.Authorization = "Bearer " + this.accessTokenValue;
         }
-
-        return Promise.resolve();
     }
 
     /**
@@ -75,18 +77,19 @@ export class JwtAuth implements IAuthentication {
         postData += "&client_id=" + configuration.clientId;
         postData += "&client_secret=" + configuration.clientSecret;
 
-        const requestOptions: request.Options = {
+        const requestOptions: IRequestOptions = {
             method: "POST",
             uri: configuration.getAuthUrl() + "connect/token",
-            body: postData,
-            headers: { 
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
+            body: postData
         };
 
         const response = await invokeApiMethod(requestOptions, configuration, true);
-        const parsedResponse = JSON.parse(response.body);
+        const parsedResponse = response.body;
+        if (this.isAccessToken(parsedResponse))
         this.accessTokenValue = parsedResponse.access_token;
-        return Promise.resolve();
+    }
+
+    private isAccessToken(value: unknown): value is IAccessToken {
+        return typeof value === 'object' && 'access_token' in value;
     }
 }

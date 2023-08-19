@@ -26,7 +26,7 @@ import { IAuthentication, JwtAuth  } from "./auth";
 const defaultBasePath = "https://api.aspose.cloud/";
 
 /**
- * Aspose.Imaging Cloud API configuration
+ * Aspose.Email Cloud API configuration
  */
 export class Configuration {
     /**
@@ -92,7 +92,7 @@ export class Configuration {
 
         if (apiVersion) {
             if (apiVersion.startsWith("v1") || apiVersion.startsWith("v2")) {
-                throw new Error("This Aspose.Imaging Cloud SDK version is intended to be used with API v3.0 or later!");
+                throw new Error("This Aspose.Email Cloud SDK version is intended to be used with API v3.0 or later!");
             }
 
             this.apiVersion = apiVersion;

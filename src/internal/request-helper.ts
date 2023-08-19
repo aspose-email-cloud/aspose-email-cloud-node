@@ -1,7 +1,7 @@
 /*
 * MIT License
 
-* Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
+* Copyright (c) 2018-2023 Aspose Pty Ltd. All rights reserved.
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -22,11 +22,15 @@
 * SOFTWARE.
 */
 
-import request = require("request");
-import requestDebug = require("request-debug");
+import { Buffer } from "buffer";
+import axios from "axios";
+
 import { ApiError } from "./api-error";
 import { Configuration } from "./configuration";
 import { ObjectSerializer } from "./object-serializer";
+import { IRequestOptions } from "./request-options";
+import { IResponse } from "./response";
+import { ModelError } from "../model";
 
 /**
  * Invoke api method
@@ -34,30 +38,11 @@ import { ObjectSerializer } from "./object-serializer";
  * @param confguration api configuration
  * @param notApplyAuthToRequest if setted to true, auth is not applied to request
  */
-export async function invokeApiMethod(requestOptions: request.Options, confguration: Configuration, notApplyAuthToRequest?: boolean): Promise<request.RequestResponse> {
+export async function invokeApiMethod(requestOptions: IRequestOptions, confguration: Configuration, notApplyAuthToRequest?: boolean)
+    : Promise<IResponse> {
     return await invokeApiMethodInternal(requestOptions, confguration, notApplyAuthToRequest);
 }
 
-/**
- * Add parameter to query
- * @param url url
- * @param queryParameters queryParameters
- * @param parameterName parameterName
- * @param parameterValue parameterValue
- */
-export function addQueryParameterToUrl(url, queryParameters, parameterName, parameterValue) {
-    if (parameterValue !== undefined) {
-        if (url.indexOf("{" + parameterName + "}") >= 0) {
-            url = url.replace("{" + parameterName + "}", String(parameterValue));
-        } else {
-            queryParameters[parameterName] = String(parameterValue);
-        }
-    } else {
-        url = url.replace("/{" + parameterName + "}", "");
-    }
-
-    return url;
-}
 
 /**
  * Invoke api method
@@ -65,22 +50,16 @@ export function addQueryParameterToUrl(url, queryParameters, parameterName, para
  * @param confguration api configuration
  * @param notApplyAuthToRequest if setted to true, auth is not applied to request
  */
-async function invokeApiMethodInternal(requestOptions: request.Options, confguration: Configuration, notApplyAuthToRequest?: boolean): Promise<request.RequestResponse> {
-    requestDebug(request, (type, data, r) => {
-        if (r.writeDebugToConsole) {
-            const toLog = {};
-            toLog[type] = data;
-            // tslint:disable-next-line:no-console
-            console.log(JSON.stringify(toLog, undefined, 2));
-        }
-    });
-
+async function invokeApiMethodInternal(
+    requestOptions: IRequestOptions,
+    confguration: Configuration,
+    notApplyAuthToRequest?: boolean): Promise<IResponse> {
     if (!requestOptions.headers) {
         requestOptions.headers = {};
     }
 
     requestOptions.headers["x-aspose-client"] = "node.js sdk";
-    requestOptions.headers["x-aspose-client-version"] = "19.9.0";
+    requestOptions.headers["x-aspose-client-version"] = "23.8.0";
 
     requestOptions.timeout = 600000;
 
@@ -88,53 +67,59 @@ async function invokeApiMethodInternal(requestOptions: request.Options, confgura
         return Promise.reject("You can't send both form data and body.");
     }
 
-    if (requestOptions.formData)  {
-        requestOptions.headers["Content-Type"] = "multipart/form-data";
-    } else if (requestOptions.body && requestOptions.body instanceof Buffer && requestOptions.body.length > 0) {
-        requestOptions.headers["Content-Type"] = "application/octet-stream";
-    }
-
     const auth = confguration.authentication;
     if (!confguration.onPremise && !notApplyAuthToRequest) {
         await auth.applyToRequest(requestOptions, confguration);
     }
-
-    requestOptions.pool = {maxSockets: 5};
-
-    return new Promise<request.RequestResponse>((resolve, reject) => {
-        const r = request(requestOptions, async (error, response) => {
-            if (error) {
-                return reject(error);
-            } else {
-                if (response.statusCode >= 200 && response.statusCode <= 299) {
-                    return resolve(response);
-                } else if (response.statusCode === 401 && !notApplyAuthToRequest) {
-                    return reject(new ApiError("Authentication failed!", response.statusCode, null));
-                } else {
-                    try {
-                        let modelError = null;
-                        const bodyContent = response.body;
-                        if (bodyContent) {
-                            if (bodyContent instanceof Buffer) {
-                                modelError = ObjectSerializer.deserialize(bodyContent.toString("utf8"), "ModelError");
-                                return reject(new ApiError(response.body, response.statusCode, modelError));
-                            } else if (bodyContent.Message) {
-                                return reject(new ApiError(bodyContent.Message, response.statusCode, null));
-                            } else {
-                                modelError = ObjectSerializer.deserialize(bodyContent, "ModelError");
-                                return reject(new ApiError(response.body, response.statusCode, bodyContent));
-                            }
-                        } else {
-                            return reject(new ApiError(null, response.statusCode, null));
-                        }
-                    } catch (error) {
-                        return reject(new ApiError(`Failed to parse Aspose.Imaging Cloud API error message: ${response.body}`, response.statusCode, null));
-                    }
-
-                }
-            }
-        });
-
-        (r as any).writeDebugToConsole = confguration.debugMode;
+    const contentType = getContentType(requestOptions);
+    if (contentType) requestOptions.headers['Content-Type'] = contentType;
+    const response = await axios({
+        url: requestOptions.uri,
+        method: requestOptions.method,
+        headers: requestOptions.headers,
+        data: getBody(requestOptions),
+        timeout: requestOptions.timeout,
+        responseType: requestOptions.isResponseFile ? 'arraybuffer' : 'json'
     });
+    if (response.status >= 200 && response.status <= 299) return { body: response.data };
+    if (response.status === 401 && !notApplyAuthToRequest) throw new ApiError("Authentication failed", response.status, null);
+    try {
+        let modelError: ModelError = null;
+        const bodyContent = response.data;
+        if (bodyContent) {
+            if (bodyContent instanceof ArrayBuffer) {
+                const utf8 = Buffer.from(bodyContent).toString();
+                modelError = ObjectSerializer.deserialize(JSON.parse(utf8), "ModelError");
+                throw new ApiError(modelError?.message ?? utf8, response.status, modelError);
+            }
+            if (bodyContent.Message) {
+                throw new ApiError(bodyContent.Message, response.status, null);
+            }
+            modelError = ObjectSerializer.deserialize(bodyContent, "ModelError");
+            throw new ApiError(modelError.message, response.status, bodyContent);
+        }
+        throw new ApiError('Unknown API error', response.status, null);
+    } catch (error) {
+        throw new ApiError(`Failed to parse Aspose.Email Cloud API error message: ${response.data}`, response.status, null);
+    }
+}
+
+function getBody(options: IRequestOptions): Buffer|string|any|null {
+    switch(getContentType(options)) {
+        case "multipart/form-data": return options.formData;
+        case "application/json":
+        case "application/octet-stream":
+        case "application/x-www-form-urlencoded":
+            return options.body;
+        default: return null;
+    }
+}
+
+function getContentType(options: IRequestOptions): string|null {
+    if (options.json) return "application/json";
+    if (options.formData) return "multipart/form-data";
+    if (!options.body || options.body.length <= 0) return null;
+    if (options.body instanceof Buffer) return "application/octet-stream";
+    if (typeof options.body === 'string') return "application/x-www-form-urlencoded";
+    return null;
 }
