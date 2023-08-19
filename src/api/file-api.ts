@@ -1,7 +1,7 @@
 /*
 * MIT License
 
-* Copyright (c) 2018-2020 Aspose Pty Ltd
+* Copyright (c) 2018-2023 Aspose Pty Ltd
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -22,11 +22,13 @@
 * SOFTWARE.
 */
 
-import * as rq from "request";
+//@ts-ignore
+import { Buffer } from "buffer";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
 import { invokeApiMethod } from "../internal/request-helper";
+import { IRequestOptions } from "../internal/request-options";
 import * as model from "../model";
 
 /**
@@ -46,7 +48,7 @@ export class FileApi {
      * Copy file
      * @param request contains request parameters
      */
-    public async copyFile(request: model.CopyFileRequest): Promise< any > {
+    public async copyFile(request: model.CopyFileRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/storage/file/copy/{srcPath}"
             .replace("{" + "srcPath" + "}", String(request.srcPath));
         const queryParameters: any = {};
@@ -79,10 +81,8 @@ export class FileApi {
             queryParameters.versionId = ObjectSerializer.serialize(request.versionId, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             qs: queryParameters,
             headers: headerParams,
@@ -91,22 +91,17 @@ export class FileApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 
     /**
      * Delete file
      * @param request contains request parameters
      */
-    public async deleteFile(request: model.DeleteFileRequest): Promise< any > {
+    public async deleteFile(request: model.DeleteFileRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/storage/file/{path}"
             .replace("{" + "path" + "}", String(request.path));
         const queryParameters: any = {};
@@ -126,10 +121,8 @@ export class FileApi {
             queryParameters.versionId = ObjectSerializer.serialize(request.versionId, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "DELETE",
             qs: queryParameters,
             headers: headerParams,
@@ -138,15 +131,10 @@ export class FileApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 
     /**
@@ -173,36 +161,30 @@ export class FileApi {
             queryParameters.versionId = ObjectSerializer.serialize(request.versionId, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "GET",
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            encoding: null,
+            isResponseFile: true,
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
      * Move file
      * @param request contains request parameters
      */
-    public async moveFile(request: model.MoveFileRequest): Promise< any > {
+    public async moveFile(request: model.MoveFileRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/storage/file/move/{srcPath}"
             .replace("{" + "srcPath" + "}", String(request.srcPath));
         const queryParameters: any = {};
@@ -235,10 +217,8 @@ export class FileApi {
             queryParameters.versionId = ObjectSerializer.serialize(request.versionId, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             qs: queryParameters,
             headers: headerParams,
@@ -247,15 +227,10 @@ export class FileApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 
     /**
@@ -283,8 +258,6 @@ export class FileApi {
             queryParameters.storageName = ObjectSerializer.serialize(request.storageName, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
         if (request.file !== undefined) {
             formParams.File = {
@@ -294,9 +267,8 @@ export class FileApi {
                 }
             };
         }
-        useFormData = true;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             qs: queryParameters,
             headers: headerParams,
@@ -305,15 +277,11 @@ export class FileApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "FilesUploadResult");
-        return Promise.resolve(result);
+        return result;
     }
 }

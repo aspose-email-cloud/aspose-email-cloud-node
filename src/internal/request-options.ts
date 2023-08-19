@@ -33,4 +33,5 @@ export interface IRequestOptions {
     body?: Buffer|string|any;
     json?: boolean;
     isResponseFile?: boolean;
+    qs?: Record<string, string>;
 }

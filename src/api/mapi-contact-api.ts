@@ -1,7 +1,7 @@
 /*
 * MIT License
 
-* Copyright (c) 2018-2020 Aspose Pty Ltd
+* Copyright (c) 2018-2023 Aspose Pty Ltd
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -22,11 +22,13 @@
 * SOFTWARE.
 */
 
-import * as rq from "request";
+//@ts-ignore
+import { Buffer } from "buffer";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
 import { invokeApiMethod } from "../internal/request-helper";
+import { IRequestOptions } from "../internal/request-options";
 import * as model from "../model";
 
 /**
@@ -55,7 +57,7 @@ export class MapiContactApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             uri: localVarPath,
             json: true,
@@ -64,7 +66,7 @@ export class MapiContactApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "ContactDto");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -80,17 +82,17 @@ export class MapiContactApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             uri: localVarPath,
             json: true,
-            encoding: null,
+            isResponseFile: true,
             body: ObjectSerializer.serialize(request, "MapiContactAsFileRequest"),
         };
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -117,8 +119,6 @@ export class MapiContactApi {
             queryParameters.format = ObjectSerializer.serialize(request.format, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
         if (request.file !== undefined) {
             formParams.File = {
@@ -128,9 +128,8 @@ export class MapiContactApi {
                 }
             };
         }
-        useFormData = true;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             qs: queryParameters,
             headers: headerParams,
@@ -139,16 +138,12 @@ export class MapiContactApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "MapiContactDto");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -187,10 +182,8 @@ export class MapiContactApi {
             queryParameters.storage = ObjectSerializer.serialize(request.storage, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "GET",
             qs: queryParameters,
             headers: headerParams,
@@ -199,23 +192,19 @@ export class MapiContactApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "MapiContactDto");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
      * Save MAPI Contact to storage.             
      * @param request Create/Update contact request.
      */
-    public async save(request: model.MapiContactSaveRequest): Promise< any > {
+    public async save(request: model.MapiContactSaveRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/MapiContact";
     
         // verify required parameter 'request' is not null or undefined
@@ -224,7 +213,7 @@ export class MapiContactApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             uri: localVarPath,
             json: true,
@@ -232,6 +221,5 @@ export class MapiContactApi {
         };
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 }

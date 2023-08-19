@@ -1,7 +1,7 @@
 /*
 * MIT License
 
-* Copyright (c) 2018-2020 Aspose Pty Ltd
+* Copyright (c) 2018-2023 Aspose Pty Ltd
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -22,11 +22,13 @@
 * SOFTWARE.
 */
 
-import * as rq from "request";
+//@ts-ignore
+import { Buffer } from "buffer";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
 import { invokeApiMethod } from "../internal/request-helper";
+import { IRequestOptions } from "../internal/request-options";
 import * as model from "../model";
 
 /**
@@ -55,7 +57,7 @@ export class ClientMessageApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "POST",
             uri: localVarPath,
             json: true,
@@ -64,7 +66,7 @@ export class ClientMessageApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "ValueTOfString");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -111,8 +113,6 @@ export class ClientMessageApi {
             queryParameters.markAsSent = ObjectSerializer.serialize(request.markAsSent, "boolean");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
         if (request.file !== undefined) {
             formParams.File = {
@@ -122,9 +122,8 @@ export class ClientMessageApi {
                 }
             };
         }
-        useFormData = true;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "POST",
             qs: queryParameters,
             headers: headerParams,
@@ -133,23 +132,19 @@ export class ClientMessageApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "ValueTOfString");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
      * Delete message.             
      * @param request Delete message request.
      */
-    public async delete(request: model.ClientMessageDeleteRequest): Promise< any > {
+    public async delete(request: model.ClientMessageDeleteRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/message";
     
         // verify required parameter 'request' is not null or undefined
@@ -158,7 +153,7 @@ export class ClientMessageApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "DELETE",
             uri: localVarPath,
             json: true,
@@ -166,7 +161,6 @@ export class ClientMessageApi {
         };
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 
     /**
@@ -217,10 +211,8 @@ export class ClientMessageApi {
             queryParameters.format = ObjectSerializer.serialize(request.format, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "GET",
             qs: queryParameters,
             headers: headerParams,
@@ -229,16 +221,12 @@ export class ClientMessageApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "MailMessageBase");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -285,29 +273,23 @@ export class ClientMessageApi {
             queryParameters.format = ObjectSerializer.serialize(request.format, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "GET",
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            encoding: null,
+            isResponseFile: true,
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -362,10 +344,8 @@ export class ClientMessageApi {
             queryParameters.format = ObjectSerializer.serialize(request.format, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "GET",
             qs: queryParameters,
             headers: headerParams,
@@ -374,23 +354,19 @@ export class ClientMessageApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "MailMessageBaseList");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
      * Move message to another folder.             
      * @param request Move message request.
      */
-    public async move(request: model.ClientMessageMoveRequest): Promise< any > {
+    public async move(request: model.ClientMessageMoveRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/message/move";
     
         // verify required parameter 'request' is not null or undefined
@@ -399,7 +375,7 @@ export class ClientMessageApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             uri: localVarPath,
             json: true,
@@ -407,14 +383,13 @@ export class ClientMessageApi {
         };
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 
     /**
      * Send an email specified by model in request.             
      * @param request Send email request.
      */
-    public async send(request: model.ClientMessageSendRequest): Promise< any > {
+    public async send(request: model.ClientMessageSendRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/message";
     
         // verify required parameter 'request' is not null or undefined
@@ -423,7 +398,7 @@ export class ClientMessageApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "POST",
             uri: localVarPath,
             json: true,
@@ -431,14 +406,13 @@ export class ClientMessageApi {
         };
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 
     /**
      * Send an email file.             
      * @param request contains request parameters
      */
-    public async sendFile(request: model.ClientMessageSendFileRequest): Promise< any > {
+    public async sendFile(request: model.ClientMessageSendFileRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/message/file";
         const queryParameters: any = {};
         const headerParams: any = {};
@@ -470,8 +444,6 @@ export class ClientMessageApi {
             queryParameters.format = ObjectSerializer.serialize(request.format, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
         if (request.file !== undefined) {
             formParams.File = {
@@ -481,9 +453,8 @@ export class ClientMessageApi {
                 }
             };
         }
-        useFormData = true;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "POST",
             qs: queryParameters,
             headers: headerParams,
@@ -492,22 +463,17 @@ export class ClientMessageApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 
     /**
      * Mark message as read or unread.             
      * @param request Delete message request.
      */
-    public async setIsRead(request: model.ClientMessageSetIsReadRequest): Promise< any > {
+    public async setIsRead(request: model.ClientMessageSetIsReadRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/message/set-is-read";
     
         // verify required parameter 'request' is not null or undefined
@@ -516,7 +482,7 @@ export class ClientMessageApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             uri: localVarPath,
             json: true,
@@ -524,6 +490,5 @@ export class ClientMessageApi {
         };
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 }

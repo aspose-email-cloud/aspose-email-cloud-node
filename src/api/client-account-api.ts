@@ -1,7 +1,7 @@
 /*
 * MIT License
 
-* Copyright (c) 2018-2020 Aspose Pty Ltd
+* Copyright (c) 2018-2023 Aspose Pty Ltd
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -22,11 +22,13 @@
 * SOFTWARE.
 */
 
-import * as rq from "request";
+//@ts-ignore
+import { Buffer } from "buffer";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
 import { invokeApiMethod } from "../internal/request-helper";
+import { IRequestOptions } from "../internal/request-options";
 import * as model from "../model";
 
 /**
@@ -69,10 +71,8 @@ export class ClientAccountApi {
             queryParameters.storage = ObjectSerializer.serialize(request.storage, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "GET",
             qs: queryParameters,
             headers: headerParams,
@@ -81,16 +81,12 @@ export class ClientAccountApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailClientAccount");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -120,10 +116,8 @@ export class ClientAccountApi {
             queryParameters.storage = ObjectSerializer.serialize(request.storage, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "GET",
             qs: queryParameters,
             headers: headerParams,
@@ -132,23 +126,19 @@ export class ClientAccountApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailClientMultiAccount");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
      * Create/update email client account file (*.account) with credentials             
      * @param request Email account information
      */
-    public async save(request: model.ClientAccountSaveRequest): Promise< any > {
+    public async save(request: model.ClientAccountSaveRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/account";
     
         // verify required parameter 'request' is not null or undefined
@@ -157,7 +147,7 @@ export class ClientAccountApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             uri: localVarPath,
             json: true,
@@ -165,14 +155,13 @@ export class ClientAccountApi {
         };
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 
     /**
      * Create email client multi account file (*.multi.account). Will respond error if file extension is not \".multi.account\".             
      * @param request Email accounts information.
      */
-    public async saveMulti(request: model.ClientAccountSaveMultiRequest): Promise< any > {
+    public async saveMulti(request: model.ClientAccountSaveMultiRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/account/multi";
     
         // verify required parameter 'request' is not null or undefined
@@ -181,7 +170,7 @@ export class ClientAccountApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             uri: localVarPath,
             json: true,
@@ -189,6 +178,5 @@ export class ClientAccountApi {
         };
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 }

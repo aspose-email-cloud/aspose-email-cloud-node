@@ -1,7 +1,7 @@
 /*
 * MIT License
 
-* Copyright (c) 2018-2020 Aspose Pty Ltd
+* Copyright (c) 2018-2023 Aspose Pty Ltd
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,8 @@
 
 // @ts-ignore
 import * as model from "./index";
+// @ts-ignore
+import { Buffer } from "buffer";
 
 export class EnumWithCustomOfAssociatedPersonCategory {
 

@@ -1,7 +1,7 @@
 /*
 * MIT License
 
-* Copyright (c) 2018-2020 Aspose Pty Ltd
+* Copyright (c) 2018-2023 Aspose Pty Ltd
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -22,11 +22,13 @@
 * SOFTWARE.
 */
 
-import * as rq from "request";
+//@ts-ignore
+import { Buffer } from "buffer";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
 import { invokeApiMethod } from "../internal/request-helper";
+import { IRequestOptions } from "../internal/request-options";
 import * as model from "../model";
 
 /**
@@ -46,7 +48,7 @@ export class ClientThreadApi {
      * Delete thread by id. All messages from thread will also be deleted.             
      * @param request Delete email thread request.
      */
-    public async delete(request: model.ClientThreadDeleteRequest): Promise< any > {
+    public async delete(request: model.ClientThreadDeleteRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/thread";
     
         // verify required parameter 'request' is not null or undefined
@@ -55,7 +57,7 @@ export class ClientThreadApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "DELETE",
             uri: localVarPath,
             json: true,
@@ -63,7 +65,6 @@ export class ClientThreadApi {
         };
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 
     /**
@@ -110,10 +111,8 @@ export class ClientThreadApi {
             queryParameters.messagesCacheLimit = ObjectSerializer.serialize(request.messagesCacheLimit, "number");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "GET",
             qs: queryParameters,
             headers: headerParams,
@@ -122,16 +121,12 @@ export class ClientThreadApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailThreadList");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -174,10 +169,8 @@ export class ClientThreadApi {
             queryParameters.accountStorageFolder = ObjectSerializer.serialize(request.accountStorageFolder, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "GET",
             qs: queryParameters,
             headers: headerParams,
@@ -186,23 +179,19 @@ export class ClientThreadApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailList");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
      * Move thread to another folder.             
      * @param request Move thread request.
      */
-    public async move(request: model.ClientThreadMoveRequest): Promise< any > {
+    public async move(request: model.ClientThreadMoveRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/thread/move";
     
         // verify required parameter 'request' is not null or undefined
@@ -211,7 +200,7 @@ export class ClientThreadApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             uri: localVarPath,
             json: true,
@@ -219,14 +208,13 @@ export class ClientThreadApi {
         };
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 
     /**
      * Mark all messages in thread as read or unread.             
      * @param request Email account specifier and IsRead flag.
      */
-    public async setIsRead(request: model.ClientThreadSetIsReadRequest): Promise< any > {
+    public async setIsRead(request: model.ClientThreadSetIsReadRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email/client/thread/set-is-read";
     
         // verify required parameter 'request' is not null or undefined
@@ -235,7 +223,7 @@ export class ClientThreadApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             uri: localVarPath,
             json: true,
@@ -243,6 +231,5 @@ export class ClientThreadApi {
         };
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 }

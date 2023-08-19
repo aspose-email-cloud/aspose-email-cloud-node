@@ -1,7 +1,7 @@
 /*
 * MIT License
 
-* Copyright (c) 2018-2020 Aspose Pty Ltd
+* Copyright (c) 2018-2023 Aspose Pty Ltd
 
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -22,11 +22,13 @@
 * SOFTWARE.
 */
 
-import * as rq from "request";
+//@ts-ignore
+import { Buffer } from "buffer";
 
 import { Configuration } from "../internal/configuration";
 import { ObjectSerializer } from "../internal/object-serializer";
 import { invokeApiMethod } from "../internal/request-helper";
+import { IRequestOptions } from "../internal/request-options";
 import * as model from "../model";
 
 /**
@@ -55,17 +57,17 @@ export class EmailApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             uri: localVarPath,
             json: true,
-            encoding: null,
+            isResponseFile: true,
             body: ObjectSerializer.serialize(request, "EmailAsFileRequest"),
         };
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -81,7 +83,7 @@ export class EmailApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             uri: localVarPath,
             json: true,
@@ -90,7 +92,7 @@ export class EmailApi {
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "MapiMessageDto");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -126,8 +128,6 @@ export class EmailApi {
             queryParameters.toFormat = ObjectSerializer.serialize(request.toFormat, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
         if (request.file !== undefined) {
             formParams.File = {
@@ -137,28 +137,23 @@ export class EmailApi {
                 }
             };
         }
-        useFormData = true;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            encoding: null,
+            isResponseFile: true,
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -185,8 +180,6 @@ export class EmailApi {
             queryParameters.format = ObjectSerializer.serialize(request.format, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
         if (request.file !== undefined) {
             formParams.File = {
@@ -196,9 +189,8 @@ export class EmailApi {
                 }
             };
         }
-        useFormData = true;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             qs: queryParameters,
             headers: headerParams,
@@ -207,16 +199,12 @@ export class EmailApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailDto");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -255,10 +243,8 @@ export class EmailApi {
             queryParameters.storage = ObjectSerializer.serialize(request.storage, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "GET",
             qs: queryParameters,
             headers: headerParams,
@@ -267,16 +253,12 @@ export class EmailApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailDto");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -315,29 +297,23 @@ export class EmailApi {
             queryParameters.folder = ObjectSerializer.serialize(request.folder, "string");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "GET",
             qs: queryParameters,
             headers: headerParams,
             uri: localVarPath,
             json: true,
-            encoding: null,
+            isResponseFile: true,
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "Buffer");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
@@ -375,10 +351,8 @@ export class EmailApi {
             queryParameters.pageNumber = ObjectSerializer.serialize(request.pageNumber, "number");
         }
 
-        // tslint:disable-next-line:prefer-const
-        let useFormData = false;
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "GET",
             qs: queryParameters,
             headers: headerParams,
@@ -387,23 +361,19 @@ export class EmailApi {
         };
 
         if (Object.keys(formParams).length) {
-            if (useFormData) {
-                (requestOptions as any).formData = formParams;
-            } else {
-                requestOptions.form = formParams;
-            }
+            requestOptions.formData = formParams;
         }
 
         const response = await invokeApiMethod(requestOptions, this.configuration);
         const result =  ObjectSerializer.deserialize(response.body, "EmailStorageList");
-        return Promise.resolve(result);
+        return result;
     }
 
     /**
      * Save email document to storage.             
      * @param request Email document create/update request.
      */
-    public async save(request: model.EmailSaveRequest): Promise< any > {
+    public async save(request: model.EmailSaveRequest): Promise< void > {
         const localVarPath = this.configuration.getApiBaseUrl() + "/email";
     
         // verify required parameter 'request' is not null or undefined
@@ -412,7 +382,7 @@ export class EmailApi {
         }
     
 
-        const requestOptions: rq.Options = {
+        const requestOptions: IRequestOptions = {
             method: "PUT",
             uri: localVarPath,
             json: true,
@@ -420,6 +390,5 @@ export class EmailApi {
         };
 
         await invokeApiMethod(requestOptions, this.configuration);
-        return Promise.resolve(null);
     }
 }
