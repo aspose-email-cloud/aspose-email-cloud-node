@@ -4,29 +4,29 @@
   "description": "Aspose.Email Cloud Node.js SDK",
   "homepage": "https://products.aspose.cloud/email",
   "author": {
-    "name": "Aspose Pty Ltd",
-    "url": "https://github.com/aspose-email-cloud"
+    "name": "Aspose",
+    "email": "aspose.email.team@gmail.com",
+    "url": "https://products.aspose.cloud/email"
   },
   "license": "MIT",
+  "keywords": [
+    "Aspose", "Typescript", "JavaScript", "Node.js", "Aspose Cloud",
+    "Aspose.Email", "Aspose Email Cloud", "Cloud", "REST", "API", "MSG", "EML", "MHTML", "HTML", "VCF", "ICS", "TNEF", "EMLX",
+    "iCalendar", "MAPI", "vCard", "Email Conversion", "Convert", "Converter", "Read Email Message", "Calendar", "Email Attachment",
+    "Contact Card", "Image to vCard", "Virtual Card", "Search Email", "SMTP", "POP3", "IMAP", "EWS", "WebDav", "SSL Explicit",
+    "SSL Implicit", "SSL", "iCalendar", "Email Validation", "OAuth2.0", "Message Thread", "iCalendar Conversion",
+    "vCard Conversion", "Email Conversion", "MIME", "Flag Email", "Email Client", "Exchange", "Name API", "name parser",
+    "name matcher", "name", "BCR", "contact scan", "business card", "Outlook", "EML to MSG", "MSG to EML", "EML to MHTML",
+    "MSG to MHTML", "ICS to MSG", "MSG to ICS", "VCF to MSG", "MSG to VCF", "Disposable email", "email configuration discovery",
+    "autodiscover", "email configuration"
+  ],
   "engines": {
-    "node": ">=6.15"
+    "node": ">=18.0.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/aspose-email-cloud/aspose-email-cloud-node.git"
   },
-  "keywords": [
-    "Aspose",
-    "Email",
-    "Cloud",
-    "REST",
-    "API",
-    "SDK",
-    "Outlook",
-    "MSG",
-    "EML",
-    "MHT"
-  ],
   "readmeFilename": "README.md",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
